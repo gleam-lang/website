@@ -10,10 +10,10 @@ the previous patterns.
 
 ```rust,noplaypen
 case some_number {
-| 0 -> "Zero"
-| 1 -> "One"
-| 2 -> "Two"
-| n -> "Some other number" // This matches anything
+  0 -> "Zero"
+  1 -> "One"
+  2 -> "Two"
+  n -> "Some other number" // This matches anything
 }
 ```
 
@@ -22,8 +22,8 @@ statement found in other languages.
 
 ```rust,noplaypen
 case some_bool {
-| True -> "It's true!"
-| False -> "It's not true."
+  True -> "It's true!"
+  False -> "It's not true."
 }
 ```
 
@@ -34,8 +34,8 @@ expression with a `let` binding.
 ```rust,noplaypen
 let description =
   case True {
-  | True -> "It's true!"
-  | False -> "It's not true."
+    True -> "It's true!"
+    False -> "It's not true."
   }
 
 description  // => "It's true!"
@@ -49,10 +49,10 @@ contain other values, such as tuples and lists.
 
 ```rust,noplaypen
 case xs {
-| [] -> "This list is empty"
-| [a] -> "This list has 1 element"
-| [a, b] -> "This list has 2 element"
-| other -> "This list has more than 2 elements"
+  [] -> "This list is empty"
+  [a] -> "This list has 1 element"
+  [a, b] -> "This list has 2 element"
+  other -> "This list has more than 2 elements"
 }
 ```
 
@@ -62,10 +62,10 @@ concisely express flow control that might be verbose without pattern matching.
 
 ```rust,noplaypen
 case xs {
-| [[]] -> "The only element is an empty list"
-| [[] | _] -> "The 1st element is an empty list"
-| [[4] | _] -> "The 1st element is a list of the number 4"
-| other -> "Something else"
+  [[]] -> "The only element is an empty list"
+  [[] | _] -> "The 1st element is an empty list"
+  [[4] | _] -> "The 1st element is a list of the number 4"
+  other -> "Something else"
 }
 ```
 
