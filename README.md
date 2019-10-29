@@ -1,6 +1,6 @@
 # The Gleam Book
 
-The rendered version can be found at https://lpil.uk/gleam
+The rendered version can be found at https://gleam.run
 
 
 ## Build book in localhost
@@ -8,12 +8,18 @@ The rendered version can be found at https://lpil.uk/gleam
 Install `mdbook`:
 
 ```
-$ cargo install mdbook
+cargo install mdbook
 ```
 
 and run:
 ```
-$ make book-serve
+make serve
 ```
 
 in root directory.
+
+Once you're happy with your changes run
+
+```
+make build
+```
