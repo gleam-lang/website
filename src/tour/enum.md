@@ -10,9 +10,10 @@ Bool is defined like this:
 
 ```rust,noplaypen
 // A Bool is a value that is either `True` or `False`
-enum Bool =
-  | True
-  | False
+enum Bool {
+  True
+  False
+}
 ```
 
 
@@ -20,9 +21,10 @@ Enum variants can also contain other values, and these values can be extracted
 using a let binding.
 
 ```rust,noplaypen
-enum User =
-  | LoggedIn(String)  // A logged in user with a name
-  | Guest             // A guest user with no details
+enum User {
+  LoggedIn(String)  // A logged in user with a name
+  Guest             // A guest user with no details
+}
 ```
 ```rust,noplaypen
 let sara = LoggedIn("Sara")
@@ -39,8 +41,8 @@ and to assign names to any contained values.
 ```rust,noplaypen
 fn get_name(user) {
   case user {
-  | LoggedIn(name) -> name
-  | Guest -> "Guest user"
+    LoggedIn(name) -> name
+    Guest -> "Guest user"
   }
 }
 ```
@@ -48,8 +50,9 @@ fn get_name(user) {
 Enums can also be destructured with a `let` binding.
 
 ```rust,noplaypen
-enum Score =
-  | Points(Int)
+enum Score {
+  Points(Int)
+}
 ```
 ```rust,noplaypen
 let score = Points(50)
@@ -63,9 +66,10 @@ p // => 50
 ### `Bool`
 
 ```rust,noplaypen
-pub enum Bool =
-  | True
-  | False
+pub enum Bool {
+  True
+  False
+}
 ```
 
 As seen above Gleam's `Bool` type is an enum! Use it to answer yes/no
@@ -75,9 +79,10 @@ questions and to indicate whether something is `True` or `False`.
 ### `Result(value, error)`
 
 ```rust,noplaypen
-pub enum Result(value, reason) =
-  | Ok(value)
-  | Error(reason)
+pub enum Result(value, reason) {
+  Ok(value)
+  Error(reason)
+}
 ```
 
 Gleam doesn't have exceptions of `null` to represent errors in our programs,
@@ -96,9 +101,10 @@ The `Error` type needs to be given a reason for the failure in order to
 return, like so:
 
 ```rust,noplaypen
-pub enum MyDatabaseError =
-  | InvalidQuery
-  | NetworkTimeout
+pub enum MyDatabaseError {
+  InvalidQuery
+  NetworkTimeout
+}
 
 pub fn insert(db_row) {
   // ... something went wrong connecting to a database here
