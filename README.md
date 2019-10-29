@@ -1,17 +1,19 @@
-# Gleam's Website
+# The Gleam Book
 
-## Quick reference
+The rendered version can be found at https://lpil.uk/gleam
 
-```sh
-# Install the build tool
-cargo install mdbook
 
-# Run the dev server
-make serve
+## Build book in localhost
 
-# Compile the site once finished editing
-make build
+Install `mdbook`:
 
-# Commit!
-git commit -m 'Added useful information'
 ```
+$ cargo install mdbook
+```
+
+and run:
+```
+$ make book-serve
+```
+
+in root directory.
