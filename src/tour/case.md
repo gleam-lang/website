@@ -76,3 +76,19 @@ match all instances of that type may result in a runtime error.
 let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 ```
+
+
+## Matching on multiple values
+
+Sometimes it is useful to pattern match on multiple values at the same time,
+so `case` supports having multiple subjects.
+
+
+```rust,noplaypen
+case x, y {
+  1, 1 -> "both are 1"
+  1, _ -> "x is 1"
+  _, 1 -> "y is 1"
+  _, _ -> "neither is 1"
+}
+```
