@@ -61,6 +61,23 @@ let Points(p) = score
 p // => 50
 ```
 
+
+## Labelled enum constructor arguments
+
+Like regular functions enum constructs can have labelled arguments.
+
+```rust,noplaypen
+enum User {
+  LoggedIn(name: String, age: Int)
+  Guest
+}
+```
+```rust,noplaypen
+LoggedIn(name: "Bob", age: 36)
+LoggedIn(name: "George", age: 34)
+```
+
+
 ## Commonly used enums
 
 ### `Bool`

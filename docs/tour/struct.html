@@ -188,8 +188,8 @@ cuteness2 // =&gt; 1805
 <p>Structs types can be parameterised so the same struct can be constructed with
 different contained types.</p>
 <pre><code class="language-rust noplaypen">pub struct Box(a) {
-  tag: String,
-  contents: a, // The type of this field is injected when constructed
+  tag: String
+  contents: a // The type of this field is injected when constructed
 }
 
 fn run() {
@@ -197,22 +197,19 @@ fn run() {
   Box(tag: &quot;two&quot;, contents: &quot;2&quot;) // the type is Box(String)
 }
 </code></pre>
-<h2><a class="header" href="#commonly-used-structs" id="commonly-used-structs">Commonly used structs</a></h2>
-<h3><a class="header" href="#paira-b" id="paira-b"><code>Pair(a, b)</code></a></h3>
-<p>There may be times when you want to move two values together, or return them
-both from a function. To save you from having to define a new struct for this
-the Gleam standard library implements a <code>Pair</code> type in the <code>gleam/pair</code>
-module which can contain any two values.</p>
-<pre><code class="language-rust noplaypen">import gleam/pair
-
-fn run() {
-  pair.Pair(&quot;ok&quot;, 100) // type is Pair(String, Int)
-  pair.Pair(1.01, [1]) // type is Pair(Float, List(Int))
+<h2><a class="header" href="#anonymous-structs" id="anonymous-structs">Anonymous structs</a></h2>
+<p>In addition to named structs Gleam has anonymous structs. Anonymous structs
+don't need to be declared up front but also don't have names for their fields,
+so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
+<pre><code class="language-rust noplaypen">fn pair() {
+  struct(10, &quot;hello&quot;) // Type is struct(Int, String)
+  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
 }
 </code></pre>
 <h2><a class="header" href="#erlang-interop" id="erlang-interop">Erlang interop</a></h2>
-<p>At runtime Gleam structs are Erlang tuples. All information about the names of
-the keys is erased at runtime.</p>
+<p>At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
+the first position and the Gleam compiler will generate a compatible Erlang
+record definition for use from other languages such as Erlang and Elixir.</p>
 
                     </main>
 

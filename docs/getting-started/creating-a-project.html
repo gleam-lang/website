@@ -154,8 +154,8 @@ Erlang build tool, rebar3. If you don't have rebar3 installed please <a href="ht
 it now</a>.</p>
 <h2><a class="header" href="#generating-a-project" id="generating-a-project">Generating a project</a></h2>
 <p>Now a project can be generated like so:</p>
-<pre><code class="language-sh">gleam new my_fantastic_project
-cd my_fantastic_project
+<pre><code class="language-sh">gleam new my_fantastic_library
+cd my_fantastic_library
 </code></pre>
 <p>You'll now have a project with this structure:</p>
 <pre><code>.
@@ -164,10 +164,10 @@ cd my_fantastic_project
 ├── README.md
 ├── rebar.config
 ├── src
-│   ├── my_fantastic_project.app.src
-│   └── my_fantastic_project.gleam
+│   ├── my_fantastic_library.app.src
+│   └── my_fantastic_library.gleam
 └── test
-    └── my_fantastic_project_test.gleam
+    └── my_fantastic_library_test.gleam
 
 2 directories, 7 files
 </code></pre>
@@ -181,6 +181,13 @@ rebar3 shell
 rebar3 eunit
 </code></pre>
 <p>More information can be found on the <a href="https://www.rebar3.org/docs">rebar3 documentation website</a>.</p>
+<h2><a class="header" href="#applications" id="applications">Applications</a></h2>
+<p>The default project generated is a library, but we may want to create an
+application instead. If we specify an alternate template when creating a
+project we can instead generate an application project compatible with the
+Erlang OTP framework.</p>
+<pre><code class="language-sh">gleam new my_fantastic_application --template app
+</code></pre>
 <h2><a class="header" href="#what-next" id="what-next">What next?</a></h2>
 <p>Want to see some Gleam code? See the <a href="./example-projects.html">example projects</a>.</p>
 <p>Looking to learn the language? Check out the <a href="../tour">language tour</a>.</p>
