@@ -16,8 +16,8 @@ it now](https://www.rebar3.org/).
 Now a project can be generated like so:
 
 ```sh
-gleam new my_fantastic_project
-cd my_fantastic_project
+gleam new my_fantastic_library
+cd my_fantastic_library
 ```
 
 You'll now have a project with this structure:
@@ -29,10 +29,10 @@ You'll now have a project with this structure:
 ├── README.md
 ├── rebar.config
 ├── src
-│   ├── my_fantastic_project.app.src
-│   └── my_fantastic_project.gleam
+│   ├── my_fantastic_library.app.src
+│   └── my_fantastic_library.gleam
 └── test
-    └── my_fantastic_project_test.gleam
+    └── my_fantastic_library_test.gleam
 
 2 directories, 7 files
 ```
@@ -50,6 +50,17 @@ rebar3 eunit
 ```
 
 More information can be found on the [rebar3 documentation website](https://www.rebar3.org/docs).
+
+## Applications
+
+The default project generated is a library, but we may want to create an
+application instead. If we specify an alternate template when creating a
+project we can instead generate an application project compatible with the
+Erlang OTP framework.
+
+```sh
+gleam new my_fantastic_application --template app
+```
 
 
 ## What next?
