@@ -63,8 +63,8 @@ different contained types.
 
 ```rust,noplaypen
 pub struct Box(a) {
-  tag: String,
-  contents: a, // The type of this field is injected when constructed
+  tag: String
+  contents: a // The type of this field is injected when constructed
 }
 
 fn run() {
@@ -74,26 +74,22 @@ fn run() {
 ```
 
 
-## Commonly used structs
+## Anonymous structs
 
-### `Pair(a, b)`
-
-There may be times when you want to move two values together, or return them
-both from a function. To save you from having to define a new struct for this
-the Gleam standard library implements a `Pair` type in the `gleam/pair`
-module which can contain any two values.
+In addition to named structs Gleam has anonymous structs. Anonymous structs
+don't need to be declared up front but also don't have names for their fields,
+so for clarity prefer named structs for when you have more than 2 or 3 fields.
 
 ```rust,noplaypen
-import gleam/pair
-
-fn run() {
-  pair.Pair("ok", 100) // type is Pair(String, Int)
-  pair.Pair(1.01, [1]) // type is Pair(Float, List(Int))
+fn pair() {
+  struct(10, "hello") // Type is struct(Int, String)
+  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
 }
 ```
 
 
 ## Erlang interop
 
-At runtime Gleam structs are Erlang tuples. All information about the names of
-the keys is erased at runtime.
+At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
+the first position and the Gleam compiler will generate a compatible Erlang
+record definition for use from other languages such as Erlang and Elixir.
