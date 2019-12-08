@@ -69,3 +69,21 @@ import animal/cat as kitty
 
 This may be useful to differentiate between multiple modules that would have
 the same default name when imported.
+
+
+## Unqualified import
+
+Values and types can also be imported in an unqualified fashion.
+
+```rust,noplaypen
+import unix/cat.{Cat, stroke}
+
+pub fn main() {
+  let kitty = Cat(name: "Nubi")
+  stroke(kitty)
+}
+```
+
+This may be useful for values that are used frequently in a module, but
+generally qualified imports are preferred as it makes it clearer where the
+value is defined.
