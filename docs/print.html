@@ -299,8 +299,8 @@ Erlang build tool, rebar3. If you don't have rebar3 installed please <a href="ht
 it now</a>.</p>
 <h2><a class="header" href="#generating-a-project" id="generating-a-project">Generating a project</a></h2>
 <p>Now a project can be generated like so:</p>
-<pre><code class="language-sh">gleam new my_fantastic_project
-cd my_fantastic_project
+<pre><code class="language-sh">gleam new my_fantastic_library
+cd my_fantastic_library
 </code></pre>
 <p>You'll now have a project with this structure:</p>
 <pre><code>.
@@ -309,10 +309,10 @@ cd my_fantastic_project
 ├── README.md
 ├── rebar.config
 ├── src
-│   ├── my_fantastic_project.app.src
-│   └── my_fantastic_project.gleam
+│   ├── my_fantastic_library.app.src
+│   └── my_fantastic_library.gleam
 └── test
-    └── my_fantastic_project_test.gleam
+    └── my_fantastic_library_test.gleam
 
 2 directories, 7 files
 </code></pre>
@@ -326,6 +326,13 @@ rebar3 shell
 rebar3 eunit
 </code></pre>
 <p>More information can be found on the <a href="https://www.rebar3.org/docs">rebar3 documentation website</a>.</p>
+<h2><a class="header" href="#applications" id="applications">Applications</a></h2>
+<p>The default project generated is a library, but we may want to create an
+application instead. If we specify an alternate template when creating a
+project we can instead generate an application project compatible with the
+Erlang OTP framework.</p>
+<pre><code class="language-sh">gleam new my_fantastic_application --template app
+</code></pre>
 <h2><a class="header" href="#what-next" id="what-next">What next?</a></h2>
 <p>Want to see some Gleam code? See the <a href="getting-started/./example-projects.html">example projects</a>.</p>
 <p>Looking to learn the language? Check out the <a href="getting-started/../tour">language tour</a>.</p>
@@ -499,17 +506,17 @@ allows us to say &quot;if the data has this shape then do that&quot;, which we c
 and 2. The final pattern <code>n</code> matches any other value that did not match any of
 the previous patterns.</p>
 <pre><code class="language-rust noplaypen">case some_number {
-| 0 -&gt; &quot;Zero&quot;
-| 1 -&gt; &quot;One&quot;
-| 2 -&gt; &quot;Two&quot;
-| n -&gt; &quot;Some other number&quot; // This matches anything
+  0 -&gt; &quot;Zero&quot;
+  1 -&gt; &quot;One&quot;
+  2 -&gt; &quot;Two&quot;
+  n -&gt; &quot;Some other number&quot; // This matches anything
 }
 </code></pre>
 <p>Pattern matching on a <code>Bool</code> value is the Gleam alternative to the <code>if else</code>
 statement found in other languages.</p>
 <pre><code class="language-rust noplaypen">case some_bool {
-| True -&gt; &quot;It's true!&quot;
-| False -&gt; &quot;It's not true.&quot;
+  True -&gt; &quot;It's true!&quot;
+  False -&gt; &quot;It's not true.&quot;
 }
 </code></pre>
 <p>Gleam's <code>case</code> is an expression, meaning it returns a value and can be used
@@ -517,8 +524,8 @@ anywhere we would use a value. For example, we can name the value of a case
 expression with a <code>let</code> binding.</p>
 <pre><code class="language-rust noplaypen">let description =
   case True {
-  | True -&gt; &quot;It's true!&quot;
-  | False -&gt; &quot;It's not true.&quot;
+    True -&gt; &quot;It's true!&quot;
+    False -&gt; &quot;It's not true.&quot;
   }
 
 description  // =&gt; &quot;It's true!&quot;
@@ -527,26 +534,36 @@ description  // =&gt; &quot;It's true!&quot;
 <p>A <code>case</code> expression can be used to destructure values that
 contain other values, such as tuples and lists.</p>
 <pre><code class="language-rust noplaypen">case xs {
-| [] -&gt; &quot;This list is empty&quot;
-| [a] -&gt; &quot;This list has 1 element&quot;
-| [a, b] -&gt; &quot;This list has 2 element&quot;
-| other -&gt; &quot;This list has more than 2 elements&quot;
+  [] -&gt; &quot;This list is empty&quot;
+  [a] -&gt; &quot;This list has 1 element&quot;
+  [a, b] -&gt; &quot;This list has 2 element&quot;
+  other -&gt; &quot;This list has more than 2 elements&quot;
 }
 </code></pre>
 <p>It's not just the top level data structure that can be pattern matches,
 contained values can also be matched. This gives <code>case</code> the ability to
 concisely express flow control that might be verbose without pattern matching.</p>
 <pre><code class="language-rust noplaypen">case xs {
-| [[]] -&gt; &quot;The only element is an empty list&quot;
-| [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
-| [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
-| other -&gt; &quot;Something else&quot;
+  [[]] -&gt; &quot;The only element is an empty list&quot;
+  [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
+  [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
+  other -&gt; &quot;Something else&quot;
 }
 </code></pre>
 <p>Pattern matching also works in <code>let</code> bindings, though patterns that do not
 match all instances of that type may result in a runtime error.</p>
 <pre><code class="language-rust noplaypen">let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
+</code></pre>
+<h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
+<p>Sometimes it is useful to pattern match on multiple values at the same time,
+so <code>case</code> supports having multiple subjects.</p>
+<pre><code class="language-rust noplaypen">case x, y {
+  1, 1 -&gt; &quot;both are 1&quot;
+  1, _ -&gt; &quot;x is 1&quot;
+  _, 1 -&gt; &quot;y is 1&quot;
+  _, _ -&gt; &quot;neither is 1&quot;
+}
 </code></pre>
 <h1><a class="header" href="#function" id="function">Function</a></h1>
 <h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
@@ -586,6 +603,33 @@ compiler will check these annotations and ensure they are correct.</p>
 of the function being <code>fn(Int) -&gt; Int</code>. This shows how type annotations can be
 used to create functions with types less general than the compiler may have
 inferred otherwise.</p>
+<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
+<p>When functions take several arguments it can be difficult for the user to
+remember what the arguments are, and what order they are expected in.</p>
+<p>To help with this Gleam supports <em>labelled arguments</em>, where function
+arguments are given an external label in addition to their internal name.</p>
+<p>Take this function that replaces sections of a string:</p>
+<pre><code class="language-rust noplaypen">pub fn replace(string, pattern, replacement) {
+  // ...
+}
+</code></pre>
+<p>It can be given labels like so.</p>
+<pre><code class="language-rust noplaypen">pub fn replace(in string, each pattern, with replacement) {
+  // The variables `string`, `pattern`, and `replacement` are in scope here
+}
+</code></pre>
+<p>These labels can then be used when calling the function.</p>
+<pre><code class="language-rust noplaypen">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
+
+// Labelled arguments can be given in any order
+replace(each: &quot;,&quot;, with: &quot; &quot;, in: &quot;A,B,C&quot;)
+
+// Arguments can still be given in a positional fashion
+replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
+</code></pre>
+<p>The use of argument labels can allow a function to be called in an expressive,
+sentence-like manner, while still providing a function body that is readable
+and clear in intent.</p>
 <h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
 <p>Anonymous functions can be defined with a similar syntax.</p>
 <pre><code class="language-rust noplaypen">pub fn run() {
@@ -675,6 +719,18 @@ import animal/cat as kitty
 </code></pre>
 <p>This may be useful to differentiate between multiple modules that would have
 the same default name when imported.</p>
+<h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
+<p>Values and types can also be imported in an unqualified fashion.</p>
+<pre><code class="language-rust noplaypen">import unix/cat.{Cat, stroke}
+
+pub fn main() {
+  let kitty = Cat(name: &quot;Nubi&quot;)
+  stroke(kitty)
+}
+</code></pre>
+<p>This may be useful for values that are used frequently in a module, but
+generally qualified imports are preferred as it makes it clearer where the
+value is defined.</p>
 <h1><a class="header" href="#struct" id="struct">Struct</a></h1>
 <p>Gleam's struct types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
@@ -718,8 +774,8 @@ cuteness2 // =&gt; 1805
 <p>Structs types can be parameterised so the same struct can be constructed with
 different contained types.</p>
 <pre><code class="language-rust noplaypen">pub struct Box(a) {
-  tag: String,
-  contents: a, // The type of this field is injected when constructed
+  tag: String
+  contents: a // The type of this field is injected when constructed
 }
 
 fn run() {
@@ -727,22 +783,19 @@ fn run() {
   Box(tag: &quot;two&quot;, contents: &quot;2&quot;) // the type is Box(String)
 }
 </code></pre>
-<h2><a class="header" href="#commonly-used-structs" id="commonly-used-structs">Commonly used structs</a></h2>
-<h3><a class="header" href="#paira-b" id="paira-b"><code>Pair(a, b)</code></a></h3>
-<p>There may be times when you want to move two values together, or return them
-both from a function. To save you from having to define a new struct for this
-the Gleam standard library implements a <code>Pair</code> type in the <code>gleam/pair</code>
-module which can contain any two values.</p>
-<pre><code class="language-rust noplaypen">import gleam/pair
-
-fn run() {
-  pair.Pair(&quot;ok&quot;, 100) // type is Pair(String, Int)
-  pair.Pair(1.01, [1]) // type is Pair(Float, List(Int))
+<h2><a class="header" href="#anonymous-structs" id="anonymous-structs">Anonymous structs</a></h2>
+<p>In addition to named structs Gleam has anonymous structs. Anonymous structs
+don't need to be declared up front but also don't have names for their fields,
+so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
+<pre><code class="language-rust noplaypen">fn pair() {
+  struct(10, &quot;hello&quot;) // Type is struct(Int, String)
+  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
 }
 </code></pre>
 <h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
-<p>At runtime Gleam structs are Erlang tuples. All information about the names of
-the keys is erased at runtime.</p>
+<p>At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
+the first position and the Gleam compiler will generate a compatible Erlang
+record definition for use from other languages such as Erlang and Elixir.</p>
 <h1><a class="header" href="#enums" id="enums">Enums</a></h1>
 <p>Enums in Gleam are a way of modeling data that can be one of a few different
 variants. They must be declared before use, and the names of variants must be
@@ -750,15 +803,17 @@ unique for the given module.</p>
 <p>We've seen an enum already in this chapter- <code>Bool</code>.</p>
 <p>Bool is defined like this:</p>
 <pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
-enum Bool =
-  | True
-  | False
+enum Bool {
+  True
+  False
+}
 </code></pre>
 <p>Enum variants can also contain other values, and these values can be extracted
 using a let binding.</p>
-<pre><code class="language-rust noplaypen">enum User =
-  | LoggedIn(String)  // A logged in user with a name
-  | Guest             // A guest user with no details
+<pre><code class="language-rust noplaypen">enum User {
+  LoggedIn(String)  // A logged in user with a name
+  Guest             // A guest user with no details
+}
 </code></pre>
 <pre><code class="language-rust noplaypen">let sara = LoggedIn(&quot;Sara&quot;)
 let rick = LoggedIn(&quot;Rick&quot;)
@@ -769,32 +824,45 @@ let visitor = Guest
 and to assign names to any contained values.</p>
 <pre><code class="language-rust noplaypen">fn get_name(user) {
   case user {
-  | LoggedIn(name) -&gt; name
-  | Guest -&gt; &quot;Guest user&quot;
+    LoggedIn(name) -&gt; name
+    Guest -&gt; &quot;Guest user&quot;
   }
 }
 </code></pre>
 <p>Enums can also be destructured with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">enum Score =
-  | Points(Int)
+<pre><code class="language-rust noplaypen">enum Score {
+  Points(Int)
+}
 </code></pre>
 <pre><code class="language-rust noplaypen">let score = Points(50)
 let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
+<h2><a class="header" href="#labelled-enum-constructor-arguments" id="labelled-enum-constructor-arguments">Labelled enum constructor arguments</a></h2>
+<p>Like regular functions enum constructs can have labelled arguments.</p>
+<pre><code class="language-rust noplaypen">enum User {
+  LoggedIn(name: String, age: Int)
+  Guest
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">LoggedIn(name: &quot;Bob&quot;, age: 36)
+LoggedIn(name: &quot;George&quot;, age: 34)
+</code></pre>
 <h2><a class="header" href="#commonly-used-enums" id="commonly-used-enums">Commonly used enums</a></h2>
 <h3><a class="header" href="#bool-1" id="bool-1"><code>Bool</code></a></h3>
-<pre><code class="language-rust noplaypen">pub enum Bool =
-  | True
-  | False
+<pre><code class="language-rust noplaypen">pub enum Bool {
+  True
+  False
+}
 </code></pre>
 <p>As seen above Gleam's <code>Bool</code> type is an enum! Use it to answer yes/no
 questions and to indicate whether something is <code>True</code> or <code>False</code>.</p>
 <h3><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h3>
-<pre><code class="language-rust noplaypen">pub enum Result(value, reason) =
-  | Ok(value)
-  | Error(reason)
+<pre><code class="language-rust noplaypen">pub enum Result(value, reason) {
+  Ok(value)
+  Error(reason)
+}
 </code></pre>
 <p>Gleam doesn't have exceptions of <code>null</code> to represent errors in our programs,
 instead we have the <code>Result</code> type. If a function call fail wrap the returned
@@ -807,9 +875,10 @@ if it failed.</p>
 </code></pre>
 <p>The <code>Error</code> type needs to be given a reason for the failure in order to
 return, like so:</p>
-<pre><code class="language-rust noplaypen">pub enum MyDatabaseError =
-  | InvalidQuery
-  | NetworkTimeout
+<pre><code class="language-rust noplaypen">pub enum MyDatabaseError {
+  InvalidQuery
+  NetworkTimeout
+}
 
 pub fn insert(db_row) {
   // ... something went wrong connecting to a database here

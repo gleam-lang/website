@@ -63,7 +63,7 @@ Take this function that replaces sections of a string:
 
 ```rust,noplaypen
 pub fn replace(string, pattern, replacement) {
-  // The variables `string`, `pattern`, and `replacement` are in scope here
+  // ...
 }
 ```
 

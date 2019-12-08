@@ -152,15 +152,17 @@ unique for the given module.</p>
 <p>We've seen an enum already in this chapter- <code>Bool</code>.</p>
 <p>Bool is defined like this:</p>
 <pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
-enum Bool =
-  | True
-  | False
+enum Bool {
+  True
+  False
+}
 </code></pre>
 <p>Enum variants can also contain other values, and these values can be extracted
 using a let binding.</p>
-<pre><code class="language-rust noplaypen">enum User =
-  | LoggedIn(String)  // A logged in user with a name
-  | Guest             // A guest user with no details
+<pre><code class="language-rust noplaypen">enum User {
+  LoggedIn(String)  // A logged in user with a name
+  Guest             // A guest user with no details
+}
 </code></pre>
 <pre><code class="language-rust noplaypen">let sara = LoggedIn(&quot;Sara&quot;)
 let rick = LoggedIn(&quot;Rick&quot;)
@@ -171,32 +173,45 @@ let visitor = Guest
 and to assign names to any contained values.</p>
 <pre><code class="language-rust noplaypen">fn get_name(user) {
   case user {
-  | LoggedIn(name) -&gt; name
-  | Guest -&gt; &quot;Guest user&quot;
+    LoggedIn(name) -&gt; name
+    Guest -&gt; &quot;Guest user&quot;
   }
 }
 </code></pre>
 <p>Enums can also be destructured with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">enum Score =
-  | Points(Int)
+<pre><code class="language-rust noplaypen">enum Score {
+  Points(Int)
+}
 </code></pre>
 <pre><code class="language-rust noplaypen">let score = Points(50)
 let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
+<h2><a class="header" href="#labelled-enum-constructor-arguments" id="labelled-enum-constructor-arguments">Labelled enum constructor arguments</a></h2>
+<p>Like regular functions enum constructs can have labelled arguments.</p>
+<pre><code class="language-rust noplaypen">enum User {
+  LoggedIn(name: String, age: Int)
+  Guest
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">LoggedIn(name: &quot;Bob&quot;, age: 36)
+LoggedIn(name: &quot;George&quot;, age: 34)
+</code></pre>
 <h2><a class="header" href="#commonly-used-enums" id="commonly-used-enums">Commonly used enums</a></h2>
 <h3><a class="header" href="#bool" id="bool"><code>Bool</code></a></h3>
-<pre><code class="language-rust noplaypen">pub enum Bool =
-  | True
-  | False
+<pre><code class="language-rust noplaypen">pub enum Bool {
+  True
+  False
+}
 </code></pre>
 <p>As seen above Gleam's <code>Bool</code> type is an enum! Use it to answer yes/no
 questions and to indicate whether something is <code>True</code> or <code>False</code>.</p>
 <h3><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h3>
-<pre><code class="language-rust noplaypen">pub enum Result(value, reason) =
-  | Ok(value)
-  | Error(reason)
+<pre><code class="language-rust noplaypen">pub enum Result(value, reason) {
+  Ok(value)
+  Error(reason)
+}
 </code></pre>
 <p>Gleam doesn't have exceptions of <code>null</code> to represent errors in our programs,
 instead we have the <code>Result</code> type. If a function call fail wrap the returned
@@ -209,9 +224,10 @@ if it failed.</p>
 </code></pre>
 <p>The <code>Error</code> type needs to be given a reason for the failure in order to
 return, like so:</p>
-<pre><code class="language-rust noplaypen">pub enum MyDatabaseError =
-  | InvalidQuery
-  | NetworkTimeout
+<pre><code class="language-rust noplaypen">pub enum MyDatabaseError {
+  InvalidQuery
+  NetworkTimeout
+}
 
 pub fn insert(db_row) {
   // ... something went wrong connecting to a database here

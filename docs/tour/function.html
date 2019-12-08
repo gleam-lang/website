@@ -183,6 +183,33 @@ compiler will check these annotations and ensure they are correct.</p>
 of the function being <code>fn(Int) -&gt; Int</code>. This shows how type annotations can be
 used to create functions with types less general than the compiler may have
 inferred otherwise.</p>
+<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
+<p>When functions take several arguments it can be difficult for the user to
+remember what the arguments are, and what order they are expected in.</p>
+<p>To help with this Gleam supports <em>labelled arguments</em>, where function
+arguments are given an external label in addition to their internal name.</p>
+<p>Take this function that replaces sections of a string:</p>
+<pre><code class="language-rust noplaypen">pub fn replace(string, pattern, replacement) {
+  // ...
+}
+</code></pre>
+<p>It can be given labels like so.</p>
+<pre><code class="language-rust noplaypen">pub fn replace(in string, each pattern, with replacement) {
+  // The variables `string`, `pattern`, and `replacement` are in scope here
+}
+</code></pre>
+<p>These labels can then be used when calling the function.</p>
+<pre><code class="language-rust noplaypen">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
+
+// Labelled arguments can be given in any order
+replace(each: &quot;,&quot;, with: &quot; &quot;, in: &quot;A,B,C&quot;)
+
+// Arguments can still be given in a positional fashion
+replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
+</code></pre>
+<p>The use of argument labels can allow a function to be called in an expressive,
+sentence-like manner, while still providing a function body that is readable
+and clear in intent.</p>
 <h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
 <p>Anonymous functions can be defined with a similar syntax.</p>
 <pre><code class="language-rust noplaypen">pub fn run() {

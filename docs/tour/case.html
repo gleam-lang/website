@@ -153,17 +153,17 @@ allows us to say &quot;if the data has this shape then do that&quot;, which we c
 and 2. The final pattern <code>n</code> matches any other value that did not match any of
 the previous patterns.</p>
 <pre><code class="language-rust noplaypen">case some_number {
-| 0 -&gt; &quot;Zero&quot;
-| 1 -&gt; &quot;One&quot;
-| 2 -&gt; &quot;Two&quot;
-| n -&gt; &quot;Some other number&quot; // This matches anything
+  0 -&gt; &quot;Zero&quot;
+  1 -&gt; &quot;One&quot;
+  2 -&gt; &quot;Two&quot;
+  n -&gt; &quot;Some other number&quot; // This matches anything
 }
 </code></pre>
 <p>Pattern matching on a <code>Bool</code> value is the Gleam alternative to the <code>if else</code>
 statement found in other languages.</p>
 <pre><code class="language-rust noplaypen">case some_bool {
-| True -&gt; &quot;It's true!&quot;
-| False -&gt; &quot;It's not true.&quot;
+  True -&gt; &quot;It's true!&quot;
+  False -&gt; &quot;It's not true.&quot;
 }
 </code></pre>
 <p>Gleam's <code>case</code> is an expression, meaning it returns a value and can be used
@@ -171,8 +171,8 @@ anywhere we would use a value. For example, we can name the value of a case
 expression with a <code>let</code> binding.</p>
 <pre><code class="language-rust noplaypen">let description =
   case True {
-  | True -&gt; &quot;It's true!&quot;
-  | False -&gt; &quot;It's not true.&quot;
+    True -&gt; &quot;It's true!&quot;
+    False -&gt; &quot;It's not true.&quot;
   }
 
 description  // =&gt; &quot;It's true!&quot;
@@ -181,26 +181,36 @@ description  // =&gt; &quot;It's true!&quot;
 <p>A <code>case</code> expression can be used to destructure values that
 contain other values, such as tuples and lists.</p>
 <pre><code class="language-rust noplaypen">case xs {
-| [] -&gt; &quot;This list is empty&quot;
-| [a] -&gt; &quot;This list has 1 element&quot;
-| [a, b] -&gt; &quot;This list has 2 element&quot;
-| other -&gt; &quot;This list has more than 2 elements&quot;
+  [] -&gt; &quot;This list is empty&quot;
+  [a] -&gt; &quot;This list has 1 element&quot;
+  [a, b] -&gt; &quot;This list has 2 element&quot;
+  other -&gt; &quot;This list has more than 2 elements&quot;
 }
 </code></pre>
 <p>It's not just the top level data structure that can be pattern matches,
 contained values can also be matched. This gives <code>case</code> the ability to
 concisely express flow control that might be verbose without pattern matching.</p>
 <pre><code class="language-rust noplaypen">case xs {
-| [[]] -&gt; &quot;The only element is an empty list&quot;
-| [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
-| [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
-| other -&gt; &quot;Something else&quot;
+  [[]] -&gt; &quot;The only element is an empty list&quot;
+  [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
+  [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
+  other -&gt; &quot;Something else&quot;
 }
 </code></pre>
 <p>Pattern matching also works in <code>let</code> bindings, though patterns that do not
 match all instances of that type may result in a runtime error.</p>
 <pre><code class="language-rust noplaypen">let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
+</code></pre>
+<h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
+<p>Sometimes it is useful to pattern match on multiple values at the same time,
+so <code>case</code> supports having multiple subjects.</p>
+<pre><code class="language-rust noplaypen">case x, y {
+  1, 1 -&gt; &quot;both are 1&quot;
+  1, _ -&gt; &quot;x is 1&quot;
+  _, 1 -&gt; &quot;y is 1&quot;
+  _, _ -&gt; &quot;neither is 1&quot;
+}
 </code></pre>
 
                     </main>
