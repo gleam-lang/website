@@ -16,4 +16,10 @@ Uses the Elli web server and the Postgresql database via the epgsql client.
 ## [The Gleam standard library](https://github.com/gleam-lang/stdlib)
 
 A collection of modules for working with the common data structures of Gleam.
-Makes heavy use of Erlang FFI.
+
+
+## [Gleam Experiments](https://github.com/gleam-experiments)
+
+The Gleam Experiments GitHub organisation is home to many useful libraries
+for use in Gleam projects such as OTP bindings, database clients, and lazy
+data structures.
