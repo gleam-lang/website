@@ -76,7 +76,7 @@ the same default name when imported.
 Values and types can also be imported in an unqualified fashion.
 
 ```rust,noplaypen
-import unix/cat.{Cat, stroke}
+import animal/cat.{Cat, stroke}
 
 pub fn main() {
   let kitty = Cat(name: "Nubi")

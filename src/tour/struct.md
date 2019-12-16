@@ -81,7 +81,7 @@ don't need to be declared up front but also don't have names for their fields,
 so for clarity prefer named structs for when you have more than 2 or 3 fields.
 
 ```rust,noplaypen
-fn pair() {
+fn run() {
   struct(10, "hello") // Type is struct(Int, String)
   struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
 }
