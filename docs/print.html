@@ -721,7 +721,7 @@ import animal/cat as kitty
 the same default name when imported.</p>
 <h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
 <p>Values and types can also be imported in an unqualified fashion.</p>
-<pre><code class="language-rust noplaypen">import unix/cat.{Cat, stroke}
+<pre><code class="language-rust noplaypen">import animal/cat.{Cat, stroke}
 
 pub fn main() {
   let kitty = Cat(name: &quot;Nubi&quot;)
@@ -787,7 +787,7 @@ fn run() {
 <p>In addition to named structs Gleam has anonymous structs. Anonymous structs
 don't need to be declared up front but also don't have names for their fields,
 so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
-<pre><code class="language-rust noplaypen">fn pair() {
+<pre><code class="language-rust noplaypen">fn run() {
   struct(10, &quot;hello&quot;) // Type is struct(Int, String)
   struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
 }
