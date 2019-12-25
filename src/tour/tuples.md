@@ -1,38 +1,15 @@
-# Struct
+# Tuple
 
-Gleam's struct types are named collections of keys and values. They are
-similar to objects in object oriented languages, though they don't have
-methods.
-
-Structs are defined with the `struct` keyword.
+Lists are good for when we want a collection of one type, but sometime we want
+to combine multiple values of different types. In this case tuples are a quick
+and convenient option.
 
 ```rust,noplaypen
-pub struct Cat {
-  name: String
-  cuteness: Int
+fn run() {
+  tuple(10, "hello") // Type is tuple(Int, String)
+  tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
 }
 ```
-
-Here we have defined a struct called `Cat` which has two fields: A `name`
-field which is a `String`, and a `cuteness` field which is an `Int`.
-
-The `pub` keyword has been used to make this struct usable from other modules.
-
-Once defined the struct type can be used in functions:
-
-```rust,noplaypen
-fn cats() {
-  // Struct fields can be given in any order
-  let cat1 = Cat(name: "Nubi", cuteness: 2001)
-  let cat2 = Cat(cuteness: 1805, name: "Biffy")
-
-  // Alternatively fields can be given without labels
-  let cat3 = Cat("Ginny", 1950)
-
-  [cat1, cat2, cat3]
-}
-```
-
 
 ## Destructuring structs
 

@@ -10,7 +10,7 @@ It looks like this:
 
 
 ```rust,noplaypen
-pub enum Tree(value) {
+pub type Tree(value) {
   Leaf(value)
   Node(Tree(value), Tree(value))
 }

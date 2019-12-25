@@ -154,7 +154,7 @@ scalable concurrent systems.</p>
 <p>It compiles to <a href="http://www.erlang.org/">Erlang</a> and has straightforward
 interop with other BEAM languages such as Erlang, Elixir and LFE.</p>
 <p>It looks like this:</p>
-<pre><code class="language-rust noplaypen">pub enum Tree(value) {
+<pre><code class="language-rust noplaypen">pub type Tree(value) {
   Leaf(value)
   Node(Tree(value), Tree(value))
 }
