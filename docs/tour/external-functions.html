@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Int &amp; Float - The Gleam Book</title>
+        <title>External functions - The Gleam Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/string.html"><strong aria-hidden="true">3.2.</strong> String</a></li><li class="expanded "><a href="../tour/bool.html"><strong aria-hidden="true">3.3.</strong> Bool</a></li><li class="expanded "><a href="../tour/int-and-float.html" class="active"><strong aria-hidden="true">3.4.</strong> Int &amp; Float</a></li><li class="expanded "><a href="../tour/let.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/list.html"><strong aria-hidden="true">3.6.</strong> List</a></li><li class="expanded "><a href="../tour/case.html"><strong aria-hidden="true">3.7.</strong> Case</a></li><li class="expanded "><a href="../tour/function.html"><strong aria-hidden="true">3.8.</strong> Function</a></li><li class="expanded "><a href="../tour/module.html"><strong aria-hidden="true">3.9.</strong> Module</a></li><li class="expanded "><a href="../tour/struct.html"><strong aria-hidden="true">3.10.</strong> Struct</a></li><li class="expanded "><a href="../tour/enum.html"><strong aria-hidden="true">3.11.</strong> Enum</a></li><li class="expanded "><a href="../tour/external-function.html"><strong aria-hidden="true">3.12.</strong> External function</a></li><li class="expanded "><a href="../tour/external-type.html"><strong aria-hidden="true">3.13.</strong> External type</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="expanded "><a href="../tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="expanded "><a href="../tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="expanded "><a href="../tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="expanded "><a href="../tour/external-functions.html" class="active"><strong aria-hidden="true">3.12.</strong> External functions</a></li><li class="expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">3.13.</strong> External types</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,43 +148,27 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#int-and-float" id="int-and-float">Int and Float</a></h1>
-<p>Gleam's main number types are Int and Float.</p>
-<h2><a class="header" href="#ints" id="ints">Ints</a></h2>
-<p>Ints are &quot;whole&quot; numbers.</p>
-<pre><code class="language-rust noplaypen">1
-2
--3
-4001
-</code></pre>
-<p>Gleam has several operators that work with Ints.</p>
-<pre><code class="language-rust noplaypen">1 + 1 // =&gt; 2
-5 - 1 // =&gt; 4
-5 / 2 // =&gt; 2
-3 * 3 // =&gt; 9
-5 % 2 // =&gt; 1
+                        <h1><a class="header" href="#external-function" id="external-function">External function</a></h1>
+<p>Gleam is just one of many languages on the Erlang virtual machine and at times
+we may want to use functions from these other languages in our Gleam programs.
+To enable this Gleam allows the importing of <em>external functions</em>, which may
+be written in any BEAM language.</p>
+<p>External functions are typically written in a different language with a
+different type system, so the compiler is unable to determine the type of the
+function and instead the programmer must inform the compiler the type.</p>
+<p>Gleam trusts that the type given is correct so an inaccurate type annotation
+can result in unexpected behaviour and crashes at runtime. Be careful!</p>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<p>The Erlang <code>rand</code> module has a function named <code>uniform</code> that takes no
+arguments and returns a <code>Float</code>.</p>
+<p>The Elixir module <code>IO</code> has a function named <code>inspect</code> that takes any value,
+prints it, and returns the same value.</p>
+<p>If we want to import these functions and use them in our program we would do
+so like this:</p>
+<pre><code class="language-rust noplaypen">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
 
-2 &gt; 1  // =&gt; True
-2 &lt; 1  // =&gt; False
-2 &gt;= 1 // =&gt; True
-2 &lt;= 1 // =&gt; False
-</code></pre>
-<h2><a class="header" href="#floats" id="floats">Floats</a></h2>
-<p>Floats are numbers that have a decimal point.</p>
-<pre><code class="language-rust noplaypen">1.5
-2.0
--0.1
-</code></pre>
-<p>Floats also have their own set of operators.</p>
-<pre><code class="language-rust noplaypen">1.0 +. 1.4 // =&gt; 2.4
-5.0 -. 1.5 // =&gt; 3.5
-5.0 /. 2.0 // =&gt; 2.5
-3.0 *. 3.1 // =&gt; 9.3
-
-2.0 &gt;. 1.0  // =&gt; True
-2.0 &lt;. 1.0  // =&gt; False
-2.0 &gt;=. 1.0 // =&gt; True
-2.0 &lt;=. 1.0 // =&gt; False
+// Elixir modules start with `Elixir.`
+pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
 </code></pre>
 
                     </main>
@@ -192,13 +176,13 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../tour/bool.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tour/custom-types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../tour/let.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tour/external-types.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -210,13 +194,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../tour/bool.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../tour/custom-types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../tour/let.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../tour/external-types.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

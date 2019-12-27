@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Function - The Gleam Book</title>
+        <title>Let bindings - The Gleam Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/string.html"><strong aria-hidden="true">3.2.</strong> String</a></li><li class="expanded "><a href="../tour/bool.html"><strong aria-hidden="true">3.3.</strong> Bool</a></li><li class="expanded "><a href="../tour/int-and-float.html"><strong aria-hidden="true">3.4.</strong> Int &amp; Float</a></li><li class="expanded "><a href="../tour/let.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/list.html"><strong aria-hidden="true">3.6.</strong> List</a></li><li class="expanded "><a href="../tour/case.html"><strong aria-hidden="true">3.7.</strong> Case</a></li><li class="expanded "><a href="../tour/function.html" class="active"><strong aria-hidden="true">3.8.</strong> Function</a></li><li class="expanded "><a href="../tour/module.html"><strong aria-hidden="true">3.9.</strong> Module</a></li><li class="expanded "><a href="../tour/struct.html"><strong aria-hidden="true">3.10.</strong> Struct</a></li><li class="expanded "><a href="../tour/enum.html"><strong aria-hidden="true">3.11.</strong> Enum</a></li><li class="expanded "><a href="../tour/external-function.html"><strong aria-hidden="true">3.12.</strong> External function</a></li><li class="expanded "><a href="../tour/external-type.html"><strong aria-hidden="true">3.13.</strong> External type</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="expanded "><a href="../tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="expanded "><a href="../tour/let-bindings.html" class="active"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="expanded "><a href="../tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="expanded "><a href="../tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">3.12.</strong> External functions</a></li><li class="expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">3.13.</strong> External types</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,106 +148,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#function" id="function">Function</a></h1>
-<h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
-<p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
-  x + y
-}
+                        <h1><a class="header" href="#let-bindings" id="let-bindings">Let bindings</a></h1>
+<p>A value can be given a name using <code>let</code>. Names can be reused by later let
+bindings, but the values contained are <em>immutable</em>, meaning the values
+themselves cannot be changed.</p>
+<pre><code class="language-rust noplaypen">let x = 1
+let y = x
+let x = 2
 
-pub fn multiply(x, y) {
-  x * y
-}
-</code></pre>
-<p>Functions in Gleam are first class values and so can be assigned to variables,
-passed to functions, or anything else you might do with any other data type.</p>
-<pre><code class="language-rust noplaypen">// This function takes a function as an argument
-pub fn twice(f, x) {
-  f(f(x))
-}
-
-pub fn add_one(x) {
-  x + 1
-}
-
-pub fn add_two(x) {
-  twice(add_one, x)
-}
-</code></pre>
-<h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
-<p>Function arguments can be optionally be annotated with their type. The
-compiler will check these annotations and ensure they are correct.</p>
-<pre><code class="language-rust noplaypen">fn identity(x: Int) -&gt; Int {
-  x
-}
-</code></pre>
-<p>Without an annotation this identity function would have have the inferred type
-<code>fn(a) -&gt; a</code>, but the type annotation on the argument results in the type
-of the function being <code>fn(Int) -&gt; Int</code>. This shows how type annotations can be
-used to create functions with types less general than the compiler may have
-inferred otherwise.</p>
-<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
-<p>When functions take several arguments it can be difficult for the user to
-remember what the arguments are, and what order they are expected in.</p>
-<p>To help with this Gleam supports <em>labelled arguments</em>, where function
-arguments are given an external label in addition to their internal name.</p>
-<p>Take this function that replaces sections of a string:</p>
-<pre><code class="language-rust noplaypen">pub fn replace(string, pattern, replacement) {
-  // ...
-}
-</code></pre>
-<p>It can be given labels like so.</p>
-<pre><code class="language-rust noplaypen">pub fn replace(in string, each pattern, with replacement) {
-  // The variables `string`, `pattern`, and `replacement` are in scope here
-}
-</code></pre>
-<p>These labels can then be used when calling the function.</p>
-<pre><code class="language-rust noplaypen">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
-
-// Labelled arguments can be given in any order
-replace(each: &quot;,&quot;, with: &quot; &quot;, in: &quot;A,B,C&quot;)
-
-// Arguments can still be given in a positional fashion
-replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
-</code></pre>
-<p>The use of argument labels can allow a function to be called in an expressive,
-sentence-like manner, while still providing a function body that is readable
-and clear in intent.</p>
-<h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
-<p>Anonymous functions can be defined with a similar syntax.</p>
-<pre><code class="language-rust noplaypen">pub fn run() {
-  let add = fn(x, y) { x + y }
-
-  add(1, 2)
-}
-</code></pre>
-<h2><a class="header" href="#function-capturing" id="function-capturing">Function capturing</a></h2>
-<p>There is a shorthand syntax for creating anonymous functions that take one
-argument and call another function. The <code>_</code> is used to indicate where the
-argument should be passed.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
-  x + y
-}
-
-pub fn run() {
-  let add_one = add(1, _)
-
-  add_one(2)
-}
-</code></pre>
-<p>The function capture syntax is often used with the pipe operator to create
-a series of transformations on some data.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
-  x + y
-}
-
-pub fn run() {
-  // This is the same as add(add(add(1, 3), 6), 9)
-  1
-  |&gt; add(_, 3)
-  |&gt; add(_, 6)
-  |&gt; add(_, 9)
-}
+x  // =&gt; 2
+y  // =&gt; 1
 </code></pre>
 
                     </main>
@@ -255,13 +165,13 @@ pub fn run() {
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../tour/case.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tour/ints-and-floats.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../tour/module.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tour/lists.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -273,13 +183,13 @@ pub fn run() {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../tour/case.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../tour/ints-and-floats.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../tour/module.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../tour/lists.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="tour/string.html"><strong aria-hidden="true">3.2.</strong> String</a></li><li class="expanded "><a href="tour/bool.html"><strong aria-hidden="true">3.3.</strong> Bool</a></li><li class="expanded "><a href="tour/int-and-float.html"><strong aria-hidden="true">3.4.</strong> Int &amp; Float</a></li><li class="expanded "><a href="tour/let.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="tour/list.html"><strong aria-hidden="true">3.6.</strong> List</a></li><li class="expanded "><a href="tour/case.html"><strong aria-hidden="true">3.7.</strong> Case</a></li><li class="expanded "><a href="tour/function.html"><strong aria-hidden="true">3.8.</strong> Function</a></li><li class="expanded "><a href="tour/module.html"><strong aria-hidden="true">3.9.</strong> Module</a></li><li class="expanded "><a href="tour/struct.html"><strong aria-hidden="true">3.10.</strong> Struct</a></li><li class="expanded "><a href="tour/enum.html"><strong aria-hidden="true">3.11.</strong> Enum</a></li><li class="expanded "><a href="tour/external-function.html"><strong aria-hidden="true">3.12.</strong> External function</a></li><li class="expanded "><a href="tour/external-type.html"><strong aria-hidden="true">3.13.</strong> External type</a></li></ol></li><li class="expanded "><a href="faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="tour/strings.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="expanded "><a href="tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="expanded "><a href="tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="expanded "><a href="tour/let-bindings.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="expanded "><a href="tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="expanded "><a href="tour/case-expressions.html"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="expanded "><a href="tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="expanded "><a href="tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="expanded "><a href="tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="expanded "><a href="tour/external-functions.html"><strong aria-hidden="true">3.12.</strong> External functions</a></li><li class="expanded "><a href="tour/external-types.html"><strong aria-hidden="true">3.13.</strong> External types</a></li></ol></li><li class="expanded "><a href="faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -502,6 +502,55 @@ let y = [1 | x]
 x  // =&gt; [2, 3]
 y  // =&gt; [1, 2, 3]
 </code></pre>
+<h1><a class="header" href="#tuple" id="tuple">Tuple</a></h1>
+<p>Lists are good for when we want a collection of one type, but sometime we want
+to combine multiple values of different types. In this case tuples are a quick
+and convenient option.</p>
+<pre><code class="language-rust noplaypen">fn run() {
+  tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
+  tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
+}
+</code></pre>
+<h2><a class="header" href="#destructuring-structs" id="destructuring-structs">Destructuring structs</a></h2>
+<p>To extract values from structs we can pattern match on them with <code>let</code> or
+<code>case</code>.</p>
+<pre><code class="language-rust noplaypen">let Cat(name: name1, cuteness: cuteness1) = cat1
+
+name1     // =&gt; &quot;Nubi&quot;
+cuteness1 // =&gt; 2001
+</code></pre>
+<p>We can also pattern match using positional arguments:</p>
+<pre><code class="language-rust noplaypen">let Cat(name2, cuteness2) = cat2
+
+name2     // =&gt; &quot;Biffy&quot;
+cuteness2 // =&gt; 1805
+</code></pre>
+<h2><a class="header" href="#generic-structs" id="generic-structs">Generic structs</a></h2>
+<p>Structs types can be parameterised so the same struct can be constructed with
+different contained types.</p>
+<pre><code class="language-rust noplaypen">pub struct Box(a) {
+  tag: String
+  contents: a // The type of this field is injected when constructed
+}
+
+fn run() {
+  Box(tag: &quot;one&quot;, contents: 1.0) // the type is Box(Float)
+  Box(tag: &quot;two&quot;, contents: &quot;2&quot;) // the type is Box(String)
+}
+</code></pre>
+<h2><a class="header" href="#anonymous-structs" id="anonymous-structs">Anonymous structs</a></h2>
+<p>In addition to named structs Gleam has anonymous structs. Anonymous structs
+don't need to be declared up front but also don't have names for their fields,
+so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
+<pre><code class="language-rust noplaypen">fn run() {
+  struct(10, &quot;hello&quot;) // Type is struct(Int, String)
+  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
+}
+</code></pre>
+<h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
+<p>At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
+the first position and the Gleam compiler will generate a compatible Erlang
+record definition for use from other languages such as Erlang and Elixir.</p>
 <h1><a class="header" href="#case" id="case">Case</a></h1>
 <p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
 allows us to say &quot;if the data has this shape then do that&quot;, which we call
@@ -735,18 +784,18 @@ pub fn main() {
 <p>This may be useful for values that are used frequently in a module, but
 generally qualified imports are preferred as it makes it clearer where the
 value is defined.</p>
-<h1><a class="header" href="#struct" id="struct">Struct</a></h1>
-<p>Gleam's struct types are named collections of keys and values. They are
+<h1><a class="header" href="#custom-types" id="custom-types">Custom types</a></h1>
+<p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
 methods.</p>
-<p>Structs are defined with the <code>struct</code> keyword.</p>
-<pre><code class="language-rust noplaypen">pub struct Cat {
-  name: String
-  cuteness: Int
+<p>Custom types are defined with the <code>type</code> keyword.</p>
+<pre><code class="language-rust noplaypen">pub type Cat {
+  Cat(name: String, cuteness: Int)
 }
 </code></pre>
-<p>Here we have defined a struct called <code>Cat</code> which has two fields: A <code>name</code>
-field which is a <code>String</code>, and a <code>cuteness</code> field which is an <code>Int</code>.</p>
+<p>Here we have defined a custom type called <code>Cat</code>. It's constructor is called
+<code>Cat</code> and it takes has two fields: A <code>name</code> field which is a <code>String</code>, and a
+<code>cuteness</code> field which is an <code>Int</code>.</p>
 <p>The <code>pub</code> keyword has been used to make this struct usable from other modules.</p>
 <p>Once defined the struct type can be used in functions:</p>
 <pre><code class="language-rust noplaypen">fn cats() {
@@ -760,72 +809,34 @@ field which is a <code>String</code>, and a <code>cuteness</code> field which is
   [cat1, cat2, cat3]
 }
 </code></pre>
-<h2><a class="header" href="#destructuring-structs" id="destructuring-structs">Destructuring structs</a></h2>
-<p>To extract values from structs we can pattern match on them with <code>let</code> or
-<code>case</code>.</p>
-<pre><code class="language-rust noplaypen">let Cat(name: name1, cuteness: cuteness1) = cat1
-
-name1     // =&gt; &quot;Nubi&quot;
-cuteness1 // =&gt; 2001
-</code></pre>
-<p>We can also pattern match using positional arguments:</p>
-<pre><code class="language-rust noplaypen">let Cat(name2, cuteness2) = cat2
-
-name2     // =&gt; &quot;Biffy&quot;
-cuteness2 // =&gt; 1805
-</code></pre>
-<h2><a class="header" href="#generic-structs" id="generic-structs">Generic structs</a></h2>
-<p>Structs types can be parameterised so the same struct can be constructed with
-different contained types.</p>
-<pre><code class="language-rust noplaypen">pub struct Box(a) {
-  tag: String
-  contents: a // The type of this field is injected when constructed
-}
-
-fn run() {
-  Box(tag: &quot;one&quot;, contents: 1.0) // the type is Box(Float)
-  Box(tag: &quot;two&quot;, contents: &quot;2&quot;) // the type is Box(String)
-}
-</code></pre>
-<h2><a class="header" href="#anonymous-structs" id="anonymous-structs">Anonymous structs</a></h2>
-<p>In addition to named structs Gleam has anonymous structs. Anonymous structs
-don't need to be declared up front but also don't have names for their fields,
-so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
-<pre><code class="language-rust noplaypen">fn run() {
-  struct(10, &quot;hello&quot;) // Type is struct(Int, String)
-  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
-}
-</code></pre>
-<h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
-<p>At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
-the first position and the Gleam compiler will generate a compatible Erlang
-record definition for use from other languages such as Erlang and Elixir.</p>
-<h1><a class="header" href="#enums" id="enums">Enums</a></h1>
-<p>Enums in Gleam are a way of modeling data that can be one of a few different
-variants. They must be declared before use, and the names of variants must be
-unique for the given module.</p>
-<p>We've seen an enum already in this chapter- <code>Bool</code>.</p>
+<h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
+<p>Custom types in Gleam can be defined with multiple constructors, making them a
+way of modeling data that can be one of a few different variants.</p>
+<p>We've seen a custom type with multiple constructors already in this chapter-
+<code>Bool</code>.</p>
 <p>Bool is defined like this:</p>
 <pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
-enum Bool {
+pub type Bool {
   True
   False
 }
 </code></pre>
-<p>Enum variants can also contain other values, and these values can be extracted
-using a let binding.</p>
-<pre><code class="language-rust noplaypen">enum User {
-  LoggedIn(String)  // A logged in user with a name
-  Guest             // A guest user with no details
+<p>The records created by different constructors for a custom type can contain
+different values. For example a User custom type could have a LoggedIn
+constructors that creates records with a name, and a Guest constructor which
+creates records without any contained values.</p>
+<pre><code class="language-rust noplaypen">type User {
+  LoggedIn(name: String)  // A logged in user with a name
+  Guest                   // A guest user with no details
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">let sara = LoggedIn(&quot;Sara&quot;)
-let rick = LoggedIn(&quot;Rick&quot;)
+<pre><code class="language-rust noplaypen">let sara = LoggedIn(name: &quot;Sara&quot;)
+let rick = LoggedIn(name: &quot;Rick&quot;)
 let visitor = Guest
 </code></pre>
 <h2><a class="header" href="#destructuring-1" id="destructuring-1">Destructuring</a></h2>
-<p>When given an enum we can pattern match on it to determine which variant it is
-and to assign names to any contained values.</p>
+<p>When given a custom type record we can pattern match on it to determine which
+record constructor matches, and to assign names to any contained values.</p>
 <pre><code class="language-rust noplaypen">fn get_name(user) {
   case user {
     LoggedIn(name) -&gt; name
@@ -833,8 +844,8 @@ and to assign names to any contained values.</p>
   }
 }
 </code></pre>
-<p>Enums can also be destructured with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">enum Score {
+<p>Custom types can also be destructured with a <code>let</code> binding.</p>
+<pre><code class="language-rust noplaypen">type Score {
   Points(Int)
 }
 </code></pre>
@@ -843,27 +854,17 @@ let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
-<h2><a class="header" href="#labelled-enum-constructor-arguments" id="labelled-enum-constructor-arguments">Labelled enum constructor arguments</a></h2>
-<p>Like regular functions enum constructs can have labelled arguments.</p>
-<pre><code class="language-rust noplaypen">enum User {
-  LoggedIn(name: String, age: Int)
-  Guest
-}
-</code></pre>
-<pre><code class="language-rust noplaypen">LoggedIn(name: &quot;Bob&quot;, age: 36)
-LoggedIn(name: &quot;George&quot;, age: 34)
-</code></pre>
-<h2><a class="header" href="#commonly-used-enums" id="commonly-used-enums">Commonly used enums</a></h2>
+<h2><a class="header" href="#commonly-used-custom-types" id="commonly-used-custom-types">Commonly used custom types</a></h2>
 <h3><a class="header" href="#bool-1" id="bool-1"><code>Bool</code></a></h3>
-<pre><code class="language-rust noplaypen">pub enum Bool {
+<pre><code class="language-rust noplaypen">pub type Bool {
   True
   False
 }
 </code></pre>
-<p>As seen above Gleam's <code>Bool</code> type is an enum! Use it to answer yes/no
+<p>As seen above Gleam's <code>Bool</code> type is a custom type! Use it to answer yes/no
 questions and to indicate whether something is <code>True</code> or <code>False</code>.</p>
 <h3><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h3>
-<pre><code class="language-rust noplaypen">pub enum Result(value, reason) {
+<pre><code class="language-rust noplaypen">pub type Result(value, reason) {
   Ok(value)
   Error(reason)
 }
@@ -879,7 +880,7 @@ if it failed.</p>
 </code></pre>
 <p>The <code>Error</code> type needs to be given a reason for the failure in order to
 return, like so:</p>
-<pre><code class="language-rust noplaypen">pub enum MyDatabaseError {
+<pre><code class="language-rust noplaypen">pub type MyDatabaseError {
   InvalidQuery
   NetworkTimeout
 }
@@ -903,10 +904,12 @@ an <code>Error</code> result.</p>
 <p>The standard library <code>gleam/result</code> module contains helpful functions for
 working with the <code>Result</code> type, make good use of them!</p>
 <h2><a class="header" href="#erlang-interop-2" id="erlang-interop-2">Erlang interop</a></h2>
-<p>At runtime enum variants with no contained values become atoms. The atoms are
-written in <code>snake_case</code> rather than <code>CamelCase</code> so <code>LoggedIn</code> becomes
-<code>logged_in</code>.</p>
-<p>Enum variants with contained values become tuples with a tag atom.</p>
+<p>At runtime custom type records with no contained values become atoms. The
+atoms are written in <code>snake_case</code> rather than <code>CamelCase</code> so <code>LoggedIn</code>
+becomes <code>logged_in</code>.</p>
+<p>Custom type records with contained values are Erlang records. The Gleam
+compiler generates an Erlang header file with a record definition for each
+constructor, for use from Erlang.</p>
 <pre><code class="language-rust noplaypen">// Gleam
 Guest
 LoggedIn(&quot;Kim&quot;)

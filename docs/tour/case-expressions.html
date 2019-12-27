@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>List - The Gleam Book</title>
+        <title>Case expressions - The Gleam Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/string.html"><strong aria-hidden="true">3.2.</strong> String</a></li><li class="expanded "><a href="../tour/bool.html"><strong aria-hidden="true">3.3.</strong> Bool</a></li><li class="expanded "><a href="../tour/int-and-float.html"><strong aria-hidden="true">3.4.</strong> Int &amp; Float</a></li><li class="expanded "><a href="../tour/let.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/list.html" class="active"><strong aria-hidden="true">3.6.</strong> List</a></li><li class="expanded "><a href="../tour/case.html"><strong aria-hidden="true">3.7.</strong> Case</a></li><li class="expanded "><a href="../tour/function.html"><strong aria-hidden="true">3.8.</strong> Function</a></li><li class="expanded "><a href="../tour/module.html"><strong aria-hidden="true">3.9.</strong> Module</a></li><li class="expanded "><a href="../tour/struct.html"><strong aria-hidden="true">3.10.</strong> Struct</a></li><li class="expanded "><a href="../tour/enum.html"><strong aria-hidden="true">3.11.</strong> Enum</a></li><li class="expanded "><a href="../tour/external-function.html"><strong aria-hidden="true">3.12.</strong> External function</a></li><li class="expanded "><a href="../tour/external-type.html"><strong aria-hidden="true">3.13.</strong> External type</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="expanded "><a href="../tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="expanded "><a href="../tour/case-expressions.html" class="active"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="expanded "><a href="../tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="expanded "><a href="../tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">3.12.</strong> External functions</a></li><li class="expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">3.13.</strong> External types</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,28 +148,72 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#list" id="list">List</a></h1>
-<p>Lists are ordered collections of values. They're one of the most common data
-structures in Gleam.</p>
-<p>Lists are <em>homogeneous</em>, meaning all the elements of a List must be of the
-same type. Attempting to construct a list of multiple types of element will
-result in the compiler presenting a type error.</p>
-<pre><code class="language-rust noplaypen">[1, 2, 3, 4]  // List(Int)
-[1.22, 2.30]  // List(Float)
-[1.22, 3, 4]  // Type error!
+                        <h1><a class="header" href="#case" id="case">Case</a></h1>
+<p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
+allows us to say &quot;if the data has this shape then do that&quot;, which we call
+<em>pattern matching</em>.</p>
+<p>Here we match on an <code>Int</code> and return a specific string for the values 0, 1,
+and 2. The final pattern <code>n</code> matches any other value that did not match any of
+the previous patterns.</p>
+<pre><code class="language-rust noplaypen">case some_number {
+  0 -&gt; &quot;Zero&quot;
+  1 -&gt; &quot;One&quot;
+  2 -&gt; &quot;Two&quot;
+  n -&gt; &quot;Some other number&quot; // This matches anything
+}
 </code></pre>
-<p>Prepending to a list is very fast, and is the preferred way to add new values.</p>
-<pre><code class="language-rust noplaypen">[1 | [2, 3]]  // =&gt; [1, 2, 3]
+<p>Pattern matching on a <code>Bool</code> value is the Gleam alternative to the <code>if else</code>
+statement found in other languages.</p>
+<pre><code class="language-rust noplaypen">case some_bool {
+  True -&gt; &quot;It's true!&quot;
+  False -&gt; &quot;It's not true.&quot;
+}
 </code></pre>
-<p>Note that as all data structures in Gleam are immutable so prepending to a
-list does not change the original list, instead it efficiently creates a new
-list with the new additional element.</p>
-<pre><code class="language-rust noplaypen">let x = [2, 3]
-let y = [1 | x]
+<p>Gleam's <code>case</code> is an expression, meaning it returns a value and can be used
+anywhere we would use a value. For example, we can name the value of a case
+expression with a <code>let</code> binding.</p>
+<pre><code class="language-rust noplaypen">let description =
+  case True {
+    True -&gt; &quot;It's true!&quot;
+    False -&gt; &quot;It's not true.&quot;
+  }
 
-
-x  // =&gt; [2, 3]
-y  // =&gt; [1, 2, 3]
+description  // =&gt; &quot;It's true!&quot;
+</code></pre>
+<h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
+<p>A <code>case</code> expression can be used to destructure values that
+contain other values, such as tuples and lists.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [] -&gt; &quot;This list is empty&quot;
+  [a] -&gt; &quot;This list has 1 element&quot;
+  [a, b] -&gt; &quot;This list has 2 element&quot;
+  other -&gt; &quot;This list has more than 2 elements&quot;
+}
+</code></pre>
+<p>It's not just the top level data structure that can be pattern matches,
+contained values can also be matched. This gives <code>case</code> the ability to
+concisely express flow control that might be verbose without pattern matching.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [[]] -&gt; &quot;The only element is an empty list&quot;
+  [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
+  [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
+  other -&gt; &quot;Something else&quot;
+}
+</code></pre>
+<p>Pattern matching also works in <code>let</code> bindings, though patterns that do not
+match all instances of that type may result in a runtime error.</p>
+<pre><code class="language-rust noplaypen">let [a] = [1]    // a is 1
+let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
+</code></pre>
+<h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
+<p>Sometimes it is useful to pattern match on multiple values at the same time,
+so <code>case</code> supports having multiple subjects.</p>
+<pre><code class="language-rust noplaypen">case x, y {
+  1, 1 -&gt; &quot;both are 1&quot;
+  1, _ -&gt; &quot;x is 1&quot;
+  _, 1 -&gt; &quot;y is 1&quot;
+  _, _ -&gt; &quot;neither is 1&quot;
+}
 </code></pre>
 
                     </main>
@@ -177,13 +221,13 @@ y  // =&gt; [1, 2, 3]
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../tour/let.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tour/tuples.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../tour/case.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tour/functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -195,13 +239,13 @@ y  // =&gt; [1, 2, 3]
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../tour/let.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../tour/tuples.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../tour/case.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../tour/functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

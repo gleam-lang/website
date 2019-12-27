@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Bool - The Gleam Book</title>
+        <title>Strings - The Gleam Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/string.html"><strong aria-hidden="true">3.2.</strong> String</a></li><li class="expanded "><a href="../tour/bool.html" class="active"><strong aria-hidden="true">3.3.</strong> Bool</a></li><li class="expanded "><a href="../tour/int-and-float.html"><strong aria-hidden="true">3.4.</strong> Int &amp; Float</a></li><li class="expanded "><a href="../tour/let.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/list.html"><strong aria-hidden="true">3.6.</strong> List</a></li><li class="expanded "><a href="../tour/case.html"><strong aria-hidden="true">3.7.</strong> Case</a></li><li class="expanded "><a href="../tour/function.html"><strong aria-hidden="true">3.8.</strong> Function</a></li><li class="expanded "><a href="../tour/module.html"><strong aria-hidden="true">3.9.</strong> Module</a></li><li class="expanded "><a href="../tour/struct.html"><strong aria-hidden="true">3.10.</strong> Struct</a></li><li class="expanded "><a href="../tour/enum.html"><strong aria-hidden="true">3.11.</strong> Enum</a></li><li class="expanded "><a href="../tour/external-function.html"><strong aria-hidden="true">3.12.</strong> External function</a></li><li class="expanded "><a href="../tour/external-type.html"><strong aria-hidden="true">3.13.</strong> External type</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="expanded "><a href="../getting-started/example-projects.html"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="expanded "><a href="../tour/strings.html" class="active"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="expanded "><a href="../tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="expanded "><a href="../tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="expanded "><a href="../tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="expanded "><a href="../tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">3.12.</strong> External functions</a></li><li class="expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">3.13.</strong> External types</a></li></ol></li><li class="expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,36 +148,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#bool" id="bool">Bool</a></h1>
-<p>A Bool can be either <code>True</code> or <code>False</code>.</p>
-<p>Gleam defines a handful of operators that work with Bools.</p>
-<pre><code class="language-rust noplaypen">False &amp;&amp; False // =&gt; False
-False &amp;&amp; True  // =&gt; False
-True &amp;&amp; False  // =&gt; False
-True &amp;&amp; True   // =&gt; True
-
-False || False // =&gt; False
-False || True  // =&gt; True
-True || False  // =&gt; True
-True || True   // =&gt; True
+                        <h1><a class="header" href="#string" id="string">String</a></h1>
+<p>Gleam's has UTF-8 binary strings, written as text surrounded by double quotes.</p>
+<pre><code class="language-rust noplaypen">&quot;Hello, Gleam!&quot;
 </code></pre>
-<p><code>&amp;&amp;</code> and <code>||</code> are <em>short circuiting</em>, meaning they don't evaluate the right
-hand side if they don't have to.</p>
-<p><code>&amp;&amp;</code> evaluates the right hand side if the left hand side is <code>True</code>.</p>
-<p><code>||</code> evaluates the right hand side if the left hand side is <code>False</code>.</p>
-<h2><a class="header" href="#erlang-interop" id="erlang-interop">Erlang interop</a></h2>
-<p>While written in the code using a capital letter, they are represented at
-runtime with the atoms <code>true</code> and <code>false</code>, making them compatible with Elixir
-and Erlang's booleans.</p>
-<p>This is important if you want to use Gleam and Elixir or Erlang together in
-one project.</p>
-<pre><code class="language-rust noplaypen">// Gleam
-True
-False
+<p>Strings can span multiple lines.</p>
+<pre><code class="language-rust noplaypen">&quot;Hello
+Gleam!&quot;
 </code></pre>
-<pre><code class="language-erlang">% Erlang
-true.
-false.
+<p>Special characters such as <code>&quot;</code> need to be escaped with a <code>\</code> character.</p>
+<pre><code class="language-rust noplaypen">&quot;Here is a double quote -&gt; \&quot; &lt;-&quot;
 </code></pre>
 
                     </main>
@@ -185,13 +165,13 @@ false.
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../tour/string.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tour/comments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../tour/int-and-float.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tour/bools.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -203,13 +183,13 @@ false.
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../tour/string.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../tour/comments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../tour/int-and-float.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../tour/bools.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
