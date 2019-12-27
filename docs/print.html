@@ -511,46 +511,6 @@ and convenient option.</p>
   tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
 }
 </code></pre>
-<h2><a class="header" href="#destructuring-structs" id="destructuring-structs">Destructuring structs</a></h2>
-<p>To extract values from structs we can pattern match on them with <code>let</code> or
-<code>case</code>.</p>
-<pre><code class="language-rust noplaypen">let Cat(name: name1, cuteness: cuteness1) = cat1
-
-name1     // =&gt; &quot;Nubi&quot;
-cuteness1 // =&gt; 2001
-</code></pre>
-<p>We can also pattern match using positional arguments:</p>
-<pre><code class="language-rust noplaypen">let Cat(name2, cuteness2) = cat2
-
-name2     // =&gt; &quot;Biffy&quot;
-cuteness2 // =&gt; 1805
-</code></pre>
-<h2><a class="header" href="#generic-structs" id="generic-structs">Generic structs</a></h2>
-<p>Structs types can be parameterised so the same struct can be constructed with
-different contained types.</p>
-<pre><code class="language-rust noplaypen">pub struct Box(a) {
-  tag: String
-  contents: a // The type of this field is injected when constructed
-}
-
-fn run() {
-  Box(tag: &quot;one&quot;, contents: 1.0) // the type is Box(Float)
-  Box(tag: &quot;two&quot;, contents: &quot;2&quot;) // the type is Box(String)
-}
-</code></pre>
-<h2><a class="header" href="#anonymous-structs" id="anonymous-structs">Anonymous structs</a></h2>
-<p>In addition to named structs Gleam has anonymous structs. Anonymous structs
-don't need to be declared up front but also don't have names for their fields,
-so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
-<pre><code class="language-rust noplaypen">fn run() {
-  struct(10, &quot;hello&quot;) // Type is struct(Int, String)
-  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
-}
-</code></pre>
-<h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
-<p>At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
-the first position and the Gleam compiler will generate a compatible Erlang
-record definition for use from other languages such as Erlang and Elixir.</p>
 <h1><a class="header" href="#case" id="case">Case</a></h1>
 <p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
 allows us to say &quot;if the data has this shape then do that&quot;, which we call
@@ -796,10 +756,10 @@ methods.</p>
 <p>Here we have defined a custom type called <code>Cat</code>. It's constructor is called
 <code>Cat</code> and it takes has two fields: A <code>name</code> field which is a <code>String</code>, and a
 <code>cuteness</code> field which is an <code>Int</code>.</p>
-<p>The <code>pub</code> keyword has been used to make this struct usable from other modules.</p>
-<p>Once defined the struct type can be used in functions:</p>
+<p>The <code>pub</code> keyword has been used to make this type usable from other modules.</p>
+<p>Once defined the custom type can be used in functions:</p>
 <pre><code class="language-rust noplaypen">fn cats() {
-  // Struct fields can be given in any order
+  // Labelled fields can be given in any order
   let cat1 = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
   let cat2 = Cat(cuteness: 1805, name: &quot;Biffy&quot;)
 
@@ -903,7 +863,7 @@ match on it using <code>case</code> to determine whether we have an <code>Ok</co
 an <code>Error</code> result.</p>
 <p>The standard library <code>gleam/result</code> module contains helpful functions for
 working with the <code>Result</code> type, make good use of them!</p>
-<h2><a class="header" href="#erlang-interop-2" id="erlang-interop-2">Erlang interop</a></h2>
+<h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
 <p>At runtime custom type records with no contained values become atoms. The
 atoms are written in <code>snake_case</code> rather than <code>CamelCase</code> so <code>LoggedIn</code>
 becomes <code>logged_in</code>.</p>

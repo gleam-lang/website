@@ -157,46 +157,6 @@ and convenient option.</p>
   tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
 }
 </code></pre>
-<h2><a class="header" href="#destructuring-structs" id="destructuring-structs">Destructuring structs</a></h2>
-<p>To extract values from structs we can pattern match on them with <code>let</code> or
-<code>case</code>.</p>
-<pre><code class="language-rust noplaypen">let Cat(name: name1, cuteness: cuteness1) = cat1
-
-name1     // =&gt; &quot;Nubi&quot;
-cuteness1 // =&gt; 2001
-</code></pre>
-<p>We can also pattern match using positional arguments:</p>
-<pre><code class="language-rust noplaypen">let Cat(name2, cuteness2) = cat2
-
-name2     // =&gt; &quot;Biffy&quot;
-cuteness2 // =&gt; 1805
-</code></pre>
-<h2><a class="header" href="#generic-structs" id="generic-structs">Generic structs</a></h2>
-<p>Structs types can be parameterised so the same struct can be constructed with
-different contained types.</p>
-<pre><code class="language-rust noplaypen">pub struct Box(a) {
-  tag: String
-  contents: a // The type of this field is injected when constructed
-}
-
-fn run() {
-  Box(tag: &quot;one&quot;, contents: 1.0) // the type is Box(Float)
-  Box(tag: &quot;two&quot;, contents: &quot;2&quot;) // the type is Box(String)
-}
-</code></pre>
-<h2><a class="header" href="#anonymous-structs" id="anonymous-structs">Anonymous structs</a></h2>
-<p>In addition to named structs Gleam has anonymous structs. Anonymous structs
-don't need to be declared up front but also don't have names for their fields,
-so for clarity prefer named structs for when you have more than 2 or 3 fields.</p>
-<pre><code class="language-rust noplaypen">fn run() {
-  struct(10, &quot;hello&quot;) // Type is struct(Int, String)
-  struct(1, 4.2, [0]) // Type is struct(Int, Float, List(Int))
-}
-</code></pre>
-<h2><a class="header" href="#erlang-interop" id="erlang-interop">Erlang interop</a></h2>
-<p>At runtime Gleam structs are Erlang tuples. Named structs have a name tag in
-the first position and the Gleam compiler will generate a compatible Erlang
-record definition for use from other languages such as Erlang and Elixir.</p>
 
                     </main>
 

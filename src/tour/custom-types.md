@@ -16,13 +16,13 @@ Here we have defined a custom type called `Cat`. It's constructor is called
 `Cat` and it takes has two fields: A `name` field which is a `String`, and a
 `cuteness` field which is an `Int`.
 
-The `pub` keyword has been used to make this struct usable from other modules.
+The `pub` keyword has been used to make this type usable from other modules.
 
-Once defined the struct type can be used in functions:
+Once defined the custom type can be used in functions:
 
 ```rust,noplaypen
 fn cats() {
-  // Struct fields can be given in any order
+  // Labelled fields can be given in any order
   let cat1 = Cat(name: "Nubi", cuteness: 2001)
   let cat2 = Cat(cuteness: 1805, name: "Biffy")
 

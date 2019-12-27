@@ -160,10 +160,10 @@ methods.</p>
 <p>Here we have defined a custom type called <code>Cat</code>. It's constructor is called
 <code>Cat</code> and it takes has two fields: A <code>name</code> field which is a <code>String</code>, and a
 <code>cuteness</code> field which is an <code>Int</code>.</p>
-<p>The <code>pub</code> keyword has been used to make this struct usable from other modules.</p>
-<p>Once defined the struct type can be used in functions:</p>
+<p>The <code>pub</code> keyword has been used to make this type usable from other modules.</p>
+<p>Once defined the custom type can be used in functions:</p>
 <pre><code class="language-rust noplaypen">fn cats() {
-  // Struct fields can be given in any order
+  // Labelled fields can be given in any order
   let cat1 = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
   let cat2 = Cat(cuteness: 1805, name: &quot;Biffy&quot;)
 
