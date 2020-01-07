@@ -44,7 +44,7 @@ fn identity(x: Int) -> Int {
 }
 ```
 
-Without an annotation this identity function would have have the inferred type
+Without an annotation this identity function would have had the inferred type
 `fn(a) -> a`, but the type annotation on the argument results in the type
 of the function being `fn(Int) -> Int`. This shows how type annotations can be
 used to create functions with types less general than the compiler may have
