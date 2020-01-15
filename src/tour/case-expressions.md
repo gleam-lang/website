@@ -51,7 +51,7 @@ contain other values, such as tuples and lists.
 case xs {
   [] -> "This list is empty"
   [a] -> "This list has 1 element"
-  [a, b] -> "This list has 2 element"
+  [a, b] -> "This list has 2 elements"
   other -> "This list has more than 2 elements"
 }
 ```
