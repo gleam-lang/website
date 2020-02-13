@@ -187,7 +187,7 @@ contain other values, such as tuples and lists.</p>
   [] -&gt; &quot;This list is empty&quot;
   [a] -&gt; &quot;This list has 1 element&quot;
   [a, b] -&gt; &quot;This list has 2 elements&quot;
-  other -&gt; &quot;This list has more than 2 elements&quot;
+  _other -&gt; &quot;This list has more than 2 elements&quot;
 }
 </code></pre>
 <p>It's not just the top level data structure that can be pattern matches,
@@ -213,6 +213,24 @@ so <code>case</code> supports having multiple subjects.</p>
   1, _ -&gt; &quot;x is 1&quot;
   _, 1 -&gt; &quot;y is 1&quot;
   _, _ -&gt; &quot;neither is 1&quot;
+}
+</code></pre>
+<h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
+<p>Sometimes when pattern matching we want to assign a name to a value while
+specifying it's shape at the same time. We can do this using the <code>as</code> keyword.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [[_ | _] as inner_list] -&gt; inner_list
+  other -&gt; []
+}
+</code></pre>
+<h2><a class="header" href="#checking-equality-in-patterns" id="checking-equality-in-patterns">Checking equality in patterns</a></h2>
+<p>The <code>if</code> keyword can be used to add a guard expression to case clause in order
+to assert that values are equal or not.</p>
+<p>Both the patterns have to match and the guard has to evaluate to
+<code>True</code> for the clause to match.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
+  _other -&gt; &quot;ko&quot;
 }
 </code></pre>
 

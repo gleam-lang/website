@@ -52,7 +52,7 @@ case xs {
   [] -> "This list is empty"
   [a] -> "This list has 1 element"
   [a, b] -> "This list has 2 elements"
-  other -> "This list has more than 2 elements"
+  _other -> "This list has more than 2 elements"
 }
 ```
 
@@ -83,12 +83,40 @@ let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 Sometimes it is useful to pattern match on multiple values at the same time,
 so `case` supports having multiple subjects.
 
-
 ```rust,noplaypen
 case x, y {
   1, 1 -> "both are 1"
   1, _ -> "x is 1"
   _, 1 -> "y is 1"
   _, _ -> "neither is 1"
+}
+```
+
+
+## Assigning names to sub-patterns
+
+Sometimes when pattern matching we want to assign a name to a value while
+specifying it's shape at the same time. We can do this using the `as` keyword.
+
+```rust,noplaypen
+case xs {
+  [[_ | _] as inner_list] -> inner_list
+  other -> []
+}
+```
+
+
+## Checking equality in patterns
+
+The `if` keyword can be used to add a guard expression to case clause in order
+to assert that values are equal or not.
+
+Both the patterns have to match and the guard has to evaluate to
+`True` for the clause to match.
+
+```rust,noplaypen
+case xs {
+  [a, b, c] if a == b && b != c -> "ok"
+  _other -> "ko"
 }
 ```

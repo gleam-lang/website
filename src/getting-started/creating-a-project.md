@@ -16,7 +16,7 @@ it now](https://www.rebar3.org/).
 Now a project can be generated like so:
 
 ```sh
-gleam new my_fantastic_library
+gleam new my_fantastic_library --description "Getting started with Gleam!"
 cd my_fantastic_library
 ```
 
