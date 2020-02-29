@@ -120,3 +120,30 @@ case xs {
   _other -> "ko"
 }
 ```
+
+
+## Alternative clause patterns
+
+Alternative patterns can be given for a case clause using the `|` operator. If
+any of the patterns match then the clause matches.
+
+Here the first clause will match if the variable `number` holds 2, 4, 6 or 8.
+
+```rust,noplaypen
+case number {
+  2 | 4 | 6 | 8 -> "This is an even number"
+  1 | 3 | 5 | 7 -> "This is an odd number"
+  _ -> "I'm not sure"
+}
+```
+
+If the patterns declare variables then the same variables must be declared in
+all patterns, and the variables must have the same type in all the patterns.
+
+
+```rust,noplaypen
+case list {
+  [1, x] | x -> x // Error! Int != List(Int)
+  _ -> 0
+}
+```

@@ -596,6 +596,23 @@ to assert that values are equal or not.</p>
   _other -&gt; &quot;ko&quot;
 }
 </code></pre>
+<h2><a class="header" href="#alternative-clause-patterns" id="alternative-clause-patterns">Alternative clause patterns</a></h2>
+<p>Alternative patterns can be given for a case clause using the <code>|</code> operator. If
+any of the patterns match then the clause matches.</p>
+<p>Here the first clause will match if the variable <code>number</code> holds 2, 4, 6 or 8.</p>
+<pre><code class="language-rust noplaypen">case number {
+  2 | 4 | 6 | 8 -&gt; &quot;This is an even number&quot;
+  1 | 3 | 5 | 7 -&gt; &quot;This is an odd number&quot;
+  _ -&gt; &quot;I'm not sure&quot;
+}
+</code></pre>
+<p>If the patterns declare variables then the same variables must be declared in
+all patterns, and the variables must have the same type in all the patterns.</p>
+<pre><code class="language-rust noplaypen">case list {
+  [1, x] | x -&gt; x // Error! Int != List(Int)
+  _ -&gt; 0
+}
+</code></pre>
 <h1><a class="header" href="#function" id="function">Function</a></h1>
 <h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
