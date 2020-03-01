@@ -151,53 +151,61 @@
                         <h1><a class="header" href="#function" id="function">Function</a></h1>
 <h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+<pre><code class="language-rust noplaypen">pub fn add(x: Int, y: Int) -&gt; Int {
   x + y
 }
 
-pub fn multiply(x, y) {
+pub fn multiply(x: Int, y: Int) -&gt; Int {
   x * y
 }
 </code></pre>
 <p>Functions in Gleam are first class values and so can be assigned to variables,
 passed to functions, or anything else you might do with any other data type.</p>
 <pre><code class="language-rust noplaypen">// This function takes a function as an argument
-pub fn twice(f, x) {
+pub fn twice(f: fn(t) -&gt; t, x: t) -&gt; t {
   f(f(x))
 }
 
-pub fn add_one(x) {
+pub fn add_one(x: Int) -&gt; Int {
   x + 1
 }
 
-pub fn add_two(x) {
+pub fn add_two(x: Int) -&gt; Int {
   twice(add_one, x)
 }
 </code></pre>
 <h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
-<p>Function arguments can be optionally be annotated with their type. The
+<p>Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.</p>
-<pre><code class="language-rust noplaypen">fn identity(x: Int) -&gt; Int {
+<pre><code class="language-rust noplaypen">fn identity(x: some_type) -&gt; some_type {
+  x
+}
+
+fn inferred_identity(x) {
   x
 }
 </code></pre>
-<p>Without an annotation this identity function would have had the inferred type
-<code>fn(a) -&gt; a</code>, but the type annotation on the argument results in the type
-of the function being <code>fn(Int) -&gt; Int</code>. This shows how type annotations can be
-used to create functions with types less general than the compiler may have
-inferred otherwise.</p>
+<p>The Gleam compiler can infer all the types of Gleam code without annotations
+and both annotated and unannotated code is equally safe. It's considered a
+best practice to always write type annotations for your functions as they
+provide useful documentation, and they encourage thinking about types as code
+is being written.</p>
 <h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
 <p>When functions take several arguments it can be difficult for the user to
 remember what the arguments are, and what order they are expected in.</p>
 <p>To help with this Gleam supports <em>labelled arguments</em>, where function
 arguments are given an external label in addition to their internal name.</p>
 <p>Take this function that replaces sections of a string:</p>
-<pre><code class="language-rust noplaypen">pub fn replace(string, pattern, replacement) {
+<pre><code class="language-rust noplaypen">pub fn replace(string: String, pattern: String, replacement: String) {
   // ...
 }
 </code></pre>
 <p>It can be given labels like so.</p>
-<pre><code class="language-rust noplaypen">pub fn replace(in string, each pattern, with replacement) {
+<pre><code class="language-rust noplaypen">pub fn replace(
+  in string: String,
+  each pattern: String,
+  with replacement: String,
+) {
   // The variables `string`, `pattern`, and `replacement` are in scope here
 }
 </code></pre>
@@ -237,7 +245,7 @@ pub fn run() {
 </code></pre>
 <p>The function capture syntax is often used with the pipe operator to create
 a series of transformations on some data.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+<pre><code class="language-rust noplaypen">pub fn add(x: Int , y: Int ) -&gt; Int {
   x + y
 }
 
