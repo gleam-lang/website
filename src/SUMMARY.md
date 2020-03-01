@@ -19,6 +19,7 @@
   - [Functions](./tour/functions.md)
   - [Modules](./tour/modules.md)
   - [Custom types](./tour/custom-types.md)
+  - [Type aliases](./tour/type-aliases.md)
   - [External functions](./tour/external-functions.md)
   - [External types](./tour/external-types.md)
 - [FAQs](./faqs.md)
