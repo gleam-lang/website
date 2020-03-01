@@ -5,11 +5,11 @@
 Named functions in Gleam are defined using the `pub fn` keywords.
 
 ```rust,noplaypen
-pub fn add(x, y) {
+pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
-pub fn multiply(x, y) {
+pub fn multiply(x: Int, y: Int) -> Int {
   x * y
 }
 ```
@@ -19,15 +19,15 @@ passed to functions, or anything else you might do with any other data type.
 
 ```rust,noplaypen
 // This function takes a function as an argument
-pub fn twice(f, x) {
+pub fn twice(f: fn(t) -> t, x: t) -> t {
   f(f(x))
 }
 
-pub fn add_one(x) {
+pub fn add_one(x: Int) -> Int {
   x + 1
 }
 
-pub fn add_two(x) {
+pub fn add_two(x: Int) -> Int {
   twice(add_one, x)
 }
 ```
@@ -35,20 +35,24 @@ pub fn add_two(x) {
 
 ## Type annotations
 
-Function arguments can be optionally be annotated with their type. The
+Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.
 
 ```rust,noplaypen
-fn identity(x: Int) -> Int {
+fn identity(x: some_type) -> some_type {
+  x
+}
+
+fn inferred_identity(x) {
   x
 }
 ```
 
-Without an annotation this identity function would have had the inferred type
-`fn(a) -> a`, but the type annotation on the argument results in the type
-of the function being `fn(Int) -> Int`. This shows how type annotations can be
-used to create functions with types less general than the compiler may have
-inferred otherwise.
+The Gleam compiler can infer all the types of Gleam code without annotations
+and both annotated and unannotated code is equally safe. It's considered a
+best practice to always write type annotations for your functions as they
+provide useful documentation, and they encourage thinking about types as code
+is being written.
 
 
 ## Labelled arguments
@@ -62,7 +66,7 @@ arguments are given an external label in addition to their internal name.
 Take this function that replaces sections of a string:
 
 ```rust,noplaypen
-pub fn replace(string, pattern, replacement) {
+pub fn replace(string: String, pattern: String, replacement: String) {
   // ...
 }
 ```
@@ -70,7 +74,11 @@ pub fn replace(string, pattern, replacement) {
 It can be given labels like so.
 
 ```rust,noplaypen
-pub fn replace(in string, each pattern, with replacement) {
+pub fn replace(
+  in string: String,
+  each pattern: String,
+  with replacement: String,
+) {
   // The variables `string`, `pattern`, and `replacement` are in scope here
 }
 ```
@@ -126,7 +134,7 @@ The function capture syntax is often used with the pipe operator to create
 a series of transformations on some data.
 
 ```rust,noplaypen
-pub fn add(x, y) {
+pub fn add(x: Int , y: Int ) -> Int {
   x + y
 }
 
