@@ -30,7 +30,7 @@ pub fn has_even_leaf(tree: Tree(Int)) -> Bool {
 ```
 
 The source code can be found at
-[https://github.com/lpil/gleam](https://github.com/lpil/gleam).
+[https://github.com/gleam-lang/gleam](https://github.com/gleam-lang/gleam).
 
 For Gleam chat we have the IRC channel `#gleam-lang` on Freenode.
 

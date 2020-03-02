@@ -4,7 +4,7 @@
 
 The easiest way to install Gleam on Linux and Apple macOS is to download a
 prebuilt version of the compiler from the [GitHub release
-page](https://github.com/lpil/gleam/releases).
+page](https://github.com/gleam-lang/gleam/releases).
 
 ## Mac OS X
 
@@ -39,7 +39,7 @@ compiler](https://www.rust-lang.org/tools/install).
 ```sh
 # Download the Gleam source code git repository
 cd /tmp
-git clone https://github.com/lpil/gleam.git --branch v0.5.0
+git clone https://github.com/gleam-lang/gleam.git --branch v0.5.0
 cd gleam
 
 # Build the Gleam compiler. This will take some time!
