@@ -174,6 +174,18 @@ pub fn add_two(x: Int) -&gt; Int {
   twice(add_one, x)
 }
 </code></pre>
+<h2><a class="header" href="#pipe-operator" id="pipe-operator">Pipe Operator</a></h2>
+<p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
+<p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
+<pre><code class="language-rust noplaypen">iodata.to_string(iodata.reverse(iodata.new(string)))
+</code></pre>
+<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
+<pre><code class="language-rust noplaypen">string
+|&gt; iodata.new
+|&gt; iodata.reverse
+|&gt; iodata.to_string
+</code></pre>
+<p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
 <h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
 <p>Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.</p>
