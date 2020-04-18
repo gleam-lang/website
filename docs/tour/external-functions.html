@@ -170,6 +170,16 @@ so like this:</p>
 // Elixir modules start with `Elixir.`
 pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
 </code></pre>
+<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
+<p>Like regular functions, external functions can have labelled arguments.</p>
+<pre><code class="language-rust noplaypen">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
+  &quot;my_external_module&quot; &quot;any&quot;
+</code></pre>
+<p>This function has the labelled arguments <code>in</code> and <code>satisfying</code>, and can be
+called like so:</p>
+<pre><code class="language-rust noplaypen">any(in: my_list, satisfying: is_even)
+any(satisfying: is_even, in: my_list)
+</code></pre>
 
                     </main>
 

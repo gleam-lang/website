@@ -30,3 +30,20 @@ pub external fn random_float() -> Float = "rand" "uniform"
 // Elixir modules start with `Elixir.`
 pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
 ```
+
+## Labelled arguments
+
+Like regular functions, external functions can have labelled arguments.
+
+```rust,noplaypen
+pub external fn any(in: List(a), satisfying: fn(a) -> Bool) =
+  "my_external_module" "any"
+```
+
+This function has the labelled arguments `in` and `satisfying`, and can be
+called like so:
+
+```rust,noplaypen
+any(in: my_list, satisfying: is_even)
+any(satisfying: is_even, in: my_list)
+```
