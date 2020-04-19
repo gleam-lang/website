@@ -222,13 +222,15 @@ specifying it's shape at the same time. We can do this using the <code>as</code>
   other -&gt; []
 }
 </code></pre>
-<h2><a class="header" href="#checking-equality-in-patterns" id="checking-equality-in-patterns">Checking equality in patterns</a></h2>
-<p>The <code>if</code> keyword can be used to add a guard expression to case clause in order
-to assert that values are equal or not.</p>
-<p>Both the patterns have to match and the guard has to evaluate to
-<code>True</code> for the clause to match.</p>
+<h2><a class="header" href="#checking-equality-and-ordering-in-patterns" id="checking-equality-and-ordering-in-patterns">Checking equality and ordering in patterns</a></h2>
+<p>The <code>if</code> keyword can be used to add a guard expression to a case clause. Both the patterns have to match and the guard has to evaluate to <code>True</code> for the clause to match. The guard expression can check for equality or ordering for <code>Int</code> and <code>Float</code>.</p>
 <pre><code class="language-rust noplaypen">case xs {
   [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
+  _other -&gt; &quot;ko&quot;
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">case xs {
+  [a, b, c] if a &gt;. b &amp;&amp; a &lt;=. c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;
 }
 </code></pre>

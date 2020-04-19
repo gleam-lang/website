@@ -106,17 +106,20 @@ case xs {
 ```
 
 
-## Checking equality in patterns
+## Checking equality and ordering in patterns
 
-The `if` keyword can be used to add a guard expression to case clause in order
-to assert that values are equal or not.
-
-Both the patterns have to match and the guard has to evaluate to
-`True` for the clause to match.
+The `if` keyword can be used to add a guard expression to a case clause. Both the patterns have to match and the guard has to evaluate to `True` for the clause to match. The guard expression can check for equality or ordering for `Int` and `Float`.
 
 ```rust,noplaypen
 case xs {
   [a, b, c] if a == b && b != c -> "ok"
+  _other -> "ko"
+}
+```
+
+```rust,noplaypen
+case xs {
+  [a, b, c] if a >. b && a <=. c -> "ok"
   _other -> "ko"
 }
 ```
