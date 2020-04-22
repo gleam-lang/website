@@ -30,16 +30,18 @@ something else entirely.
 
 ## How is message passing typed?
 
-Gleam doesn't currently have first class support for the BEAM's
-concurrency primitives such as `receive`, `send`, and `spawn`. This is because
-research is still ongoing as to the best way to apply a strong type system to
-them while still enabling established OTP patterns. For now these primitives
-should be used via the Erlang FFI, making them dynamically typed.
+Type safe message passing is implemented in Gleam as a set of libraries,
+rather than being part of the core language itself. This allows us to write safe
+concurrent programs that make use of Erlang's OTP framework while not locking
+us in to one specific approach to typing message passing. This lack of lock-in
+is important as typing message passing is an area of active research, we may
+discover an even better approach at a later date!
 
-Many OTP patterns such as `gen_server` are functional in nature and don't
-require direct use of these primitives so these behaviours can be implemented
-in Gleam today.
+If you'd like to see more consider checking out these libraries:
 
+- [https://github.com/gleam-experiments/otp_process](https://github.com/gleam-experiments/otp_process)
+- [https://github.com/gleam-experiments/otp_agent](https://github.com/gleam-experiments/otp_agent)
+- [https://github.com/gleam-experiments/otp_supervisor](https://github.com/gleam-experiments/otp_supervisor)
 
 ## How does Gleam compare to Alpaca?
 
