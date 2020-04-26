@@ -194,8 +194,8 @@ contained values can also be matched. This gives <code>case</code> the ability t
 concisely express flow control that might be verbose without pattern matching.</p>
 <pre><code class="language-rust noplaypen">case xs {
   [[]] -&gt; &quot;The only element is an empty list&quot;
-  [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
-  [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
+  [[], ..] -&gt; &quot;The 1st element is an empty list&quot;
+  [[4], ..] -&gt; &quot;The 1st element is a list of the number 4&quot;
   other -&gt; &quot;Something else&quot;
 }
 </code></pre>
@@ -218,7 +218,7 @@ so <code>case</code> supports having multiple subjects.</p>
 <p>Sometimes when pattern matching we want to assign a name to a value while
 specifying it's shape at the same time. We can do this using the <code>as</code> keyword.</p>
 <pre><code class="language-rust noplaypen">case xs {
-  [[_ | _] as inner_list] -&gt; inner_list
+  [[_, ..] as inner_list] -&gt; inner_list
   other -&gt; []
 }
 </code></pre>
