@@ -63,8 +63,8 @@ concisely express flow control that might be verbose without pattern matching.
 ```rust,noplaypen
 case xs {
   [[]] -> "The only element is an empty list"
-  [[] | _] -> "The 1st element is an empty list"
-  [[4] | _] -> "The 1st element is a list of the number 4"
+  [[], ..] -> "The 1st element is an empty list"
+  [[4], ..] -> "The 1st element is a list of the number 4"
   other -> "Something else"
 }
 ```
@@ -100,7 +100,7 @@ specifying it's shape at the same time. We can do this using the `as` keyword.
 
 ```rust,noplaypen
 case xs {
-  [[_ | _] as inner_list] -> inner_list
+  [[_, ..] as inner_list] -> inner_list
   other -> []
 }
 ```

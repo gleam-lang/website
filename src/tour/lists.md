@@ -16,7 +16,7 @@ result in the compiler presenting a type error.
 Prepending to a list is very fast, and is the preferred way to add new values.
 
 ```rust,noplaypen
-[1 | [2, 3]]  // => [1, 2, 3]
+[1, ..[2, 3]]  // => [1, 2, 3]
 ```
 
 Note that as all data structures in Gleam are immutable so prepending to a
@@ -25,7 +25,7 @@ list with the new additional element.
 
 ```rust,noplaypen
 let x = [2, 3]
-let y = [1 | x]
+let y = [1, ..x]
 
 
 x  // => [2, 3]

@@ -489,13 +489,13 @@ result in the compiler presenting a type error.</p>
 [1.22, 3, 4]  // Type error!
 </code></pre>
 <p>Prepending to a list is very fast, and is the preferred way to add new values.</p>
-<pre><code class="language-rust noplaypen">[1 | [2, 3]]  // =&gt; [1, 2, 3]
+<pre><code class="language-rust noplaypen">[1, ..[2, 3]]  // =&gt; [1, 2, 3]
 </code></pre>
 <p>Note that as all data structures in Gleam are immutable so prepending to a
 list does not change the original list, instead it efficiently creates a new
 list with the new additional element.</p>
 <pre><code class="language-rust noplaypen">let x = [2, 3]
-let y = [1 | x]
+let y = [1, ..x]
 
 
 x  // =&gt; [2, 3]
@@ -557,8 +557,8 @@ contained values can also be matched. This gives <code>case</code> the ability t
 concisely express flow control that might be verbose without pattern matching.</p>
 <pre><code class="language-rust noplaypen">case xs {
   [[]] -&gt; &quot;The only element is an empty list&quot;
-  [[] | _] -&gt; &quot;The 1st element is an empty list&quot;
-  [[4] | _] -&gt; &quot;The 1st element is a list of the number 4&quot;
+  [[], ..] -&gt; &quot;The 1st element is an empty list&quot;
+  [[4], ..] -&gt; &quot;The 1st element is a list of the number 4&quot;
   other -&gt; &quot;Something else&quot;
 }
 </code></pre>
@@ -581,7 +581,7 @@ so <code>case</code> supports having multiple subjects.</p>
 <p>Sometimes when pattern matching we want to assign a name to a value while
 specifying it's shape at the same time. We can do this using the <code>as</code> keyword.</p>
 <pre><code class="language-rust noplaypen">case xs {
-  [[_ | _] as inner_list] -&gt; inner_list
+  [[_, ..] as inner_list] -&gt; inner_list
   other -&gt; []
 }
 </code></pre>
