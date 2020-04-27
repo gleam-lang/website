@@ -44,6 +44,8 @@ your new project:
 ```sh
 # Run an interactive shell with your code loaded (Erlang syntax)
 rebar3 shell
+1> my_fantastic_library:hello_world().
+<<"Hello, from my_fantastic_library!">>
 
 # Run the eunit tests
 rebar3 eunit
