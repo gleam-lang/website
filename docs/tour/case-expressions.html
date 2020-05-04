@@ -225,8 +225,8 @@ specifying it's shape at the same time. We can do this using the <code>as</code>
 <h2><a class="header" href="#checking-equality-in-patterns" id="checking-equality-in-patterns">Checking equality in patterns</a></h2>
 <p>The <code>if</code> keyword can be used to add a guard expression to case clause in order
 to assert that values are equal or not.</p>
-<p>Both the patterns have to match and the guard has to evaluate to
-<code>True</code> for the clause to match.</p>
+<p>Both patterns have to match and the guard has to evaluate to <code>True</code> for the
+clause to match.</p>
 <pre><code class="language-rust noplaypen">case xs {
   [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;

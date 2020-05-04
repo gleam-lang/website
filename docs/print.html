@@ -246,10 +246,10 @@ gleam --version
 <p>Gleam compiles to Erlang code, so Erlang needs to be installed to run Gleam
 code.</p>
 <p>Precompiled builds for many popular operating systems can be downloaded from
-the <a href="https://www.erlang-solutions.com/resources/download.html">Erlang solutions website</a>,</p>
+the <a href="https://www.erlang-solutions.com/resources/download.html">Erlang solutions website</a>.</p>
 <p>Guides for installing Erlang on specific operating systems can be found below,
 as well as information on installing multiple versions of Erlang at once using
-version manager tools.</p>
+version management tools.</p>
 <p>Once Erlang has been installed you can check it is working by typing <code>erl -version</code> in your computer's terminal. You will see version information like
 this if all is well:</p>
 <pre><code>$ erl -version
@@ -320,19 +320,21 @@ cd my_fantastic_library
 2 directories, 7 files
 </code></pre>
 <p>The project is managed and built using rebar3, the standard Erlang build tool.
-Here are some commonly used commands rebar3 commands that you can use with
-your new project:</p>
+Here are some commonly used rebar3 commands that you can use with your new
+project:</p>
 <pre><code class="language-sh"># Run an interactive shell with your code loaded (Erlang syntax)
 rebar3 shell
+1&gt; my_fantastic_library:hello_world().
+&lt;&lt;&quot;Hello, from my_fantastic_library!&quot;&gt;&gt;
 
 # Run the eunit tests
 rebar3 eunit
 </code></pre>
 <p>More information can be found on the <a href="https://www.rebar3.org/docs">rebar3 documentation website</a>.</p>
 <h2><a class="header" href="#applications" id="applications">Applications</a></h2>
-<p>The default project generated is a library, but we may want to create an
-application instead. If we specify an alternate template when creating a
-project we can instead generate an application project compatible with the
+<p>The default project generated is a library, but you may want to create an
+application instead. If you specify an alternate template when creating a
+project you can instead generate an application project compatible with the
 Erlang OTP framework.</p>
 <pre><code class="language-sh">gleam new my_fantastic_application --template app
 </code></pre>
@@ -342,8 +344,8 @@ Erlang OTP framework.</p>
 <p>Need ideas for a project? We have a <a href="https://github.com/gleam-lang/suggestions/issues?q=is%3Aopen+is%3Aissue+label%3Aarea%3Alibraries">list of libraries</a> that need
 writing.</p>
 <h1><a class="header" href="#example-projects" id="example-projects">Example projects</a></h1>
-<p>When learning a new language it can often be used to have example code to
-refer to and learn from, so here's some examples:</p>
+<p>When learning a new language it can often be useful to have example code to
+refer to and learn from, so here are some examples:</p>
 <h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langexample-url-shortenertiny-url-shortenera" id="a-hrefhttpsgithubcomgleam-langexample-url-shortenertiny-url-shortenera"><a href="https://github.com/gleam-lang/example-url-shortener">Tiny: URL shortener</a></a></h2>
 <p>A simple HTML serving web application that takes URLs and gives the user a
 shorter URL to use in its place.</p>
@@ -588,8 +590,8 @@ specifying it's shape at the same time. We can do this using the <code>as</code>
 <h2><a class="header" href="#checking-equality-in-patterns" id="checking-equality-in-patterns">Checking equality in patterns</a></h2>
 <p>The <code>if</code> keyword can be used to add a guard expression to case clause in order
 to assert that values are equal or not.</p>
-<p>Both the patterns have to match and the guard has to evaluate to
-<code>True</code> for the clause to match.</p>
+<p>Both patterns have to match and the guard has to evaluate to <code>True</code> for the
+clause to match.</p>
 <pre><code class="language-rust noplaypen">case xs {
   [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;
@@ -807,10 +809,10 @@ methods.</p>
   Cat(name: String, cuteness: Int)
 }
 </code></pre>
-<p>Here we have defined a custom type called <code>Cat</code>. It's constructor is called
-<code>Cat</code> and it takes has two fields: A <code>name</code> field which is a <code>String</code>, and a
+<p>Here we have defined a custom type called <code>Cat</code>. Its constructor is called
+<code>Cat</code> and it has two fields: A <code>name</code> field which is a <code>String</code>, and a
 <code>cuteness</code> field which is an <code>Int</code>.</p>
-<p>The <code>pub</code> keyword has been used to make this type usable from other modules.</p>
+<p>The <code>pub</code> keyword makes this type usable from other modules.</p>
 <p>Once defined the custom type can be used in functions:</p>
 <pre><code class="language-rust noplaypen">fn cats() {
   // Labelled fields can be given in any order
@@ -826,7 +828,7 @@ methods.</p>
 <h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
 <p>Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.</p>
-<p>We've seen a custom type with multiple constructors already in this chapter-
+<p>We've seen a custom type with multiple constructors already in this chapter -
 <code>Bool</code>.</p>
 <p>Bool is defined like this:</p>
 <pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
@@ -836,8 +838,8 @@ pub type Bool {
 }
 </code></pre>
 <p>The records created by different constructors for a custom type can contain
-different values. For example a User custom type could have a LoggedIn
-constructors that creates records with a name, and a Guest constructor which
+different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
+constructors that creates records with a name, and a <code>Guest</code> constructor which
 creates records without any contained values.</p>
 <pre><code class="language-rust noplaypen">type User {
   LoggedIn(name: String)  // A logged in user with a name
@@ -883,7 +885,7 @@ questions and to indicate whether something is <code>True</code> or <code>False<
   Error(reason)
 }
 </code></pre>
-<p>Gleam doesn't have exceptions of <code>null</code> to represent errors in our programs,
+<p>Gleam doesn't have exceptions or <code>null</code> to represent errors in our programs,
 instead we have the <code>Result</code> type. If a function call fail wrap the returned
 value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
 if it failed.</p>

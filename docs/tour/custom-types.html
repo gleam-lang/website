@@ -156,10 +156,10 @@ methods.</p>
   Cat(name: String, cuteness: Int)
 }
 </code></pre>
-<p>Here we have defined a custom type called <code>Cat</code>. It's constructor is called
-<code>Cat</code> and it takes has two fields: A <code>name</code> field which is a <code>String</code>, and a
+<p>Here we have defined a custom type called <code>Cat</code>. Its constructor is called
+<code>Cat</code> and it has two fields: A <code>name</code> field which is a <code>String</code>, and a
 <code>cuteness</code> field which is an <code>Int</code>.</p>
-<p>The <code>pub</code> keyword has been used to make this type usable from other modules.</p>
+<p>The <code>pub</code> keyword makes this type usable from other modules.</p>
 <p>Once defined the custom type can be used in functions:</p>
 <pre><code class="language-rust noplaypen">fn cats() {
   // Labelled fields can be given in any order
@@ -175,7 +175,7 @@ methods.</p>
 <h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
 <p>Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.</p>
-<p>We've seen a custom type with multiple constructors already in this chapter-
+<p>We've seen a custom type with multiple constructors already in this chapter -
 <code>Bool</code>.</p>
 <p>Bool is defined like this:</p>
 <pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
@@ -185,8 +185,8 @@ pub type Bool {
 }
 </code></pre>
 <p>The records created by different constructors for a custom type can contain
-different values. For example a User custom type could have a LoggedIn
-constructors that creates records with a name, and a Guest constructor which
+different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
+constructors that creates records with a name, and a <code>Guest</code> constructor which
 creates records without any contained values.</p>
 <pre><code class="language-rust noplaypen">type User {
   LoggedIn(name: String)  // A logged in user with a name
@@ -232,7 +232,7 @@ questions and to indicate whether something is <code>True</code> or <code>False<
   Error(reason)
 }
 </code></pre>
-<p>Gleam doesn't have exceptions of <code>null</code> to represent errors in our programs,
+<p>Gleam doesn't have exceptions or <code>null</code> to represent errors in our programs,
 instead we have the <code>Result</code> type. If a function call fail wrap the returned
 value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
 if it failed.</p>
