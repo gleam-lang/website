@@ -1,7 +1,7 @@
 # Example projects
 
-When learning a new language it can often be used to have example code to
-refer to and learn from, so here's some examples:
+When learning a new language it can often be useful to have example code to
+refer to and learn from, so here are some examples:
 
 
 ## [Tiny: URL shortener](https://github.com/gleam-lang/example-url-shortener)

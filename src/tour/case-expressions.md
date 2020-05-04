@@ -111,8 +111,8 @@ case xs {
 The `if` keyword can be used to add a guard expression to case clause in order
 to assert that values are equal or not.
 
-Both the patterns have to match and the guard has to evaluate to
-`True` for the clause to match.
+Both patterns have to match and the guard has to evaluate to `True` for the
+clause to match.
 
 ```rust,noplaypen
 case xs {

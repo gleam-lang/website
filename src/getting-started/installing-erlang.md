@@ -4,11 +4,11 @@ Gleam compiles to Erlang code, so Erlang needs to be installed to run Gleam
 code.
 
 Precompiled builds for many popular operating systems can be downloaded from
-the [Erlang solutions website](https://www.erlang-solutions.com/resources/download.html),
+the [Erlang solutions website](https://www.erlang-solutions.com/resources/download.html).
 
 Guides for installing Erlang on specific operating systems can be found below,
 as well as information on installing multiple versions of Erlang at once using
-version manager tools.
+version management tools.
 
 Once Erlang has been installed you can check it is working by typing `erl
 -version` in your computer's terminal. You will see version information like
