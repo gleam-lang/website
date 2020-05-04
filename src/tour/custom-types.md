@@ -12,11 +12,11 @@ pub type Cat {
 }
 ```
 
-Here we have defined a custom type called `Cat`. It's constructor is called
-`Cat` and it takes has two fields: A `name` field which is a `String`, and a
+Here we have defined a custom type called `Cat`. Its constructor is called
+`Cat` and it has two fields: A `name` field which is a `String`, and a
 `cuteness` field which is an `Int`.
 
-The `pub` keyword has been used to make this type usable from other modules.
+The `pub` keyword makes this type usable from other modules.
 
 Once defined the custom type can be used in functions:
 
@@ -39,7 +39,7 @@ fn cats() {
 Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.
 
-We've seen a custom type with multiple constructors already in this chapter-
+We've seen a custom type with multiple constructors already in this chapter -
 `Bool`.
 
 Bool is defined like this:
@@ -53,8 +53,8 @@ pub type Bool {
 ```
 
 The records created by different constructors for a custom type can contain
-different values. For example a User custom type could have a LoggedIn
-constructors that creates records with a name, and a Guest constructor which
+different values. For example a `User` custom type could have a `LoggedIn`
+constructors that creates records with a name, and a `Guest` constructor which
 creates records without any contained values.
 
 ```rust,noplaypen
@@ -124,7 +124,7 @@ pub type Result(value, reason) {
 }
 ```
 
-Gleam doesn't have exceptions of `null` to represent errors in our programs,
+Gleam doesn't have exceptions or `null` to represent errors in our programs,
 instead we have the `Result` type. If a function call fail wrap the returned
 value in a `Result`, either `Ok` if the function was successful, or `Error`
 if it failed.

@@ -38,8 +38,8 @@ You'll now have a project with this structure:
 ```
 
 The project is managed and built using rebar3, the standard Erlang build tool.
-Here are some commonly used commands rebar3 commands that you can use with
-your new project:
+Here are some commonly used rebar3 commands that you can use with your new
+project:
 
 ```sh
 # Run an interactive shell with your code loaded (Erlang syntax)
@@ -55,9 +55,9 @@ More information can be found on the [rebar3 documentation website](https://www.
 
 ## Applications
 
-The default project generated is a library, but we may want to create an
-application instead. If we specify an alternate template when creating a
-project we can instead generate an application project compatible with the
+The default project generated is a library, but you may want to create an
+application instead. If you specify an alternate template when creating a
+project you can instead generate an application project compatible with the
 Erlang OTP framework.
 
 ```sh
