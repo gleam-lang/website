@@ -174,19 +174,21 @@ cd my_fantastic_library
 2 directories, 7 files
 </code></pre>
 <p>The project is managed and built using rebar3, the standard Erlang build tool.
-Here are some commonly used commands rebar3 commands that you can use with
-your new project:</p>
+Here are some commonly used rebar3 commands that you can use with your new
+project:</p>
 <pre><code class="language-sh"># Run an interactive shell with your code loaded (Erlang syntax)
 rebar3 shell
+1&gt; my_fantastic_library:hello_world().
+&lt;&lt;&quot;Hello, from my_fantastic_library!&quot;&gt;&gt;
 
 # Run the eunit tests
 rebar3 eunit
 </code></pre>
 <p>More information can be found on the <a href="https://www.rebar3.org/docs">rebar3 documentation website</a>.</p>
 <h2><a class="header" href="#applications" id="applications">Applications</a></h2>
-<p>The default project generated is a library, but we may want to create an
-application instead. If we specify an alternate template when creating a
-project we can instead generate an application project compatible with the
+<p>The default project generated is a library, but you may want to create an
+application instead. If you specify an alternate template when creating a
+project you can instead generate an application project compatible with the
 Erlang OTP framework.</p>
 <pre><code class="language-sh">gleam new my_fantastic_application --template app
 </code></pre>
