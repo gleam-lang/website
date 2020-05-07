@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Example projects - The Gleam Book</title>
+        <title>Installing rebar3 - The Gleam Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="chapter-item expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.3.</strong> Editor support</a></li><li class="chapter-item expanded "><a href="../getting-started/creating-a-project.html"><strong aria-hidden="true">2.4.</strong> Creating a project</a></li><li class="chapter-item expanded "><a href="../getting-started/example-projects.html" class="active"><strong aria-hidden="true">2.5.</strong> Example projects</a></li></ol></li><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">3.12.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">3.13.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">3.14.</strong> External types</a></li></ol></li><li class="chapter-item expanded "><a href="../faqs.html"><strong aria-hidden="true">4.</strong> FAQs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">2.1.</strong> Installing Gleam</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">2.2.</strong> Installing Erlang</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-rebar3.html" class="active"><strong aria-hidden="true">2.3.</strong> Installing rebar3</a></li><li class="chapter-item expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">2.4.</strong> Editor support</a></li></ol></li><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">3.</strong> Language tour</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">3.1.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">3.3.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">3.4.</strong> Ints &amp; Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">3.5.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">3.6.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">3.7.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">3.8.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">3.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">3.10.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">3.11.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">3.12.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">3.13.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">3.14.</strong> External types</a></li></ol></li><li class="chapter-item expanded "><a href="../writing-gleam/index.html"><strong aria-hidden="true">4.</strong> Writing Gleam</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../writing-gleam/creating-a-project.html"><strong aria-hidden="true">4.1.</strong> Creating a project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/running-the-project.html"><strong aria-hidden="true">4.2.</strong> Running the project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/example-projects.html"><strong aria-hidden="true">4.3.</strong> Example projects</a></li></ol></li><li class="chapter-item expanded "><a href="../faqs.html"><strong aria-hidden="true">5.</strong> FAQs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,32 +147,23 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#example-projects" id="example-projects">Example projects</a></h1>
-<p>When learning a new language it can often be useful to have example code to
-refer to and learn from, so here are some examples:</p>
-<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langexample-url-shortenertiny-url-shortenera" id="a-hrefhttpsgithubcomgleam-langexample-url-shortenertiny-url-shortenera"><a href="https://github.com/gleam-lang/example-url-shortener">Tiny: URL shortener</a></a></h2>
-<p>A simple HTML serving web application that takes URLs and gives the user a
-shorter URL to use in its place.</p>
-<p>Uses the Elli web server and the Postgresql database via the epgsql client.</p>
-<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langstdlibthe-gleam-standard-librarya" id="a-hrefhttpsgithubcomgleam-langstdlibthe-gleam-standard-librarya"><a href="https://github.com/gleam-lang/stdlib">The Gleam standard library</a></a></h2>
-<p>A collection of modules for working with the common data structures of Gleam.</p>
-<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-experimentsgleam-experimentsa" id="a-hrefhttpsgithubcomgleam-experimentsgleam-experimentsa"><a href="https://github.com/gleam-experiments">Gleam Experiments</a></a></h2>
-<p>The Gleam Experiments GitHub organisation is home to many useful libraries
-for use in Gleam projects such as OTP bindings, database clients, and lazy
-data structures.</p>
+                        <h1><a class="header" href="#installing-rebar3" id="installing-rebar3">Installing rebar3</a></h1>
+<p>The last item to install is rebar3, the Erlang build tool that we use to
+compile and run Gleam projects.</p>
+<p>Installation instructions can be found on the <a href="https://www.rebar3.org/">rebar3 website</a>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../getting-started/creating-a-project.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../getting-started/installing-erlang.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../tour/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../getting-started/editor-support.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -184,13 +175,13 @@ data structures.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../getting-started/creating-a-project.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../getting-started/installing-erlang.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../tour/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../getting-started/editor-support.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
