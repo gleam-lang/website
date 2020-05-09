@@ -152,6 +152,7 @@
 <li><a href="#why-is-the-compiler-written-in-rust">Why is the compiler written in Rust?</a></li>
 <li><a href="#will-gleam-have-type-classes">Will Gleam have type classes?</a></li>
 <li><a href="#how-is-message-passing-typed">How is message passing typed?</a></li>
+<li><a href="#can-we-use-the-hot-code-reloading-feature-from-otp">Can we use the hot code reloading feature from OTP?</a></li>
 <li><a href="#how-does-gleam-compare-to-alpaca">How does Gleam compare to Alpaca?</a></li>
 <li><a href="#should-i-put-gleam-in-production">Should I put Gleam in production?</a></li>
 <li><a href="#is-it-good">Is it good?</a></li>
@@ -182,6 +183,15 @@ discover an even better approach at a later date!</p>
 <li><a href="https://github.com/gleam-experiments/otp_agent">https://github.com/gleam-experiments/otp_agent</a></li>
 <li><a href="https://github.com/gleam-experiments/otp_supervisor">https://github.com/gleam-experiments/otp_supervisor</a></li>
 </ul>
+<h2><a class="header" href="#can-we-use-the-hot-code-reloading-feature-from-otp" id="can-we-use-the-hot-code-reloading-feature-from-otp">Can we use the hot code reloading feature from OTP?</a></h2>
+<p>All the usual Erlang code reloading features work, but it is not possible to
+type check the upgrades themselves as we have no way knowing the typed of the
+already running code. This means you would have the usual Erlang amount of
+safety rather than what you might have with Gleam otherwise.</p>
+<p>Generally the OTP libraries for Gleam are optimised for type safety rather than
+upgrades, and use records rather than atom modules so the state upgrade
+callbacks may be slightly more complex to write.</p>
+<p>I see hot code upgrades as not being a primary goal of Gleam at present.</p>
 <h2><a class="header" href="#how-does-gleam-compare-to-alpaca" id="how-does-gleam-compare-to-alpaca">How does Gleam compare to Alpaca?</a></h2>
 <p><a href="https://github.com/alpaca-lang/alpaca">Alpaca</a> is similar to Gleam in that it is a statically typed language
 for the Erlang VM that is inspired by the ML family of languages. It's a
