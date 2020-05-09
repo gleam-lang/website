@@ -3,6 +3,7 @@
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Will Gleam have type classes?](#will-gleam-have-type-classes)
 - [How is message passing typed?](#how-is-message-passing-typed)
+- [Can we use the hot code reloading feature from OTP?](#can-we-use-the-hot-code-reloading-feature-from-otp)
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Is it good?](#is-it-good)
@@ -42,6 +43,21 @@ If you'd like to see more consider checking out these libraries:
 - [https://github.com/gleam-experiments/otp_process](https://github.com/gleam-experiments/otp_process)
 - [https://github.com/gleam-experiments/otp_agent](https://github.com/gleam-experiments/otp_agent)
 - [https://github.com/gleam-experiments/otp_supervisor](https://github.com/gleam-experiments/otp_supervisor)
+
+
+## Can we use the hot code reloading feature from OTP?
+
+All the usual Erlang code reloading features work, but it is not possible to
+type check the upgrades themselves as we have no way knowing the typed of the
+already running code. This means you would have the usual Erlang amount of
+safety rather than what you might have with Gleam otherwise.
+
+Generally the OTP libraries for Gleam are optimised for type safety rather than
+upgrades, and use records rather than atom modules so the state upgrade
+callbacks may be slightly more complex to write.
+
+I see hot code upgrades as not being a primary goal of Gleam at present.
+
 
 ## How does Gleam compare to Alpaca?
 
