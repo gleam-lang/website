@@ -56,8 +56,6 @@ Generally the OTP libraries for Gleam are optimised for type safety rather than
 upgrades, and use records rather than atom modules so the state upgrade
 callbacks may be slightly more complex to write.
 
-I see hot code upgrades as not being a primary goal of Gleam at present.
-
 
 ## How does Gleam compare to Alpaca?
 
