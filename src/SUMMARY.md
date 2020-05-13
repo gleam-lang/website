@@ -24,5 +24,6 @@
 - [Writing Gleam](./writing-gleam/README.md)
   - [Creating a project](./writing-gleam/creating-a-project.md)
   - [Running the project](./writing-gleam/running-the-project.md)
+  - [Documenting the project](./writing-gleam/documenting-the-project.md)
   - [Example projects](./writing-gleam/example-projects.md)
 - [FAQs](./faqs.md)
