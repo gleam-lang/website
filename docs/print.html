@@ -1107,7 +1107,8 @@ but for now please refer to these Erlang docs:</p>
 <h1><a class="header" href="#documenting-the-project" id="documenting-the-project">Documenting the project</a></h1>
 <p>If our project is a library it is important that it is well documented so that
 people understand how to use the code.</p>
-<p>To document modules and function Gleam supports two special comments, <code>///</code>
+<h2><a class="header" href="#modules-and-functions" id="modules-and-functions">Modules and functions</a></h2>
+<p>To document modules and functions Gleam supports two special comments, <code>///</code>
 which is for documenting types and functions, and <code>////</code> which is for
 documenting the module as a whole.</p>
 <pre><code class="language-rust noplaypen">//// This module contains some useful functions for working
@@ -1155,6 +1156,23 @@ pub fn from_result(result: Result(Int, e)) -&gt; Int {
 </code></pre>
 <p>Once documentation comments have been added Gleam can generate HTML
 documentation for the project.</p>
+<h2><a class="header" href="#additional-documentation-pages" id="additional-documentation-pages">Additional documentation pages</a></h2>
+<p>To add additional pages to the documentation for the project that aren't
+automatically generated, simply define them in Markdown and add them to 
+<code>Gleam.toml</code> as follows:</p>
+<pre><code class="language-toml">name = &quot;my_awesome_gleam_app&quot;
+
+[docs]
+pages = [
+  { title = &quot;Hello&quot;, path = &quot;hello.html&quot;, source = &quot;docs/hello_world.md&quot; },
+  { title = &quot;Testing&quot;, path = &quot;testing.html&quot;, source = &quot;docs/testing.md&quot; },
+]
+</code></pre>
+<p>Links will automatically be generated for these additional pages and the
+Markdown will be converted into HTML documentation. </p>
+<p>Your project's <code>README.md</code> file will automatically be used to generate the
+default page for the documentation. </p>
+<h2><a class="header" href="#building-and-pushing" id="building-and-pushing">Building and pushing</a></h2>
 <p>The documentation can be built locally using this command, which renders the
 documentation to <code>gen/docs</code>.</p>
 <pre><code class="language-sh">cd path/to/project
