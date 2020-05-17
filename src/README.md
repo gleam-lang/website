@@ -82,7 +82,7 @@ sponsor Gleam development for for $50 or more, thank you!
 
 - [Arian Daneshvar](https://github.com/bees)
 - [Bryan Paxton](https://github.com/starbelly)
-- [Jose Valid](https://github.com/josevalim)
+- [Jose Valim](https://github.com/josevalim)
 
 If you would like to support Gleam please consider [sponsoring the
 project](https://github.com/sponsors/lpil).
