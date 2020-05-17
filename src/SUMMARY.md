@@ -1,6 +1,7 @@
 # Summary
 
 - [Hello, Gleam!](./README.md)
+- [Gleam's Principles](gleams-principles.md)
 - [Getting started](./getting-started/README.md)
   - [Installing Gleam](./getting-started/installing-gleam.md)
   - [Installing Erlang](./getting-started/installing-erlang.md)
