@@ -74,3 +74,15 @@ Gleam users to make use of.
 Users of other BEAM languages should in return be able to take advantage of
 Gleam, either by transparently making use of libraries written in Gleam, or by
 adding Gleam modules to their existing project with minimal fuss.
+
+## Sponsors
+
+Gleam is made possible by its sponsors. A special thanks to these people who
+sponsor Gleam development for for $50 or more, thank you!
+
+- [Arian Daneshvar](https://github.com/bees)
+- [Bryan Paxton](https://github.com/starbelly)
+- [Jose Valid](https://github.com/josevalim)
+
+If you would like to support Gleam please consider [sponsoring the
+project](https://github.com/sponsors/lpil).
