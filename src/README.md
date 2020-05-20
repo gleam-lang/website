@@ -37,7 +37,7 @@ For Gleam chat we have the IRC channel `#gleam-lang` on Freenode.
 ## Sponsors
 
 Gleam is made possible by its sponsors. A special thanks to these people who
-sponsor Gleam development for for $50 or more, thank you!
+sponsor Gleam development for $50 or more, thank you!
 
 - [Arian Daneshvar](https://github.com/bees)
 - [Bryan Paxton](https://github.com/starbelly)
