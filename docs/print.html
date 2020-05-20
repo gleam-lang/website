@@ -694,6 +694,19 @@ pub fn run() {
   |&gt; add(_, 9)
 }
 </code></pre>
+<p>In fact, this usage is so common that there is a special shorthand for it.</p>
+<pre><code class="language-rust noplaypen">pub fn run() {
+  // This is the same as the example above
+  1
+  |&gt; add(3)
+  |&gt; add(6)
+  |&gt; add(9)
+}
+</code></pre>
+<p>The pipe operator will first check to see if the left hand value could be used
+as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
+<p>If not it falls back to calling the result of the right hand side as a function
+, e.g. <code>b(1, 2)(a)</code>.</p>
 <h1><a class="header" href="#module" id="module">Module</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
