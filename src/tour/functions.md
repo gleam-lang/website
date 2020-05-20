@@ -168,3 +168,21 @@ pub fn run() {
   |> add(_, 9)
 }
 ```
+
+In fact, this usage is so common that there is a special shorthand for it.
+
+```rust,noplaypen
+pub fn run() {
+  // This is the same as the example above
+  1
+  |> add(3)
+  |> add(6)
+  |> add(9)
+}
+```
+
+The pipe operator will first check to see if the left hand value could be used
+as the first argument to the call, e.g. `a |> b(1, 2)` would become `b(a, 1, 2)`.
+
+If not it falls back to calling the result of the right hand side as a function
+, e.g. `b(1, 2)(a)`.
