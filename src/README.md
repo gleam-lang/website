@@ -42,7 +42,7 @@ sponsor Gleam development for $20 or more, thank you!
 - [Arian Daneshvar](https://github.com/bees)
 - [Bryan Paxton](https://github.com/starbelly)
 - [John Palgut](https://github.com/Jwsonic)
-- [Jose Valim](https://github.com/josevalim)
+- [José Valim](https://github.com/josevalim)
 - [ontofractal](https://github.com/ontofractal)
 
 If you would like to support Gleam please consider [sponsoring the
