@@ -40,6 +40,7 @@ Gleam is made possible by its sponsors. A special thanks to these people who
 sponsor Gleam development for $20 or more, thank you!
 
 - [Arian Daneshvar](https://github.com/bees)
+- [Ben Myles](https://github.com/benmyles)
 - [Bryan Paxton](https://github.com/starbelly)
 - [Hendrik Richter](https://github.com/hendi)
 - [John Palgut](https://github.com/Jwsonic)
