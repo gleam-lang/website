@@ -45,6 +45,7 @@ sponsor Gleam development for $20 or more, thank you!
 - [Hendrik Richter](https://github.com/hendi)
 - [John Palgut](https://github.com/Jwsonic)
 - [José Valim](https://github.com/josevalim)
+- [Wojtek Mach](https://github.com/wojtekmach)
 - [ontofractal](https://github.com/ontofractal)
 
 If you would like to support Gleam please consider [sponsoring the
