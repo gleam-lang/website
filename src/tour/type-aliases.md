@@ -21,7 +21,7 @@ The `gleam/result` module in the standard library defines `Option(value)` as
 an alias for `Result(value, Nil)`.
 
 This alias is useful for when you wish to return a value that may or may not
-be present. This is a type safe alterntaive to a value that may be `null` in
+be present. This is a type safe alternative to a value that may be `null` in
 other languages.
 
 ```rust,noplaypen
