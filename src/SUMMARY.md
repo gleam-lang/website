@@ -28,4 +28,6 @@
   - [Running the project](./writing-gleam/running-the-project.md)
   - [Documenting the project](./writing-gleam/documenting-the-project.md)
   - [Example projects](./writing-gleam/example-projects.md)
+- [Cheatsheets](./cheatsheets/README.md)
+  - [Gleam for Erlang users](./cheatsheets/gleam-for-erlang-users.md)
 - [FAQs](./faqs.md)
