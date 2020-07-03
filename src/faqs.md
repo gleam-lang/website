@@ -3,6 +3,8 @@
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Will Gleam have type classes?](#will-gleam-have-type-classes)
 - [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
+- [Does Gleam have mutable state?](#does-gleam-have-mutable-state)
+- [Does Gleam have side effects?](#does-gleam-have-side-effects)
 - [How is message passing typed?](#how-is-message-passing-typed)
 - [Can we use the hot code reloading feature from OTP?](#can-we-use-the-hot-code-reloading-feature-from-otp)
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
@@ -35,6 +37,26 @@ something else entirely.
 We don't currently have any fixed ideas for what metaprogramming might look
 like in Gleam, but it is an area we are interested in. If you have any ideas
 please do share them!
+
+
+## Does Gleam have mutable state?
+
+All data structures in Gleam are immutable and are implemented using
+structural sharing so they can be efficiently updated.
+
+If your application needs to hold on to some mutable state then it can be held
+by an actor (which immutably wraps mutable state using recursion) or you can
+use ETS, the Erlang in-memory key-value database.
+
+
+## Does Gleam have side effects?
+
+Yes, Gleam is an impure functional language like OCaml or Erlang, so impure
+actions like reading to files and printing to the console is possible without
+special handling.
+
+We may later introduce an effects system for identifying and tracking any
+impure code in a Gleam application, though this is still an area of research.
 
 
 ## How is message passing typed?
