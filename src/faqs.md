@@ -48,7 +48,7 @@ If you'd like to see more consider checking out these libraries:
 ## Can we use the hot code reloading feature from OTP?
 
 All the usual Erlang code reloading features work, but it is not possible to
-type check the upgrades themselves as we have no way knowing the typed of the
+type check the upgrades themselves as we have no way knowing the types of the
 already running code. This means you would have the usual Erlang amount of
 safety rather than what you might have with Gleam otherwise.
 
