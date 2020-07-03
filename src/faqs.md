@@ -2,6 +2,7 @@
 
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Will Gleam have type classes?](#will-gleam-have-type-classes)
+- [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [How is message passing typed?](#how-is-message-passing-typed)
 - [Can we use the hot code reloading feature from OTP?](#can-we-use-the-hot-code-reloading-feature-from-otp)
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
@@ -29,6 +30,13 @@ option, OCaml style implicit modules are another, or perhaps it'll be
 something else entirely.
 
 
+## Will Gleam have metaprogramming?
+
+We don't currently have any fixed ideas for what metaprogramming might look
+like in Gleam, but it is an area we are interested in. If you have any ideas
+please do share them!
+
+
 ## How is message passing typed?
 
 Type safe message passing is implemented in Gleam as a set of libraries,
@@ -40,7 +48,7 @@ discover an even better approach at a later date!
 
 If you'd like to see more consider checking out these libraries:
 
-- [https://github.com/gleam-experiments/otp_process](https://github.com/gleam-experiments/otp_process)
+- [https://github.com/gleam-lang/otp](https://github.com/gleam-experiments/otp_process)
 - [https://github.com/gleam-experiments/otp_agent](https://github.com/gleam-experiments/otp_agent)
 - [https://github.com/gleam-experiments/otp_supervisor](https://github.com/gleam-experiments/otp_supervisor)
 
@@ -80,8 +88,8 @@ Alpaca is great, check it out! :)
 
 ## Should I put Gleam in production?
 
-Probably not. Gleam is a very young language and there may be all kinds of
-problems and breaking changes down the line.
+Gleam is a very young language with few libraries, so while the language is
+robust it is likely to undergo breaking changes in the future.
 
 Having said that, the Erlang VM is extremely mature and well tested, and if
 you decide to move away from Gleam the language you can compile your code to

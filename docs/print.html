@@ -1370,6 +1370,7 @@ fn main() {
 <ul>
 <li><a href="faqs.html#why-is-the-compiler-written-in-rust">Why is the compiler written in Rust?</a></li>
 <li><a href="faqs.html#will-gleam-have-type-classes">Will Gleam have type classes?</a></li>
+<li><a href="faqs.html#will-gleam-have-metaprogramming">Will Gleam have metaprogramming?</a></li>
 <li><a href="faqs.html#how-is-message-passing-typed">How is message passing typed?</a></li>
 <li><a href="faqs.html#can-we-use-the-hot-code-reloading-feature-from-otp">Can we use the hot code reloading feature from OTP?</a></li>
 <li><a href="faqs.html#how-does-gleam-compare-to-alpaca">How does Gleam compare to Alpaca?</a></li>
@@ -1389,6 +1390,10 @@ documentation.</p>
 the language, though what shape that may take is unclear. Type classes are one
 option, OCaml style implicit modules are another, or perhaps it'll be
 something else entirely.</p>
+<h2><a class="header" href="#will-gleam-have-metaprogramming" id="will-gleam-have-metaprogramming">Will Gleam have metaprogramming?</a></h2>
+<p>We don't currently have any fixed ideas for what metaprogramming might look
+like in Gleam, but it is an area we are interested in. If you have any ideas
+please do share them!</p>
 <h2><a class="header" href="#how-is-message-passing-typed" id="how-is-message-passing-typed">How is message passing typed?</a></h2>
 <p>Type safe message passing is implemented in Gleam as a set of libraries,
 rather than being part of the core language itself. This allows us to write safe
@@ -1398,7 +1403,7 @@ is important as typing message passing is an area of active research, we may
 discover an even better approach at a later date!</p>
 <p>If you'd like to see more consider checking out these libraries:</p>
 <ul>
-<li><a href="https://github.com/gleam-experiments/otp_process">https://github.com/gleam-experiments/otp_process</a></li>
+<li><a href="https://github.com/gleam-experiments/otp_process">https://github.com/gleam-lang/otp</a></li>
 <li><a href="https://github.com/gleam-experiments/otp_agent">https://github.com/gleam-experiments/otp_agent</a></li>
 <li><a href="https://github.com/gleam-experiments/otp_supervisor">https://github.com/gleam-experiments/otp_supervisor</a></li>
 </ul>
@@ -1426,8 +1431,8 @@ ECMAScript family languages.</li>
 </ul>
 <p>Alpaca is great, check it out! :)</p>
 <h2><a class="header" href="#should-i-put-gleam-in-production" id="should-i-put-gleam-in-production">Should I put Gleam in production?</a></h2>
-<p>Probably not. Gleam is a very young language and there may be all kinds of
-problems and breaking changes down the line.</p>
+<p>Gleam is a very young language with few libraries, so while the language is
+robust it is likely to undergo breaking changes in the future.</p>
 <p>Having said that, the Erlang VM is extremely mature and well tested, and if
 you decide to move away from Gleam the language you can compile your code to
 Erlang and maintain that in future.</p>
