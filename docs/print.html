@@ -1193,10 +1193,9 @@ gleam docs remove --package my_project_name --version v1.0.0
 <h1><a class="header" href="#example-projects" id="example-projects">Example projects</a></h1>
 <p>When learning a new language it can often be useful to have example code to
 refer to and learn from, so here are some examples:</p>
-<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langexample-url-shortenertiny-url-shortenera" id="a-hrefhttpsgithubcomgleam-langexample-url-shortenertiny-url-shortenera"><a href="https://github.com/gleam-lang/example-url-shortener">Tiny: URL shortener</a></a></h2>
-<p>A simple HTML serving web application that takes URLs and gives the user a
-shorter URL to use in its place.</p>
-<p>Uses the Elli web server and the Postgresql database via the epgsql client.</p>
+<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langexample-echo-serverecho-servera" id="a-hrefhttpsgithubcomgleam-langexample-echo-serverecho-servera"><a href="https://github.com/gleam-lang/example-echo-server">Echo Server</a></a></h2>
+<p>A tiny echo server that will reply with any data posted to <code>/echo</code>.</p>
+<p>Uses the Gleam HTTP library with the Elli web server adapter.</p>
 <h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langstdlibthe-gleam-standard-librarya" id="a-hrefhttpsgithubcomgleam-langstdlibthe-gleam-standard-librarya"><a href="https://github.com/gleam-lang/stdlib">The Gleam standard library</a></a></h2>
 <p>A collection of modules for working with the common data structures of Gleam.</p>
 <h2><a class="header" href="#a-hrefhttpsgithubcomgleam-experimentsgleam-experimentsa" id="a-hrefhttpsgithubcomgleam-experimentsgleam-experimentsa"><a href="https://github.com/gleam-experiments">Gleam Experiments</a></a></h2>
@@ -1371,6 +1370,8 @@ fn main() {
 <li><a href="faqs.html#why-is-the-compiler-written-in-rust">Why is the compiler written in Rust?</a></li>
 <li><a href="faqs.html#will-gleam-have-type-classes">Will Gleam have type classes?</a></li>
 <li><a href="faqs.html#will-gleam-have-metaprogramming">Will Gleam have metaprogramming?</a></li>
+<li><a href="faqs.html#does-gleam-have-mutable-state">Does Gleam have mutable state?</a></li>
+<li><a href="faqs.html#does-gleam-have-side-effects">Does Gleam have side effects?</a></li>
 <li><a href="faqs.html#how-is-message-passing-typed">How is message passing typed?</a></li>
 <li><a href="faqs.html#can-we-use-the-hot-code-reloading-feature-from-otp">Can we use the hot code reloading feature from OTP?</a></li>
 <li><a href="faqs.html#how-does-gleam-compare-to-alpaca">How does Gleam compare to Alpaca?</a></li>
@@ -1394,6 +1395,18 @@ something else entirely.</p>
 <p>We don't currently have any fixed ideas for what metaprogramming might look
 like in Gleam, but it is an area we are interested in. If you have any ideas
 please do share them!</p>
+<h2><a class="header" href="#does-gleam-have-mutable-state" id="does-gleam-have-mutable-state">Does Gleam have mutable state?</a></h2>
+<p>All data structures in Gleam are immutable and are implemented using
+structural sharing so they can be efficiently updated.</p>
+<p>If your application needs to hold on to some mutable state then it can be held
+by an actor (which immutably wraps mutable state using recursion) or you can
+use ETS, the Erlang in-memory key-value database.</p>
+<h2><a class="header" href="#does-gleam-have-side-effects" id="does-gleam-have-side-effects">Does Gleam have side effects?</a></h2>
+<p>Yes, Gleam is an impure functional language like OCaml or Erlang, so impure
+actions like reading to files and printing to the console is possible without
+special handling.</p>
+<p>We may later introduce an effects system for identifying and tracking any
+impure code in a Gleam application, though this is still an area of research.</p>
 <h2><a class="header" href="#how-is-message-passing-typed" id="how-is-message-passing-typed">How is message passing typed?</a></h2>
 <p>Type safe message passing is implemented in Gleam as a set of libraries,
 rather than being part of the core language itself. This allows us to write safe

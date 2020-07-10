@@ -4,13 +4,12 @@ When learning a new language it can often be useful to have example code to
 refer to and learn from, so here are some examples:
 
 
-## [Tiny: URL shortener](https://github.com/gleam-lang/example-url-shortener)
+## [Echo Server](https://github.com/gleam-lang/example-echo-server)
 
 
-A simple HTML serving web application that takes URLs and gives the user a
-shorter URL to use in its place.
+A tiny echo server that will reply with any data posted to `/echo`.
 
-Uses the Elli web server and the Postgresql database via the epgsql client.
+Uses the Gleam HTTP library with the Elli web server adapter.
 
 
 ## [The Gleam standard library](https://github.com/gleam-lang/stdlib)
