@@ -43,6 +43,7 @@ sponsor Gleam development for $20 or more, thank you!
 - [Ben Myles](https://github.com/benmyles)
 - [Bryan Paxton](https://github.com/starbelly)
 - [Hendrik Richter](https://github.com/hendi)
+- [Ingmar Gagen](https://github.com/igagen)
 - [John Palgut](https://github.com/Jwsonic)
 - [José Valim](https://github.com/josevalim)
 - [Wojtek Mach](https://github.com/wojtekmach)
