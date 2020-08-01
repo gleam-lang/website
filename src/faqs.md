@@ -9,6 +9,7 @@
 - [Can we use the hot code reloading feature from OTP?](#can-we-use-the-hot-code-reloading-feature-from-otp)
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
+- [Why is it called Gleam?](#why-is-it-called-gleam)
 - [Is it good?](#is-it-good)
 
 
@@ -110,13 +111,27 @@ Alpaca is great, check it out! :)
 
 ## Should I put Gleam in production?
 
-Gleam is a very young language with few libraries, so while the language is
-robust it is likely to undergo breaking changes in the future.
+Gleam is a young language that has not reached version 1.0, so while it is
+robust it is likely to undergo breaking changes in the future, and there may
+be some annoying bugs in there somewhere. The Gleam ecosystem is also quite
+young, so many libraries that are found in other languages will need to be
+written, or Erlang/Elixir libraries will have to be used in place of pure
+Gleam versions.
 
-Having said that, the Erlang VM is extremely mature and well tested, and if
-you decide to move away from Gleam the language you can compile your code to
-Erlang and maintain that in future.
+The Erlang VM is extremely mature and well tested, so the runtime aspect of
+the language is ready for production.
 
+If you decide to move away from Gleam the language you can compile your code
+to Erlang and maintain that in future.
+
+
+## Why is it called Gleam?
+
+Gleam rhymes with and is a synonym of "beam", which is the name of the Erlang
+virtual machine.
+
+It's also a short and cute word that's hopefully easy to spell and pronounce
+for most people.
 
 ## Is it good?
 
