@@ -46,6 +46,7 @@ sponsor Gleam development for $20 or more, thank you!
 - [Ingmar Gagen](https://github.com/igagen)
 - [John Palgut](https://github.com/Jwsonic)
 - [José Valim](https://github.com/josevalim)
+- [Michael Jones](https://github.com/michaeljones)
 - [Wojtek Mach](https://github.com/wojtekmach)
 - [ontofractal](https://github.com/ontofractal)
 
