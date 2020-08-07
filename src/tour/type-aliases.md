@@ -17,7 +17,7 @@ pub type Headers =
 
 ### `Option(value)`
 
-The `gleam/result` module in the standard library defines `Option(value)` as
+The `gleam/option` module in the standard library defines `Option(value)` as
 an alias for `Result(value, Nil)`.
 
 This alias is useful for when you wish to return a value that may or may not
@@ -25,7 +25,7 @@ be present. This is a type safe alternative to a value that may be `null` in
 other languages.
 
 ```rust,noplaypen
-import gleam/result.{Option}
+import gleam/option.{Option}
 
 pub fn present() -> Option(Int) {
   Ok(1) // This Int is present
@@ -36,6 +36,6 @@ fn not_present() -> Option(Int) {
 }
 
 fn also_not_present() -> Option(Int) {
-  result.none() // Error(Nil) can also be written like this
+  option.none() // Error(Nil) can also be written like this
 }
 ```
