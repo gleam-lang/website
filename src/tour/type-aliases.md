@@ -11,31 +11,3 @@ multiple functions that return headers.
 pub type Headers =
   List(tuple(String, String))
 ```
-
-
-## Commonly used type aliases
-
-### `Option(value)`
-
-The `gleam/option` module in the standard library defines `Option(value)` as
-an alias for `Result(value, Nil)`.
-
-This alias is useful for when you wish to return a value that may or may not
-be present. This is a type safe alternative to a value that may be `null` in
-other languages.
-
-```rust,noplaypen
-import gleam/option.{Option}
-
-pub fn present() -> Option(Int) {
-  Ok(1) // This Int is present
-}
-
-fn not_present() -> Option(Int) {
-  Error(Nil) // This Int is not present
-}
-
-fn also_not_present() -> Option(Int) {
-  option.none() // Error(Nil) can also be written like this
-}
-```
