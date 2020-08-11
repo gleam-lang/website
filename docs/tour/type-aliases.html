@@ -156,27 +156,6 @@ multiple functions that return headers.</p>
 <pre><code class="language-rust noplaypen">pub type Headers =
   List(tuple(String, String))
 </code></pre>
-<h2><a class="header" href="#commonly-used-type-aliases" id="commonly-used-type-aliases">Commonly used type aliases</a></h2>
-<h3><a class="header" href="#optionvalue" id="optionvalue"><code>Option(value)</code></a></h3>
-<p>The <code>gleam/result</code> module in the standard library defines <code>Option(value)</code> as
-an alias for <code>Result(value, Nil)</code>.</p>
-<p>This alias is useful for when you wish to return a value that may or may not
-be present. This is a type safe alternative to a value that may be <code>null</code> in
-other languages.</p>
-<pre><code class="language-rust noplaypen">import gleam/result.{Option}
-
-pub fn present() -&gt; Option(Int) {
-  Ok(1) // This Int is present
-}
-
-fn not_present() -&gt; Option(Int) {
-  Error(Nil) // This Int is not present
-}
-
-fn also_not_present() -&gt; Option(Int) {
-  result.none() // Error(Nil) can also be written like this
-}
-</code></pre>
 
                     </main>
 
