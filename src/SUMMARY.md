@@ -20,6 +20,7 @@
   - [Modules](./tour/modules.md)
   - [Custom types](./tour/custom-types.md)
   - [Try](./tour/try.md)
+  - [Constants](./tour/constants.md)
   - [Type aliases](./tour/type-aliases.md)
   - [External functions](./tour/external-functions.md)
   - [External types](./tour/external-types.md)
