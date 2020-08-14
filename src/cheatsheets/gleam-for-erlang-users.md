@@ -4,11 +4,15 @@
 - [Variables](#variables)
   - [Partial assignments](#partial-assignments)
   - [Variable type annotations](#variable-type-annotations)
-- [Functions](#functions) TODO
-  - [Function type annotations](#function-type-annotations) TODO
-  - [Function heads](#function-heads) TODO
-  - [Referencing functions](#referencing-function) TODO
+- [Functions](#functions)
+  - [Exporting functions](#exporting-functions)
+  - [Function type annotations](#function-type-annotations)
+  - [Function heads](#function-heads)
+  - [Function overloading](#function-overloading)
+  - [Referencing functions](#referencing-function)
+  - [Labelled arguments](#labelled-arguments)
 - [Operators](#operators)
+  - [Pipe](#pipe)
 - [Constants](#constants)
 - [Blocks](#blocks) TODO
 - [Data types](#data-types)
@@ -31,7 +35,7 @@
   - [First class modules](#first-class-modules) TODO
 
 
-## Variables
+# Variables
 
 #### Erlang
 
@@ -55,7 +59,7 @@ let size = size + 100
 let size = 1 // size now refers to 1
 ```
 
-### Partial assignments
+## Partial assignments
 
 #### Erlang
 
@@ -76,7 +80,7 @@ let [element] = some_list // Compile error! Partial pattern
 assert [element] = some_list
 ```
 
-### Variables type annotations
+## Variables type annotations
 
 #### Erlang
 
@@ -97,8 +101,145 @@ Gleam does not need annotations to type check your code, but you may find it
 useful to annotate variables to hint to the compiler that you want a specific
 type to be inferred.
 
+# Functions
 
-## Comments
+Gleam's top level functions are declared using a syntax similar to Rust or
+JavaScript.
+
+#### Erlang
+```erlang
+my_function(X) ->
+    X + 1.
+```
+
+#### Gleam
+```rust,noplaypen
+fn my_function(x) {
+  x + 1
+}
+```
+
+## Exporting functions
+
+In Gleam functions are exported with the `pub` keyword. An export statement is
+not required.
+
+#### Erlang
+```erlang
+-export([my_function/1]).
+
+my_function(X) ->
+    X + 1.
+```
+
+#### Gleam
+```rust,noplaypen
+pub fn my_function(x) {
+  x + 1
+}
+```
+
+## Function type annotations
+
+Functions can optionally have their argument and return types annotated.
+
+#### Erlang
+```erlang
+-spec my_function(integer()) :: integer().
+my_function(X) ->
+    X + 1.
+```
+
+#### Gleam
+```rust,noplaypen
+fn my_function(x: Int) -> Int {
+  x + 1
+}
+```
+
+Unlike in Erlang these type annotations will always be checked by the compiler
+and have to be correct for compilation to succeed.
+
+## Function heads
+
+Unlike Erlang (but similar to Core Erlang) Gleam does not support multiple
+function heads, so to pattern match on an argument a case expression must be
+used.
+
+#### Erlang
+```erlang
+identify(1) ->
+    "one";
+identify(2) ->
+    "two";
+identify(3) ->
+    "three";
+identify(_) ->
+    "dunno".
+```
+
+#### Gleam
+```rust,noplaypen
+fn identify(x) {
+  case x {
+    1 -> "one"
+    2 -> "two"
+    3 -> "three"
+    _ -> "dunno"
+  }
+}
+```
+
+## Function overloading
+
+Gleam does not support function overloading, so there can only be 1 function
+with a given name, and the function can only have a single implementation for
+the types it accepts.
+
+
+## Referencing functions
+
+Gleam has a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.
+
+#### Erlang
+```erlang
+identity(X) ->
+  X.
+
+main() ->
+  Func = fun identity/1,
+  Func(100).
+```
+
+#### Gleam
+```rust,noplaypen
+fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100)
+}
+```
+
+Gleam's parser allows functions returned from functions to be called directly
+without adding parenthesis around the function call.
+
+
+#### Erlang
+```erlang
+(((some_function(0))(1))(2))(3)
+```
+
+#### Gleam
+```rust,noplaypen
+some_function(0)(1)(2)(3)
+```
+
+
+# Comments
 
 #### Erlang
 
@@ -126,7 +267,7 @@ comments starting with `////` are used to document the current module.
 const answer: Int = 42
 ```
 
-## Operators
+# Operators
 
 | Operator         | Erlang    | Gleam | Notes
 | ---              | ---       | ---   | ---
@@ -156,7 +297,28 @@ const answer: Int = 42
 | Modulo           | `rem`     | `%`   | In Gleam both values must be ints
 | Pipe             |           | `⎮>`  | See [the pipe section](#pipe) for details
 
-## Constants
+## Pipe
+
+The pipe operator can be used to chain together function calls so that they
+read from top to bottom.
+
+#### Erlang
+```erlang
+X1 = trim(Input),
+X2 = csv:parse(X1, <<",">>)
+ledger:from_list(X2).
+```
+
+#### Gleam
+```rust,noplaypen
+input
+|> trim
+|> csv.parse(",")
+|> ledger.from_list
+```
+
+
+# Constants
 
 #### Erlang
 
@@ -192,9 +354,11 @@ fn main() {
 }
 ```
 
-## Data types
+# Blocks
 
-### Strings
+# Data types
+
+## Strings
 
 All strings in Gleam are UTF-8 encoded binaries.
 
@@ -210,7 +374,7 @@ All strings in Gleam are UTF-8 encoded binaries.
 "Hellø, world!"
 ```
 
-### Tuples
+## Tuples
 
 Tuples are very useful in Gleam as they're the only collection data type that allows for mixed
 types of elements in the collection. The syntax for a tuple literal - `tuple("a", "b")` - can be
@@ -230,7 +394,7 @@ let my_tuple = tuple("username", "password", 10)
 let tuple(_, password, _) = my_tuple
 ```
 
-### Lists
+## Lists
 
 Lists in Erlang are allowed to be of mixed types, but not in Gleam. They retain all of the same
 performance sematics.
@@ -256,7 +420,7 @@ let [1, second_element, ..] = list
 [1.0, ..list] // Type error!
 ```
 
-### Atoms
+## Atoms
 
 In Erlang atoms can be created as needed, but in Gleam all atoms must be defined as values in a
 custom type before being used. Any value in a type definition in Gleam that does not have any
@@ -291,22 +455,20 @@ Ok(True)
 Error(False)
 ```
 
-### Maps
+## Maps
 
 In Erlang, maps can have keys and values of any type, and they can be mixed in a given map. In
 Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given
 map and all values must be of the same type in a given map.
 
 There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally
-not used much in Gleam. You're more often going to use custom types (which are analagous to Erlang
-Records) or lists of two element tuples (which are `proplist`s or `orddict`s in Erlang).
+not used much in Gleam, custom types are more common.
 
 #### Erlang
 
 ```erlang
 #{"key1" => "value1", "key2" => "value2"}.
-
-#{["key1"] => "value1", "key2" => "value2"}.
+#{"key1" => "value1", "key2" => 2}.
 ```
 
 #### Gleam
@@ -314,14 +476,16 @@ Records) or lists of two element tuples (which are `proplist`s or `orddict`s in 
 ```rust,noplaypen
 import gleam/map
 
-map.from_list([tuple("key1", "value1"), tuple("key2", "value2")])
 
-map.from_list([tuple(["key1"], "value1"), tuple("key2", "value2")]) \\ Type error!
+map.from_list([tuple("key1", "value1"), tuple("key2", "value2")])
+map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
 ```
 
-## Custom types
+# Type alises
 
-### Records
+# Custom types
+
+## Records
 
 In Erlang, Records are a specialized data type built on a tuple. Gleam does not have anything
 called a `record`, but custom types can be used in Gleam in much the same way that records are
@@ -334,10 +498,11 @@ number of named fields, and the values in those fields can be of differing types
 #### Erlang
 
 ```erlang
--record(person, {age, name}).
-
+-record(person, {age :: integer(),
+                 name :: binary()}).
+```
+```erlang
 Person = #person{name="name", age=35}.
-
 Name = #Person.name.
 ```
 
@@ -347,9 +512,12 @@ Name = #Person.name.
 type Person {
   Person(age: Int, name: String)
 }
-
+```
+```rust,noplaypen
 let person = Person(name: "name", age: 35)
-
 let name = person.name
 ```
 
+# Flow control
+
+# Modules

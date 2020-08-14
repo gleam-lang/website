@@ -1236,14 +1236,21 @@ Gleam by comparing it to another language which may already know.</p>
 <li><a href="cheatsheets/gleam-for-erlang-users.html#variable-type-annotations">Variable type annotations</a></li>
 </ul>
 </li>
-<li><a href="cheatsheets/gleam-for-erlang-users.html#functions">Functions</a> TODO
+<li><a href="cheatsheets/gleam-for-erlang-users.html#functions">Functions</a>
 <ul>
-<li><a href="cheatsheets/gleam-for-erlang-users.html#function-type-annotations">Function type annotations</a> TODO</li>
-<li><a href="cheatsheets/gleam-for-erlang-users.html#function-heads">Function heads</a> TODO</li>
-<li><a href="cheatsheets/gleam-for-erlang-users.html#referencing-function">Referencing functions</a> TODO</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#exporting-functions">Exporting functions</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#function-type-annotations">Function type annotations</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#function-heads">Function heads</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#function-overloading">Function overloading</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#referencing-function">Referencing functions</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#labelled-arguments">Labelled arguments</a></li>
 </ul>
 </li>
-<li><a href="cheatsheets/gleam-for-erlang-users.html#operators">Operators</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#operators">Operators</a>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#pipe">Pipe</a></li>
+</ul>
+</li>
 <li><a href="cheatsheets/gleam-for-erlang-users.html#constants">Constants</a></li>
 <li><a href="cheatsheets/gleam-for-erlang-users.html#blocks">Blocks</a> TODO</li>
 <li><a href="cheatsheets/gleam-for-erlang-users.html#data-types">Data types</a>
@@ -1277,7 +1284,7 @@ Gleam by comparing it to another language which may already know.</p>
 </ul>
 </li>
 </ul>
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
+<h1><a class="header" href="#variables" id="variables">Variables</a></h1>
 <h4><a class="header" href="#erlang" id="erlang">Erlang</a></h4>
 <p>In Erlang variables are written with a capital letter, and can only be
 assigned once.</p>
@@ -1292,7 +1299,7 @@ reassigned.</p>
 let size = size + 100
 let size = 1 // size now refers to 1
 </code></pre>
-<h3><a class="header" href="#partial-assignments" id="partial-assignments">Partial assignments</a></h3>
+<h2><a class="header" href="#partial-assignments" id="partial-assignments">Partial assignments</a></h2>
 <h4><a class="header" href="#erlang-1" id="erlang-1">Erlang</a></h4>
 <p>In Erlang a partial pattern that does not match all possible values can be
 used to assert that a given term has a specific shape.</p>
@@ -1304,7 +1311,7 @@ patterns.</p>
 <pre><code class="language-rust noplaypen">let [element] = some_list // Compile error! Partial pattern
 assert [element] = some_list
 </code></pre>
-<h3><a class="header" href="#variables-type-annotations" id="variables-type-annotations">Variables type annotations</a></h3>
+<h2><a class="header" href="#variables-type-annotations" id="variables-type-annotations">Variables type annotations</a></h2>
 <h4><a class="header" href="#erlang-2" id="erlang-2">Erlang</a></h4>
 <p>In Erlang it's not possible to give type annotations to variables.</p>
 <h4><a class="header" href="#gleam-3" id="gleam-3">Gleam</a></h4>
@@ -1316,12 +1323,109 @@ assigned value.</p>
 <p>Gleam does not need annotations to type check your code, but you may find it
 useful to annotate variables to hint to the compiler that you want a specific
 type to be inferred.</p>
-<h2><a class="header" href="#comments-1" id="comments-1">Comments</a></h2>
+<h1><a class="header" href="#functions" id="functions">Functions</a></h1>
+<p>Gleam's top level functions are declared using a syntax similar to Rust or
+JavaScript.</p>
 <h4><a class="header" href="#erlang-3" id="erlang-3">Erlang</a></h4>
+<pre><code class="language-erlang">my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-4" id="gleam-4">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn my_function(x) {
+  x + 1
+}
+</code></pre>
+<h2><a class="header" href="#exporting-functions" id="exporting-functions">Exporting functions</a></h2>
+<p>In Gleam functions are exported with the <code>pub</code> keyword. An export statement is
+not required.</p>
+<h4><a class="header" href="#erlang-4" id="erlang-4">Erlang</a></h4>
+<pre><code class="language-erlang">-export([my_function/1]).
+
+my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-5" id="gleam-5">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">pub fn my_function(x) {
+  x + 1
+}
+</code></pre>
+<h2><a class="header" href="#function-type-annotations" id="function-type-annotations">Function type annotations</a></h2>
+<p>Functions can optionally have their argument and return types annotated.</p>
+<h4><a class="header" href="#erlang-5" id="erlang-5">Erlang</a></h4>
+<pre><code class="language-erlang">-spec my_function(integer()) :: integer().
+my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-6" id="gleam-6">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn my_function(x: Int) -&gt; Int {
+  x + 1
+}
+</code></pre>
+<p>Unlike in Erlang these type annotations will always be checked by the compiler
+and have to be correct for compilation to succeed.</p>
+<h2><a class="header" href="#function-heads" id="function-heads">Function heads</a></h2>
+<p>Unlike Erlang (but similar to Core Erlang) Gleam does not support multiple
+function heads, so to pattern match on an argument a case expression must be
+used.</p>
+<h4><a class="header" href="#erlang-6" id="erlang-6">Erlang</a></h4>
+<pre><code class="language-erlang">identify(1) -&gt;
+    &quot;one&quot;;
+identify(2) -&gt;
+    &quot;two&quot;;
+identify(3) -&gt;
+    &quot;three&quot;;
+identify(_) -&gt;
+    &quot;dunno&quot;.
+</code></pre>
+<h4><a class="header" href="#gleam-7" id="gleam-7">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn identify(x) {
+  case x {
+    1 -&gt; &quot;one&quot;
+    2 -&gt; &quot;two&quot;
+    3 -&gt; &quot;three&quot;
+    _ -&gt; &quot;dunno&quot;
+  }
+}
+</code></pre>
+<h2><a class="header" href="#function-overloading" id="function-overloading">Function overloading</a></h2>
+<p>Gleam does not support function overloading, so there can only be 1 function
+with a given name, and the function can only have a single implementation for
+the types it accepts.</p>
+<h2><a class="header" href="#referencing-functions" id="referencing-functions">Referencing functions</a></h2>
+<p>Gleam has a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.</p>
+<h4><a class="header" href="#erlang-7" id="erlang-7">Erlang</a></h4>
+<pre><code class="language-erlang">identity(X) -&gt;
+  X.
+
+main() -&gt;
+  Func = fun identity/1,
+  Func(100).
+</code></pre>
+<h4><a class="header" href="#gleam-8" id="gleam-8">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100)
+}
+</code></pre>
+<p>Gleam's parser allows functions returned from functions to be called directly
+without adding parenthesis around the function call.</p>
+<h4><a class="header" href="#erlang-8" id="erlang-8">Erlang</a></h4>
+<pre><code class="language-erlang">(((some_function(0))(1))(2))(3)
+</code></pre>
+<h4><a class="header" href="#gleam-9" id="gleam-9">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">some_function(0)(1)(2)(3)
+</code></pre>
+<h1><a class="header" href="#comments-1" id="comments-1">Comments</a></h1>
+<h4><a class="header" href="#erlang-9" id="erlang-9">Erlang</a></h4>
 <p>In Erlang comments are written with a <code>%</code> prefix.</p>
 <pre><code class="language-erlang">% Hello, Joe!
 </code></pre>
-<h4><a class="header" href="#gleam-4" id="gleam-4">Gleam</a></h4>
+<h4><a class="header" href="#gleam-10" id="gleam-10">Gleam</a></h4>
 <p>In Gleam comments are written with a <code>//</code> prefix.</p>
 <pre><code class="language-rust noplaypen">// Hello, Joe!
 </code></pre>
@@ -1332,7 +1436,7 @@ comments starting with <code>////</code> are used to document the current module
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 </code></pre>
-<h2><a class="header" href="#operators" id="operators">Operators</a></h2>
+<h1><a class="header" href="#operators" id="operators">Operators</a></h1>
 <table><thead><tr><th>Operator</th><th>Erlang</th><th>Gleam</th><th>Notes</th></tr></thead><tbody>
 <tr><td>Equal</td><td><code>=:=</code></td><td><code>==</code></td><td>In Gleam both values must be of the same type</td></tr>
 <tr><td>Equal</td><td><code>==</code></td><td></td><td></td></tr>
@@ -1360,8 +1464,22 @@ const answer: Int = 42
 <tr><td>Modulo</td><td><code>rem</code></td><td><code>%</code></td><td>In Gleam both values must be ints</td></tr>
 <tr><td>Pipe</td><td></td><td><code>⎮&gt;</code></td><td>See <a href="cheatsheets/gleam-for-erlang-users.html#pipe">the pipe section</a> for details</td></tr>
 </tbody></table>
-<h2><a class="header" href="#constants-1" id="constants-1">Constants</a></h2>
-<h4><a class="header" href="#erlang-4" id="erlang-4">Erlang</a></h4>
+<h2><a class="header" href="#pipe" id="pipe">Pipe</a></h2>
+<p>The pipe operator can be used to chain together function calls so that they
+read from top to bottom.</p>
+<h4><a class="header" href="#erlang-10" id="erlang-10">Erlang</a></h4>
+<pre><code class="language-erlang">X1 = trim(Input),
+X2 = csv:parse(X1, &lt;&lt;&quot;,&quot;&gt;&gt;)
+ledger:from_list(X2).
+</code></pre>
+<h4><a class="header" href="#gleam-11" id="gleam-11">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">input
+|&gt; trim
+|&gt; csv.parse(&quot;,&quot;)
+|&gt; ledger.from_list
+</code></pre>
+<h1><a class="header" href="#constants-1" id="constants-1">Constants</a></h1>
+<h4><a class="header" href="#erlang-11" id="erlang-11">Erlang</a></h4>
 <p>In Erlang macros can be defined to name literals we may want to use in
 multiple places. They can only be used within the current module</p>
 <pre><code class="language-erlang">-define(the_answer, 42).
@@ -1369,7 +1487,7 @@ multiple places. They can only be used within the current module</p>
 main() -&gt;
   ?the_answer.
 </code></pre>
-<h4><a class="header" href="#gleam-5" id="gleam-5">Gleam</a></h4>
+<h4><a class="header" href="#gleam-12" id="gleam-12">Gleam</a></h4>
 <p>In Gleam constants can be used to achieve the same.</p>
 <pre><code class="language-rust noplaypen">const the_answer = 42
 
@@ -1384,45 +1502,46 @@ fn main() {
   other_module.the_answer
 }
 </code></pre>
-<h2><a class="header" href="#data-types" id="data-types">Data types</a></h2>
-<h3><a class="header" href="#strings" id="strings">Strings</a></h3>
+<h1><a class="header" href="#blocks" id="blocks">Blocks</a></h1>
+<h1><a class="header" href="#data-types" id="data-types">Data types</a></h1>
+<h2><a class="header" href="#strings" id="strings">Strings</a></h2>
 <p>All strings in Gleam are UTF-8 encoded binaries.</p>
-<h4><a class="header" href="#erlang-5" id="erlang-5">Erlang</a></h4>
+<h4><a class="header" href="#erlang-12" id="erlang-12">Erlang</a></h4>
 <pre><code class="language-erlang">&lt;&lt;&quot;Hellø, world!&quot;/utf8&gt;&gt;.
 </code></pre>
-<h4><a class="header" href="#gleam-6" id="gleam-6">Gleam</a></h4>
+<h4><a class="header" href="#gleam-13" id="gleam-13">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">&quot;Hellø, world!&quot;
 </code></pre>
-<h3><a class="header" href="#tuples" id="tuples">Tuples</a></h3>
+<h2><a class="header" href="#tuples" id="tuples">Tuples</a></h2>
 <p>Tuples are very useful in Gleam as they're the only collection data type that allows for mixed
 types of elements in the collection. The syntax for a tuple literal - <code>tuple(&quot;a&quot;, &quot;b&quot;)</code> - can be
 confused for a function call, which it is not!</p>
-<h4><a class="header" href="#erlang-6" id="erlang-6">Erlang</a></h4>
+<h4><a class="header" href="#erlang-13" id="erlang-13">Erlang</a></h4>
 <pre><code class="language-erlang">Tuple = {&quot;username&quot;, &quot;password&quot;, 10}.
 {_, Password, _} = Tuple.
 </code></pre>
-<h4><a class="header" href="#gleam-7" id="gleam-7">Gleam</a></h4>
+<h4><a class="header" href="#gleam-14" id="gleam-14">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">let my_tuple = tuple(&quot;username&quot;, &quot;password&quot;, 10)
 let tuple(_, password, _) = my_tuple
 </code></pre>
-<h3><a class="header" href="#lists" id="lists">Lists</a></h3>
+<h2><a class="header" href="#lists" id="lists">Lists</a></h2>
 <p>Lists in Erlang are allowed to be of mixed types, but not in Gleam. They retain all of the same
 performance sematics.</p>
 <p>The <code>cons</code> operator works the same way both for pattern matching and for appending elements to the
 head of a list, but it uses a different syntax.</p>
-<h4><a class="header" href="#erlang-7" id="erlang-7">Erlang</a></h4>
+<h4><a class="header" href="#erlang-14" id="erlang-14">Erlang</a></h4>
 <pre><code class="language-erlang">List0 = [2, 3, 4].
 List1 = [1 | List0].
 [1, SecondElement | _] = List1.
 [1.0 | List1].
 </code></pre>
-<h4><a class="header" href="#gleam-8" id="gleam-8">Gleam</a></h4>
+<h4><a class="header" href="#gleam-15" id="gleam-15">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
 [1.0, ..list] // Type error!
 </code></pre>
-<h3><a class="header" href="#atoms" id="atoms">Atoms</a></h3>
+<h2><a class="header" href="#atoms" id="atoms">Atoms</a></h2>
 <p>In Erlang atoms can be created as needed, but in Gleam all atoms must be defined as values in a
 custom type before being used. Any value in a type definition in Gleam that does not have any
 arguments is an atom in Erlang.</p>
@@ -1430,14 +1549,14 @@ arguments is an atom in Erlang.</p>
 Gleam that incorporate them, such as <code>ok</code>, <code>error</code> and booleans.</p>
 <p>In general, atoms are not used much in Gleam, and are mostly used for boolens, <code>ok</code> and <code>error</code>
 result types, and defining custom types.</p>
-<h4><a class="header" href="#erlang-8" id="erlang-8">Erlang</a></h4>
+<h4><a class="header" href="#erlang-15" id="erlang-15">Erlang</a></h4>
 <pre><code class="language-erlang">Var = my_new_var.
 
 {ok, true}.
 
 {error, false}.
 </code></pre>
-<h4><a class="header" href="#gleam-9" id="gleam-9">Gleam</a></h4>
+<h4><a class="header" href="#gleam-16" id="gleam-16">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">type MyNewType {
   MyNewVar
 }
@@ -1447,49 +1566,49 @@ Ok(True)
 
 Error(False)
 </code></pre>
-<h3><a class="header" href="#maps" id="maps">Maps</a></h3>
+<h2><a class="header" href="#maps" id="maps">Maps</a></h2>
 <p>In Erlang, maps can have keys and values of any type, and they can be mixed in a given map. In
 Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given
 map and all values must be of the same type in a given map.</p>
 <p>There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally
-not used much in Gleam. You're more often going to use custom types (which are analagous to Erlang
-Records) or lists of two element tuples (which are <code>proplist</code>s or <code>orddict</code>s in Erlang).</p>
-<h4><a class="header" href="#erlang-9" id="erlang-9">Erlang</a></h4>
+not used much in Gleam, custom types are more common.</p>
+<h4><a class="header" href="#erlang-16" id="erlang-16">Erlang</a></h4>
 <pre><code class="language-erlang">#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;}.
-
-#{[&quot;key1&quot;] =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;}.
+#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; 2}.
 </code></pre>
-<h4><a class="header" href="#gleam-10" id="gleam-10">Gleam</a></h4>
+<h4><a class="header" href="#gleam-17" id="gleam-17">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">import gleam/map
 
-map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, &quot;value2&quot;)])
 
-map.from_list([tuple([&quot;key1&quot;], &quot;value1&quot;), tuple(&quot;key2&quot;, &quot;value2&quot;)]) \\ Type error!
+map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, &quot;value2&quot;)])
+map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, 2)]) // Type error!
 </code></pre>
-<h2><a class="header" href="#custom-types-1" id="custom-types-1">Custom types</a></h2>
-<h3><a class="header" href="#records" id="records">Records</a></h3>
+<h1><a class="header" href="#type-alises" id="type-alises">Type alises</a></h1>
+<h1><a class="header" href="#custom-types-1" id="custom-types-1">Custom types</a></h1>
+<h2><a class="header" href="#records" id="records">Records</a></h2>
 <p>In Erlang, Records are a specialized data type built on a tuple. Gleam does not have anything
 called a <code>record</code>, but custom types can be used in Gleam in much the same way that records are
 used in Erlang, even though custom types don't actually define a <code>record</code> in Erlang when it is
 compiled.</p>
 <p>The important thing is that a custom type allows you to define a collection data type with a fixed
 number of named fields, and the values in those fields can be of differing types.</p>
-<h4><a class="header" href="#erlang-10" id="erlang-10">Erlang</a></h4>
-<pre><code class="language-erlang">-record(person, {age, name}).
-
-Person = #person{name=&quot;name&quot;, age=35}.
-
+<h4><a class="header" href="#erlang-17" id="erlang-17">Erlang</a></h4>
+<pre><code class="language-erlang">-record(person, {age :: integer(),
+                 name :: binary()}).
+</code></pre>
+<pre><code class="language-erlang">Person = #person{name=&quot;name&quot;, age=35}.
 Name = #Person.name.
 </code></pre>
-<h4><a class="header" href="#gleam-11" id="gleam-11">Gleam</a></h4>
+<h4><a class="header" href="#gleam-18" id="gleam-18">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">type Person {
   Person(age: Int, name: String)
 }
-
-let person = Person(name: &quot;name&quot;, age: 35)
-
+</code></pre>
+<pre><code class="language-rust noplaypen">let person = Person(name: &quot;name&quot;, age: 35)
 let name = person.name
 </code></pre>
+<h1><a class="header" href="#flow-control" id="flow-control">Flow control</a></h1>
+<h1><a class="header" href="#modules" id="modules">Modules</a></h1>
 <h1><a class="header" href="#faqs" id="faqs">FAQs</a></h1>
 <ul>
 <li><a href="faqs.html#why-is-the-compiler-written-in-rust">Why is the compiler written in Rust?</a></li>
