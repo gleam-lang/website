@@ -100,6 +100,38 @@ p // => 50
 ```
 
 
+## Opaque types
+
+At times it may be useful to create a type and make the constructors and
+fields private so that users of this type can only use the type through
+publically exported functions.
+
+For example we can create an `Counter` type which holds an int which can be
+incremented. We don't want the user to alter the int value other than by
+incrementing it, so we can make the opaque opaque to prevent them from being
+able to do this.
+
+```rust,noplaypen
+// The type is defined with the opaque keyword
+pub opaque type Counter {
+  Counter(value: Int)
+}
+
+pub fn new() {
+  Counter(0)
+}
+
+pub fn increment(counter: Counter) {
+  Counter(counter.value + 1)
+}
+```
+
+Because the `Counter` type has been marked as `opaque` it is not possible for
+code in other modules to construct or pattern match on counter values or
+access the `value` field. Instead other modules have to manipulate the opaque
+type using the exported functions from the module, in this case `new` and
+`increment`.
+
 ## Commonly used custom types
 
 ### `Bool`
