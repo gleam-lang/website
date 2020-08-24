@@ -20,6 +20,7 @@
   - [Modules](./tour/modules.md)
   - [Custom types](./tour/custom-types.md)
   - [Try](./tour/try.md)
+  - [Todo](./tour/todo.md)
   - [Constants](./tour/constants.md)
   - [Type aliases](./tour/type-aliases.md)
   - [Bit strings](./tour/bit-strings.md)
