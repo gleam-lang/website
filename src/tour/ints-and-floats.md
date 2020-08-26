@@ -29,6 +29,12 @@ Gleam has several operators that work with Ints.
 2 <= 1 // => False
 ```
 
+Underscores can be added to Ints for clarity.
+
+```rust,noplaypen
+1_000_000 // One million
+```
+
 ## Floats
 
 Floats are numbers that have a decimal point.
@@ -51,4 +57,10 @@ Floats also have their own set of operators.
 2.0 <. 1.0  // => False
 2.0 >=. 1.0 // => True
 2.0 <=. 1.0 // => False
+```
+
+Underscores can also be added to Floats for clarity.
+
+```rust,noplaypen
+1_000_000.0 // One million
 ```
