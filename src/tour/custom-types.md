@@ -132,6 +132,35 @@ access the `value` field. Instead other modules have to manipulate the opaque
 type using the exported functions from the module, in this case `new` and
 `increment`.
 
+
+## Record updates
+
+Gleam provides a dedicated syntax for updating some of the fields of a custom
+type record.
+
+```rust,noplaypen
+pub type Person {
+  Person(
+    name: String,
+    gender: Option(String),
+    shoe_size: Int,
+    age: Int,
+    is_happy: Bool,
+  )
+}
+
+pub fn have_birthday(person) {
+  // It's this person's birthday, so increment their age and
+  // make them happy
+  Person(..person, age: person.age + 1, is_happy: true)
+}
+```
+
+As Gleam records are immutable the update syntax does not alter the fields in
+place, instead it created a new record with the values of the initial record
+with the new values added.
+
+
 ## Commonly used custom types
 
 ### `Bool`
