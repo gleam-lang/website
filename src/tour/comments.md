@@ -29,7 +29,6 @@ pub fn add(x, y) {
 Comments may also be indented:
 
 ```rust,noplaypen
-
 pub fn multiply(x, y) {
   // here we are multiplying x by y
   x * y 
