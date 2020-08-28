@@ -150,10 +150,7 @@
                         <h1><a class="header" href="#constants" id="constants">Constants</a></h1>
 <p>Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>pub const start_year: = 2101
+<pre><code class="language-rust noplaypen">pub const start_year: = 2101
 pub const end_year: = 2111
 
 pub fn is_before(year: Int) -&gt; Bool {
@@ -163,16 +160,12 @@ pub fn is_before(year: Int) -&gt; Bool {
 pub fn is_during(year: Int) -&gt; Bool {
   start_year &lt;= year &amp;&amp; year &lt;= end_year
 }
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>Like all values in Gleam constants are immutable and their values cannot be
 changed, so they cannot be used as global mutable state.</p>
 <p>When a constant is referenced the value is inlined by the compiler, so they
 can be used in case expression guards.</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>pub const start_year: Int = 2101
+<pre><code class="language-rust noplaypen">pub const start_year: Int = 2101
 pub const end_year: Int = 2111
 
 pub describe(year: Int) -&gt; String {
@@ -182,8 +175,7 @@ pub describe(year: Int) -&gt; String {
     _ -&gt; &quot;During&quot;
   }
 }
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 
                     </main>
 
