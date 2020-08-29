@@ -196,7 +196,7 @@ sponsor Gleam development for $20 or more, thank you!</p>
 project</a>.</p>
 <h1><a class="header" href="#gleams-principles" id="gleams-principles">Gleam's Principles</a></h1>
 <p>These are Gleam's guiding principles. We believe these ideas have value, and
-all decisions made in the development of Gleam and it's ecosystem should
+all decisions made in the development of Gleam and its ecosystem should
 contribute to these principles.</p>
 <h3><a class="header" href="#be-safe" id="be-safe">Be safe</a></h3>
 <p>An expressive type system inspired by the ML family of languages helps us find
@@ -548,7 +548,7 @@ so <code>case</code> supports having multiple subjects.</p>
 </code></pre>
 <h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
 <p>Sometimes when pattern matching we want to assign a name to a value while
-specifying it's shape at the same time. We can do this using the <code>as</code> keyword.</p>
+specifying its shape at the same time. We can do this using the <code>as</code> keyword.</p>
 <pre><code class="language-rust noplaypen">case xs {
   [[_, ..] as inner_list] -&gt; inner_list
   other -&gt; []
@@ -881,6 +881,28 @@ code in other modules to construct or pattern match on counter values or
 access the <code>value</code> field. Instead other modules have to manipulate the opaque
 type using the exported functions from the module, in this case <code>new</code> and
 <code>increment</code>.</p>
+<h2><a class="header" href="#record-updates" id="record-updates">Record updates</a></h2>
+<p>Gleam provides a dedicated syntax for updating some of the fields of a custom
+type record.</p>
+<pre><code class="language-rust noplaypen">pub type Person {
+  Person(
+    name: String,
+    gender: Option(String),
+    shoe_size: Int,
+    age: Int,
+    is_happy: Bool,
+  )
+}
+
+pub fn have_birthday(person) {
+  // It's this person's birthday, so increment their age and
+  // make them happy
+  Person(..person, age: person.age + 1, is_happy: true)
+}
+</code></pre>
+<p>As Gleam records are immutable the update syntax does not alter the fields in
+place, instead it created a new record with the values of the initial record
+with the new values added.</p>
 <h2><a class="header" href="#commonly-used-custom-types" id="commonly-used-custom-types">Commonly used custom types</a></h2>
 <h3><a class="header" href="#bool-1" id="bool-1"><code>Bool</code></a></h3>
 <pre><code class="language-rust noplaypen">pub type Bool {
