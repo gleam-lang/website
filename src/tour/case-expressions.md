@@ -96,7 +96,7 @@ case x, y {
 ## Assigning names to sub-patterns
 
 Sometimes when pattern matching we want to assign a name to a value while
-specifying it's shape at the same time. We can do this using the `as` keyword.
+specifying its shape at the same time. We can do this using the `as` keyword.
 
 ```rust,noplaypen
 case xs {
