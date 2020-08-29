@@ -1,7 +1,7 @@
 # Gleam's Principles
 
 These are Gleam's guiding principles. We believe these ideas have value, and
-all decisions made in the development of Gleam and it's ecosystem should
+all decisions made in the development of Gleam and its ecosystem should
 contribute to these principles.
 
 ### Be safe
