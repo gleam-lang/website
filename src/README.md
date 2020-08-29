@@ -42,6 +42,7 @@ sponsor Gleam development for $20 or more, thank you!
 - [Arian Daneshvar](https://github.com/bees)
 - [Ben Myles](https://github.com/benmyles)
 - [Bryan Paxton](https://github.com/starbelly)
+- [Florian Kraft](https://github.com/floriank)
 - [Hendrik Richter](https://github.com/hendi)
 - [Ingmar Gagen](https://github.com/igagen)
 - [Jechol Lee](https://github.com/jechol)
@@ -49,7 +50,6 @@ sponsor Gleam development for $20 or more, thank you!
 - [José Valim](https://github.com/josevalim)
 - [Michael Jones](https://github.com/michaeljones)
 - [Wojtek Mach](https://github.com/wojtekmach)
-- [ontofractal](https://github.com/ontofractal)
 
 If you would like to support Gleam please consider [sponsoring the
 project](https://github.com/sponsors/lpil).
