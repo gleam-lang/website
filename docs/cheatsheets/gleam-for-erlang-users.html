@@ -182,7 +182,7 @@
 <li><a href="#maps">Maps</a></li>
 </ul>
 </li>
-<li><a href="#type-aliases">Type aliases</a> TODO</li>
+<li><a href="#type-aliases">Type aliases</a></li>
 <li><a href="#custom-types">Custom types</a>
 <ul>
 <li><a href="#records">Records</a></li>
@@ -524,7 +524,14 @@ not used much in Gleam, custom types are more common.</p>
 map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, &quot;value2&quot;)])
 map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, 2)]) // Type error!
 </code></pre>
-<h1><a class="header" href="#type-alises" id="type-alises">Type alises</a></h1>
+<h1><a class="header" href="#type-aliases" id="type-aliases">Type aliases</a></h1>
+<h4><a class="header" href="#erlang-18" id="erlang-18">Erlang</a></h4>
+<pre><code class="language-erlang">-type scores() :: list(integer()).
+</code></pre>
+<h4><a class="header" href="#gleam-18" id="gleam-18">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">pub type Scores =
+  List(Int)
+</code></pre>
 <h1><a class="header" href="#custom-types" id="custom-types">Custom types</a></h1>
 <h2><a class="header" href="#records" id="records">Records</a></h2>
 <p>In Erlang, Records are a specialized data type built on a tuple. Gleam does not have anything
@@ -533,14 +540,14 @@ used in Erlang, even though custom types don't actually define a <code>record</c
 compiled.</p>
 <p>The important thing is that a custom type allows you to define a collection data type with a fixed
 number of named fields, and the values in those fields can be of differing types.</p>
-<h4><a class="header" href="#erlang-18" id="erlang-18">Erlang</a></h4>
+<h4><a class="header" href="#erlang-19" id="erlang-19">Erlang</a></h4>
 <pre><code class="language-erlang">-record(person, {age :: integer(),
                  name :: binary()}).
 </code></pre>
 <pre><code class="language-erlang">Person = #person{name=&quot;name&quot;, age=35}.
 Name = #Person.name.
 </code></pre>
-<h4><a class="header" href="#gleam-18" id="gleam-18">Gleam</a></h4>
+<h4><a class="header" href="#gleam-19" id="gleam-19">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">type Person {
   Person(age: Int, name: String)
 }

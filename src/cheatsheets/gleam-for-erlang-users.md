@@ -21,7 +21,7 @@
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
-- [Type aliases](#type-aliases) TODO
+- [Type aliases](#type-aliases)
 - [Custom types](#custom-types)
   - [Records](#records)
   - [Unions](#unions) TODO
@@ -510,7 +510,21 @@ map.from_list([tuple("key1", "value1"), tuple("key2", "value2")])
 map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
 ```
 
-# Type alises
+# Type aliases
+
+#### Erlang
+
+```erlang
+-type scores() :: list(integer()).
+```
+
+#### Gleam
+
+```rust,noplaypen
+pub type Scores =
+  List(Int)
+```
+
 
 # Custom types
 
