@@ -172,7 +172,7 @@
 </ul>
 </li>
 <li><a href="#constants">Constants</a></li>
-<li><a href="#blocks">Blocks</a> TODO</li>
+<li><a href="#blocks">Blocks</a></li>
 <li><a href="#data-types">Data types</a>
 <ul>
 <li><a href="#strings">Strings</a></li>
@@ -423,24 +423,45 @@ fn main() {
 }
 </code></pre>
 <h1><a class="header" href="#blocks" id="blocks">Blocks</a></h1>
+<h4><a class="header" href="#erlang-12" id="erlang-12">Erlang</a></h4>
+<p>In Erlang expressions can be grouped using parenthesis or <code>begin</code> and <code>end</code>.</p>
+<pre><code class="language-erlang">main() -&gt;
+  X = begin
+    print(1),
+    2
+  end,
+  Y = X * (X + 10).
+  Y.
+</code></pre>
+<h4><a class="header" href="#gleam-12" id="gleam-12">Gleam</a></h4>
+<p>In Gleam braces are used to group expressions.</p>
+<pre><code class="language-rust noplaypen">fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  let y = x * {x + 10}
+  y
+}
+</code></pre>
 <h1><a class="header" href="#data-types" id="data-types">Data types</a></h1>
 <h2><a class="header" href="#strings" id="strings">Strings</a></h2>
 <p>All strings in Gleam are UTF-8 encoded binaries.</p>
-<h4><a class="header" href="#erlang-12" id="erlang-12">Erlang</a></h4>
+<h4><a class="header" href="#erlang-13" id="erlang-13">Erlang</a></h4>
 <pre><code class="language-erlang">&lt;&lt;&quot;Hellø, world!&quot;/utf8&gt;&gt;.
 </code></pre>
-<h4><a class="header" href="#gleam-12" id="gleam-12">Gleam</a></h4>
+<h4><a class="header" href="#gleam-13" id="gleam-13">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">&quot;Hellø, world!&quot;
 </code></pre>
 <h2><a class="header" href="#tuples" id="tuples">Tuples</a></h2>
 <p>Tuples are very useful in Gleam as they're the only collection data type that allows for mixed
 types of elements in the collection. The syntax for a tuple literal - <code>tuple(&quot;a&quot;, &quot;b&quot;)</code> - can be
 confused for a function call, which it is not!</p>
-<h4><a class="header" href="#erlang-13" id="erlang-13">Erlang</a></h4>
+<h4><a class="header" href="#erlang-14" id="erlang-14">Erlang</a></h4>
 <pre><code class="language-erlang">Tuple = {&quot;username&quot;, &quot;password&quot;, 10}.
 {_, Password, _} = Tuple.
 </code></pre>
-<h4><a class="header" href="#gleam-13" id="gleam-13">Gleam</a></h4>
+<h4><a class="header" href="#gleam-14" id="gleam-14">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">let my_tuple = tuple(&quot;username&quot;, &quot;password&quot;, 10)
 let tuple(_, password, _) = my_tuple
 </code></pre>
@@ -449,13 +470,13 @@ let tuple(_, password, _) = my_tuple
 performance sematics.</p>
 <p>The <code>cons</code> operator works the same way both for pattern matching and for appending elements to the
 head of a list, but it uses a different syntax.</p>
-<h4><a class="header" href="#erlang-14" id="erlang-14">Erlang</a></h4>
+<h4><a class="header" href="#erlang-15" id="erlang-15">Erlang</a></h4>
 <pre><code class="language-erlang">List0 = [2, 3, 4].
 List1 = [1 | List0].
 [1, SecondElement | _] = List1.
 [1.0 | List1].
 </code></pre>
-<h4><a class="header" href="#gleam-14" id="gleam-14">Gleam</a></h4>
+<h4><a class="header" href="#gleam-15" id="gleam-15">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
@@ -469,14 +490,14 @@ arguments is an atom in Erlang.</p>
 Gleam that incorporate them, such as <code>ok</code>, <code>error</code> and booleans.</p>
 <p>In general, atoms are not used much in Gleam, and are mostly used for boolens, <code>ok</code> and <code>error</code>
 result types, and defining custom types.</p>
-<h4><a class="header" href="#erlang-15" id="erlang-15">Erlang</a></h4>
+<h4><a class="header" href="#erlang-16" id="erlang-16">Erlang</a></h4>
 <pre><code class="language-erlang">Var = my_new_var.
 
 {ok, true}.
 
 {error, false}.
 </code></pre>
-<h4><a class="header" href="#gleam-15" id="gleam-15">Gleam</a></h4>
+<h4><a class="header" href="#gleam-16" id="gleam-16">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">type MyNewType {
   MyNewVar
 }
@@ -492,11 +513,11 @@ Gleam, maps can have keys and values of any type, but all keys must be of the sa
 map and all values must be of the same type in a given map.</p>
 <p>There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally
 not used much in Gleam, custom types are more common.</p>
-<h4><a class="header" href="#erlang-16" id="erlang-16">Erlang</a></h4>
+<h4><a class="header" href="#erlang-17" id="erlang-17">Erlang</a></h4>
 <pre><code class="language-erlang">#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;}.
 #{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; 2}.
 </code></pre>
-<h4><a class="header" href="#gleam-16" id="gleam-16">Gleam</a></h4>
+<h4><a class="header" href="#gleam-17" id="gleam-17">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">import gleam/map
 
 
@@ -512,14 +533,14 @@ used in Erlang, even though custom types don't actually define a <code>record</c
 compiled.</p>
 <p>The important thing is that a custom type allows you to define a collection data type with a fixed
 number of named fields, and the values in those fields can be of differing types.</p>
-<h4><a class="header" href="#erlang-17" id="erlang-17">Erlang</a></h4>
+<h4><a class="header" href="#erlang-18" id="erlang-18">Erlang</a></h4>
 <pre><code class="language-erlang">-record(person, {age :: integer(),
                  name :: binary()}).
 </code></pre>
 <pre><code class="language-erlang">Person = #person{name=&quot;name&quot;, age=35}.
 Name = #Person.name.
 </code></pre>
-<h4><a class="header" href="#gleam-17" id="gleam-17">Gleam</a></h4>
+<h4><a class="header" href="#gleam-18" id="gleam-18">Gleam</a></h4>
 <pre><code class="language-rust noplaypen">type Person {
   Person(age: Int, name: String)
 }

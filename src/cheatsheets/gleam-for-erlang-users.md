@@ -14,7 +14,7 @@
 - [Operators](#operators)
   - [Pipe](#pipe)
 - [Constants](#constants)
-- [Blocks](#blocks) TODO
+- [Blocks](#blocks)
 - [Data types](#data-types)
   - [Strings](#strings)
   - [Tuples](#tuples)
@@ -355,6 +355,35 @@ fn main() {
 ```
 
 # Blocks
+
+#### Erlang
+
+In Erlang expressions can be grouped using parenthesis or `begin` and `end`.
+
+```erlang
+main() ->
+  X = begin
+    print(1),
+    2
+  end,
+  Y = X * (X + 10).
+  Y.
+```
+
+#### Gleam
+
+In Gleam braces are used to group expressions.
+
+```rust,noplaypen
+fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  let y = x * {x + 10}
+  y
+}
+```
 
 # Data types
 
