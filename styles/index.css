@@ -27,7 +27,6 @@ figure {
 
 * {
   box-sizing: border-box;
-  overflow-x: auto;
 }
 
 a:visited,
@@ -171,6 +170,7 @@ figure.highlight {
   box-shadow: var(--slight-shadow);
   max-width: 100%;
   background-color: var(--color-light-grey);
+  overflow-x: auto;
 }
 
 p code {
