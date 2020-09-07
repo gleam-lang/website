@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,7 +14,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
     />
-    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
   </head>
   <body>
     <nav class="pagenav content">
@@ -114,12 +116,13 @@
 
         The classic example program that prints "Hello, world!" to the console.
 
-        <pre><code class="language-rust">import gleam/io
+{% highlight rust %}
+import gleam/io
 
 pub fn main() {
   io.println("Hello, world!")
 }
-</code></pre>
+{% endhighlight %}
       </details>
 
       <details class="openable-example">
@@ -128,20 +131,21 @@ pub fn main() {
         This little web server response with the text "Hello, world!" to any
         HTTP request made to it.
 
-        <pre><code class="language-rust">import gleam/http/elli
+{% highlight rust %}
+import gleam/http/elli
 import gleam/http
 
 pub fn my_service(_req) {
   let body = bit_builder.from_string("Hello, world!")
 
   http.response(200)
-  |&gt; http.set_resp_body(body)
+  |> http.set_resp_body(body)
 }
 
 pub fn start() {
   elli.start(my_service, on_port: 3000)
 }
-</code></pre>
+{% endhighlight %}
 
         The web server created by this code is fully asynchronous and
         multi-threaded, seamlessly making use of all the cores of your computer
@@ -156,7 +160,8 @@ pub fn start() {
         Here's "Hello, World!" being printed by a thousand processes
         concurrently.
 
-        <pre><code class="language-rust">import gleam/io
+{% highlight rust %}
+import gleam/io
 import gleam/int
 import gleam/list
 import gleam/string
@@ -164,7 +169,7 @@ import gleam/otp/process
 
 pub fn main() {
   list.range(0, 1000)
-  |&gt; list.each(start_process)
+  |> list.each(start_process)
 }
 
 fn start_process(i) {
@@ -173,21 +178,14 @@ fn start_process(i) {
     io.println(message)
   })
 }
-</code></pre>
+{% endhighlight %}
 
         In addition to this low-level process abstraction Gleam has helpful
         libraries full of building blocks for writing type safe and fault
         tolerant multi-core programs as quickly as possible.
       </details>
 
-      <link
-        rel="stylesheet"
-        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"
-      />
-      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-      <script>
-        hljs.initHighlightingOnLoad();
-      </script>
+      <link rel="stylesheet" href="/styles/highlighting.css">
     </section>
 
     <footer class="page-footer">

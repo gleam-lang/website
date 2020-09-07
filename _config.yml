@@ -10,3 +10,8 @@ plugins:
 
 whitelist:
   - jekyll-redirect-from
+
+exclude:
+  - README
+  - Makefile
+  - book-src

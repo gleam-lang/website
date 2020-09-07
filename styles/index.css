@@ -6,6 +6,7 @@
 :root {
   --color-charcoal: #282828;
   --color-pink: #ffaff3;
+  --color-light-grey: #f5f5f5;
   --space: 8px;
   --l-space: calc(var(--space) * 3);
   --xxl-space: calc(var(--l-space) * 3);
@@ -17,6 +18,10 @@ html {
   font-family: "Karla", sans-serif;
   color: var(--color-charcoal);
   line-height: 1.4;
+}
+
+figure {
+  margin: 0;
 }
 
 a:visited,
@@ -145,11 +150,17 @@ small,
   user-select: none;
 }
 
-code.hljs {
-  padding: var(--space);
+.highlight {
+  margin: var(--l-space) var(--space);
+  padding: calc(var(--space) * 1.5);
   border: 1px solid white;
   box-shadow: var(--slight-shadow);
   max-width: 100%;
+  background-color: var(--color-light-grey);
+}
+
+.highlight pre {
+  margin: 0;
 }
 
 .page-footer {
