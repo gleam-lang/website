@@ -157,3 +157,13 @@ code.hljs {
   text-align: center;
   opacity: 0.8;
 }
+
+*[data-before-icon] {
+  position: relative;
+}
+
+*[data-before-icon]:before {
+  content: attr(data-before-icon);
+  display: inline-block;
+  width: 3.2rem;
+}
