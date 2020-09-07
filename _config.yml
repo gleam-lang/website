@@ -1,0 +1,12 @@
+baseurl: ""
+url: "https://gleam.run/"
+
+markdown: kramdown
+
+permalink: "/news/:title/"
+
+plugins:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from

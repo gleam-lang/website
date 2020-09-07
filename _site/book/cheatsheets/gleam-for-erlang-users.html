@@ -1,0 +1,628 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Gleam for Erlang users - The Gleam Book</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="chapter-item expanded "><a href="../gleams-principles.html"><strong aria-hidden="true">2.</strong> Gleam's Principles</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">3.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">3.1.</strong> Installing Gleam</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">3.2.</strong> Installing Erlang</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-rebar3.html"><strong aria-hidden="true">3.3.</strong> Installing rebar3</a></li><li class="chapter-item expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">3.4.</strong> Editor support</a></li></ol></li><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">4.</strong> Language tour</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">4.1.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">4.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.3.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">4.4.</strong> Ints &amp; Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">4.5.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">4.6.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">4.7.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">4.8.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">4.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">4.10.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">4.11.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/try.html"><strong aria-hidden="true">4.12.</strong> Try</a></li><li class="chapter-item expanded "><a href="../tour/todo.html"><strong aria-hidden="true">4.13.</strong> Todo</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">4.14.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">4.15.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">4.16.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">4.17.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">4.18.</strong> External types</a></li></ol></li><li class="chapter-item expanded "><a href="../writing-gleam/index.html"><strong aria-hidden="true">5.</strong> Writing Gleam</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../writing-gleam/creating-a-project.html"><strong aria-hidden="true">5.1.</strong> Creating a project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/running-the-project.html"><strong aria-hidden="true">5.2.</strong> Running the project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/documenting-the-project.html"><strong aria-hidden="true">5.3.</strong> Documenting the project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/example-projects.html"><strong aria-hidden="true">5.4.</strong> Example projects</a></li></ol></li><li class="chapter-item expanded "><a href="../cheatsheets/index.html"><strong aria-hidden="true">6.</strong> Cheatsheets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cheatsheets/gleam-for-erlang-users.html" class="active"><strong aria-hidden="true">6.1.</strong> Gleam for Erlang users</a></li></ol></li><li class="chapter-item expanded "><a href="../faqs.html"><strong aria-hidden="true">7.</strong> FAQs</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Gleam Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#gleam-for-erlang-users" id="gleam-for-erlang-users">Gleam for Erlang users</a></h1>
+<ul>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#variables">Variables</a>
+<ul>
+<li><a href="#partial-assignments">Partial assignments</a></li>
+<li><a href="#variable-type-annotations">Variable type annotations</a></li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a>
+<ul>
+<li><a href="#exporting-functions">Exporting functions</a></li>
+<li><a href="#function-type-annotations">Function type annotations</a></li>
+<li><a href="#function-heads">Function heads</a></li>
+<li><a href="#function-overloading">Function overloading</a></li>
+<li><a href="#referencing-function">Referencing functions</a></li>
+<li><a href="#labelled-arguments">Labelled arguments</a></li>
+</ul>
+</li>
+<li><a href="#operators">Operators</a>
+<ul>
+<li><a href="#pipe">Pipe</a></li>
+</ul>
+</li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#blocks">Blocks</a></li>
+<li><a href="#data-types">Data types</a>
+<ul>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#tuples">Tuples</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#atoms">Atoms</a></li>
+<li><a href="#maps">Maps</a></li>
+</ul>
+</li>
+<li><a href="#type-aliases">Type aliases</a></li>
+<li><a href="#custom-types">Custom types</a>
+<ul>
+<li><a href="#records">Records</a></li>
+<li><a href="#unions">Unions</a> TODO</li>
+<li><a href="#opaque-custom-types">Opaque custom types</a> TODO</li>
+</ul>
+</li>
+<li><a href="#flow-control">Flow control</a> TODO
+<ul>
+<li><a href="#case">Case</a> TODO</li>
+<li><a href="#try">Try</a> TODO</li>
+</ul>
+</li>
+<li><a href="#modules">Modules</a> TODO
+<ul>
+<li><a href="#imports">Imports</a> TODO</li>
+<li><a href="#nested-modules">Nested modules</a> TODO</li>
+<li><a href="#first-class-modules">First class modules</a> TODO</li>
+</ul>
+</li>
+</ul>
+<h1><a class="header" href="#variables" id="variables">Variables</a></h1>
+<h4><a class="header" href="#erlang" id="erlang">Erlang</a></h4>
+<p>In Erlang variables are written with a capital letter, and can only be
+assigned once.</p>
+<pre><code class="language-erlang">Size = 50
+Size2 = Size + 100
+Size2 = 1 % Runtime error! Size2 is 150, not 1
+</code></pre>
+<h4><a class="header" href="#gleam" id="gleam">Gleam</a></h4>
+<p>In Gleam variables are written with a lowercase letter, and names can be
+reassigned.</p>
+<pre><code class="language-rust noplaypen">let size = 50
+let size = size + 100
+let size = 1 // size now refers to 1
+</code></pre>
+<h2><a class="header" href="#partial-assignments" id="partial-assignments">Partial assignments</a></h2>
+<h4><a class="header" href="#erlang-1" id="erlang-1">Erlang</a></h4>
+<p>In Erlang a partial pattern that does not match all possible values can be
+used to assert that a given term has a specific shape.</p>
+<pre><code class="language-erlang">[Element] = SomeList % assert `SomeList` is a 1 element list
+</code></pre>
+<h4><a class="header" href="#gleam-1" id="gleam-1">Gleam</a></h4>
+<p>In Gleam the <code>assert</code> keyword is used to make assertions using partial
+patterns.</p>
+<pre><code class="language-rust noplaypen">let [element] = some_list // Compile error! Partial pattern
+assert [element] = some_list
+</code></pre>
+<h2><a class="header" href="#variables-type-annotations" id="variables-type-annotations">Variables type annotations</a></h2>
+<h4><a class="header" href="#erlang-2" id="erlang-2">Erlang</a></h4>
+<p>In Erlang it's not possible to give type annotations to variables.</p>
+<h4><a class="header" href="#gleam-2" id="gleam-2">Gleam</a></h4>
+<p>In Gleam type annotations can optionally be given when binding variables.</p>
+<pre><code class="language-rust noplaypen">let some_list: List(Int) = [1, 2, 3]
+</code></pre>
+<p>Gleam will check the type annotation to ensure that it matches the type of the
+assigned value.</p>
+<p>Gleam does not need annotations to type check your code, but you may find it
+useful to annotate variables to hint to the compiler that you want a specific
+type to be inferred.</p>
+<h1><a class="header" href="#functions" id="functions">Functions</a></h1>
+<p>Gleam's top level functions are declared using a syntax similar to Rust or
+JavaScript.</p>
+<h4><a class="header" href="#erlang-3" id="erlang-3">Erlang</a></h4>
+<pre><code class="language-erlang">my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-3" id="gleam-3">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn my_function(x) {
+  x + 1
+}
+</code></pre>
+<h2><a class="header" href="#exporting-functions" id="exporting-functions">Exporting functions</a></h2>
+<p>In Gleam functions are exported with the <code>pub</code> keyword. An export statement is
+not required.</p>
+<h4><a class="header" href="#erlang-4" id="erlang-4">Erlang</a></h4>
+<pre><code class="language-erlang">-export([my_function/1]).
+
+my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-4" id="gleam-4">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">pub fn my_function(x) {
+  x + 1
+}
+</code></pre>
+<h2><a class="header" href="#function-type-annotations" id="function-type-annotations">Function type annotations</a></h2>
+<p>Functions can optionally have their argument and return types annotated.</p>
+<h4><a class="header" href="#erlang-5" id="erlang-5">Erlang</a></h4>
+<pre><code class="language-erlang">-spec my_function(integer()) :: integer().
+my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-5" id="gleam-5">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn my_function(x: Int) -&gt; Int {
+  x + 1
+}
+</code></pre>
+<p>Unlike in Erlang these type annotations will always be checked by the compiler
+and have to be correct for compilation to succeed.</p>
+<h2><a class="header" href="#function-heads" id="function-heads">Function heads</a></h2>
+<p>Unlike Erlang (but similar to Core Erlang) Gleam does not support multiple
+function heads, so to pattern match on an argument a case expression must be
+used.</p>
+<h4><a class="header" href="#erlang-6" id="erlang-6">Erlang</a></h4>
+<pre><code class="language-erlang">identify(1) -&gt;
+    &quot;one&quot;;
+identify(2) -&gt;
+    &quot;two&quot;;
+identify(3) -&gt;
+    &quot;three&quot;;
+identify(_) -&gt;
+    &quot;dunno&quot;.
+</code></pre>
+<h4><a class="header" href="#gleam-6" id="gleam-6">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn identify(x) {
+  case x {
+    1 -&gt; &quot;one&quot;
+    2 -&gt; &quot;two&quot;
+    3 -&gt; &quot;three&quot;
+    _ -&gt; &quot;dunno&quot;
+  }
+}
+</code></pre>
+<h2><a class="header" href="#function-overloading" id="function-overloading">Function overloading</a></h2>
+<p>Gleam does not support function overloading, so there can only be 1 function
+with a given name, and the function can only have a single implementation for
+the types it accepts.</p>
+<h2><a class="header" href="#referencing-functions" id="referencing-functions">Referencing functions</a></h2>
+<p>Gleam has a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.</p>
+<h4><a class="header" href="#erlang-7" id="erlang-7">Erlang</a></h4>
+<pre><code class="language-erlang">identity(X) -&gt;
+  X.
+
+main() -&gt;
+  Func = fun identity/1,
+  Func(100).
+</code></pre>
+<h4><a class="header" href="#gleam-7" id="gleam-7">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100)
+}
+</code></pre>
+<p>Gleam's parser allows functions returned from functions to be called directly
+without adding parenthesis around the function call.</p>
+<h4><a class="header" href="#erlang-8" id="erlang-8">Erlang</a></h4>
+<pre><code class="language-erlang">(((some_function(0))(1))(2))(3)
+</code></pre>
+<h4><a class="header" href="#gleam-8" id="gleam-8">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">some_function(0)(1)(2)(3)
+</code></pre>
+<h1><a class="header" href="#comments" id="comments">Comments</a></h1>
+<h4><a class="header" href="#erlang-9" id="erlang-9">Erlang</a></h4>
+<p>In Erlang comments are written with a <code>%</code> prefix.</p>
+<pre><code class="language-erlang">% Hello, Joe!
+</code></pre>
+<h4><a class="header" href="#gleam-9" id="gleam-9">Gleam</a></h4>
+<p>In Gleam comments are written with a <code>//</code> prefix.</p>
+<pre><code class="language-rust noplaypen">// Hello, Joe!
+</code></pre>
+<p>Comments starting with <code>///</code> are used to document the following statement,
+comments starting with <code>////</code> are used to document the current module.</p>
+<pre><code class="language-rust noplaypen">//// This module is very important.
+
+/// The answer to life, the universe, and everything.
+const answer: Int = 42
+</code></pre>
+<h1><a class="header" href="#operators" id="operators">Operators</a></h1>
+<table><thead><tr><th>Operator</th><th>Erlang</th><th>Gleam</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Equal</td><td><code>=:=</code></td><td><code>==</code></td><td>In Gleam both values must be of the same type</td></tr>
+<tr><td>Equal</td><td><code>==</code></td><td></td><td></td></tr>
+<tr><td>Not equal</td><td><code>=/=</code></td><td><code>!=</code></td><td>In Gleam both values must be of the same type</td></tr>
+<tr><td>Not equal</td><td><code>/=</code></td><td></td><td></td></tr>
+<tr><td>Greater than</td><td><code>&gt;</code></td><td><code>&gt;</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Greater than</td><td><code>&gt;</code></td><td><code>&gt;.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Greater or equal</td><td><code>&gt;=</code></td><td><code>&gt;=</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Greater or equal</td><td><code>&gt;=</code></td><td><code>&gt;=.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Less than</td><td><code>&lt;</code></td><td><code>&lt;</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Less than</td><td><code>&lt;</code></td><td><code>&lt;.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Less or equal</td><td><code>=&lt;</code></td><td><code>&gt;=</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Less or equal</td><td><code>=&lt;</code></td><td><code>&gt;=.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Boolean and</td><td><code>andalso</code></td><td><code>&amp;&amp;</code></td><td>In Gleam both values must be bools</td></tr>
+<tr><td>Boolean and</td><td><code>and</code></td><td></td><td></td></tr>
+<tr><td>Boolean or</td><td><code>orelse</code></td><td><code>⎮⎮</code></td><td>In Gleam both values must be bools</td></tr>
+<tr><td>Boolean or</td><td><code>or</code></td><td></td><td></td></tr>
+<tr><td>Add</td><td><code>+</code></td><td><code>+</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Add</td><td><code>+</code></td><td><code>+.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Subtract</td><td><code>-</code></td><td><code>-</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Subtract</td><td><code>-</code></td><td><code>-.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Multiply</td><td><code>*</code></td><td><code>*</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Multiply</td><td><code>*</code></td><td><code>*.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Divide</td><td><code>div</code></td><td><code>/</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Modulo</td><td><code>rem</code></td><td><code>%</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Pipe</td><td></td><td><code>⎮&gt;</code></td><td>See <a href="#pipe">the pipe section</a> for details</td></tr>
+</tbody></table>
+<h2><a class="header" href="#pipe" id="pipe">Pipe</a></h2>
+<p>The pipe operator can be used to chain together function calls so that they
+read from top to bottom.</p>
+<h4><a class="header" href="#erlang-10" id="erlang-10">Erlang</a></h4>
+<pre><code class="language-erlang">X1 = trim(Input),
+X2 = csv:parse(X1, &lt;&lt;&quot;,&quot;&gt;&gt;)
+ledger:from_list(X2).
+</code></pre>
+<h4><a class="header" href="#gleam-10" id="gleam-10">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">input
+|&gt; trim
+|&gt; csv.parse(&quot;,&quot;)
+|&gt; ledger.from_list
+</code></pre>
+<h1><a class="header" href="#constants" id="constants">Constants</a></h1>
+<h4><a class="header" href="#erlang-11" id="erlang-11">Erlang</a></h4>
+<p>In Erlang macros can be defined to name literals we may want to use in
+multiple places. They can only be used within the current module</p>
+<pre><code class="language-erlang">-define(the_answer, 42).
+
+main() -&gt;
+  ?the_answer.
+</code></pre>
+<h4><a class="header" href="#gleam-11" id="gleam-11">Gleam</a></h4>
+<p>In Gleam constants can be used to achieve the same.</p>
+<pre><code class="language-rust noplaypen">const the_answer = 42
+
+fn main() {
+  the_answer
+}
+</code></pre>
+<p>Gleam constants can be referenced from other modules.</p>
+<pre><code class="language-rust noplaypen">import other_module
+
+fn main() {
+  other_module.the_answer
+}
+</code></pre>
+<h1><a class="header" href="#blocks" id="blocks">Blocks</a></h1>
+<h4><a class="header" href="#erlang-12" id="erlang-12">Erlang</a></h4>
+<p>In Erlang expressions can be grouped using parenthesis or <code>begin</code> and <code>end</code>.</p>
+<pre><code class="language-erlang">main() -&gt;
+  X = begin
+    print(1),
+    2
+  end,
+  Y = X * (X + 10).
+  Y.
+</code></pre>
+<h4><a class="header" href="#gleam-12" id="gleam-12">Gleam</a></h4>
+<p>In Gleam braces are used to group expressions.</p>
+<pre><code class="language-rust noplaypen">fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  let y = x * {x + 10}
+  y
+}
+</code></pre>
+<h1><a class="header" href="#data-types" id="data-types">Data types</a></h1>
+<h2><a class="header" href="#strings" id="strings">Strings</a></h2>
+<p>All strings in Gleam are UTF-8 encoded binaries.</p>
+<h4><a class="header" href="#erlang-13" id="erlang-13">Erlang</a></h4>
+<pre><code class="language-erlang">&lt;&lt;&quot;Hellø, world!&quot;/utf8&gt;&gt;.
+</code></pre>
+<h4><a class="header" href="#gleam-13" id="gleam-13">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">&quot;Hellø, world!&quot;
+</code></pre>
+<h2><a class="header" href="#tuples" id="tuples">Tuples</a></h2>
+<p>Tuples are very useful in Gleam as they're the only collection data type that allows for mixed
+types of elements in the collection. The syntax for a tuple literal - <code>tuple(&quot;a&quot;, &quot;b&quot;)</code> - can be
+confused for a function call, which it is not!</p>
+<h4><a class="header" href="#erlang-14" id="erlang-14">Erlang</a></h4>
+<pre><code class="language-erlang">Tuple = {&quot;username&quot;, &quot;password&quot;, 10}.
+{_, Password, _} = Tuple.
+</code></pre>
+<h4><a class="header" href="#gleam-14" id="gleam-14">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">let my_tuple = tuple(&quot;username&quot;, &quot;password&quot;, 10)
+let tuple(_, password, _) = my_tuple
+</code></pre>
+<h2><a class="header" href="#lists" id="lists">Lists</a></h2>
+<p>Lists in Erlang are allowed to be of mixed types, but not in Gleam. They retain all of the same
+performance sematics.</p>
+<p>The <code>cons</code> operator works the same way both for pattern matching and for appending elements to the
+head of a list, but it uses a different syntax.</p>
+<h4><a class="header" href="#erlang-15" id="erlang-15">Erlang</a></h4>
+<pre><code class="language-erlang">List0 = [2, 3, 4].
+List1 = [1 | List0].
+[1, SecondElement | _] = List1.
+[1.0 | List1].
+</code></pre>
+<h4><a class="header" href="#gleam-15" id="gleam-15">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">let list = [2, 3, 4]
+let list = [1, ..list]
+let [1, second_element, ..] = list
+[1.0, ..list] // Type error!
+</code></pre>
+<h2><a class="header" href="#atoms" id="atoms">Atoms</a></h2>
+<p>In Erlang atoms can be created as needed, but in Gleam all atoms must be defined as values in a
+custom type before being used. Any value in a type definition in Gleam that does not have any
+arguments is an atom in Erlang.</p>
+<p>There are some exceptions to that rule for atoms that are commonly used and have types built-in to
+Gleam that incorporate them, such as <code>ok</code>, <code>error</code> and booleans.</p>
+<p>In general, atoms are not used much in Gleam, and are mostly used for boolens, <code>ok</code> and <code>error</code>
+result types, and defining custom types.</p>
+<h4><a class="header" href="#erlang-16" id="erlang-16">Erlang</a></h4>
+<pre><code class="language-erlang">Var = my_new_var.
+
+{ok, true}.
+
+{error, false}.
+</code></pre>
+<h4><a class="header" href="#gleam-16" id="gleam-16">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">type MyNewType {
+  MyNewVar
+}
+let var = MyNewVar
+
+Ok(True)
+
+Error(False)
+</code></pre>
+<h2><a class="header" href="#maps" id="maps">Maps</a></h2>
+<p>In Erlang, maps can have keys and values of any type, and they can be mixed in a given map. In
+Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given
+map and all values must be of the same type in a given map.</p>
+<p>There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally
+not used much in Gleam, custom types are more common.</p>
+<h4><a class="header" href="#erlang-17" id="erlang-17">Erlang</a></h4>
+<pre><code class="language-erlang">#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;}.
+#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; 2}.
+</code></pre>
+<h4><a class="header" href="#gleam-17" id="gleam-17">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">import gleam/map
+
+
+map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, &quot;value2&quot;)])
+map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, 2)]) // Type error!
+</code></pre>
+<h1><a class="header" href="#type-aliases" id="type-aliases">Type aliases</a></h1>
+<h4><a class="header" href="#erlang-18" id="erlang-18">Erlang</a></h4>
+<pre><code class="language-erlang">-type scores() :: list(integer()).
+</code></pre>
+<h4><a class="header" href="#gleam-18" id="gleam-18">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">pub type Scores =
+  List(Int)
+</code></pre>
+<h1><a class="header" href="#custom-types" id="custom-types">Custom types</a></h1>
+<h2><a class="header" href="#records" id="records">Records</a></h2>
+<p>In Erlang, Records are a specialized data type built on a tuple. Gleam does not have anything
+called a <code>record</code>, but custom types can be used in Gleam in much the same way that records are
+used in Erlang, even though custom types don't actually define a <code>record</code> in Erlang when it is
+compiled.</p>
+<p>The important thing is that a custom type allows you to define a collection data type with a fixed
+number of named fields, and the values in those fields can be of differing types.</p>
+<h4><a class="header" href="#erlang-19" id="erlang-19">Erlang</a></h4>
+<pre><code class="language-erlang">-record(person, {age :: integer(),
+                 name :: binary()}).
+</code></pre>
+<pre><code class="language-erlang">Person = #person{name=&quot;name&quot;, age=35}.
+Name = #Person.name.
+</code></pre>
+<h4><a class="header" href="#gleam-19" id="gleam-19">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">type Person {
+  Person(age: Int, name: String)
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">let person = Person(name: &quot;name&quot;, age: 35)
+let name = person.name
+</code></pre>
+<h1><a class="header" href="#flow-control" id="flow-control">Flow control</a></h1>
+<h1><a class="header" href="#modules" id="modules">Modules</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../cheatsheets/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../faqs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../cheatsheets/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../faqs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
