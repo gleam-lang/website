@@ -115,7 +115,6 @@ small,
   background-color: var(--color-pink);
   max-height: 100vh;
   padding: var(--xl-space) 0;
-  margin-bottom: var(--space);
 }
 
 .hero h1 {
@@ -183,7 +182,6 @@ p code {
 }
 
 .page-footer {
-  margin-top: var(--l-space);
   padding: var(--l-space);
   text-align: center;
   opacity: 0.8;
