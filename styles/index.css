@@ -25,9 +25,13 @@ figure {
   margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
 a:visited,
 a {
-  box-sizing: border-box;
   color: var(--color-charcoal);
 }
 
