@@ -1,5 +1,5 @@
 [book]
 authors = ["Louis Pilfold"]
 multilingual = false
-src = "src"
+src = "book"
 title = "The Gleam Book"
