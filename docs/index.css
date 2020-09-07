@@ -78,9 +78,10 @@ small,
 
 .pagenav {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
   align-items: center;
   padding: var(--space) 0;
+  justify-content: center;
 }
 
 .pagenav > * {
@@ -104,7 +105,7 @@ small,
 .hero {
   background-color: var(--color-pink);
   max-height: 100vh;
-  padding: var(--xxl-space) var(--l-space);
+  padding: var(--xxl-space) 0;
   margin-bottom: var(--space);
 }
 
@@ -128,8 +129,8 @@ small,
 
 .hero-blerb {
   font-size: 1.9rem;
-  max-width: 90%;
-  width: 410px;
+  width: 90%;
+  max-width: 450px;
 }
 
 .openable-example[open] {
