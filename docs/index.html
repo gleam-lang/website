@@ -156,11 +156,11 @@ pub fn start() {
         Here's "Hello, World!" being printed by a thousand processes
         concurrently.
 
-        <pre><code class="language-rust">import gleam/otp/process
-import gleam/io
+        <pre><code class="language-rust">import gleam/io
 import gleam/int
 import gleam/list
 import gleam/string
+import gleam/otp/process
 
 pub fn main() {
   list.range(0, 1000)
@@ -169,9 +169,8 @@ pub fn main() {
 
 fn start_process(i) {
   process.start(fn() {
-    "Hello world from process number "
-    |&gt; string.append(int.to_string(i))
-    |&gt; io.println
+    let message = string.append("Hello world: ", int.to_string(i))
+    io.println(message)
   })
 }
 </code></pre>
