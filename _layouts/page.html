@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{% endcapture %}
+    {% capture description %}{% if page.description %}{{ page.description | strip }}{% else %}The Gleam programming language{% endif %}{% endcapture %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla&display=swap">
+    <link rel="stylesheet" href="/styles/index.css">
+    <meta name="description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://secure.gravatar.com/avatar/11a70fd3673e3bc3931ea118cc3d12f5?s=300">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  </head>
+  <body>
+    <nav class="pagenav content">
+      <a href="/">
+        <h1 class="pagenav-title">Gleam</h1>
+      </a>
+      <span class="flex-spacer"></span>
+
+      <a href="https://lpil.uk/#blog">News</a>
+      <a href="/book">Documentation</a>
+      <iframe
+        src="https://github.com/sponsors/lpil/button"
+        title="Sponsor Gleam"
+        height="35"
+        width="116"
+        style="border: 0; padding-left: 8px"
+      ></iframe>
+    </nav>
+
+{{ content }}
+
+    <footer class="page-footer">
+      © 2016 – {{ site.time | date: '%Y' }} Louis Pilfold
+    </footer>
+    <link rel="stylesheet" href="/styles/highlighting.css">
+  </body>
+</html>
