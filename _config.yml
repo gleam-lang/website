@@ -15,3 +15,11 @@ exclude:
   - README
   - Makefile
   - book-src
+
+defaults:
+  -
+    scope:
+      path: ""      # all files
+      type: posts   # limit to posts
+    values:
+      layout: post

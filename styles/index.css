@@ -18,6 +18,7 @@ html {
   font-family: "Karla", sans-serif;
   color: var(--color-charcoal);
   line-height: 1.4;
+  font-size: 17px;
 }
 
 figure {
@@ -110,15 +111,23 @@ small,
 .hero {
   background-color: var(--color-pink);
   max-height: 100vh;
-  padding: var(--xxl-space) 0;
+  padding: var(--xl-space) 0;
   margin-bottom: var(--space);
+}
+
+.hero h1 {
+  margin: 0;
+}
+
+.hero-xxl {
+  padding: var(--xxl-space) 0;
 }
 
 .hero-content > * {
   margin: var(--l-space);
 }
 
-.hero-content {
+.hero-homepage-content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -135,7 +144,7 @@ small,
 .hero-blerb {
   font-size: 1.9rem;
   width: 90%;
-  max-width: 450px;
+  max-width: 415px;
 }
 
 .openable-example[open] {
@@ -150,13 +159,19 @@ small,
   user-select: none;
 }
 
-.highlight {
+div.highlight,
+figure.highlight {
   margin: var(--l-space) var(--space);
   padding: calc(var(--space) * 1.5);
   border: 1px solid white;
   box-shadow: var(--slight-shadow);
   max-width: 100%;
   background-color: var(--color-light-grey);
+}
+
+p code {
+  background-color: var(--color-light-grey);
+  margin: 0 1px;
 }
 
 .highlight pre {
@@ -178,4 +193,35 @@ small,
   content: attr(data-before-icon);
   display: inline-block;
   width: 3.2rem;
+}
+
+.posts {
+  font-size: 1.3rem;
+  margin-bottom: 2em;
+  list-style: none;
+  padding: 0;
+}
+
+.posts a {
+  text-decoration: none;
+  color: var(--color-pink);
+}
+
+.posts a:hover {
+  text-decoration: underline;
+}
+
+.posts h5 {
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+.posts li {
+  margin-bottom: var(--l-space);
+}
+
+.posts span {
+  margin-top: 4px;
+  opacity: 0.65;
+  font-size: 0.9rem;
 }
