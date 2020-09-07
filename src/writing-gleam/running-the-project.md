@@ -58,7 +58,7 @@ the expression otherwise the shell won't do anything.
 To be run in production Erlang based applications are build into a deployable
 bundle called a release.
 
-At a later date will will have built in support and documentation for release,
+At a later date we will have built in support and documentation for release,
 but for now please refer to these Erlang docs:
 
 - https://adoptingerlang.org/docs/production/releases/
