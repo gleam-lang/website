@@ -71,10 +71,9 @@ small,
 }
 
 .content {
-  width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--space);
+  padding: var(--l-space);
 }
 
 .pagenav {
@@ -134,6 +133,7 @@ small,
 }
 
 .openable-example[open] {
+  position: relative;
   margin-bottom: var(--l-space);
 }
 
@@ -148,6 +148,7 @@ code.hljs {
   padding: var(--space);
   border: 1px solid white;
   box-shadow: var(--slight-shadow);
+  max-width: 100%;
 }
 
 .page-footer {
