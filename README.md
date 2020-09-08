@@ -3,7 +3,7 @@
 https://gleam.run
 
 
-## Build book in localhost
+## Run the website locally
 
 Install `jekyll` (requires Ruby)
 
