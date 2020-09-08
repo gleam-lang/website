@@ -1,25 +1,14 @@
-# The Gleam Book
+# The Gleam website
 
-The rendered version can be found at https://gleam.run
+https://gleam.run
 
 
 ## Build book in localhost
 
-Install `mdbook`:
+Install `jekyll` (requires Ruby)
 
 ```
-cargo install mdbook
+gem install jekyll
 ```
 
-and run:
-```
-make serve
-```
-
-in root directory.
-
-Once you're happy with your changes run
-
-```
-make build
-```
+and run `make serve` in root directory.
