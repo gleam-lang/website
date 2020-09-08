@@ -227,3 +227,7 @@ p code {
   opacity: 0.65;
   font-size: 0.9rem;
 }
+
+.post img {
+  box-shadow: var(--slight-shadow);
+}
