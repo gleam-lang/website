@@ -15,7 +15,7 @@ layout: page
 
 ## Cheatsheets
 
-* [Gleam for Erlang users](/book/cheatsheets/gleam-for-erlang-users)
+* [Gleam for Erlang users](/cheatsheets/gleam-for-erlang-users)
 
 ## Gleam references
 

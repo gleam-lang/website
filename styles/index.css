@@ -175,7 +175,7 @@ figure.highlight {
 
 p code {
   background-color: var(--color-light-grey);
-  margin: 0 1px;
+  padding: 0 1px;
 }
 
 .highlight pre {
@@ -231,4 +231,22 @@ p code {
 
 .post img {
   box-shadow: var(--slight-shadow);
+}
+
+table {
+  border-collapse: collapse;
+  box-shadow: var(--slight-shadow);
+}
+
+th, td {
+  padding: 0.3rem 0.6rem;
+}
+
+th {
+  text-align: left;
+  background-color: var(--color-light-grey)
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-light-grey)
 }
