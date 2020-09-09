@@ -148,51 +148,6 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#running-the-project" id="running-the-project">Running the project</a></h1>
-<p>We typically run Gleam projects in 3 ways:</p>
-<ul>
-<li>In the tests.</li>
-<li>In the shell.</li>
-<li>In production, using releases.</li>
-</ul>
-<h2><a class="header" href="#tests" id="tests">Tests</a></h2>
-<p>Gleam tests are written using the Erlang test framework eunit.</p>
-<p>To write a test add a function to a module in the <code>test</code>, giving the function
-a name that ends in <code>_test</code>. The <code>gleam/should</code> module can be used to make
-assertions about the behaviour of our code.</p>
-<pre><code class="language-rust noplaypen">import gleam/should
-import my_fantastic_library
-
-pub fn addition_test() {
-  my_fantastic_library.hello_world()
-  |&gt; should.equal(&quot;Hello from my_fantastic_library!&quot;)
-}
-</code></pre>
-<p>Once written the tests can be run using the <code>rebar3 eunit</code> command.</p>
-<h2><a class="header" href="#the-shell" id="the-shell">The shell</a></h2>
-<p>An interactive Erlang shell can be started using the rebar3 build tool:</p>
-<pre><code class="language-sh">rebar3 shell
-# ===&gt; Verifying dependencies...
-# ===&gt; Compiling gleam_stdlib
-# Erlang/OTP 22 [erts-10.4.3] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1]
-# Eshell V10.4.3  (abort with ^G)
-# 1&gt;
-</code></pre>
-<p>Here we can try out our functions by typing them in:</p>
-<pre><code class="language-sh">1&gt; my_fantastic_library:hello_world().
-# &lt;&lt;&quot;Hello from my_fantastic_library&quot;&gt;&gt;
-</code></pre>
-<p>It's important to remember that this is an Erlang shell rather than a Gleam
-shell, so Erlang syntax must be used. Don't forget to put a <code>.</code> at the end of
-the expression otherwise the shell won't do anything.</p>
-<h2><a class="header" href="#releases" id="releases">Releases</a></h2>
-<p>To be run in production Erlang based applications are build into a deployable
-bundle called a release.</p>
-<p>At a later date we will have built in support and documentation for release,
-but for now please refer to these Erlang docs:</p>
-<ul>
-<li>https://adoptingerlang.org/docs/production/releases/</li>
-<li>https://www.rebar3.org/docs/releases</li>
-</ul>
 
                     </main>
 

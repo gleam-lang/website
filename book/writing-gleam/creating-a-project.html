@@ -148,33 +148,6 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#creating-a-project" id="creating-a-project">Creating a project</a></h1>
-<p>The <code>gleam new</code> command can be used to generate a new Gleam project.</p>
-<pre><code class="language-sh">gleam new my_fantastic_library --description &quot;Getting started with Gleam!&quot;
-cd my_fantastic_library
-</code></pre>
-<p>You'll now have a project with this structure:</p>
-<pre><code>.
-├── gleam.toml
-├── LICENSE
-├── README.md
-├── rebar.config
-├── src
-│   ├── my_fantastic_library.app.src
-│   └── my_fantastic_library.gleam
-└── test
-    └── my_fantastic_library_test.gleam
-
-2 directories, 7 files
-</code></pre>
-<p>Regular Gleam code goes in the <code>src</code> directory, and the tests for this code
-goes in the <code>test</code> directory.</p>
-<h2><a class="header" href="#applications" id="applications">Applications</a></h2>
-<p>The default project generated is a library, but we may want to create an
-runnable application instead. If we specify an alternate template when
-creating a project we can instead generate an application project compatible
-with the Erlang OTP framework.</p>
-<pre><code class="language-sh">gleam new my_fantastic_application --template app
-</code></pre>
 
                     </main>
 
