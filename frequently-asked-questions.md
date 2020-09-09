@@ -1,4 +1,8 @@
-# FAQs
+---
+layout: page
+title: Frequently asked questions
+description: The answers to some things you might be wondering about Gleam!
+---
 
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Will Gleam have type classes?](#will-gleam-have-type-classes)
@@ -69,11 +73,8 @@ us in to one specific approach to typing message passing. This lack of lock-in
 is important as typing message passing is an area of active research, we may
 discover an even better approach at a later date!
 
-If you'd like to see more consider checking out these libraries:
-
-- [https://github.com/gleam-lang/otp](https://github.com/gleam-experiments/otp_process)
-- [https://github.com/gleam-experiments/otp_agent](https://github.com/gleam-experiments/otp_agent)
-- [https://github.com/gleam-experiments/otp_supervisor](https://github.com/gleam-experiments/otp_supervisor)
+If you'd like to see more consider checking out [Gleam's OTP
+library](https://github.com/gleam-lang/otp).
 
 
 ## Can we use the hot code reloading feature from OTP?

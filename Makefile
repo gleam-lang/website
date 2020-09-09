@@ -1,5 +1,5 @@
 .PHONY: build
-build: docs/book/index.html ## Build the book
+build: book/book.js ## Build the book
 
 .PHONY: serve
 serve: ## Run the book dev server
@@ -13,6 +13,6 @@ help:
 # Files
 #
 
-book/index.html: $(shell find book -type f)
+book/book.js: $(shell find book -type f)
 	rm -fr book
 	mdbook build --dest-dir book/

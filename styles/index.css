@@ -89,11 +89,12 @@ small,
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: var(--space) 0;
+  padding-top: var(--space);
+  padding-bottom: var(--space);
   justify-content: center;
 }
 
-.pagenav > * {
+.pagenav-link {
   margin: var(--space);
 }
 
