@@ -19,6 +19,7 @@ html {
   color: var(--color-charcoal);
   line-height: 1.4;
   font-size: 17px;
+  overflow-wrap: break-word;
 }
 
 figure {
