@@ -63,7 +63,7 @@ so perhaps Gleam will be useful there too.
 
 Gleam's type system gives it an edge in rapidly evolving problem spaces as it
 helps the programmer refactor quickly and safely by supplying precise and
-useful error messages until the change is full applied.
+useful error messages until the change is fully applied.
 
 
 ## What is it not for?
