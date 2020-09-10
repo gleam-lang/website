@@ -61,7 +61,7 @@ networked applications such as web application backends, databases, or message
 brokers. Erlang and Elixir are also highly suited for embedded applications,
 so perhaps Gleam will be useful there too.
 
-Gleam's type system gives it in edge in rapidly evolving problem spaces as it
+Gleam's type system gives it an edge in rapidly evolving problem spaces as it
 helps the programmer refactor quickly and safely by supplying precise and
 useful error messages until the change is full applied.
 
