@@ -39,10 +39,10 @@ fn cats() {
 Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.
 
-We've seen a custom type with multiple constructors already in this chapter -
-`Bool`.
+We've already seen a custom type with multiple constructors in the Language Tour,
+- [`Bool`](./bools.md).
 
-Bool is defined like this:
+The built-in Gleam's `Bool` type is defined like this:
 
 ```rust,noplaypen
 // A Bool is a value that is either `True` or `False`
@@ -51,6 +51,10 @@ pub type Bool {
   False
 }
 ```
+
+It's a simple custom type which constructors that take no arguments at all!
+Use it to answer yes/no questions and to indicate whether something is `True`
+or `False`.
 
 The records created by different constructors for a custom type can contain
 different values. For example a `User` custom type could have a `LoggedIn`
@@ -159,76 +163,6 @@ pub fn have_birthday(person) {
 As Gleam records are immutable the update syntax does not alter the fields in
 place, instead it created a new record with the values of the initial record
 with the new values added.
-
-
-## Commonly used custom types
-
-### `Bool`
-
-```rust,noplaypen
-pub type Bool {
-  True
-  False
-}
-```
-
-As seen above Gleam's `Bool` type is a custom type! Use it to answer yes/no
-questions and to indicate whether something is `True` or `False`.
-
-
-### `Result(value, error)`
-
-```rust,noplaypen
-pub type Result(value, reason) {
-  Ok(value)
-  Error(reason)
-}
-```
-
-Gleam doesn't have exceptions or `null` to represent errors in our programs,
-instead we have the `Result` type. If a function call fail wrap the returned
-value in a `Result`, either `Ok` if the function was successful, or `Error`
-if it failed.
-
-```rust,noplaypen
-pub fn lookup(name, phone_book) {
-  // ... we found a phone number in the phone book for the given name here
-  Ok(phone_number)
-}
-```
-
-The `Error` type needs to be given a reason for the failure in order to
-return, like so:
-
-```rust,noplaypen
-pub type MyDatabaseError {
-  InvalidQuery
-  NetworkTimeout
-}
-
-pub fn insert(db_row) {
-  // ... something went wrong connecting to a database here
-  Error(NetworkTimeout)
-}
-```
-
-In cases where we don't care about the specific error enough to want to create
-a custom error type, or when the cause of the error is obvious without further
-detail, the `Nil` type can be used as the `Error` reason.
-
-```rust,noplaypen
-pub fn lookup(name, phone_book) {
-  // ... That name wasn't found in the phone book
-  Error(Nil)
-}
-```
-
-When we have a `Result` type returned to us from a function we can pattern
-match on it using `case` to determine whether we have an `Ok` result or
-an `Error` result.
-
-The standard library `gleam/result` module contains helpful functions for
-working with the `Result` type, make good use of them!
 
 
 ## Erlang interop
