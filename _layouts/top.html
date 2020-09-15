@@ -39,6 +39,19 @@
         Gleam is made possible by the kind support of its sponsors. If you
         enjoy Gleam please consider <b><a href="https://github.com/sponsors/lpil">sponsoring the project</a></b>
         or asking your employer to sponsor the project.
+
+{% if page.list_sponsors %}
+      <p>
+        These sponsors kindly support Gleam with $20 USD or more a month. Thank you!
+      </p>
+
+      <ul>
+{% assign sponsors = site.data.sponsors | sort: "name" %}
+{% for member in sponsors %}
+        <li><a href="{{ url }}">{{ member.name }}</a>
+{% endfor %}
+      </ul>
+{% endif %}
       </div>
     </aside>
 
