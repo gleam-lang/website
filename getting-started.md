@@ -3,10 +3,12 @@ layout: page
 title: Getting started with Gleam
 description: Getting your computer ready for Gleam development.
 redirect_from:
+  - "/getting-started/index.html"
   - "/getting-started/installing-gleam.html"
   - "/getting-started/installing-erlang.html"
   - "/getting-started/installing-rebar3.html"
   - "/getting-started/editor-support.html"
+  - "/book/getting-started/index.html"
   - "/book/getting-started/installing-gleam.html"
   - "/book/getting-started/installing-erlang.html"
   - "/book/getting-started/installing-rebar3.html"
