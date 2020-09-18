@@ -3,7 +3,7 @@ build: book/book.js ## Build the book
 
 .PHONY: serve
 serve: ## Run the book dev server
-	jekyll server --watch --safe --port 3000 --host 0.0.0.0 --livereload --drafts
+	jekyll server --watch --safe --port 3000 --livereload --drafts
 
 .PHONY: help
 help:
