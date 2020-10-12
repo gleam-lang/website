@@ -48,7 +48,7 @@
       <ul>
 {% assign sponsors = site.data.sponsors | sort: "name" %}
 {% for member in sponsors %}
-        <li><a href="{{ url }}">{{ member.name }}</a>
+        <li><a href="{{ member.url }}">{{ member.name }}</a>
 {% endfor %}
       </ul>
 {% endif %}
