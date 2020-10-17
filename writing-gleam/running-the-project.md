@@ -65,4 +65,4 @@ At a later date we will have built in support and documentation for release,
 but for now please refer to these Erlang docs:
 
 - [Releases - AdoptingErlang.org](https://adoptingerlang.org/docs/production/releases/)
-- [Releases - Rebar3.org](https://www.rebar3.org/docs/releases)
+- [Releases - Rebar3.org](https://rebar3.org/docs/deployment/releases/)
