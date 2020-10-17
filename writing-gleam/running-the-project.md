@@ -64,5 +64,5 @@ bundle called a release.
 At a later date we will have built in support and documentation for release,
 but for now please refer to these Erlang docs:
 
-- https://adoptingerlang.org/docs/production/releases/
-- https://www.rebar3.org/docs/releases
+- [Releases - AdoptingErlang.org](https://adoptingerlang.org/docs/production/releases/)
+- [Releases - Rebar3.org](https://www.rebar3.org/docs/releases)
