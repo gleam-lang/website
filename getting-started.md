@@ -21,7 +21,7 @@ for your editor.
 - [Installing Gleam](#installing-gleam)
 - [Installing Erlang](#installing-erlang)
 - [Installing rebar3](#installing-rebar3)
-- [Editor plugins](#editor-plugins)
+- [Editor Plugins](#editor-plugins)
 
 
 ## Installing Gleam
@@ -146,3 +146,14 @@ usage instructions can be found here:
 
 - [https://github.com/asdf-vm/asdf](https://github.com/asdf-vm/asdf)
 - [https://github.com/asdf-vm/asdf-erlang](https://github.com/asdf-vm/asdf-erlang)
+
+
+## Editor Plugins
+
+Gleam plugins are available for several popular editors. If one exists for
+your editor of choice consider installing it for syntax highlighting and other
+niceties.
+
+- **Vim** - [https://github.com/gleam-lang/gleam.vim](https://github.com/gleam-lang/gleam.vim)
+- **Emacs** - [https://github.com/gleam-lang/gleam-mode](https://github.com/gleam-lang/gleam-mode)
+- **Visual Studio Code** - [https://github.com/rawburt/vscode-gleam-syntax](https://github.com/rawburt/vscode-gleam-syntax)
