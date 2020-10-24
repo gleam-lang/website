@@ -1,8 +1,8 @@
 # Try
 
-In Gleam if a function can fail then it returns a Result, wrapping a
-successful return value in an Ok record, or returning detail on the failure in
-an Error record if it's not successful.
+In Gleam if a function can either succeed or fail then it normally will
+return the `Result` type. With `Result` a successful return value is wrapped
+in an `Ok` record, and wrapping any error value in an `Error` record.
 
 ```rust,noplaypen
 // parse_int(String) -> Result(Int, String)
@@ -16,8 +16,8 @@ and failure:
 
 ```rust,noplaypen
 case parse_int("123") {
-    Error(e) -> io.println("That wasn't an Int")
-      Ok(i) -> io.println("We parsed the Int")
+  Error(e) -> io.println("That wasn't an Int")
+  Ok(i) -> io.println("We parsed the Int")
 }
 ```
 
