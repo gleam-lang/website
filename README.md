@@ -5,10 +5,10 @@ https://gleam.run
 
 ## Run the website locally
 
-Install `jekyll` (requires Ruby)
+Install `github-pages` (requires Ruby)
 
-```
-gem install jekyll
+```sh
+gem install github-pages
 ```
 
 and run `make serve` in root directory.

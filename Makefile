@@ -13,6 +13,6 @@ help:
 # Files
 #
 
-book/book.js: $(shell find book-src -type f)
+book/book.js:
 	rm -fr book
 	mdbook build --dest-dir book/
