@@ -1,5 +1,5 @@
 ---
-title: Documentation
+title: Community
 layout: page
 ---
 
