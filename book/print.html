@@ -924,8 +924,8 @@ is needed if you are ever unsure.</p>
 <h1><a class="header" href="#constants" id="constants">Constants</a></h1>
 <p>Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.</p>
-<pre><code class="language-rust noplaypen">pub const start_year: = 2101
-pub const end_year: = 2111
+<pre><code class="language-rust noplaypen">pub const start_year = 2101
+pub const end_year = 2111
 
 pub fn is_before(year: Int) -&gt; Bool {
   year &lt; start_year
@@ -939,8 +939,8 @@ pub fn is_during(year: Int) -&gt; Bool {
 changed, so they cannot be used as global mutable state.</p>
 <p>When a constant is referenced the value is inlined by the compiler, so they
 can be used in case expression guards.</p>
-<pre><code class="language-rust noplaypen">pub const start_year: Int = 2101
-pub const end_year: Int = 2111
+<pre><code class="language-rust noplaypen">pub const start_year = 2101
+pub const end_year = 2111
 
 pub describe(year: Int) -&gt; String {
   case year {
@@ -950,6 +950,13 @@ pub describe(year: Int) -&gt; String {
   }
 }
 </code></pre>
+<h2><a class="header" href="#type-annotations-1" id="type-annotations-1">Type annotations</a></h2>
+<p>Constants can also be given type annotations. </p>
+<pre><code class="language-rust noplaypen">pub const name: String = &quot;Gleam&quot;
+pub const size: Int = 100
+</code></pre>
+<p>These annotations serve as documentation or can be used to provide a more 
+specific type than the compiler would otherwise infer.</p>
 <h1><a class="header" href="#type-aliases" id="type-aliases">Type aliases</a></h1>
 <p>Type aliases are a way of creating a new name for an existing type. This is
 useful when the name of the type may be long and awkward to type repeatedly.</p>
