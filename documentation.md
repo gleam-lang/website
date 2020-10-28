@@ -20,6 +20,7 @@ layout: page
 ## Cheatsheets
 
 - [Gleam for Erlang users](/cheatsheets/gleam-for-erlang-users)
+- [Gleam for Elixir users](/cheatsheets/gleam-for-elixir-users)
 
 ## Gleam references
 
