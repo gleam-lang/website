@@ -55,6 +55,25 @@ It's important to remember that this is an Erlang shell rather than a Gleam
 shell, so Erlang syntax must be used. Don't forget to put a `.` at the end of
 the expression otherwise the shell won't do anything.
 
+### Using Escripts
+
+Using Erlang's (escriptize)[http://rebar3.org/docs/commands/#escriptize] generates an escript executable containing the project's and its dependencies’ BEAM files.
+
+Running escriptize creates an executable file:
+
+`_build/default/bin/my_project_name` which requires a fn `main` as the entrypoint
+
+```sh
+# Build the project
+rebar3 compile
+
+# Run to enable escriptize IO commandline tooling
+rebar3 escriptize
+
+# Run the program!
+_build/default/bin/my_project_name
+
+```
 
 ## Releases
 
