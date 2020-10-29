@@ -1,10 +1,5 @@
 # Summary
 
-- [Getting started](./getting-started/README.md)
-  - [Installing Gleam](./getting-started/installing-gleam.md)
-  - [Installing Erlang](./getting-started/installing-erlang.md)
-  - [Installing rebar3](./getting-started/installing-rebar3.md)
-  - [Editor support](./getting-started/editor-support.md)
 - [Language tour](./tour/README.md)
   - [Comments](./tour/comments.md)
   - [Strings](./tour/strings.md)
@@ -26,8 +21,3 @@
   - [Bit strings](./tour/bit-strings.md)
   - [External functions](./tour/external-functions.md)
   - [External types](./tour/external-types.md)
-- [Writing Gleam](./writing-gleam/README.md)
-  - [Creating a project](./writing-gleam/creating-a-project.md)
-  - [Running the project](./writing-gleam/running-the-project.md)
-  - [Documenting the project](./writing-gleam/documenting-the-project.md)
-  - [Example projects](./writing-gleam/example-projects.md)
