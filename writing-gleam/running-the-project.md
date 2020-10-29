@@ -3,11 +3,12 @@ title: Running the project
 layout: page
 ---
 
-We typically run Gleam projects in 3 ways:
+We typically run Gleam projects in 4 ways:
 
 - In the tests.
 - In the shell.
 - In production, using releases.
+- Using escripts
 
 
 ## Tests
@@ -55,9 +56,20 @@ It's important to remember that this is an Erlang shell rather than a Gleam
 shell, so Erlang syntax must be used. Don't forget to put a `.` at the end of
 the expression otherwise the shell won't do anything.
 
-### Using Escripts
+## Releases
 
-Using Erlang's (escriptize)[http://rebar3.org/docs/commands/#escriptize] generates an escript executable containing the project's and its dependencies’ BEAM files.
+To be run in production Erlang based applications are build into a deployable
+bundle called a release.
+
+At a later date we will have built in support and documentation for release,
+but for now please refer to these Erlang docs:
+
+- [Releases - AdoptingErlang.org](https://adoptingerlang.org/docs/production/releases/)
+- [Releases - Rebar3.org](https://rebar3.org/docs/deployment/releases/)
+
+## Using Escripts
+
+Using Erlang's [escriptize](http://rebar3.org/docs/commands/#escriptize) generates an escript executable containing the project's and its dependencies’ BEAM files.
 
 Running escriptize creates an executable file:
 
@@ -74,14 +86,3 @@ rebar3 escriptize
 _build/default/bin/my_project_name
 
 ```
-
-## Releases
-
-To be run in production Erlang based applications are build into a deployable
-bundle called a release.
-
-At a later date we will have built in support and documentation for release,
-but for now please refer to these Erlang docs:
-
-- [Releases - AdoptingErlang.org](https://adoptingerlang.org/docs/production/releases/)
-- [Releases - Rebar3.org](https://rebar3.org/docs/deployment/releases/)
