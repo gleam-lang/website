@@ -69,7 +69,7 @@ but for now please refer to these Erlang docs:
 
 ## Using Escripts
 
-Using Erlang's [escriptize](http://rebar3.org/docs/commands/#escriptize) generates an escript executable containing the project's and its dependencies’ BEAM files.
+An escript is an option for making command line Gleam programs. Using Erlang's [escriptize](http://rebar3.org/docs/commands/#escriptize) generates an escript executable containing the project's and its dependencies’ BEAM files.
 
 Running escriptize creates an executable file:
 
