@@ -125,7 +125,6 @@ brew update
 brew install erlang
 ```
 
-
 #### Windows
 
 ##### Using Chocolatey
@@ -146,6 +145,38 @@ usage instructions can be found here:
 
 - [https://github.com/asdf-vm/asdf](https://github.com/asdf-vm/asdf)
 - [https://github.com/asdf-vm/asdf-erlang](https://github.com/asdf-vm/asdf-erlang)
+
+## Installing rebar3
+
+### Installing on Unix
+
+Latest stable compiled version:
+```bash
+$ wget https://s3.amazonaws.com/rebar3/rebar3 && chmod +x rebar3
+```
+
+From Source (assuming you have a full Erlang install):
+
+```bash
+$ git clone https://github.com/erlang/rebar3.git
+$ cd rebar3
+$ ./bootstrap
+```
+
+Stable versions can also be obtained from the [releases page](https://github.com/erlang/rebar3/releases).
+
+The rebar3 escript can also extract itself with a run script under the user's home directory:
+
+```bash
+$ ./rebar3 local install
+===> Extracting rebar3 libs to ~/.cache/rebar3/lib...
+===> Writing rebar3 run script ~/.cache/rebar3/bin/rebar3...
+===> Add to $PATH for use: export PATH=~/.cache/rebar3/bin:$PATH
+```
+
+To keep it up to date after you've installed rebar3 this way you can use `rebar3 local upgrade` which
+fetches the latest stable release and extracts to the same place as above. A [nightly version can
+also be obtained](https://s3.amazonaws.com/rebar3-nightly/rebar3) if desired.
 
 
 ## Editor Plugins
