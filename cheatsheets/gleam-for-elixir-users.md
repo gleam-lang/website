@@ -122,7 +122,7 @@ fn calculate(x) {
 
 In Elixir functions defined by `def` are public by default, while ones defined by `defp` are private.
 
-In Gleam functions are priavate by default and need `pub` keyword to be public.
+In Gleam functions are private by default and need the `pub` keyword to be public.
 
 #### Elixir
 
