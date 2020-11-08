@@ -270,33 +270,34 @@ const answer: Int = 42
 
 ## Operators
 
-| Operator          | Elixir           | Gleam             | Notes                                         |
-| ----------------- | ---------------- | ----------------- | --------------------------------------------- |
-| Equal             | `==`             | `==`              | In Gleam both values must be of the same type |
-| Strictly equal to | `===`            |                   | Useful in Elixir but not in Gleam             |
-| Not equal         | `!=`             | `!=`              | In Gleam both values must be of the same type |
-| Greater than      | `>`              | `>`               | In Gleam both values must be **ints**         |
-| Greater than      | `>`              | `>.`              | In Gleam both values must be **floats**       |
-| Greater or equal  | `>=`             | `>=`              | In Gleam both values must be **ints**         |
-| Greater or equal  | `>=`             | `>=.`             | In Gleam both values must be **floats**       |
-| Less than         | `<`              | `<`               | In Gleam both values must be **ints**         |
-| Less than         | `<`              | `<.`              | In Gleam both values must be **floats**       |
-| Less or equal     | `=<`             | `>=`              | In Gleam both values must be **ints**         |
-| Less or equal     | `=<`             | `>=.`             | In Gleam both values must be **floats**       |
-| Boolean and       | `and`            | `&&`              | In Gleam both values must be **bools**        |
-| Boolean and       | `&&`             |                   |
-| Boolean or        | `or`             | <code>\|\|</code> | In Gleam both values must be **bools**        |
-| Boolean or        | `or`             |                   |
-| Add               | `+`              | `+`               | In Gleam both values must be **ints**         |
-| Add               | `+`              | `+.`              | In Gleam both values must be **floats**       |
-| Subtract          | `-`              | `-`               | In Gleam both values must be **ints**         |
-| Subtract          | `-`              | `-.`              | In Gleam both values must be **floats**       |
-| Multiply          | `*`              | `*`               | In Gleam both values must be **ints**         |
-| Multiply          | `*`              | `*.`              | In Gleam both values must be **floats**       |
-| Divide            | `div`            | `/`               | In Gleam both values must be **ints**         |
-| Divide            | `/`              | `/.`              | In Gleam both values must be **floats**       |
-| Modulo            | `rem`            | `%`               | In Gleam both values must be **ints**         |
-| Pipe              | <code>\|></code> | <code>\|></code>  |                                               |
+| Operator          | Elixir | Gleam | Notes                                         |
+| ----------------- | ------ | ----- | --------------------------------------------- |
+| Equal             | `==`   | `==`  | In Gleam both values must be of the same type |
+| Strictly equal to | `===`  |       | Useful in Elixir but not in Gleam             |
+| Not equal         | `!=`   | `!=`  | In Gleam both values must be of the same type |
+| Greater than      | `>`    | `>`   | In Gleam both values must be **ints**         |
+| Greater than      | `>`    | `>.`  | In Gleam both values must be **floats**       |
+| Greater or equal  | `>=`   | `>=`  | In Gleam both values must be **ints**         |
+| Greater or equal  | `>=`   | `>=.` | In Gleam both values must be **floats**       |
+| Less than         | `<`    | `<`   | In Gleam both values must be **ints**         |
+| Less than         | `<`    | `<.`  | In Gleam both values must be **floats**       |
+| Less or equal     | `=<`   | `>=`  | In Gleam both values must be **ints**         |
+| Less or equal     | `=<`   | `>=.` | In Gleam both values must be **floats**       |
+| Boolean and       | `and`  | `&&`  | In Gleam both values must be **bools**        |
+| Boolean and       | `&&`   | `&&`  |                                               |
+| Boolean or        | `or`   | `|| ` | In Gleam both values must be **bools**        |
+| Boolean and       | `||`   | `||`  |                                               |
+| Add               | `+`    | `+`   | In Gleam both values must be **ints**         |
+| Add               | `+`    | `+.`  | In Gleam both values must be **floats**       |
+| Subtract          | `-`    | `-`   | In Gleam both values must be **ints**         |
+| Subtract          | `-`    | `-.`  | In Gleam both values must be **floats**       |
+| Multiply          | `*`    | `*`   | In Gleam both values must be **ints**         |
+| Multiply          | `*`    | `*.`  | In Gleam both values must be **floats**       |
+| Divide            | `div`  | `/`   | In Gleam both values must be **ints**         |
+| Divide            | `/`    | `/.`  | In Gleam both values must be **floats**       |
+| Modulo            | `rem`  | `%`   | In Gleam both values must be **ints**         |
+| Pipe              | `|>`   | `||`  |                                               |
+
 
 ## Constants
 
