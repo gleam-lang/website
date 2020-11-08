@@ -296,7 +296,7 @@ const answer: Int = 42
 | Divide            | `div`  | `/`   | In Gleam both values must be **ints**         |
 | Divide            | `/`    | `/.`  | In Gleam both values must be **floats**       |
 | Modulo            | `rem`  | `%`   | In Gleam both values must be **ints**         |
-| Pipe              | `|>`   | `||`  |                                               |
+| Pipe              | `|>`   | `|>`  |                                               |
 
 
 ## Constants
