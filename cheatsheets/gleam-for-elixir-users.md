@@ -3,16 +3,15 @@ layout: page
 title: Gleam for Elixir users
 ---
 
-- [Comments](#comments)
 - [Variables](#variables)
   - [Match operator](#match-operator)
-  - [Variable type annotations](#variable-type-annotations)
+  - [Variables type annotations](#variables-type-annotations)
 - [Functions](#functions)
   - [Exporting functions](#exporting-functions)
   - [Function type annotations](#function-type-annotations)
   - [Function heads](#function-heads)
   - [Function overloading](#function-overloading)
-  - [Modules](#modules)
+- [Modules](#modules)
 - [Comments](#comments)
 - [Operators](#operators)
 - [Constants](#constants)
@@ -26,19 +25,22 @@ title: Gleam for Elixir users
 - [Custom types](#custom-types)
   - [Records](#records)
 
+
 ## Variables
+
+You can reassign variables in both languages.
 
 #### Elixir
 
-In Elixir and Gleam are similar, only gleam has the `let` keyword before its variable names. You can reassign variables in both languages.
-
 ```elixir
 size = 50
-size2 = size + 100
-size2 = 1
+size = size + 100
+size = 1
 ```
 
 #### Gleam
+
+Gleam has the `let` keyword before its variable names.
 
 ```rust
 let size = 50
@@ -50,22 +52,20 @@ let size = 1
 
 #### Elixir
 
-In Elixir `=` is really just a match operator and can be used to assert that a given term has a specific shape or value.
-
 ```elixir
 [x] = [1] # assert `x` is a 1 element list and assign it to this element's value
-2 = x # error because x's value is 1
+2 = x # runtime error because x's value is 1
+[y] = "Hello" # runtime error
 ```
 
 #### Gleam
 
-In Gleam `=` could be used for pattern matching as well, but you'll get compile errors if there's a type mismatch and a runtime error if there's a value mismatch. Also, there's the `assert` keyword, used to make assertions.
+In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
 
 ```rust
-assert [element] = [1] // works
-assert element = 1 // works
-assert [element] = "Hello" // Compile error, type mismatch
-assert [element] = [1, 2] // Erlang runtime error
+let [x] = [1]
+assert 2 = x // runtime error
+assert [y] = "Hello" // compile error, type mismatch
 ```
 
 ### Variables type annotations
@@ -73,6 +73,10 @@ assert [element] = [1, 2] // Erlang runtime error
 #### Elixir
 
 In Elixir there's no static types.
+
+```elixir
+some_list = [1, 2, 3]
+```
 
 #### Gleam
 
@@ -84,63 +88,56 @@ let some_list: List(Int) = [1, 2, 3]
 
 Gleam will check the type annotation to ensure that it matches the type of the assigned value. It does not need annotations to type check your code, but you may find it useful to annotate variables to hint to the compiler that you want a specific type to be inferred.
 
+
 ## Functions
-
-In Elixir, you can define functions inside modules, or anonymous functions which need a `.` when calling them.
-
-Gleam's top level functions are declared using a syntax similar to Rust or JavaScript and anonymous functions have a similar syntax without the name and doesn't need a `.` to call.
 
 #### Elixir
 
-```elixir
-# Anonymous functions (notice the dot)
-square = fn(x) -> x * x end
-square.(5) #=> 25
+In Elixir, you can define functions with the `def` keyword, or assign anonymous functions to variables. Anonymous functions need a `.` when calling them.
 
-defmodule Math do
-  def sum(a, b) do
-    a + b
-  end
+```elixir
+def sum(x, y) do
+  x + y
 end
+
+mul = fn(x, y) -> x * y end
+mul.(1, 2)
 ```
 
 #### Gleam
 
+Gleam's functions are declared using a syntax similar to Rust or JavaScript. Gleam's anonymous functions have a similar syntax and don't need a `.` when called.
+
 ```rust
-fn sum(x, y) {
+pub fn sum(x, y) {
   x + y
 }
 
-// anonymous functions are defined in a similar syntax without the name
-fn calculate(x) {
-  let add_one = fn(z) { z + 1 }
-  add_one(x)
-}
+let mul = fn(x, y) { x * y }
+mul(1, 2)
 ```
 
 ### Exporting functions
 
-In Elixir functions defined by `def` are public by default, while ones defined by `defp` are private.
-
-In Gleam functions are private by default and need the `pub` keyword to be public.
-
 #### Elixir
 
-```elixir
-defmodule Math do
-  # this is public
-  def sum(x, y) do
-    x + y
-  end
+In Elixir functions defined by `def` are public by default, while ones defined by `defp` are private.
 
-  # this is private
-  defp mul(x, y) do
-    x * y
-  end
+```elixir
+# this is public
+def sum(x, y) do
+  x + y
+end
+
+# this is private
+defp mul(x, y) do
+  x * y
 end
 ```
 
 #### Gleam
+
+In Gleam functions are private by default and need the `pub` keyword to be public.
 
 ```rust
 // this is public
@@ -156,45 +153,49 @@ fn mul(x, y) {
 
 ### Function type annotations
 
-Functions can **optionally** have their argument and return types annotated in Gleam. The compiler will still type check your program if they are omitted using type inference. These type annotations will always be checked by the compiler and throw a compilation error if not valid.
-
-You can use Typespecs to annotate functions in Elixir but they need Dializer to be checked. However, Gleam's type system is much stronger and will catch more errors.
-
 #### Elixir
 
+You can use Typespecs to annotate functions in Elixir but they mainly serve as documentation. Typespecs can be optionally used by tools like Dialyzer to find some subset of possible bugs.
+
 ```elixir
-defmodule LousyCalculator do
-  @spec add(number, number) :: {number, String.t}
-  def add(x, y), do: {x + y, "You need a calculator to do that?!"}
-end
+@spec sum(number, number) :: number
+def sum(x, y), do: x + y
+
+@spec mul(number, number) :: boolean # no Elixir compile error
+def mul(x, y), do: x * y
 ```
 
 #### Gleam
 
+Functions can **optionally** have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
+
 ```rust
-fn add(x: Int, y: Int) -> Int {
+pub fn add(x: Int, y: Int) -> Int {
   x + y
+}
+
+pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
+  x * y
 }
 ```
 
 ### Function heads
 
-Unlike Elixir, Gleam does not support multiple function heads, so to pattern match on an argument a case expression must be used.
-
 #### Elixir
 
+Elixir functions can have multiple function heads.
+
 ```elixir
-defmodule Math do
-  def zero?(0), do: true
-  def zero?(x), do: false
-end
+def zero?(0), do: true
+def zero?(x), do: false
 ```
 
 #### Gleam
 
+Gleam functions can have only one function head. Use a case expression to pattern match on function arguments.
+
 ```rust
-// we cannot use `?` in function names in Gleam
-fn is_zero(x) {
+pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
   case x {
     0 -> true
     _ -> false
@@ -206,11 +207,12 @@ fn is_zero(x) {
 
 Unlike Elixir, Gleam does not support function overloading, so there can only be 1 function with a given name, and the function can only have a single implementation for the types it accepts.
 
-### Modules
 
-Gleam's file is a module and values and functions inside it will be referenced by its name, so there is no need for a special syntax to declare a module.
+## Modules
 
 #### Elixir
+
+In Elixir, the `defmodule` keyword allows to create a module. Multiple modules can be defined in a single file.
 
 ```elixir
 defmodule Foo do
@@ -228,18 +230,23 @@ end
 
 #### Gleam
 
+Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
+
 ```rust
 // in file foo.gleam
-fn identity(x) {
+pub fn identity(x) {
   x
 }
+```
 
+```rust
 // in file main.gleam
 import foo // if foo was in a folder called `lib` the import would be `lib/foo`
-fn main() {
+pub fn main() {
   foo.identity(1)
 }
 ```
+
 
 ## Comments
 
@@ -259,7 +266,7 @@ In Gleam comments are written with a `//` prefix.
 // Hello, Joe!
 ```
 
-Comments starting with `///` are used to document the following statement, comments starting with `////` are used to document the current module.
+Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
 
 ```rust
 //// This module is very important.
@@ -268,12 +275,13 @@ Comments starting with `///` are used to document the following statement, comme
 const answer: Int = 42
 ```
 
+
 ## Operators
 
 | Operator          | Elixir | Gleam | Notes                                         |
 | ----------------- | ------ | ----- | --------------------------------------------- |
 | Equal             | `==`   | `==`  | In Gleam both values must be of the same type |
-| Strictly equal to | `===`  |       | Useful in Elixir but not in Gleam             |
+| Strictly equal to | `===`  | `==`  | Comparison in Gleam is always strict          |
 | Not equal         | `!=`   | `!=`  | In Gleam both values must be of the same type |
 | Greater than      | `>`    | `>`   | In Gleam both values must be **ints**         |
 | Greater than      | `>`    | `>.`  | In Gleam both values must be **floats**       |
@@ -283,29 +291,27 @@ const answer: Int = 42
 | Less than         | `<`    | `<.`  | In Gleam both values must be **floats**       |
 | Less or equal     | `=<`   | `>=`  | In Gleam both values must be **ints**         |
 | Less or equal     | `=<`   | `>=.` | In Gleam both values must be **floats**       |
-| Boolean and       | `and`  | `&&`  | In Gleam both values must be **bools**        |
-| Boolean and       | `&&`   | `&&`  |                                               |
-| Boolean or        | `or`   | `|| ` | In Gleam both values must be **bools**        |
-| Boolean and       | `||`   | `||`  |                                               |
+| Boolean and       | `and`  | `&&`  | Both values must be **bools**                 |
+| Logical and       | `&&`   |       | Not available in Gleam                        |
+| Boolean or        | `or`   | `|| ` | Both values must be **bools**                 |
+| Logical or        | `||`   |       | Not available in Gleam                        |
 | Add               | `+`    | `+`   | In Gleam both values must be **ints**         |
 | Add               | `+`    | `+.`  | In Gleam both values must be **floats**       |
 | Subtract          | `-`    | `-`   | In Gleam both values must be **ints**         |
 | Subtract          | `-`    | `-.`  | In Gleam both values must be **floats**       |
 | Multiply          | `*`    | `*`   | In Gleam both values must be **ints**         |
 | Multiply          | `*`    | `*.`  | In Gleam both values must be **floats**       |
-| Divide            | `div`  | `/`   | In Gleam both values must be **ints**         |
+| Divide            | `div`  | `/`   | Both values must be **ints**                  |
 | Divide            | `/`    | `/.`  | In Gleam both values must be **floats**       |
-| Modulo            | `rem`  | `%`   | In Gleam both values must be **ints**         |
+| Modulo            | `rem`  | `%`   | Both values must be **ints**                  |
 | Pipe              | `|>`   | `|>`  |                                               |
 
 
 ## Constants
 
-In Elixir module attributes can be defined to name literals we may want to use in multiple places. They can only be used within the current module.
-
-In Gleam constants can be used to achieve the same.
-
 #### Elixir
+
+In Elixir module attributes can be defined to name literals we may want to use in multiple places. They can only be used within the current module.
 
 ```elixir
 defmodule MyServer do
@@ -316,15 +322,22 @@ end
 
 #### Gleam
 
+In Gleam constants can be created using the `const` keyword.
+
 ```rust
 const the_answer = 42
 
-fn main() {
+pub fn main() {
   the_answer
 }
 ```
 
-Gleam constants can be referenced from other modules.
+Additionally, Gleam constants can be referenced from other modules.
+
+```rust
+// in file other_module.gleam
+pub const the_answer: Int = 42
+```
 
 ```rust
 import other_module
@@ -333,6 +346,7 @@ fn main() {
   other_module.the_answer
 }
 ```
+
 
 ## Blocks
 
@@ -347,7 +361,7 @@ defmodule Foo do
       print(1)
       2
     end
-    y = x * (x + 10)
+    y = x * (x + 10) # parentheses are used to change arithmetic operations order
     y
   end
 end
@@ -358,21 +372,22 @@ end
 In Gleam braces `{` `}` are used to group expressions.
 
 ```rust
-fn main() {
+pub fn main() {
   let x = {
     print(1)
     2
   }
-  let y = x * {x + 10}
+  let y = x * {x + 10} // braces are used to change arithmetic operations order
   y
 }
 ```
+
 
 ## Data types
 
 ### Strings
 
-All strings in Elixir & Gleam are UTF-8 encoded binaries.
+In both Elixir and Gleam all strings are UTF-8 encoded binaries.
 
 #### Elixir
 
@@ -393,8 +408,8 @@ Tuples are very useful in Gleam as they're the only collection data type that al
 #### Elixir
 
 ```elixir
-tuple = {"username", "password", 10}
-{_, Password, _} = tuple
+my_tuple = {"username", "password", 10}
+{_, password, _} = my_tuple
 ```
 
 #### Gleam
@@ -425,7 +440,7 @@ list = [1 | list]
 let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
-[1.0, ..list] // Type error!
+[1.0, ..list] // compile error, type mismatch
 ```
 
 ### Atoms
@@ -483,35 +498,42 @@ map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
 
 ## Custom types
 
-### Records
-
-In Elixir, Records are the same thing as Erlang's Record but it's not used frequently. Elixir uses Structs more which is implemented using Erlang's Map. Gleam does not have anything called a `record`, but custom types can be used in Gleam in much the same way that records are used in Elixir.
-
-The important thing is that a custom type allows you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
+Custom type allows you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
 
 #### Elixir
 
+Elixir uses Structs which are implemented using Erlang's Map.
+
 ```elixir
-# Elixir's struct
 defmodule Person do
  defstruct name: "John", age: 35
 end
-person = %Person{name="John", age=35}
-name = person.name
 
-# Elixir's record
-{Person, "John", 35}
+person = %Person{name: "Jake"}
+name = person.name
+```
+
+In Elixir, the Record module can be used to create Erlang's Records, but they are not used frequently.
+
+```elixir
+defmodule Person do
+  require Record
+  Record.defrecord(:person, Person, name: "John", age: "35")
+end
+
+require Person
+{Person, "Jake", 35} == Person.person(name: "Jake")
 ```
 
 #### Gleam
 
-```rust
-type Person {
-  Person(age: Int, name: String)
-}
-```
+Gleam does not have anything called a `record`, but custom types can be used in Gleam in much the same way that structs are used in Elixir. At runtime, they have a tuple representation, similar to Erlang's Records.
 
 ```rust
-let person = Person(name: "name", age: 35)
+type Person {
+  Person(name: String, age: Int)
+}
+
+let person = Person(name: "Jake", age: 35)
 let name = person.name
 ```
