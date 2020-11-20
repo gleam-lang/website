@@ -24,6 +24,6 @@ layout: page
 
 ## Gleam references
 
-- [Gleam.toml config file](/writing-gleam/config-file)
 - [Gleam's standard library documentation](https://hexdocs.pm/gleam_stdlib/)
 - [The "Awesome Gleam" resource list](https://github.com/gleam-lang/awesome-gleam)
+- [gleam.toml config file reference](/writing-gleam/gleam-toml)
