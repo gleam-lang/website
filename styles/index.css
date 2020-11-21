@@ -174,7 +174,8 @@ figure.highlight {
   overflow-x: auto;
 }
 
-p code {
+p code,
+li code {
   background-color: var(--color-light-grey);
   padding: 0 1px;
 }
