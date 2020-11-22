@@ -31,6 +31,22 @@ A description of your project.
 **Note**: This does not determine the description on the hex.pm project page when publishing your
 project. That is determined by the `description` entry in the `src/*.app.src` file in your project.
 
+## `repository`
+
+`object` - *optional*
+
+Specifies the online source repository for this project's code.
+
+This enables source links, in the generated documentation, from types, constants & functions to
+their defining lines of code in the repository.
+
+```toml
+repository = { type = "GitHub", user = "example", repo = "project" }
+repository = { type = "GitLab", user = "example", repo = "project" }
+repository = { type = "BitBucket", user = "example", repo = "project" }
+repository = { type = "Custom", url = "https://repo.example.com" }
+```
+
 ## `docs`
 
 `section` - *optional*
