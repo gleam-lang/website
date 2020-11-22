@@ -15,14 +15,14 @@ and underscores.
 
 A version string. The version can be in any format.
 
-Note: This does not determine the version of the hex.pm package page when publishing your
+**Note**: This does not determine the version of the hex.pm package page when publishing your
 project. That is determined by the `vsn` entry in the `src/*.app.src` file in your project.
 
 ## `description` (string - optional)
 
 A description of your project.
 
-Note: This does not determine the description on the hex.pm project page when publishing your
+**Note**: This does not determine the description on the hex.pm project page when publishing your
 project. That is determined by the `description` entry in the `src/*.app.src` file in your project.
 
 ## `docs` (section - optional)
