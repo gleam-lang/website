@@ -3,8 +3,10 @@ title: gleam.toml
 layout: page
 ---
 
-All Gleam projects require a `gleam.toml` configuration file. The configuration file allows you to
-specify the following properties:
+All Gleam projects require a `gleam.toml` configuration file. The `toml` configuration format is
+documented at [Toml.io](https://toml.io/).
+
+The `gleam.toml` configuration file allows you to specify the following properties:
 
 ## `name`
 
