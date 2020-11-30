@@ -165,14 +165,14 @@
                     <main>
                         <h1><a class="header" href="#try" id="try">Try</a></h1>
 <p>In Gleam if a function can either succeed or fail then it normally will
-return the <code>Result</code> type. With <code>Result</code> a successful return value is wrapped
-in an <code>Ok</code> record, and wrapping any error value in an <code>Error</code> record.</p>
+return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
+in an <code>Ok</code> record, and an error value is wrapped in an <code>Error</code> record.</p>
 <pre><code class="language-rust noplaypen">// parse_int(String) -&gt; Result(Int, String)
 
 parse_int(&quot;123&quot;) // -&gt; Ok(123)
 parse_int(&quot;erl&quot;) // -&gt; Error(&quot;expected a number, got `erl`&quot;)
 </code></pre>
-<p>When a function returns a Result we can pattern match on it to handle success
+<p>When a function returns a <code>Result</code> we can pattern match on it to handle success
 and failure:</p>
 <pre><code class="language-rust noplaypen">case parse_int(&quot;123&quot;) {
   Error(e) -&gt; io.println(&quot;That wasn't an Int&quot;)

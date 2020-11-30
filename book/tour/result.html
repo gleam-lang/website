@@ -170,7 +170,7 @@
 }
 </code></pre>
 <p>Gleam doesn't have exceptions or <code>null</code> to represent errors in our programs,
-instead we have the <code>Result</code> type. If a function call fail wrap the returned
+instead we have the <code>Result</code> type. If a function call fails, wrap the returned
 value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
 if it failed.</p>
 <pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
