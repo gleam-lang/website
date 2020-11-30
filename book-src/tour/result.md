@@ -8,7 +8,7 @@ pub type Result(value, reason) {
 ```
 
 Gleam doesn't have exceptions or `null` to represent errors in our programs,
-instead we have the `Result` type. If a function call fail wrap the returned
+instead we have the `Result` type. If a function call fails, wrap the returned
 value in a `Result`, either `Ok` if the function was successful, or `Error`
 if it failed.
 

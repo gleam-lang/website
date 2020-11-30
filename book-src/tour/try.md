@@ -1,8 +1,8 @@
 # Try
 
 In Gleam if a function can either succeed or fail then it normally will
-return the `Result` type. With `Result` a successful return value is wrapped
-in an `Ok` record, and wrapping any error value in an `Error` record.
+return the `Result` type. With `Result`, a successful return value is wrapped
+in an `Ok` record, and an error value is wrapped in an `Error` record.
 
 ```rust,noplaypen
 // parse_int(String) -> Result(Int, String)
@@ -11,7 +11,7 @@ parse_int("123") // -> Ok(123)
 parse_int("erl") // -> Error("expected a number, got `erl`")
 ```
 
-When a function returns a Result we can pattern match on it to handle success
+When a function returns a `Result` we can pattern match on it to handle success
 and failure:
 
 ```rust,noplaypen
