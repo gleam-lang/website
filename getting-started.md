@@ -158,3 +158,7 @@ niceties.
 - **Emacs** - [https://github.com/gleam-lang/gleam-mode](https://github.com/gleam-lang/gleam-mode)
 - **Visual Studio Code** - [https://github.com/rawburt/vscode-gleam-syntax](https://github.com/rawburt/vscode-gleam-syntax)
 - **Sublime Text 3** - [https://github.com/molnarmark/sublime-gleam](https://github.com/molnarmark/sublime-gleam)
+
+---
+
+[Language Tour](/book/tour) - In this chapter we explore the fundamentals of the Gleam language, namely its syntax, core data structures, flow control features, and static type system.
