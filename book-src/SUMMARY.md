@@ -6,6 +6,7 @@
   - [Bools](./tour/bools.md)
   - [Ints & Floats](./tour/ints-and-floats.md)
   - [Let bindings](./tour/let-bindings.md)
+  - [Expression blocks](./tour/expression-blocks.md)
   - [Lists](./tour/lists.md)
   - [Tuples](./tour/tuples.md)
   - [Case expressions](./tour/case-expressions.md)
