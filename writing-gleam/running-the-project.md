@@ -75,6 +75,23 @@ Running escriptize creates an executable file:
 
 `_build/default/bin/my_project_name` which requires a fn `main` as the entrypoint
 
+An example main function signature would look like this:
+
+```gleam
+import gleam/list
+
+pub external type CharList
+
+external fn char_list_to_string(CharList) -> String =
+  "erlang" "list_to_binary"
+
+pub fn main(args_erlang: List(CharList)) {
+  args = args_erlang |> list.map(char_list_to_string)
+  
+  ...
+}
+```
+
 ```sh
 # Build the project
 rebar3 compile
