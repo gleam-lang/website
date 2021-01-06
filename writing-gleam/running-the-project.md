@@ -86,7 +86,7 @@ external fn char_list_to_string(CharList) -> String =
   "erlang" "list_to_binary"
 
 pub fn main(args_erlang: List(CharList)) {
-  args = args_erlang |> list.map(char_list_to_string)
+  let args = args_erlang |> list.map(char_list_to_string)
   
   ...
 }
