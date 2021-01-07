@@ -189,6 +189,7 @@ niceties.
 - **Emacs** - [https://github.com/gleam-lang/gleam-mode](https://github.com/gleam-lang/gleam-mode)
 - **Visual Studio Code** - [https://github.com/rawburt/vscode-gleam-syntax](https://github.com/rawburt/vscode-gleam-syntax)
 - **Sublime Text 3** - [https://github.com/molnarmark/sublime-gleam](https://github.com/molnarmark/sublime-gleam)
+- **Atom** - [https://github.com/itsgreggreg/language-gleam](https://github.com/itsgreggreg/language-gleam)
 
 ---
 
