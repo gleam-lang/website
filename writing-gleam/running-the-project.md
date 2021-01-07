@@ -85,10 +85,10 @@ pub external type CharList
 external fn char_list_to_string(CharList) -> String =
   "erlang" "list_to_binary"
 
-pub fn main(args_erlang: List(CharList)) {
-  let args = args_erlang |> list.map(char_list_to_string)
+pub fn main(args: List(CharList)) {
+  let args = list.map(args, char_list_to_string)
   
-  ...
+  todo("Your code goes here")
 }
 ```
 
