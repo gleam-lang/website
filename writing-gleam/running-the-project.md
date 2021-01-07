@@ -77,7 +77,7 @@ Running escriptize creates an executable file:
 
 An example main function signature would look like this:
 
-```gleam
+```rust
 import gleam/list
 
 pub external type CharList
