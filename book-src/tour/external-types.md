@@ -8,7 +8,7 @@ functions that know how to work with them.
 Here is an example of importing a `Queue` data type and some functions from
 Erlang's `queue` module to work with the new `Queue` type.
 
-```rust,noplaypen
+```gleam
 pub external type Queue(a)
 
 pub external fn new() -> Queue(a) = "queue" "new"

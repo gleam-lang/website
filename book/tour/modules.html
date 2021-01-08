@@ -167,7 +167,7 @@
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
-<pre><code class="language-rust noplaypen">// inside src/nasa/rocket_ship.gleam
+<pre><code class="language-gleam">// inside src/nasa/rocket_ship.gleam
 
 fn count_down() {
   &quot;3... 2... 1...&quot;
@@ -194,7 +194,7 @@ called by other functions within the same module.</p>
 <h2><a class="header" href="#import" id="import">Import</a></h2>
 <p>To use functions or types from another module we need to import them using the
 <code>import</code> keyword.</p>
-<pre><code class="language-rust noplaypen">// inside src/nasa/moon_base.gleam
+<pre><code class="language-gleam">// inside src/nasa/moon_base.gleam
 
 import nasa/rocket_ship
 
@@ -211,14 +211,14 @@ error as this function is private in the <code>rocket_ship</code> module.</p>
 <h2><a class="header" href="#named-import" id="named-import">Named import</a></h2>
 <p>It is also possible to give a module a custom name when importing it using the
 <code>as</code> keyword.</p>
-<pre><code class="language-rust noplaypen">import unix/cat
+<pre><code class="language-gleam">import unix/cat
 import animal/cat as kitty
 </code></pre>
 <p>This may be useful to differentiate between multiple modules that would have
 the same default name when imported.</p>
 <h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
 <p>Values and types can also be imported in an unqualified fashion.</p>
-<pre><code class="language-rust noplaypen">import animal/cat.{Cat, stroke}
+<pre><code class="language-gleam">import animal/cat.{Cat, stroke}
 
 pub fn main() {
   let kitty = Cat(name: &quot;Nubi&quot;)
@@ -291,6 +291,8 @@ value is defined.</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

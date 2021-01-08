@@ -4,7 +4,7 @@ Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.
 
-```rust,noplaypen
+```gleam
 // inside src/nasa/rocket_ship.gleam
 
 fn count_down() {
@@ -38,7 +38,7 @@ called by other functions within the same module.
 To use functions or types from another module we need to import them using the
 `import` keyword.
 
-```rust,noplaypen
+```gleam
 // inside src/nasa/moon_base.gleam
 
 import nasa/rocket_ship
@@ -62,7 +62,7 @@ error as this function is private in the `rocket_ship` module.
 It is also possible to give a module a custom name when importing it using the
 `as` keyword.
 
-```rust,noplaypen
+```gleam
 import unix/cat
 import animal/cat as kitty
 ```
@@ -75,7 +75,7 @@ the same default name when imported.
 
 Values and types can also be imported in an unqualified fashion.
 
-```rust,noplaypen
+```gleam
 import animal/cat.{Cat, stroke}
 
 pub fn main() {

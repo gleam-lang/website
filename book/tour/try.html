@@ -167,21 +167,21 @@
 <p>In Gleam if a function can either succeed or fail then it normally will
 return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
 in an <code>Ok</code> record, and an error value is wrapped in an <code>Error</code> record.</p>
-<pre><code class="language-rust noplaypen">// parse_int(String) -&gt; Result(Int, String)
+<pre><code class="language-gleam">// parse_int(String) -&gt; Result(Int, String)
 
 parse_int(&quot;123&quot;) // -&gt; Ok(123)
 parse_int(&quot;erl&quot;) // -&gt; Error(&quot;expected a number, got `erl`&quot;)
 </code></pre>
 <p>When a function returns a <code>Result</code> we can pattern match on it to handle success
 and failure:</p>
-<pre><code class="language-rust noplaypen">case parse_int(&quot;123&quot;) {
+<pre><code class="language-gleam">case parse_int(&quot;123&quot;) {
   Error(e) -&gt; io.println(&quot;That wasn't an Int&quot;)
   Ok(i) -&gt; io.println(&quot;We parsed the Int&quot;)
 }
 </code></pre>
 <p>This is such a common pattern in Gleam that the <code>try</code> syntax exists to make it
 more consise.</p>
-<pre><code class="language-rust noplaypen">try int_a = parse_int(a)
+<pre><code class="language-gleam">try int_a = parse_int(a)
 try int_b = parse_int(b)
 try int_c = parse_int(c)
 Ok(int_a + int_b + int_c)
@@ -189,12 +189,12 @@ Ok(int_a + int_b + int_c)
 <p>When a variable is declared using <code>try</code> Gleam checks to see whether the value
 is an Error or an Ok record. If it's an Ok then the inner value is assigned to
 the variable:</p>
-<pre><code class="language-rust noplaypen">try x = Ok(1)
+<pre><code class="language-gleam">try x = Ok(1)
 Ok(x + 1)
 // -&gt; Ok(2)
 </code></pre>
 <p>If it's an Error then the Error is returned immediately:</p>
-<pre><code class="language-rust noplaypen">try x = Error(&quot;failure&quot;)
+<pre><code class="language-gleam">try x = Error(&quot;failure&quot;)
 Ok(x + 1)
 // -&gt; Error(&quot;failure&quot;)
 </code></pre>
@@ -261,6 +261,8 @@ Ok(x + 1)
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

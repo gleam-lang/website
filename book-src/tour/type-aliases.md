@@ -7,7 +7,7 @@ Here we are giving the type `List(tuple(String, String))` the new name
 `Headers`. This may be useful in a web application where we want to write
 multiple functions that return headers.
 
-```rust,noplaypen
+```gleam
 pub type Headers =
   List(tuple(String, String))
 ```

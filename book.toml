@@ -3,3 +3,6 @@ authors = ["Louis Pilfold"]
 multilingual = false
 src = "book-src"
 title = "The Gleam Book"
+
+[output.html]
+additional-js = ["javascript/highlightjs-gleam.js"]

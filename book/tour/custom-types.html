@@ -168,7 +168,7 @@
 similar to objects in object oriented languages, though they don't have
 methods.</p>
 <p>Custom types are defined with the <code>type</code> keyword.</p>
-<pre><code class="language-rust noplaypen">pub type Cat {
+<pre><code class="language-gleam">pub type Cat {
   Cat(name: String, cuteness: Int)
 }
 </code></pre>
@@ -177,7 +177,7 @@ methods.</p>
 <code>cuteness</code> field which is an <code>Int</code>.</p>
 <p>The <code>pub</code> keyword makes this type usable from other modules.</p>
 <p>Once defined the custom type can be used in functions:</p>
-<pre><code class="language-rust noplaypen">fn cats() {
+<pre><code class="language-gleam">fn cats() {
   // Labelled fields can be given in any order
   let cat1 = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
   let cat2 = Cat(cuteness: 1805, name: &quot;Biffy&quot;)
@@ -196,7 +196,7 @@ way of modeling data that can be one of a few different variants.</p>
 <li><a href="./bools.html"><code>Bool</code></a>.</li>
 </ul>
 <p>The built-in Gleam's <code>Bool</code> type is defined like this:</p>
-<pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
+<pre><code class="language-gleam">// A Bool is a value that is either `True` or `False`
 pub type Bool {
   True
   False
@@ -209,19 +209,19 @@ or <code>False</code>.</p>
 different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
 constructors that creates records with a name, and a <code>Guest</code> constructor which
 creates records without any contained values.</p>
-<pre><code class="language-rust noplaypen">type User {
+<pre><code class="language-gleam">type User {
   LoggedIn(name: String)  // A logged in user with a name
   Guest                   // A guest user with no details
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">let sara = LoggedIn(name: &quot;Sara&quot;)
+<pre><code class="language-gleam">let sara = LoggedIn(name: &quot;Sara&quot;)
 let rick = LoggedIn(name: &quot;Rick&quot;)
 let visitor = Guest
 </code></pre>
 <h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
 <p>When given a custom type record we can pattern match on it to determine which
 record constructor matches, and to assign names to any contained values.</p>
-<pre><code class="language-rust noplaypen">fn get_name(user) {
+<pre><code class="language-gleam">fn get_name(user) {
   case user {
     LoggedIn(name) -&gt; name
     Guest -&gt; &quot;Guest user&quot;
@@ -229,11 +229,11 @@ record constructor matches, and to assign names to any contained values.</p>
 }
 </code></pre>
 <p>Custom types can also be destructured with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">type Score {
+<pre><code class="language-gleam">type Score {
   Points(Int)
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">let score = Points(50)
+<pre><code class="language-gleam">let score = Points(50)
 let Points(p) = score
 
 p // =&gt; 50
@@ -246,7 +246,7 @@ publically exported functions.</p>
 incremented. We don't want the user to alter the int value other than by
 incrementing it, so we can make the type opaque to prevent them from being
 able to do this.</p>
-<pre><code class="language-rust noplaypen">// The type is defined with the opaque keyword
+<pre><code class="language-gleam">// The type is defined with the opaque keyword
 pub opaque type Counter {
   Counter(value: Int)
 }
@@ -267,7 +267,7 @@ type using the exported functions from the module, in this case <code>new</code>
 <h2><a class="header" href="#record-updates" id="record-updates">Record updates</a></h2>
 <p>Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.</p>
-<pre><code class="language-rust noplaypen">pub type Person {
+<pre><code class="language-gleam">pub type Person {
   Person(
     name: String,
     gender: Option(String),
@@ -293,7 +293,7 @@ becomes <code>logged_in</code>.</p>
 <p>Custom type records with contained values are Erlang records. The Gleam
 compiler generates an Erlang header file with a record definition for each
 constructor, for use from Erlang.</p>
-<pre><code class="language-rust noplaypen">// Gleam
+<pre><code class="language-gleam">// Gleam
 Guest
 LoggedIn(&quot;Kim&quot;)
 </code></pre>
@@ -368,6 +368,8 @@ guest,
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

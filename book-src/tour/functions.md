@@ -4,7 +4,7 @@
 
 Named functions in Gleam are defined using the `pub fn` keywords.
 
-```rust,noplaypen
+```gleam
 pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
@@ -17,7 +17,7 @@ pub fn multiply(x: Int, y: Int) -> Int {
 Functions in Gleam are first class values and so can be assigned to variables,
 passed to functions, or anything else you might do with any other data type.
 
-```rust,noplaypen
+```gleam
 // This function takes a function as an argument
 pub fn twice(f: fn(t) -> t, x: t) -> t {
   f(f(x))
@@ -32,20 +32,19 @@ pub fn add_two(x: Int) -> Int {
 }
 ```
 
-
 ## Pipe Operator
 
 Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (`|>`). This is similar in functionality to the same operator in Elixir or F#.
 
 The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of `string.reverse` in Gleam:
 
-```rust,noplaypen
+```gleam
 iodata.to_string(iodata.reverse(iodata.new(string)))
 ```
 
 This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.
 
-```rust,noplaypen
+```gleam
 string
 |> iodata.new
 |> iodata.reverse
@@ -54,13 +53,12 @@ string
 
 Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section "Function capturing".
 
-
 ## Type annotations
 
 Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.
 
-```rust,noplaypen
+```gleam
 fn identity(x: some_type) -> some_type {
   x
 }
@@ -76,7 +74,6 @@ best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.
 
-
 ## Labelled arguments
 
 When functions take several arguments it can be difficult for the user to
@@ -87,7 +84,7 @@ arguments are given an external label in addition to their internal name.
 
 Take this function that replaces sections of a string:
 
-```rust,noplaypen
+```gleam
 pub fn replace(string: String, pattern: String, replacement: String) {
   // ...
 }
@@ -95,7 +92,7 @@ pub fn replace(string: String, pattern: String, replacement: String) {
 
 It can be given labels like so.
 
-```rust,noplaypen
+```gleam
 pub fn replace(
   in string: String,
   each pattern: String,
@@ -107,7 +104,7 @@ pub fn replace(
 
 These labels can then be used when calling the function.
 
-```rust,noplaypen
+```gleam
 replace(in: "A,B,C", each: ",", with: " ")
 
 // Labelled arguments can be given in any order
@@ -121,12 +118,11 @@ The use of argument labels can allow a function to be called in an expressive,
 sentence-like manner, while still providing a function body that is readable
 and clear in intent.
 
-
 ## Anonymous functions
 
 Anonymous functions can be defined with a similar syntax.
 
-```rust,noplaypen
+```gleam
 pub fn run() {
   let add = fn(x, y) { x + y }
 
@@ -140,7 +136,7 @@ There is a shorthand syntax for creating anonymous functions that take one
 argument and call another function. The `_` is used to indicate where the
 argument should be passed.
 
-```rust,noplaypen
+```gleam
 pub fn add(x, y) {
   x + y
 }
@@ -155,7 +151,7 @@ pub fn run() {
 The function capture syntax is often used with the pipe operator to create
 a series of transformations on some data.
 
-```rust,noplaypen
+```gleam
 pub fn add(x: Int , y: Int ) -> Int {
   x + y
 }
@@ -171,7 +167,7 @@ pub fn run() {
 
 In fact, this usage is so common that there is a special shorthand for it.
 
-```rust,noplaypen
+```gleam
 pub fn run() {
   // This is the same as the example above
   1

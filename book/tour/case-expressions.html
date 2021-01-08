@@ -170,7 +170,7 @@ allows us to say &quot;if the data has this shape then do that&quot;, which we c
 <p>Here we match on an <code>Int</code> and return a specific string for the values 0, 1,
 and 2. The final pattern <code>n</code> matches any other value that did not match any of
 the previous patterns.</p>
-<pre><code class="language-rust noplaypen">case some_number {
+<pre><code class="language-gleam">case some_number {
   0 -&gt; &quot;Zero&quot;
   1 -&gt; &quot;One&quot;
   2 -&gt; &quot;Two&quot;
@@ -179,7 +179,7 @@ the previous patterns.</p>
 </code></pre>
 <p>Pattern matching on a <code>Bool</code> value is the Gleam alternative to the <code>if else</code>
 statement found in other languages.</p>
-<pre><code class="language-rust noplaypen">case some_bool {
+<pre><code class="language-gleam">case some_bool {
   True -&gt; &quot;It's true!&quot;
   False -&gt; &quot;It's not true.&quot;
 }
@@ -187,7 +187,7 @@ statement found in other languages.</p>
 <p>Gleam's <code>case</code> is an expression, meaning it returns a value and can be used
 anywhere we would use a value. For example, we can name the value of a case
 expression with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">let description =
+<pre><code class="language-gleam">let description =
   case True {
     True -&gt; &quot;It's true!&quot;
     False -&gt; &quot;It's not true.&quot;
@@ -198,7 +198,7 @@ description  // =&gt; &quot;It's true!&quot;
 <h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
 <p>A <code>case</code> expression can be used to destructure values that
 contain other values, such as tuples and lists.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [] -&gt; &quot;This list is empty&quot;
   [a] -&gt; &quot;This list has 1 element&quot;
   [a, b] -&gt; &quot;This list has 2 elements&quot;
@@ -208,7 +208,7 @@ contain other values, such as tuples and lists.</p>
 <p>It's not just the top level data structure that can be pattern matches,
 contained values can also be matched. This gives <code>case</code> the ability to
 concisely express flow control that might be verbose without pattern matching.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [[]] -&gt; &quot;The only element is an empty list&quot;
   [[], ..] -&gt; &quot;The 1st element is an empty list&quot;
   [[4], ..] -&gt; &quot;The 1st element is a list of the number 4&quot;
@@ -217,13 +217,13 @@ concisely express flow control that might be verbose without pattern matching.</
 </code></pre>
 <p>Pattern matching also works in <code>let</code> bindings, though patterns that do not
 match all instances of that type may result in a runtime error.</p>
-<pre><code class="language-rust noplaypen">let [a] = [1]    // a is 1
+<pre><code class="language-gleam">let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 </code></pre>
 <h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
 <p>Sometimes it is useful to pattern match on multiple values at the same time,
 so <code>case</code> supports having multiple subjects.</p>
-<pre><code class="language-rust noplaypen">case x, y {
+<pre><code class="language-gleam">case x, y {
   1, 1 -&gt; &quot;both are 1&quot;
   1, _ -&gt; &quot;x is 1&quot;
   _, 1 -&gt; &quot;y is 1&quot;
@@ -233,7 +233,7 @@ so <code>case</code> supports having multiple subjects.</p>
 <h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
 <p>Sometimes when pattern matching we want to assign a name to a value while
 specifying its shape at the same time. We can do this using the <code>as</code> keyword.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [[_, ..] as inner_list] -&gt; inner_list
   other -&gt; []
 }
@@ -243,12 +243,12 @@ specifying its shape at the same time. We can do this using the <code>as</code> 
 the patterns have to match and the guard has to evaluate to <code>True</code> for the
 clause to match. The guard expression can check for equality or ordering for
 <code>Int</code> and <code>Float</code>.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [a, b, c] if a &gt;. b &amp;&amp; a &lt;=. c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;
 }
@@ -257,7 +257,7 @@ clause to match. The guard expression can check for equality or ordering for
 <p>Alternative patterns can be given for a case clause using the <code>|</code> operator. If
 any of the patterns match then the clause matches.</p>
 <p>Here the first clause will match if the variable <code>number</code> holds 2, 4, 6 or 8.</p>
-<pre><code class="language-rust noplaypen">case number {
+<pre><code class="language-gleam">case number {
   2 | 4 | 6 | 8 -&gt; &quot;This is an even number&quot;
   1 | 3 | 5 | 7 -&gt; &quot;This is an odd number&quot;
   _ -&gt; &quot;I'm not sure&quot;
@@ -265,7 +265,7 @@ any of the patterns match then the clause matches.</p>
 </code></pre>
 <p>If the patterns declare variables then the same variables must be declared in
 all patterns, and the variables must have the same type in all the patterns.</p>
-<pre><code class="language-rust noplaypen">case list {
+<pre><code class="language-gleam">case list {
   [1, x] | x -&gt; x // Error! Int != List(Int)
   _ -&gt; 0
 }
@@ -333,6 +333,8 @@ all patterns, and the variables must have the same type in all the patterns.</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

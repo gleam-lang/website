@@ -164,7 +164,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h1>
-<pre><code class="language-rust noplaypen">pub type Result(value, reason) {
+<pre><code class="language-gleam">pub type Result(value, reason) {
   Ok(value)
   Error(reason)
 }
@@ -173,14 +173,14 @@
 instead we have the <code>Result</code> type. If a function call fails, wrap the returned
 value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
 if it failed.</p>
-<pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
+<pre><code class="language-gleam">pub fn lookup(name, phone_book) {
   // ... we found a phone number in the phone book for the given name here
   Ok(phone_number)
 }
 </code></pre>
 <p>The <code>Error</code> type needs to be given a reason for the failure in order to
 return, like so:</p>
-<pre><code class="language-rust noplaypen">pub type MyDatabaseError {
+<pre><code class="language-gleam">pub type MyDatabaseError {
   InvalidQuery
   NetworkTimeout
 }
@@ -193,7 +193,7 @@ pub fn insert(db_row) {
 <p>In cases where we don't care about the specific error enough to want to create
 a custom error type, or when the cause of the error is obvious without further
 detail, the <code>Nil</code> type can be used as the <code>Error</code> reason.</p>
-<pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
+<pre><code class="language-gleam">pub fn lookup(name, phone_book) {
   // ... That name wasn't found in the phone book
   Error(Nil)
 }
@@ -266,6 +266,8 @@ working with the <code>Result</code> type, make good use of them!</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

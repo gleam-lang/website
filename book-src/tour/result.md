@@ -1,6 +1,6 @@
 # `Result(value, error)`
 
-```rust,noplaypen
+```gleam
 pub type Result(value, reason) {
   Ok(value)
   Error(reason)
@@ -12,7 +12,7 @@ instead we have the `Result` type. If a function call fails, wrap the returned
 value in a `Result`, either `Ok` if the function was successful, or `Error`
 if it failed.
 
-```rust,noplaypen
+```gleam
 pub fn lookup(name, phone_book) {
   // ... we found a phone number in the phone book for the given name here
   Ok(phone_number)
@@ -22,7 +22,7 @@ pub fn lookup(name, phone_book) {
 The `Error` type needs to be given a reason for the failure in order to
 return, like so:
 
-```rust,noplaypen
+```gleam
 pub type MyDatabaseError {
   InvalidQuery
   NetworkTimeout
@@ -38,7 +38,7 @@ In cases where we don't care about the specific error enough to want to create
 a custom error type, or when the cause of the error is obvious without further
 detail, the `Nil` type can be used as the `Error` reason.
 
-```rust,noplaypen
+```gleam
 pub fn lookup(name, phone_book) {
   // ... That name wasn't found in the phone book
   Error(Nil)
