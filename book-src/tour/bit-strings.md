@@ -3,7 +3,7 @@
 Gleam offers a syntax for working directly with raw data in the form of bit
 strings.
 
-```rust,noplaypen
+```gleam
 // A bit string of the 8 bit int value 3
 <<3>>
 

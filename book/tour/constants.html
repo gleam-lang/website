@@ -166,7 +166,7 @@
                         <h1><a class="header" href="#constants" id="constants">Constants</a></h1>
 <p>Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.</p>
-<pre><code class="language-rust noplaypen">pub const start_year = 2101
+<pre><code class="language-gleam">pub const start_year = 2101
 pub const end_year = 2111
 
 pub fn is_before(year: Int) -&gt; Bool {
@@ -181,7 +181,7 @@ pub fn is_during(year: Int) -&gt; Bool {
 changed, so they cannot be used as global mutable state.</p>
 <p>When a constant is referenced the value is inlined by the compiler, so they
 can be used in case expression guards.</p>
-<pre><code class="language-rust noplaypen">pub const start_year = 2101
+<pre><code class="language-gleam">pub const start_year = 2101
 pub const end_year = 2111
 
 pub describe(year: Int) -&gt; String {
@@ -194,7 +194,7 @@ pub describe(year: Int) -&gt; String {
 </code></pre>
 <h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
 <p>Constants can also be given type annotations. </p>
-<pre><code class="language-rust noplaypen">pub const name: String = &quot;Gleam&quot;
+<pre><code class="language-gleam">pub const name: String = &quot;Gleam&quot;
 pub const size: Int = 100
 </code></pre>
 <p>These annotations serve as documentation or can be used to provide a more 
@@ -262,6 +262,8 @@ specific type than the compiler would otherwise infer.</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

@@ -6,7 +6,7 @@ methods.
 
 Custom types are defined with the `type` keyword.
 
-```rust,noplaypen
+```gleam
 pub type Cat {
   Cat(name: String, cuteness: Int)
 }
@@ -20,7 +20,7 @@ The `pub` keyword makes this type usable from other modules.
 
 Once defined the custom type can be used in functions:
 
-```rust,noplaypen
+```gleam
 fn cats() {
   // Labelled fields can be given in any order
   let cat1 = Cat(name: "Nubi", cuteness: 2001)
@@ -44,7 +44,7 @@ We've already seen a custom type with multiple constructors in the Language Tour
 
 The built-in Gleam's `Bool` type is defined like this:
 
-```rust,noplaypen
+```gleam
 // A Bool is a value that is either `True` or `False`
 pub type Bool {
   True
@@ -61,13 +61,13 @@ different values. For example a `User` custom type could have a `LoggedIn`
 constructors that creates records with a name, and a `Guest` constructor which
 creates records without any contained values.
 
-```rust,noplaypen
+```gleam
 type User {
   LoggedIn(name: String)  // A logged in user with a name
   Guest                   // A guest user with no details
 }
 ```
-```rust,noplaypen
+```gleam
 let sara = LoggedIn(name: "Sara")
 let rick = LoggedIn(name: "Rick")
 let visitor = Guest
@@ -80,7 +80,7 @@ let visitor = Guest
 When given a custom type record we can pattern match on it to determine which
 record constructor matches, and to assign names to any contained values.
 
-```rust,noplaypen
+```gleam
 fn get_name(user) {
   case user {
     LoggedIn(name) -> name
@@ -91,12 +91,12 @@ fn get_name(user) {
 
 Custom types can also be destructured with a `let` binding.
 
-```rust,noplaypen
+```gleam
 type Score {
   Points(Int)
 }
 ```
-```rust,noplaypen
+```gleam
 let score = Points(50)
 let Points(p) = score
 
@@ -115,7 +115,7 @@ incremented. We don't want the user to alter the int value other than by
 incrementing it, so we can make the type opaque to prevent them from being
 able to do this.
 
-```rust,noplaypen
+```gleam
 // The type is defined with the opaque keyword
 pub opaque type Counter {
   Counter(value: Int)
@@ -142,7 +142,7 @@ type using the exported functions from the module, in this case `new` and
 Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.
 
-```rust,noplaypen
+```gleam
 pub type Person {
   Person(
     name: String,
@@ -175,7 +175,7 @@ Custom type records with contained values are Erlang records. The Gleam
 compiler generates an Erlang header file with a record definition for each
 constructor, for use from Erlang.
 
-```rust,noplaypen
+```gleam
 // Gleam
 Guest
 LoggedIn("Kim")

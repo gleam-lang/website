@@ -180,19 +180,19 @@ arguments and returns a <code>Float</code>.</p>
 prints it, and returns the same value.</p>
 <p>If we want to import these functions and use them in our program we would do
 so like this:</p>
-<pre><code class="language-rust noplaypen">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
+<pre><code class="language-gleam">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
 
 // Elixir modules start with `Elixir.`
 pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
 </code></pre>
 <h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
 <p>Like regular functions, external functions can have labelled arguments.</p>
-<pre><code class="language-rust noplaypen">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
+<pre><code class="language-gleam">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
   &quot;my_external_module&quot; &quot;any&quot;
 </code></pre>
 <p>This function has the labelled arguments <code>in</code> and <code>satisfying</code>, and can be
 called like so:</p>
-<pre><code class="language-rust noplaypen">any(in: my_list, satisfying: is_even)
+<pre><code class="language-gleam">any(in: my_list, satisfying: is_even)
 any(satisfying: is_even, in: my_list)
 </code></pre>
 
@@ -258,6 +258,8 @@ any(satisfying: is_even, in: my_list)
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

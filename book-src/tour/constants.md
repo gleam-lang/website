@@ -3,7 +3,7 @@
 Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.
 
-```rust,noplaypen
+```gleam
 pub const start_year = 2101
 pub const end_year = 2111
 
@@ -22,7 +22,7 @@ changed, so they cannot be used as global mutable state.
 When a constant is referenced the value is inlined by the compiler, so they
 can be used in case expression guards.
 
-```rust,noplaypen
+```gleam
 pub const start_year = 2101
 pub const end_year = 2111
 
@@ -39,7 +39,7 @@ pub describe(year: Int) -> String {
 
 Constants can also be given type annotations. 
 
-```rust,noplaypen
+```gleam
 pub const name: String = "Gleam"
 pub const size: Int = 100
 ```

@@ -177,41 +177,41 @@ information can be safely ignored.</p>
 <h1><a class="header" href="#comments" id="comments">Comments</a></h1>
 <p>Gleam allows you to write comments in your code.</p>
 <p>Here’s a simple comment:</p>
-<pre><code class="language-rust noplaypen">// Hello, world!
+<pre><code class="language-gleam">// Hello, world!
 </code></pre>
 <p>In Gleam, comments must start with two slashes and continue until the end of the
 line. For comments that extend beyond a single line, you’ll need to include
 <code>//</code> on each line, like this:</p>
-<pre><code class="language-rust noplaypen">// Hello, world! I have a lot to say, so much that it will take multiple
+<pre><code class="language-gleam">// Hello, world! I have a lot to say, so much that it will take multiple
 // lines of text. Therefore, I will start each line with // to denote it
 // as part of a multi-line comment.
 </code></pre>
 <p>Comments can also be placed at the end of lines containing code:</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+<pre><code class="language-gleam">pub fn add(x, y) {
   x + y // here we are adding two values together
 }
 </code></pre>
 <p>Comments may also be indented:</p>
-<pre><code class="language-rust noplaypen">pub fn multiply(x, y) {
+<pre><code class="language-gleam">pub fn multiply(x, y) {
   // here we are multiplying x by y
   x * y 
 }
 </code></pre>
 <h1><a class="header" href="#string" id="string">String</a></h1>
 <p>Gleam's has UTF-8 binary strings, written as text surrounded by double quotes.</p>
-<pre><code class="language-rust noplaypen">&quot;Hello, Gleam!&quot;
+<pre><code class="language-gleam">&quot;Hello, Gleam!&quot;
 </code></pre>
 <p>Strings can span multiple lines.</p>
-<pre><code class="language-rust noplaypen">&quot;Hello
+<pre><code class="language-gleam">&quot;Hello
 Gleam!&quot;
 </code></pre>
 <p>Special characters such as <code>&quot;</code> need to be escaped with a <code>\</code> character.</p>
-<pre><code class="language-rust noplaypen">&quot;Here is a double quote -&gt; \&quot; &lt;-&quot;
+<pre><code class="language-gleam">&quot;Here is a double quote -&gt; \&quot; &lt;-&quot;
 </code></pre>
 <h1><a class="header" href="#bool" id="bool">Bool</a></h1>
 <p>A Bool can be either <code>True</code> or <code>False</code>.</p>
 <p>Gleam defines a handful of operators that work with Bools.</p>
-<pre><code class="language-rust noplaypen">False &amp;&amp; False // =&gt; False
+<pre><code class="language-gleam">False &amp;&amp; False // =&gt; False
 False &amp;&amp; True  // =&gt; False
 True &amp;&amp; False  // =&gt; False
 True &amp;&amp; True   // =&gt; True
@@ -231,7 +231,7 @@ runtime with the atoms <code>true</code> and <code>false</code>, making them com
 and Erlang's booleans.</p>
 <p>This is important if you want to use Gleam and Elixir or Erlang together in
 one project.</p>
-<pre><code class="language-rust noplaypen">// Gleam
+<pre><code class="language-gleam">// Gleam
 True
 False
 </code></pre>
@@ -243,13 +243,13 @@ false.
 <p>Gleam's main number types are Int and Float.</p>
 <h2><a class="header" href="#ints" id="ints">Ints</a></h2>
 <p>Ints are &quot;whole&quot; numbers.</p>
-<pre><code class="language-rust noplaypen">1
+<pre><code class="language-gleam">1
 2
 -3
 4001
 </code></pre>
 <p>Gleam has several operators that work with Ints.</p>
-<pre><code class="language-rust noplaypen">1 + 1 // =&gt; 2
+<pre><code class="language-gleam">1 + 1 // =&gt; 2
 5 - 1 // =&gt; 4
 5 / 2 // =&gt; 2
 3 * 3 // =&gt; 9
@@ -261,16 +261,16 @@ false.
 2 &lt;= 1 // =&gt; False
 </code></pre>
 <p>Underscores can be added to Ints for clarity.</p>
-<pre><code class="language-rust noplaypen">1_000_000 // One million
+<pre><code class="language-gleam">1_000_000 // One million
 </code></pre>
 <h2><a class="header" href="#floats" id="floats">Floats</a></h2>
 <p>Floats are numbers that have a decimal point.</p>
-<pre><code class="language-rust noplaypen">1.5
+<pre><code class="language-gleam">1.5
 2.0
 -0.1
 </code></pre>
 <p>Floats also have their own set of operators.</p>
-<pre><code class="language-rust noplaypen">1.0 +. 1.4 // =&gt; 2.4
+<pre><code class="language-gleam">1.0 +. 1.4 // =&gt; 2.4
 5.0 -. 1.5 // =&gt; 3.5
 5.0 /. 2.0 // =&gt; 2.5
 3.0 *. 3.1 // =&gt; 9.3
@@ -281,13 +281,13 @@ false.
 2.0 &lt;=. 1.0 // =&gt; False
 </code></pre>
 <p>Underscores can also be added to Floats for clarity.</p>
-<pre><code class="language-rust noplaypen">1_000_000.0 // One million
+<pre><code class="language-gleam">1_000_000.0 // One million
 </code></pre>
 <h1><a class="header" href="#let-bindings" id="let-bindings">Let bindings</a></h1>
 <p>A value can be given a name using <code>let</code>. Names can be reused by later let
 bindings, but the values contained are <em>immutable</em>, meaning the values
 themselves cannot be changed.</p>
-<pre><code class="language-rust noplaypen">let x = 1
+<pre><code class="language-gleam">let x = 1
 let y = x
 let x = 2
 
@@ -297,7 +297,7 @@ y  // =&gt; 1
 <h1><a class="header" href="#expression-blocks" id="expression-blocks">Expression blocks</a></h1>
 <p>Every block in gleam is an expression. All expressions in the block are
 executed, and the result of the last expression is returned.</p>
-<pre><code class="language-rust noplaypen">let value: Bool = {
+<pre><code class="language-gleam">let value: Bool = {
     &quot;Hello&quot;
     42 + 12
     False
@@ -305,7 +305,7 @@ executed, and the result of the last expression is returned.</p>
 </code></pre>
 <p>Expression blocks can be used instead of parenthesis to change the precedence
 of operations.</p>
-<pre><code class="language-rust noplaypen">let celsius = { fahrenheit - 32 } * 5 / 9
+<pre><code class="language-gleam">let celsius = { fahrenheit - 32 } * 5 / 9
 </code></pre>
 <h1><a class="header" href="#list" id="list">List</a></h1>
 <p>Lists are ordered collections of values. They're one of the most common data
@@ -313,17 +313,17 @@ structures in Gleam.</p>
 <p>Lists are <em>homogeneous</em>, meaning all the elements of a List must be of the
 same type. Attempting to construct a list of multiple types of element will
 result in the compiler presenting a type error.</p>
-<pre><code class="language-rust noplaypen">[1, 2, 3, 4]  // List(Int)
+<pre><code class="language-gleam">[1, 2, 3, 4]  // List(Int)
 [1.22, 2.30]  // List(Float)
 [1.22, 3, 4]  // Type error!
 </code></pre>
 <p>Prepending to a list is very fast, and is the preferred way to add new values.</p>
-<pre><code class="language-rust noplaypen">[1, ..[2, 3]]  // =&gt; [1, 2, 3]
+<pre><code class="language-gleam">[1, ..[2, 3]]  // =&gt; [1, 2, 3]
 </code></pre>
 <p>Note that as all data structures in Gleam are immutable so prepending to a
 list does not change the original list, instead it efficiently creates a new
 list with the new additional element.</p>
-<pre><code class="language-rust noplaypen">let x = [2, 3]
+<pre><code class="language-gleam">let x = [2, 3]
 let y = [1, ..x]
 
 
@@ -334,7 +334,7 @@ y  // =&gt; [1, 2, 3]
 <p>Lists are good for when we want a collection of one type, but sometime we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
-<pre><code class="language-rust noplaypen">fn run() {
+<pre><code class="language-gleam">fn run() {
   tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
   tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
 }
@@ -346,7 +346,7 @@ allows us to say &quot;if the data has this shape then do that&quot;, which we c
 <p>Here we match on an <code>Int</code> and return a specific string for the values 0, 1,
 and 2. The final pattern <code>n</code> matches any other value that did not match any of
 the previous patterns.</p>
-<pre><code class="language-rust noplaypen">case some_number {
+<pre><code class="language-gleam">case some_number {
   0 -&gt; &quot;Zero&quot;
   1 -&gt; &quot;One&quot;
   2 -&gt; &quot;Two&quot;
@@ -355,7 +355,7 @@ the previous patterns.</p>
 </code></pre>
 <p>Pattern matching on a <code>Bool</code> value is the Gleam alternative to the <code>if else</code>
 statement found in other languages.</p>
-<pre><code class="language-rust noplaypen">case some_bool {
+<pre><code class="language-gleam">case some_bool {
   True -&gt; &quot;It's true!&quot;
   False -&gt; &quot;It's not true.&quot;
 }
@@ -363,7 +363,7 @@ statement found in other languages.</p>
 <p>Gleam's <code>case</code> is an expression, meaning it returns a value and can be used
 anywhere we would use a value. For example, we can name the value of a case
 expression with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">let description =
+<pre><code class="language-gleam">let description =
   case True {
     True -&gt; &quot;It's true!&quot;
     False -&gt; &quot;It's not true.&quot;
@@ -374,7 +374,7 @@ description  // =&gt; &quot;It's true!&quot;
 <h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
 <p>A <code>case</code> expression can be used to destructure values that
 contain other values, such as tuples and lists.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [] -&gt; &quot;This list is empty&quot;
   [a] -&gt; &quot;This list has 1 element&quot;
   [a, b] -&gt; &quot;This list has 2 elements&quot;
@@ -384,7 +384,7 @@ contain other values, such as tuples and lists.</p>
 <p>It's not just the top level data structure that can be pattern matches,
 contained values can also be matched. This gives <code>case</code> the ability to
 concisely express flow control that might be verbose without pattern matching.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [[]] -&gt; &quot;The only element is an empty list&quot;
   [[], ..] -&gt; &quot;The 1st element is an empty list&quot;
   [[4], ..] -&gt; &quot;The 1st element is a list of the number 4&quot;
@@ -393,13 +393,13 @@ concisely express flow control that might be verbose without pattern matching.</
 </code></pre>
 <p>Pattern matching also works in <code>let</code> bindings, though patterns that do not
 match all instances of that type may result in a runtime error.</p>
-<pre><code class="language-rust noplaypen">let [a] = [1]    // a is 1
+<pre><code class="language-gleam">let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 </code></pre>
 <h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
 <p>Sometimes it is useful to pattern match on multiple values at the same time,
 so <code>case</code> supports having multiple subjects.</p>
-<pre><code class="language-rust noplaypen">case x, y {
+<pre><code class="language-gleam">case x, y {
   1, 1 -&gt; &quot;both are 1&quot;
   1, _ -&gt; &quot;x is 1&quot;
   _, 1 -&gt; &quot;y is 1&quot;
@@ -409,7 +409,7 @@ so <code>case</code> supports having multiple subjects.</p>
 <h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
 <p>Sometimes when pattern matching we want to assign a name to a value while
 specifying its shape at the same time. We can do this using the <code>as</code> keyword.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [[_, ..] as inner_list] -&gt; inner_list
   other -&gt; []
 }
@@ -419,12 +419,12 @@ specifying its shape at the same time. We can do this using the <code>as</code> 
 the patterns have to match and the guard has to evaluate to <code>True</code> for the
 clause to match. The guard expression can check for equality or ordering for
 <code>Int</code> and <code>Float</code>.</p>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">case xs {
+<pre><code class="language-gleam">case xs {
   [a, b, c] if a &gt;. b &amp;&amp; a &lt;=. c -&gt; &quot;ok&quot;
   _other -&gt; &quot;ko&quot;
 }
@@ -433,7 +433,7 @@ clause to match. The guard expression can check for equality or ordering for
 <p>Alternative patterns can be given for a case clause using the <code>|</code> operator. If
 any of the patterns match then the clause matches.</p>
 <p>Here the first clause will match if the variable <code>number</code> holds 2, 4, 6 or 8.</p>
-<pre><code class="language-rust noplaypen">case number {
+<pre><code class="language-gleam">case number {
   2 | 4 | 6 | 8 -&gt; &quot;This is an even number&quot;
   1 | 3 | 5 | 7 -&gt; &quot;This is an odd number&quot;
   _ -&gt; &quot;I'm not sure&quot;
@@ -441,7 +441,7 @@ any of the patterns match then the clause matches.</p>
 </code></pre>
 <p>If the patterns declare variables then the same variables must be declared in
 all patterns, and the variables must have the same type in all the patterns.</p>
-<pre><code class="language-rust noplaypen">case list {
+<pre><code class="language-gleam">case list {
   [1, x] | x -&gt; x // Error! Int != List(Int)
   _ -&gt; 0
 }
@@ -449,7 +449,7 @@ all patterns, and the variables must have the same type in all the patterns.</p>
 <h1><a class="header" href="#function" id="function">Function</a></h1>
 <h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x: Int, y: Int) -&gt; Int {
+<pre><code class="language-gleam">pub fn add(x: Int, y: Int) -&gt; Int {
   x + y
 }
 
@@ -459,7 +459,7 @@ pub fn multiply(x: Int, y: Int) -&gt; Int {
 </code></pre>
 <p>Functions in Gleam are first class values and so can be assigned to variables,
 passed to functions, or anything else you might do with any other data type.</p>
-<pre><code class="language-rust noplaypen">// This function takes a function as an argument
+<pre><code class="language-gleam">// This function takes a function as an argument
 pub fn twice(f: fn(t) -&gt; t, x: t) -&gt; t {
   f(f(x))
 }
@@ -475,10 +475,10 @@ pub fn add_two(x: Int) -&gt; Int {
 <h2><a class="header" href="#pipe-operator" id="pipe-operator">Pipe Operator</a></h2>
 <p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
 <p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
-<pre><code class="language-rust noplaypen">iodata.to_string(iodata.reverse(iodata.new(string)))
+<pre><code class="language-gleam">iodata.to_string(iodata.reverse(iodata.new(string)))
 </code></pre>
 <p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
-<pre><code class="language-rust noplaypen">string
+<pre><code class="language-gleam">string
 |&gt; iodata.new
 |&gt; iodata.reverse
 |&gt; iodata.to_string
@@ -487,7 +487,7 @@ pub fn add_two(x: Int) -&gt; Int {
 <h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
 <p>Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.</p>
-<pre><code class="language-rust noplaypen">fn identity(x: some_type) -&gt; some_type {
+<pre><code class="language-gleam">fn identity(x: some_type) -&gt; some_type {
   x
 }
 
@@ -506,12 +506,12 @@ remember what the arguments are, and what order they are expected in.</p>
 <p>To help with this Gleam supports <em>labelled arguments</em>, where function
 arguments are given an external label in addition to their internal name.</p>
 <p>Take this function that replaces sections of a string:</p>
-<pre><code class="language-rust noplaypen">pub fn replace(string: String, pattern: String, replacement: String) {
+<pre><code class="language-gleam">pub fn replace(string: String, pattern: String, replacement: String) {
   // ...
 }
 </code></pre>
 <p>It can be given labels like so.</p>
-<pre><code class="language-rust noplaypen">pub fn replace(
+<pre><code class="language-gleam">pub fn replace(
   in string: String,
   each pattern: String,
   with replacement: String,
@@ -520,7 +520,7 @@ arguments are given an external label in addition to their internal name.</p>
 }
 </code></pre>
 <p>These labels can then be used when calling the function.</p>
-<pre><code class="language-rust noplaypen">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
+<pre><code class="language-gleam">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
 
 // Labelled arguments can be given in any order
 replace(each: &quot;,&quot;, with: &quot; &quot;, in: &quot;A,B,C&quot;)
@@ -533,7 +533,7 @@ sentence-like manner, while still providing a function body that is readable
 and clear in intent.</p>
 <h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
 <p>Anonymous functions can be defined with a similar syntax.</p>
-<pre><code class="language-rust noplaypen">pub fn run() {
+<pre><code class="language-gleam">pub fn run() {
   let add = fn(x, y) { x + y }
 
   add(1, 2)
@@ -543,7 +543,7 @@ and clear in intent.</p>
 <p>There is a shorthand syntax for creating anonymous functions that take one
 argument and call another function. The <code>_</code> is used to indicate where the
 argument should be passed.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+<pre><code class="language-gleam">pub fn add(x, y) {
   x + y
 }
 
@@ -555,7 +555,7 @@ pub fn run() {
 </code></pre>
 <p>The function capture syntax is often used with the pipe operator to create
 a series of transformations on some data.</p>
-<pre><code class="language-rust noplaypen">pub fn add(x: Int , y: Int ) -&gt; Int {
+<pre><code class="language-gleam">pub fn add(x: Int , y: Int ) -&gt; Int {
   x + y
 }
 
@@ -568,7 +568,7 @@ pub fn run() {
 }
 </code></pre>
 <p>In fact, this usage is so common that there is a special shorthand for it.</p>
-<pre><code class="language-rust noplaypen">pub fn run() {
+<pre><code class="language-gleam">pub fn run() {
   // This is the same as the example above
   1
   |&gt; add(3)
@@ -584,7 +584,7 @@ as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would becom
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
-<pre><code class="language-rust noplaypen">// inside src/nasa/rocket_ship.gleam
+<pre><code class="language-gleam">// inside src/nasa/rocket_ship.gleam
 
 fn count_down() {
   &quot;3... 2... 1...&quot;
@@ -611,7 +611,7 @@ called by other functions within the same module.</p>
 <h2><a class="header" href="#import" id="import">Import</a></h2>
 <p>To use functions or types from another module we need to import them using the
 <code>import</code> keyword.</p>
-<pre><code class="language-rust noplaypen">// inside src/nasa/moon_base.gleam
+<pre><code class="language-gleam">// inside src/nasa/moon_base.gleam
 
 import nasa/rocket_ship
 
@@ -628,14 +628,14 @@ error as this function is private in the <code>rocket_ship</code> module.</p>
 <h2><a class="header" href="#named-import" id="named-import">Named import</a></h2>
 <p>It is also possible to give a module a custom name when importing it using the
 <code>as</code> keyword.</p>
-<pre><code class="language-rust noplaypen">import unix/cat
+<pre><code class="language-gleam">import unix/cat
 import animal/cat as kitty
 </code></pre>
 <p>This may be useful to differentiate between multiple modules that would have
 the same default name when imported.</p>
 <h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
 <p>Values and types can also be imported in an unqualified fashion.</p>
-<pre><code class="language-rust noplaypen">import animal/cat.{Cat, stroke}
+<pre><code class="language-gleam">import animal/cat.{Cat, stroke}
 
 pub fn main() {
   let kitty = Cat(name: &quot;Nubi&quot;)
@@ -650,7 +650,7 @@ value is defined.</p>
 similar to objects in object oriented languages, though they don't have
 methods.</p>
 <p>Custom types are defined with the <code>type</code> keyword.</p>
-<pre><code class="language-rust noplaypen">pub type Cat {
+<pre><code class="language-gleam">pub type Cat {
   Cat(name: String, cuteness: Int)
 }
 </code></pre>
@@ -659,7 +659,7 @@ methods.</p>
 <code>cuteness</code> field which is an <code>Int</code>.</p>
 <p>The <code>pub</code> keyword makes this type usable from other modules.</p>
 <p>Once defined the custom type can be used in functions:</p>
-<pre><code class="language-rust noplaypen">fn cats() {
+<pre><code class="language-gleam">fn cats() {
   // Labelled fields can be given in any order
   let cat1 = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
   let cat2 = Cat(cuteness: 1805, name: &quot;Biffy&quot;)
@@ -678,7 +678,7 @@ way of modeling data that can be one of a few different variants.</p>
 <li><a href="tour/./bools.html"><code>Bool</code></a>.</li>
 </ul>
 <p>The built-in Gleam's <code>Bool</code> type is defined like this:</p>
-<pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
+<pre><code class="language-gleam">// A Bool is a value that is either `True` or `False`
 pub type Bool {
   True
   False
@@ -691,19 +691,19 @@ or <code>False</code>.</p>
 different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
 constructors that creates records with a name, and a <code>Guest</code> constructor which
 creates records without any contained values.</p>
-<pre><code class="language-rust noplaypen">type User {
+<pre><code class="language-gleam">type User {
   LoggedIn(name: String)  // A logged in user with a name
   Guest                   // A guest user with no details
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">let sara = LoggedIn(name: &quot;Sara&quot;)
+<pre><code class="language-gleam">let sara = LoggedIn(name: &quot;Sara&quot;)
 let rick = LoggedIn(name: &quot;Rick&quot;)
 let visitor = Guest
 </code></pre>
 <h2><a class="header" href="#destructuring-1" id="destructuring-1">Destructuring</a></h2>
 <p>When given a custom type record we can pattern match on it to determine which
 record constructor matches, and to assign names to any contained values.</p>
-<pre><code class="language-rust noplaypen">fn get_name(user) {
+<pre><code class="language-gleam">fn get_name(user) {
   case user {
     LoggedIn(name) -&gt; name
     Guest -&gt; &quot;Guest user&quot;
@@ -711,11 +711,11 @@ record constructor matches, and to assign names to any contained values.</p>
 }
 </code></pre>
 <p>Custom types can also be destructured with a <code>let</code> binding.</p>
-<pre><code class="language-rust noplaypen">type Score {
+<pre><code class="language-gleam">type Score {
   Points(Int)
 }
 </code></pre>
-<pre><code class="language-rust noplaypen">let score = Points(50)
+<pre><code class="language-gleam">let score = Points(50)
 let Points(p) = score
 
 p // =&gt; 50
@@ -728,7 +728,7 @@ publically exported functions.</p>
 incremented. We don't want the user to alter the int value other than by
 incrementing it, so we can make the type opaque to prevent them from being
 able to do this.</p>
-<pre><code class="language-rust noplaypen">// The type is defined with the opaque keyword
+<pre><code class="language-gleam">// The type is defined with the opaque keyword
 pub opaque type Counter {
   Counter(value: Int)
 }
@@ -749,7 +749,7 @@ type using the exported functions from the module, in this case <code>new</code>
 <h2><a class="header" href="#record-updates" id="record-updates">Record updates</a></h2>
 <p>Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.</p>
-<pre><code class="language-rust noplaypen">pub type Person {
+<pre><code class="language-gleam">pub type Person {
   Person(
     name: String,
     gender: Option(String),
@@ -775,7 +775,7 @@ becomes <code>logged_in</code>.</p>
 <p>Custom type records with contained values are Erlang records. The Gleam
 compiler generates an Erlang header file with a record definition for each
 constructor, for use from Erlang.</p>
-<pre><code class="language-rust noplaypen">// Gleam
+<pre><code class="language-gleam">// Gleam
 Guest
 LoggedIn(&quot;Kim&quot;)
 </code></pre>
@@ -788,7 +788,7 @@ guest,
 {logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
 </code></pre>
 <h1><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h1>
-<pre><code class="language-rust noplaypen">pub type Result(value, reason) {
+<pre><code class="language-gleam">pub type Result(value, reason) {
   Ok(value)
   Error(reason)
 }
@@ -797,14 +797,14 @@ guest,
 instead we have the <code>Result</code> type. If a function call fails, wrap the returned
 value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
 if it failed.</p>
-<pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
+<pre><code class="language-gleam">pub fn lookup(name, phone_book) {
   // ... we found a phone number in the phone book for the given name here
   Ok(phone_number)
 }
 </code></pre>
 <p>The <code>Error</code> type needs to be given a reason for the failure in order to
 return, like so:</p>
-<pre><code class="language-rust noplaypen">pub type MyDatabaseError {
+<pre><code class="language-gleam">pub type MyDatabaseError {
   InvalidQuery
   NetworkTimeout
 }
@@ -817,7 +817,7 @@ pub fn insert(db_row) {
 <p>In cases where we don't care about the specific error enough to want to create
 a custom error type, or when the cause of the error is obvious without further
 detail, the <code>Nil</code> type can be used as the <code>Error</code> reason.</p>
-<pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
+<pre><code class="language-gleam">pub fn lookup(name, phone_book) {
   // ... That name wasn't found in the phone book
   Error(Nil)
 }
@@ -831,21 +831,21 @@ working with the <code>Result</code> type, make good use of them!</p>
 <p>In Gleam if a function can either succeed or fail then it normally will
 return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
 in an <code>Ok</code> record, and an error value is wrapped in an <code>Error</code> record.</p>
-<pre><code class="language-rust noplaypen">// parse_int(String) -&gt; Result(Int, String)
+<pre><code class="language-gleam">// parse_int(String) -&gt; Result(Int, String)
 
 parse_int(&quot;123&quot;) // -&gt; Ok(123)
 parse_int(&quot;erl&quot;) // -&gt; Error(&quot;expected a number, got `erl`&quot;)
 </code></pre>
 <p>When a function returns a <code>Result</code> we can pattern match on it to handle success
 and failure:</p>
-<pre><code class="language-rust noplaypen">case parse_int(&quot;123&quot;) {
+<pre><code class="language-gleam">case parse_int(&quot;123&quot;) {
   Error(e) -&gt; io.println(&quot;That wasn't an Int&quot;)
   Ok(i) -&gt; io.println(&quot;We parsed the Int&quot;)
 }
 </code></pre>
 <p>This is such a common pattern in Gleam that the <code>try</code> syntax exists to make it
 more consise.</p>
-<pre><code class="language-rust noplaypen">try int_a = parse_int(a)
+<pre><code class="language-gleam">try int_a = parse_int(a)
 try int_b = parse_int(b)
 try int_c = parse_int(c)
 Ok(int_a + int_b + int_c)
@@ -853,12 +853,12 @@ Ok(int_a + int_b + int_c)
 <p>When a variable is declared using <code>try</code> Gleam checks to see whether the value
 is an Error or an Ok record. If it's an Ok then the inner value is assigned to
 the variable:</p>
-<pre><code class="language-rust noplaypen">try x = Ok(1)
+<pre><code class="language-gleam">try x = Ok(1)
 Ok(x + 1)
 // -&gt; Ok(2)
 </code></pre>
 <p>If it's an Error then the Error is returned immediately:</p>
-<pre><code class="language-rust noplaypen">try x = Error(&quot;failure&quot;)
+<pre><code class="language-gleam">try x = Error(&quot;failure&quot;)
 Ok(x + 1)
 // -&gt; Error(&quot;failure&quot;)
 </code></pre>
@@ -878,13 +878,13 @@ the database to handle the request.</p>
 prototype application, so we want to only spend time on the success path for now.</p>
 <p>For these situations Gleam provides <code>assert</code>, a keyword that causes the
 program to crash if a pattern does not match.</p>
-<pre><code class="language-rust noplaypen">assert Ok(i) = parse_int(&quot;123&quot;)
+<pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;123&quot;)
 i // =&gt; 123
 </code></pre>
 <p>Here the <code>assert</code> keyword has been used to say &quot;this function must return an
 <code>Ok</code> value&quot; and we haven't had to write any error handling. The inner value
 is assigned the variable <code>i</code> and the program continues.</p>
-<pre><code class="language-rust noplaypen">assert Ok(i) = parse_int(&quot;not an int&quot;)
+<pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;not an int&quot;)
 </code></pre>
 <p>In this case the <code>parse_int</code> function returns and error, so the <code>Ok(i)</code>
 pattern doesn't match and so the program crashes.</p>
@@ -898,7 +898,7 @@ supervisors</a>.</p>
 <p>Gleam's <code>todo</code> keyword is used to indicate that some code is not yet finished.</p>
 <p>It can be useful when designing a module, type checking functions and types
 but leaving the implementation of the functions until later.</p>
-<pre><code class="language-rust noplaypen">fn favourite_number() -&gt; Int {
+<pre><code class="language-gleam">fn favourite_number() -&gt; Int {
   // The type annotations says this returns an Int, but we don't need
   // to implement it yet.
   todo
@@ -913,7 +913,7 @@ it is valid, and the <code>todo</code> will be replaced with code that crashes t
 program if that function is run.</p>
 <p>A message can be given as a form of documentation. The message will be printed
 in the error message when the <code>todo</code> code is run.</p>
-<pre><code class="language-rust noplaypen">fn favourite_number() -&gt; Int {
+<pre><code class="language-gleam">fn favourite_number() -&gt; Int {
   todo(&quot;We're going to decide which number is best tomorrow&quot;)
 }
 </code></pre>
@@ -922,7 +922,7 @@ to avoid accidentally forgetting to remove a <code>todo</code>.</p>
 <p>The warning also includes the expected type of the expression that needs to
 replace the <code>todo</code>. This can be a useful way of asking the compiler what type
 is needed if you are ever unsure.</p>
-<pre><code class="language-rust noplaypen">fn main() {
+<pre><code class="language-gleam">fn main() {
   my_complicated_function(
     // What type does this function take again...?
     todo
@@ -932,7 +932,7 @@ is needed if you are ever unsure.</p>
 <h1><a class="header" href="#constants" id="constants">Constants</a></h1>
 <p>Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.</p>
-<pre><code class="language-rust noplaypen">pub const start_year = 2101
+<pre><code class="language-gleam">pub const start_year = 2101
 pub const end_year = 2111
 
 pub fn is_before(year: Int) -&gt; Bool {
@@ -947,7 +947,7 @@ pub fn is_during(year: Int) -&gt; Bool {
 changed, so they cannot be used as global mutable state.</p>
 <p>When a constant is referenced the value is inlined by the compiler, so they
 can be used in case expression guards.</p>
-<pre><code class="language-rust noplaypen">pub const start_year = 2101
+<pre><code class="language-gleam">pub const start_year = 2101
 pub const end_year = 2111
 
 pub describe(year: Int) -&gt; String {
@@ -960,7 +960,7 @@ pub describe(year: Int) -&gt; String {
 </code></pre>
 <h2><a class="header" href="#type-annotations-1" id="type-annotations-1">Type annotations</a></h2>
 <p>Constants can also be given type annotations. </p>
-<pre><code class="language-rust noplaypen">pub const name: String = &quot;Gleam&quot;
+<pre><code class="language-gleam">pub const name: String = &quot;Gleam&quot;
 pub const size: Int = 100
 </code></pre>
 <p>These annotations serve as documentation or can be used to provide a more 
@@ -971,13 +971,13 @@ useful when the name of the type may be long and awkward to type repeatedly.</p>
 <p>Here we are giving the type <code>List(tuple(String, String))</code> the new name
 <code>Headers</code>. This may be useful in a web application where we want to write
 multiple functions that return headers.</p>
-<pre><code class="language-rust noplaypen">pub type Headers =
+<pre><code class="language-gleam">pub type Headers =
   List(tuple(String, String))
 </code></pre>
 <h1><a class="header" href="#bit-strings" id="bit-strings">Bit strings</a></h1>
 <p>Gleam offers a syntax for working directly with raw data in the form of bit
 strings.</p>
-<pre><code class="language-rust noplaypen">// A bit string of the 8 bit int value 3
+<pre><code class="language-gleam">// A bit string of the 8 bit int value 3
 &lt;&lt;3&gt;&gt;
 
 // A bit string of the utf8 encoded string &quot;Gleam&quot;
@@ -1005,19 +1005,19 @@ arguments and returns a <code>Float</code>.</p>
 prints it, and returns the same value.</p>
 <p>If we want to import these functions and use them in our program we would do
 so like this:</p>
-<pre><code class="language-rust noplaypen">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
+<pre><code class="language-gleam">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
 
 // Elixir modules start with `Elixir.`
 pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
 </code></pre>
 <h2><a class="header" href="#labelled-arguments-1" id="labelled-arguments-1">Labelled arguments</a></h2>
 <p>Like regular functions, external functions can have labelled arguments.</p>
-<pre><code class="language-rust noplaypen">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
+<pre><code class="language-gleam">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
   &quot;my_external_module&quot; &quot;any&quot;
 </code></pre>
 <p>This function has the labelled arguments <code>in</code> and <code>satisfying</code>, and can be
 called like so:</p>
-<pre><code class="language-rust noplaypen">any(in: my_list, satisfying: is_even)
+<pre><code class="language-gleam">any(in: my_list, satisfying: is_even)
 any(satisfying: is_even, in: my_list)
 </code></pre>
 <h1><a class="header" href="#external-type" id="external-type">External type</a></h1>
@@ -1027,7 +1027,7 @@ they cannot be pattern matched on, but they can be used with external
 functions that know how to work with them.</p>
 <p>Here is an example of importing a <code>Queue</code> data type and some functions from
 Erlang's <code>queue</code> module to work with the new <code>Queue</code> type.</p>
-<pre><code class="language-rust noplaypen">pub external type Queue(a)
+<pre><code class="language-gleam">pub external type Queue(a)
 
 pub external fn new() -&gt; Queue(a) = &quot;queue&quot; &quot;new&quot;
 
@@ -1082,6 +1082,8 @@ pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&qu
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="javascript/highlightjs-gleam.js"></script>
         
 
         

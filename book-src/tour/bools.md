@@ -4,7 +4,7 @@ A Bool can be either `True` or `False`.
 
 Gleam defines a handful of operators that work with Bools.
 
-```rust,noplaypen
+```gleam
 False && False // => False
 False && True  // => False
 True && False  // => False
@@ -33,7 +33,7 @@ and Erlang's booleans.
 This is important if you want to use Gleam and Elixir or Erlang together in
 one project.
 
-```rust,noplaypen
+```gleam
 // Gleam
 True
 False

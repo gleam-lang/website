@@ -24,7 +24,7 @@ prints it, and returns the same value.
 If we want to import these functions and use them in our program we would do
 so like this:
 
-```rust,noplaypen
+```gleam
 pub external fn random_float() -> Float = "rand" "uniform"
 
 // Elixir modules start with `Elixir.`
@@ -35,7 +35,7 @@ pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
 
 Like regular functions, external functions can have labelled arguments.
 
-```rust,noplaypen
+```gleam
 pub external fn any(in: List(a), satisfying: fn(a) -> Bool) =
   "my_external_module" "any"
 ```
@@ -43,7 +43,7 @@ pub external fn any(in: List(a), satisfying: fn(a) -> Bool) =
 This function has the labelled arguments `in` and `satisfying`, and can be
 called like so:
 
-```rust,noplaypen
+```gleam
 any(in: my_list, satisfying: is_even)
 any(satisfying: is_even, in: my_list)
 ```

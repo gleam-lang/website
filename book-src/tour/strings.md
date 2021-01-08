@@ -2,19 +2,19 @@
 
 Gleam's has UTF-8 binary strings, written as text surrounded by double quotes.
 
-```rust,noplaypen
+```gleam
 "Hello, Gleam!"
 ```
 
 Strings can span multiple lines.
 
-```rust,noplaypen
+```gleam
 "Hello
 Gleam!"
 ```
 
 Special characters such as `"` need to be escaped with a `\` character.
 
-```rust,noplaypen
+```gleam
 "Here is a double quote -> \" <-"
 ```

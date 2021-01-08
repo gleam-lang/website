@@ -179,13 +179,13 @@ the database to handle the request.</p>
 prototype application, so we want to only spend time on the success path for now.</p>
 <p>For these situations Gleam provides <code>assert</code>, a keyword that causes the
 program to crash if a pattern does not match.</p>
-<pre><code class="language-rust noplaypen">assert Ok(i) = parse_int(&quot;123&quot;)
+<pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;123&quot;)
 i // =&gt; 123
 </code></pre>
 <p>Here the <code>assert</code> keyword has been used to say &quot;this function must return an
 <code>Ok</code> value&quot; and we haven't had to write any error handling. The inner value
 is assigned the variable <code>i</code> and the program continues.</p>
-<pre><code class="language-rust noplaypen">assert Ok(i) = parse_int(&quot;not an int&quot;)
+<pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;not an int&quot;)
 </code></pre>
 <p>In this case the <code>parse_int</code> function returns and error, so the <code>Ok(i)</code>
 pattern doesn't match and so the program crashes.</p>
@@ -258,6 +258,8 @@ supervisors</a>.</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
         
 
         

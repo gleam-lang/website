@@ -7,7 +7,7 @@ Gleam's main number types are Int and Float.
 
 Ints are "whole" numbers.
 
-```rust,noplaypen
+```gleam
 1
 2
 -3
@@ -16,7 +16,7 @@ Ints are "whole" numbers.
 
 Gleam has several operators that work with Ints.
 
-```rust,noplaypen
+```gleam
 1 + 1 // => 2
 5 - 1 // => 4
 5 / 2 // => 2
@@ -31,7 +31,7 @@ Gleam has several operators that work with Ints.
 
 Underscores can be added to Ints for clarity.
 
-```rust,noplaypen
+```gleam
 1_000_000 // One million
 ```
 
@@ -39,7 +39,7 @@ Underscores can be added to Ints for clarity.
 
 Floats are numbers that have a decimal point.
 
-```rust,noplaypen
+```gleam
 1.5
 2.0
 -0.1
@@ -47,7 +47,7 @@ Floats are numbers that have a decimal point.
 
 Floats also have their own set of operators.
 
-```rust,noplaypen
+```gleam
 1.0 +. 1.4 // => 2.4
 5.0 -. 1.5 // => 3.5
 5.0 /. 2.0 // => 2.5
@@ -61,6 +61,6 @@ Floats also have their own set of operators.
 
 Underscores can also be added to Floats for clarity.
 
-```rust,noplaypen
+```gleam
 1_000_000.0 // One million
 ```

@@ -19,7 +19,7 @@ prototype application, so we want to only spend time on the success path for now
 For these situations Gleam provides `assert`, a keyword that causes the
 program to crash if a pattern does not match.
 
-```rust,noplaypen
+```gleam
 assert Ok(i) = parse_int("123")
 i // => 123
 ```
@@ -28,7 +28,7 @@ Here the `assert` keyword has been used to say "this function must return an
 `Ok` value" and we haven't had to write any error handling. The inner value
 is assigned the variable `i` and the program continues.
 
-```rust,noplaypen
+```gleam
 assert Ok(i) = parse_int("not an int")
 ```
 

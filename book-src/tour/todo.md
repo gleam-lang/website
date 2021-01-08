@@ -5,7 +5,7 @@ Gleam's `todo` keyword is used to indicate that some code is not yet finished.
 It can be useful when designing a module, type checking functions and types
 but leaving the implementation of the functions until later.
 
-```rust,noplaypen
+```gleam
 fn favourite_number() -> Int {
   // The type annotations says this returns an Int, but we don't need
   // to implement it yet.
@@ -24,7 +24,7 @@ program if that function is run.
 A message can be given as a form of documentation. The message will be printed
 in the error message when the `todo` code is run.
 
-```rust,noplaypen
+```gleam
 fn favourite_number() -> Int {
   todo("We're going to decide which number is best tomorrow")
 }
@@ -38,7 +38,7 @@ replace the `todo`. This can be a useful way of asking the compiler what type
 is needed if you are ever unsure.
 
 
-```rust,noplaypen
+```gleam
 fn main() {
   my_complicated_function(
     // What type does this function take again...?
