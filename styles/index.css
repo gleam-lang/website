@@ -160,7 +160,7 @@ small,
   margin-bottom: var(--l-space);
 }
 
-.openable-example summary {
+details summary {
   font-size: large;
   margin: var(--space) 0;
   cursor: pointer;
@@ -235,8 +235,13 @@ li code {
   font-size: 0.9rem;
 }
 
+.post {
+  position: relative;
+}
+
 .post img {
   box-shadow: var(--slight-shadow);
+  max-width: 100%;
 }
 
 table {
