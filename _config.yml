@@ -5,11 +5,17 @@ markdown: kramdown
 
 permalink: "/news/:title/"
 
+title: Gleam
+description: Gleam is a fast, friendly, and functional language for building type-safe, scalable systems!
+
+
 plugins:
   - jekyll-redirect-from
+  - jekyll-feed
 
 whitelist:
   - jekyll-redirect-from
+  - jekyll-feed
 
 exclude:
   - README
