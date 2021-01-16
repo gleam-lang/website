@@ -41,3 +41,10 @@ with the Erlang OTP framework.
 ```sh
 gleam new my_fantastic_application --template app
 ```
+
+## Continuous integration
+
+All Gleam projects come preconfigured for GitHub Actions CI. Push your
+project to GitHub to have the tests and linting run automatically for new
+commits and pull requests.
+ 
