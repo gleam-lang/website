@@ -6,3 +6,5 @@ title = "The Gleam Book"
 
 [output.html]
 additional-js = ["javascript/highlightjs-gleam.js"]
+git-repository-url = "https://github.com/gleam-lang/website"
+git-repository-icon = "fa-github"
