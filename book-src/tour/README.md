@@ -1,10 +1,9 @@
 # Language Tour
 
-In this chapter we explore the fundamentals of the Gleam language, namely its
+In this book we explore the fundamentals of the Gleam language, namely its
 syntax, core data structures, flow control features, and static type system.
-
-After completion the reader should know enough to start reading and writing
-Gleam code, assuming they have some prior programming experience.
+If you have some prior programming experience this will hopefully be enough
+to get you started with Gleam.
 
 In some sections we touch on the runtime representation of various features.
 This is useful for programmers with Erlang or Elixir experience who wish to
