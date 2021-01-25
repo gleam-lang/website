@@ -201,16 +201,37 @@ line. For comments that extend beyond a single line, you’ll need to include
   x * y 
 }
 </code></pre>
-<h1><a class="header" href="#string" id="string">String</a></h1>
-<p>Gleam's has UTF-8 binary strings, written as text surrounded by double quotes.</p>
+<h1><a class="header" href="#strings" id="strings">Strings</a></h1>
+<p>In Gleam Strings can be written as text surrounded by double quotes.</p>
 <pre><code class="language-gleam">&quot;Hello, Gleam!&quot;
 </code></pre>
-<p>Strings can span multiple lines.</p>
+<p>They can span multiple lines.</p>
 <pre><code class="language-gleam">&quot;Hello
 Gleam!&quot;
 </code></pre>
-<p>Special characters such as <code>&quot;</code> need to be escaped with a <code>\</code> character.</p>
+<p>Under the hood Strings are <a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a> encoded binaries
+and can contain any valid unicode.</p>
+<pre><code class="language-gleam">&quot;👩‍💻 こんにちは Gleam 💫&quot;
+</code></pre>
+<h2><a class="header" href="#escape-sequences" id="escape-sequences">Escape Sequences</a></h2>
+<p>Gleam supports common string escape sequences. Here's all of them:</p>
+<table><thead><tr><th>Sequence</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>\n</code></td><td>Newline</td></tr>
+<tr><td><code>\r</code></td><td>Carriage Return</td></tr>
+<tr><td><code>\t</code></td><td>Tab</td></tr>
+<tr><td><code>\&quot;</code></td><td>Double Quote</td></tr>
+<tr><td><code>\\</code></td><td>Backslash</td></tr>
+</tbody></table>
+<p>For example to include a double quote (<code>&quot;</code>) character in a string literal it
+must be escaped by placing a backslash (<code>\</code>) character before it.</p>
 <pre><code class="language-gleam">&quot;Here is a double quote -&gt; \&quot; &lt;-&quot;
+</code></pre>
+<p>Similarly all backslash characters must be escaped:</p>
+<pre><code class="language-gleam">// A Windows filepath C:\Users\Gleam
+&quot;C:\\Users\\Gleam&quot;
+
+// A Decorative border /\/\/\/\
+&quot;/\\/\\/\\/\\&quot;
 </code></pre>
 <h1><a class="header" href="#bool" id="bool">Bool</a></h1>
 <p>A Bool can be either <code>True</code> or <code>False</code>.</p>
