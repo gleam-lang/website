@@ -527,7 +527,7 @@ require Person
 
 #### Gleam
 
-Gleam does not have anything called a `record`, but custom types can be used in Gleam in much the same way that structs are used in Elixir. At runtime, they have a tuple representation, similar to Erlang's Records.
+Gleam's custom types can be used in much the same way that structs are used in Elixir. At runtime, they have a tuple representation and are compatible with Erlang records.
 
 ```rust
 type Person {
