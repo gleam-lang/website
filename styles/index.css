@@ -271,3 +271,37 @@ tr:nth-child(even) {
   box-shadow: var(--slight-shadow);
   text-decoration: none;
 }
+
+.sponsors-tier-2 {
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: calc(var(--space) * -1);
+  margin-right: calc(var(--space) * -1);
+}
+
+.sponsors-tier-2 li {
+  margin: var(--space);
+  list-style: none;
+}
+
+.sponsors-tier-2 img {
+  --size: 120px;
+  height: var(--size);
+  width: var(--size);
+}
+
+.sponsors-tier-1 {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 1rem;
+}
+
+.sponsors-tier-1 li {
+  max-width: 100%;
+  width: 200px;
+}

@@ -42,18 +42,32 @@
         enjoy Gleam please consider <b><a href="https://github.com/sponsors/lpil">sponsoring the project</a></b>
         or asking your employer to sponsor the project.
 
-{% if page.list_sponsors %}
-      <p>
-        These sponsors kindly support Gleam with $20 USD or more a month. Thank you!
-      </p>
+        <p>
+          Thank you to our top sponsors!
+        </p>
 
-      <ul>
-{% assign sponsors = site.data.sponsors | sort: "name" %}
-{% for member in sponsors %}
-        <li><a href="{{ member.url }}">{{ member.name }}</a>
-{% endfor %}
-      </ul>
-{% endif %}
+        <ul class="sponsors-tier-2">
+  {% assign sponsors = site.data.sponsors.second_tier | sort: "name" %}
+  {% for member in sponsors %}
+          <li><a href="{{ member.url }}">
+              <img src="{{ member.avatar }}" alt="{{ member.name }}">
+            <center>
+              {{ member.name }}
+            </center>
+            </a>
+  {% endfor %}
+        </ul>
+
+        <ul class="sponsors-tier-1">
+  {% assign sponsors = site.data.sponsors.first_tier | sort: "name" %}
+  {% for member in sponsors %}
+          <li><a href="{{ member.url }}">{{ member.name }}</a>
+  {% endfor %}
+        </ul>
+
+        <p>
+          See more of Gleam's sponsors <a href="https://github.com/gleam-lang/gleam/#sponsors">on the project README here</a>.
+        </p>
       </div>
     </aside>
 
