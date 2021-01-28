@@ -22,6 +22,7 @@ for your editor.
 - [Installing Erlang](#installing-erlang)
 - [Installing rebar3](#installing-rebar3)
 - [Editor Plugins](#editor-plugins)
+- [Testing Gleam Online](#testing-gleam-online)
 
 
 ## Installing Gleam
@@ -190,6 +191,11 @@ niceties.
 - **Visual Studio Code** - [https://github.com/rawburt/vscode-gleam-syntax](https://github.com/rawburt/vscode-gleam-syntax)
 - **Sublime Text 3** - [https://github.com/molnarmark/sublime-gleam](https://github.com/molnarmark/sublime-gleam)
 - **Atom** - [https://github.com/itsgreggreg/language-gleam](https://github.com/itsgreggreg/language-gleam)
+
+
+## Testing Gleam Online
+
+Gleam can be tested on [Gitpod](https://gitpod.io/#https://github.com/codec-abc/gitpod-gleam). The environment come with Erlang and Elixir. The port 3000 is also exposed if you want to run a Web server.
 
 ---
 
