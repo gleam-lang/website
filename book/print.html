@@ -1002,15 +1002,15 @@ multiple functions that return headers.</p>
 <h1><a class="header" href="#bit-strings" id="bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.</p>
-<p>Bit Strings are written literally with an opening bracket <code>&lt;&lt;</code> any number of
-bit string segments separated by commas, and a closing bracket <code>&gt;&gt;</code>.</p>
+<p>Bit Strings are written literally with an opening brackets <code>&lt;&lt;</code> any number of
+bit string segments separated by commas, and a closing brackets <code>&gt;&gt;</code>.</p>
 <h2><a class="header" href="#bit-string-segments" id="bit-string-segments">Bit String Segments</a></h2>
 <p>By default a Bit String segment represent 8 bits, also known as 1 byte.</p>
 <pre><code class="language-gleam">// This is the number 3 as an 8 bit value.
 // Written in binary it would be 00000011
 &lt;&lt;3&gt;&gt;
 </code></pre>
-<p>You can also specify a size using either the short hand or long form.</p>
+<p>You can also specify a bit size using either the short hand or long form.</p>
 <pre><code class="language-gleam">// These are the exact same value as above
 // Shorthand
 &lt;&lt;3:8&gt;&gt;
@@ -1018,8 +1018,9 @@ bit string segments separated by commas, and a closing bracket <code>&gt;&gt;</c
 // Long Form
 &lt;&lt;3:size(8)&gt;&gt;
 </code></pre>
-<p>You can specify any positive integer as the size.</p>
+<p>You can specify any positive integer as the bit size.</p>
 <pre><code class="language-gleam">// This is not same as above, remember we're working with a series of 1s and 0s.
+// This Bit String is 16 bits long: 0000000000000011
 &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
 <p>You can have any number of segments separated by a commas.</p>
@@ -1042,29 +1043,54 @@ and bit layout.</p>
 &lt;&lt;a:bit_string, 1:5&gt;&gt; == &lt;&lt;&quot;a&quot;:utf8&gt;&gt; // True
 </code></pre>
 <p>Here Is the full list of options and their meaning:</p>
+<h3><a class="header" href="#options-in-values" id="options-in-values">Options in Values</a></h3>
 <table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
-<tr><td>binary</td><td>a bitstring that is a multiple of 8 bits</td></tr>
 <tr><td>bit_string</td><td>a bitstring that is any bit size</td></tr>
 <tr><td>float</td><td>default size of 64 bits</td></tr>
 <tr><td>int</td><td>default size of 8 bits</td></tr>
+<tr><td>size</td><td>the size of the segment in bits</td></tr>
+<tr><td>unit</td><td>how many times to repeat the segment, must have a size</td></tr>
 <tr><td>big</td><td>big endian</td></tr>
 <tr><td>little</td><td>little endian</td></tr>
 <tr><td>native</td><td>endianness of the processor</td></tr>
-<tr><td>signed</td><td>only valid in patterns, the captured value is signed</td></tr>
-<tr><td>signed</td><td>only valid in patterns, the captured value is unsigned</td></tr>
+<tr><td>utf8</td><td>a string to encode as utf8 codepoints</td></tr>
+<tr><td>utf16</td><td>a string to encode as utf16 codepoints</td></tr>
+<tr><td>utf32</td><td>a string to encode as utf32 codepoints</td></tr>
+</tbody></table>
+<h3><a class="header" href="#options-in-patterns" id="options-in-patterns">Options in Patterns</a></h3>
+<table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>binary</td><td>a bitstring that is a multiple of 8 bits</td></tr>
+<tr><td>bit_string</td><td>a bitstring that is any bit size</td></tr>
+<tr><td>float</td><td>float value, size of exactly 64 bits</td></tr>
+<tr><td>int</td><td>int value, default size of 8 bits</td></tr>
+<tr><td>big</td><td>big endian</td></tr>
+<tr><td>little</td><td>little endian</td></tr>
+<tr><td>native</td><td>endianness of the processor</td></tr>
+<tr><td>signed</td><td>the captured value is signed</td></tr>
+<tr><td>unsigned</td><td>the captured value is unsigned</td></tr>
 <tr><td>size</td><td>the size of the segment in bits</td></tr>
 <tr><td>unit</td><td>how many times to repeat the segment, must have a size</td></tr>
-<tr><td>utf16</td><td>valid utf16 codepoints</td></tr>
-<tr><td>utf16_codepoint</td><td>a single valid utf16 codepoint</td></tr>
-<tr><td>utf32</td><td>valid utf32 codepoints</td></tr>
-<tr><td>utf32_codepoint</td><td>a single valid utf32 codepoint</td></tr>
-<tr><td>utf8</td><td>valid utf8 codepoints</td></tr>
+<tr><td>utf8</td><td>an exact string to match as utf8 codepoints</td></tr>
+<tr><td>utf16</td><td>an exact string to match as utf16 codepoints</td></tr>
+<tr><td>utf32</td><td>an exact string to match as utf32 codepoints</td></tr>
 <tr><td>utf8_codepoint</td><td>a single valid utf8 codepoint</td></tr>
+<tr><td>utf16_codepoint</td><td>a single valid utf16 codepoint</td></tr>
+<tr><td>utf32_codepoint</td><td>a single valid utf32 codepoint</td></tr>
 </tbody></table>
-<p>Gleam inherits its Bit String syntax and handling directly from Erlang. You can
+<h2><a class="header" href="#values-vs-patterns" id="values-vs-patterns">Values vs Patterns</a></h2>
+<p>Bit Strings can appear on either the left or the right side of an equals sign.
+On the left they are called <strong>patterns</strong> on the right they are called <strong>values</strong>.</p>
+<p>This is an important destinction because values and patterns have slightly different rules.</p>
+<h3><a class="header" href="#rules-for-patterns" id="rules-for-patterns">Rules for Patterns</a></h3>
+<p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code> options. A pattern
+can have at most 1 variable length segment and it must be the last segment.</p>
+<p>In a pattern the types <code>utf8</code>, <code>utf16</code>, and <code>utf32</code> must be an exact string. They cannot be a
+variable. There is no way to match a variable length section of a binary with an exact encoding.</p>
+<p>You can match a single variable codepoint with <code>utf8_codepoint</code>, <code>utf16_codepoint</code>, and <code>utf32_codepoint</code>
+which will match the correct number of bytes depending on the codepoint size and data.</p>
+<h2><a class="header" href="#further-reading" id="further-reading">Further Reading</a></h2>
+<p>Gleam inherits its Bit String syntax and handling from Erlang. You can
 find the erlang documentation <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
-<pre><code>
-</code></pre>
 <h1><a class="header" href="#external-function" id="external-function">External function</a></h1>
 <p>Gleam is just one of many languages on the Erlang virtual machine and at times
 we may want to use functions from these other languages in our Gleam programs.
