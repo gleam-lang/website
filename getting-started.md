@@ -22,7 +22,7 @@ for your editor.
 - [Installing Erlang](#installing-erlang)
 - [Installing rebar3](#installing-rebar3)
 - [Editor Plugins](#editor-plugins)
-- [Testing Gleam Online](#testing-gleam-online)
+- [GitPod online Gleam development environment](#gitpod-online-gleam-development-environment)
 
 
 ## Installing Gleam
