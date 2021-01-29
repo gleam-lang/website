@@ -3,8 +3,8 @@
 Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.
 
-Bit Strings are written literally with an opening bracket `<<` any number of
-bit string segments separated by commas, and a closing bracket `>>`.
+Bit Strings are written literally with an opening brackets `<<` any number of
+bit string segments separated by commas, and a closing brackets `>>`.
 
 ## Bit String Segments
 
@@ -16,7 +16,7 @@ By default a Bit String segment represent 8 bits, also known as 1 byte.
 <<3>>
 ```
 
-You can also specify a size using either the short hand or long form.
+You can also specify a bit size using either the short hand or long form.
 
 ```gleam
 // These are the exact same value as above
@@ -27,10 +27,11 @@ You can also specify a size using either the short hand or long form.
 <<3:size(8)>>
 ```
 
-You can specify any positive integer as the size.
+You can specify any positive integer as the bit size.
 
 ```gleam
 // This is not same as above, remember we're working with a series of 1s and 0s.
+// This Bit String is 16 bits long: 0000000000000011
 <<3:size(16)>>
 ```
 
@@ -69,29 +70,63 @@ let a = <<0:1, 1:1, 1:1>>
 
 Here Is the full list of options and their meaning:
 
+### Options in Values
+
+| Option     | Meaning                                                |
+| ---------- | ------------------------------------------------------ |
+| bit_string | a bitstring that is any bit size                       |
+| float      | default size of 64 bits                                |
+| int        | default size of 8 bits                                 |
+| size       | the size of the segment in bits                        |
+| unit       | how many times to repeat the segment, must have a size |
+| big        | big endian                                             |
+| little     | little endian                                          |
+| native     | endianness of the processor                            |
+| utf8       | a string to encode as utf8 codepoints                  |
+| utf16      | a string to encode as utf16 codepoints                 |
+| utf32      | a string to encode as utf32 codepoints                 |
+
+### Options in Patterns
+
 | Option          | Meaning                                                |
 | --------------- | ------------------------------------------------------ |
 | binary          | a bitstring that is a multiple of 8 bits               |
 | bit_string      | a bitstring that is any bit size                       |
-| float           | default size of 64 bits                                |
-| int             | default size of 8 bits                                 |
+| float           | float value, size of exactly 64 bits                   |
+| int             | int value, default size of 8 bits                      |
 | big             | big endian                                             |
 | little          | little endian                                          |
 | native          | endianness of the processor                            |
-| signed          | only valid in patterns, the captured value is signed   |
-| signed          | only valid in patterns, the captured value is unsigned |
+| signed          | the captured value is signed                           |
+| unsigned        | the captured value is unsigned                         |
 | size            | the size of the segment in bits                        |
 | unit            | how many times to repeat the segment, must have a size |
-| utf16           | valid utf16 codepoints                                 |
-| utf16_codepoint | a single valid utf16 codepoint                         |
-| utf32           | valid utf32 codepoints                                 |
-| utf32_codepoint | a single valid utf32 codepoint                         |
-| utf8            | valid utf8 codepoints                                  |
+| utf8            | an exact string to match as utf8 codepoints            |
+| utf16           | an exact string to match as utf16 codepoints           |
+| utf32           | an exact string to match as utf32 codepoints           |
 | utf8_codepoint  | a single valid utf8 codepoint                          |
+| utf16_codepoint | a single valid utf16 codepoint                         |
+| utf32_codepoint | a single valid utf32 codepoint                         |
 
-Gleam inherits its Bit String syntax and handling directly from Erlang. You can
+## Values vs Patterns
+
+Bit Strings can appear on either the left or the right side of an equals sign.
+On the left they are called **patterns** on the right they are called **values**.
+
+This is an important destinction because values and patterns have slightly different rules.
+
+### Rules for Patterns
+
+You can match on a variable length segment with the `bit_string` or `binary` options. A pattern
+can have at most 1 variable length segment and it must be the last segment.
+
+In a pattern the types `utf8`, `utf16`, and `utf32` must be an exact string. They cannot be a
+variable. There is no way to match a variable length section of a binary with an exact encoding.
+
+You can match a single variable codepoint with `utf8_codepoint`, `utf16_codepoint`, and `utf32_codepoint`
+which will match the correct number of bytes depending on the codepoint size and data.
+
+## Further Reading
+
+Gleam inherits its Bit String syntax and handling from Erlang. You can
 find the erlang documentation [here](https://erlang.org/doc/reference_manual/expressions.html#bit_syntax).
-
-```
-
-```
