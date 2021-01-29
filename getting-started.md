@@ -193,7 +193,7 @@ niceties.
 - **Atom** - [https://github.com/itsgreggreg/language-gleam](https://github.com/itsgreggreg/language-gleam)
 
 
-## Testing Gleam Online
+## GitPod online Gleam development environment
 
 Gleam can be tested on [Gitpod](https://gitpod.io/#https://github.com/codec-abc/gitpod-gleam). The environment comes with Erlang and Elixir. The port 3000 is also exposed if you want to run a web server.
 
