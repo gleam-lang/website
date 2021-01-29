@@ -195,7 +195,7 @@ niceties.
 
 ## Testing Gleam Online
 
-Gleam can be tested on [Gitpod](https://gitpod.io/#https://github.com/codec-abc/gitpod-gleam). The environment come with Erlang and Elixir. The port 3000 is also exposed if you want to run a Web server.
+Gleam can be tested on [Gitpod](https://gitpod.io/#https://github.com/codec-abc/gitpod-gleam). The environment comes with Erlang and Elixir. The port 3000 is also exposed if you want to run a web server.
 
 ---
 
