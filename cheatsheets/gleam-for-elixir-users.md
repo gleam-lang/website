@@ -449,7 +449,7 @@ In Elixir atoms can be created as needed, but in Gleam all atoms must be defined
 
 There are some exceptions to that rule for atoms that are commonly used and have types built-in to Gleam that incorporate them, such as `Ok`, `Error` and booleans.
 
-In general, atoms are not used much in Gleam, and are mostly used for boolens, `Ok` and `Error` result types, and defining custom types.
+In general, atoms are not used much in Gleam, and are mostly used for booleans, `Ok` and `Error` result types, and defining custom types.
 
 #### Elixir
 
