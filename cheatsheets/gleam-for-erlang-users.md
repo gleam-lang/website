@@ -24,14 +24,15 @@ title: Gleam for Erlang users
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
-- [Type aliases](#type-aliases)
-- [Custom types](#custom-types)
-  - [Records](#records)
-  - [Unions](#unions) TODO
-  - [Opaque custom types](#opaque-custom-types) TODO
+- [Patterns] TODO
 - [Flow control](#flow-control) TODO
   - [Case](#case) TODO
   - [Try](#try) TODO
+- [Type aliases](#type-aliases)
+- [Custom types](#custom-types)
+  - [Records](#records)
+  - [Unions](#unions)
+  - [Opaque custom types](#opaque-custom-types)
 - [Modules](#modules) TODO
   - [Imports](#imports) TODO
   - [Nested modules](#nested-modules) TODO
@@ -513,6 +514,20 @@ map.from_list([tuple("key1", "value1"), tuple("key2", "value2")])
 map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
 ```
 
+
+## Flow control
+
+TODO
+
+### Case
+
+TODO
+
+### Try
+
+TODO
+
+
 ## Type aliases
 
 #### Erlang
@@ -564,6 +579,75 @@ let person = Person(name: "name", age: 35)
 let name = person.name
 ```
 
-## Flow control
+### Unions
 
+In Erlang a function can take or receive values of multiple different types.
+For example it could return an int some times, and float other times.
+
+In Gleam functions must always take an receive one type. To have a union of
+two different types they must be wrapped in a new custom type.
+
+#### Erlang
+
+```erlang
+int_or_float(X) ->
+  case X of
+    true -> 1;
+    false -> 1.0
+  end.
+```
+
+#### Gleam
+
+```rust
+type IntOrFloat {
+  AnInt(Int)
+  AFloat(Float)
+}
+
+fn int_or_float(X) {
+  case X {
+    True -> AnInt(1)
+    False -> AFloat(1.0)
+  }
+}
+```
+
+### Opaque custom types
+
+In Erlang the `opaque` attribute can be used to declare that the internal
+structure of a type is not considered a public API and isn't to be used by
+other modules. This is purely for documentation purposes and other modules
+can introspect and manipulate opaque types any way they wish.
+
+In Gleam custom types can be defined as being opaque, which causes the
+constructors for the custom type not to be exported from the module. Without
+any constructors to import other modules can only interact with opaque types
+using the intended API.
+
+#### Erlang
+```erlang
+-opaque identifier() :: integer().
+
+-spec get_id() -> identifier().
+get_id() ->
+  100.
+```
+
+#### Gleam
+```rust
+pub opaque type Identifier {
+  Identifier(Int)
+}
+
+pub fn get_id() {
+  Identifier(100)
+}
+```
 ## Modules
+
+### Imports
+
+### Nested modules
+
+### First class modules

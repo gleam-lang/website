@@ -3,6 +3,7 @@ layout: page
 title: Gleam for Elixir users
 ---
 
+- [Comments](#comments)
 - [Variables](#variables)
   - [Match operator](#match-operator)
   - [Variables type annotations](#variables-type-annotations)
@@ -11,8 +12,9 @@ title: Gleam for Elixir users
   - [Function type annotations](#function-type-annotations)
   - [Function heads](#function-heads)
   - [Function overloading](#function-overloading)
+  - [Referencing functions](#referencing-function) TODO
+  - [Labelled arguments](#labelled-arguments) TODO
 - [Modules](#modules)
-- [Comments](#comments)
 - [Operators](#operators)
 - [Constants](#constants)
 - [Blocks](#blocks)
@@ -22,9 +24,47 @@ title: Gleam for Elixir users
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
+- [Patterns] TODO
+- [Flow control](#flow-control) TODO
+  - [Case](#case) TODO
+  - [Try](#try) TODO
+- [Type aliases](#type-aliases) TODO
 - [Custom types](#custom-types)
   - [Records](#records)
+  - [Unions](#unions)
+  - [Opaque custom types](#opaque-custom-types) TODO
+- [Modules](#modules) TODO
+  - [Imports](#imports) TODO
+  - [Nested modules](#nested-modules) TODO
+  - [First class modules](#first-class-modules) TODO
 
+
+## Comments
+
+#### Elixir
+
+In Elixir comments are written with a `#` prefix.
+
+```elixir
+# Hello, Joe!
+```
+
+#### Gleam
+
+In Gleam comments are written with a `//` prefix.
+
+```rust
+// Hello, Joe!
+```
+
+Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
+
+```rust
+//// This module is very important.
+
+/// The answer to life, the universe, and everything.
+const answer: Int = 42
+```
 
 ## Variables
 
@@ -207,73 +247,6 @@ pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
 
 Unlike Elixir, Gleam does not support function overloading, so there can only be 1 function with a given name, and the function can only have a single implementation for the types it accepts.
 
-
-## Modules
-
-#### Elixir
-
-In Elixir, the `defmodule` keyword allows to create a module. Multiple modules can be defined in a single file.
-
-```elixir
-defmodule Foo do
-  def identity(x) do
-    x
-  end
-end
-
-defmodule Bar do
-  def main(x) do
-    Foo.identity(1)
-  end
-end
-```
-
-#### Gleam
-
-Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
-
-```rust
-// in file foo.gleam
-pub fn identity(x) {
-  x
-}
-```
-
-```rust
-// in file main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
-pub fn main() {
-  foo.identity(1)
-}
-```
-
-
-## Comments
-
-#### Elixir
-
-In Elixir comments are written with a `#` prefix.
-
-```elixir
-# Hello, Joe!
-```
-
-#### Gleam
-
-In Gleam comments are written with a `//` prefix.
-
-```rust
-// Hello, Joe!
-```
-
-Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
-
-```rust
-//// This module is very important.
-
-/// The answer to life, the universe, and everything.
-const answer: Int = 42
-```
 
 
 ## Operators
@@ -537,3 +510,43 @@ type Person {
 let person = Person(name: "Jake", age: 35)
 let name = person.name
 ```
+
+## Modules
+
+#### Elixir
+
+In Elixir, the `defmodule` keyword allows to create a module. Multiple modules can be defined in a single file.
+
+```elixir
+defmodule Foo do
+  def identity(x) do
+    x
+  end
+end
+
+defmodule Bar do
+  def main(x) do
+    Foo.identity(1)
+  end
+end
+```
+
+#### Gleam
+
+Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
+
+```rust
+// in file foo.gleam
+pub fn identity(x) {
+  x
+}
+```
+
+```rust
+// in file main.gleam
+import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+pub fn main() {
+  foo.identity(1)
+}
+```
+
