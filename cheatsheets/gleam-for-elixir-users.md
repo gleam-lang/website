@@ -12,7 +12,8 @@ title: Gleam for Elixir users
   - [Function type annotations](#function-type-annotations)
   - [Function heads](#function-heads)
   - [Function overloading](#function-overloading)
-  - [Referencing functions](#referencing-function) TODO
+  - [Referencing functions](#referencing-function)
+  - [Calling anonymous functions](#calling-anonymous-functions)
   - [Labelled arguments](#labelled-arguments) TODO
 - [Modules](#modules)
 - [Operators](#operators)
@@ -245,8 +246,58 @@ pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
 
 ### Function overloading
 
-Unlike Elixir, Gleam does not support function overloading, so there can only be 1 function with a given name, and the function can only have a single implementation for the types it accepts.
+Unlike Elixir, Gleam does not support function overloading, so there can only
+be 1 function with a given name, and the function can only have a single
+implementation for the types it accepts.
 
+### Referencing functions
+
+Gleam has a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.
+
+#### Elixir
+```elixir
+def identity(x) do
+  x
+end
+
+def main() do
+  func = &identity/1
+  func(100)
+end
+```
+
+#### Gleam
+```rust
+fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100)
+}
+```
+
+### Calling anonymous functions
+
+Elixir has a different namespace for module functions and anonymous functions
+so a special `.()` syntax has to be used to call anonymous functions.
+
+In Gleam all functions are called using the same syntax.
+
+#### Elixir
+```elixir
+anon_function = fn x, y -> x + y end
+anon_function.(1, 2)
+mod_function(3, 4)
+```
+#### Gleam
+```rust
+let my_function = fn(x, y) { x + y }
+anon_function(1, 2)
+mod_function(3, 4)
+```
 
 
 ## Operators

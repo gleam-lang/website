@@ -12,8 +12,9 @@ title: Gleam for Erlang users
   - [Function type annotations](#function-type-annotations)
   - [Function heads](#function-heads)
   - [Function overloading](#function-overloading)
-  - [Referencing functions](#referencing-function)
-  - [Labelled arguments](#labelled-arguments)
+  - [Referencing functions](#referencing-functions)
+  - [Chaining function calls](#chaining-function-calls)
+  - [Labelled arguments](#labelled-arguments) TODO
 - [Operators](#operators)
   - [Pipe](#pipe)
 - [Constants](#constants)
@@ -24,7 +25,7 @@ title: Gleam for Erlang users
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
-- [Patterns] TODO
+- [Patterns](#patterns) TODO
 - [Flow control](#flow-control) TODO
   - [Case](#case) TODO
   - [Try](#try) TODO
@@ -227,6 +228,8 @@ fn main() {
   func(100)
 }
 ```
+
+### Chaining function calls
 
 Gleam's parser allows functions returned from functions to be called directly
 without adding parenthesis around the function call.
