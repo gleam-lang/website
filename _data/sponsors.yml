@@ -1,4 +1,7 @@
 first_tier:
+- name: "Kapp Technology"
+  url: "https://github.com/kapp-technology"
+  avatar: "https://avatars.githubusercontent.com/u/30418610?v=4"
 - name: "Scott Wey"
   url: "https://github.com/scottwey"
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
@@ -43,7 +46,7 @@ first_tier:
   avatar: "https://avatars.githubusercontent.com/u/76071?v=4"
 - name: "Jeff Kreeftmeijer"
   url: "https://github.com/jeffkreeftmeijer"
-  avatar: "https://avatars.githubusercontent.com/u/43621?u=ca898778836ac3b34fe3187fad4804e869976ddb&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/43621?v=4"
 - name: "Erik Terpstra"
   url: "https://github.com/eterps"
   avatar: "https://avatars.githubusercontent.com/u/39518?v=4"
