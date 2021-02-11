@@ -272,6 +272,11 @@ tr:nth-child(even) {
   text-decoration: none;
 }
 
+.sponsors-section {
+  background-color: var(--color-pink);
+  padding: var(--xl-space) 0;
+}
+
 .sponsors-tier-2 {
   padding: 0;
   display: flex;
