@@ -26,6 +26,10 @@ figure {
   margin: 0;
 }
 
+code, pre {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -84,6 +88,7 @@ small,
   max-width: 800px;
   margin: 0 auto;
   padding: var(--l-space);
+  position: relative;
 }
 
 .pagenav {
@@ -188,6 +193,10 @@ li code {
   margin: 0;
 }
 
+.highlight .nf {
+  font-weight: 400 !important;
+}
+
 .page-footer {
   padding: var(--l-space);
   text-align: center;
@@ -235,13 +244,13 @@ li code {
   font-size: 0.9rem;
 }
 
-.post {
-  position: relative;
-}
 
 .post img {
   box-shadow: var(--slight-shadow);
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 table {
