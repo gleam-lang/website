@@ -52,9 +52,9 @@ The statement `import nasa/rocket_ship` creates a new variable with the name
 `rocket_ship` and the value of the `rocket_ship` module.
 
 In the `explore_space` function we call the imported module's public `launch`
-function using the `.` operator.
-If we had attempted to call `count_down` it would result in a compile time
-error as this function is private in the `rocket_ship` module.
+function using the `.` operator. If we had attempted to call `count_down` it
+would result in a compile time error as this function is private to the
+`rocket_ship` module.
 
 
 ## Named import
