@@ -1,6 +1,6 @@
 # Tuple
 
-Lists are good for when we want a collection of one type, but sometime we want
+Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.
 
