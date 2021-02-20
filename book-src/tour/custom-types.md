@@ -52,7 +52,7 @@ pub type Bool {
 }
 ```
 
-It's a simple custom type with a constructor that takes no arguments at all!
+It's a simple custom type with constructors that takes no arguments at all!
 Use it to answer yes/no questions and to indicate whether something is `True`
 or `False`.
 
