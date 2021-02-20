@@ -14,7 +14,8 @@ from. We could detect the error in our code, but what do we do then? We *need*
 the database to handle the request.
 
 Lastly we may think errors are possible, but we are writing a quick script or
-prototype application, so we want to only spend time on the success path for now.
+prototype application, so we want to only spend time on the success path for
+now.
 
 For these situations Gleam provides `assert`, a keyword that causes the
 program to crash if a pattern does not match.
@@ -32,7 +33,7 @@ is assigned the variable `i` and the program continues.
 assert Ok(i) = parse_int("not an int")
 ```
 
-In this case the `parse_int` function returns and error, so the `Ok(i)`
+In this case the `parse_int` function returns an error, so the `Ok(i)`
 pattern doesn't match and so the program crashes.
 
 ## Surviving crashes
