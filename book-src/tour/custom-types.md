@@ -39,10 +39,10 @@ fn cats() {
 Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.
 
-We've already seen a custom type with multiple constructors in the Language Tour,
-- [`Bool`](./bools.md).
+We've already seen a custom type with multiple constructors in the Language
+Tour - [`Bool`](./bools.md).
 
-The built-in Gleam's `Bool` type is defined like this:
+Gleam's built-in `Bool` type is defined like this:
 
 ```gleam
 // A Bool is a value that is either `True` or `False`
@@ -52,13 +52,13 @@ pub type Bool {
 }
 ```
 
-It's a simple custom type which constructors that take no arguments at all!
+It's a simple custom type with a constructor that takes no arguments at all!
 Use it to answer yes/no questions and to indicate whether something is `True`
 or `False`.
 
 The records created by different constructors for a custom type can contain
 different values. For example a `User` custom type could have a `LoggedIn`
-constructors that creates records with a name, and a `Guest` constructor which
+constructor that creates records with a name, and a `Guest` constructor which
 creates records without any contained values.
 
 ```gleam
@@ -72,7 +72,6 @@ let sara = LoggedIn(name: "Sara")
 let rick = LoggedIn(name: "Rick")
 let visitor = Guest
 ```
-
 
 
 ## Destructuring
