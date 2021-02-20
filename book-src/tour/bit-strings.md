@@ -3,12 +3,12 @@
 Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.
 
-Bit Strings are written literally with an opening brackets `<<` any number of
-bit string segments separated by commas, and a closing brackets `>>`.
+Bit Strings are written literally with opening brackets `<<`, any number of bit
+string segments separated by commas, and closing brackets `>>`.
 
 ## Bit String Segments
 
-By default a Bit String segment represent 8 bits, also known as 1 byte.
+By default a Bit String segment represents 8 bits, also known as 1 byte.
 
 ```gleam
 // This is the number 3 as an 8 bit value.
@@ -16,7 +16,7 @@ By default a Bit String segment represent 8 bits, also known as 1 byte.
 <<3>>
 ```
 
-You can also specify a bit size using either the short hand or long form.
+You can also specify a bit size using either short hand or long form.
 
 ```gleam
 // These are the exact same value as above
@@ -35,7 +35,7 @@ You can specify any positive integer as the bit size.
 <<3:size(16)>>
 ```
 
-You can have any number of segments separated by a commas.
+You can have any number of segments separated by commas.
 
 ```gleam
 // This is True
@@ -47,15 +47,17 @@ You can have any number of segments separated by a commas.
 There are a few more options you can attach to a segment to describe its size
 and bit layout.
 
-`unit()` lets you create a segment of repeating size. The segment will represent
-`unit * size` number of bits. If you use `unit()` you must also have a `size` option.
+`unit()` lets you create a segment of repeating size. The segment will
+represent `unit * size` number of bits. If you use `unit()` you must also have
+a `size` option.
 
 ```gleam
 // This is True
 <<3:size(4)-unit(4)>> == <<3:size(16)>>
 ```
 
-The `utf8`, `utf16` and `utf32` options let you put a String directly into a Bit String.
+The `utf8`, `utf16` and `utf32` options let you put a String directly into a
+Bit String.
 
 ```gleam
 <<"Hello Gleam 💫":utf8>>
@@ -111,22 +113,28 @@ Here Is the full list of options and their meaning:
 ## Values vs Patterns
 
 Bit Strings can appear on either the left or the right side of an equals sign.
-On the left they are called **patterns** on the right they are called **values**.
+On the left they are called **patterns**, and on the right they are called
+**values**.
 
-This is an important destinction because values and patterns have slightly different rules.
+This is an important distinction because values and patterns have slightly
+different rules.
 
 ### Rules for Patterns
 
-You can match on a variable length segment with the `bit_string` or `binary` options. A pattern
-can have at most 1 variable length segment and it must be the last segment.
+You can match on a variable length segment with the `bit_string` or `binary`
+options. A pattern can have at most 1 variable length segment and it must be
+the last segment.
 
-In a pattern the types `utf8`, `utf16`, and `utf32` must be an exact string. They cannot be a
-variable. There is no way to match a variable length section of a binary with an exact encoding.
+In a pattern the types `utf8`, `utf16`, and `utf32` must be an exact string.
+They cannot be a variable. There is no way to match a variable length section
+of a binary with an exact encoding.
 
-You can match a single variable codepoint with `utf8_codepoint`, `utf16_codepoint`, and `utf32_codepoint`
-which will match the correct number of bytes depending on the codepoint size and data.
+You can match a single variable codepoint with `utf8_codepoint`,
+`utf16_codepoint`, and `utf32_codepoint` which will match the correct number of
+bytes depending on the codepoint size and data.
 
 ## Further Reading
 
-Gleam inherits its Bit String syntax and handling from Erlang. You can
-find the erlang documentation [here](https://erlang.org/doc/reference_manual/expressions.html#bit_syntax).
+Gleam inherits its Bit String syntax and handling from Erlang. You can find the
+Erlang documentation
+[here](https://erlang.org/doc/reference_manual/expressions.html#bit_syntax).
