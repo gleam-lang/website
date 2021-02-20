@@ -170,15 +170,15 @@
                         <h1><a class="header" href="#bit-strings" id="bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.</p>
-<p>Bit Strings are written literally with an opening brackets <code>&lt;&lt;</code> any number of
-bit string segments separated by commas, and a closing brackets <code>&gt;&gt;</code>.</p>
+<p>Bit Strings are written literally with opening brackets <code>&lt;&lt;</code>, any number of bit
+string segments separated by commas, and closing brackets <code>&gt;&gt;</code>.</p>
 <h2><a class="header" href="#bit-string-segments" id="bit-string-segments">Bit String Segments</a></h2>
-<p>By default a Bit String segment represent 8 bits, also known as 1 byte.</p>
+<p>By default a Bit String segment represents 8 bits, also known as 1 byte.</p>
 <pre><code class="language-gleam">// This is the number 3 as an 8 bit value.
 // Written in binary it would be 00000011
 &lt;&lt;3&gt;&gt;
 </code></pre>
-<p>You can also specify a bit size using either the short hand or long form.</p>
+<p>You can also specify a bit size using either short hand or long form.</p>
 <pre><code class="language-gleam">// These are the exact same value as above
 // Shorthand
 &lt;&lt;3:8&gt;&gt;
@@ -191,19 +191,21 @@ bit string segments separated by commas, and a closing brackets <code>&gt;&gt;</
 // This Bit String is 16 bits long: 0000000000000011
 &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
-<p>You can have any number of segments separated by a commas.</p>
+<p>You can have any number of segments separated by commas.</p>
 <pre><code class="language-gleam">// This is True
 &lt;&lt;0:4, 1:3, 1:1&gt;&gt; == &lt;&lt;3&gt;&gt;
 </code></pre>
 <h2><a class="header" href="#bit-string-segment-options" id="bit-string-segment-options">Bit String Segment Options</a></h2>
 <p>There are a few more options you can attach to a segment to describe its size
 and bit layout.</p>
-<p><code>unit()</code> lets you create a segment of repeating size. The segment will represent
-<code>unit * size</code> number of bits. If you use <code>unit()</code> you must also have a <code>size</code> option.</p>
+<p><code>unit()</code> lets you create a segment of repeating size. The segment will
+represent <code>unit * size</code> number of bits. If you use <code>unit()</code> you must also have
+a <code>size</code> option.</p>
 <pre><code class="language-gleam">// This is True
 &lt;&lt;3:size(4)-unit(4)&gt;&gt; == &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
-<p>The <code>utf8</code>, <code>utf16</code> and <code>utf32</code> options let you put a String directly into a Bit String.</p>
+<p>The <code>utf8</code>, <code>utf16</code> and <code>utf32</code> options let you put a String directly into a
+Bit String.</p>
 <pre><code class="language-gleam">&lt;&lt;&quot;Hello Gleam 💫&quot;:utf8&gt;&gt;
 </code></pre>
 <p>The <code>bit_string</code> option lets you put any other Bit String into a Bit String.</p>
@@ -247,18 +249,24 @@ and bit layout.</p>
 </tbody></table>
 <h2><a class="header" href="#values-vs-patterns" id="values-vs-patterns">Values vs Patterns</a></h2>
 <p>Bit Strings can appear on either the left or the right side of an equals sign.
-On the left they are called <strong>patterns</strong> on the right they are called <strong>values</strong>.</p>
-<p>This is an important destinction because values and patterns have slightly different rules.</p>
+On the left they are called <strong>patterns</strong>, and on the right they are called
+<strong>values</strong>.</p>
+<p>This is an important distinction because values and patterns have slightly
+different rules.</p>
 <h3><a class="header" href="#rules-for-patterns" id="rules-for-patterns">Rules for Patterns</a></h3>
-<p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code> options. A pattern
-can have at most 1 variable length segment and it must be the last segment.</p>
-<p>In a pattern the types <code>utf8</code>, <code>utf16</code>, and <code>utf32</code> must be an exact string. They cannot be a
-variable. There is no way to match a variable length section of a binary with an exact encoding.</p>
-<p>You can match a single variable codepoint with <code>utf8_codepoint</code>, <code>utf16_codepoint</code>, and <code>utf32_codepoint</code>
-which will match the correct number of bytes depending on the codepoint size and data.</p>
+<p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code>
+options. A pattern can have at most 1 variable length segment and it must be
+the last segment.</p>
+<p>In a pattern the types <code>utf8</code>, <code>utf16</code>, and <code>utf32</code> must be an exact string.
+They cannot be a variable. There is no way to match a variable length section
+of a binary with an exact encoding.</p>
+<p>You can match a single variable codepoint with <code>utf8_codepoint</code>,
+<code>utf16_codepoint</code>, and <code>utf32_codepoint</code> which will match the correct number of
+bytes depending on the codepoint size and data.</p>
 <h2><a class="header" href="#further-reading" id="further-reading">Further Reading</a></h2>
-<p>Gleam inherits its Bit String syntax and handling from Erlang. You can
-find the erlang documentation <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
+<p>Gleam inherits its Bit String syntax and handling from Erlang. You can find the
+Erlang documentation
+<a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
 
                     </main>
 

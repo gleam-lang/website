@@ -345,9 +345,9 @@ result in the compiler presenting a type error.</p>
 <p>Prepending to a list is very fast, and is the preferred way to add new values.</p>
 <pre><code class="language-gleam">[1, ..[2, 3]]  // =&gt; [1, 2, 3]
 </code></pre>
-<p>Note that as all data structures in Gleam are immutable so prepending to a
-list does not change the original list, instead it efficiently creates a new
-list with the new additional element.</p>
+<p>Note that all data structures in Gleam are immutable so prepending to a list
+does not change the original list. Instead it efficiently creates a new list
+with the new additional element.</p>
 <pre><code class="language-gleam">let x = [2, 3]
 let y = [1, ..x]
 
@@ -356,7 +356,7 @@ x  // =&gt; [2, 3]
 y  // =&gt; [1, 2, 3]
 </code></pre>
 <h1><a class="header" href="#tuple" id="tuple">Tuple</a></h1>
-<p>Lists are good for when we want a collection of one type, but sometime we want
+<p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
 <pre><code class="language-gleam">fn run() {
@@ -471,7 +471,7 @@ all patterns, and the variables must have the same type in all the patterns.</p>
   _ -&gt; 0
 }
 </code></pre>
-<h1><a class="header" href="#function" id="function">Function</a></h1>
+<h1><a class="header" href="#functions" id="functions">Functions</a></h1>
 <h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
 <pre><code class="language-gleam">pub fn add(x: Int, y: Int) -&gt; Int {
@@ -647,9 +647,9 @@ pub fn explore_space() {
 <p>The statement <code>import nasa/rocket_ship</code> creates a new variable with the name
 <code>rocket_ship</code> and the value of the <code>rocket_ship</code> module.</p>
 <p>In the <code>explore_space</code> function we call the imported module's public <code>launch</code>
-function using the <code>.</code> operator.
-If we had attempted to call <code>count_down</code> it would result in a compile time
-error as this function is private in the <code>rocket_ship</code> module.</p>
+function using the <code>.</code> operator. If we had attempted to call <code>count_down</code> it
+would result in a compile time error as this function is private to the
+<code>rocket_ship</code> module.</p>
 <h2><a class="header" href="#named-import" id="named-import">Named import</a></h2>
 <p>It is also possible to give a module a custom name when importing it using the
 <code>as</code> keyword.</p>
@@ -698,23 +698,21 @@ methods.</p>
 <h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
 <p>Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.</p>
-<p>We've already seen a custom type with multiple constructors in the Language Tour,</p>
-<ul>
-<li><a href="tour/./bools.html"><code>Bool</code></a>.</li>
-</ul>
-<p>The built-in Gleam's <code>Bool</code> type is defined like this:</p>
+<p>We've already seen a custom type with multiple constructors in the Language
+Tour - <a href="tour/./bools.html"><code>Bool</code></a>.</p>
+<p>Gleam's built-in <code>Bool</code> type is defined like this:</p>
 <pre><code class="language-gleam">// A Bool is a value that is either `True` or `False`
 pub type Bool {
   True
   False
 }
 </code></pre>
-<p>It's a simple custom type which constructors that take no arguments at all!
+<p>It's a simple custom type with constructors that takes no arguments at all!
 Use it to answer yes/no questions and to indicate whether something is <code>True</code>
 or <code>False</code>.</p>
 <p>The records created by different constructors for a custom type can contain
 different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
-constructors that creates records with a name, and a <code>Guest</code> constructor which
+constructor that creates records with a name, and a <code>Guest</code> constructor which
 creates records without any contained values.</p>
 <pre><code class="language-gleam">type User {
   LoggedIn(name: String)  // A logged in user with a name
@@ -869,7 +867,7 @@ and failure:</p>
 }
 </code></pre>
 <p>This is such a common pattern in Gleam that the <code>try</code> syntax exists to make it
-more consise.</p>
+more concise.</p>
 <pre><code class="language-gleam">try int_a = parse_int(a)
 try int_b = parse_int(b)
 try int_c = parse_int(c)
@@ -900,7 +898,8 @@ database stops responding, then we have a fatal error that cannot be recovered
 from. We could detect the error in our code, but what do we do then? We <em>need</em>
 the database to handle the request.</p>
 <p>Lastly we may think errors are possible, but we are writing a quick script or
-prototype application, so we want to only spend time on the success path for now.</p>
+prototype application, so we want to only spend time on the success path for
+now.</p>
 <p>For these situations Gleam provides <code>assert</code>, a keyword that causes the
 program to crash if a pattern does not match.</p>
 <pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;123&quot;)
@@ -911,7 +910,7 @@ i // =&gt; 123
 is assigned the variable <code>i</code> and the program continues.</p>
 <pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;not an int&quot;)
 </code></pre>
-<p>In this case the <code>parse_int</code> function returns and error, so the <code>Ok(i)</code>
+<p>In this case the <code>parse_int</code> function returns an error, so the <code>Ok(i)</code>
 pattern doesn't match and so the program crashes.</p>
 <h2><a class="header" href="#surviving-crashes" id="surviving-crashes">Surviving crashes</a></h2>
 <p>Being fault tolerant and surviving crashes is a key part of Erlang's error
@@ -1002,15 +1001,15 @@ multiple functions that return headers.</p>
 <h1><a class="header" href="#bit-strings" id="bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.</p>
-<p>Bit Strings are written literally with an opening brackets <code>&lt;&lt;</code> any number of
-bit string segments separated by commas, and a closing brackets <code>&gt;&gt;</code>.</p>
+<p>Bit Strings are written literally with opening brackets <code>&lt;&lt;</code>, any number of bit
+string segments separated by commas, and closing brackets <code>&gt;&gt;</code>.</p>
 <h2><a class="header" href="#bit-string-segments" id="bit-string-segments">Bit String Segments</a></h2>
-<p>By default a Bit String segment represent 8 bits, also known as 1 byte.</p>
+<p>By default a Bit String segment represents 8 bits, also known as 1 byte.</p>
 <pre><code class="language-gleam">// This is the number 3 as an 8 bit value.
 // Written in binary it would be 00000011
 &lt;&lt;3&gt;&gt;
 </code></pre>
-<p>You can also specify a bit size using either the short hand or long form.</p>
+<p>You can also specify a bit size using either short hand or long form.</p>
 <pre><code class="language-gleam">// These are the exact same value as above
 // Shorthand
 &lt;&lt;3:8&gt;&gt;
@@ -1023,19 +1022,21 @@ bit string segments separated by commas, and a closing brackets <code>&gt;&gt;</
 // This Bit String is 16 bits long: 0000000000000011
 &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
-<p>You can have any number of segments separated by a commas.</p>
+<p>You can have any number of segments separated by commas.</p>
 <pre><code class="language-gleam">// This is True
 &lt;&lt;0:4, 1:3, 1:1&gt;&gt; == &lt;&lt;3&gt;&gt;
 </code></pre>
 <h2><a class="header" href="#bit-string-segment-options" id="bit-string-segment-options">Bit String Segment Options</a></h2>
 <p>There are a few more options you can attach to a segment to describe its size
 and bit layout.</p>
-<p><code>unit()</code> lets you create a segment of repeating size. The segment will represent
-<code>unit * size</code> number of bits. If you use <code>unit()</code> you must also have a <code>size</code> option.</p>
+<p><code>unit()</code> lets you create a segment of repeating size. The segment will
+represent <code>unit * size</code> number of bits. If you use <code>unit()</code> you must also have
+a <code>size</code> option.</p>
 <pre><code class="language-gleam">// This is True
 &lt;&lt;3:size(4)-unit(4)&gt;&gt; == &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
-<p>The <code>utf8</code>, <code>utf16</code> and <code>utf32</code> options let you put a String directly into a Bit String.</p>
+<p>The <code>utf8</code>, <code>utf16</code> and <code>utf32</code> options let you put a String directly into a
+Bit String.</p>
 <pre><code class="language-gleam">&lt;&lt;&quot;Hello Gleam 💫&quot;:utf8&gt;&gt;
 </code></pre>
 <p>The <code>bit_string</code> option lets you put any other Bit String into a Bit String.</p>
@@ -1079,18 +1080,24 @@ and bit layout.</p>
 </tbody></table>
 <h2><a class="header" href="#values-vs-patterns" id="values-vs-patterns">Values vs Patterns</a></h2>
 <p>Bit Strings can appear on either the left or the right side of an equals sign.
-On the left they are called <strong>patterns</strong> on the right they are called <strong>values</strong>.</p>
-<p>This is an important destinction because values and patterns have slightly different rules.</p>
+On the left they are called <strong>patterns</strong>, and on the right they are called
+<strong>values</strong>.</p>
+<p>This is an important distinction because values and patterns have slightly
+different rules.</p>
 <h3><a class="header" href="#rules-for-patterns" id="rules-for-patterns">Rules for Patterns</a></h3>
-<p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code> options. A pattern
-can have at most 1 variable length segment and it must be the last segment.</p>
-<p>In a pattern the types <code>utf8</code>, <code>utf16</code>, and <code>utf32</code> must be an exact string. They cannot be a
-variable. There is no way to match a variable length section of a binary with an exact encoding.</p>
-<p>You can match a single variable codepoint with <code>utf8_codepoint</code>, <code>utf16_codepoint</code>, and <code>utf32_codepoint</code>
-which will match the correct number of bytes depending on the codepoint size and data.</p>
+<p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code>
+options. A pattern can have at most 1 variable length segment and it must be
+the last segment.</p>
+<p>In a pattern the types <code>utf8</code>, <code>utf16</code>, and <code>utf32</code> must be an exact string.
+They cannot be a variable. There is no way to match a variable length section
+of a binary with an exact encoding.</p>
+<p>You can match a single variable codepoint with <code>utf8_codepoint</code>,
+<code>utf16_codepoint</code>, and <code>utf32_codepoint</code> which will match the correct number of
+bytes depending on the codepoint size and data.</p>
 <h2><a class="header" href="#further-reading" id="further-reading">Further Reading</a></h2>
-<p>Gleam inherits its Bit String syntax and handling from Erlang. You can
-find the erlang documentation <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
+<p>Gleam inherits its Bit String syntax and handling from Erlang. You can find the
+Erlang documentation
+<a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
 <h1><a class="header" href="#external-function" id="external-function">External function</a></h1>
 <p>Gleam is just one of many languages on the Erlang virtual machine and at times
 we may want to use functions from these other languages in our Gleam programs.

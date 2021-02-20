@@ -195,23 +195,21 @@ methods.</p>
 <h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
 <p>Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.</p>
-<p>We've already seen a custom type with multiple constructors in the Language Tour,</p>
-<ul>
-<li><a href="./bools.html"><code>Bool</code></a>.</li>
-</ul>
-<p>The built-in Gleam's <code>Bool</code> type is defined like this:</p>
+<p>We've already seen a custom type with multiple constructors in the Language
+Tour - <a href="./bools.html"><code>Bool</code></a>.</p>
+<p>Gleam's built-in <code>Bool</code> type is defined like this:</p>
 <pre><code class="language-gleam">// A Bool is a value that is either `True` or `False`
 pub type Bool {
   True
   False
 }
 </code></pre>
-<p>It's a simple custom type which constructors that take no arguments at all!
+<p>It's a simple custom type with constructors that takes no arguments at all!
 Use it to answer yes/no questions and to indicate whether something is <code>True</code>
 or <code>False</code>.</p>
 <p>The records created by different constructors for a custom type can contain
 different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
-constructors that creates records with a name, and a <code>Guest</code> constructor which
+constructor that creates records with a name, and a <code>Guest</code> constructor which
 creates records without any contained values.</p>
 <pre><code class="language-gleam">type User {
   LoggedIn(name: String)  // A logged in user with a name

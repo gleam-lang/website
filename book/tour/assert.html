@@ -180,7 +180,8 @@ database stops responding, then we have a fatal error that cannot be recovered
 from. We could detect the error in our code, but what do we do then? We <em>need</em>
 the database to handle the request.</p>
 <p>Lastly we may think errors are possible, but we are writing a quick script or
-prototype application, so we want to only spend time on the success path for now.</p>
+prototype application, so we want to only spend time on the success path for
+now.</p>
 <p>For these situations Gleam provides <code>assert</code>, a keyword that causes the
 program to crash if a pattern does not match.</p>
 <pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;123&quot;)
@@ -191,7 +192,7 @@ i // =&gt; 123
 is assigned the variable <code>i</code> and the program continues.</p>
 <pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;not an int&quot;)
 </code></pre>
-<p>In this case the <code>parse_int</code> function returns and error, so the <code>Ok(i)</code>
+<p>In this case the <code>parse_int</code> function returns an error, so the <code>Ok(i)</code>
 pattern doesn't match and so the program crashes.</p>
 <h2><a class="header" href="#surviving-crashes" id="surviving-crashes">Surviving crashes</a></h2>
 <p>Being fault tolerant and surviving crashes is a key part of Erlang's error
