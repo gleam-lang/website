@@ -57,6 +57,18 @@ Gleam is available through the [Arch User Repository](https://wiki.archlinux.org
 as package `gleam`. You can use your prefered [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
 to install it or clone it for manual build from [https://aur.archlinux.org/gleam.git](https://aur.archlinux.org/gleam.git).
 
+### FreeBSD
+
+Gleam is available in ports, and also in binary packages. You may need
+to use the `latest` package repo, amend per instructions in
+`/etc/pkg/FreeBSD.conf`. See below for adjusting your PATH to use latest
+Erlang/OTP runtime and not just the standard OTP21:
+
+```
+$ pkg install -r FreeBSD lang/gleam lang/erlang-runtime23
+$ export PATH=/usr/local/lib/erlang23/bin:$PATH
+```
+
 ### Build from source
 
 The compiler is written in the Rust programming language and so if you wish to
