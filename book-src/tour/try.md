@@ -22,7 +22,7 @@ case parse_int("123") {
 ```
 
 This is such a common pattern in Gleam that the `try` syntax exists to make it
-more consise.
+more concise.
 
 ```gleam
 try int_a = parse_int(a)
