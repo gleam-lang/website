@@ -7,11 +7,16 @@ Gleam's main number types are Int and Float.
 
 Ints are "whole" numbers.
 
+Binary, octal, and hexadecimal ints begin with `0b`, `0o`, and `0x` respectively.
+
 ```gleam
 1
 2
 -3
 4001
+0b00001111
+0o17
+0xF
 ```
 
 Gleam has several operators that work with Ints.
