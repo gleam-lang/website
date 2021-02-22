@@ -66,3 +66,6 @@ second_tier:
 - name: "NineFX"
   url: "http://www.ninefx.com"
   avatar: "https://gleam.run/images/sponsors/nine-fx.png"
+- name: "Memo"
+  url: "https://sendmemo.app"
+  avatar: "https://gleam.run/images/sponsors/memo.png"
