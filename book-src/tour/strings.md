@@ -48,3 +48,16 @@ Similarly all backslash characters must be escaped:
 // A Decorative border /\/\/\/\
 "/\\/\\/\\/\\"
 ```
+
+### String Operations
+
+*For performance reasons, there is no string concat operator in Gleam.*
+
+For simple string concatination use the String library like so:
+
+```gleam
+string.append("Hello ", username)
+string.concat(["You have ", quantity, " items"])
+```
+
+To build larger strings efficiently you may use [StringBuilder](https://hexdocs.pm/gleam_stdlib/gleam/string_builder) which is part of gleam's [standard library](https://hexdocs.pm/gleam_stdlib).
