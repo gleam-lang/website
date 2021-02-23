@@ -93,7 +93,7 @@ documentation to `gen/docs`.
 
 ```sh
 cd path/to/project
-gleam docs build
+gleam docs build --version 1.0.0
 ```
 
 Once you are happy with the documentation it can be pushed to HexDocs, the
@@ -104,7 +104,7 @@ manager before attempting to publish the documentation for that version.
 
 ```sh
 cd path/to/project
-gleam docs publish --version v1.0.0
+gleam docs publish --version 1.0.0
 ```
 
 Lastly, if you wish to remove documentation from HexDoc (possibly to correct
@@ -112,5 +112,5 @@ an error) then this command can be used:
 
 ```sh
 cd path/to/project
-gleam docs remove --package my_project_name --version v1.0.0
+gleam docs remove --package my_project_name --version 1.0.0
 ```
