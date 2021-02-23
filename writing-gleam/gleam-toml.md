@@ -43,10 +43,10 @@ This enables source links, in the generated documentation, from types, constants
 their defining lines of code in the repository.
 
 ```toml
-repository = { type = "GitHub", user = "example", repo = "project" }
-repository = { type = "GitLab", user = "example", repo = "project" }
-repository = { type = "BitBucket", user = "example", repo = "project" }
-repository = { type = "Custom", url = "https://repo.example.com" }
+repository = { type = "github", user = "example", repo = "project" }
+repository = { type = "gitlab", user = "example", repo = "project" }
+repository = { type = "bitbucket", user = "example", repo = "project" }
+repository = { type = "custom", url = "https://repo.example.com" }
 ```
 
 ## `docs`
