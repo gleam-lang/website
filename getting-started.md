@@ -161,36 +161,10 @@ usage instructions can be found here:
 
 ## Installing rebar3
 
-### Installing on Unix
+By default Gleam uses rebar3, the standard Erlang build tool. Install rebar3
+by following the [official rebar3 installation instructions][rebar3-install].
 
-Latest stable compiled version:
-```bash
-$ wget https://s3.amazonaws.com/rebar3/rebar3 && chmod +x rebar3
-```
-
-From Source (assuming you have a full Erlang install):
-
-```bash
-$ git clone https://github.com/erlang/rebar3.git
-$ cd rebar3
-$ ./bootstrap
-```
-
-Stable versions can also be obtained from the [releases page](https://github.com/erlang/rebar3/releases).
-
-The rebar3 escript can also extract itself with a run script under the user's home directory:
-
-```bash
-$ ./rebar3 local install
-===> Extracting rebar3 libs to ~/.cache/rebar3/lib...
-===> Writing rebar3 run script ~/.cache/rebar3/bin/rebar3...
-===> Add to $PATH for use: export PATH=~/.cache/rebar3/bin:$PATH
-```
-
-To keep it up to date after you've installed rebar3 this way you can use `rebar3 local upgrade` which
-fetches the latest stable release and extracts to the same place as above. A [nightly version can
-also be obtained](https://s3.amazonaws.com/rebar3-nightly/rebar3) if desired.
-
+[rebar3-install]: https://rebar3.readme.io/docs/getting-started
 
 ## Editor Plugins
 
