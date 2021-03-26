@@ -242,7 +242,7 @@ fn identity(x: u64) -> u64 {
 
 fn main() {
   let func = identity;
-  identity(100);
+  func(100);
 }
 ```
 
