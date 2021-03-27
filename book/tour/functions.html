@@ -167,8 +167,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#functions" id="functions">Functions</a></h1>
-<h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
+                        <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<h2 id="named-functions"><a class="header" href="#named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
 <pre><code class="language-gleam">pub fn add(x: Int, y: Int) -&gt; Int {
   x + y
@@ -193,7 +193,7 @@ pub fn add_two(x: Int) -&gt; Int {
   twice(add_one, x)
 }
 </code></pre>
-<h2><a class="header" href="#pipe-operator" id="pipe-operator">Pipe Operator</a></h2>
+<h2 id="pipe-operator"><a class="header" href="#pipe-operator">Pipe Operator</a></h2>
 <p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
 <p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
 <pre><code class="language-gleam">iodata.to_string(iodata.reverse(iodata.new(string)))
@@ -205,7 +205,7 @@ pub fn add_two(x: Int) -&gt; Int {
 |&gt; iodata.to_string
 </code></pre>
 <p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
-<h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
+<h2 id="type-annotations"><a class="header" href="#type-annotations">Type annotations</a></h2>
 <p>Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.</p>
 <pre><code class="language-gleam">fn identity(x: some_type) -&gt; some_type {
@@ -221,7 +221,7 @@ and both annotated and unannotated code is equally safe. It's considered a
 best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.</p>
-<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
+<h2 id="labelled-arguments"><a class="header" href="#labelled-arguments">Labelled arguments</a></h2>
 <p>When functions take several arguments it can be difficult for the user to
 remember what the arguments are, and what order they are expected in.</p>
 <p>To help with this Gleam supports <em>labelled arguments</em>, where function
@@ -252,7 +252,7 @@ replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
 <p>The use of argument labels can allow a function to be called in an expressive,
 sentence-like manner, while still providing a function body that is readable
 and clear in intent.</p>
-<h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
+<h2 id="anonymous-functions"><a class="header" href="#anonymous-functions">Anonymous functions</a></h2>
 <p>Anonymous functions can be defined with a similar syntax.</p>
 <pre><code class="language-gleam">pub fn run() {
   let add = fn(x, y) { x + y }
@@ -260,7 +260,7 @@ and clear in intent.</p>
   add(1, 2)
 }
 </code></pre>
-<h2><a class="header" href="#function-capturing" id="function-capturing">Function capturing</a></h2>
+<h2 id="function-capturing"><a class="header" href="#function-capturing">Function capturing</a></h2>
 <p>There is a shorthand syntax for creating anonymous functions that take one
 argument and call another function. The <code>_</code> is used to indicate where the
 argument should be passed.</p>

@@ -167,7 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#module" id="module">Module</a></h1>
+                        <h1 id="module"><a class="header" href="#module">Module</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
@@ -195,7 +195,7 @@ project would live within a directory with the name of the project, such as
 <p>For the functions <code>count_down</code> and <code>blast_off</code> we have omitted the <code>pub</code>
 keyword, so these functions are <em>private</em> module functions. They can only be
 called by other functions within the same module.</p>
-<h2><a class="header" href="#import" id="import">Import</a></h2>
+<h2 id="import"><a class="header" href="#import">Import</a></h2>
 <p>To use functions or types from another module we need to import them using the
 <code>import</code> keyword.</p>
 <pre><code class="language-gleam">// inside src/nasa/moon_base.gleam
@@ -212,7 +212,7 @@ pub fn explore_space() {
 function using the <code>.</code> operator. If we had attempted to call <code>count_down</code> it
 would result in a compile time error as this function is private to the
 <code>rocket_ship</code> module.</p>
-<h2><a class="header" href="#named-import" id="named-import">Named import</a></h2>
+<h2 id="named-import"><a class="header" href="#named-import">Named import</a></h2>
 <p>It is also possible to give a module a custom name when importing it using the
 <code>as</code> keyword.</p>
 <pre><code class="language-gleam">import unix/cat
@@ -220,7 +220,7 @@ import animal/cat as kitty
 </code></pre>
 <p>This may be useful to differentiate between multiple modules that would have
 the same default name when imported.</p>
-<h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
+<h2 id="unqualified-import"><a class="header" href="#unqualified-import">Unqualified import</a></h2>
 <p>Values and types can also be imported in an unqualified fashion.</p>
 <pre><code class="language-gleam">import animal/cat.{Cat, stroke}
 
