@@ -10,7 +10,8 @@ You can talk to and get help from other Gleam community members in the
 following forums:
 
 - [Gleam's web chat on Discord][2].
-- [Reddit's /r/gleamlang][3].
+- [Gleam discussions on Github][3].
+
 
 ## Code of Conduct
 
@@ -27,5 +28,5 @@ issue is resolved and your identity will be kept private.
 
 [1]: https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md
 [2]: https://discord.gg/Fm8Pwmy
-[3]: https://www.reddit.com/r/gleamlang/
+[3]: https://github.com/gleam-lang/gleam/discussions
 [4]: https://twitter.com/gleamlang
