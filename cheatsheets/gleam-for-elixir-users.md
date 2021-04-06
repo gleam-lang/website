@@ -346,7 +346,7 @@ pub fn replace(inside string, each pattern, with replacement) {
 ```
 
 ```elixir
-replace(each: ",", with: " ", in: "A,B,C")
+replace(each: ",", with: " ", inside: "A,B,C")
 ```
 
 There is no performance cost to Gleam's labelled arguments as they are
