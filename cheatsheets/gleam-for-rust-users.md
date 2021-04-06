@@ -12,7 +12,7 @@ title: Gleam for Rust users
   - [Function type annotations](#function-type-annotations)
   - [Function overloading](#function-overloading)
   - [Referencing functions](#referencing-function)
-  - [Labelled arguments](#labelled-arguments) TODO
+  - [Labelled arguments](#labelled-arguments)
 - [Modules](#modules)
 - [Operators](#operators)
 - [Constants](#constants)

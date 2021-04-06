@@ -14,7 +14,7 @@ title: Gleam for Erlang users
   - [Function overloading](#function-overloading)
   - [Referencing functions](#referencing-functions)
   - [Chaining function calls](#chaining-function-calls)
-  - [Labelled arguments](#labelled-arguments) TODO
+  - [Labelled arguments](#labelled-arguments)
 - [Operators](#operators)
   - [Pipe](#pipe)
 - [Constants](#constants)
