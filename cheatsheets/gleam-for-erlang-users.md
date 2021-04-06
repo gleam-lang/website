@@ -245,6 +245,59 @@ without adding parenthesis around the function call.
 some_function(0)(1)(2)(3)
 ```
 
+### Labelled arguments
+
+Both Erlang and Gleam have ways to give arguments names and in any order,
+though they function differently.
+
+#### Erlang
+
+In Erlang arguments can be given as as a map so that each has a name.
+
+The name used at the call-site does not have to match the name used for the
+variable inside the function.
+
+```erlang
+replace(#{
+  inside => String,
+  each => Pattern,
+  with => Replacement
+}) ->
+  go(String, Pattern, Replacement).
+```
+
+```erlang
+replace(each: <<",">>, with: <<" ">>, inside: <<"A,B,C">>).
+```
+
+Because the arguments are stored in a map there is a small runtime
+performance penalty to naming arguments, and it is possible for any of the
+arguments to be missing or of the incorrect type. There are no compile time
+checks or optimisations for maps of arguments.
+
+#### Gleam
+
+In Gleam arguments can be given a label as well as an internal name. As with
+Erlang the name used at the call-site does not have to match the name used
+for the variable inside the function.
+
+```rust
+pub fn replace(
+  inside string: String,
+  each pattern: String,
+  with replacement: String,
+) {
+  go(string, pattern, replacement)
+}
+```
+
+```elixir
+replace(each: ",", with: " ", in: "A,B,C")
+```
+
+There is no performance cost to Gleam's labelled arguments as they are
+optimised to regular function calls at compile time, and all the arguments
+are fully type checked.
 
 ## Comments
 

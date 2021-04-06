@@ -14,7 +14,7 @@ title: Gleam for Elixir users
   - [Function overloading](#function-overloading)
   - [Referencing functions](#referencing-function)
   - [Calling anonymous functions](#calling-anonymous-functions)
-  - [Labelled arguments](#labelled-arguments) TODO
+  - [Labelled arguments](#labelled-arguments)
 - [Modules](#modules)
 - [Operators](#operators)
 - [Constants](#constants)
@@ -287,18 +287,75 @@ so a special `.()` syntax has to be used to call anonymous functions.
 In Gleam all functions are called using the same syntax.
 
 #### Elixir
+
 ```elixir
 anon_function = fn x, y -> x + y end
 anon_function.(1, 2)
 mod_function(3, 4)
 ```
+
 #### Gleam
+
 ```rust
 let my_function = fn(x, y) { x + y }
 anon_function(1, 2)
 mod_function(3, 4)
 ```
 
+### Labelled arguments
+
+Both Elixir and Gleam have ways to give arguments names and in any order,
+though they function differently.
+
+#### Elixir
+
+In Elixir arguments can be given as a list of tuples with the name of the
+argument being the first element in the tuple.
+
+The name used at the call-site does not have to match the name used for the
+variable inside the function.
+
+```elixir
+def replace(opts \\ []) do
+  string = opts[:inside] || default_string()
+  pattern = opts[:each] || default_pattern()
+  replacement = opts[:with] || default_replacement()
+  go(string, pattern, replacement)
+end
+```
+
+```elixir
+replace(each: ",", with: " ", inside: "A,B,C")
+```
+
+Because the arguments are stored in a list there is a small runtime
+performance penalty for using Elixir's keyword arguments, and it is possible
+for any of the arguments to be missing or of the incorrect type. There are no
+compile time checks or optimisations for keyword arguments.
+
+#### Gleam
+
+In Gleam arguments can be given a label as well as an internal name. As with
+Elixir the name used at the call-site does not have to match the name used
+for the variable inside the function.
+
+```rust
+pub fn replace(
+  inside string: String,
+  each pattern: String,
+  with replacement: String,
+) {
+  go(string, pattern, replacement)
+}
+```
+
+```elixir
+replace(each: ",", with: " ", in: "A,B,C")
+```
+
+There is no performance cost to Gleam's labelled arguments as they are
+optimised to regular function calls at compile time, and all the arguments
+are fully type checked.
 
 ## Operators
 
@@ -317,7 +374,7 @@ mod_function(3, 4)
 | Less or equal     | `<=`   | `>=.` | In Gleam both values must be **floats**        |
 | Boolean and       | `and`  | `&&`  | Both values must be **bools**                  |
 | Logical and       | `&&`   |       | Not available in Gleam                         |
-| Boolean or        | `or`   | `|| ` | Both values must be **bools**                  |
+| Boolean or        | `or`   | `||`  | Both values must be **bools**                  |
 | Logical or        | `||`   |       | Not available in Gleam                         |
 | Add               | `+`    | `+`   | In Gleam both values must be **ints**          |
 | Add               | `+`    | `+.`  | In Gleam both values must be **floats**        |

@@ -259,6 +259,33 @@ fn main() {
 }
 ```
 
+### Labelled arguments
+
+In Gleam arguments can be given a label as well as an internal name. As with
+Erlang the name used at the call-site does not have to match the name used
+for the variable inside the function.
+
+There is no performance cost to Gleam's labelled arguments as they are
+optimised to regular function calls at compile time, and all the arguments
+are fully type checked.
+
+```rust
+pub fn replace(
+  inside string: String,
+  each pattern: String,
+  with replacement: String,
+) {
+  go(string, pattern, replacement)
+}
+```
+
+```elixir
+replace(each: ",", with: " ", in: "A,B,C")
+```
+
+There is no equivalent feature in Rust.
+
+
 ## Operators
 
 | Operator         | Rust  | Gleam | Notes                                          |
