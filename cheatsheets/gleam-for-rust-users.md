@@ -270,11 +270,7 @@ optimised to regular function calls at compile time, and all the arguments
 are fully type checked.
 
 ```rust
-pub fn replace(
-  inside string: String,
-  each pattern: String,
-  with replacement: String,
-) {
+pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ```

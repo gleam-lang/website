@@ -241,6 +241,7 @@ without adding parenthesis around the function call.
 ```
 
 #### Gleam
+
 ```rust
 some_function(0)(1)(2)(3)
 ```
@@ -258,11 +259,7 @@ The name used at the call-site does not have to match the name used for the
 variable inside the function.
 
 ```erlang
-replace(#{
-  inside => String,
-  each => Pattern,
-  with => Replacement
-}) ->
+replace(#{inside => String, each => Pattern, with => Replacement}) ->
   go(String, Pattern, Replacement).
 ```
 
@@ -282,11 +279,7 @@ Erlang the name used at the call-site does not have to match the name used
 for the variable inside the function.
 
 ```rust
-pub fn replace(
-  inside string: String,
-  each pattern: String,
-  with replacement: String,
-) {
+pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ```
