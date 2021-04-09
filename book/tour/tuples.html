@@ -171,6 +171,9 @@
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
+<p>Gleam provides two ways to construct or match on tuples: the <code>#(1, 2, 3)</code> format,
+introduced in Gleam 0.15.0, and the original <code>tuple(1, 2, 3)</code> format which will
+be removed in a future version of Gleam.</p>
 <pre><code class="language-gleam">#(10, &quot;hello&quot;) // Type is #(Int, String)
 #(1, 4.2, [0]) // Type is #(Int, Float, List(Int))
 </code></pre>
