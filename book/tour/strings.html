@@ -167,7 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+                        <h1><a class="header" href="#strings" id="strings">Strings</a></h1>
 <p>In Gleam Strings can be written as text surrounded by double quotes.</p>
 <pre><code class="language-gleam">&quot;Hello, Gleam!&quot;
 </code></pre>
@@ -179,7 +179,7 @@ Gleam!&quot;
 and can contain any valid unicode.</p>
 <pre><code class="language-gleam">&quot;👩‍💻 こんにちは Gleam 💫&quot;
 </code></pre>
-<h2 id="escape-sequences"><a class="header" href="#escape-sequences">Escape Sequences</a></h2>
+<h2><a class="header" href="#escape-sequences" id="escape-sequences">Escape Sequences</a></h2>
 <p>Gleam supports common string escape sequences. Here's all of them:</p>
 <table><thead><tr><th>Sequence</th><th>Result</th></tr></thead><tbody>
 <tr><td><code>\n</code></td><td>Newline</td></tr>
@@ -237,6 +237,21 @@ must be escaped by placing a backslash (<code>\</code>) character before it.</p>
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

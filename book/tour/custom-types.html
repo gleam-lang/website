@@ -167,7 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
+                        <h1><a class="header" href="#custom-types" id="custom-types">Custom types</a></h1>
 <p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
 methods.</p>
@@ -192,7 +192,7 @@ methods.</p>
   [cat1, cat2, cat3]
 }
 </code></pre>
-<h2 id="multiple-constructors"><a class="header" href="#multiple-constructors">Multiple constructors</a></h2>
+<h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
 <p>Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.</p>
 <p>We've already seen a custom type with multiple constructors in the Language
@@ -220,7 +220,7 @@ creates records without any contained values.</p>
 let rick = LoggedIn(name: &quot;Rick&quot;)
 let visitor = Guest
 </code></pre>
-<h2 id="destructuring"><a class="header" href="#destructuring">Destructuring</a></h2>
+<h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
 <p>When given a custom type record we can pattern match on it to determine which
 record constructor matches, and to assign names to any contained values.</p>
 <pre><code class="language-gleam">fn get_name(user) {
@@ -240,7 +240,7 @@ let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
-<h2 id="opaque-types"><a class="header" href="#opaque-types">Opaque types</a></h2>
+<h2><a class="header" href="#opaque-types" id="opaque-types">Opaque types</a></h2>
 <p>At times it may be useful to create a type and make the constructors and
 fields private so that users of this type can only use the type through
 publically exported functions.</p>
@@ -266,7 +266,7 @@ code in other modules to construct or pattern match on counter values or
 access the <code>value</code> field. Instead other modules have to manipulate the opaque
 type using the exported functions from the module, in this case <code>new</code> and
 <code>increment</code>.</p>
-<h2 id="record-updates"><a class="header" href="#record-updates">Record updates</a></h2>
+<h2><a class="header" href="#record-updates" id="record-updates">Record updates</a></h2>
 <p>Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.</p>
 <pre><code class="language-gleam">pub type Person {
@@ -288,7 +288,7 @@ pub fn have_birthday(person) {
 <p>As Gleam records are immutable the update syntax does not alter the fields in
 place, instead it created a new record with the values of the initial record
 with the new values added.</p>
-<h2 id="erlang-interop"><a class="header" href="#erlang-interop">Erlang interop</a></h2>
+<h2><a class="header" href="#erlang-interop" id="erlang-interop">Erlang interop</a></h2>
 <p>At runtime custom type records with no contained values become atoms. The
 atoms are written in <code>snake_case</code> rather than <code>CamelCase</code> so <code>LoggedIn</code>
 becomes <code>logged_in</code>.</p>
@@ -345,6 +345,21 @@ guest,
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

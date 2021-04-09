@@ -167,7 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="case"><a class="header" href="#case">Case</a></h1>
+                        <h1><a class="header" href="#case" id="case">Case</a></h1>
 <p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
 allows us to say &quot;if the data has this shape then do that&quot;, which we call
 <em>pattern matching</em>.</p>
@@ -199,7 +199,7 @@ expression with a <code>let</code> binding.</p>
 
 description  // =&gt; &quot;It's true!&quot;
 </code></pre>
-<h2 id="destructuring"><a class="header" href="#destructuring">Destructuring</a></h2>
+<h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
 <p>A <code>case</code> expression can be used to destructure values that
 contain other values, such as tuples and lists.</p>
 <pre><code class="language-gleam">case xs {
@@ -224,7 +224,7 @@ match all instances of that type may result in a runtime error.</p>
 <pre><code class="language-gleam">let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 </code></pre>
-<h2 id="matching-on-multiple-values"><a class="header" href="#matching-on-multiple-values">Matching on multiple values</a></h2>
+<h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
 <p>Sometimes it is useful to pattern match on multiple values at the same time,
 so <code>case</code> supports having multiple subjects.</p>
 <pre><code class="language-gleam">case x, y {
@@ -234,7 +234,7 @@ so <code>case</code> supports having multiple subjects.</p>
   _, _ -&gt; &quot;neither is 1&quot;
 }
 </code></pre>
-<h2 id="assigning-names-to-sub-patterns"><a class="header" href="#assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
+<h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
 <p>Sometimes when pattern matching we want to assign a name to a value while
 specifying its shape at the same time. We can do this using the <code>as</code> keyword.</p>
 <pre><code class="language-gleam">case xs {
@@ -242,7 +242,7 @@ specifying its shape at the same time. We can do this using the <code>as</code> 
   other -&gt; []
 }
 </code></pre>
-<h2 id="checking-equality-and-ordering-in-patterns"><a class="header" href="#checking-equality-and-ordering-in-patterns">Checking equality and ordering in patterns</a></h2>
+<h2><a class="header" href="#checking-equality-and-ordering-in-patterns" id="checking-equality-and-ordering-in-patterns">Checking equality and ordering in patterns</a></h2>
 <p>The <code>if</code> keyword can be used to add a guard expression to a case clause. Both
 the patterns have to match and the guard has to evaluate to <code>True</code> for the
 clause to match. The guard expression can check for equality or ordering for
@@ -257,7 +257,7 @@ clause to match. The guard expression can check for equality or ordering for
   _other -&gt; &quot;ko&quot;
 }
 </code></pre>
-<h2 id="alternative-clause-patterns"><a class="header" href="#alternative-clause-patterns">Alternative clause patterns</a></h2>
+<h2><a class="header" href="#alternative-clause-patterns" id="alternative-clause-patterns">Alternative clause patterns</a></h2>
 <p>Alternative patterns can be given for a case clause using the <code>|</code> operator. If
 any of the patterns match then the clause matches.</p>
 <p>Here the first clause will match if the variable <code>number</code> holds 2, 4, 6 or 8.</p>
@@ -312,6 +312,21 @@ all patterns, and the variables must have the same type in all the patterns.</p>
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

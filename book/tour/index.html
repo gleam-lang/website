@@ -167,7 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="language-tour"><a class="header" href="#language-tour">Language Tour</a></h1>
+                        <h1><a class="header" href="#language-tour" id="language-tour">Language Tour</a></h1>
 <p>In this book we explore the fundamentals of the Gleam language, namely its
 syntax, core data structures, flow control features, and static type system.
 If you have some prior programming experience this will hopefully be enough
@@ -206,6 +206,21 @@ information can be safely ignored.</p>
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

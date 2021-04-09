@@ -169,7 +169,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="language-tour"><a class="header" href="#language-tour">Language Tour</a></h1>
+                        <h1><a class="header" href="#language-tour" id="language-tour">Language Tour</a></h1>
 <p>In this book we explore the fundamentals of the Gleam language, namely its
 syntax, core data structures, flow control features, and static type system.
 If you have some prior programming experience this will hopefully be enough
@@ -178,7 +178,7 @@ to get you started with Gleam.</p>
 This is useful for programmers with Erlang or Elixir experience who wish to
 use Gleam alongside these languages. If you are using Gleam alone this
 information can be safely ignored.</p>
-<h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
+<h1><a class="header" href="#comments" id="comments">Comments</a></h1>
 <p>Gleam allows you to write comments in your code.</p>
 <p>Here’s a simple comment:</p>
 <pre><code class="language-gleam">// Hello, world!
@@ -201,7 +201,7 @@ line. For comments that extend beyond a single line, you’ll need to include
   x * y 
 }
 </code></pre>
-<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<h1><a class="header" href="#strings" id="strings">Strings</a></h1>
 <p>In Gleam Strings can be written as text surrounded by double quotes.</p>
 <pre><code class="language-gleam">&quot;Hello, Gleam!&quot;
 </code></pre>
@@ -213,7 +213,7 @@ Gleam!&quot;
 and can contain any valid unicode.</p>
 <pre><code class="language-gleam">&quot;👩‍💻 こんにちは Gleam 💫&quot;
 </code></pre>
-<h2 id="escape-sequences"><a class="header" href="#escape-sequences">Escape Sequences</a></h2>
+<h2><a class="header" href="#escape-sequences" id="escape-sequences">Escape Sequences</a></h2>
 <p>Gleam supports common string escape sequences. Here's all of them:</p>
 <table><thead><tr><th>Sequence</th><th>Result</th></tr></thead><tbody>
 <tr><td><code>\n</code></td><td>Newline</td></tr>
@@ -233,7 +233,7 @@ must be escaped by placing a backslash (<code>\</code>) character before it.</p>
 // A Decorative border /\/\/\/\
 &quot;/\\/\\/\\/\\&quot;
 </code></pre>
-<h1 id="bool"><a class="header" href="#bool">Bool</a></h1>
+<h1><a class="header" href="#bool" id="bool">Bool</a></h1>
 <p>A Bool can be either <code>True</code> or <code>False</code>.</p>
 <p>Gleam defines a handful of operators that work with Bools.</p>
 <pre><code class="language-gleam">False &amp;&amp; False // =&gt; False
@@ -250,7 +250,7 @@ True || True   // =&gt; True
 hand side if they don't have to.</p>
 <p><code>&amp;&amp;</code> evaluates the right hand side if the left hand side is <code>True</code>.</p>
 <p><code>||</code> evaluates the right hand side if the left hand side is <code>False</code>.</p>
-<h2 id="erlang-interop"><a class="header" href="#erlang-interop">Erlang interop</a></h2>
+<h2><a class="header" href="#erlang-interop" id="erlang-interop">Erlang interop</a></h2>
 <p>While written in the code using a capital letter, they are represented at
 runtime with the atoms <code>true</code> and <code>false</code>, making them compatible with Elixir
 and Erlang's booleans.</p>
@@ -264,9 +264,9 @@ False
 true.
 false.
 </code></pre>
-<h1 id="int-and-float"><a class="header" href="#int-and-float">Int and Float</a></h1>
+<h1><a class="header" href="#int-and-float" id="int-and-float">Int and Float</a></h1>
 <p>Gleam's main number types are Int and Float.</p>
-<h2 id="ints"><a class="header" href="#ints">Ints</a></h2>
+<h2><a class="header" href="#ints" id="ints">Ints</a></h2>
 <p>Ints are &quot;whole&quot; numbers.</p>
 <p>Binary, octal, and hexadecimal ints begin with <code>0b</code>, <code>0o</code>, and <code>0x</code> respectively.</p>
 <pre><code class="language-gleam">1
@@ -292,7 +292,7 @@ false.
 <p>Underscores can be added to Ints for clarity.</p>
 <pre><code class="language-gleam">1_000_000 // One million
 </code></pre>
-<h2 id="floats"><a class="header" href="#floats">Floats</a></h2>
+<h2><a class="header" href="#floats" id="floats">Floats</a></h2>
 <p>Floats are numbers that have a decimal point.</p>
 <pre><code class="language-gleam">1.5
 2.0
@@ -312,7 +312,7 @@ false.
 <p>Underscores can also be added to Floats for clarity.</p>
 <pre><code class="language-gleam">1_000_000.0 // One million
 </code></pre>
-<h1 id="let-bindings"><a class="header" href="#let-bindings">Let bindings</a></h1>
+<h1><a class="header" href="#let-bindings" id="let-bindings">Let bindings</a></h1>
 <p>A value can be given a name using <code>let</code>. Names can be reused by later let
 bindings, but the values contained are <em>immutable</em>, meaning the values
 themselves cannot be changed.</p>
@@ -323,7 +323,7 @@ let x = 2
 x  // =&gt; 2
 y  // =&gt; 1
 </code></pre>
-<h1 id="expression-blocks"><a class="header" href="#expression-blocks">Expression blocks</a></h1>
+<h1><a class="header" href="#expression-blocks" id="expression-blocks">Expression blocks</a></h1>
 <p>Every block in gleam is an expression. All expressions in the block are
 executed, and the result of the last expression is returned.</p>
 <pre><code class="language-gleam">let value: Bool = {
@@ -336,7 +336,7 @@ executed, and the result of the last expression is returned.</p>
 of operations.</p>
 <pre><code class="language-gleam">let celsius = { fahrenheit - 32 } * 5 / 9
 </code></pre>
-<h1 id="list"><a class="header" href="#list">List</a></h1>
+<h1><a class="header" href="#list" id="list">List</a></h1>
 <p>Lists are ordered collections of values. They're one of the most common data
 structures in Gleam.</p>
 <p>Lists are <em>homogeneous</em>, meaning all the elements of a List must be of the
@@ -359,20 +359,25 @@ let y = [1, ..x]
 x  // =&gt; [2, 3]
 y  // =&gt; [1, 2, 3]
 </code></pre>
-<h1 id="tuple"><a class="header" href="#tuple">Tuple</a></h1>
+<h1><a class="header" href="#tuple" id="tuple">Tuple</a></h1>
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
-<pre><code class="language-gleam">tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
+<p>Gleam provides two ways to construct or match on tuples: the <code>#(1, 2, 3)</code> format,
+introduced in Gleam 0.15.0, and the original <code>tuple(1, 2, 3)</code> format.</p>
+<pre><code class="language-gleam">#(10, &quot;hello&quot;) // Type is tuple(Int, String)
+#(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
+
+tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
 tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
 </code></pre>
 <p>Once you have a tuple the values contained can be accessed using the <code>.0</code>
 accessor syntax.</p>
-<pre><code class="language-gleam">let my_tuple = tuple(&quot;one&quot;, &quot;two&quot;)
+<pre><code class="language-gleam">let my_tuple = #(&quot;one&quot;, &quot;two&quot;)
 let first = my_tuple.0   // &quot;one&quot;
 let seccond = my_tuple.1 // &quot;two&quot;
 </code></pre>
-<h1 id="case"><a class="header" href="#case">Case</a></h1>
+<h1><a class="header" href="#case" id="case">Case</a></h1>
 <p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
 allows us to say &quot;if the data has this shape then do that&quot;, which we call
 <em>pattern matching</em>.</p>
@@ -404,7 +409,7 @@ expression with a <code>let</code> binding.</p>
 
 description  // =&gt; &quot;It's true!&quot;
 </code></pre>
-<h2 id="destructuring"><a class="header" href="#destructuring">Destructuring</a></h2>
+<h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
 <p>A <code>case</code> expression can be used to destructure values that
 contain other values, such as tuples and lists.</p>
 <pre><code class="language-gleam">case xs {
@@ -429,7 +434,7 @@ match all instances of that type may result in a runtime error.</p>
 <pre><code class="language-gleam">let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 </code></pre>
-<h2 id="matching-on-multiple-values"><a class="header" href="#matching-on-multiple-values">Matching on multiple values</a></h2>
+<h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
 <p>Sometimes it is useful to pattern match on multiple values at the same time,
 so <code>case</code> supports having multiple subjects.</p>
 <pre><code class="language-gleam">case x, y {
@@ -439,7 +444,7 @@ so <code>case</code> supports having multiple subjects.</p>
   _, _ -&gt; &quot;neither is 1&quot;
 }
 </code></pre>
-<h2 id="assigning-names-to-sub-patterns"><a class="header" href="#assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
+<h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
 <p>Sometimes when pattern matching we want to assign a name to a value while
 specifying its shape at the same time. We can do this using the <code>as</code> keyword.</p>
 <pre><code class="language-gleam">case xs {
@@ -447,7 +452,7 @@ specifying its shape at the same time. We can do this using the <code>as</code> 
   other -&gt; []
 }
 </code></pre>
-<h2 id="checking-equality-and-ordering-in-patterns"><a class="header" href="#checking-equality-and-ordering-in-patterns">Checking equality and ordering in patterns</a></h2>
+<h2><a class="header" href="#checking-equality-and-ordering-in-patterns" id="checking-equality-and-ordering-in-patterns">Checking equality and ordering in patterns</a></h2>
 <p>The <code>if</code> keyword can be used to add a guard expression to a case clause. Both
 the patterns have to match and the guard has to evaluate to <code>True</code> for the
 clause to match. The guard expression can check for equality or ordering for
@@ -462,7 +467,7 @@ clause to match. The guard expression can check for equality or ordering for
   _other -&gt; &quot;ko&quot;
 }
 </code></pre>
-<h2 id="alternative-clause-patterns"><a class="header" href="#alternative-clause-patterns">Alternative clause patterns</a></h2>
+<h2><a class="header" href="#alternative-clause-patterns" id="alternative-clause-patterns">Alternative clause patterns</a></h2>
 <p>Alternative patterns can be given for a case clause using the <code>|</code> operator. If
 any of the patterns match then the clause matches.</p>
 <p>Here the first clause will match if the variable <code>number</code> holds 2, 4, 6 or 8.</p>
@@ -479,8 +484,8 @@ all patterns, and the variables must have the same type in all the patterns.</p>
   _ -&gt; 0
 }
 </code></pre>
-<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
-<h2 id="named-functions"><a class="header" href="#named-functions">Named functions</a></h2>
+<h1><a class="header" href="#functions" id="functions">Functions</a></h1>
+<h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
 <pre><code class="language-gleam">pub fn add(x: Int, y: Int) -&gt; Int {
   x + y
@@ -505,7 +510,7 @@ pub fn add_two(x: Int) -&gt; Int {
   twice(add_one, x)
 }
 </code></pre>
-<h2 id="pipe-operator"><a class="header" href="#pipe-operator">Pipe Operator</a></h2>
+<h2><a class="header" href="#pipe-operator" id="pipe-operator">Pipe Operator</a></h2>
 <p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
 <p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
 <pre><code class="language-gleam">iodata.to_string(iodata.reverse(iodata.new(string)))
@@ -517,7 +522,7 @@ pub fn add_two(x: Int) -&gt; Int {
 |&gt; iodata.to_string
 </code></pre>
 <p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
-<h2 id="type-annotations"><a class="header" href="#type-annotations">Type annotations</a></h2>
+<h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
 <p>Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.</p>
 <pre><code class="language-gleam">fn identity(x: some_type) -&gt; some_type {
@@ -533,7 +538,7 @@ and both annotated and unannotated code is equally safe. It's considered a
 best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.</p>
-<h2 id="labelled-arguments"><a class="header" href="#labelled-arguments">Labelled arguments</a></h2>
+<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
 <p>When functions take several arguments it can be difficult for the user to
 remember what the arguments are, and what order they are expected in.</p>
 <p>To help with this Gleam supports <em>labelled arguments</em>, where function
@@ -564,7 +569,7 @@ replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
 <p>The use of argument labels can allow a function to be called in an expressive,
 sentence-like manner, while still providing a function body that is readable
 and clear in intent.</p>
-<h2 id="anonymous-functions"><a class="header" href="#anonymous-functions">Anonymous functions</a></h2>
+<h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
 <p>Anonymous functions can be defined with a similar syntax.</p>
 <pre><code class="language-gleam">pub fn run() {
   let add = fn(x, y) { x + y }
@@ -572,7 +577,7 @@ and clear in intent.</p>
   add(1, 2)
 }
 </code></pre>
-<h2 id="function-capturing"><a class="header" href="#function-capturing">Function capturing</a></h2>
+<h2><a class="header" href="#function-capturing" id="function-capturing">Function capturing</a></h2>
 <p>There is a shorthand syntax for creating anonymous functions that take one
 argument and call another function. The <code>_</code> is used to indicate where the
 argument should be passed.</p>
@@ -613,7 +618,7 @@ pub fn run() {
 as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
 <p>If not it falls back to calling the result of the right hand side as a function
 , e.g. <code>b(1, 2)(a)</code>.</p>
-<h1 id="module"><a class="header" href="#module">Module</a></h1>
+<h1><a class="header" href="#module" id="module">Module</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
@@ -641,7 +646,7 @@ project would live within a directory with the name of the project, such as
 <p>For the functions <code>count_down</code> and <code>blast_off</code> we have omitted the <code>pub</code>
 keyword, so these functions are <em>private</em> module functions. They can only be
 called by other functions within the same module.</p>
-<h2 id="import"><a class="header" href="#import">Import</a></h2>
+<h2><a class="header" href="#import" id="import">Import</a></h2>
 <p>To use functions or types from another module we need to import them using the
 <code>import</code> keyword.</p>
 <pre><code class="language-gleam">// inside src/nasa/moon_base.gleam
@@ -658,7 +663,7 @@ pub fn explore_space() {
 function using the <code>.</code> operator. If we had attempted to call <code>count_down</code> it
 would result in a compile time error as this function is private to the
 <code>rocket_ship</code> module.</p>
-<h2 id="named-import"><a class="header" href="#named-import">Named import</a></h2>
+<h2><a class="header" href="#named-import" id="named-import">Named import</a></h2>
 <p>It is also possible to give a module a custom name when importing it using the
 <code>as</code> keyword.</p>
 <pre><code class="language-gleam">import unix/cat
@@ -666,7 +671,7 @@ import animal/cat as kitty
 </code></pre>
 <p>This may be useful to differentiate between multiple modules that would have
 the same default name when imported.</p>
-<h2 id="unqualified-import"><a class="header" href="#unqualified-import">Unqualified import</a></h2>
+<h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
 <p>Values and types can also be imported in an unqualified fashion.</p>
 <pre><code class="language-gleam">import animal/cat.{Cat, stroke}
 
@@ -678,7 +683,7 @@ pub fn main() {
 <p>This may be useful for values that are used frequently in a module, but
 generally qualified imports are preferred as it makes it clearer where the
 value is defined.</p>
-<h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
+<h1><a class="header" href="#custom-types" id="custom-types">Custom types</a></h1>
 <p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
 methods.</p>
@@ -703,7 +708,7 @@ methods.</p>
   [cat1, cat2, cat3]
 }
 </code></pre>
-<h2 id="multiple-constructors"><a class="header" href="#multiple-constructors">Multiple constructors</a></h2>
+<h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
 <p>Custom types in Gleam can be defined with multiple constructors, making them a
 way of modeling data that can be one of a few different variants.</p>
 <p>We've already seen a custom type with multiple constructors in the Language
@@ -731,7 +736,7 @@ creates records without any contained values.</p>
 let rick = LoggedIn(name: &quot;Rick&quot;)
 let visitor = Guest
 </code></pre>
-<h2 id="destructuring-1"><a class="header" href="#destructuring-1">Destructuring</a></h2>
+<h2><a class="header" href="#destructuring-1" id="destructuring-1">Destructuring</a></h2>
 <p>When given a custom type record we can pattern match on it to determine which
 record constructor matches, and to assign names to any contained values.</p>
 <pre><code class="language-gleam">fn get_name(user) {
@@ -751,7 +756,7 @@ let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
-<h2 id="opaque-types"><a class="header" href="#opaque-types">Opaque types</a></h2>
+<h2><a class="header" href="#opaque-types" id="opaque-types">Opaque types</a></h2>
 <p>At times it may be useful to create a type and make the constructors and
 fields private so that users of this type can only use the type through
 publically exported functions.</p>
@@ -777,7 +782,7 @@ code in other modules to construct or pattern match on counter values or
 access the <code>value</code> field. Instead other modules have to manipulate the opaque
 type using the exported functions from the module, in this case <code>new</code> and
 <code>increment</code>.</p>
-<h2 id="record-updates"><a class="header" href="#record-updates">Record updates</a></h2>
+<h2><a class="header" href="#record-updates" id="record-updates">Record updates</a></h2>
 <p>Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.</p>
 <pre><code class="language-gleam">pub type Person {
@@ -799,7 +804,7 @@ pub fn have_birthday(person) {
 <p>As Gleam records are immutable the update syntax does not alter the fields in
 place, instead it created a new record with the values of the initial record
 with the new values added.</p>
-<h2 id="erlang-interop-1"><a class="header" href="#erlang-interop-1">Erlang interop</a></h2>
+<h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
 <p>At runtime custom type records with no contained values become atoms. The
 atoms are written in <code>snake_case</code> rather than <code>CamelCase</code> so <code>LoggedIn</code>
 becomes <code>logged_in</code>.</p>
@@ -818,7 +823,7 @@ LoggedIn(&quot;Kim&quot;)
 guest,
 {logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
 </code></pre>
-<h1 id="resultvalue-error"><a class="header" href="#resultvalue-error"><code>Result(value, error)</code></a></h1>
+<h1><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h1>
 <pre><code class="language-gleam">pub type Result(value, reason) {
   Ok(value)
   Error(reason)
@@ -858,7 +863,7 @@ match on it using <code>case</code> to determine whether we have an <code>Ok</co
 an <code>Error</code> result.</p>
 <p>The standard library <code>gleam/result</code> module contains helpful functions for
 working with the <code>Result</code> type, make good use of them!</p>
-<h1 id="try"><a class="header" href="#try">Try</a></h1>
+<h1><a class="header" href="#try" id="try">Try</a></h1>
 <p>In Gleam if a function can either succeed or fail then it normally will
 return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
 in an <code>Ok</code> record, and an error value is wrapped in an <code>Error</code> record.</p>
@@ -893,7 +898,7 @@ Ok(x + 1)
 Ok(x + 1)
 // -&gt; Error(&quot;failure&quot;)
 </code></pre>
-<h1 id="assert"><a class="header" href="#assert">Assert</a></h1>
+<h1><a class="header" href="#assert" id="assert">Assert</a></h1>
 <p>Some times we have a function that can technically fail, but in practice we
 don't expect it to happen. For example our program may start by opening a
 file, if we know that the file is always going to be possible to open, then we
@@ -920,13 +925,13 @@ is assigned the variable <code>i</code> and the program continues.</p>
 </code></pre>
 <p>In this case the <code>parse_int</code> function returns an error, so the <code>Ok(i)</code>
 pattern doesn't match and so the program crashes.</p>
-<h2 id="surviving-crashes"><a class="header" href="#surviving-crashes">Surviving crashes</a></h2>
+<h2><a class="header" href="#surviving-crashes" id="surviving-crashes">Surviving crashes</a></h2>
 <p>Being fault tolerant and surviving crashes is a key part of Erlang's error
 handling strategy, and as an Erlang based language Gleam can also take
 advantage of this. To find out more about Erlang fault tolerance see the
 <a href="https://github.com/gleam-lang/otp">Gleam OTP project</a> and the <a href="https://learnyousomeerlang.com/supervisors">Learn You Some Erlang chapter on
 supervisors</a>.</p>
-<h1 id="todo"><a class="header" href="#todo">Todo</a></h1>
+<h1><a class="header" href="#todo" id="todo">Todo</a></h1>
 <p>Gleam's <code>todo</code> keyword is used to indicate that some code is not yet finished.</p>
 <p>It can be useful when designing a module, type checking functions and types
 but leaving the implementation of the functions until later.</p>
@@ -961,7 +966,7 @@ is needed if you are ever unsure.</p>
   )
 }
 </code></pre>
-<h1 id="constants"><a class="header" href="#constants">Constants</a></h1>
+<h1><a class="header" href="#constants" id="constants">Constants</a></h1>
 <p>Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.</p>
 <pre><code class="language-gleam">pub const start_year = 2101
@@ -990,14 +995,14 @@ pub describe(year: Int) -&gt; String {
   }
 }
 </code></pre>
-<h2 id="type-annotations-1"><a class="header" href="#type-annotations-1">Type annotations</a></h2>
+<h2><a class="header" href="#type-annotations-1" id="type-annotations-1">Type annotations</a></h2>
 <p>Constants can also be given type annotations. </p>
 <pre><code class="language-gleam">pub const name: String = &quot;Gleam&quot;
 pub const size: Int = 100
 </code></pre>
 <p>These annotations serve as documentation or can be used to provide a more 
 specific type than the compiler would otherwise infer.</p>
-<h1 id="type-aliases"><a class="header" href="#type-aliases">Type aliases</a></h1>
+<h1><a class="header" href="#type-aliases" id="type-aliases">Type aliases</a></h1>
 <p>Type aliases are a way of creating a new name for an existing type. This is
 useful when the name of the type may be long and awkward to type repeatedly.</p>
 <p>Here we are giving the type <code>List(tuple(String, String))</code> the new name
@@ -1006,12 +1011,12 @@ multiple functions that return headers.</p>
 <pre><code class="language-gleam">pub type Headers =
   List(tuple(String, String))
 </code></pre>
-<h1 id="bit-strings"><a class="header" href="#bit-strings">Bit strings</a></h1>
+<h1><a class="header" href="#bit-strings" id="bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.</p>
 <p>Bit Strings are written literally with opening brackets <code>&lt;&lt;</code>, any number of bit
 string segments separated by commas, and closing brackets <code>&gt;&gt;</code>.</p>
-<h2 id="bit-string-segments"><a class="header" href="#bit-string-segments">Bit String Segments</a></h2>
+<h2><a class="header" href="#bit-string-segments" id="bit-string-segments">Bit String Segments</a></h2>
 <p>By default a Bit String segment represents 8 bits, also known as 1 byte.</p>
 <pre><code class="language-gleam">// This is the number 3 as an 8 bit value.
 // Written in binary it would be 00000011
@@ -1034,7 +1039,7 @@ string segments separated by commas, and closing brackets <code>&gt;&gt;</code>.
 <pre><code class="language-gleam">// This is True
 &lt;&lt;0:4, 1:3, 1:1&gt;&gt; == &lt;&lt;3&gt;&gt;
 </code></pre>
-<h2 id="bit-string-segment-options"><a class="header" href="#bit-string-segment-options">Bit String Segment Options</a></h2>
+<h2><a class="header" href="#bit-string-segment-options" id="bit-string-segment-options">Bit String Segment Options</a></h2>
 <p>There are a few more options you can attach to a segment to describe its size
 and bit layout.</p>
 <p><code>unit()</code> lets you create a segment of repeating size. The segment will
@@ -1052,7 +1057,7 @@ Bit String.</p>
 &lt;&lt;a:bit_string, 1:5&gt;&gt; == &lt;&lt;&quot;a&quot;:utf8&gt;&gt; // True
 </code></pre>
 <p>Here Is the full list of options and their meaning:</p>
-<h3 id="options-in-values"><a class="header" href="#options-in-values">Options in Values</a></h3>
+<h3><a class="header" href="#options-in-values" id="options-in-values">Options in Values</a></h3>
 <table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
 <tr><td>bit_string</td><td>a bitstring that is any bit size</td></tr>
 <tr><td>float</td><td>default size of 64 bits</td></tr>
@@ -1066,7 +1071,7 @@ Bit String.</p>
 <tr><td>utf16</td><td>a string to encode as utf16 codepoints</td></tr>
 <tr><td>utf32</td><td>a string to encode as utf32 codepoints</td></tr>
 </tbody></table>
-<h3 id="options-in-patterns"><a class="header" href="#options-in-patterns">Options in Patterns</a></h3>
+<h3><a class="header" href="#options-in-patterns" id="options-in-patterns">Options in Patterns</a></h3>
 <table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
 <tr><td>binary</td><td>a bitstring that is a multiple of 8 bits</td></tr>
 <tr><td>bit_string</td><td>a bitstring that is any bit size</td></tr>
@@ -1086,13 +1091,13 @@ Bit String.</p>
 <tr><td>utf16_codepoint</td><td>a single valid utf16 codepoint</td></tr>
 <tr><td>utf32_codepoint</td><td>a single valid utf32 codepoint</td></tr>
 </tbody></table>
-<h2 id="values-vs-patterns"><a class="header" href="#values-vs-patterns">Values vs Patterns</a></h2>
+<h2><a class="header" href="#values-vs-patterns" id="values-vs-patterns">Values vs Patterns</a></h2>
 <p>Bit Strings can appear on either the left or the right side of an equals sign.
 On the left they are called <strong>patterns</strong>, and on the right they are called
 <strong>values</strong>.</p>
 <p>This is an important distinction because values and patterns have slightly
 different rules.</p>
-<h3 id="rules-for-patterns"><a class="header" href="#rules-for-patterns">Rules for Patterns</a></h3>
+<h3><a class="header" href="#rules-for-patterns" id="rules-for-patterns">Rules for Patterns</a></h3>
 <p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code>
 options. A pattern can have at most 1 variable length segment and it must be
 the last segment.</p>
@@ -1102,11 +1107,11 @@ of a binary with an exact encoding.</p>
 <p>You can match a single variable codepoint with <code>utf8_codepoint</code>,
 <code>utf16_codepoint</code>, and <code>utf32_codepoint</code> which will match the correct number of
 bytes depending on the codepoint size and data.</p>
-<h2 id="further-reading"><a class="header" href="#further-reading">Further Reading</a></h2>
+<h2><a class="header" href="#further-reading" id="further-reading">Further Reading</a></h2>
 <p>Gleam inherits its Bit String syntax and handling from Erlang. You can find the
 Erlang documentation
 <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
-<h1 id="external-function"><a class="header" href="#external-function">External function</a></h1>
+<h1><a class="header" href="#external-function" id="external-function">External function</a></h1>
 <p>Gleam is just one of many languages on the Erlang virtual machine and at times
 we may want to use functions from these other languages in our Gleam programs.
 To enable this Gleam allows the importing of <em>external functions</em>, which may
@@ -1116,7 +1121,7 @@ different type system, so the compiler is unable to determine the type of the
 function and instead the programmer must inform the compiler the type.</p>
 <p>Gleam trusts that the type given is correct so an inaccurate type annotation
 can result in unexpected behaviour and crashes at runtime. Be careful!</p>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
 <p>The Erlang <code>rand</code> module has a function named <code>uniform</code> that takes no
 arguments and returns a <code>Float</code>.</p>
 <p>The Elixir module <code>IO</code> has a function named <code>inspect</code> that takes any value,
@@ -1128,7 +1133,7 @@ so like this:</p>
 // Elixir modules start with `Elixir.`
 pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
 </code></pre>
-<h2 id="labelled-arguments-1"><a class="header" href="#labelled-arguments-1">Labelled arguments</a></h2>
+<h2><a class="header" href="#labelled-arguments-1" id="labelled-arguments-1">Labelled arguments</a></h2>
 <p>Like regular functions, external functions can have labelled arguments.</p>
 <pre><code class="language-gleam">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
   &quot;my_external_module&quot; &quot;any&quot;
@@ -1138,7 +1143,7 @@ called like so:</p>
 <pre><code class="language-gleam">any(in: my_list, satisfying: is_even)
 any(satisfying: is_even, in: my_list)
 </code></pre>
-<h1 id="external-type"><a class="header" href="#external-type">External type</a></h1>
+<h1><a class="header" href="#external-type" id="external-type">External type</a></h1>
 <p>In addition to importing external functions we can also import external types.
 Gleam knows nothing about the runtime representation of these types and so
 they cannot be pattern matched on, but they can be used with external
@@ -1175,6 +1180,21 @@ pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&qu
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

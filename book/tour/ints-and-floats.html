@@ -167,9 +167,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="int-and-float"><a class="header" href="#int-and-float">Int and Float</a></h1>
+                        <h1><a class="header" href="#int-and-float" id="int-and-float">Int and Float</a></h1>
 <p>Gleam's main number types are Int and Float.</p>
-<h2 id="ints"><a class="header" href="#ints">Ints</a></h2>
+<h2><a class="header" href="#ints" id="ints">Ints</a></h2>
 <p>Ints are &quot;whole&quot; numbers.</p>
 <p>Binary, octal, and hexadecimal ints begin with <code>0b</code>, <code>0o</code>, and <code>0x</code> respectively.</p>
 <pre><code class="language-gleam">1
@@ -195,7 +195,7 @@
 <p>Underscores can be added to Ints for clarity.</p>
 <pre><code class="language-gleam">1_000_000 // One million
 </code></pre>
-<h2 id="floats"><a class="header" href="#floats">Floats</a></h2>
+<h2><a class="header" href="#floats" id="floats">Floats</a></h2>
 <p>Floats are numbers that have a decimal point.</p>
 <pre><code class="language-gleam">1.5
 2.0
@@ -253,6 +253,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
