@@ -43,17 +43,26 @@ title: Gleam for Python users
 
 #### Python
 
-In Python comments are written with a `#` prefix.
+In Python, comments are written with a `#` prefix.
 
 ```py
 # Hello, Joe!
 ```
 
-TODO: TBD \`\`\` doc strings
+A docstring (<code>\`\`\`</code>) that occurs as the first statement in a module, function, class, or method definition will become the **doc** special attribute of that object.
+
+````py
+
+def a_method():
+    ```
+    some documentation for this method
+    ```
+    pass
+````
 
 #### Gleam
 
-In Gleam comments are written with a `//` prefix.
+In Gleam, comments are written with a `//` prefix.
 
 ```rust
 // Hello, Joe!
@@ -80,7 +89,7 @@ size = size + 100
 size = 1
 ```
 
-Python has no specific variable keyword. You choose a name and that's it !
+Python has no specific variable keyword. You choose a name and that's it!
 
 #### Gleam
 
@@ -96,7 +105,7 @@ let size = 1
 
 #### Python
 
-Python support basic, one directional destructuring (also called unpacking).
+Python supports basic, one directional destructuring (also called unpacking).
 Tuple of values can be unpacked and inner values can be assigned to left-hand variable names.
 
 ```py
@@ -123,12 +132,12 @@ assert [y] = "Hello" // compile error, type mismatch
 
 #### Python
 
-Python is dynamically typed language. Types are only checked at runtime and a variable can have different types in its lifetime.
+Python is a dynamically typed language. Types are only checked at runtime and a variable can have different types in its lifetime.
 
 Type hints (Python 3+) are optional annotations that document the code with type information.
 These annotations are accessible at runtime via the `__annotations__` module-level variable.
 
-These hints will mainly be used to inform static analysis tools as IDEs, linters...
+These hints will mainly be used to inform static analysis tools like IDEs, linters...
 
 ```py
 from typing import List, int
@@ -185,7 +194,7 @@ In Python, top level functions are exported by default. There is no notion of pr
 
 #### Gleam
 
-In Gleam functions are private by default and need the `pub` keyword to be public.
+In Gleam, functions are private by default and need the `pub` keyword to be public.
 
 ```rust
 // this is public
@@ -207,14 +216,12 @@ Type hints can be used to optionally annotate function arguments and return type
 
 Discrepancies between type hints and actual values at runtime do not prevent interpretation of the code.
 
-Static code analyser (embedded in IDEs or linters liky mypy) will be required to detect those errors.
+Static code analysers (IDE tooling, type checkers like mypy) will be required to detect those errors.
 
 ```py
 
 def sum(x: int, y: int) -> int:
     return x + y
-
-
 
 def mul(x: int, y: int) -> bool:
     # no errors from the interpreter.
@@ -307,40 +314,31 @@ mod_function(3, 4)
 
 ### Labelled arguments
 
-Both Elixir and Gleam have ways to give arguments names and in any order.
+Both Python and Gleam have ways to give arguments names and in any order.
 
 #### Python
 
-Keyword arguments are evaluated once at function definition time, so there is not noticeabla performance penalty to use named arguments.
+Keyword arguments are evaluated once at function definition time, so there is no noticeable performance penalty to use named arguments.
 
-In Elixir arguments can be given as a list of tuples with the name of the
-argument being the first element in the tuple.
+In a function, the arguments declaration can be used:
 
-The name used at the call-site does not have to match the name used for the
-variable inside the function.
+- positionally, in order
+- by name, in any order
 
-```elixir
-def replace(opts \\ []) do
-  string = opts[:inside] || default_string()
-  pattern = opts[:each] || default_pattern()
-  replacement = opts[:with] || default_replacement()
-  go(string, pattern, replacement)
-end
+```py
+
+def replace(inside: str, each: str, with_string: str):
+    pass
+
+# equivalent calls
+replace('hello world', 'world', 'you')
+replace(each='world', inside='hello world',  with_string='you')
+
 ```
-
-```elixir
-replace(each: ",", with: " ", inside: "A,B,C")
-```
-
-Because the arguments are stored in a list there is a small runtime
-performance penalty for using Elixir's keyword arguments, and it is possible
-for any of the arguments to be missing or of the incorrect type. There are no
-compile time checks or optimisations for keyword arguments.
 
 #### Gleam
 
-In Gleam arguments can be given a label as well as an internal name. As with
-Elixir the name used at the call-site does not have to match the name used
+In Gleam arguments can be given a label as well as an internal name. Contrary to Python, the name used at the call-site does not have to match the name used
 for the variable inside the function.
 
 ```rust
@@ -393,13 +391,13 @@ Python uses `True` and `False` whereas Gleam
 | Modulo            | `%`    | `%`                       | Both values must be **ints**                                                           |
 | Pipe              |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
 
-Some notes for python
+Some notes for Python:
 
 - `==` is always strict except for the following type coercions:
   - 0 is always cast `False`
   - 1 is always cast to `True`
-- Python operators are short circuiting as in Gleam.
-- Python operators can be overloaded and be applied to any types with potential custom behaviours
+- Python operators are short-circuiting as in Gleam.
+- Python operators can be overloaded and be applied to any types with potential custom behaviors
 
 ## Constants
 
@@ -407,7 +405,7 @@ Some notes for python
 
 In Python, top-level declarations are in the global/module scope is the highest possible scope. Any variables and functions defined will be accessible from anywhere in the code.
 
-There is no notion of constant variable in Python.
+There is no notion of constant variables in Python.
 
 ```python
 # in the global scope
@@ -445,7 +443,7 @@ fn main() {
 
 #### Python
 
-Python blocks are always associated to a function / conditional / class declarations.... There is no way to create multi-line expressions blocks like in Gleam, Elixir or Ruby.
+Python blocks are always associated with a function / conditional / class declarations... There is no way to create multi-line expressions blocks like in Gleam, Elixir or Ruby.
 
 Blocks are declared via indentation.
 
@@ -474,11 +472,13 @@ pub fn main() {
 
 ### Strings
 
-In both Elixir and Gleam all strings are UTF-8 encoded binaries.
+In Python, strings are stored as unicode code-points sequence. Strings can be encoded or decoded to/from a specific encoding.
+
+In Gleam all strings are UTF-8 encoded binaries.
 
 #### Python
 
-```elixir
+```python
 "Hellø, world!"
 ```
 
@@ -560,7 +560,7 @@ In Python, maps are called dictionaries and can have keys of any type as long as
 
 - the key type is `hashable`, such as integers, strings, tuples (due to their immutable values), functions... and custom mutable objects implementing the `__hash__` method.
 - the key is unique in the dictionary.
-  and values of any types.
+  and values of any type.
 
 In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
 
@@ -586,13 +586,13 @@ map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
 
 ### Case
 
-Case is the one of the most used control flow in gleam. It can be seen as a switch statement on steroids. It provides a terse way to match a value type to an expression.
+Case is one of the most used control flow in Gleam. It can be seen as a switch statement on steroids. It provides a terse way to match a value type to an expression.
 
 #### Python
 
-Python does not have switch statements. `if/else` statements paired to the `type` function lets the developer to write code that depends on the type and value of a variable.
+Python does not have switch statements. `if/else` statements paired to the `type` function let the developer to write code that depends on the type and value of a variable.
 
-Until now, there have been no official comparable feature for the case expression used in Gleam.
+Until now, there has been no official comparable feature for the case expression used in Gleam.
 
 However this will change in Python 3.10 (currently in [alpha release]([https://docs.python.org/3.10/whatsnew/3.10.html#pep-634-structural-pattern-matching]), at the time of writing) that ships structural pattern matching allowing:
 
@@ -700,7 +700,7 @@ Error management is approached differently in Python and Gleam.
 
 #### Python
 
-Python uses the notion of exception of interrupt the curent code flow and popup an error to the caller.
+Python uses the notion of exceptions to interrupt the current code flow and pop up the error to the caller.
 
 An exception is raised using the keyword `raise`.
 
@@ -760,7 +760,7 @@ Ok(int_a_number + attempt_int + int_another_number) // never get executed
 
 ## Type aliases
 
-Type aliases allow for easy referencing of arbitrary complex types. Even thought their type systems does not serve the same function, both Python and Gleam provide this feature.
+Type aliases allow for easy referencing of arbitrary complex types. Even though their type systems does not serve the same function, both Python and Gleam provide this feature.
 
 ### Python
 
@@ -812,7 +812,7 @@ name = person.name
 
 A more recent alternative is to leverage the `NamedTuple` base type to generate a constructor with initializers.
 
-However the name `Tuple` suggest, the produced members values are immutable.
+However as the name `Tuple` suggests, the produced members values are immutable.
 
 ```py
 from typing import NamedTuple
@@ -845,7 +845,7 @@ let name = person.name
 
 In Python unions are declared using the `Union` type from the `typing module`
 
-In Gleam functions must always take an receive one type. To have a union of
+In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
 
 #### Python
@@ -874,9 +874,9 @@ fn int_or_float(X) {
 
 ### Opaque custom types
 
-In Python, constructor cannot be marked as private. Opaque can be imperfectly emulated using static methods and some magic property only updated via the static factory method.
+In Python, constructors cannot be marked as private. Opaque types can be imperfectly emulated using a static methods and some magic property that only updated via the static factory method.
 
-In Gleam custom types can be defined as being opaque, which causes the
+In Gleam, custom types can be defined as being opaque, which causes the
 constructors for the custom type not to be exported from the module. Without
 any constructors to import other modules can only interact with opaque types
 using the intended API.

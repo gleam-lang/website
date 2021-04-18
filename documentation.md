@@ -22,6 +22,7 @@ layout: page
 - [Gleam for Erlang users](/cheatsheets/gleam-for-erlang-users)
 - [Gleam for Elixir users](/cheatsheets/gleam-for-elixir-users)
 - [Gleam for Rust users](/cheatsheets/gleam-for-rust-users)
+- [Gleam for Python users](/cheatsheets/gleam-for-python-users)
 
 ## Gleam references
 
