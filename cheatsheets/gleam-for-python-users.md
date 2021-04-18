@@ -176,7 +176,7 @@ for key, value in enumerate(a_dict):
 In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
 
 ```rust
-let [x] = [1]
+let tuple(x, _) = tuple(1, 2)
 assert 2 = x // runtime error
 assert [y] = "Hello" // compile error, type mismatch
 ```
