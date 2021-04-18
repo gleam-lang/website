@@ -177,7 +177,7 @@ In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile
 
 ```rust
 let tuple(x, _) = tuple(1, 2)
-assert 2 = x // runtime error
+assert [] = [1] // runtime error
 assert [y] = "Hello" // compile error, type mismatch
 ```
 
