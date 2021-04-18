@@ -1,0 +1,999 @@
+---
+layout: page
+title: Gleam for Python users
+---
+
+- [Comments](#comments)
+- [Variables](#variables)
+  - [Match operator](#match-operator)
+  - [Variables type annotations](#variables-type-annotations)
+- [Functions](#functions)
+  - [Exporting functions](#exporting-functions)
+  - [Function type annotations](#function-type-annotations)
+  - [Function heads](#function-heads)
+  - [Function overloading](#function-overloading)
+  - [Referencing functions](#referencing-function)
+  - [Calling anonymous functions](#calling-anonymous-functions)
+  - [Labelled arguments](#labelled-arguments)
+- [Modules](#modules)
+- [Operators](#operators)
+- [Constants](#constants)
+- [Blocks](#blocks)
+- [Data types](#data-types)
+  - [Strings](#strings)
+  - [Tuples](#tuples)
+  - [Lists](#lists)
+  - [Atoms](#atoms)
+  - [Maps](#maps)
+- [Patterns] TODO
+- [Flow control](#flow-control)
+  - [Case](#case)
+  - [Try](#try)
+- [Type aliases](#type-aliases)
+- [Custom types](#custom-types)
+  - [Records](#records)
+  - [Unions](#unions)
+  - [Opaque custom types](#opaque-custom-types)
+- [Modules](#modules)
+  - [Imports](#imports)
+  - [Named imports](#named-imports)
+  - [Unqualified imports](#unqualified-imports)
+
+## Comments
+
+#### Python
+
+In Python comments are written with a `#` prefix.
+
+```py
+# Hello, Joe!
+```
+
+TODO: TBD \`\`\` doc strings
+
+#### Gleam
+
+In Gleam comments are written with a `//` prefix.
+
+```rust
+// Hello, Joe!
+```
+
+Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
+
+```rust
+//// This module is very important.
+
+/// The answer to life, the universe, and everything.
+const answer: Int = 42
+```
+
+## Variables
+
+You can reassign variables in both languages.
+
+#### Python
+
+```py
+size = 50
+size = size + 100
+size = 1
+```
+
+Python has no specific variable keyword. You choose a name and that's it !
+
+#### Gleam
+
+Gleam has the `let` keyword before its variable names.
+
+```rust
+let size = 50
+let size = size + 100
+let size = 1
+```
+
+### Match operator
+
+#### Python
+
+Python support basic, one directional destructuring (also called unpacking).
+Tuple of values can be unpacked and inner values can be assigned to left-hand variable names.
+
+```py
+(a, b) = (1, 2)
+# a == 1
+# b == 2
+
+# works also for for-loops
+for key, value in enumerate(a_dict):
+    print(key, value)
+```
+
+#### Gleam
+
+In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
+
+```rust
+let [x] = [1]
+assert 2 = x // runtime error
+assert [y] = "Hello" // compile error, type mismatch
+```
+
+### Variables type annotations
+
+#### Python
+
+Python is dynamically typed language. Types are only checked at runtime and a variable can have different types in its lifetime.
+
+Type hints (Python 3+) are optional annotations that document the code with type information.
+These annotations are accessible at runtime via the `__annotations__` module-level variable.
+
+These hints will mainly be used to inform static analysis tools as IDEs, linters...
+
+```py
+from typing import List, int
+
+some_list: List[int] = [1, 2, 3]
+```
+
+#### Gleam
+
+In Gleam type annotations can optionally be given when binding variables.
+
+```rust
+let some_list: List(Int) = [1, 2, 3]
+```
+
+Gleam will check the type annotation to ensure that it matches the type of the assigned value. It does not need annotations to type check your code, but you may find it useful to annotate variables to hint to the compiler that you want a specific type to be inferred.
+
+## Functions
+
+### Python
+
+In Python, you can define functions with the `def` keyword. In that case, the `return` keyword is mandatory.
+
+```python
+def sum(x, y):
+    return x + y
+```
+
+Anonymous functions returning a single expression can also be defined with the `lambda` keyword and be assigned into variables.
+
+```py
+mul = lambda (x, y): x * y
+mul(1, 2)
+```
+
+### Gleam
+
+Gleam's functions are declared using a syntax similar to Rust or JavaScript. Gleam's anonymous functions have a similar syntax and don't need a `.` when called.
+
+```rust
+pub fn sum(x, y) {
+  x + y
+}
+
+let mul = fn(x, y) { x * y }
+mul(1, 2)
+```
+
+### Exporting functions
+
+#### Python
+
+In Python, top level functions are exported by default. There is no notion of private module-level functions.
+
+#### Gleam
+
+In Gleam functions are private by default and need the `pub` keyword to be public.
+
+```rust
+// this is public
+pub fn sum(x, y) {
+  x + y
+}
+
+// this is private
+fn mul(x, y) {
+  x * y
+}
+```
+
+### Function type annotations
+
+#### Python
+
+Type hints can be used to optionally annotate function arguments and return types.
+
+Discrepancies between type hints and actual values at runtime do not prevent interpretation of the code.
+
+Static code analyser (embedded in IDEs or linters liky mypy) will be required to detect those errors.
+
+```py
+
+def sum(x: int, y: int) -> int:
+    return x + y
+
+
+
+def mul(x: int, y: int) -> bool:
+    # no errors from the interpreter.
+    return x * y
+```
+
+#### Gleam
+
+Functions can **optionally** have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
+
+```rust
+pub fn add(x: Int, y: Int) -> Int {
+  x + y
+}
+
+pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
+  x * y
+}
+```
+
+### Function heads
+
+#### Python
+
+Python functions can only have one function head.
+
+```python
+def is_zero(x):
+    return x == 0
+```
+
+#### Gleam
+
+Gleam functions can have only one function head. Use a case expression to pattern match on function arguments.
+
+```rust
+pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
+  case x {
+    0 -> true
+    _ -> false
+  }
+}
+```
+
+### Function overloading
+
+Python does not support natively function overloading (or multiple dispatch). The last function declaration with the same name will be used.
+
+Gleam does not support function overloading, so there can only
+be 1 function with a given name, and the function can only have a single
+implementation for the types it accepts.
+
+### Referencing functions
+
+#### Python
+
+As long as functions are in scope they can be assigned to a new variable. There is no special syntax
+
+#### Python
+
+Gleam has a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.
+
+````
+
+#### Gleam
+
+```rust
+fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100)
+}
+````
+
+### Calling anonymous functions
+
+In Gleam and Python all functions are called using the same syntax.
+
+#### Gleam
+
+```rust
+let my_function = fn(x, y) { x + y }
+anon_function(1, 2)
+mod_function(3, 4)
+```
+
+### Labelled arguments
+
+Both Elixir and Gleam have ways to give arguments names and in any order.
+
+#### Python
+
+Keyword arguments are evaluated once at function definition time, so there is not noticeabla performance penalty to use named arguments.
+
+In Elixir arguments can be given as a list of tuples with the name of the
+argument being the first element in the tuple.
+
+The name used at the call-site does not have to match the name used for the
+variable inside the function.
+
+```elixir
+def replace(opts \\ []) do
+  string = opts[:inside] || default_string()
+  pattern = opts[:each] || default_pattern()
+  replacement = opts[:with] || default_replacement()
+  go(string, pattern, replacement)
+end
+```
+
+```elixir
+replace(each: ",", with: " ", inside: "A,B,C")
+```
+
+Because the arguments are stored in a list there is a small runtime
+performance penalty for using Elixir's keyword arguments, and it is possible
+for any of the arguments to be missing or of the incorrect type. There are no
+compile time checks or optimisations for keyword arguments.
+
+#### Gleam
+
+In Gleam arguments can be given a label as well as an internal name. As with
+Elixir the name used at the call-site does not have to match the name used
+for the variable inside the function.
+
+```rust
+pub fn replace(inside string, each pattern, with replacement) {
+  go(string, pattern, replacement)
+}
+```
+
+```elixir
+replace(each: ",", with: " ", inside: "A,B,C")
+```
+
+There is no performance cost to Gleam's labelled arguments as they are
+optimised to regular function calls at compile time, and all the arguments
+are fully type checked.
+
+## Operators
+
+### Boolean
+
+Python uses `True` and `False` whereas Gleam
+
+### Side by side comparison
+
+| Operator          | Python | Gleam                     | Notes                                                                                  |
+| ----------------- | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
+| Equal             | `==`   | `==`                      | In Gleam both values must be of the same type                                          |
+| Strictly equal to | `==`   | `==`                      | Comparison in Gleam and Python(see note) is always strict                              |
+| Not equal         | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
+| Greater than      | `>`    | `>`                       | In Gleam both values must be **ints**                                                  |
+| Greater than      | `>`    | `>.`                      | In Gleam both values must be **floats**                                                |
+| Greater or equal  | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
+| Greater or equal  | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
+| Less than         | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
+| Less than         | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
+| Less or equal     | `<=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
+| Less or equal     | `<=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
+| Boolean and       | `and`  | `&&`                      | Both values must be **bools**                                                          |
+| Logical and       | `and`  |                           | Not available in Gleam                                                                 |
+| Boolean or        | `or`   | <code>&vert;&vert;</code> | Both values must be **bools**                                                          |
+| Logical or        | `or`   |                           | Not available in Gleam                                                                 |
+| Add               | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
+| Add               | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
+| Subtract          | `-`    | `-`                       | In Gleam both values must be **ints**                                                  |
+| Subtract          | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
+| Multiply          | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
+| Multiply          | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
+| Divide            | `/`    | `/`                       | Both values must be **ints**                                                           |
+| Divide            | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
+| Modulo            | `%`    | `%`                       | Both values must be **ints**                                                           |
+| Pipe              |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
+
+Some notes for python
+
+- `==` is always strict except for the following type coercions:
+  - 0 is always cast `False`
+  - 1 is always cast to `True`
+- Python operators are short circuiting as in Gleam.
+- Python operators can be overloaded and be applied to any types with potential custom behaviours
+
+## Constants
+
+#### Elixir
+
+In Python, top-level declarations are in the global/module scope is the highest possible scope. Any variables and functions defined will be accessible from anywhere in the code.
+
+There is no notion of constant variable in Python.
+
+```python
+# in the global scope
+the_answer = 42
+```
+
+#### Gleam
+
+In Gleam constants can be created using the `const` keyword.
+
+```rust
+const the_answer = 42
+
+pub fn main() {
+  the_answer
+}
+```
+
+Additionally, Gleam constants can be referenced from other modules.
+
+```rust
+// in file other_module.gleam
+pub const the_answer: Int = 42
+```
+
+```rust
+import other_module
+
+fn main() {
+  other_module.the_answer
+}
+```
+
+## Blocks
+
+#### Python
+
+Python blocks are always associated to a function / conditional / class declarations.... There is no way to create multi-line expressions blocks like in Gleam, Elixir or Ruby.
+
+Blocks are declared via indentation.
+
+```py
+def a_func():
+    # A block here
+    pass
+```
+
+#### Gleam
+
+In Gleam braces `{` `}` are used to group expressions.
+
+```rust
+pub fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  let y = x * {x + 10} // braces are used to change arithmetic operations order
+  y
+}
+```
+
+## Data types
+
+### Strings
+
+In both Elixir and Gleam all strings are UTF-8 encoded binaries.
+
+#### Python
+
+```elixir
+"Hellø, world!"
+```
+
+#### Gleam
+
+```rust
+"Hellø, world!"
+```
+
+### Tuples
+
+Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection. The syntax for a tuple literal - `tuple("a", "b")` - can be confused for a function call, which is not!
+
+#### Python
+
+Python tuples are immutable, fixed-size lists that can contain mixed value types. Unpacking can be used to bind a name to a specific value of the tuple.
+
+```python
+my_tuple = ("username", "password", 10)
+_, password, _ = my_tuple
+```
+
+#### Gleam
+
+```rust
+let my_tuple = tuple("username", "password", 10)
+let tuple(_, password, _) = my_tuple
+```
+
+### Lists
+
+Lists in Python are allowed to be of mixed types, but not in Gleam.
+
+#### Python
+
+Python can emulate the `cons` operator of Gleam using the `*` operator and unpacking:
+
+```python
+list = [2, 3, 4]
+[head, *tail] = list
+# head == 2
+# tail == [3, 4]
+```
+
+#### Gleam
+
+Gleam has a `cons` operator that works for lists destructuring and pattern matching.
+
+```rust
+let list = [2, 3, 4]
+let list = [1, ..list]
+let [1, second_element, ..] = list
+[1.0, ..list] // compile error, type mismatch
+```
+
+### Atoms
+
+Immutable atoms/keywords don't have an equivalent in Python.
+
+In Gleam all atoms must be defined as values in a custom type before being used.
+In general, atoms are not used much in Gleam, and are mostly used for booleans, `Ok` and `Error` result types, and defining custom types.
+
+#### Gleam
+
+```rust
+type MyNewType {
+  MyNewVar
+}
+let var = MyNewVar
+
+// Ok(_) and Error(_) are of type Result(_, _) in Gleam
+Ok(True)
+Error(False)
+```
+
+### Maps
+
+In Python, maps are called dictionaries and can have keys of any type as long as:
+
+- the key type is `hashable`, such as integers, strings, tuples (due to their immutable values), functions... and custom mutable objects implementing the `__hash__` method.
+- the key is unique in the dictionary.
+  and values of any types.
+
+In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
+
+There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally not used much in Gleam, custom types are more common.
+
+#### Python
+
+```python
+{"key1": "value1", "key2": "value2"}
+{"key1":  "1", "key2": 2}
+```
+
+#### Gleam
+
+```rust
+import gleam/map
+
+map.from_list([tuple("key1", "value1"), tuple("key2", "value2")])
+map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
+```
+
+## Flow control
+
+### Case
+
+Case is the one of the most used control flow in gleam. It can be seen as a switch statement on steroids. It provides a terse way to match a value type to an expression.
+
+#### Python
+
+Python does not have switch statements. `if/else` statements paired to the `type` function lets the developer to write code that depends on the type and value of a variable.
+
+Until now, there have been no official comparable feature for the case expression used in Gleam.
+
+However this will change in Python 3.10 (currently in [alpha release]([https://docs.python.org/3.10/whatsnew/3.10.html#pep-634-structural-pattern-matching]), at the time of writing) that ships structural pattern matching allowing:
+
+- matching on primitive types
+
+```py
+def http_error(status):
+    match status:
+        case 400:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+```
+
+- matching on tuples with variable capturing:
+
+```py
+match point:
+    case (0, 0):
+        print("Origin")
+    case (0, y):
+        print(f"Y={y}")
+    case (x, 0):
+        print(f"X={x}")
+    case (x, y):
+        print(f"X={x}, Y={y}")
+    case _:
+        raise ValueError("Not a point")
+```
+
+- matching on type constructors:
+
+```py
+match point:
+    case Point(x=0, y=0):
+        print("Origin is the point's location.")
+    case Point(x=0, y=y):
+        print(f"Y={y} and the point is on the y-axis.")
+    case Point(x=x, y=0):
+        print(f"X={x} and the point is on the x-axis.")
+    case Point():
+        print("The point is located somewhere else on the plane.")
+    case _:
+        print("Not a point")
+```
+
+The match expression will support guards, similar to Gleam:
+
+```py
+match point:
+    case Point(x, y) if x == y:
+        print(f"The point is located on the diagonal Y=X at {x}.")
+    case Point(x, y):
+        print(f"Point is not on the diagonal.")
+```
+
+#### Gleam
+
+The case operator is a top level construct in Gleam:
+
+```rust
+case some_number {
+  0 -> "Zero"
+  1 -> "One"
+  2 -> "Two"
+  n -> "Some other number" // This matches anything
+}
+```
+
+The case operator especially coupled with destructuring to provide native pattern matching:
+
+```rust
+case xs {
+  [] -> "This list is empty"
+  [a] -> "This list has 1 element"
+  [a, b] -> "This list has 2 elements"
+  _other -> "This list has more than 2 elements"
+}
+```
+
+The case operator supports guards:
+
+```gleam
+case xs {
+  [a, b, c] if a >. b && a <=. c -> "ok"
+  _other -> "ko"
+}
+```
+
+and disjoint union matching:
+
+```rust
+case number {
+  2 | 4 | 6 | 8 -> "This is an even number"
+  1 | 3 | 5 | 7 -> "This is an odd number"
+  _ -> "I'm not sure"
+}
+```
+
+### Try
+
+Error management is approached differently in Python and Gleam.
+
+#### Python
+
+Python uses the notion of exception of interrupt the curent code flow and popup an error to the caller.
+
+An exception is raised using the keyword `raise`.
+
+```py
+def an_fn_that_fails():
+    raise Exception('an error')
+```
+
+The callee block will be able to capture any exception raised in the block using a `try/except` set of blocks:
+
+```py
+try:
+    print('executed')
+    an_fn_that_fails()
+    print('not_executed')
+except Exception as e:
+    print('doing something with the exception', e)
+
+```
+
+#### Gleam
+
+In contrast in gleam, errors are just containers with an associated value.
+
+A common container to model an operation result is `Result(ReturnType, ErrorType)`.
+
+A Result is either:
+
+- an `Error(ErrorValue)`
+- or an `Ok(Data)` record
+
+Handling errors actually means to match the return value against those two scenarios, using a case for instance:
+
+```rust
+case parse_int("123") {
+  Error(e) -> io.println("That wasn't an Int")
+  Ok(i) -> io.println("We parsed the Int")
+}
+```
+
+In order to simplify this construct, we can use the `try` keyword that will:
+
+- bind a value to the providing name if Ok(Something) is matched
+- **interrupt the flow** and return `Error(Something)`
+
+```rust
+let a_number = "1"
+let an_error = Error("ouch")
+let another_number = "3"
+
+try int_a_number = parse_int(a_number)
+try attempt_int = parse_int(an_error) // Error will be returned
+try int_another_number = parse_int(another_number) // never gets executed
+
+Ok(int_a_number + attempt_int + int_another_number) // never get executed
+```
+
+## Type aliases
+
+Type aliases allow for easy referencing of arbitrary complex types. Even thought their type systems does not serve the same function, both Python and Gleam provide this feature.
+
+### Python
+
+A simple variable can store the result of a compound set of types.
+
+```py
+import List from typing
+
+Vector = List[float]
+
+# can now be used to annotate a variable
+tensor: Vector = [1.0, 2.0, 3.0]
+```
+
+### Gleam
+
+The `type` keyword can be used to create aliases
+
+```rust
+pub type Headers =
+  List(tuple(String, String))
+```
+
+## Custom types
+
+### Records
+
+Custom type allows you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
+
+#### Python
+
+Python uses classes to define user-defined, record-like types.
+Properties are defined as class members and initial values are generally set in the constructor.
+
+By default the constructor does not provide base initializers in the constructor so some boilerplate is needed:
+
+```python
+class Person():
+    name: str
+    age: int
+    def __init__(name: str, age: int):
+        self.name = name
+        self.age = int
+
+person = Person(name="Jake", age=20)
+# or with positional arguments Person("Jake", 20)
+name = person.name
+```
+
+A more recent alternative is to leverage the `NamedTuple` base type to generate a constructor with initializers.
+
+However the name `Tuple` suggest, the produced members values are immutable.
+
+```py
+from typing import NamedTuple
+
+class Person(NamedTuple):
+    name: str
+    age: init
+
+person = Person(name="Jake", age=20)
+name = person.name
+
+# cannot reassign a value
+person.name = "John" # error
+```
+
+#### Gleam
+
+Gleam's custom types can be used in much the same way that structs are used in Elixir. At runtime, they have a tuple representation and are compatible with Erlang records.
+
+```rust
+type Person {
+  Person(name: String, age: Int)
+}
+
+let person = Person(name: "Jake", age: 35)
+let name = person.name
+```
+
+### Unions
+
+In Python unions are declared using the `Union` type from the `typing module`
+
+In Gleam functions must always take an receive one type. To have a union of
+two different types they must be wrapped in a new custom type.
+
+#### Python
+
+```py
+from typing import Union
+
+OptionalString = Union[str, None]
+```
+
+#### Gleam
+
+```rust
+type IntOrFloat {
+  AnInt(Int)
+  AFloat(Float)
+}
+
+fn int_or_float(X) {
+  case X {
+    True -> AnInt(1)
+    False -> AFloat(1.0)
+  }
+}
+```
+
+### Opaque custom types
+
+In Python, constructor cannot be marked as private. Opaque can be imperfectly emulated using static methods and some magic property only updated via the static factory method.
+
+In Gleam custom types can be defined as being opaque, which causes the
+constructors for the custom type not to be exported from the module. Without
+any constructors to import other modules can only interact with opaque types
+using the intended API.
+
+#### Python
+
+```py
+class OnlyCreatable(object):
+
+    __create_key = object()
+
+    @classmethod
+    def create(cls, value):
+        return OnlyCreatable(cls.__create_key, value)
+
+    def __init__(self, create_key, value):
+        assert(create_key == OnlyCreatable.__create_key), \
+            "OnlyCreatable objects must be created using OnlyCreatable.create"
+        self.value = value
+```
+
+#### Gleam
+
+```rust
+pub opaque type Identifier {
+  Identifier(Int)
+}
+
+pub fn get_id() {
+  Identifier(100)
+}
+```
+
+## Modules
+
+#### Python
+
+There is no special syntax to define modules as files are modules in Python
+
+#### Gleam
+
+Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
+
+```rust
+// in file foo.gleam
+pub fn identity(x) {
+  x
+}
+```
+
+```rust
+// in file main.gleam
+import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+pub fn main() {
+  foo.identity(1)
+}
+```
+
+### Imports
+
+#### Python
+
+```py
+import os
+
+# os reference the module itself
+
+if os.platform == ......
+```
+
+#### Gleam
+
+Imports are relative to the root `src` folder.
+
+Modules in the same directory will need to reference the entire path from `src` for the target module, even if the target module is in the same folder.
+
+```rust
+// inside src/nasa/moon_base.gleam
+// imports src/nasa/rocket_ship.gleam
+import nasa/rocket_ship
+
+pub fn explore_space() {
+  rocket_ship.launch()
+}
+```
+
+### Named imports
+
+#### Python
+
+```py
+
+import unix.cat as kitty
+```
+
+#### Gleam
+
+```rust
+import unix/cat
+import animal/cat as kitty
+```
+
+### Unqualified imports
+
+#### Python
+
+```
+from animal.cat import Cat, stroke
+```
+
+#### Gleam
+
+```rust
+import animal/cat.{Cat, stroke}
+
+pub fn main() {
+  let kitty = Cat(name: "Nubi")
+  stroke(kitty)
+}
+```
