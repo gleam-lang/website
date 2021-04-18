@@ -24,73 +24,65 @@ title: Gleam for Python users
   - [Function type annotations](#function-type-annotations)
     - [Python](#python-6)
     - [Gleam](#gleam-6)
-  - [Function heads](#function-heads)
+  - [Referencing functions](#referencing-functions)
     - [Python](#python-7)
     - [Gleam](#gleam-7)
-  - [Function overloading](#function-overloading)
-  - [Referencing functions](#referencing-functions)
-    - [Python](#python-8)
     - [Gleam](#gleam-8)
     - [Gleam](#gleam-9)
-  - [Labelled arguments](#labelled-arguments)
-    - [Python](#python-9)
-    - [Gleam](#gleam-10)
 - [Operators](#operators)
   - [Boolean](#boolean)
   - [Side by side comparison](#side-by-side-comparison)
 - [Constants](#constants)
-    - [Elixir](#elixir)
-    - [Gleam](#gleam-11)
+    - [Python](#python-8)
+    - [Gleam](#gleam-10)
 - [Blocks](#blocks)
-    - [Python](#python-10)
-    - [Gleam](#gleam-12)
+    - [Python](#python-9)
+    - [Gleam](#gleam-11)
 - [Data types](#data-types)
   - [Strings](#strings)
+    - [Python](#python-10)
+    - [Gleam](#gleam-12)
+  - [Tuples](#tuples)
     - [Python](#python-11)
     - [Gleam](#gleam-13)
-  - [Tuples](#tuples)
+  - [Lists](#lists)
     - [Python](#python-12)
     - [Gleam](#gleam-14)
-  - [Lists](#lists)
+  - [Maps](#maps)
     - [Python](#python-13)
     - [Gleam](#gleam-15)
-  - [Atoms](#atoms)
-    - [Gleam](#gleam-16)
-  - [Maps](#maps)
-    - [Python](#python-14)
-    - [Gleam](#gleam-17)
 - [Flow control](#flow-control)
   - [Case](#case)
-    - [Python](#python-15)
-    - [Gleam](#gleam-18)
+    - [Python](#python-14)
+    - [Gleam](#gleam-16)
   - [Try](#try)
-    - [Python](#python-16)
-    - [Gleam](#gleam-19)
+    - [Python](#python-15)
+    - [Gleam](#gleam-17)
 - [Type aliases](#type-aliases)
-  - [Python](#python-17)
-  - [Gleam](#gleam-20)
+  - [Python](#python-16)
+  - [Gleam](#gleam-18)
 - [Custom types](#custom-types)
   - [Records](#records)
-    - [Python](#python-18)
-    - [Gleam](#gleam-21)
+    - [Python](#python-17)
+    - [Gleam](#gleam-19)
   - [Unions](#unions)
-    - [Python](#python-19)
-    - [Gleam](#gleam-22)
+    - [Python](#python-18)
+    - [Gleam](#gleam-20)
   - [Opaque custom types](#opaque-custom-types)
-    - [Python](#python-20)
-    - [Gleam](#gleam-23)
+    - [Python](#python-19)
+    - [Gleam](#gleam-21)
 - [Modules](#modules)
-    - [Python](#python-21)
-    - [Gleam](#gleam-24)
+    - [Python](#python-20)
+    - [Gleam](#gleam-22)
   - [Imports](#imports)
-    - [Python](#python-22)
-    - [Gleam](#gleam-25)
+    - [Python](#python-21)
+    - [Gleam](#gleam-23)
   - [Named imports](#named-imports)
-    - [Python](#python-23)
-    - [Gleam](#gleam-26)
+    - [Python](#python-22)
+    - [Gleam](#gleam-24)
   - [Unqualified imports](#unqualified-imports)
-    - [Python](#python-24)
-    - [Gleam](#gleam-27)
+    - [Python](#python-23)
+    - [Gleam](#gleam-25)
 
 ## Comments
 
@@ -295,43 +287,11 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
 }
 ```
 
-### Function heads
-
-#### Python
-
-Python functions can only have one function head.
-
-```python
-def is_zero(x):
-    return x == 0
-```
-
-#### Gleam
-
-Gleam functions can have only one function head. Use a case expression to pattern match on function arguments.
-
-```rust
-pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
-  case x {
-    0 -> true
-    _ -> false
-  }
-}
-```
-
-### Function overloading
-
-Python does not support natively function overloading (or multiple dispatch). The last function declaration with the same name will be used.
-
-Gleam does not support function overloading, so there can only
-be 1 function with a given name, and the function can only have a single
-implementation for the types it accepts.
-
 ### Referencing functions
 
 #### Python
 
-As long as functions are in scope they can be assigned to a new variable. There is no special syntax
+As long as functions are in scope they can be assigned to a new variable. There is no special syntax to assign a module function to a variable.
 
 #### Gleam
 
@@ -353,29 +313,17 @@ fn main() {
 }
 ````
 
-### Calling anonymous functions
-
-In Gleam and Python all functions are called using the same syntax.
-
-#### Gleam
-
-```rust
-let my_function = fn(x, y) { x + y }
-anon_function(1, 2)
-mod_function(3, 4)
-```
-
 ### Labelled arguments
 
 Both Python and Gleam have ways to give arguments names and in any order.
 
 #### Python
 
-Keyword arguments are evaluated once at function definition time, so there is no noticeable performance penalty to use named arguments.
+Keyword arguments are evaluated once at function definition time, and there is no evidence showing a noticeable performance penalty when using named arguments.
 
-In a function, the arguments declaration can be used:
+When calling a function, arguments can be passed
 
-- positionally, in order
+- positionally, in the same order of the function declaration
 - by name, in any order
 
 ```py
@@ -416,45 +364,51 @@ Python uses `True` and `False` whereas Gleam
 
 ### Side by side comparison
 
-| Operator          | Python | Gleam                     | Notes                                                                                  |
-| ----------------- | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
-| Equal             | `==`   | `==`                      | In Gleam both values must be of the same type                                          |
-| Strictly equal to | `==`   | `==`                      | Comparison in Gleam and Python(see note) is always strict                              |
-| Not equal         | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
-| Greater than      | `>`    | `>`                       | In Gleam both values must be **ints**                                                  |
-| Greater than      | `>`    | `>.`                      | In Gleam both values must be **floats**                                                |
-| Greater or equal  | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
-| Greater or equal  | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
-| Less than         | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
-| Less than         | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
-| Less or equal     | `<=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
-| Less or equal     | `<=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
-| Boolean and       | `and`  | `&&`                      | Both values must be **bools**                                                          |
-| Logical and       | `and`  |                           | Not available in Gleam                                                                 |
-| Boolean or        | `or`   | <code>&vert;&vert;</code> | Both values must be **bools**                                                          |
-| Logical or        | `or`   |                           | Not available in Gleam                                                                 |
-| Add               | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
-| Add               | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
-| Subtract          | `-`    | `-`                       | In Gleam both values must be **ints**                                                  |
-| Subtract          | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
-| Multiply          | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
-| Multiply          | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
-| Divide            | `/`    | `/`                       | Both values must be **ints**                                                           |
-| Divide            | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
-| Modulo            | `%`    | `%`                       | Both values must be **ints**                                                           |
-| Pipe              |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
+| Operator           | Python | Gleam                     | Notes                                                                                  |
+| ------------------ | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
+| Equal              | `==`   | `==`                      | In Gleam both values must be of the same type                                          |
+| Strictly equal to  | `==`   | `==`                      | Comparison in Gleam is always strict. (see note for Python)                            |
+| Reference equality | `is`   |                           | True only if the two objects have the same reference                                   |
+| Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
+| Greater than       | `>`    | `>`                       | In Gleam both values must be **ints**                                                  |
+| Greater than       | `>`    | `>.`                      | In Gleam both values must be **floats**                                                |
+| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
+| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
+| Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
+| Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
+| Less or equal      | `<=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
+| Less or equal      | `<=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
+| Boolean and        | `and`  | `&&`                      | Both values must be **bools**                                                          |
+| Logical and        | `and`  |                           | Not available in Gleam                                                                 |
+| Boolean or         | `or`   | <code>&vert;&vert;</code> | Both values must be **bools**                                                          |
+| Logical or         | `or`   |                           | Not available in Gleam                                                                 |
+| Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
+| Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
+| Subtract           | `-`    | `-`                       | In Gleam both values must be **ints**                                                  |
+| Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
+| Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
+| Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
+| Divide             | `/`    | `/`                       | Both values must be **ints**                                                           |
+| Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
+| Modulo             | `%`    | `%`                       | Both values must be **ints**                                                           |
+| Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
 
 Some notes for Python:
 
-- `==` is always strict except for the following type coercions:
-  - 0 is always cast `False`
-  - 1 is always cast to `True`
+- `==` is by default comparing by value:
+  - scalars will have their value compared
+    - the only type cast will be for `0` and `1` that will be coerced to `False` and `True` respectively
+  - variables that point to the same object will be equal with `==`
+- two objects with the same members values won't be equal
+
+  - no structural equality, _unless_ the `__eq__` operator is redefined.
+
 - Python operators are short-circuiting as in Gleam.
 - Python operators can be overloaded and be applied to any types with potential custom behaviors
 
 ## Constants
 
-#### Elixir
+#### Python
 
 In Python, top-level declarations are in the global/module scope is the highest possible scope. Any variables and functions defined will be accessible from anywhere in the code.
 
@@ -477,26 +431,11 @@ pub fn main() {
 }
 ```
 
-Additionally, Gleam constants can be referenced from other modules.
-
-```rust
-// in file other_module.gleam
-pub const the_answer: Int = 42
-```
-
-```rust
-import other_module
-
-fn main() {
-  other_module.the_answer
-}
-```
-
 ## Blocks
 
 #### Python
 
-Python blocks are always associated with a function / conditional / class declarations... There is no way to create multi-line expressions blocks like in Gleam, Elixir or Ruby.
+Python blocks are always associated with a function / conditional / class declarations... There is no way to create multi-line expressions blocks like in Gleam.
 
 Blocks are declared via indentation.
 
@@ -563,7 +502,7 @@ let tuple(_, password, _) = my_tuple
 
 ### Lists
 
-Lists in Python are allowed to be of mixed types, but not in Gleam.
+Lists in Python are allowed to have values of mixed types, but not in Gleam.
 
 #### Python
 
@@ -578,33 +517,13 @@ list = [2, 3, 4]
 
 #### Gleam
 
-Gleam has a `cons` operator that works for lists destructuring and pattern matching.
+Gleam has a `cons` operator that works for lists destructuring and pattern matching. In Gleam lists are immutable so adding and removing elements from the start of a list is highly efficient.
 
 ```rust
 let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
-```
-
-### Atoms
-
-Immutable atoms/keywords don't have an equivalent in Python.
-
-In Gleam all atoms must be defined as values in a custom type before being used.
-In general, atoms are not used much in Gleam, and are mostly used for booleans, `Ok` and `Error` result types, and defining custom types.
-
-#### Gleam
-
-```rust
-type MyNewType {
-  MyNewVar
-}
-let var = MyNewVar
-
-// Ok(_) and Error(_) are of type Result(_, _) in Gleam
-Ok(True)
-Error(False)
 ```
 
 ### Maps
@@ -893,6 +812,8 @@ type Person {
 let person = Person(name: "Jake", age: 35)
 let name = person.name
 ```
+
+An important difference to note is there is no OOP in Gleam. Methods can not be added to types.
 
 ### Unions
 
