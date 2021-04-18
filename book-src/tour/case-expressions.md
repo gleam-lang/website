@@ -56,7 +56,7 @@ case xs {
 }
 ```
 
-It's not just the top level data structure that can be pattern matches,
+It's not just the top level data structure that can be pattern matched,
 contained values can also be matched. This gives `case` the ability to
 concisely express flow control that might be verbose without pattern matching.
 
