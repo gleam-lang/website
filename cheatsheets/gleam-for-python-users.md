@@ -4,85 +4,33 @@ title: Gleam for Python users
 ---
 
 - [Comments](#comments)
-    - [Python](#python)
-    - [Gleam](#gleam)
 - [Variables](#variables)
-    - [Python](#python-1)
-    - [Gleam](#gleam-1)
   - [Match operator](#match-operator)
-    - [Python](#python-2)
-    - [Gleam](#gleam-2)
   - [Variables type annotations](#variables-type-annotations)
-    - [Python](#python-3)
-    - [Gleam](#gleam-3)
 - [Functions](#functions)
-  - [Python](#python-4)
-  - [Gleam](#gleam-4)
   - [Exporting functions](#exporting-functions)
-    - [Python](#python-5)
-    - [Gleam](#gleam-5)
   - [Function type annotations](#function-type-annotations)
-    - [Python](#python-6)
-    - [Gleam](#gleam-6)
   - [Referencing functions](#referencing-functions)
-    - [Python](#python-7)
-    - [Gleam](#gleam-7)
-    - [Gleam](#gleam-8)
-    - [Gleam](#gleam-9)
 - [Operators](#operators)
-  - [Boolean](#boolean)
-  - [Side by side comparison](#side-by-side-comparison)
 - [Constants](#constants)
-    - [Python](#python-8)
-    - [Gleam](#gleam-10)
 - [Blocks](#blocks)
-    - [Python](#python-9)
-    - [Gleam](#gleam-11)
 - [Data types](#data-types)
   - [Strings](#strings)
-    - [Python](#python-10)
-    - [Gleam](#gleam-12)
   - [Tuples](#tuples)
-    - [Python](#python-11)
-    - [Gleam](#gleam-13)
   - [Lists](#lists)
-    - [Python](#python-12)
-    - [Gleam](#gleam-14)
   - [Maps](#maps)
-    - [Python](#python-13)
-    - [Gleam](#gleam-15)
 - [Flow control](#flow-control)
   - [Case](#case)
-    - [Python](#python-14)
-    - [Gleam](#gleam-16)
   - [Try](#try)
-    - [Python](#python-15)
-    - [Gleam](#gleam-17)
 - [Type aliases](#type-aliases)
-  - [Python](#python-16)
-  - [Gleam](#gleam-18)
 - [Custom types](#custom-types)
   - [Records](#records)
-    - [Python](#python-17)
-    - [Gleam](#gleam-19)
   - [Unions](#unions)
-    - [Python](#python-18)
-    - [Gleam](#gleam-20)
   - [Opaque custom types](#opaque-custom-types)
-    - [Python](#python-19)
-    - [Gleam](#gleam-21)
 - [Modules](#modules)
-    - [Python](#python-20)
-    - [Gleam](#gleam-22)
   - [Imports](#imports)
-    - [Python](#python-21)
-    - [Gleam](#gleam-23)
   - [Named imports](#named-imports)
-    - [Python](#python-22)
-    - [Gleam](#gleam-24)
   - [Unqualified imports](#unqualified-imports)
-    - [Python](#python-23)
-    - [Gleam](#gleam-25)
 
 ## Comments
 
@@ -357,12 +305,6 @@ optimised to regular function calls at compile time, and all the arguments
 are fully type checked.
 
 ## Operators
-
-### Boolean
-
-Python uses `True` and `False` whereas Gleam
-
-### Side by side comparison
 
 | Operator           | Python | Gleam                     | Notes                                                                                  |
 | ------------------ | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
