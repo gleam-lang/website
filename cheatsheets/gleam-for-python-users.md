@@ -4,33 +4,84 @@ title: Gleam for Python users
 ---
 
 - [Comments](#comments)
+    - [Python](#python)
+    - [Gleam](#gleam)
 - [Variables](#variables)
+    - [Python](#python-1)
+    - [Gleam](#gleam-1)
   - [Match operator](#match-operator)
+    - [Python](#python-2)
+    - [Gleam](#gleam-2)
   - [Variables type annotations](#variables-type-annotations)
+    - [Python](#python-3)
+    - [Gleam](#gleam-3)
 - [Functions](#functions)
+  - [Python](#python-4)
+  - [Gleam](#gleam-4)
   - [Exporting functions](#exporting-functions)
+    - [Python](#python-5)
+    - [Gleam](#gleam-5)
   - [Function type annotations](#function-type-annotations)
+    - [Python](#python-6)
+    - [Gleam](#gleam-6)
   - [Referencing functions](#referencing-functions)
+    - [Python](#python-7)
+    - [Gleam](#gleam-7)
+  - [Labelled arguments](#labelled-arguments)
+    - [Python](#python-8)
+    - [Gleam](#gleam-8)
 - [Operators](#operators)
 - [Constants](#constants)
+    - [Python](#python-9)
+    - [Gleam](#gleam-9)
 - [Blocks](#blocks)
+    - [Python](#python-10)
+    - [Gleam](#gleam-10)
 - [Data types](#data-types)
   - [Strings](#strings)
+    - [Python](#python-11)
+    - [Gleam](#gleam-11)
   - [Tuples](#tuples)
+    - [Python](#python-12)
+    - [Gleam](#gleam-12)
   - [Lists](#lists)
+    - [Python](#python-13)
+    - [Gleam](#gleam-13)
   - [Maps](#maps)
+    - [Python](#python-14)
+    - [Gleam](#gleam-14)
 - [Flow control](#flow-control)
   - [Case](#case)
+    - [Python](#python-15)
+    - [Gleam](#gleam-15)
   - [Try](#try)
+    - [Python](#python-16)
+    - [Gleam](#gleam-16)
 - [Type aliases](#type-aliases)
+  - [Python](#python-17)
+  - [Gleam](#gleam-17)
 - [Custom types](#custom-types)
   - [Records](#records)
+    - [Python](#python-18)
+    - [Gleam](#gleam-18)
   - [Unions](#unions)
+    - [Python](#python-19)
+    - [Gleam](#gleam-19)
   - [Opaque custom types](#opaque-custom-types)
+    - [Python](#python-20)
+    - [Gleam](#gleam-20)
 - [Modules](#modules)
+    - [Python](#python-21)
+    - [Gleam](#gleam-21)
   - [Imports](#imports)
+    - [Python](#python-22)
+    - [Gleam](#gleam-22)
   - [Named imports](#named-imports)
+    - [Python](#python-23)
+    - [Gleam](#gleam-23)
   - [Unqualified imports](#unqualified-imports)
+    - [Python](#python-24)
+    - [Gleam](#gleam-24)
 
 ## Comments
 
@@ -42,7 +93,7 @@ In Python, comments are written with a `#` prefix.
 # Hello, Joe!
 ```
 
-A docstring (<code>\`\`\`</code>) that occurs as the first statement in a module, function, class, or method definition will become the **doc** special attribute of that object.
+A docstring (matching \`\`\`) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
 ````py
 
@@ -133,7 +184,7 @@ These annotations are accessible at runtime via the `__annotations__` module-lev
 These hints will mainly be used to inform static analysis tools like IDEs, linters...
 
 ```py
-from typing import List, int
+from typing import List
 
 some_list: List[int] = [1, 2, 3]
 ```
@@ -212,7 +263,6 @@ Discrepancies between type hints and actual values at runtime do not prevent int
 Static code analysers (IDE tooling, type checkers like mypy) will be required to detect those errors.
 
 ```py
-
 def sum(x: int, y: int) -> int:
     return x + y
 
@@ -246,10 +296,6 @@ As long as functions are in scope they can be assigned to a new variable. There 
 Gleam has a single namespace for value and functions within a module, so there
 is no need for a special syntax to assign a module function to a variable.
 
-````
-
-#### Gleam
-
 ```rust
 fn identity(x) {
   x
@@ -259,7 +305,7 @@ fn main() {
   let func = identity
   func(100)
 }
-````
+```
 
 ### Labelled arguments
 
@@ -275,14 +321,12 @@ When calling a function, arguments can be passed
 - by name, in any order
 
 ```py
-
 def replace(inside: str, each: str, with_string: str):
     pass
 
 # equivalent calls
 replace('hello world', 'world', 'you')
 replace(each='world', inside='hello world',  with_string='you')
-
 ```
 
 #### Gleam
@@ -338,10 +382,12 @@ are fully type checked.
 Some notes for Python:
 
 - `==` is by default comparing by value:
+
   - scalars will have their value compared
     - the only type cast will be for `0` and `1` that will be coerced to `False` and `True` respectively
   - variables that point to the same object will be equal with `==`
-- two objects with the same members values won't be equal
+
+- two objects with the same members values won't be equal:
 
   - no structural equality, _unless_ the `__eq__` operator is redefined.
 
@@ -669,7 +715,7 @@ try int_a_number = parse_int(a_number)
 try attempt_int = parse_int(an_error) // Error will be returned
 try int_another_number = parse_int(another_number) // never gets executed
 
-Ok(int_a_number + attempt_int + int_another_number) // never get executed
+Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ```
 
 ## Type aliases
@@ -884,7 +930,6 @@ pub fn explore_space() {
 #### Python
 
 ```py
-
 import unix.cat as kitty
 ```
 
