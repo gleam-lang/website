@@ -615,7 +615,7 @@ pub fn run() {
 as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
 <p>If not it falls back to calling the result of the right hand side as a function
 , e.g. <code>b(1, 2)(a)</code>.</p>
-<h1 id="module"><a class="header" href="#module">Module</a></h1>
+<h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
@@ -680,6 +680,45 @@ pub fn main() {
 <p>This may be useful for values that are used frequently in a module, but
 generally qualified imports are preferred as it makes it clearer where the
 value is defined.</p>
+<h2 id="the-prelude-module"><a class="header" href="#the-prelude-module">The prelude module</a></h2>
+<p>There is one module that is built into the language, the <code>gleam</code> prelude
+module.  By default its types and values are automatically imported into
+every module you write, but you can still chose to import it the regular way.
+This may be useful if you have created a type or value with the same name as
+an item from the prelude.</p>
+<pre><code class="language-gleam">import gleam
+
+// This definition locally overrides the `Result` type 
+// and the `Ok` constructor.
+pub type Result {
+  Ok
+}
+
+// The original `Result` and `Ok` can still be used
+pub fn go() -&gt; gleam.Result(Int) {
+  gleam.Ok(1)
+}
+</code></pre>
+<p>The prelude module contains these types:</p>
+<ul>
+<li><code>BitString</code></li>
+<li><code>Bool</code></li>
+<li><code>Float</code></li>
+<li><code>Int</code></li>
+<li><code>List(element)</code></li>
+<li><code>Nil</code></li>
+<li><code>Result(value, error)</code></li>
+<li><code>String</code></li>
+<li><code>UtfCodepoint</code></li>
+</ul>
+<p>And these values:</p>
+<ul>
+<li><code>Error</code></li>
+<li><code>False</code></li>
+<li><code>Nil</code></li>
+<li><code>Ok</code></li>
+<li><code>True</code></li>
+</ul>
 <h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
 <p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
