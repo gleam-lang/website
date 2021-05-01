@@ -480,7 +480,7 @@ In both Elixir and Gleam all strings are UTF-8 encoded binaries.
 
 ### Tuples
 
-Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection. The syntax for a tuple literal - `tuple("a", "b")` - can be confused for a function call, which is not!
+Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection. The syntax for a tuple literal - `#("a", "b")` - can be confused for a function call, which is not!
 
 #### Elixir
 
@@ -492,8 +492,8 @@ my_tuple = {"username", "password", 10}
 #### Gleam
 
 ```rust
-let my_tuple = tuple("username", "password", 10)
-let tuple(_, password, _) = my_tuple
+let my_tuple = #("username", "password", 10)
+let #(_, password, _) = my_tuple
 ```
 
 ### Lists
@@ -569,8 +569,8 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 ```rust
 import gleam/map
 
-map.from_list([tuple("key1", "value1"), tuple("key2", "value2")])
-map.from_list([tuple("key1", "value1"), tuple("key2", 2)]) // Type error!
+map.from_list([#("key1", "value1"), #("key2", "value2")])
+map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Custom types

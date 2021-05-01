@@ -170,11 +170,11 @@
                         <h1 id="type-aliases"><a class="header" href="#type-aliases">Type aliases</a></h1>
 <p>Type aliases are a way of creating a new name for an existing type. This is
 useful when the name of the type may be long and awkward to type repeatedly.</p>
-<p>Here we are giving the type <code>List(tuple(String, String))</code> the new name
+<p>Here we are giving the type <code>List(#(String, String))</code> the new name
 <code>Headers</code>. This may be useful in a web application where we want to write
 multiple functions that return headers.</p>
 <pre><code class="language-gleam">pub type Headers =
-  List(tuple(String, String))
+  List(#(String, String))
 </code></pre>
 
                     </main>

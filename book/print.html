@@ -365,12 +365,12 @@ y  // =&gt; [1, 2, 3]
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
-<pre><code class="language-gleam">tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
-tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
+<pre><code class="language-gleam">#(10, &quot;hello&quot;) // Type is #(Int, String)
+#(1, 4.2, [0]) // Type is #(Int, Float, List(Int))
 </code></pre>
 <p>Once you have a tuple the values contained can be accessed using the <code>.0</code>
 accessor syntax.</p>
-<pre><code class="language-gleam">let my_tuple = tuple(&quot;one&quot;, &quot;two&quot;)
+<pre><code class="language-gleam">let my_tuple = #(&quot;one&quot;, &quot;two&quot;)
 let first = my_tuple.0   // &quot;one&quot;
 let seccond = my_tuple.1 // &quot;two&quot;
 </code></pre>
@@ -1041,11 +1041,11 @@ specific type than the compiler would otherwise infer.</p>
 <h1 id="type-aliases"><a class="header" href="#type-aliases">Type aliases</a></h1>
 <p>Type aliases are a way of creating a new name for an existing type. This is
 useful when the name of the type may be long and awkward to type repeatedly.</p>
-<p>Here we are giving the type <code>List(tuple(String, String))</code> the new name
+<p>Here we are giving the type <code>List(#(String, String))</code> the new name
 <code>Headers</code>. This may be useful in a web application where we want to write
 multiple functions that return headers.</p>
 <pre><code class="language-gleam">pub type Headers =
-  List(tuple(String, String))
+  List(#(String, String))
 </code></pre>
 <h1 id="bit-strings"><a class="header" href="#bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
