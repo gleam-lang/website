@@ -417,11 +417,11 @@ let (_, password, _) = my_tuple;
 
 #### Gleam
 
-Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection. The syntax for a tuple literal - `tuple("a", "b")` - can be confused for a function call, which is not!
+Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection. The syntax for a tuple literal - `#("a", "b")` - can be confused for a function call, which is not!
 
 ```rust
-let my_tuple = tuple("username", "password", 10)
-let tuple(_, password, _) = my_tuple
+let my_tuple = #("username", "password", 10)
+let #(_, password, _) = my_tuple
 ```
 
 ### Lists
