@@ -459,8 +459,7 @@ All strings in Gleam are UTF-8 encoded binaries.
 ### Tuples
 
 Tuples are very useful in Gleam as they're the only collection data type that allows for mixed
-types of elements in the collection. The syntax for a tuple literal - `#("a", "b")` - can be
-confused for a function call, which it is not!
+types of elements in the collection.
 
 #### Erlang
 

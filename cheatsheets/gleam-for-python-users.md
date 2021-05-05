@@ -420,7 +420,7 @@ In Gleam all strings are UTF-8 encoded binaries.
 
 ### Tuples
 
-Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection. The syntax for a tuple literal - `#("a", "b")` - can be confused for a function call, which is not!
+Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection.
 
 #### Python
 
