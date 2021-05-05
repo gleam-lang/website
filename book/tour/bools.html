@@ -184,6 +184,8 @@ True || True   // =&gt; True
 hand side if they don't have to.</p>
 <p><code>&amp;&amp;</code> evaluates the right hand side if the left hand side is <code>True</code>.</p>
 <p><code>||</code> evaluates the right hand side if the left hand side is <code>False</code>.</p>
+<p>Gleam does not define more bool operators like <code>!</code> (negation).
+Instead, those are available as functions in the <code>gleam/bool</code> module.</p>
 <h2 id="erlang-interop"><a class="header" href="#erlang-interop">Erlang interop</a></h2>
 <p>While written in the code using a capital letter, they are represented at
 runtime with the atoms <code>true</code> and <code>false</code>, making them compatible with Elixir
