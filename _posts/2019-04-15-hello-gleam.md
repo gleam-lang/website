@@ -2,8 +2,7 @@
 author: Louis Pilfold
 title: Hello, Gleam!
 tags:
-  - Languages
-  - Gleam
+  - Release
 ---
 
 Gleam has reached v0.1! Happy first release-day Gleam!
