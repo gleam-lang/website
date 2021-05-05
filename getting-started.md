@@ -44,6 +44,14 @@ brew update
 brew install gleam
 ```
 
+#### Using MacPorts
+
+With [MacPorts](https://www.macports.org/) installed run the following:
+
+```sh
+sudo port install gleam
+```
+
 ### asdf version manager
 
 [asdf](https://github.com/asdf-vm/asdf) is a tool for installing and managing
@@ -136,6 +144,14 @@ With [Homebrew](https://brew.sh) installed run the following:
 ```sh
 brew update
 brew install erlang
+```
+
+#### Using MacPorts
+
+With [MacPorts](https://www.macports.org/) installed run the following:
+
+```sh
+sudo port install erlang
 ```
 
 #### Windows
