@@ -23,6 +23,8 @@ hand side if they don't have to.
 
 `||` evaluates the right hand side if the left hand side is `False`.
 
+Gleam does not define more bool operators like `!` (negation).
+Instead, those are available as functions in the `gleam/bool` module.
 
 ## Erlang interop
 
@@ -38,6 +40,7 @@ one project.
 True
 False
 ```
+
 ```erlang
 % Erlang
 true.
