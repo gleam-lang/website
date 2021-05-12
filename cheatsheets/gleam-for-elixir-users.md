@@ -263,7 +263,7 @@ end
 
 def main() do
   func = &identity/1
-  func(100)
+  func.(100)
 end
 ```
 
