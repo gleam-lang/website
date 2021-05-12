@@ -104,7 +104,7 @@ p // => 50
 
 ## Named accessors
 
-If a custom type has only one varient and named fields they can be accessed
+If a custom type has only one variant and named fields they can be accessed
 using `.field_name`.
 
 For example using the `Cat` type defined earlier.
