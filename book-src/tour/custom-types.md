@@ -102,6 +102,18 @@ let Points(p) = score
 p // => 50
 ```
 
+## Named accessors
+
+If a custom type has only one varient and named fields they can be accessed
+using `.field_name`.
+
+For example using the `Cat` type defined earlier.
+
+```rust
+let cat = Cat(name: "Nubi", cuteness: 2001)
+cat.name // This returns "Nubi"
+cat.cuteness // This returns 2001
+```
 
 ## Opaque types
 
