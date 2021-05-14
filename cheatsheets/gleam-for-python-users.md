@@ -390,7 +390,7 @@ In Gleam braces `{` `}` are used to group expressions.
 ```rust
 pub fn main() {
   let x = {
-    print(1)
+    some_function(1)
     2
   }
   let y = x * {x + 10} // braces are used to change arithmetic operations order
