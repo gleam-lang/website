@@ -26,19 +26,6 @@ title: Gleam for Elm users
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
-- [Patterns] TODO
-- [Flow control](#flow-control) TODO
-  - [Case](#case) TODO
-  - [Try](#try) TODO
-- [Type aliases](#type-aliases) TODO
-- [Custom types](#custom-types)
-  - [Records](#records)
-  - [Unions](#unions)
-  - [Opaque custom types](#opaque-custom-types) TODO
-- [Modules](#modules) TODO
-  - [Imports](#imports) TODO
-  - [Nested modules](#nested-modules) TODO
-  - [First class modules](#first-class-modules) TODO
 
 ## Overview
 
@@ -183,7 +170,7 @@ let some_list: List(Int) = [1, 2, 3]
 
 In Elm, functions are defined as declarations that have arguments, or by assigning anonymous functions to variables.
 
-```elixir
+```elm
 sum x y =
   x + y
 
@@ -213,7 +200,7 @@ mul(1, 2)
 
 In Elm, exports are handled at the top of the file in the module declaration as a list of names.
 
-```elixir
+```elm
 module Math exposing (sum)
 
 -- this is public as it is in the export list
@@ -272,3 +259,361 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
 }
 ```
 
+### Function heads
+
+Neither Elm nor Gleam support multiple function heads like Erlang, Elixir or Haskell. Both languages
+would expect a case-statement to be used to handle variations in data being supplied to the
+function.
+
+### Function overloading
+
+Neither Elm nor Gleam support function overloading.
+
+### Referencing functions
+
+Both Elm and Gleam have a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.
+
+### Calling anonymous functions
+
+Neither Elm nor Gleam require special syntax for calling anonymous functions.
+
+### Labelled arguments
+
+#### Elm
+
+Elm has no built in way to label arguments. Instead it would standard for a function to expect a
+record as an argument in which the field names would serve as the argument labels. This can be
+combined with providing a 'defaults' value of the same record type where callers can override only
+the fields that they want to differ from the default.
+
+```elm
+
+defaultOptions =
+  { inside : defaultString
+  , each : defaultPattern,
+  , with : defaultReplacement
+  }
+
+replace opts =
+  doReplacement opts.inside opts.each opts.with
+end
+```
+
+```elm
+replace { each: ",", with: " ", inside: "A,B,C" }
+
+replace { defaultOptions | inside: "A,B,C,D" }
+```
+
+#### Gleam
+
+In Gleam arguments can be given a label as well as an internal name.
+
+```rust
+pub fn replace(inside string, each pattern, with replacement) {
+  go(string, pattern, replacement)
+}
+```
+
+```elixir
+replace(each: ",", with: " ", inside: "A,B,C")
+```
+
+There is no performance cost to Gleam's labelled arguments as they are optimised to regular function
+calls at compile time, and all the arguments are fully type checked.
+
+## Operators
+
+| Operator          | Elm           | Gleam | Notes                                          |
+| ----------------- | ------------- | ----- | ---------------------------------------------- |
+| Equal             | `==`          | `==`  | In Gleam both values must be of the same type  |
+| Not equal         | `/=`          | `!=`  | In Gleam both values must be of the same type  |
+| Greater than      | `>`           | `>`   | In Gleam both values must be **ints**          |
+| Greater than      | `>`           | `>.`  | In Gleam both values must be **floats**        |
+| Greater or equal  | `>=`          | `>=`  | In Gleam both values must be **ints**          |
+| Greater or equal  | `>=`          | `>=.` | In Gleam both values must be **floats**        |
+| Less than         | `<`           | `<`   | In Gleam both values must be **ints**          |
+| Less than         | `<`           | `<.`  | In Gleam both values must be **floats**        |
+| Less or equal     | `<=`          | `>=`  | In Gleam both values must be **ints**          |
+| Less or equal     | `<=`          | `>=.` | In Gleam both values must be **floats**        |
+| Boolean and       | `&&`          | `&&`  | Both values must be **bools**                  |
+| Boolean or        | `||`          | `||`  | Both values must be **bools**                  |
+| Add               | `+`           | `+`   | In Gleam both values must be **ints**          |
+| Add               | `+`           | `+.`  | In Gleam both values must be **floats**        |
+| Subtract          | `-`           | `-`   | In Gleam both values must be **ints**          |
+| Subtract          | `-`           | `-.`  | In Gleam both values must be **floats**        |
+| Multiply          | `*`           | `*`   | In Gleam both values must be **ints**          |
+| Multiply          | `*`           | `*.`  | In Gleam both values must be **floats**        |
+| Divide            | `//`          | `/`   | Both values must be **ints**                   |
+| Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
+| Modulo            | `remainderBy` | `%`   | Both values must be **ints**                   |
+| Pipe              | `|>`          | `|>`  | Gleam's pipe can pipe into anonymous functions |
+
+
+## Constants
+
+#### Elm
+
+In Elm, constants can be defined at the top level of the module like any other value and exported if desired and reference from other modules.
+
+```elm
+module Hikers exposing (theAnswer)
+
+theAnswer: Int
+theAnswer =
+    42
+```
+
+#### Gleam
+
+In Gleam constants can be created using the `const` keyword.
+
+```rust
+const the_answer = 42
+
+pub fn main() {
+  the_answer
+}
+```
+
+Gleam constants can be referenced from other modules.
+
+```rust
+// in file other_module.gleam
+pub const the_answer: Int = 42
+```
+
+```rust
+import other_module
+
+fn main() {
+  other_module.the_answer
+}
+```
+
+
+## Blocks
+
+#### Elm
+
+In Elm, expressions can be grouped using `let` and `in`.
+
+```elm
+view =
+  let
+    x = 5
+    y = 
+      let
+         z = 4
+         t = 3
+      in
+      z + (t * 5) -- Parenthesis are used to gropu arithmetic expressions
+  in
+  y + x
+end
+```
+
+#### Gleam
+
+In Gleam braces `{` `}` are used to group expressions.
+
+```rust
+pub fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  let y = x * {x + 10} // braces are used to change arithmetic operations order
+  y
+}
+```
+
+
+## Data types
+
+### Strings
+
+In both Elm and Gleam all strings support unicode. Gleam uses UTF-8 binaries. Elm compiles to
+Javascript which uses UTF-16 for its strings.
+
+Both languages use double quotes for strings.
+
+#### Elm
+
+```elm
+"Hellø, world!"
+```
+
+#### Gleam
+
+```rust
+"Hellø, world!"
+```
+
+### Tuples
+
+Tuples are very useful in both Elm and Gleam as they're the only collection data type that allows mixed types in the collection.
+
+#### Elm
+
+In Elm, tuplies are limited to only 2 or 3 entries. It is recommended to use records for more larger numbers of entries.
+
+```elm
+myTuple = ("username", "password", 10)
+(_, password, _) = myTuple
+```
+
+#### Gleam
+
+There is no limit to the number of entries in Gleam tuples.
+
+```rust
+let my_tuple = #("username", "password", 10)
+let #(_, password, _) = my_tuple
+```
+
+### Lists
+
+Both Elm and Gleam support lists. All entries have to be of the same type.
+
+#### Elm
+
+You can pattern match on lists in Elm, but only in case-statements.
+
+```elm
+list = [2, 3, 4]
+list2 = 1 :: list
+```
+
+#### Gleam
+
+The `cons` operator works the same way both for pattern matching and for appending elements to the head of a list, but it uses a different syntax.
+
+```rust
+let list = [2, 3, 4]
+let list = [1, ..list]
+let [1, second_element, ..] = list
+[1.0, ..list] // compile error, type mismatch
+```
+
+### Atoms
+
+Gleam has the concept of 'atoms' inherited from Erlang. Any value in a type definition in Gleam that does not have any arguments is an atom in the compiled Erlang code.
+
+There are some exceptions to that rule for atoms that are commonly used and have types built-in to Gleam that incorporate them, such as `Ok`, `Error` and booleans.
+
+In general, atoms are not used much in Gleam, and are mostly used for booleans, `Ok` and `Error` result types, and defining custom types.
+
+Custom types in Elm can be used to achieve simmilar things to atoms.
+
+#### Elm
+
+```elm
+type Alignment 
+  = Left
+  | Centre
+  | Right
+
+```
+
+#### Gleam
+
+```rust
+type Alignment {
+  Left,
+  Centre,
+  Right
+}
+```
+
+### Dict
+
+Dict in Elm and Map in Gleam have similar properties and purpose.
+
+In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
+
+Like Elm, there is no map literal syntax in Gleam, and you cannot pattern match on a map.
+
+#### Elm
+
+```Dict
+import Dict
+
+Dict.fromList [ ("key1", "value1"), ("key2", "value2") ]
+Dict.fromList [ ("key1", "value1"), ("key2", 2) ] -- Compile error
+```
+
+#### Gleam
+
+```rust
+import gleam/map
+
+map.from_list([#("key1", "value1"), #("key2", "value2")])
+map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+```
+
+## Type Aliases
+
+Elm uses type alises to define the layout of records. Gleam uses Custom Types to achieve a similar
+result.
+
+Custom types allow you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
+
+#### Elm
+
+```elm
+type alias Person =
+ { name : String
+ , age : Int 
+ }
+
+person = Person "Jake" 35
+name = person.name
+```
+
+#### Gleam
+
+Gleam's custom types can be used in much the same way. At runtime, they have a tuple representation and are compatible with Erlang records.
+
+```rust
+type Person {
+  Person(name: String, age: Int)
+}
+
+let person = Person(name: "Jake", age: 35)
+let name = person.name
+```
+
+## Modules
+
+#### Elm
+
+In Elm, the `module` keyword allows to create a module. Each module maps to a single file. The module name must be explicitly stated and must match the file name.
+
+```elm
+module Foo exposing (identity)
+
+identity : a -> a
+identity x =
+    x
+```
+
+#### Gleam
+
+A Gleam file is a module, named by the file name (and its directory path). There is no special syntax to create a module. There can be only one module in a file.
+
+```rust
+// in file foo.gleam
+pub fn identity(x) {
+  x
+}
+```
+
+```rust
+// in file main.gleam
+import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+pub fn main() {
+  foo.identity(1)
+}
+```
