@@ -19,22 +19,22 @@ title: Gleam for Elm users
   - [Exports](#exports)
 - [Blocks](#blocks)
 - [Data types](#data-types)
-  - [Numbers](#numbers) TODO
+  - [Numbers](#numbers)
   - [Strings](#strings)
   - [Tuples](#tuples)
   - [Records](#records) TODO
   - [Lists](#lists)
   - [Dicts](#dicts)
-- [Operators](#operators) TODO
+- [Operators](#operators)
 - [Type aliases](#type-aliases)
 - [Custom types](#custom-types) TODO
-  - [Maybe](#maybe) TODO
-  - [Result](#result) TODO
+  - [Maybe](#maybe)
+  - [Result](#result)
 - [Commands](#commands) TODO
 - [Architecture](#architecture) TODO
 - [Talking to other languages](#talking-to-other-languages) TODO
-- [Package management](#package-management) TODO
-- [Implementation](#implementation) TODO
+- [Package management](#package-management)
+- [Implementation](#implementation)
 - [Other concepts](#other-concepts)
   - [Atoms](#atoms)
 
@@ -412,10 +412,24 @@ pub fn main() {
 
 ## Data types
 
+### Numbers
+
+Both Elm and Gleam support Int and Float as separate number types. 
+
+#### Gleam
+
+Operators in Gleam as not generic over Int and Float so there are separate symbols for Int and Float operations. For example, `+` adds Ints together whilst `+.` adds Floats together. The pattern of the additional `.` extends to the other common operators.
+
+Additionally, underscores can be added to both Ints and Floats for clarity.
+
+```rust
+const oneMillion = 1_000_000
+const twoMillion = 2_000_000.0
+```
+
 ### Strings
 
-In both Elm and Gleam all strings support unicode. Gleam uses UTF-8 binaries. Elm compiles to
-Javascript which uses UTF-16 for its strings.
+In both Elm and Gleam all strings support unicode. Gleam uses UTF-8 binaries. Elm compiles to Javascript which uses UTF-16 for its strings.
 
 Both languages use double quotes for strings.
 
@@ -538,10 +552,66 @@ let name = person.name
 ## Custom Types
 
 ### Maybe
+
+Neither Gleam nor Elm have a concept of 'null' in their type system. Elm uses `Maybe` to handle this
+case. Gleam uses a similar approach called `Option`.
+
+#### Elm
+
+In Elm, `Maybe` is defined as:
+
+```elm
+type Maybe a
+    = Just a
+    | Nothing
+```
+
+#### Gleam
+
+In Gleam, `Option` is defined as:
+
+```rust
+pub type Option(a) {
+  Some(a)
+  None
+}
+```
+
 ### Result
 
+Neither Gleam nor Elm have exceptions and instead represent failures using the `Result` type. 
+
+#### Elm
+
+Elm's Result type is defined as:
+
+```elm
+type Result error value
+    = Ok value
+    | Err error
+```
+
+#### Gleam
+
+In Gleam, the Result type is defined in the compiler in order to support helpful warnings and error messages. 
+
+If it were defined in Gleam, it would look like this:
+
+```rust
+pub type Result(value, reason) {
+  Ok(value)
+  Error(reason)
+}
+```
+
+Gleam has a `try` keyword that allows for early exit from a function if a Result is an error. The
+equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides
+syntactic sugar which simplifies functions that handle results.
 
 ## Operators
+
+As Gleam does not treat Ints and Float generically, there is a pattern of an extra `.` to separate
+Int operators from Float operators.
 
 | Operator          | Elm           | Gleam | Notes                                          |
 | ----------------- | ------------- | ----- | ---------------------------------------------- |
@@ -567,6 +637,33 @@ let name = person.name
 | Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
 | Modulo            | `remainderBy` | `%`   | Both values must be **ints**                   |
 | Pipe              | `|>`          | `|>`  | Gleam's pipe can pipe into anonymous functions |
+
+## Package management
+
+#### Elm
+
+Elm packages are installed via the `elm install` command and are hosted on [package.elm-lang.org](https://package.elm-lang.org/).
+
+All third-party Elm packages are written in pure Elm. It is not possible to publish an Elm package that includes Javascript script unless you are in the core team. Some packages published under the `elm` and `elm-explorations` namespaces have Javascript internals.
+
+#### Gleam
+
+Gleam packages are installed via rebar3 configs and are hosted on [hex.pm](https://hex.pm/) with their documentation on [hexdocs.pm](https://hexdocs.pm/).
+
+All Gleam packages can be published with a mix of Gleam and Erlang code. There are no restrictions
+on publishing packages with Erlang code or that wrap Erlang libraries.
+
+## Implementation
+
+#### Elm
+
+The Elm compiler is written in Haskell and distributed primarily via npm. The core libraries are
+written in a mix of Elm and Javascript.
+
+#### Gleam
+
+The Gleam compiler is written in Rust and distributed as precompiled binaries or via some package
+managers. The core libraries are written in a mix of Gleam and Erlang.
 
 ## Other concepts
 
@@ -594,8 +691,8 @@ type Alignment
 
 ```rust
 type Alignment {
-  Left,
-  Centre,
+  Left
+  Centre
   Right
 }
 ```
