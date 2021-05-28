@@ -41,8 +41,7 @@ title: Gleam for Elm users
 ## Overview
 
 Elm and Gleam have similar goals of providing a robust and sound type system with an approachable
-set of features. Gleam started off with a similar syntax to Elm but as moved to use one that is more
-familiar to many developers.
+set of features.
 
 Where Elm compiles to Javascript, Gleam initially aimed to compile to Erlang. Where Elm is best
 suited for front-end browser based applications, Gleam initially targets a back-end ecosystem.
@@ -83,7 +82,7 @@ In Gleam comments are written with a `//` prefix.
 // Hello, Joe!
 ```
 
-Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
+Comments starting with `///` are used to document the following function, constant, or type definition. Comments starting with `////` are used to document the current module.
 
 ```rust
 //// This module is very important.
@@ -92,7 +91,7 @@ Comments starting with `///` are used to document the following statement. Comme
 const answer: Int = 42
 ```
 
-There are no multiline commends in Gleam.
+There are no multiline comments in Gleam.
 
 ## Variables
 
@@ -112,7 +111,7 @@ in
 #### Gleam
 
 Gleam has the `let` keyword before its variable names. You can re-assign variables and you can
-shadow variables from other scopes.
+shadow variables from other scopes. This does not mutate the previously assigned value.
 
 ```rust
 let size = 50
@@ -224,7 +223,6 @@ In Elm, functions can **optionally** have their argument and return types annota
 sum : number -> number -> number
 sum x y = x + y
 
-@spec mul(number, number) :: boolean # no Elixir compile error
 mul : number -> number -> Bool -- Compile error
 mul x y = x * y
 ```
@@ -243,25 +241,6 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
   x * y
 }
 ```
-
-### Function heads
-
-Neither Elm nor Gleam support multiple function heads like Erlang, Elixir or Haskell. Both languages
-would expect a case-statement to be used to handle variations in data being supplied to the
-function.
-
-### Function overloading
-
-Neither Elm nor Gleam support function overloading.
-
-### Referencing functions
-
-Both Elm and Gleam have a single namespace for value and functions within a module, so there
-is no need for a special syntax to assign a module function to a variable.
-
-### Calling anonymous functions
-
-Neither Elm nor Gleam require special syntax for calling anonymous functions.
 
 ### Labelled arguments
 
@@ -460,7 +439,7 @@ myTuple = ("username", "password", 10)
 
 #### Gleam
 
-There is no limit to the number of entries in Gleam tuples.
+There is no limit to the number of entries in Gleam tuples, but records are still recommended as giving names to fields adds clarity.
 
 ```rust
 let my_tuple = #("username", "password", 10)
@@ -696,4 +675,3 @@ type Alignment {
   Right
 }
 ```
-
