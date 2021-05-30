@@ -40,18 +40,13 @@ title: Gleam for Elm users
 
 ## Overview
 
-Elm and Gleam have similar goals of providing a robust and sound type system with an approachable
-set of features.
+Elm and Gleam have similar goals of providing a robust and sound type system with an approachable set of features.
 
-Where Elm compiles to Javascript, Gleam initially aimed to compile to Erlang. Where Elm is best
-suited for front-end browser based applications, Gleam initially targets a back-end ecosystem.
+Where Elm compiles to Javascript, Gleam initially aimed to compile to Erlang. Where Elm is best suited for front-end browser based applications, Gleam initially targets a back-end ecosystem.
 
-There is work in progess to compile Gleam to Javascript which opens up the possibility for front-end
-development.
+There is work in progess to compile Gleam to Javascript which opens up the possibility for front-end development.
 
-One area in which Elm and Gleam differ in their approach is where Elm does not provide easy access
-to defining foreign-function-interfaces for interacting with Javascript libraries. In contrast to
-this, Gleam makes it easy to define this inferfaces for using Erlang libraries.
+One area in which Elm and Gleam differ in their approach is where Elm does not provide easy access to defining foreign-function-interfaces for interacting with Javascript libraries. In contrast to this, Gleam makes it easy to define this inferfaces for using Erlang libraries.
 
 ## Comments
 
@@ -110,8 +105,7 @@ in
 
 #### Gleam
 
-Gleam has the `let` keyword before its variable names. You can re-assign variables and you can
-shadow variables from other scopes. This does not mutate the previously assigned value.
+Gleam has the `let` keyword before its variable names. You can re-assign variables and you can shadow variables from other scopes. This does not mutate the previously assigned value.
 
 ```rust
 let size = 50
@@ -125,8 +119,7 @@ Both Elm and Gleam will check the type annotation to ensure that it matches the 
 
 #### Elm
 
-In Elm, type annotations are optionally given on the line above the variable assignment. They can be
-provided in let-blocks but it frequently only provided for top level variables and functions.
+In Elm, type annotations are optionally given on the line above the variable assignment. They can be provided in let-blocks but it frequently only provided for top level variables and functions.
 
 ```elm
 someList : List Int
@@ -229,8 +222,7 @@ mul x y = x * y
 
 #### Gleam
 
-All the same things are true of Gleam though the type annotations go inline in the function
-declaration, rather than above it.
+All the same things are true of Gleam though the type annotations go inline in the function declaration, rather than above it.
 
 ```rust
 pub fn add(x: Int, y: Int) -> Int {
@@ -249,7 +241,6 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
 Elm has no built in way to label arguments. Instead it would standard for a function to expect a record as an argument in which the field names would serve as the argument labels. This can be combined with providing a 'defaults' value of the same record type where callers can override only the fields that they want to differ from the default.
 
 ```elm
-
 defaultOptions =
   { inside : defaultString
   , each : defaultPattern,
@@ -258,7 +249,6 @@ defaultOptions =
 
 replace opts =
   doReplacement opts.inside opts.each opts.with
-end
 ```
 
 ```elm
@@ -281,8 +271,7 @@ pub fn replace(inside string, each pattern, with replacement) {
 replace(each: ",", with: " ", inside: "A,B,C")
 ```
 
-There is no performance cost to Gleam's labelled arguments as they are optimised to regular function
-calls at compile time, and all the arguments are fully type checked.
+There is no performance cost to Gleam's labelled arguments as they are optimised to regular function calls at compile time, and all the arguments are fully type checked.
 
 ## Modules
 
@@ -625,8 +614,7 @@ let name = person.name
 
 ## Custom Types
 
-Both Elm and Gleam have a similar concept of custom types. These allow you to list out the different
-states that a particular piece of data might have.
+Both Elm and Gleam have a similar concept of custom types. These allow you to list out the different states that a particular piece of data might have.
 
 #### Elm
 
@@ -663,8 +651,7 @@ type User {
 }
 ```
 
-Like in Elm, you must use a case-statement to interact with the contents of a value that uses a
-custom type.
+Like in Elm, you must use a case-statement to interact with the contents of a value that uses a custom type.
 
 ```rust
 fn get_name(user) {
@@ -682,8 +669,7 @@ In order to create an opaque data type, you can use the [`opaque`](../book/tour/
 
 ### Maybe
 
-Neither Gleam nor Elm have a concept of 'null' in their type system. Elm uses `Maybe` to handle this
-case. Gleam uses a similar approach called `Option`.
+Neither Gleam nor Elm have a concept of 'null' in their type system. Elm uses `Maybe` to handle this case. Gleam uses a similar approach called `Option`.
 
 #### Elm
 
@@ -735,9 +721,7 @@ pub type Result(value, reason) {
 
 The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with result values.
 
-Gleam has a `try` keyword that allows for early exit from a function if a Result is an error. The
-equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides
-syntactic sugar which simplifies functions that handle results.
+Gleam has a `try` keyword that allows for early exit from a function if a Result is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
 
 
 ## Commands
@@ -797,13 +781,11 @@ All Gleam packages can be published with a mix of Gleam and Erlang code. There a
 
 #### Elm
 
-The Elm compiler is written in Haskell and distributed primarily via npm. The core libraries are
-written in a mix of Elm and Javascript.
+The Elm compiler is written in Haskell and distributed primarily via npm. The core libraries are written in a mix of Elm and Javascript.
 
 #### Gleam
 
-The Gleam compiler is written in Rust and distributed as precompiled binaries or via some package
-managers. The core libraries are written in a mix of Gleam and Erlang.
+The Gleam compiler is written in Rust and distributed as precompiled binaries or via some package managers. The core libraries are written in a mix of Gleam and Erlang.
 
 ## Other concepts
 
