@@ -22,17 +22,17 @@ title: Gleam for Elm users
   - [Numbers](#numbers)
   - [Strings](#strings)
   - [Tuples](#tuples)
-  - [Records](#records) TODO
+  - [Records](#records)
   - [Lists](#lists)
   - [Dicts](#dicts)
 - [Operators](#operators)
 - [Type aliases](#type-aliases)
-- [Custom types](#custom-types) TODO
+- [Custom types](#custom-types)
   - [Maybe](#maybe)
   - [Result](#result)
-- [Commands](#commands) TODO
-- [Architecture](#architecture) TODO
-- [Talking to other languages](#talking-to-other-languages) TODO
+- [Commands](#commands)
+- [Talking to other languages](#talking-to-other-languages)
+- [Architecture](#architecture)
 - [Package management](#package-management)
 - [Implementation](#implementation)
 - [Other concepts](#other-concepts)
@@ -418,10 +418,31 @@ Both languages use double quotes for strings.
 "Hellø, world!"
 ```
 
+Strings in Elm are combined using the `++` operator and functions like [`String.append`](https://package.elm-lang.org/packages/elm/core/latest/String#append) and [`String.concat`](https://package.elm-lang.org/packages/elm/core/latest/String#concat):
+
+```elm
+greeting =
+    "Hello, " ++ "world!"
+
+birthdayWishes =
+    String.append "Happy Birthday, " person.name
+
+holidayWishes =
+    String.concat [ "Happy ", holiday.name, person.name ]
+```
+
 #### Gleam
 
 ```rust
 "Hellø, world!"
+```
+
+Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string/#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string/#concat) in the standard library.
+
+```rust
+birthdayWishes = string.append(to: "Happy Birthday ", suffix: person.name)
+
+holidayWishes = string.concat([ "Happy ", holiday.name, person.name ])
 ```
 
 ### Tuples
@@ -444,6 +465,50 @@ There is no limit to the number of entries in Gleam tuples, but records are stil
 ```rust
 let my_tuple = #("username", "password", 10)
 let #(_, password, _) = my_tuple
+```
+
+### Records
+
+Records are used to define and create structured data.
+
+#### Elm
+
+In Elm, you can declare records using curly braces containing key-value pairs:
+
+```elm
+person = 
+  { name = "Alice"
+  , age = 43
+  }
+```
+
+The type of the record is derived by the compiler. In this case it would be `{ name : String, age : Int }`.
+
+Records can also be created using a [type alias](#type-aliases) name as a constructor.
+
+Record fields can be accessed with a dot syntax:
+
+```elm
+greeting = 
+   "Hello, " ++ person.name ++ "!"
+```
+
+#### Gleam
+
+In Gleam, you cannot create records without creating a custom type first. 
+
+```
+type Person {
+  Person(name: String, age: Int)
+}
+
+let person = Person(name: "Alice", age: 43)
+```
+
+Record fields can be accessed with a dot syntax:
+
+```rust
+greeting = String.concat(["Hello, ",  person.name, "!"])
 ```
 
 ### Lists
@@ -496,10 +561,40 @@ map.from_list([#("key1", "value1"), #("key2", "value2")])
 map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
+## Operators
+
+As Gleam does not treat Ints and Float generically, there is a pattern of an extra `.` to separate
+Int operators from Float operators.
+
+| Operator          | Elm           | Gleam | Notes                                          |
+| ----------------- | ------------- | ----- | ---------------------------------------------- |
+| Equal             | `==`          | `==`  | In Gleam both values must be of the same type  |
+| Not equal         | `/=`          | `!=`  | In Gleam both values must be of the same type  |
+| Greater than      | `>`           | `>`   | In Gleam both values must be **ints**          |
+| Greater than      | `>`           | `>.`  | In Gleam both values must be **floats**        |
+| Greater or equal  | `>=`          | `>=`  | In Gleam both values must be **ints**          |
+| Greater or equal  | `>=`          | `>=.` | In Gleam both values must be **floats**        |
+| Less than         | `<`           | `<`   | In Gleam both values must be **ints**          |
+| Less than         | `<`           | `<.`  | In Gleam both values must be **floats**        |
+| Less or equal     | `<=`          | `>=`  | In Gleam both values must be **ints**          |
+| Less or equal     | `<=`          | `>=.` | In Gleam both values must be **floats**        |
+| Boolean and       | `&&`          | `&&`  | Both values must be **bools**                  |
+| Boolean or        | `||`          | `||`  | Both values must be **bools**                  |
+| Add               | `+`           | `+`   | In Gleam both values must be **ints**          |
+| Add               | `+`           | `+.`  | In Gleam both values must be **floats**        |
+| Subtract          | `-`           | `-`   | In Gleam both values must be **ints**          |
+| Subtract          | `-`           | `-.`  | In Gleam both values must be **floats**        |
+| Multiply          | `*`           | `*`   | In Gleam both values must be **ints**          |
+| Multiply          | `*`           | `*.`  | In Gleam both values must be **floats**        |
+| Divide            | `//`          | `/`   | Both values must be **ints**                   |
+| Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
+| Modulo            | `remainderBy` | `%`   | Both values must be **ints**                   |
+| Pipe              | `|>`          | `|>`  | Gleam's pipe can pipe into anonymous functions |
+
+
 ## Type Aliases
 
-Elm uses type alises to define the layout of records. Gleam uses Custom Types to achieve a similar
-result.
+Elm uses type aliases to define the layout of records. Gleam uses Custom Types to achieve a similar result.
 
 Gleam's custom types allow you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
 
@@ -529,6 +624,61 @@ let name = person.name
 ```
 
 ## Custom Types
+
+Both Elm and Gleam have a similar concept of custom types. These allow you to list out the different
+states that a particular piece of data might have.
+
+#### Elm
+
+The following example might represent a user in a system:
+
+```elm
+type User
+  = LoggedIn String  -- A logged in user with a name
+  | Guest            -- A guest user with no details
+```
+
+You must use a case-statement to interact with the contents of a value that uses a custom type:
+
+```elm
+getName : User -> String
+getName user =
+    case user of
+        LoggedIn name ->
+            name
+
+        Guest ->
+            "Guest user"
+
+```
+
+A custom type with a single entry can be used to help create opaque data types for your module's API if only the type and not the single constructor is exported.
+
+#### Gleam
+
+```rust
+type User {
+  LoggedIn(name: String)  // A logged in user with a name
+  Guest                   // A guest user with no details
+}
+```
+
+Like in Elm, you must use a case-statement to interact with the contents of a value that uses a
+custom type.
+
+```rust
+fn get_name(user) {
+  case user {
+    LoggedIn(name) -> name
+    Guest -> "Guest user"
+  }
+}
+```
+
+In Gleam, a custom type with a single entry that has fields of its own fills the role of `type alias` in Elm. 
+
+In order to create an opaque data type, you can use the [`opaque`](../book/tour/custom-types.html#opaque-types) keyword.
+
 
 ### Maybe
 
@@ -583,39 +733,51 @@ pub type Result(value, reason) {
 }
 ```
 
+The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with result values.
+
 Gleam has a `try` keyword that allows for early exit from a function if a Result is an error. The
 equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides
 syntactic sugar which simplifies functions that handle results.
 
-## Operators
 
-As Gleam does not treat Ints and Float generically, there is a pattern of an extra `.` to separate
-Int operators from Float operators.
+## Commands
 
-| Operator          | Elm           | Gleam | Notes                                          |
-| ----------------- | ------------- | ----- | ---------------------------------------------- |
-| Equal             | `==`          | `==`  | In Gleam both values must be of the same type  |
-| Not equal         | `/=`          | `!=`  | In Gleam both values must be of the same type  |
-| Greater than      | `>`           | `>`   | In Gleam both values must be **ints**          |
-| Greater than      | `>`           | `>.`  | In Gleam both values must be **floats**        |
-| Greater or equal  | `>=`          | `>=`  | In Gleam both values must be **ints**          |
-| Greater or equal  | `>=`          | `>=.` | In Gleam both values must be **floats**        |
-| Less than         | `<`           | `<`   | In Gleam both values must be **ints**          |
-| Less than         | `<`           | `<.`  | In Gleam both values must be **floats**        |
-| Less or equal     | `<=`          | `>=`  | In Gleam both values must be **ints**          |
-| Less or equal     | `<=`          | `>=.` | In Gleam both values must be **floats**        |
-| Boolean and       | `&&`          | `&&`  | Both values must be **bools**                  |
-| Boolean or        | `||`          | `||`  | Both values must be **bools**                  |
-| Add               | `+`           | `+`   | In Gleam both values must be **ints**          |
-| Add               | `+`           | `+.`  | In Gleam both values must be **floats**        |
-| Subtract          | `-`           | `-`   | In Gleam both values must be **ints**          |
-| Subtract          | `-`           | `-.`  | In Gleam both values must be **floats**        |
-| Multiply          | `*`           | `*`   | In Gleam both values must be **ints**          |
-| Multiply          | `*`           | `*.`  | In Gleam both values must be **floats**        |
-| Divide            | `//`          | `/`   | Both values must be **ints**                   |
-| Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
-| Modulo            | `remainderBy` | `%`   | Both values must be **ints**                   |
-| Pipe              | `|>`          | `|>`  | Gleam's pipe can pipe into anonymous functions |
+#### Elm
+
+Elm is a pure language so all side-effects, eg. making an HTTP request, are managed by the command system. This means that functions for making HTTP requests return an opaque command value that you return to the runtime, normally via the update function, in order to execute the request.
+
+#### Gleam
+
+Gleam is not a pure language and so does not have a command system for managing side-effects. Any function can directly perform side effects and where necessary will manage success and failure using the Result type.
+
+## Talking to other languages
+
+#### Elm
+
+Elm programs compile to Javascript and primarily allow you to talk to Javascript via [ports](https://guide.elm-lang.org/interop/ports.html). Elm does not have an accessible foreign-function-interface for calling Javascript directly from Elm code. Only core modules can do that. Ports provide a message-passing interface between the Elm application and Javascript. It is very safe. It is almost impossible to cause runtime errors in your Elm code by passing incorrect values to or from ports. This makes Elm a very safe language with very good guarantees against runtime exceptions but at the cost of some friction when the developer wants to interact with Javascript.
+
+
+#### Gleam
+
+Gleam provides syntax for directly calling Erlang functions. The developer specifies the types for the Erlang function and the compiler assumes those types are accurate. This means less friction when calling Erlang code but also means less of a guarantee of safety as the developer might get the types wrong.
+
+Functions that call Erlang code directly use the `external` keyword and use strings to refer to the Erlang function to call.
+
+It is possible to call functions provided by other languages on the Erlang Virtual Machine but only via the Erlang name that those functions end up with.
+
+
+```rust
+pub external fn random_float() -> Float = "rand" "uniform"
+
+// Elixir modules start with `Elixir.`
+pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
+```
+
+## Architecture
+
+Elm has 'The Elm architecture' baked into the language and the core modules. Generally speaking, all Elm applications follow the Elm architecture. Elm is generally focused on writing front-end browser applications and the architecture serves it well.
+
+Gleam does not have a set architecture. It is not focused on making front-end browser applications and so does not share the same constraints. As it compiles to Erlang, Gleam application architecture is influenced by Erlang approaches to building distributed, fault-tolerant systems including working with [OTP](http://erlang.org/faq/introduction.html#idp32109712). In order to create a type-safe version of the OTP approach, Gleam has its own [gleam/otp](https://hexdocs.pm/gleam_otp/) library.  
 
 ## Package management
 
@@ -629,8 +791,7 @@ All third-party Elm packages are written in pure Elm. It is not possible to publ
 
 Gleam packages are installed via rebar3 configs and are hosted on [hex.pm](https://hex.pm/) with their documentation on [hexdocs.pm](https://hexdocs.pm/).
 
-All Gleam packages can be published with a mix of Gleam and Erlang code. There are no restrictions
-on publishing packages with Erlang code or that wrap Erlang libraries.
+All Gleam packages can be published with a mix of Gleam and Erlang code. There are no restrictions on publishing packages with Erlang code or that wrap Erlang libraries.
 
 ## Implementation
 
