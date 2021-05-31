@@ -759,7 +759,11 @@ pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
 
 ## Architecture
 
+#### Elm
+
 Elm has 'The Elm architecture' baked into the language and the core modules. Generally speaking, all Elm applications follow the Elm architecture. Elm is generally focused on writing front-end browser applications and the architecture serves it well.
+
+#### Gleam
 
 Gleam does not have a set architecture. It is not focused on making front-end browser applications and so does not share the same constraints. As it compiles to Erlang, Gleam application architecture is influenced by Erlang approaches to building distributed, fault-tolerant systems including working with [OTP](http://erlang.org/faq/introduction.html#idp32109712). In order to create a type-safe version of the OTP approach, Gleam has its own [gleam/otp](https://hexdocs.pm/gleam_otp/) library.  
 
