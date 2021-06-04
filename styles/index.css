@@ -39,6 +39,10 @@ a {
   color: var(--color-charcoal);
 }
 
+hr {
+  border-color: var(--color-light-grey);
+}
+
 h1:first-child,
 h2:first-child,
 h3:first-child,
