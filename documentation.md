@@ -23,6 +23,7 @@ layout: page
 - [Gleam for Elixir users](/cheatsheets/gleam-for-elixir-users)
 - [Gleam for Rust users](/cheatsheets/gleam-for-rust-users)
 - [Gleam for Python users](/cheatsheets/gleam-for-python-users)
+- [Gleam for Elm users](/cheatsheets/gleam-for-elm-users)
 
 ## Gleam references
 
