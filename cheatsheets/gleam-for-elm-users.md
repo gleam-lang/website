@@ -96,7 +96,7 @@ In Elm, you assign variables in let-blocks and you cannot re-assign variables wi
 
 You also cannot create a variable with the same name as a variable from a higher scope.
 
-```Elm
+```elm
 let
     size = 50
     size = size + 100 -- Compile Error!
@@ -534,7 +534,7 @@ Like Elm, there is no map literal syntax in Gleam, and you cannot pattern match 
 
 #### Elm
 
-```Dict
+```elm
 import Dict
 
 Dict.fromList [ ("key1", "value1"), ("key2", "value2") ]
