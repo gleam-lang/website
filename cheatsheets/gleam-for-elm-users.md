@@ -444,7 +444,7 @@ Tuples are very useful in both Elm and Gleam as they're the only collection data
 
 #### Elm
 
-In Elm, tuples are limited to only 2 or 3 entries. It is recommended to use records for more larger numbers of entries.
+In Elm, tuples are limited to only 2 or 3 entries. It is recommended to use records when needing larger numbers of entries.
 
 ```elm
 myTuple = ("username", "password", 10)
