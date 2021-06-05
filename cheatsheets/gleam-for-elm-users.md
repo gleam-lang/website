@@ -726,7 +726,7 @@ pub type Result(value, reason) {
 
 The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with `Result` values.
 
-Gleam has a `try` keyword that allows for early exit from a function if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
+Gleam has a `try` keyword that allows for early exit from a block if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
 
 
 ## Commands
