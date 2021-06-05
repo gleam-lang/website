@@ -42,11 +42,11 @@ title: Gleam for Elm users
 
 Elm and Gleam have similar goals of providing a robust and sound type system with a friendly and approachable set of features.
 
-They have some differences in their output and focus. Where Elm compiles to Javascript, Gleam initially aimed to compile to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
+They have some differences in their output and focus. Where Elm compiles to JavaScript, Gleam initially aimed to compile to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
 
-Another area in which Elm and Gleam differ is around talking to other languages. Elm does not provide user-defined foreign function interfaces for interacting with Javascript code and libraries. All communication between Elm and Javascript has to go through the Elm ports. In contrast to this, Gleam makes it easy to define inferfaces for using Erlang code and libraries directly and has no concept of ports for talking to Erlang.
+Another area in which Elm and Gleam differ is around talking to other languages. Elm does not provide user-defined foreign function interfaces for interacting with JavaScript code and libraries. All communication between Elm and JavaScript has to go through the Elm ports. In contrast to this, Gleam makes it easy to define inferfaces for using Erlang code and libraries directly and has no concept of ports for talking to Erlang.
 
-**Note**: There is work in progess to compile Gleam to Javascript which opens up the possibility for front-end development.
+**Note**: There is work in progess to compile Gleam to JavaScript which opens up the possibility for front-end development.
 
 ## Comments
 
@@ -401,7 +401,7 @@ const twoMillion = 2_000_000.0
 
 ### Strings
 
-In both Elm and Gleam all strings support unicode. Gleam uses UTF-8 binaries. Elm compiles to Javascript which uses UTF-16 for its strings.
+In both Elm and Gleam all strings support unicode. Gleam uses UTF-8 binaries. Elm compiles to JavaScript which uses UTF-16 for its strings.
 
 Both languages use double quotes for strings.
 
@@ -743,7 +743,7 @@ Gleam is not a pure language and so does not have a command system for managing 
 
 #### Elm
 
-Elm programs compile to Javascript and primarily allow you to talk to Javascript via [ports](https://guide.elm-lang.org/interop/ports.html). Elm does not have an accessible foreign function interface for calling Javascript directly from Elm code. Only core modules can do that. Ports provide a message-passing interface between the Elm application and Javascript. It is very safe. It is almost impossible to cause runtime errors in your Elm code by passing incorrect values to or from ports. This makes Elm a very safe language with very good guarantees against runtime exceptions but at the cost of some friction when the developer wants to interact with Javascript.
+Elm programs compile to JavaScript and primarily allow you to talk to JavaScript via [ports](https://guide.elm-lang.org/interop/ports.html). Elm does not have an accessible foreign function interface for calling JavaScript directly from Elm code. Only core modules can do that. Ports provide a message-passing interface between the Elm application and JavaScript. It is very safe. It is almost impossible to cause runtime errors in your Elm code by passing incorrect values to or from ports. This makes Elm a very safe language with very good guarantees against runtime exceptions but at the cost of some friction when the developer wants to interact with JavaScript.
 
 
 #### Gleam
@@ -778,7 +778,7 @@ Gleam does not have a set architecture. It is not focused on making front-end br
 
 Elm packages are installed via the `elm install` command and are hosted on [package.elm-lang.org](https://package.elm-lang.org/).
 
-All third-party Elm packages are written in pure Elm. It is not possible to publish an Elm package that includes Javascript script unless you are in the core team. Some packages published under the `elm` and `elm-explorations` namespaces have Javascript internals.
+All third-party Elm packages are written in pure Elm. It is not possible to publish an Elm package that includes JavaScript script unless you are in the core team. Some packages published under the `elm` and `elm-explorations` namespaces have JavaScript internals.
 
 #### Gleam
 
@@ -790,7 +790,7 @@ All Gleam packages can be published with a mix of Gleam and Erlang code. There a
 
 #### Elm
 
-The Elm compiler is written in [Haskell](https://www.haskell.org/) and distributed primarily via [npm](https://www.npmjs.com/). The core libraries are written in a mix of Elm and Javascript.
+The Elm compiler is written in [Haskell](https://www.haskell.org/) and distributed primarily via [npm](https://www.npmjs.com/). The core libraries are written in a mix of Elm and JavaScript.
 
 #### Gleam
 
