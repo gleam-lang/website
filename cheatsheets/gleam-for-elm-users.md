@@ -778,7 +778,7 @@ Gleam does not have a set architecture. It is not focused on making front-end br
 
 Elm packages are installed via the `elm install` command and are hosted on [package.elm-lang.org](https://package.elm-lang.org/).
 
-All third-party Elm packages are written in pure Elm. It is not possible to publish an Elm package that includes JavaScript script unless you are in the core team. Some packages published under the `elm` and `elm-explorations` namespaces have JavaScript internals.
+All third-party Elm packages are written in pure Elm. It is not possible to publish an Elm package that includes JavaScript code unless you are in the core team. Some packages published under the `elm` and `elm-explorations` namespaces have JavaScript internals.
 
 #### Gleam
 
