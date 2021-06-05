@@ -242,9 +242,9 @@ Elm has no built in way to label arguments. Instead it would standard for a func
 
 ```elm
 defaultOptions =
-  { inside : defaultString
-  , each : defaultPattern,
-  , with : defaultReplacement
+  { inside = defaultString
+  , each = defaultPattern,
+  , with = defaultReplacement
   }
 
 replace opts =
@@ -252,9 +252,9 @@ replace opts =
 ```
 
 ```elm
-replace { each: ",", with: " ", inside: "A,B,C" }
+replace { each = ",", with = " ", inside = "A,B,C" }
 
-replace { defaultOptions | inside: "A,B,C,D" }
+replace { defaultOptions | inside = "A,B,C,D" }
 ```
 
 #### Gleam
@@ -356,7 +356,7 @@ view =
          z = 4
          t = 3
       in
-      z + (t * 5) -- Parenthesis are used to gropu arithmetic expressions
+      z + (t * 5) -- Parenthesis are used to group arithmetic expressions
   in
   y + x
 end
@@ -440,7 +440,7 @@ Tuples are very useful in both Elm and Gleam as they're the only collection data
 
 #### Elm
 
-In Elm, tuplies are limited to only 2 or 3 entries. It is recommended to use records for more larger numbers of entries.
+In Elm, tuples are limited to only 2 or 3 entries. It is recommended to use records for more larger numbers of entries.
 
 ```elm
 myTuple = ("username", "password", 10)
@@ -471,14 +471,14 @@ person =
   }
 ```
 
-The type of the record is derived by the compiler. In this case it would be `{ name : String, age : Int }`.
+The type of the record is derived by the compiler. In this case it would be `{ name : String, age : number }`.
 
 Records can also be created using a [type alias](#type-aliases) name as a constructor.
 
 Record fields can be accessed with a dot syntax:
 
 ```elm
-greeting = 
+greeting person = 
    "Hello, " ++ person.name ++ "!"
 ```
 
@@ -810,7 +810,6 @@ type Alignment
   = Left
   | Centre
   | Right
-
 ```
 
 #### Gleam
