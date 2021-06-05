@@ -40,13 +40,13 @@ title: Gleam for Elm users
 
 ## Overview
 
-Elm and Gleam have similar goals of providing a robust and sound type system with an approachable set of features.
+Elm and Gleam have similar goals of providing a robust and sound type system with a friendly and approachable set of features.
 
-Where Elm compiles to Javascript, Gleam initially aimed to compile to Erlang. Where Elm is best suited for front-end browser based applications, Gleam initially targets a back-end ecosystem.
+They have some differences in their output and focus. Where Elm compiles to Javascript, Gleam initially aimed to compile to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
 
-There is work in progess to compile Gleam to Javascript which opens up the possibility for front-end development.
+Another area in which Elm and Gleam differ is around talking to other languages. Elm does not provide user-defined foreign function interfaces for interacting with Javascript code and libraries. All communication between Elm and Javascript has to go through the Elm ports. In contrast to this, Gleam makes it easy to define inferfaces for using Erlang code and libraries directly and has no concept of ports for talking to Erlang.
 
-One area in which Elm and Gleam differ in their approach is where Elm does not provide easy access to defining foreign-function-interfaces for interacting with Javascript libraries. In contrast to this, Gleam makes it easy to define this inferfaces for using Erlang libraries.
+**Note**: There is work in progess to compile Gleam to Javascript which opens up the possibility for front-end development.
 
 ## Comments
 
@@ -382,13 +382,17 @@ pub fn main() {
 
 ### Numbers
 
-Both Elm and Gleam support Int and Float as separate number types. 
+Both Elm and Gleam support `Int` and `Float` as separate number types. 
+
+#### Elm
+
+Elm has a built in `number` concept that allows it to treat `Int` and `Float` generically so operators like `+` can be used for two `Int` values or two `Float` values though not for an `Int` and a `Float`.
 
 #### Gleam
 
-Operators in Gleam as not generic over Int and Float so there are separate symbols for Int and Float operations. For example, `+` adds Ints together whilst `+.` adds Floats together. The pattern of the additional `.` extends to the other common operators.
+Operators in Gleam as not generic over `Int` and `Float` so there are separate symbols for `Int` and `Float` operations. For example, `+` adds integers together whilst `+.` adds floats together. The pattern of the additional `.` extends to the other common operators.
 
-Additionally, underscores can be added to both Ints and Floats for clarity.
+Additionally, underscores can be added to both integers and floats for clarity.
 
 ```rust
 const oneMillion = 1_000_000
@@ -552,8 +556,7 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 ## Operators
 
-As Gleam does not treat Ints and Float generically, there is a pattern of an extra `.` to separate
-Int operators from Float operators.
+As Gleam does not treat integers and floats generically, there is a pattern of an extra `.` to separate `Int` operators from `Float` operators.
 
 | Operator          | Elm           | Gleam | Notes                                          |
 | ----------------- | ------------- | ----- | ---------------------------------------------- |
@@ -692,13 +695,15 @@ pub type Option(a) {
 }
 ```
 
+The standard library provides the [gleam/option](https://hexdocs.pm/gleam_stdlib/gleam/option/) module for interacting with `Option` values.
+
 ### Result
 
 Neither Gleam nor Elm have exceptions and instead represent failures using the `Result` type. 
 
 #### Elm
 
-Elm's Result type is defined as:
+Elm's `Result` type is defined as:
 
 ```elm
 type Result error value
@@ -708,7 +713,7 @@ type Result error value
 
 #### Gleam
 
-In Gleam, the Result type is defined in the compiler in order to support helpful warnings and error messages. 
+In Gleam, the `Result` type is defined in the compiler in order to support helpful warnings and error messages. 
 
 If it were defined in Gleam, it would look like this:
 
@@ -719,9 +724,9 @@ pub type Result(value, reason) {
 }
 ```
 
-The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with result values.
+The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with `Result` values.
 
-Gleam has a `try` keyword that allows for early exit from a function if a Result is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
+Gleam has a `try` keyword that allows for early exit from a function if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
 
 
 ## Commands
@@ -732,13 +737,13 @@ Elm is a pure language so all side-effects, eg. making an HTTP request, are mana
 
 #### Gleam
 
-Gleam is not a pure language and so does not have a command system for managing side-effects. Any function can directly perform side effects and where necessary will manage success and failure using the Result type.
+Gleam is not a pure language and so does not have a command system for managing side-effects. Any function can directly perform side effects and where necessary will manage success and failure using the `Result` type or other more specific custom types.
 
 ## Talking to other languages
 
 #### Elm
 
-Elm programs compile to Javascript and primarily allow you to talk to Javascript via [ports](https://guide.elm-lang.org/interop/ports.html). Elm does not have an accessible foreign-function-interface for calling Javascript directly from Elm code. Only core modules can do that. Ports provide a message-passing interface between the Elm application and Javascript. It is very safe. It is almost impossible to cause runtime errors in your Elm code by passing incorrect values to or from ports. This makes Elm a very safe language with very good guarantees against runtime exceptions but at the cost of some friction when the developer wants to interact with Javascript.
+Elm programs compile to Javascript and primarily allow you to talk to Javascript via [ports](https://guide.elm-lang.org/interop/ports.html). Elm does not have an accessible foreign function interface for calling Javascript directly from Elm code. Only core modules can do that. Ports provide a message-passing interface between the Elm application and Javascript. It is very safe. It is almost impossible to cause runtime errors in your Elm code by passing incorrect values to or from ports. This makes Elm a very safe language with very good guarantees against runtime exceptions but at the cost of some friction when the developer wants to interact with Javascript.
 
 
 #### Gleam
@@ -777,7 +782,7 @@ All third-party Elm packages are written in pure Elm. It is not possible to publ
 
 #### Gleam
 
-Gleam packages are installed via rebar3 configs and are hosted on [hex.pm](https://hex.pm/) with their documentation on [hexdocs.pm](https://hexdocs.pm/).
+Gleam packages are installed via [rebar3](http://rebar3.org/) configs and are hosted on [hex.pm](https://hex.pm/) with their documentation on [hexdocs.pm](https://hexdocs.pm/).
 
 All Gleam packages can be published with a mix of Gleam and Erlang code. There are no restrictions on publishing packages with Erlang code or that wrap Erlang libraries.
 
@@ -785,11 +790,11 @@ All Gleam packages can be published with a mix of Gleam and Erlang code. There a
 
 #### Elm
 
-The Elm compiler is written in Haskell and distributed primarily via npm. The core libraries are written in a mix of Elm and Javascript.
+The Elm compiler is written in [Haskell](https://www.haskell.org/) and distributed primarily via [npm](https://www.npmjs.com/). The core libraries are written in a mix of Elm and Javascript.
 
 #### Gleam
 
-The Gleam compiler is written in Rust and distributed as precompiled binaries or via some package managers. The core libraries are written in a mix of Gleam and Erlang.
+The Gleam compiler is written in [Rust](https://www.rust-lang.org/) and distributed as [precompiled binaries](https://gleam.run/getting-started/#installing-gleam) or via some [package managers](https://gleam.run/getting-started/#installing-gleam). The core libraries are written in a mix of Gleam and Erlang.
 
 ## Other concepts
 
