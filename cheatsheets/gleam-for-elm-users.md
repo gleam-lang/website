@@ -512,23 +512,25 @@ Both Elm and Gleam support lists. All entries have to be of the same type.
 
 #### Elm
 
-You can pattern match on lists in Elm, but only in case-statements.
+Elm has a built-in syntax for lists and the `cons` operator (`::`) for adding a new item to the head of a list.
 
 ```elm
 list = [2, 3, 4]
-list2 = 1 :: list
+anotherList = 1 :: list
+yetAnotherList = "hello" :: list -- Compiler error
 ```
 
 #### Gleam
 
-The `cons` operator works the same way both for pattern matching and for appending elements to the head of a list, but it uses a different syntax.
+Gleam also has a built-in syntax for lists and its own spread operator (`..`) for adding elements to the front of a list.
 
 ```rust
 let list = [2, 3, 4]
 let list = [1, ..list]
-let [1, second_element, ..] = list
-[1.0, ..list] // compile error, type mismatch
+let another_list = [1.0, ..list] // compile error, type mismatch
 ```
+
+The standard library provides the [gleam/list](https://hexdocs.pm/gleam_stdlib/gleam/list/) module for interacting with lists. Functions like `list.head` return an `Option` value to account for the possibility of an empty list.
 
 ### Dicts
 
