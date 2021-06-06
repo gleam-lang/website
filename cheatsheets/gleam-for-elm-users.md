@@ -41,7 +41,7 @@ Another area in which Elm and Gleam differ is around talking to other languages.
 - [Custom types](#custom-types)
   - [Maybe](#maybe)
   - [Result](#result)
-- [If Statements](#if-statments)
+- [If Statements](#if-statements)
 - [Commands](#commands)
 - [Talking to other languages](#talking-to-other-languages)
 - [Architecture](#architecture)
@@ -517,7 +517,7 @@ Elm has a built-in syntax for lists and the `cons` operator (`::`) for adding a 
 ```elm
 list = [2, 3, 4]
 anotherList = 1 :: list
-yetAnotherList = "hello" :: list -- Compiler error
+yetAnotherList = "hello" :: list // compile error, type mismatch
 ```
 
 #### Gleam
@@ -753,7 +753,7 @@ Gleam has no built in if-statement syntax and instead relies on matching on bool
 
 ```rust
 let description =
-  case True {
+  case value {
     True -> "It's true!"
     False -> "It's not true."
   }
