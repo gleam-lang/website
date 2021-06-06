@@ -41,6 +41,7 @@ Another area in which Elm and Gleam differ is around talking to other languages.
 - [Custom types](#custom-types)
   - [Maybe](#maybe)
   - [Result](#result)
+- [If Statements](#if-statments)
 - [Commands](#commands)
 - [Talking to other languages](#talking-to-other-languages)
 - [Architecture](#architecture)
@@ -728,6 +729,35 @@ pub type Result(value, reason) {
 The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with `Result` values.
 
 Gleam has a `try` keyword that allows for early exit from a block if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
+
+
+## If statements
+
+#### Elm
+
+Elm has syntax for if-statements for control flow based on boolean values.
+
+```elm
+description =
+    if value then
+        "It's true!"
+    else
+        "It's not true."
+```
+
+#### Gleam
+
+Gleam has no built in if-statement syntax and instead relies on matching on boolean values in case-statements to provide this functionality:
+
+```rust
+let description =
+  case True {
+    True -> "It's true!"
+    False -> "It's not true."
+  }
+
+description  // => "It's true!"
+```
 
 
 ## Commands
