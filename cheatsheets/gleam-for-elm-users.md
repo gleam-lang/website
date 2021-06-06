@@ -41,7 +41,8 @@ Another area in which Elm and Gleam differ is around talking to other languages.
 - [Custom types](#custom-types)
   - [Maybe](#maybe)
   - [Result](#result)
-- [If Statements](#if-statements)
+- [If expressions](#if-expressions)
+- [Case expressions](#case-expressions)
 - [Commands](#commands)
 - [Talking to other languages](#talking-to-other-languages)
 - [Architecture](#architecture)
@@ -379,7 +380,6 @@ pub fn main() {
 }
 ```
 
-
 ## Data types
 
 ### Numbers
@@ -633,7 +633,7 @@ type User
   | Guest            -- A guest user with no details
 ```
 
-You must use a case-statement to interact with the contents of a value that uses a custom type:
+You must use a case-expression to interact with the contents of a value that uses a custom type:
 
 ```elm
 getName : User -> String
@@ -658,7 +658,7 @@ type User {
 }
 ```
 
-Like in Elm, you must use a case-statement to interact with the contents of a value that uses a custom type.
+Like in Elm, you must use a case-expression to interact with the contents of a value that uses a custom type.
 
 ```rust
 fn get_name(user) {
@@ -733,11 +733,11 @@ The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib
 Gleam has a `try` keyword that allows for early exit from a block if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
 
 
-## If statements
+## If expressions
 
 #### Elm
 
-Elm has syntax for if-statements for control flow based on boolean values.
+Elm has syntax for if-expressions for control flow based on boolean values.
 
 ```elm
 description =
@@ -749,7 +749,7 @@ description =
 
 #### Gleam
 
-Gleam has no built in if-statement syntax and instead relies on matching on boolean values in case-statements to provide this functionality:
+Gleam has no built in if-expression syntax and instead relies on matching on boolean values in case-expressions to provide this functionality:
 
 ```rust
 let description =
@@ -761,6 +761,56 @@ let description =
 description  // => "It's true!"
 ```
 
+## Case expressions
+
+Both Gleam and Elm support case-expressions for pattern matching on values including custom types.
+
+#### Elm
+
+```elm
+getName : User -> String
+getName user =
+    case user of
+        LoggedIn name ->
+            name
+
+        Guest ->
+            "Guest user"
+```
+
+#### Gleam
+
+```rust
+fn get_name(user) {
+  case user {
+    LoggedIn(name) -> name
+    Guest -> "Guest user"
+  }
+}
+```
+
+Pattern matching on multiple values at the same time is supported:
+
+```rust
+case x, y {
+  1, 1 -> "both are 1"
+  1, _ -> "x is 1"
+  _, 1 -> "y is 1"
+  _, _ -> "neither is 1"
+}
+```
+
+Guard expressions can also be used to limit when certain patterns are matched:
+
+
+```rust
+case xs {
+  [a, b, c] if a == b && b != c -> "ok"
+  _other -> "ko"
+}
+```
+
+For more information and examples, see the [case expressions](../book/tour/case-expressions.html) entry in the [Gleam language tour](../book/tour/index.html).
 
 ## Commands
 
