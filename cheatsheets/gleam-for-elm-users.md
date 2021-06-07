@@ -7,7 +7,7 @@ title: Gleam for Elm users
 
 Elm and Gleam have similar goals of providing a robust and sound type system with a friendly and approachable set of features.
 
-They have some differences in their output and focus. Where Elm compiles to JavaScript, Gleam initially aimed to compile to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
+They have some differences in their output and focus. Where Elm compiles to JavaScript, Gleam compiles to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
 
 Another area in which Elm and Gleam differ is around talking to other languages. Elm does not provide user-defined foreign function interfaces for interacting with JavaScript code and libraries. All communication between Elm and JavaScript has to go through the Elm ports. In contrast to this, Gleam makes it easy to define inferfaces for using Erlang code and libraries directly and has no concept of ports for talking to Erlang.
 
