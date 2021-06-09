@@ -11,7 +11,7 @@ They have some differences in their output and focus. Where Elm compiles to Java
 
 Another area in which Elm and Gleam differ is around talking to other languages. Elm does not provide user-defined foreign function interfaces for interacting with JavaScript code and libraries. All communication between Elm and JavaScript has to go through the Elm ports. In contrast to this, Gleam makes it easy to define inferfaces for using Erlang code and libraries directly and has no concept of ports for talking to Erlang.
 
-**Note**: There is work in progess to compile Gleam to JavaScript which opens up the possibility for front-end development.
+**Note**: There is work in progress to compile Gleam to JavaScript which opens up the possibility for front-end development.
 
 ## Contents
 
@@ -241,7 +241,7 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
 
 #### Elm
 
-Elm has no built in way to label arguments. Instead it would standard for a function to expect a record as an argument in which the field names would serve as the argument labels. This can be combined with providing a 'defaults' value of the same record type where callers can override only the fields that they want to differ from the default.
+Elm has no built-in way to label arguments. Instead it would standard for a function to expect a record as an argument in which the field names would serve as the argument labels. This can be combined with providing a 'defaults' value of the same record type where callers can override only the fields that they want to differ from the default.
 
 ```elm
 defaultOptions =
@@ -388,7 +388,7 @@ Both Elm and Gleam support `Int` and `Float` as separate number types.
 
 #### Elm
 
-Elm has a built in `number` concept that allows it to treat `Int` and `Float` generically so operators like `+` can be used for two `Int` values or two `Float` values though not for an `Int` and a `Float`.
+Elm has a built-in `number` concept that allows it to treat `Int` and `Float` generically so operators like `+` can be used for two `Int` values or two `Float` values though not for an `Int` and a `Float`.
 
 #### Gleam
 
@@ -749,7 +749,7 @@ description =
 
 #### Gleam
 
-Gleam has no built in if-expression syntax and instead relies on matching on boolean values in case-expressions to provide this functionality:
+Gleam has no built-in if-expression syntax and instead relies on matching on boolean values in case-expressions to provide this functionality:
 
 ```rust
 let description =
