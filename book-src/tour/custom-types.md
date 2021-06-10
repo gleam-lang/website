@@ -109,7 +109,7 @@ using `.field_name`.
 
 For example using the `Cat` type defined earlier.
 
-```rust
+```gleam
 let cat = Cat(name: "Nubi", cuteness: 2001)
 cat.name // This returns "Nubi"
 cat.cuteness // This returns 2001

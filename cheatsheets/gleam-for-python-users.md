@@ -58,13 +58,13 @@ def a_method():
 
 In Gleam, comments are written with a `//` prefix.
 
-```rust
+```gleam
 // Hello, Joe!
 ```
 
 Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
 
-```rust
+```gleam
 //// This module is very important.
 
 /// The answer to life, the universe, and everything.
@@ -89,7 +89,7 @@ Python has no specific variable keyword. You choose a name and that's it!
 
 Gleam has the `let` keyword before its variable names.
 
-```rust
+```gleam
 let size = 50
 let size = size + 100
 let size = 1
@@ -116,7 +116,7 @@ for key, value in enumerate(a_dict):
 
 In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
 
-```rust
+```gleam
 let #(x, _) = #(1, 2)
 assert [] = [1] // runtime error
 assert [y] = "Hello" // compile error, type mismatch
@@ -143,7 +143,7 @@ some_list: List[int] = [1, 2, 3]
 
 In Gleam type annotations can optionally be given when binding variables.
 
-```rust
+```gleam
 let some_list: List(Int) = [1, 2, 3]
 ```
 
@@ -171,7 +171,7 @@ mul(1, 2)
 
 Gleam's functions are declared using a syntax similar to Rust or JavaScript. Gleam's anonymous functions have a similar syntax and don't need a `.` when called.
 
-```rust
+```gleam
 pub fn sum(x, y) {
   x + y
 }
@@ -190,7 +190,7 @@ In Python, top level functions are exported by default. There is no notion of pr
 
 In Gleam, functions are private by default and need the `pub` keyword to be public.
 
-```rust
+```gleam
 // this is public
 pub fn sum(x, y) {
   x + y
@@ -225,7 +225,7 @@ def mul(x: int, y: int) -> bool:
 
 Functions can **optionally** have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
 
-```rust
+```gleam
 pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
@@ -246,7 +246,7 @@ As long as functions are in scope they can be assigned to a new variable. There 
 Gleam has a single namespace for value and functions within a module, so there
 is no need for a special syntax to assign a module function to a variable.
 
-```rust
+```gleam
 fn identity(x) {
   x
 }
@@ -284,7 +284,7 @@ replace(each='world', inside='hello world',  with_string='you')
 In Gleam arguments can be given a label as well as an internal name. Contrary to Python, the name used at the call-site does not have to match the name used
 for the variable inside the function.
 
-```rust
+```gleam
 pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
@@ -361,7 +361,7 @@ the_answer = 42
 
 In Gleam constants can be created using the `const` keyword.
 
-```rust
+```gleam
 const the_answer = 42
 
 pub fn main() {
@@ -387,7 +387,7 @@ def a_func():
 
 In Gleam braces `{` `}` are used to group expressions.
 
-```rust
+```gleam
 pub fn main() {
   let x = {
     some_function(1)
@@ -414,7 +414,7 @@ In Gleam all strings are UTF-8 encoded binaries.
 
 #### Gleam
 
-```rust
+```gleam
 "Hellø, world!"
 ```
 
@@ -433,7 +433,7 @@ _, password, _ = my_tuple
 
 #### Gleam
 
-```rust
+```gleam
 let my_tuple = #("username", "password", 10)
 let #(_, password, _) = my_tuple
 ```
@@ -457,7 +457,7 @@ list = [2, 3, 4]
 
 Gleam has a `cons` operator that works for lists destructuring and pattern matching. In Gleam lists are immutable so adding and removing elements from the start of a list is highly efficient.
 
-```rust
+```gleam
 let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
@@ -485,7 +485,7 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 
 #### Gleam
 
-```rust
+```gleam
 import gleam/map
 
 map.from_list([#("key1", "value1"), #("key2", "value2")])
@@ -565,7 +565,7 @@ match point:
 
 The case operator is a top level construct in Gleam:
 
-```rust
+```gleam
 case some_number {
   0 -> "Zero"
   1 -> "One"
@@ -576,7 +576,7 @@ case some_number {
 
 The case operator especially coupled with destructuring to provide native pattern matching:
 
-```rust
+```gleam
 case xs {
   [] -> "This list is empty"
   [a] -> "This list has 1 element"
@@ -596,7 +596,7 @@ case xs {
 
 and disjoint union matching:
 
-```rust
+```gleam
 case number {
   2 | 4 | 6 | 8 -> "This is an even number"
   1 | 3 | 5 | 7 -> "This is an odd number"
@@ -644,7 +644,7 @@ A Result is either:
 
 Handling errors actually means to match the return value against those two scenarios, using a case for instance:
 
-```rust
+```gleam
 case parse_int("123") {
   Error(e) -> io.println("That wasn't an Int")
   Ok(i) -> io.println("We parsed the Int")
@@ -656,7 +656,7 @@ In order to simplify this construct, we can use the `try` keyword that will:
 - bind a value to the providing name if Ok(Something) is matched
 - **interrupt the flow** and return `Error(Something)`
 
-```rust
+```gleam
 let a_number = "1"
 let an_error = Error("ouch")
 let another_number = "3"
@@ -689,7 +689,7 @@ tensor: Vector = [1.0, 2.0, 3.0]
 
 The `type` keyword can be used to create aliases
 
-```rust
+```gleam
 pub type Headers =
   List(#(String, String))
 ```
@@ -742,7 +742,7 @@ person.name = "John" # error
 
 Gleam's custom types can be used in much the same way that structs are used in Elixir. At runtime, they have a tuple representation and are compatible with Erlang records.
 
-```rust
+```gleam
 type Person {
   Person(name: String, age: Int)
 }
@@ -770,7 +770,7 @@ OptionalString = Union[str, None]
 
 #### Gleam
 
-```rust
+```gleam
 type IntOrFloat {
   AnInt(Int)
   AFloat(Float)
@@ -812,7 +812,7 @@ class OnlyCreatable(object):
 
 #### Gleam
 
-```rust
+```gleam
 pub opaque type Identifier {
   Identifier(Int)
 }
@@ -832,14 +832,14 @@ There is no special syntax to define modules as files are modules in Python
 
 Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
 
-```rust
+```gleam
 // in file foo.gleam
 pub fn identity(x) {
   x
 }
 ```
 
-```rust
+```gleam
 // in file main.gleam
 import foo // if foo was in a folder called `lib` the import would be `lib/foo`
 pub fn main() {
@@ -865,7 +865,7 @@ Imports are relative to the root `src` folder.
 
 Modules in the same directory will need to reference the entire path from `src` for the target module, even if the target module is in the same folder.
 
-```rust
+```gleam
 // inside src/nasa/moon_base.gleam
 // imports src/nasa/rocket_ship.gleam
 import nasa/rocket_ship
@@ -885,7 +885,7 @@ import unix.cat as kitty
 
 #### Gleam
 
-```rust
+```gleam
 import unix/cat
 import animal/cat as kitty
 ```
@@ -900,7 +900,7 @@ from animal.cat import Cat, stroke
 
 #### Gleam
 
-```rust
+```gleam
 import animal/cat.{Cat, stroke}
 
 pub fn main() {

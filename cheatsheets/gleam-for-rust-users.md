@@ -60,13 +60,13 @@ const answer: u64 = 42;
 
 In Gleam comments are written with a `//` prefix.
 
-```rust
+```gleam
 // Hello, Joe!
 ```
 
 Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
 
-```rust
+```gleam
 //// This module is very important.
 
 /// The answer to life, the universe, and everything.
@@ -87,7 +87,7 @@ let size = 1;
 
 #### Gleam
 
-```rust
+```gleam
 let size = 50
 let size = size + 100
 let size = 1
@@ -111,7 +111,7 @@ let [y] = "Hello"; // compile error, type mismatch
 
 In Gleam, `let` and `=` can also be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
 
-```rust
+```gleam
 let [x] = [1]
 assert 2 = x // runtime error
 assert [y] = "Hello" // compile error, type mismatch
@@ -130,7 +130,7 @@ let other_list = [1, 2, 3];
 
 #### Gleam
 
-```rust
+```gleam
 let some_list: List(Int) = [1, 2, 3]
 let other_list = [1, 2, 3]
 ```
@@ -152,7 +152,7 @@ mul(1, 2);
 
 Gleam's functions are declared using a syntax similar to Rust's. Anonymous functions are a bit different from Rust, using the `fn` keyword again.
 
-```rust
+```gleam
 pub fn sum(x, y) {
   x + y
 }
@@ -181,7 +181,7 @@ fn mul(x: u64, y: u64) -> u64 {
 
 #### Gleam
 
-```rust
+```gleam
 // this is public
 pub fn sum(x, y) {
   x + y
@@ -213,7 +213,7 @@ pub fn mul(x: u64, y: u64) -> u64 {
 
 Functions can **optionally** have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
 
-```rust
+```gleam
 pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
@@ -248,7 +248,7 @@ fn main() {
 
 #### Gleam
 
-```rust
+```gleam
 fn identity(x) {
   x
 }
@@ -339,7 +339,7 @@ fn main() {
 
 In Gleam constants can be created using the `const` keyword, and can be optionally given a type annotation.
 
-```rust
+```gleam
 const the_answer = 42
 
 pub fn main() {
@@ -380,7 +380,7 @@ let y = x * (x + 10); // parenthesis are used to change arithmetic operations or
 
 In Gleam braces `{` `}` are used to group both expressions and arithmetic operations.
 
-```rust
+```gleam
 let x = {
   print(1)
   2
@@ -402,7 +402,7 @@ In both Rust and Gleam all strings are UTF-8 encoded binaries.
 
 #### Gleam
 
-```rust
+```gleam
 "Hellø, world!"
 ```
 
@@ -419,7 +419,7 @@ let (_, password, _) = my_tuple;
 
 Tuples are very useful in Gleam as they're the only collection data type that allows mixed types in the collection.
 
-```rust
+```gleam
 let my_tuple = #("username", "password", 10)
 let #(_, password, _) = my_tuple
 ```
@@ -441,7 +441,7 @@ let [0, second_element, ..] = list; // Compile error!
 
 The `cons` operator works the same way both for pattern matching and for appending elements to the head of a list.
 
-```rust
+```gleam
 let list = [1, 2, 3]
 let list = [0, ..list]
 let [0, second_element, ..] = list
@@ -473,7 +473,7 @@ let name = person.name;
 
 Gleam's custom types can be declared using the `type` keyword. At runtime, they have a tuple representation and are compatible with Erlang records.
 
-```rust
+```gleam
 type Person {
   Person(name: String, age: Int)
 }
@@ -512,7 +512,7 @@ In Gleam, each file is a module, named by the file name (and its directory path)
 
 Gleam uses the `import` keyword to import modules, and the dot `.` operator to access properties and functions inside.
 
-```rust
+```gleam
 // in file foo.gleam
 pub fn identity(x) {
   x

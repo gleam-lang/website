@@ -19,7 +19,7 @@ To write a test add a function to a module in the `test`, giving the function
 a name that ends in `_test`. The `gleam/should` module can be used to make
 assertions about the behaviour of our code.
 
-```rust
+```gleam
 import gleam/should
 import my_fantastic_library
 
@@ -77,7 +77,7 @@ Running escriptize creates an executable file:
 
 An example main function signature would look like this:
 
-```rust
+```gleam
 import gleam/list
 
 pub external type CharList

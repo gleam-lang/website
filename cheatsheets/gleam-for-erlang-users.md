@@ -58,7 +58,7 @@ Size2 = 1 % Runtime error! Size2 is 150, not 1
 In Gleam variables are written with a lowercase letter, and names can be
 reassigned.
 
-```rust
+```gleam
 let size = 50
 let size = size + 100
 let size = 1 // size now refers to 1
@@ -80,7 +80,7 @@ used to assert that a given term has a specific shape.
 In Gleam the `assert` keyword is used to make assertions using partial
 patterns.
 
-```rust
+```gleam
 let [element] = some_list // Compile error! Partial pattern
 assert [element] = some_list
 ```
@@ -95,7 +95,7 @@ In Erlang it's not possible to give type annotations to variables.
 
 In Gleam type annotations can optionally be given when binding variables.
 
-```rust
+```gleam
 let some_list: List(Int) = [1, 2, 3]
 ```
 
@@ -118,7 +118,7 @@ my_function(X) ->
 ```
 
 #### Gleam
-```rust
+```gleam
 fn my_function(x) {
   x + 1
 }
@@ -138,7 +138,7 @@ my_function(X) ->
 ```
 
 #### Gleam
-```rust
+```gleam
 pub fn my_function(x) {
   x + 1
 }
@@ -156,7 +156,7 @@ my_function(X) ->
 ```
 
 #### Gleam
-```rust
+```gleam
 fn my_function(x: Int) -> Int {
   x + 1
 }
@@ -184,7 +184,7 @@ identify(_) ->
 ```
 
 #### Gleam
-```rust
+```gleam
 fn identify(x) {
   case x {
     1 -> "one"
@@ -218,7 +218,7 @@ main() ->
 ```
 
 #### Gleam
-```rust
+```gleam
 fn identity(x) {
   x
 }
@@ -242,7 +242,7 @@ without adding parenthesis around the function call.
 
 #### Gleam
 
-```rust
+```gleam
 some_function(0)(1)(2)(3)
 ```
 
@@ -278,7 +278,7 @@ In Gleam arguments can be given a label as well as an internal name. As with
 Erlang the name used at the call-site does not have to match the name used
 for the variable inside the function.
 
-```rust
+```gleam
 pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
@@ -306,14 +306,14 @@ In Erlang comments are written with a `%` prefix.
 
 In Gleam comments are written with a `//` prefix.
 
-```rust
+```gleam
 // Hello, Joe!
 ```
 
 Comments starting with `///` are used to document the following statement,
 comments starting with `////` are used to document the current module.
 
-```rust
+```gleam
 //// This module is very important.
 
 /// The answer to life, the universe, and everything.
@@ -363,7 +363,7 @@ ledger:from_list(X2).
 ```
 
 #### Gleam
-```rust
+```gleam
 input
 |> trim
 |> csv.parse(",")
@@ -389,7 +389,7 @@ main() ->
 
 In Gleam constants can be used to achieve the same.
 
-```rust
+```gleam
 const the_answer = 42
 
 fn main() {
@@ -399,7 +399,7 @@ fn main() {
 
 Gleam constants can be referenced from other modules.
 
-```rust
+```gleam
 import other_module
 
 fn main() {
@@ -427,7 +427,7 @@ main() ->
 
 In Gleam braces are used to group expressions.
 
-```rust
+```gleam
 fn main() {
   let x = {
     print(1)
@@ -452,7 +452,7 @@ All strings in Gleam are UTF-8 encoded binaries.
 
 #### Gleam
 
-```rust
+```gleam
 "Hellø, world!"
 ```
 
@@ -470,7 +470,7 @@ Tuple = {"username", "password", 10}.
 
 #### Gleam
 
-```rust
+```gleam
 let my_tuple = #("username", "password", 10)
 let #(_, password, _) = my_tuple
 ```
@@ -494,7 +494,7 @@ List1 = [1 | List0].
 
 #### Gleam
 
-```rust
+```gleam
 let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
@@ -525,7 +525,7 @@ Var = my_new_var.
 
 #### Gleam
 
-```rust
+```gleam
 type MyNewType {
   MyNewVar
 }
@@ -554,7 +554,7 @@ not used much in Gleam, custom types are more common.
 
 #### Gleam
 
-```rust
+```gleam
 import gleam/map
 
 
@@ -586,7 +586,7 @@ TODO
 
 #### Gleam
 
-```rust
+```gleam
 pub type Scores =
   List(Int)
 ```
@@ -617,12 +617,12 @@ Name = #Person.name.
 
 #### Gleam
 
-```rust
+```gleam
 type Person {
   Person(age: Int, name: String)
 }
 ```
-```rust
+```gleam
 let person = Person(name: "name", age: 35)
 let name = person.name
 ```
@@ -647,7 +647,7 @@ int_or_float(X) ->
 
 #### Gleam
 
-```rust
+```gleam
 type IntOrFloat {
   AnInt(Int)
   AFloat(Float)
@@ -683,7 +683,7 @@ get_id() ->
 ```
 
 #### Gleam
-```rust
+```gleam
 pub opaque type Identifier {
   Identifier(Int)
 }
