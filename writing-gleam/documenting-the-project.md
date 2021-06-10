@@ -12,7 +12,7 @@ To document modules and functions Gleam supports two special comments, `///`
 which is for documenting types and functions, and `////` which is for
 documenting the module as a whole.
 
-```rust
+```gleam
 //// This module contains some useful functions for working
 //// with numbers.
 ////

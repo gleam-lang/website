@@ -54,13 +54,13 @@ In Elixir comments are written with a `#` prefix.
 
 In Gleam comments are written with a `//` prefix.
 
-```rust
+```gleam
 // Hello, Joe!
 ```
 
 Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
 
-```rust
+```gleam
 //// This module is very important.
 
 /// The answer to life, the universe, and everything.
@@ -83,7 +83,7 @@ size = 1
 
 Gleam has the `let` keyword before its variable names.
 
-```rust
+```gleam
 let size = 50
 let size = size + 100
 let size = 1
@@ -103,7 +103,7 @@ let size = 1
 
 In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
 
-```rust
+```gleam
 let [x] = [1]
 assert 2 = x // runtime error
 assert [y] = "Hello" // compile error, type mismatch
@@ -123,7 +123,7 @@ some_list = [1, 2, 3]
 
 In Gleam type annotations can optionally be given when binding variables.
 
-```rust
+```gleam
 let some_list: List(Int) = [1, 2, 3]
 ```
 
@@ -149,7 +149,7 @@ mul.(1, 2)
 
 Gleam's functions are declared using a syntax similar to Rust or JavaScript. Gleam's anonymous functions have a similar syntax and don't need a `.` when called.
 
-```rust
+```gleam
 pub fn sum(x, y) {
   x + y
 }
@@ -180,7 +180,7 @@ end
 
 In Gleam functions are private by default and need the `pub` keyword to be public.
 
-```rust
+```gleam
 // this is public
 pub fn sum(x, y) {
   x + y
@@ -210,7 +210,7 @@ def mul(x, y), do: x * y
 
 Functions can **optionally** have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
 
-```rust
+```gleam
 pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
@@ -235,7 +235,7 @@ def zero?(x), do: false
 
 Gleam functions can have only one function head. Use a case expression to pattern match on function arguments.
 
-```rust
+```gleam
 pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
   case x {
     0 -> true
@@ -268,7 +268,7 @@ end
 ```
 
 #### Gleam
-```rust
+```gleam
 fn identity(x) {
   x
 }
@@ -296,7 +296,7 @@ mod_function(3, 4)
 
 #### Gleam
 
-```rust
+```gleam
 let my_function = fn(x, y) { x + y }
 anon_function(1, 2)
 mod_function(3, 4)
@@ -339,7 +339,7 @@ In Gleam arguments can be given a label as well as an internal name. As with
 Elixir the name used at the call-site does not have to match the name used
 for the variable inside the function.
 
-```rust
+```gleam
 pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
@@ -401,7 +401,7 @@ end
 
 In Gleam constants can be created using the `const` keyword.
 
-```rust
+```gleam
 const the_answer = 42
 
 pub fn main() {
@@ -411,12 +411,12 @@ pub fn main() {
 
 Additionally, Gleam constants can be referenced from other modules.
 
-```rust
+```gleam
 // in file other_module.gleam
 pub const the_answer: Int = 42
 ```
 
-```rust
+```gleam
 import other_module
 
 fn main() {
@@ -448,7 +448,7 @@ end
 
 In Gleam braces `{` `}` are used to group expressions.
 
-```rust
+```gleam
 pub fn main() {
   let x = {
     print(1)
@@ -474,7 +474,7 @@ In both Elixir and Gleam all strings are UTF-8 encoded binaries.
 
 #### Gleam
 
-```rust
+```gleam
 "Hellø, world!"
 ```
 
@@ -491,7 +491,7 @@ my_tuple = {"username", "password", 10}
 
 #### Gleam
 
-```rust
+```gleam
 let my_tuple = #("username", "password", 10)
 let #(_, password, _) = my_tuple
 ```
@@ -513,7 +513,7 @@ list = [1 | list]
 
 #### Gleam
 
-```rust
+```gleam
 let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
@@ -540,7 +540,7 @@ var = :my_new_var
 
 #### Gleam
 
-```rust
+```gleam
 type MyNewType {
   MyNewVar
 }
@@ -566,7 +566,7 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 
 #### Gleam
 
-```rust
+```gleam
 import gleam/map
 
 map.from_list([#("key1", "value1"), #("key2", "value2")])
@@ -606,7 +606,7 @@ require Person
 
 Gleam's custom types can be used in much the same way that structs are used in Elixir. At runtime, they have a tuple representation and are compatible with Erlang records.
 
-```rust
+```gleam
 type Person {
   Person(name: String, age: Int)
 }
@@ -639,14 +639,14 @@ end
 
 Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
 
-```rust
+```gleam
 // in file foo.gleam
 pub fn identity(x) {
   x
 }
 ```
 
-```rust
+```gleam
 // in file main.gleam
 import foo // if foo was in a folder called `lib` the import would be `lib/foo`
 pub fn main() {

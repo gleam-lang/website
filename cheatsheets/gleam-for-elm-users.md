@@ -76,13 +76,13 @@ length xs =
 
 In Gleam comments are written with a `//` prefix.
 
-```rust
+```gleam
 // Hello, Joe!
 ```
 
 Comments starting with `///` are used to document the following function, constant, or type definition. Comments starting with `////` are used to document the current module.
 
-```rust
+```gleam
 //// This module is very important.
 
 /// The answer to life, the universe, and everything.
@@ -110,7 +110,7 @@ in
 
 Gleam has the `let` keyword before its variable names. You can re-assign variables and you can shadow variables from other scopes. This does not mutate the previously assigned value.
 
-```rust
+```gleam
 let size = 50
 let size = size + 100
 let size = 1
@@ -133,7 +133,7 @@ someList = [1, 2, 3]
 
 In Gleam type annotations can optionally be given when binding variables.
 
-```rust
+```gleam
 let some_list: List(Int) = [1, 2, 3]
 ```
 
@@ -155,7 +155,7 @@ theAnswer =
 
 In Gleam constants can be created using the `const` keyword.
 
-```rust
+```gleam
 const the_answer = 42
 
 pub fn main() {
@@ -165,12 +165,12 @@ pub fn main() {
 
 Gleam constants can be referenced from other modules.
 
-```rust
+```gleam
 // in file other_module.gleam
 pub const the_answer: Int = 42
 ```
 
-```rust
+```gleam
 import other_module
 
 fn main() {
@@ -199,7 +199,7 @@ mul 3 2
 
 Gleam's functions are declared using a syntax similar to Rust or JavaScript. Gleam's anonymous functions are declared using the `fn` keyword.
 
-```rust
+```gleam
 pub fn sum(x, y) {
   x + y
 }
@@ -227,7 +227,7 @@ mul x y = x * y
 
 All the same things are true of Gleam though the type annotations go inline in the function declaration, rather than above it.
 
-```rust
+```gleam
 pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
@@ -264,7 +264,7 @@ replace { defaultOptions | inside = "A,B,C,D" }
 
 In Gleam arguments can be given a label as well as an internal name.
 
-```rust
+```gleam
 pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
@@ -295,14 +295,14 @@ identity x =
 
 A Gleam file is a module, named by the file name (and its directory path). There is no special syntax to create a module. There can be only one module in a file.
 
-```rust
+```gleam
 // in file foo.gleam
 pub fn identity(x) {
   x
 }
 ```
 
-```rust
+```gleam
 // in file main.gleam
 import foo // if foo was in a folder called `lib` the import would be `lib/foo`
 pub fn main() {
@@ -332,7 +332,7 @@ mul x y =
 
 In Gleam, constants & functions are private by default and need the `pub` keyword to be public.
 
-```rust
+```gleam
 // this is public
 pub fn sum(x, y) {
   x + y
@@ -369,7 +369,7 @@ end
 
 In Gleam braces `{` `}` are used to group expressions.
 
-```rust
+```gleam
 pub fn main() {
   let x = {
     print(1)
@@ -396,7 +396,7 @@ Operators in Gleam as not generic over `Int` and `Float` so there are separate s
 
 Additionally, underscores can be added to both integers and floats for clarity.
 
-```rust
+```gleam
 const oneMillion = 1_000_000
 const twoMillion = 2_000_000.0
 ```
@@ -428,13 +428,13 @@ holidayWishes =
 
 #### Gleam
 
-```rust
+```gleam
 "Hellø, world!"
 ```
 
 Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string/#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string/#concat) in the standard library.
 
-```rust
+```gleam
 birthdayWishes = string.append(to: "Happy Birthday ", suffix: person.name)
 
 holidayWishes = string.concat([ "Happy ", holiday.name, person.name ])
@@ -457,7 +457,7 @@ myTuple = ("username", "password", 10)
 
 There is no limit to the number of entries in Gleam tuples, but records are still recommended as giving names to fields adds clarity.
 
-```rust
+```gleam
 let my_tuple = #("username", "password", 10)
 let #(_, password, _) = my_tuple
 ```
@@ -502,7 +502,7 @@ let person = Person(name: "Alice", age: 43)
 
 Record fields can be accessed with a dot syntax:
 
-```rust
+```gleam
 greeting = String.concat(["Hello, ",  person.name, "!"])
 ```
 
@@ -524,7 +524,7 @@ yetAnotherList = "hello" :: list // compile error, type mismatch
 
 Gleam also has a built-in syntax for lists and its own spread operator (`..`) for adding elements to the front of a list.
 
-```rust
+```gleam
 let list = [2, 3, 4]
 let list = [1, ..list]
 let another_list = [1.0, ..list] // compile error, type mismatch
@@ -551,7 +551,7 @@ Dict.fromList [ ("key1", "value1"), ("key2", 2) ] -- Compile error
 
 #### Gleam
 
-```rust
+```gleam
 import gleam/map
 
 map.from_list([#("key1", "value1"), #("key2", "value2")])
@@ -610,7 +610,7 @@ name = person.name
 
 Gleam's custom types can be used in much the same way. At runtime, they have a tuple representation and are compatible with Erlang records.
 
-```rust
+```gleam
 type Person {
   Person(name: String, age: Int)
 }
@@ -651,7 +651,7 @@ A custom type with a single entry can be used to help create opaque data types f
 
 #### Gleam
 
-```rust
+```gleam
 type User {
   LoggedIn(name: String)  // A logged in user with a name
   Guest                   // A guest user with no details
@@ -660,7 +660,7 @@ type User {
 
 Like in Elm, you must use a case-expression to interact with the contents of a value that uses a custom type.
 
-```rust
+```gleam
 fn get_name(user) {
   case user {
     LoggedIn(name) -> name
@@ -692,7 +692,7 @@ type Maybe a
 
 In Gleam, `Option` is defined as:
 
-```rust
+```gleam
 pub type Option(a) {
   Some(a)
   None
@@ -721,7 +721,7 @@ In Gleam, the `Result` type is defined in the compiler in order to support helpf
 
 If it were defined in Gleam, it would look like this:
 
-```rust
+```gleam
 pub type Result(value, reason) {
   Ok(value)
   Error(reason)
@@ -751,7 +751,7 @@ description =
 
 Gleam has no built-in if-expression syntax and instead relies on matching on boolean values in case-expressions to provide this functionality:
 
-```rust
+```gleam
 let description =
   case value {
     True -> "It's true!"
@@ -780,7 +780,7 @@ getName user =
 
 #### Gleam
 
-```rust
+```gleam
 fn get_name(user) {
   case user {
     LoggedIn(name) -> name
@@ -791,7 +791,7 @@ fn get_name(user) {
 
 Pattern matching on multiple values at the same time is supported:
 
-```rust
+```gleam
 case x, y {
   1, 1 -> "both are 1"
   1, _ -> "x is 1"
@@ -803,7 +803,7 @@ case x, y {
 Guard expressions can also be used to limit when certain patterns are matched:
 
 
-```rust
+```gleam
 case xs {
   [a, b, c] if a == b && b != c -> "ok"
   _other -> "ko"
@@ -838,7 +838,7 @@ Functions that call Erlang code directly use the `external` keyword and use stri
 It is possible to call functions provided by other languages on the Erlang Virtual Machine but only via the Erlang name that those functions end up with.
 
 
-```rust
+```gleam
 pub external fn random_float() -> Float = "rand" "uniform"
 
 // Elixir modules start with `Elixir.`
@@ -902,7 +902,7 @@ type Alignment
 
 #### Gleam
 
-```rust
+```gleam
 type Alignment {
   Left
   Centre

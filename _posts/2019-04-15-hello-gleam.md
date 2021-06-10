@@ -16,7 +16,7 @@ OCaml, ReasonML, or Elm then I hope you will enjoy Gleam.
 
 It looks something like this:
 
-```rust
+```gleam
 pub enum User =
   | LoggedIn(String)
   | Guest
