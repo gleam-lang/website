@@ -101,13 +101,13 @@ list_sponsors: true
 
     The classic example program that prints "Hello, world!" to the console.
 
-{% highlight gleam %}
+  <pre><code class="language-gleam">import gleam/io
 import gleam/io
 
 pub fn main() {
   io.println("Hello, world!")
 }
-{% endhighlight %}
+</code></pre>
   </details>
 
   <details class="openable-example">
@@ -116,7 +116,7 @@ pub fn main() {
     This little web server responds with the text "Hello, world!" to any
     HTTP request made to it.
 
-{% highlight gleam %}
+  <pre><code class="language-gleam">import gleam/io
 import gleam/bit_builder
 import gleam/http/elli
 import gleam/http
@@ -131,7 +131,7 @@ pub fn my_service(_req) {
 pub fn start() {
   elli.start(my_service, on_port: 3000)
 }
-{% endhighlight %}
+</code></pre>
 
     The web server created by this code is fully asynchronous and
     multi-threaded, seamlessly making use of all the cores of your computer
@@ -146,8 +146,7 @@ pub fn start() {
     Here's "Hello, World!" being printed by a thousand processes
     concurrently.
 
-{% highlight gleam %}
-import gleam/io
+    <pre><code class="language-gleam">import gleam/io
 import gleam/int
 import gleam/list
 import gleam/string
@@ -164,7 +163,7 @@ fn start_process(i) {
     io.println(message)
   })
 }
-{% endhighlight %}
+</code></pre>
 
     In addition to this low-level process abstraction Gleam has helpful
     libraries full of building blocks for writing type safe and fault

@@ -43,14 +43,11 @@ In Python, comments are written with a `#` prefix.
 # Hello, Joe!
 ```
 
-A docstring (matching \`\`\`) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
+A docstring (matching """) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
 ````py
-
 def a_method():
-    ```
-    some documentation for this method
-    ```
+    """some documentation for this method"""
     pass
 ````
 

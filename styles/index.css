@@ -172,8 +172,7 @@ details summary {
   user-select: none;
 }
 
-div.highlight,
-figure.highlight {
+code.hljs {
   margin: var(--l-space) var(--space);
   padding: calc(var(--space) * 1.5);
   border: 1px solid white;

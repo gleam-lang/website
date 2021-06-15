@@ -29,3 +29,8 @@ defaults:
       type: posts   # limit to posts
     values:
       layout: post
+
+# Syntax highlighting is handled by highlight.js
+kramdown:
+  syntax_highlighter_opts:
+    disable: true
