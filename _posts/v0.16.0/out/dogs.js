@@ -11,7 +11,7 @@ export function main() {
 
 function new_dog(img) {
   return then(
-    then(http_fetch(url), get_json_body),
+    then(fetch(url), get_json_body),
     (json) => {
       set(img, "src", get(json, "message"));
       return resolve_promise(undefined);
@@ -31,8 +31,8 @@ function set(on, property, to) {
   return Reflect.set(on, property, to)
 }
 
-function http_fetch(arg0) {
-  return fetch(arg0)
+function fetch(arg0) {
+  return globalThis.fetch(arg0)
 }
 
 function get_json_body(arg0) {

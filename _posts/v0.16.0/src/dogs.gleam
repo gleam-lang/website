@@ -8,7 +8,7 @@ pub fn main() {
 }
 
 fn new_dog(img) {
-  http_fetch(url)
+  fetch(url)
   |> then(get_json_body)
   |> then(fn(json) {
     set(on: img, property: "src", to: get(json, "message"))
@@ -33,7 +33,7 @@ external fn get(from: Json, property: String) -> Json =
 external fn set(on: Element, property: String, to: anything) -> Bool =
   "" "Reflect.set"
 
-external fn http_fetch(String) -> Promise(Response) =
+external fn fetch(String) -> Promise(Response) =
   "" "fetch"
 
 external fn get_json_body(Response) -> Promise(Json) =
