@@ -240,6 +240,18 @@ let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
+<h2 id="named-accessors"><a class="header" href="#named-accessors">Named accessors</a></h2>
+<p>If a custom type has only one variant and named fields they can be accessed
+using <code>.field_name</code>.</p>
+<p>For example using the <code>Cat</code> type defined earlier.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let cat = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
+cat.name // This returns &quot;Nubi&quot;
+cat.cuteness // This returns 2001
+<span class="boring">}
+</span></code></pre></pre>
 <h2 id="opaque-types"><a class="header" href="#opaque-types">Opaque types</a></h2>
 <p>At times it may be useful to create a type and make the constructors and
 fields private so that users of this type can only use the type through

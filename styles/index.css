@@ -6,6 +6,7 @@
 :root {
   --color-charcoal: #282828;
   --color-pink: #ffaff3;
+  --color-pink-40-darker: #99498d;
   --color-light-grey: #f5f5f5;
   --space: 8px;
   --l-space: calc(var(--space) * 3);
@@ -26,17 +27,26 @@ figure {
   margin: 0;
 }
 
-code, pre {
-  font-family: 'Ubuntu Mono', monospace;
+code,
+pre {
+  font-family: "Ubuntu Mono", monospace;
 }
 
 * {
   box-sizing: border-box;
 }
 
+summary,
 a:visited,
 a {
   color: var(--color-charcoal);
+  text-decoration: underline;
+  text-decoration-color: var(--color-pink);
+  text-decoration-thickness: 2px;
+}
+
+hr {
+  border-color: var(--color-light-grey);
 }
 
 h1:first-child,
@@ -243,7 +253,6 @@ li code {
   font-size: 0.9rem;
 }
 
-
 .post img {
   box-shadow: var(--slight-shadow);
   max-width: 100%;
@@ -252,22 +261,31 @@ li code {
   display: block;
 }
 
+.post-date {
+  float: right;
+}
+
+.post li {
+  padding: 2px 0;
+}
+
 table {
   border-collapse: collapse;
   box-shadow: var(--slight-shadow);
 }
 
-th, td {
+th,
+td {
   padding: 0.3rem 0.6rem;
 }
 
 th {
   text-align: left;
-  background-color: var(--color-light-grey)
+  background-color: var(--color-light-grey);
 }
 
 tr:nth-child(even) {
-  background-color: var(--color-light-grey)
+  background-color: var(--color-light-grey);
 }
 
 .button-light {
