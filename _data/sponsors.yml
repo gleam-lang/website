@@ -1,4 +1,7 @@
 first_tier:
+- name: "Strand Communications"
+  url: "https://github.com/strandcom"
+  avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
 - name: "Gitpod"
   url: "https://github.com/gitpod-io"
   avatar: "https://avatars.githubusercontent.com/u/37021919?v=4"
