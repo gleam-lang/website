@@ -115,6 +115,30 @@ cat.name // This returns "Nubi"
 cat.cuteness // This returns 2001
 ```
 
+## Generics
+
+Custom types can be be parameterised with other types, making their contents
+variable.
+
+For example, this `Box` type is a simple record that holds a single value.
+
+```gleam
+pub type Box(inner_type) {
+  Box(inner: inner_type)
+}
+```
+
+The type of the field `inner` is `inner_type`, which is a parameter of the `Box`
+type. If it holds an int the box's type is `Box(Int)`, if it holds a string the
+box's type is `Box(String)`.
+
+```gleam
+pub fn main() {
+  let a = Box(123) // type is Box(Int)
+  let b = Box("G") // type is Box(String)
+}
+```
+
 ## Opaque types
 
 At times it may be useful to create a type and make the constructors and

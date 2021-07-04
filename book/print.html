@@ -4,49 +4,30 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>The Gleam Book</title>
-        
         <meta name="robots" content="noindex" />
-        
-        
-
-
         <!-- Custom HTML head -->
         
-
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="favicon.svg">
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        
         <link rel="stylesheet" href="css/print.css" media="print">
-        
-
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
-
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -122,33 +103,26 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">The Gleam Book</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                         <a href="https://github.com/gleam-lang/website" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -156,8 +130,6 @@
                         </ul>
                     </div>
                 </div>
-                
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -178,7 +150,7 @@ to get you started with Gleam.</p>
 This is useful for programmers with Erlang or Elixir experience who wish to
 use Gleam alongside these languages. If you are using Gleam alone this
 information can be safely ignored.</p>
-<h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
 <p>Gleam allows you to write comments in your code.</p>
 <p>Here’s a simple comment:</p>
 <pre><code class="language-gleam">// Hello, world!
@@ -201,7 +173,7 @@ line. For comments that extend beyond a single line, you’ll need to include
   x * y 
 }
 </code></pre>
-<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
 <p>In Gleam Strings can be written as text surrounded by double quotes.</p>
 <pre><code class="language-gleam">&quot;Hello, Gleam!&quot;
 </code></pre>
@@ -233,7 +205,7 @@ must be escaped by placing a backslash (<code>\</code>) character before it.</p>
 // A Decorative border /\/\/\/\
 &quot;/\\/\\/\\/\\&quot;
 </code></pre>
-<h1 id="bool"><a class="header" href="#bool">Bool</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bool"><a class="header" href="#bool">Bool</a></h1>
 <p>A Bool can be either <code>True</code> or <code>False</code>.</p>
 <p>Gleam defines a handful of operators that work with Bools.</p>
 <pre><code class="language-gleam">False &amp;&amp; False // =&gt; False
@@ -266,7 +238,7 @@ False
 true.
 false.
 </code></pre>
-<h1 id="int-and-float"><a class="header" href="#int-and-float">Int and Float</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="int-and-float"><a class="header" href="#int-and-float">Int and Float</a></h1>
 <p>Gleam's main number types are Int and Float.</p>
 <h2 id="ints"><a class="header" href="#ints">Ints</a></h2>
 <p>Ints are &quot;whole&quot; numbers.</p>
@@ -314,7 +286,7 @@ false.
 <p>Underscores can also be added to Floats for clarity.</p>
 <pre><code class="language-gleam">1_000_000.0 // One million
 </code></pre>
-<h1 id="let-bindings"><a class="header" href="#let-bindings">Let bindings</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="let-bindings"><a class="header" href="#let-bindings">Let bindings</a></h1>
 <p>A value can be given a name using <code>let</code>. Names can be reused by later let
 bindings, but the values contained are <em>immutable</em>, meaning the values
 themselves cannot be changed.</p>
@@ -325,7 +297,7 @@ let x = 2
 x  // =&gt; 2
 y  // =&gt; 1
 </code></pre>
-<h1 id="expression-blocks"><a class="header" href="#expression-blocks">Expression blocks</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="expression-blocks"><a class="header" href="#expression-blocks">Expression blocks</a></h1>
 <p>Every block in gleam is an expression. All expressions in the block are
 executed, and the result of the last expression is returned.</p>
 <pre><code class="language-gleam">let value: Bool = {
@@ -338,7 +310,7 @@ executed, and the result of the last expression is returned.</p>
 of operations.</p>
 <pre><code class="language-gleam">let celsius = { fahrenheit - 32 } * 5 / 9
 </code></pre>
-<h1 id="list"><a class="header" href="#list">List</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="list"><a class="header" href="#list">List</a></h1>
 <p>Lists are ordered collections of values. They're one of the most common data
 structures in Gleam.</p>
 <p>Lists are <em>homogeneous</em>, meaning all the elements of a List must be of the
@@ -361,7 +333,7 @@ let y = [1, ..x]
 x  // =&gt; [2, 3]
 y  // =&gt; [1, 2, 3]
 </code></pre>
-<h1 id="tuple"><a class="header" href="#tuple">Tuple</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tuple"><a class="header" href="#tuple">Tuple</a></h1>
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
@@ -377,7 +349,7 @@ accessor syntax.</p>
 let first = my_tuple.0   // &quot;one&quot;
 let seccond = my_tuple.1 // &quot;two&quot;
 </code></pre>
-<h1 id="case"><a class="header" href="#case">Case</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="case"><a class="header" href="#case">Case</a></h1>
 <p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
 allows us to say &quot;if the data has this shape then do that&quot;, which we call
 <em>pattern matching</em>.</p>
@@ -484,7 +456,7 @@ all patterns, and the variables must have the same type in all the patterns.</p>
   _ -&gt; 0
 }
 </code></pre>
-<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 <h2 id="named-functions"><a class="header" href="#named-functions">Named functions</a></h2>
 <p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
 <pre><code class="language-gleam">pub fn add(x: Int, y: Int) -&gt; Int {
@@ -618,7 +590,7 @@ pub fn run() {
 as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
 <p>If not it falls back to calling the result of the right hand side as a function
 , e.g. <code>b(1, 2)(a)</code>.</p>
-<h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
@@ -722,7 +694,7 @@ pub fn go() -&gt; gleam.Result(Int) {
 <li><code>Ok</code></li>
 <li><code>True</code></li>
 </ul>
-<h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
 <p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
 methods.</p>
@@ -799,14 +771,26 @@ p // =&gt; 50
 <p>If a custom type has only one variant and named fields they can be accessed
 using <code>.field_name</code>.</p>
 <p>For example using the <code>Cat</code> type defined earlier.</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let cat = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
+<pre><code class="language-gleam">let cat = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
 cat.name // This returns &quot;Nubi&quot;
 cat.cuteness // This returns 2001
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
+<h2 id="generics"><a class="header" href="#generics">Generics</a></h2>
+<p>Custom types can be be parameterised with other types, making their contents
+variable.</p>
+<p>For example, this <code>Box</code> type is a simple record that holds a single value.</p>
+<pre><code class="language-gleam">pub type Box(inner_type) {
+  Box(inner: inner_type)
+}
+</code></pre>
+<p>The type of the field <code>inner</code> is <code>inner_type</code>, which is a parameter of the <code>Box</code>
+type. If it holds an int the box's type is <code>Box(Int)</code>, if it holds a string the
+box's type is <code>Box(String)</code>.</p>
+<pre><code class="language-gleam">pub fn main() {
+  let a = Box(123) // type is Box(Int)
+  let b = Box(&quot;G&quot;) // type is Box(String)
+}
+</code></pre>
 <h2 id="opaque-types"><a class="header" href="#opaque-types">Opaque types</a></h2>
 <p>At times it may be useful to create a type and make the constructors and
 fields private so that users of this type can only use the type through
@@ -874,7 +858,7 @@ LoggedIn(&quot;Kim&quot;)
 guest,
 {logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
 </code></pre>
-<h1 id="resultvalue-error"><a class="header" href="#resultvalue-error"><code>Result(value, error)</code></a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="resultvalue-error"><a class="header" href="#resultvalue-error"><code>Result(value, error)</code></a></h1>
 <pre><code class="language-gleam">pub type Result(value, reason) {
   Ok(value)
   Error(reason)
@@ -914,7 +898,7 @@ match on it using <code>case</code> to determine whether we have an <code>Ok</co
 an <code>Error</code> result.</p>
 <p>The standard library <code>gleam/result</code> module contains helpful functions for
 working with the <code>Result</code> type, make good use of them!</p>
-<h1 id="try"><a class="header" href="#try">Try</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="try"><a class="header" href="#try">Try</a></h1>
 <p>In Gleam if a function can either succeed or fail then it normally will
 return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
 in an <code>Ok</code> record, and an error value is wrapped in an <code>Error</code> record.</p>
@@ -949,7 +933,7 @@ Ok(x + 1)
 Ok(x + 1)
 // -&gt; Error(&quot;failure&quot;)
 </code></pre>
-<h1 id="assert"><a class="header" href="#assert">Assert</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="assert"><a class="header" href="#assert">Assert</a></h1>
 <p>Some times we have a function that can technically fail, but in practice we
 don't expect it to happen. For example our program may start by opening a
 file, if we know that the file is always going to be possible to open, then we
@@ -982,7 +966,7 @@ handling strategy, and as an Erlang based language Gleam can also take
 advantage of this. To find out more about Erlang fault tolerance see the
 <a href="https://github.com/gleam-lang/otp">Gleam OTP project</a> and the <a href="https://learnyousomeerlang.com/supervisors">Learn You Some Erlang chapter on
 supervisors</a>.</p>
-<h1 id="todo"><a class="header" href="#todo">Todo</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="todo"><a class="header" href="#todo">Todo</a></h1>
 <p>Gleam's <code>todo</code> keyword is used to indicate that some code is not yet finished.</p>
 <p>It can be useful when designing a module, type checking functions and types
 but leaving the implementation of the functions until later.</p>
@@ -1017,7 +1001,7 @@ is needed if you are ever unsure.</p>
   )
 }
 </code></pre>
-<h1 id="constants"><a class="header" href="#constants">Constants</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="constants"><a class="header" href="#constants">Constants</a></h1>
 <p>Gleam's module constants provide a way to use a certain fixed value in
 multiple places in a Gleam project.</p>
 <pre><code class="language-gleam">pub const start_year = 2101
@@ -1053,7 +1037,7 @@ pub const size: Int = 100
 </code></pre>
 <p>These annotations serve as documentation or can be used to provide a more 
 specific type than the compiler would otherwise infer.</p>
-<h1 id="type-aliases"><a class="header" href="#type-aliases">Type aliases</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="type-aliases"><a class="header" href="#type-aliases">Type aliases</a></h1>
 <p>Type aliases are a way of creating a new name for an existing type. This is
 useful when the name of the type may be long and awkward to type repeatedly.</p>
 <p>Here we are giving the type <code>List(#(String, String))</code> the new name
@@ -1062,7 +1046,7 @@ multiple functions that return headers.</p>
 <pre><code class="language-gleam">pub type Headers =
   List(#(String, String))
 </code></pre>
-<h1 id="bit-strings"><a class="header" href="#bit-strings">Bit strings</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bit-strings"><a class="header" href="#bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
 Bit String. Bit Strings represent a sequence of 1s and 0s.</p>
 <p>Bit Strings are written literally with opening brackets <code>&lt;&lt;</code>, any number of bit
@@ -1162,7 +1146,7 @@ bytes depending on the codepoint size and data.</p>
 <p>Gleam inherits its Bit String syntax and handling from Erlang. You can find the
 Erlang documentation
 <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
-<h1 id="external-function"><a class="header" href="#external-function">External function</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="external-function"><a class="header" href="#external-function">External function</a></h1>
 <p>Gleam is just one of many languages on the Erlang virtual machine and at times
 we may want to use functions from these other languages in our Gleam programs.
 To enable this Gleam allows the importing of <em>external functions</em>, which may
@@ -1194,7 +1178,7 @@ called like so:</p>
 <pre><code class="language-gleam">any(in: my_list, satisfying: is_even)
 any(satisfying: is_even, in: my_list)
 </code></pre>
-<h1 id="external-type"><a class="header" href="#external-type">External type</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="external-type"><a class="header" href="#external-type">External type</a></h1>
 <p>In addition to importing external functions we can also import external types.
 Gleam knows nothing about the runtime representation of these types and so
 they cannot be pattern matched on, but they can be used with external
@@ -1214,63 +1198,33 @@ pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&qu
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
-
-                        
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-
-                
             </nav>
 
         </div>
 
-        
-
-        
-
-        
-
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
-
-        
-
-        
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
         <script type="text/javascript" src="javascript/highlightjs-gleam.js"></script>
-        
         <script type="text/javascript" src="javascript/plausible.js"></script>
-        
-
-        
-        
         <script type="text/javascript">
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
-        
-        
-
     </body>
 </html>
