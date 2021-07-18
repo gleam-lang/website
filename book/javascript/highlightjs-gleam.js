@@ -94,4 +94,4 @@ hljs.registerLanguage("gleam", function (hljs) {
     ],
   };
 });
-hljs.highlightAll();
+hljs.initHighlightingOnLoad();
