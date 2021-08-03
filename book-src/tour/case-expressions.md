@@ -5,7 +5,7 @@ allows us to say "if the data has this shape then do that", which we call
 _pattern matching_.
 
 Here we match on an `Int` and return a specific string for the values 0, 1,
-and 2. The final pattern `n` matches any other value that did not match any of
+and 2. The final pattern matches any other value that did not match any of
 the previous patterns.
 
 ```gleam
@@ -13,7 +13,7 @@ case some_number {
   0 -> "Zero"
   1 -> "One"
   2 -> "Two"
-  n -> "Some other number" // This matches anything
+  _ -> "Some other number" // This matches anything
 }
 ```
 
@@ -52,7 +52,7 @@ case xs {
   [] -> "This list is empty"
   [a] -> "This list has 1 element"
   [a, b] -> "This list has 2 elements"
-  _other -> "This list has more than 2 elements"
+  _ -> "This list has more than 2 elements"
 }
 ```
 
@@ -65,7 +65,7 @@ case xs {
   [[]] -> "The only element is an empty list"
   [[], ..] -> "The 1st element is an empty list"
   [[4], ..] -> "The 1st element is a list of the number 4"
-  other -> "Something else"
+  _ -> "Something else"
 }
 ```
 
@@ -116,14 +116,14 @@ clause to match. The guard expression can check for equality or ordering for
 ```gleam
 case xs {
   [a, b, c] if a == b && b != c -> "ok"
-  _other -> "ko"
+  _ -> "ko"
 }
 ```
 
 ```gleam
 case xs {
   [a, b, c] if a >. b && a <=. c -> "ok"
-  _other -> "ko"
+  _ -> "ko"
 }
 ```
 
