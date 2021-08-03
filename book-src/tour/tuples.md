@@ -1,4 +1,4 @@
-# Tuple
+# Tuples
 
 Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
@@ -19,5 +19,5 @@ accessor syntax.
 ```gleam
 let my_tuple = #("one", "two")
 let first = my_tuple.0   // "one"
-let seccond = my_tuple.1 // "two"
+let second = my_tuple.1 // "two"
 ```
