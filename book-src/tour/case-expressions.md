@@ -6,14 +6,14 @@ _pattern matching_.
 
 Here we match on an `Int` and return a specific string for the values 0, 1,
 and 2. The final pattern matches any other value that did not match any of
-the previous patterns.
+the previous patterns. You can name this entry, as you want. 
 
 ```gleam
 case some_number {
   0 -> "Zero"
   1 -> "One"
   2 -> "Two"
-  _ -> "Some other number" // This matches anything
+  n -> "Some other number" // This matches anything
 }
 ```
 
