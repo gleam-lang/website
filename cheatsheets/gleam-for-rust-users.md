@@ -482,6 +482,97 @@ let person = Person(name: "Jake", age: 35)
 let name = person.name
 ```
 
+### Unions
+
+#### Rust
+
+Rust's union type is called Enum and declared with the `enum` keyword:
+
+```rust
+enum IpAddress {
+  V4(u8, u8, u8, u8),
+  V6(String)
+}
+
+let addr_v4 = IpAddress::V4(192, 168, 1, 1);
+let addr_v6 = IpAddress::V6("::1".to_string());
+```
+
+#### Gleam
+
+In Gleam, custom types become unions by having multiple constructors:
+
+```gleam
+type IpAddress {
+  V4(Int, Int, Int, Int)
+  V6(String)
+}
+
+let addr_v4 = V4(192, 168, 1, 1)
+let addr_v6 = V6("::1")
+```
+
+## Flow control
+
+### Case
+
+#### Rust
+
+When you need to match a value against multiple possible patterns, Rust has the `match` expression.
+Such matches are e.g. enums or string slices:
+
+```rust
+enum MyEnum {
+  A(i32),
+  B,
+  C,
+}
+
+let my_enum = MyEnum::A(10);
+
+match my_enum {
+  MyEnum::A(n) => do_a(n),
+  MyEnum::B => do_b(),
+  MyEnum::C => {
+    do_sth();
+    do_c()
+  }
+}
+```
+
+```rust
+let my_str = "abcd";
+
+match my_str {
+  "abc" => do_sth(),
+  "abcd" => do_sth_else(),
+  _ => (),
+}
+```
+
+#### Gleam
+
+Similar to Rust's `match`, Gleam has `case`:
+
+```gleam
+type MyEnum {
+  A(Int)
+  B
+  C
+}
+
+let x = A(10)
+
+case x {
+  A(n) -> do_a(n)
+  B -> do_b()
+  C -> {
+    do_sth()
+    do_c()
+  }
+}
+```
+
 ## Modules
 
 #### Rust
