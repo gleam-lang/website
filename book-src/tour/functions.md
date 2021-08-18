@@ -74,6 +74,34 @@ best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.
 
+## Generics in functions
+
+When working with certain data structures, your function may not care about the
+specific type that lies inside of the structure. For example, consider a function
+that consumes any value and returns a list containing two of the value that was passed
+in. This can be expressed in Gleam like this:
+
+```gleam
+fn list_of_two(my_value: a) -> List(a) {
+  [x, x]
+}
+```
+
+You can use any number of different generics in the same function:
+
+```gleam
+fn multi_result(x: a, y: b, condition: Bool) -> Result(a, b) {
+  case condition {
+    True -> Ok(x)
+    False -> Error(y)
+  }
+}
+```
+
+Generic type annotations can be named anything, but the names must be lower case and may
+contain underscores. Like other type annotations, they are completely optional, but may 
+aid in understanding the code.
+
 ## Labelled arguments
 
 When functions take several arguments it can be difficult for the user to
