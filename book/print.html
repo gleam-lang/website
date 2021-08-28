@@ -6,8 +6,6 @@
         <title>The Gleam Book</title>
         <meta name="robots" content="noindex" />
         <!-- Custom HTML head -->
-        
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,7 +84,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -333,7 +330,7 @@ let y = [1, ..x]
 x  // =&gt; [2, 3]
 y  // =&gt; [1, 2, 3]
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="tuple"><a class="header" href="#tuple">Tuple</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tuples"><a class="header" href="#tuples">Tuples</a></h1>
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
@@ -347,7 +344,7 @@ be removed in a future version of Gleam.</p>
 accessor syntax.</p>
 <pre><code class="language-gleam">let my_tuple = #(&quot;one&quot;, &quot;two&quot;)
 let first = my_tuple.0   // &quot;one&quot;
-let seccond = my_tuple.1 // &quot;two&quot;
+let second = my_tuple.1 // &quot;two&quot;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="case"><a class="header" href="#case">Case</a></h1>
 <p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
@@ -510,6 +507,28 @@ and both annotated and unannotated code is equally safe. It's considered a
 best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.</p>
+<h2 id="generic-functions"><a class="header" href="#generic-functions">Generic functions</a></h2>
+<p>At times you may wish to write functions that are generic over multiple types.
+For example, consider a function that consumes any value and returns a list
+containing two of the value that was passed in. This can be expressed in Gleam
+like this:</p>
+<pre><code class="language-gleam">fn list_of_two(my_value: a) -&gt; List(a) {
+  [x, x]
+}
+</code></pre>
+<p>Here the type variable <code>a</code> is used to represent any possible type.</p>
+<p>You can use any number of different type variables in the same function. This
+function declares type variables <code>a</code> and <code>b</code>.</p>
+<pre><code class="language-gleam">fn multi_result(x: a, y: b, condition: Bool) -&gt; Result(a, b) {
+  case condition {
+    True -&gt; Ok(x)
+    False -&gt; Error(y)
+  }
+}
+</code></pre>
+<p>Type vraiables can be named anything, but the names must be lower case and may
+contain underscores. Like other type annotations, they are completely optional,
+but may aid in understanding the code.</p>
 <h2 id="labelled-arguments"><a class="header" href="#labelled-arguments">Labelled arguments</a></h2>
 <p>When functions take several arguments it can be difficult for the user to
 remember what the arguments are, and what order they are expected in.</p>

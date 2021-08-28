@@ -5,8 +5,6 @@
         <meta charset="UTF-8">
         <title>Functions - The Gleam Book</title>
         <!-- Custom HTML head -->
-        
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,7 +83,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -194,6 +191,28 @@ and both annotated and unannotated code is equally safe. It's considered a
 best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.</p>
+<h2 id="generic-functions"><a class="header" href="#generic-functions">Generic functions</a></h2>
+<p>At times you may wish to write functions that are generic over multiple types.
+For example, consider a function that consumes any value and returns a list
+containing two of the value that was passed in. This can be expressed in Gleam
+like this:</p>
+<pre><code class="language-gleam">fn list_of_two(my_value: a) -&gt; List(a) {
+  [x, x]
+}
+</code></pre>
+<p>Here the type variable <code>a</code> is used to represent any possible type.</p>
+<p>You can use any number of different type variables in the same function. This
+function declares type variables <code>a</code> and <code>b</code>.</p>
+<pre><code class="language-gleam">fn multi_result(x: a, y: b, condition: Bool) -&gt; Result(a, b) {
+  case condition {
+    True -&gt; Ok(x)
+    False -&gt; Error(y)
+  }
+}
+</code></pre>
+<p>Type vraiables can be named anything, but the names must be lower case and may
+contain underscores. Like other type annotations, they are completely optional,
+but may aid in understanding the code.</p>
 <h2 id="labelled-arguments"><a class="header" href="#labelled-arguments">Labelled arguments</a></h2>
 <p>When functions take several arguments it can be difficult for the user to
 remember what the arguments are, and what order they are expected in.</p>

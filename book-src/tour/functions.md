@@ -74,12 +74,12 @@ best practice to always write type annotations for your functions as they
 provide useful documentation, and they encourage thinking about types as code
 is being written.
 
-## Generics in functions
+## Generic functions
 
-When working with certain data structures, your function may not care about the
-specific type that lies inside of the structure. For example, consider a function
-that consumes any value and returns a list containing two of the value that was passed
-in. This can be expressed in Gleam like this:
+At times you may wish to write functions that are generic over multiple types.
+For example, consider a function that consumes any value and returns a list
+containing two of the value that was passed in. This can be expressed in Gleam
+like this:
 
 ```gleam
 fn list_of_two(my_value: a) -> List(a) {
@@ -87,7 +87,10 @@ fn list_of_two(my_value: a) -> List(a) {
 }
 ```
 
-You can use any number of different generics in the same function:
+Here the type variable `a` is used to represent any possible type.
+
+You can use any number of different type variables in the same function. This
+function declares type variables `a` and `b`.
 
 ```gleam
 fn multi_result(x: a, y: b, condition: Bool) -> Result(a, b) {
@@ -98,9 +101,9 @@ fn multi_result(x: a, y: b, condition: Bool) -> Result(a, b) {
 }
 ```
 
-Generic type annotations can be named anything, but the names must be lower case and may
-contain underscores. Like other type annotations, they are completely optional, but may 
-aid in understanding the code.
+Type vraiables can be named anything, but the names must be lower case and may
+contain underscores. Like other type annotations, they are completely optional,
+but may aid in understanding the code.
 
 ## Labelled arguments
 
