@@ -101,7 +101,7 @@ fn multi_result(x: a, y: b, condition: Bool) -> Result(a, b) {
 }
 ```
 
-Type vraiables can be named anything, but the names must be lower case and may
+Type variables can be named anything, but the names must be lower case and may
 contain underscores. Like other type annotations, they are completely optional,
 but may aid in understanding the code.
 
