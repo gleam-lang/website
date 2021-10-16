@@ -178,6 +178,8 @@ Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.
 
 ```gleam
+import gleam/option.{Option}
+
 pub type Person {
   Person(
     name: String,
@@ -191,7 +193,7 @@ pub type Person {
 pub fn have_birthday(person) {
   // It's this person's birthday, so increment their age and
   // make them happy
-  Person(..person, age: person.age + 1, is_happy: true)
+  Person(..person, age: person.age + 1, is_happy: True)
 }
 ```
 
