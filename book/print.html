@@ -839,7 +839,9 @@ type using the exported functions from the module, in this case <code>new</code>
 <h2 id="record-updates"><a class="header" href="#record-updates">Record updates</a></h2>
 <p>Gleam provides a dedicated syntax for updating some of the fields of a custom
 type record.</p>
-<pre><code class="language-gleam">pub type Person {
+<pre><code class="language-gleam">import gleam/option.{Option}
+
+pub type Person {
   Person(
     name: String,
     gender: Option(String),
@@ -852,7 +854,7 @@ type record.</p>
 pub fn have_birthday(person) {
   // It's this person's birthday, so increment their age and
   // make them happy
-  Person(..person, age: person.age + 1, is_happy: true)
+  Person(..person, age: person.age + 1, is_happy: True)
 }
 </code></pre>
 <p>As Gleam records are immutable the update syntax does not alter the fields in
