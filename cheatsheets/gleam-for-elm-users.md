@@ -362,7 +362,6 @@ view =
       z + (t * 5) -- Parenthesis are used to group arithmetic expressions
   in
   y + x
-end
 ```
 
 #### Gleam
