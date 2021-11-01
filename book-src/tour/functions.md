@@ -83,7 +83,7 @@ like this:
 
 ```gleam
 fn list_of_two(my_value: a) -> List(a) {
-  [x, x]
+  [my_value, my_value]
 }
 ```
 
