@@ -309,8 +309,8 @@ are fully type checked.
 | Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
 | Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
 | Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
-| Less or equal      | `<=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
-| Less or equal      | `<=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
+| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                  |
+| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                |
 | Boolean and        | `and`  | `&&`                      | Both values must be **bools**                                                          |
 | Logical and        | `and`  |                           | Not available in Gleam                                                                 |
 | Boolean or         | `or`   | <code>&vert;&vert;</code> | Both values must be **bools**                                                          |
