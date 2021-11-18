@@ -264,7 +264,7 @@ replace(#{inside => String, each => Pattern, with => Replacement}) ->
 ```
 
 ```erlang
-replace(each: <<",">>, with: <<" ">>, inside: <<"A,B,C">>).
+replace(#{each => <<",">>, with => <<" ">>, inside => <<"A,B,C">>).
 ```
 
 Because the arguments are stored in a map there is a small runtime
@@ -284,7 +284,7 @@ pub fn replace(inside string, each pattern, with replacement) {
 }
 ```
 
-```elixir
+```gleam
 replace(each: ",", with: " ", inside: "A,B,C")
 ```
 
@@ -612,7 +612,7 @@ number of named fields, and the values in those fields can be of differing types
 ```
 ```erlang
 Person = #person{name="name", age=35}.
-Name = #Person.name.
+Name = Person#person.name.
 ```
 
 #### Gleam
