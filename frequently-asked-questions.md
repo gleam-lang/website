@@ -11,7 +11,7 @@ description: The answers to some things you might be wondering about Gleam!
 - [Does Gleam have mutable state?](#does-gleam-have-mutable-state)
 - [Does Gleam have side effects?](#does-gleam-have-side-effects)
 - [How is message passing typed?](#how-is-message-passing-typed)
-- [Can Gleam use Erlang's hot code reloading?](#can-Gleam-use-erlangs-hot-code-reloading)
+- [Can Gleam use Erlang's hot code reloading?](#can-gleam-use-erlangs-hot-code-reloading)
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [How does Gleam compare to Caramel?](#how-does-gleam-compare-to-caramel)
 - [How does Gleam compare to Elixir?](#how-does-gleam-compare-to-elixir)
