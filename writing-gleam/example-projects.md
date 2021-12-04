@@ -20,8 +20,6 @@ Uses the Gleam HTTP library with the Elli web server adapter.
 A collection of modules for working with the common data structures of Gleam.
 
 
-## [Gleam Experiments](https://github.com/gleam-experiments)
+## [Awesome Gleam](https://github.com/gleam-lang/awesome-gleam)
 
-The Gleam Experiments GitHub organisation is home to many useful libraries
-for use in Gleam projects such as OTP bindings, database clients, and lazy
-data structures.
+A list of libraries and projects from the community.
