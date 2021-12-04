@@ -4,29 +4,32 @@ title: Frequently asked questions
 description: The answers to some things you might be wondering about Gleam!
 ---
 
-- [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
+- [Why is it called Gleam?](#why-is-it-called-gleam)
+- [What does Gleam compile to](#what-does-gleam-compile-to)
 - [Will Gleam have type classes?](#will-gleam-have-type-classes)
 - [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [Does Gleam have mutable state?](#does-gleam-have-mutable-state)
 - [Does Gleam have side effects?](#does-gleam-have-side-effects)
+- [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [How is message passing typed?](#how-is-message-passing-typed)
 - [Can we use the hot code reloading feature from OTP?](#can-we-use-the-hot-code-reloading-feature-from-otp)
-- [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
-- [Why is it called Gleam?](#why-is-it-called-gleam)
+- [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Is it good?](#is-it-good)
 
 
-## Why is the compiler written in Rust?
+## Why is it called Gleam?
 
-Prototype versions of the Gleam compiler was written in Erlang, but a switch was
-made to Rust as the lack of static types was making refactoring a slow and
-error prone process. A full Rust rewrite of the prototype resulted in the
-removal of a lot of tech debt and bugs, and the performance boost is nice too!
+Gleam rhymes with and is a synonym of "beam", which is the name of the Erlang
+virtual machine.
 
-One day Gleam may have a compiler written in Gleam, but for now we are focused
-on developing other areas of the language such as libraries, tooling, and
-documentation.
+It's also a short and cute word that's hopefully easy to spell and pronounce
+for most people.
+
+
+## What does Gleam compile to
+
+Gleam compiles to Erlang and also JavaScript.
 
 
 ## Will Gleam have type classes?
@@ -52,6 +55,27 @@ structural sharing so they can be efficiently updated.
 If your application needs to hold on to some mutable state then it can be held
 by an actor (which immutably wraps mutable state using recursion) or you can
 use ETS, the Erlang in-memory key-value database.
+
+
+## How does Gleam compare to Alpaca?
+
+[alpaca]: https://github.com/alpaca-lang/alpaca
+
+[Alpaca][alpaca] is similar to Gleam in that it is a statically typed language
+for the Erlang VM that is inspired by the ML family of languages. It's a
+wonderful project and we hope they are wildly successful!
+
+Here's a non-exhaustive list of differences:
+
+- Alpaca functions are auto-curried, Gleam's are not.
+- Alpaca's unions can be untagged, with Gleam all variants in a custom type
+  need a name.
+- Alpaca's compiler is written in Erlang, Gleam's is written in Rust.
+- Alpaca's syntax is closer to ML family languages, Gleam's is closer to C or
+  ECMAScript family languages.
+- Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang and
+  optionally JavaScript.
+- Alpaca uses the Erlang build tool, Gleam has its own build tool.
 
 
 ## Does Gleam have side effects?
@@ -89,27 +113,6 @@ upgrades, and use records rather than atom modules so the state upgrade
 callbacks may be slightly more complex to write.
 
 
-## How does Gleam compare to Alpaca?
-
-[alpaca]: https://github.com/alpaca-lang/alpaca
-
-[Alpaca][alpaca] is similar to Gleam in that it is a statically typed language
-for the Erlang VM that is inspired by the ML family of languages. It's a
-wonderful project and we hope they are wildly successful!
-
-Here's a non-exhaustive list of differences:
-
-- Alpaca functions are auto-curried, Gleam's are not.
-- Alpaca's unions can be untagged, with Gleam all variants in a custom type
-  need a name.
-- Alpaca's compiler is written in Erlang, Gleam's is written in Rust.
-- Alpaca's syntax is closer to ML family languages, Gleam's is closer to C or
-  ECMAScript family languages.
-- Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang.
-
-Alpaca is great, check it out! :)
-
-
 ## Should I put Gleam in production?
 
 Gleam is a young language that has not reached version 1.0, so while it is
@@ -126,13 +129,17 @@ If you decide to move away from Gleam the language you can compile your code
 to Erlang and maintain that in future.
 
 
-## Why is it called Gleam?
+## Why is the compiler written in Rust?
 
-Gleam rhymes with and is a synonym of "beam", which is the name of the Erlang
-virtual machine.
+Prototype versions of the Gleam compiler was written in Erlang, but a switch was
+made to Rust as the lack of static types was making refactoring a slow and
+error prone process. A full Rust rewrite of the prototype resulted in the
+removal of a lot of tech debt and bugs, and the performance boost is nice too!
 
-It's also a short and cute word that's hopefully easy to spell and pronounce
-for most people.
+One day Gleam may have a compiler written in Gleam, but for now we are focused
+on developing other areas of the language such as libraries, tooling, and
+documentation.
+
 
 ## Is it good?
 
