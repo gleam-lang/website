@@ -63,9 +63,44 @@ links = [
 ]
 ```
 
+## `dependencies`
+
+`table` - *optional*
+
+Specifies what [Hex](https://hex.pm/) packages the project needs to be able to
+compile and run.
+
+The keys of this table and the names of the Hex packages, and the values are
+[version requirement](https://hexdocs.pm/elixir/Version.html#module-requirements) 
+for that package.
+
+```toml
+[dependencies]
+gleam_stdlib = "~> 0.18"
+gleam_http = "~> 2.1
+```
+
+## `dev-dependencies`
+
+`table` - *optional*
+
+Specifies any additional [Hex](https://hex.pm/) packages the project needs to be able to
+compile and run the tests. These will not be included if the package is published to Hex.
+
+The keys of this table and the names of the Hex packages, and the values are
+[version requirement](https://hexdocs.pm/elixir/Version.html#module-requirements) 
+for that package.
+
+This table cannot include any keys that are already found in the `dependencies` table.
+
+```toml
+[dev-dependencies]
+gleeunit = "~> 0.3"
+```
+
 ## `docs`
 
-`section` - *optional*
+`table` - *optional*
 
 Determines what is included in the documentation. Includes `links` and `pages`.
 
