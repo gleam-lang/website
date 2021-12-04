@@ -15,6 +15,7 @@ description: The answers to some things you might be wondering about Gleam!
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [How does Gleam compare to Caramel?](#how-does-gleam-compare-to-caramel)
 - [How does Gleam compare to Elixir?](#how-does-gleam-compare-to-elixir)
+- [How does Gleam compare to Purerl?](#how-does-gleam-compare-to-purerl)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Is it good?](#is-it-good)
@@ -129,7 +130,7 @@ Here's a non-exhaustive list of differences:
   entirely new language, syntax, and compiler.
 - Caramel's functions are auto-curried, Gleam's are not.
 - Caramel's compiler is written in OCaml, Gleam's is written in Rust.
-- Caramel uses OCaml syntax, Gleam's has its own syntax that is closer to C
+- Caramel uses OCaml syntax, Gleam has its own syntax that is closer to C
   family languages.
 - Gleam is more actively developed than Caramel (at time of writing).
 
@@ -146,7 +147,7 @@ Here's a non-exhaustive list of differences:
 - Elixir dynamically typed, Gleam is statically typed.
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir's compiler is written in Erlang and Elixir, Gleam's is written in Rust.
-- Elixir uses Ruby style syntax, Gleam's has a C family style syntax.
+- Elixir uses Ruby style syntax, Gleam has a C family style syntax.
 - Elixir code can be difficult to use from other BEAM languages, Gleam code is
   designed to be usable from all BEAM languages.
 - Elixir has a namespace for module functions and another for anonymous
@@ -156,6 +157,28 @@ Here's a non-exhaustive list of differences:
   format, while Gleam compiles to Erlang source. Gleam can also compile to
   JavaScript.
 - Elixir is more mature than Gleam and has a much larger ecosystem.
+
+
+## How does Gleam compare to Purerl?
+
+[purerl]: https://github.com/purerl/purerl
+
+[Purerl][purerl] is a backend for the PureScript compiler that output Erlang.
+Both PureScript and Purerl are fantastic!
+
+Here's a non-exhaustive list of differences:
+
+- Purerl is a backend for the PureScript compiler, Gleam is its own language and
+  compiler.
+- PureScript has a more sophisticated type system than Gleam, featuring rows,
+  HKTs, type classes, and more.
+- Purerl's is written in Haskell, Gleam's is written in Rust.
+- PureScript has an ML family style syntax, Gleam has a C family style
+  syntax.
+- Purerl code can be difficult to use from other BEAM languages, Gleam code is
+  designed to be usable from all BEAM languages.
+- PureScript has a more mature than Gleam and has a much larger ecosystem,
+  though not all of it can be used with the Purerl compiler backend.
 
 
 ## Should I put Gleam in production?
