@@ -69,15 +69,12 @@ automatically generated, simply define them in Markdown and add them to
 ```toml
 name = "my_awesome_gleam_app"
 
-[[docs.pages]]
-title = "Hello"
-path = "hello.html"
-source = "docs/hello_world.md"
+[documentation]
+pages = [
+  { title = "Hello", path = "hello.html", source = "docs/hello_world.md" },
+  { title = "Testing", path = "testing.html", source = "docs/testing.md" },
+]
 
-[[docs.pages]]
-title = "Testing"
-path = "testing.html"
-source = "docs/testing.md"
 ```
 
 Links will automatically be generated for these additional pages and the
@@ -86,31 +83,11 @@ Markdown will be converted into HTML documentation.
 Your project's `README.md` file will automatically be used to generate the
 default page for the documentation.
 
-## Building and pushing
+## Building documentation
 
 The documentation can be built locally using this command, which renders the
-documentation to `gen/docs`.
+documentation to the build directory.
 
 ```sh
-cd path/to/project
-gleam docs build --version 1.0.0
-```
-
-Once you are happy with the documentation it can be pushed to HexDocs, the
-documentation hosting website for the Erlang ecosystem.
-
-Note you will need to have published your project to the the Hex package
-manager before attempting to publish the documentation for that version.
-
-```sh
-cd path/to/project
-gleam docs publish --version 1.0.0
-```
-
-Lastly, if you wish to remove documentation from HexDoc (possibly to correct
-an error) then this command can be used:
-
-```sh
-cd path/to/project
-gleam docs remove --package my_project_name --version 1.0.0
+gleam docs build
 ```
