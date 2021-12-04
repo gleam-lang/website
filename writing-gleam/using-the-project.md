@@ -2,7 +2,7 @@
 title: Using the project
 layout: page
 redirect_from:
-  - "/running-the-project/index.html"
+  - "/writing-gleam/running-the-project/index.html"
 ---
 
 ## Running the program
