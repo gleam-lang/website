@@ -9,8 +9,8 @@ layout: page
 - [Language tour](/book/tour)
 - Writing Gleam
   - [Creating a project](/writing-gleam/creating-a-project)
-  - [Documenting the project](/writing-gleam/documenting-the-project)
   - [Running the project](/writing-gleam/running-the-project)
+  - [Documenting the project](/writing-gleam/documenting-the-project)
   - [Example projects](/writing-gleam/example-projects)
 
 ## About Gleam
