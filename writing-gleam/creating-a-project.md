@@ -15,11 +15,8 @@ You'll now have a project with this structure:
 ```
 .
 ├── gleam.toml
-├── LICENSE
 ├── README.md
-├── rebar.config
 ├── src
-│   ├── my_fantastic_library.app.src
 │   └── my_fantastic_library.gleam
 └── test
     └── my_fantastic_library_test.gleam
@@ -30,17 +27,9 @@ You'll now have a project with this structure:
 Regular Gleam code goes in the `src` directory, and the tests for this code
 goes in the `test` directory.
 
+You can run your project with the `gleam run` command and test it with the
+`gleam test` command.
 
-## Applications
-
-The default project generated is a library, but we may want to create an
-runnable application instead. If we specify an alternate template when
-creating a project we can instead generate an application project compatible
-with the Erlang OTP framework.
-
-```sh
-gleam new my_fantastic_application --template app
-```
 
 ## Continuous integration
 
