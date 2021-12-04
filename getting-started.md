@@ -15,19 +15,18 @@ redirect_from:
 ---
 
 To prepare your computer for Gleam development you'll need to install Gleam,
-Erlang, rebar3 the Erlang built tool, and optionally install any Gleam plugins
+Erlang, and optionally install any Gleam plugins
 for your editor.
 
 - [Installing Gleam](#installing-gleam)
 - [Installing Erlang](#installing-erlang)
-- [Installing rebar3](#installing-rebar3)
 - [Editor Plugins](#editor-plugins)
 - [GitPod online Gleam development environment](#gitpod-online-gleam-development-environment)
 
 
 ## Installing Gleam
 
-### Precompiled for Linux, Windows, and macOS
+### Precompiled for amd64 Linux, Windows, and macOS
 
 The easiest way to install Gleam on Linux, Windows, and Apple macOS is to download a
 prebuilt version of the compiler from the [GitHub release
@@ -174,13 +173,6 @@ usage instructions can be found here:
 
 - [https://github.com/asdf-vm/asdf](https://github.com/asdf-vm/asdf)
 - [https://github.com/asdf-vm/asdf-erlang](https://github.com/asdf-vm/asdf-erlang)
-
-## Installing rebar3
-
-By default Gleam uses rebar3, the standard Erlang build tool. Install rebar3
-by following the [official rebar3 installation instructions][rebar3-install].
-
-[rebar3-install]: https://rebar3.readme.io/docs/getting-started
 
 ## Editor Plugins
 
