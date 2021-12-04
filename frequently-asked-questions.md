@@ -63,7 +63,7 @@ use ETS, the Erlang in-memory key-value database.
 
 [Alpaca][alpaca] is similar to Gleam in that it is a statically typed language
 for the Erlang VM that is inspired by the ML family of languages. It's a
-wonderful project and we hope they are wildly successful!
+wonderful project and it was an early inspiration for Gleam!
 
 Here's a non-exhaustive list of differences:
 
@@ -71,16 +71,35 @@ Here's a non-exhaustive list of differences:
 - Alpaca's unions can be untagged, with Gleam all variants in a custom type
   need a name.
 - Alpaca's compiler is written in Erlang, Gleam's is written in Rust.
-- Alpaca's syntax is closer to ML family languages, Gleam's is closer to C or
-  ECMAScript family languages.
+- Alpaca's syntax is closer to ML family languages, Gleam's is closer to C 
+  family languages.
 - Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang and
   optionally JavaScript.
 - Alpaca uses the Erlang build tool, Gleam has its own build tool.
+- Gleam is more actively developed than Alpaca (at time of writing).
+
+
+## How does Gleam compare to Caramel?
+
+[caramel]: https://github.com/AbstractMachinesLab/caramel
+
+[Caramel][caramel] is similar to Gleam in that it is a statically typed language
+for the Erlang VM. It is very cool!
+
+Here's a non-exhaustive list of differences:
+
+- Caramel is based off of OCaml and forks the OCaml compiler, Gleam is an
+  entirely new language, syntax, and compiler.
+- Caramel's functions are auto-curried, Gleam's are not.
+- Caramel's compiler is written in OCaml, Gleam's is written in Rust.
+- Caramel uses OCaml syntax, Gleam's has its own syntax that is closer to C
+  family languages.
+- Gleam is more actively developed than Caramel (at time of writing).
 
 
 ## Does Gleam have side effects?
 
-Yes, Gleam is an impure functional language like OCaml or Erlang, so impure
+Yes, Gleam is an impure functional language like OCaml or Erlang. Impure
 actions like reading to files and printing to the console is possible without
 special handling.
 
