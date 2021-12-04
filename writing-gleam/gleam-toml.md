@@ -49,6 +49,20 @@ repository = { type = "bitbucket", user = "example", repo = "project" }
 repository = { type = "custom", url = "https://repo.example.com" }
 ```
 
+## `links`
+
+`list` - *optional*
+
+A list of links to be included in the side navigation bar of generated
+documentation, as well as on Hex.pm if you publish your project. In the format:
+
+```toml
+links = [
+  { title = "Home page", href = "https://example.com" },
+  { title = "Other site", href = "https://another.example.com" },
+]
+```
+
 ## `docs`
 
 `section` - *optional*
@@ -79,20 +93,5 @@ The README.md file in your project is included by default.
 [docs]
 pages = [
   { title = "My Page", path = "my-page.html", source = "./path/to/my-page.md" },
-]
-```
-
-### `docs.links`
-
-`list` - *optional*
-
-A list of links to be included in the side navigation bar of the generated documentation. In the
-format:
-
-```toml
-[docs]
-links = [
-  { title = "Home page", href = "https://example.com" },
-  { title = "Other site", href = "https://another.example.com" },
 ]
 ```
