@@ -14,6 +14,7 @@ description: The answers to some things you might be wondering about Gleam!
 - [Can Gleam use Erlang's hot code reloading?](#can-Gleam-use-erlangs-hot-code-reloading)
 - [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [How does Gleam compare to Caramel?](#how-does-gleam-compare-to-caramel)
+- [How does Gleam compare to Elixir?](#how-does-gleam-compare-to-elixir)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Is it good?](#is-it-good)
@@ -120,7 +121,7 @@ Here's a non-exhaustive list of differences:
 [caramel]: https://github.com/AbstractMachinesLab/caramel
 
 [Caramel][caramel] is similar to Gleam in that it is a statically typed language
-for the Erlang VM. It is very cool!
+for the Erlang VM. It is very cool, especially because of its OCaml heritage!
 
 Here's a non-exhaustive list of differences:
 
@@ -131,6 +132,30 @@ Here's a non-exhaustive list of differences:
 - Caramel uses OCaml syntax, Gleam's has its own syntax that is closer to C
   family languages.
 - Gleam is more actively developed than Caramel (at time of writing).
+
+
+## How does Gleam compare to Elixir?
+
+[elixir]: https://github.com/elixir-lang/elixir
+
+[Elixir][elixir] is another language that runs on the Erlang virtual machine.
+It is very popular and a great language!
+
+Here's a non-exhaustive list of differences:
+
+- Elixir dynamically typed, Gleam is statically typed.
+- Elixir has a powerful macro system, Gleam has no metaprogramming features.
+- Elixir's compiler is written in Erlang and Elixir, Gleam's is written in Rust.
+- Elixir uses Ruby style syntax, Gleam's has a C family style syntax.
+- Elixir code can be difficult to use from other BEAM languages, Gleam code is
+  designed to be usable from all BEAM languages.
+- Elixir has a namespace for module functions and another for anonymous
+  functions, Gleam has one unified namespace (so there's no special `fun.()`
+  syntax).
+- Both languages compile to Erlang but Elixir compiles to Erlang abstract
+  format, while Gleam compiles to Erlang source. Gleam can also compile to
+  JavaScript.
+- Elixir is more mature than Gleam and has a much larger ecosystem.
 
 
 ## Should I put Gleam in production?
