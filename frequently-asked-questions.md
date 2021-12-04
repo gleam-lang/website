@@ -5,7 +5,7 @@ description: The answers to some things you might be wondering about Gleam!
 ---
 
 - [Why is it called Gleam?](#why-is-it-called-gleam)
-- [What does Gleam compile to](#what-does-gleam-compile-to)
+- [What does Gleam compile to?](#what-does-gleam-compile-to)
 - [Will Gleam have type classes?](#will-gleam-have-type-classes)
 - [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [Does Gleam have mutable state?](#does-gleam-have-mutable-state)
@@ -27,7 +27,7 @@ It's also a short and cute word that's hopefully easy to spell and pronounce
 for most people.
 
 
-## What does Gleam compile to
+## What does Gleam compile to?
 
 Gleam compiles to Erlang and also JavaScript.
 
