@@ -10,9 +10,10 @@ description: The answers to some things you might be wondering about Gleam!
 - [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [Does Gleam have mutable state?](#does-gleam-have-mutable-state)
 - [Does Gleam have side effects?](#does-gleam-have-side-effects)
-- [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
 - [How is message passing typed?](#how-is-message-passing-typed)
-- [Can we use the hot code reloading feature from OTP?](#can-we-use-the-hot-code-reloading-feature-from-otp)
+- [Can Gleam use Erlang's hot code reloading?](#can-Gleam-use-erlangs-hot-code-reloading)
+- [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
+- [How does Gleam compare to Caramel?](#how-does-gleam-compare-to-caramel)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Is it good?](#is-it-good)
@@ -57,6 +58,41 @@ by an actor (which immutably wraps mutable state using recursion) or you can
 use ETS, the Erlang in-memory key-value database.
 
 
+## Does Gleam have side effects?
+
+Yes, Gleam is an impure functional language like OCaml or Erlang. Impure
+actions like reading to files and printing to the console is possible without
+special handling.
+
+We may later introduce an effects system for identifying and tracking any
+impure code in a Gleam application, though this is still an area of research.
+
+
+## How is message passing typed?
+
+Type safe message passing is implemented in Gleam as a set of libraries,
+rather than being part of the core language itself. This allows us to write safe
+concurrent programs that make use of Erlang's OTP framework while not locking
+us in to one specific approach to typing message passing. This lack of lock-in
+is important as typing message passing is an area of active research, we may
+discover an even better approach at a later date!
+
+If you'd like to see more consider checking out [Gleam's OTP
+library](https://github.com/gleam-lang/otp).
+
+
+## Can Gleam use Erlang's hot code reloading?
+
+All the usual Erlang code reloading features work, but it is not possible to
+type check the upgrades themselves as we have no way knowing the types of the
+already running code. This means you would have the usual Erlang amount of
+safety rather than what you might have with Gleam otherwise.
+
+Generally the OTP libraries for Gleam are optimised for type safety rather than
+upgrades, and use records rather than atom modules so the state upgrade
+callbacks may be slightly more complex to write.
+
+
 ## How does Gleam compare to Alpaca?
 
 [alpaca]: https://github.com/alpaca-lang/alpaca
@@ -95,41 +131,6 @@ Here's a non-exhaustive list of differences:
 - Caramel uses OCaml syntax, Gleam's has its own syntax that is closer to C
   family languages.
 - Gleam is more actively developed than Caramel (at time of writing).
-
-
-## Does Gleam have side effects?
-
-Yes, Gleam is an impure functional language like OCaml or Erlang. Impure
-actions like reading to files and printing to the console is possible without
-special handling.
-
-We may later introduce an effects system for identifying and tracking any
-impure code in a Gleam application, though this is still an area of research.
-
-
-## How is message passing typed?
-
-Type safe message passing is implemented in Gleam as a set of libraries,
-rather than being part of the core language itself. This allows us to write safe
-concurrent programs that make use of Erlang's OTP framework while not locking
-us in to one specific approach to typing message passing. This lack of lock-in
-is important as typing message passing is an area of active research, we may
-discover an even better approach at a later date!
-
-If you'd like to see more consider checking out [Gleam's OTP
-library](https://github.com/gleam-lang/otp).
-
-
-## Can we use the hot code reloading feature from OTP?
-
-All the usual Erlang code reloading features work, but it is not possible to
-type check the upgrades themselves as we have no way knowing the types of the
-already running code. This means you would have the usual Erlang amount of
-safety rather than what you might have with Gleam otherwise.
-
-Generally the OTP libraries for Gleam are optimised for type safety rather than
-upgrades, and use records rather than atom modules so the state upgrade
-callbacks may be slightly more complex to write.
 
 
 ## Should I put Gleam in production?
