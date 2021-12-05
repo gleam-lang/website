@@ -52,9 +52,19 @@ gleam_http = "~> 2.1"
 gleeunit = "~> 0.3"
 gleam_bitwise = "~> 0.3"
 
+# Documentation specific configuration (optional)
 [documentation]
 # Additional markdown pages to be included in generated HTML docs (optional)
 pages = [
   { title = "My Page", path = "my-page.html", source = "./path/to/my-page.md" },
 ]
+
+# Generated Erlang specific configuration (optional)
+[erlang]
+# The name of the OTP application module, if the project has one (optional)
+# Typically Gleam projects do not use the Erlang/OTP implicit application boot
+# system and so typically do not define this.
+# If specified the module must implement the OTP application behaviour.
+# https://www.erlang.org/doc/man/application.html
+otp_start_module = "my_module"
 ```
