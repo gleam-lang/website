@@ -513,7 +513,7 @@ For example, consider a function that consumes any value and returns a list
 containing two of the value that was passed in. This can be expressed in Gleam
 like this:</p>
 <pre><code class="language-gleam">fn list_of_two(my_value: a) -&gt; List(a) {
-  [x, x]
+  [my_value, my_value]
 }
 </code></pre>
 <p>Here the type variable <code>a</code> is used to represent any possible type.</p>
