@@ -67,4 +67,8 @@ pages = [
 # If specified the module must implement the OTP application behaviour.
 # https://www.erlang.org/doc/man/application.html
 application_start_module = "my_app/application"
+
+# The names of any OTP applications that need to be started in addition to the
+# ones from the project dependencies (optional)
+extra_applications = ["inets", "ssl"]
 ```
