@@ -5,7 +5,7 @@ redirect_from:
   - "/writing-gleam/running-the-project/index.html"
 ---
 
-## Running the program
+## Run the program
 
 Your Gleam program can be run with the `gleam run` terminal command.
 
@@ -13,7 +13,7 @@ It will run the `main` function in the module with the same name as your
 project. This function is generated for you by default for new projects.
 
 
-## Running the tests
+## Run the tests
 
 The tests for your project can be run by the `gleam test` command.
 
@@ -27,7 +27,19 @@ write and run your test code.
 [gleeunit]: https://github.com/lpil/gleeunit
 
 
-## The Erlang shell
+## Add dependencies
+
+New dependency packages can be added using the `gleam add` command.
+
+```shell
+# Add gleam_http as a dependency
+gleam add gleam_http
+
+# Add gleeunit as a dev-dependency
+gleam add gleeunit --dev
+```
+
+## Run an Erlang shell
 
 An interactive Erlang shell can be started using the `gleam shell` command.
 
