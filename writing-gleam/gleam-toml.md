@@ -66,5 +66,5 @@ pages = [
 # system and so typically do not define this.
 # If specified the module must implement the OTP application behaviour.
 # https://www.erlang.org/doc/man/application.html
-otp_start_module = "my_app/application"
+application_start_module = "my_app/application"
 ```
