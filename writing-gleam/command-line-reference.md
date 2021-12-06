@@ -9,54 +9,96 @@ The `gleam` command uses subcommands to access different parts of the functional
 
 `gleam new <name> [project-root]`
 
-Creates a folder with the necessary files for starting a new gleam project with the given `name`.
-The `project-root` defaults to the value of `name`.
+Creates a folder with the necessary files for starting a new gleam project with
+the given `name`.  The `project-root` defaults to the value of `name`.
 
-- `--description <description>`: Provide a description which is inserted to the `src/<name>.src.app`
-  file in the new project.
-- `--template <lib|app>`: Indicate whether to generate a project for a library (`lib`) or
-  application (`app`). Defaults to `lib`.
+- `--name <name>`: The name of the project (optional). Defaults to the name of
+  the project root directory if not given.
+- `--description <description>`: A description of the project (optional).
+
 
 ## `build`
 
-`gleam build [project-root]`
+`gleam build`
 
-Builds the given gleam project. Defaults to the current directory.
+Builds the given gleam project.
 
-**Note:** This does not download `gleam` packages. The best experience is to use
-[rebar3](https://rebar3.org/) which will download any dependencies and in turn call `gleam build` as
-part of its build process. For more information see [Running the project](../running-the-project).
+
+## `run`
+
+`gleam run [arguments]...`
+
+Run the project. Any arguments will be passed to the program.
+
+
+## `test`
+
+`gleam test [arguments]...`
+
+Run the project's tests. Any arguments will be passed to the program.
+
+
+## `add`
+
+`gleam add <package>`
+
+Add a new dependency package to the project.
+
+- `--dev`: Add the package to `dev-dependency` as a development only dependency.
+
+
+## `shell`
+
+`gleam shell`
+
+Run an Erlang shell with the project loaded.
+
 
 ## `format`
 
 `gleam format [files]...`
 
-Formats all the gleam files inplace in the provided directory tree. Defaults to the current
-directory.
+Formats all the gleam files in place in the provided directory tree. Defaults to
+the current directory.
 
 - `--check`: Check if the inputs are formatted without changing them.
-- `--stdin`: Read source from standard in
+- `--stdin`: Read source from standard in.
 
-## `docs`
 
-Contains all the documentation commands.
+## `publish`
+
+`gleam publish`
+
+Publish the package to the Hex package manager.
+
+
+### `hex list`
+
+`gleam hex list`
+
+List all the dependencies for the project.
+
+
+### `hex download`
+
+`gleam hex download`
+
+Download all the project dependency packages.
+
 
 ### `docs build`
 
-`gleam docs build [project-root]`
+`gleam docs build`
 
-Builds the documentation for a gleam project. Defaults to the current directory.
+Builds the HTML documentation for the project.
 
-- `--to <directory>`: The directory for the generated documentation. Defaults to
-  `<project-root>/gen/docs`.
 
 ### `docs publish`
 
-`gleam docs publish [project-root]`
+`gleam docs publish`
 
-Publishes the project documentation to [HexDocs](hexdocs.pm). Defaults to the current directory.
+Publishes the project documentation to [HexDocs](hexdocs.pm).
 
-- `--publish`: The version to publish (**required**).
 
 ### `docs remove`
 
@@ -64,19 +106,5 @@ Publishes the project documentation to [HexDocs](hexdocs.pm). Defaults to the cu
 
 Removes a version of the published documentation from [HexDocs](hexdocs.pm).
 
-- `--package <package>`: The name of the package to remove (**required**).
-- `--version <version>`: The version of the package to remove (**required**).
-
-### `docs help`
-
-`gleam docs help`
-
-Prints an overview of the `gleam docs` commands or the details of a specific command if a command
-name is given. For example: `gleam docs help build`.
-
-## `help`
-
-`gleam help`
-
-Prints an overview of the `gleam` commands or the details of a specific command if a command name is
-given. For example: `gleam help format`.
+- `--package <package>`: The name of the package to remove (required).
+- `--version <version>`: The version of the package to remove (required).
