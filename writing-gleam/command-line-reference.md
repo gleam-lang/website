@@ -72,18 +72,40 @@ the current directory.
 Publish the package to the Hex package manager.
 
 
-### `hex list`
+### `deps list`
 
-`gleam hex list`
+`gleam deps list`
 
 List all the dependencies for the project.
 
 
-### `hex download`
+### `deps download`
 
-`gleam hex download`
+`gleam deps download`
 
 Download all the project dependency packages.
+
+
+### `hex retire`
+
+`gleam hex retire <package> <version>`
+
+Un-retire a retired Hex package.
+
+- `package`: The name of the package.
+- `version`: The version to retire.
+
+
+### `hex unretire`
+
+`gleam hex retire <package> <version> <reason> [message]`
+
+Retire an already published package version from the Hex package manager.
+
+- `package`: The name of the package.
+- `version`: The version to retire.
+- `reason`: One of other, invalid, security, deprecated, or renamed.
+- `message`: An optional message explaining why the release was retired.
 
 
 ### `docs build`
