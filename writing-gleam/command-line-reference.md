@@ -119,14 +119,14 @@ Builds the HTML documentation for the project.
 
 `gleam docs publish`
 
-Publishes the project documentation to [HexDocs](hexdocs.pm).
+Publishes the project documentation to [HexDocs](https://hexdocs.pm).
 
 
 ### `docs remove`
 
 `gleam docs remove`
 
-Removes a version of the published documentation from [HexDocs](hexdocs.pm).
+Removes a version of the published documentation from [HexDocs](https://hexdocs.pm).
 
 - `--package <package>`: The name of the package to remove (required).
 - `--version <version>`: The version of the package to remove (required).
