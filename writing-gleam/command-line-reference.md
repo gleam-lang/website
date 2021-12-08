@@ -88,16 +88,6 @@ Download all the project dependency packages.
 
 ### `hex retire`
 
-`gleam hex retire <package> <version>`
-
-Un-retire a retired Hex package.
-
-- `package`: The name of the package.
-- `version`: The version to retire.
-
-
-### `hex unretire`
-
 `gleam hex retire <package> <version> <reason> [message]`
 
 Retire an already published package version from the Hex package manager.
@@ -106,6 +96,16 @@ Retire an already published package version from the Hex package manager.
 - `version`: The version to retire.
 - `reason`: One of other, invalid, security, deprecated, or renamed.
 - `message`: An optional message explaining why the release was retired.
+
+
+### `hex unretire`
+
+`gleam hex unretire <package> <version>`
+
+Un-retire a retired Hex package.
+
+- `package`: The name of the package.
+- `version`: The version to un-retire.
 
 
 ### `docs build`
