@@ -57,7 +57,7 @@ gleam shell
 Here we can try out our functions by typing them in:
 
 ```sh
-1> my_fantastic_library:hello_world().
+1> my_fantastic_library:main().
 # <<"Hello from my_fantastic_library">>
 ```
 
