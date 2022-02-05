@@ -9,9 +9,12 @@ Elm and Gleam have similar goals of providing a robust and sound type system wit
 
 They have some differences in their output and focus. Where Elm compiles to JavaScript, Gleam compiles to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
 
-Another area in which Elm and Gleam differ is around talking to other languages. Elm does not provide user-defined foreign function interfaces for interacting with JavaScript code and libraries. All communication between Elm and JavaScript has to go through the Elm ports. In contrast to this, Gleam makes it easy to define inferfaces for using Erlang code and libraries directly and has no concept of ports for talking to Erlang.
-
-**Note**: There is work in progress to compile Gleam to JavaScript which opens up the possibility for front-end development.
+Another area in which Elm and Gleam differ is around talking to other languages.
+Elm does not provide user-defined foreign function interfaces for interacting
+with JavaScript code and libraries. All communication between Elm and JavaScript
+has to go through the Elm ports. In contrast to this, Gleam makes it easy to
+define inferfaces for using Erlang or JavaScript code and libraries directly and
+has no concept of ports.
 
 ## Contents
 
@@ -232,8 +235,8 @@ pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
-pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
-  x * y
+pub fn mul(x: Int, y: Int) -> Bool {
+  x * y // compile error, type mismatch
 }
 ```
 
@@ -296,7 +299,7 @@ identity x =
 A Gleam file is a module, named by the file name (and its directory path). There is no special syntax to create a module. There can be only one module in a file.
 
 ```gleam
-// in file foo.gleam
+// in file one.gleam
 pub fn identity(x) {
   x
 }
@@ -304,9 +307,9 @@ pub fn identity(x) {
 
 ```gleam
 // in file main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import one // if foo was in a folder called `lib` the import would be `lib/one`
 pub fn main() {
-  foo.identity(1)
+  one.identity(1)
 }
 ```
 
@@ -374,7 +377,7 @@ pub fn main() {
     print(1)
     2
   }
-  let y = x * {x + 10} // braces are used to change arithmetic operations order
+  let y = x * { x + 10 } // braces are used to change arithmetic operations order
   y
 }
 ```
@@ -396,8 +399,8 @@ Operators in Gleam as not generic over `Int` and `Float` so there are separate s
 Additionally, underscores can be added to both integers and floats for clarity.
 
 ```gleam
-const oneMillion = 1_000_000
-const twoMillion = 2_000_000.0
+const one_million = 1_000_000
+const two_million = 2_000_000.0
 ```
 
 ### Strings
@@ -434,9 +437,11 @@ holidayWishes =
 Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string/#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string/#concat) in the standard library.
 
 ```gleam
-birthdayWishes = string.append(to: "Happy Birthday ", suffix: person.name)
+let birthday_wishes =
+  string.append(to: "Happy Birthday ", suffix: person.name)
 
-holidayWishes = string.concat([ "Happy ", holiday.name, person.name ])
+let holiday_wishes =
+  string.concat([ "Happy ", holiday.name, person.name ])
 ```
 
 ### Tuples
@@ -502,7 +507,7 @@ let person = Person(name: "Alice", age: 43)
 Record fields can be accessed with a dot syntax:
 
 ```gleam
-greeting = String.concat(["Hello, ",  person.name, "!"])
+greeting = string.concat(["Hello, ",  person.name, "!"])
 ```
 
 ### Lists
@@ -864,7 +869,7 @@ All third-party Elm packages are written in pure Elm. It is not possible to publ
 
 #### Gleam
 
-Gleam packages are installed via [rebar3](http://rebar3.org/) configs and are hosted on [hex.pm](https://hex.pm/) with their documentation on [hexdocs.pm](https://hexdocs.pm/).
+Gleam packages are installed via the `gleam add` command and are hosted on [hex.pm](https://hex.pm/) with their documentation on [hexdocs.pm](https://hexdocs.pm/).
 
 All Gleam packages can be published with a mix of Gleam and Erlang code. There are no restrictions on publishing packages with Erlang code or that wrap Erlang libraries.
 
