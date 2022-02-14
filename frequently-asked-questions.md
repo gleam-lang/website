@@ -59,6 +59,10 @@ If your application needs to hold on to some mutable state then it can be held
 by an actor (which immutably wraps mutable state using recursion) or you can
 use ETS, the Erlang in-memory key-value database.
 
+If you are compiling Gleam to JavaScript the
+[`gleam_javascript`](https://hexdocs.pm/gleam_javascript/index.html) libraries
+offers mutable references.
+
 
 ## Does Gleam have side effects?
 
