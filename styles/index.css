@@ -261,6 +261,10 @@ li code {
   display: block;
 }
 
+.post .no-shadow {
+  box-shadow: none;
+}
+
 .post-date {
   float: right;
 }

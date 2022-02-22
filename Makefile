@@ -5,7 +5,7 @@ build: ## Build the book
 
 .PHONY: serve
 serve: ## Run the book dev server
-	jekyll server --watch --safe --port 3000 --livereload --drafts
+	jekyll server --watch --safe --port 3000 --drafts
 
 .PHONY: help
 help:
