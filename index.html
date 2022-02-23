@@ -117,17 +117,17 @@ pub fn main() {
   <pre><code class="language-gleam">import gleam/io
 import gleam/bit_builder
 import gleam/http/elli
-import gleam/http
+import gleam/http/response
 
 pub fn my_service(_req) {
   let body = bit_builder.from_string("Hello, world!")
 
-  http.response(200)
-  |> http.set_resp_body(body)
+  response.new(200)
+  |> response.set_body(body)
 }
 
-pub fn start() {
-  elli.start(my_service, on_port: 3000)
+pub fn main() {
+  elli.become(my_service, on_port: 3000)
 }
 </code></pre>
 
