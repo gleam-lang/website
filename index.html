@@ -152,7 +152,10 @@ import gleam/otp/process
 
 pub fn main() {
   list.range(0, 1000)
-  |> list.each(start_process)
+  |> list.map(start_process)
+  |> list.map(process.monitor_process)  // monitor process for when it exits
+  |> list.each(process.receive(_, 3))   // wait for the exit signals
+
 }
 
 fn start_process(i) {
