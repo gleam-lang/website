@@ -294,10 +294,10 @@ There is no equivalent feature in Rust.
 | Greater or equal | `>=`  | `>=.` | In Gleam both values must be **floats**        |
 | Less than        | `<`   | `<`   | In Gleam both values must be **ints**          |
 | Less than        | `<`   | `<.`  | In Gleam both values must be **floats**        |
-| Less or equal    | `<=`  | `>=`  | In Gleam both values must be **ints**          |
-| Less or equal    | `<=`  | `>=.` | In Gleam both values must be **floats**        |
-| Boolean and      | `and` | `&&`  | Both values must be **bools**                  |
-| Boolean or       | `or`  | `⎮⎮`  | Both values must be **bools**                  |
+| Less or equal    | `<=`  | `<=`  | In Gleam both values must be **ints**          |
+| Less or equal    | `<=`  | `<=.` | In Gleam both values must be **floats**        |
+| Boolean and      | `&&`  | `&&`  | Both values must be **bools**                  |
+| Boolean or       | `||`  | `||`  | Both values must be **bools**                  |
 | Add              | `+`   | `+`   | In Gleam both values must be **ints**          |
 | Add              | `+`   | `+.`  | In Gleam both values must be **floats**        |
 | Subtract         | `-`   | `-`   | In Gleam both values must be **ints**          |
