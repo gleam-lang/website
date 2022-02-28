@@ -415,7 +415,7 @@ Both languages use double quotes for strings.
 "Hellø, world!"
 ```
 
-Strings in Elm are combined using the `++` operator and functions like [`String.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`String.concat`](https://package.elm-lang.org/packages/elm/core/latest/String#concat):
+Strings in Elm are combined using the `++` operator and functions like [`String.append`](https://package.elm-lang.org/packages/elm/core/latest/String#append) and [`String.concat`](https://package.elm-lang.org/packages/elm/core/latest/String#concat):
 
 ```elm
 greeting =
@@ -434,7 +434,7 @@ holidayWishes =
 "Hellø, world!"
 ```
 
-Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string/#concat) in the standard library.
+Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#concat) in the standard library.
 
 ```gleam
 let birthday_wishes =
