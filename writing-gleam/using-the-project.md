@@ -31,7 +31,7 @@ write and run your test code.
 
 New dependency packages can be added using the `gleam add` command.
 
-```shell
+```sh
 # Add gleam_http as a dependency
 gleam add gleam_http
 
