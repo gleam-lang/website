@@ -415,7 +415,7 @@ Both languages use double quotes for strings.
 "Hellø, world!"
 ```
 
-Strings in Elm are combined using the `++` operator and functions like [`String.append`](https://package.elm-lang.org/packages/elm/core/latest/String#append) and [`String.concat`](https://package.elm-lang.org/packages/elm/core/latest/String#concat):
+Strings in Elm are combined using the `++` operator and functions like [`String.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`String.concat`](https://package.elm-lang.org/packages/elm/core/latest/String#concat):
 
 ```elm
 greeting =
@@ -434,7 +434,7 @@ holidayWishes =
 "Hellø, world!"
 ```
 
-Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string/#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string/#concat) in the standard library.
+Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string/#concat) in the standard library.
 
 ```gleam
 let birthday_wishes =
@@ -534,7 +534,7 @@ let list = [1, ..list]
 let another_list = [1.0, ..list] // compile error, type mismatch
 ```
 
-The standard library provides the [gleam/list](https://hexdocs.pm/gleam_stdlib/gleam/list/) module for interacting with lists. Functions like `list.head` return an `Option` value to account for the possibility of an empty list.
+The standard library provides the [gleam/list](https://hexdocs.pm/gleam_stdlib/gleam/list.html) module for interacting with lists. Functions like `list.head` return an `Option` value to account for the possibility of an empty list.
 
 ### Dicts
 
@@ -703,7 +703,7 @@ pub type Option(a) {
 }
 ```
 
-The standard library provides the [gleam/option](https://hexdocs.pm/gleam_stdlib/gleam/option/) module for interacting with `Option` values.
+The standard library provides the [gleam/option](https://hexdocs.pm/gleam_stdlib/gleam/option.html) module for interacting with `Option` values.
 
 ### Result
 
@@ -732,7 +732,7 @@ pub type Result(value, reason) {
 }
 ```
 
-The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result/) module for interacting with `Result` values.
+The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result.html) module for interacting with `Result` values.
 
 Gleam has a `try` keyword that allows for early exit from a block if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
 
