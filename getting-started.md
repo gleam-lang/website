@@ -192,7 +192,7 @@ niceties.
 
 - **Vim** - [https://github.com/gleam-lang/gleam.vim](https://github.com/gleam-lang/gleam.vim)
 - **Emacs** - [https://github.com/gleam-lang/gleam-mode](https://github.com/gleam-lang/gleam-mode)
-- **Visual Studio Code** - [https://github.com/rawburt/vscode-gleam-syntax](https://github.com/rawburt/vscode-gleam-syntax)
+- **Visual Studio Code** - [https://github.com/gleam-lang/vscode-gleam](https://github.com/gleam-lang/vscode-gleam)
 - **Sublime Text 3** - [https://github.com/molnarmark/sublime-gleam](https://github.com/molnarmark/sublime-gleam)
 - **Atom** - [https://github.com/itsgreggreg/language-gleam](https://github.com/itsgreggreg/language-gleam)
 - **Gedit** - [https://github.com/DannyLettuce/gleam_gedit](https://github.com/DannyLettuce/gleam_gedit)
