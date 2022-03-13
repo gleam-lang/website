@@ -21,6 +21,10 @@ licences = ["Apache-2.0", "MIT"]
 # the Hex package repository.
 description = "Gleam bindings to..."
 
+# The target to default to when compiling or running Gleam code
+# Accepted values are "erlang" and "javascript". Defaults to "erlang".
+target = "erlang"
+
 # The source code repository location (optional)
 # This will be used in generated documentation and displayed on Hex.
 repository = { type = "github", user = "example", repo = "my_project" }
