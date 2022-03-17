@@ -71,10 +71,10 @@ first_tier:
 - name: "Michael Jones"
   url: "https://github.com/michaeljones"
   avatar: "https://avatars.githubusercontent.com/u/5390?u=7c017ec72f57d09b5b3b43fe52f243d9f2df7765&v=4"
-- name: "Arto Bendiken"
-  url: "https://github.com/artob"
-  avatar: "https://avatars.githubusercontent.com/u/4963?u=e9a9cc870abd0c26818847cd6ee87a5da8b5b3e1&v=4"
 second_tier:
+- name: "human154"
+  url: "https://github.com/human154"
+  avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
 - name: "fly.io"
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
