@@ -893,7 +893,7 @@ There are some exceptions to that rule for atoms that are commonly used and have
 
 In general, atoms are not used much in Gleam, and are mostly used for booleans, `Ok` and `Error` result types, and defining custom types.
 
-Custom types in Elm can be used to achieve simmilar things to atoms.
+Custom types in Elm can be used to achieve similar things to atoms.
 
 #### Elm
 
