@@ -20,6 +20,7 @@ for your editor.
 
 - [Installing Gleam](#installing-gleam)
 - [Installing Erlang](#installing-erlang)
+- [Installing Rebar3](#installing-rebar3)
 - [Editor Plugins](#editor-plugins)
 - [GitPod online Gleam development environment](#gitpod-online-gleam-development-environment)
 
@@ -183,6 +184,14 @@ usage instructions can be found here:
 
 - [https://github.com/asdf-vm/asdf](https://github.com/asdf-vm/asdf)
 - [https://github.com/asdf-vm/asdf-erlang](https://github.com/asdf-vm/asdf-erlang)
+
+## Installing rebar3
+
+Gleam uses rebar3, the standard Erlang build tool for its Erlang dependencies.
+Install rebar3 by following the [official rebar3 installation
+instructions][rebar3-install].
+
+[rebar3-install]: https://rebar3.readme.io/docs/getting-started
 
 ## Editor Plugins
 
