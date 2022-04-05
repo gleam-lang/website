@@ -187,7 +187,8 @@ usage instructions can be found here:
 
 ## Installing rebar3
 
-Gleam uses rebar3, the standard Erlang build tool for its Erlang dependencies.
+When using Erlang based dependencies (such as their web servers and HTTP clients)
+the rebar3 Erlang build tool may need to be installed.
 Install rebar3 by following the [official rebar3 installation
 instructions][rebar3-install].
 
