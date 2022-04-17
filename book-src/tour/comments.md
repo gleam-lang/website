@@ -34,15 +34,3 @@ pub fn multiply(x, y) {
   x * y
 }
 ```
-
-## Documentation comments
-
-Documentation start with `///` and are usually put in front of function definitions and types.
-
-Documentation comments may contain Markdown.
-
-## Module documentation
-
-Module documentation may be added at the head of gleam modules. Each line of module documentation must be prefixed with `////`.
-
-Module documentation comments may contain Markdown.
