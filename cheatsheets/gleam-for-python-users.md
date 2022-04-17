@@ -863,8 +863,8 @@ Imports are relative to the root `src` folder.
 Modules in the same directory will need to reference the entire path from `src` for the target module, even if the target module is in the same folder.
 
 ```gleam
-// inside src/nasa/moon_base.gleam
-// imports src/nasa/rocket_ship.gleam
+// inside module src/nasa/moon_base.gleam
+// imports module src/nasa/rocket_ship.gleam
 import nasa/rocket_ship
 
 pub fn explore_space() {

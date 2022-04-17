@@ -215,23 +215,14 @@ If not it falls back to calling the result of the right hand side as a function
 
 ## Documentation
 
-Next to explicit type annotation you may add documentation in front of function definitions by prefixing each line of documentation with `///`.
+You may add user facing documentation in front of function definitions with a
+documentation comment `///` per line. This text will be included with the
+function's entry in generated HTML documentation.
 
 ```gleam
 /// Does nothing, returns `Nil`.
+///
 fn returns_nil(a) -> Nil {
   Nil
-}
-```
-
-You may do the same for anonymous functions:
-
-```gleam
-/// Runs `add()`
-pub fn run() {
-  /// Sums two `Int`s.
-  let add = fn(x, y) { x + y }
-
-  add(1, 2)
 }
 ```
