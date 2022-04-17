@@ -134,5 +134,6 @@ And these values:
 
 ## Documentation
 
-At the head of modules one may define a module documentation prefixing each line of
-documentation with `////`.
+You may add user facing documentation at the head of modules with a module
+documentation comment `////` per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.

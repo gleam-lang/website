@@ -1,4 +1,5 @@
 # Functions
+
 ## Named functions
 
 Named functions in Gleam are defined using the `pub fn` keywords.
@@ -216,8 +217,8 @@ If not it falls back to calling the result of the right hand side as a function
 ## Documentation
 
 You may add user facing documentation in front of function definitions with a
-documentation comment `///` per line. This text will be included with the
-function's entry in generated HTML documentation.
+documentation comment `///` per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.
 
 ```gleam
 /// Does nothing, returns `Nil`.
