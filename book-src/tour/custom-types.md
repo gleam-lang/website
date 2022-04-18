@@ -110,10 +110,10 @@ pub type Cat {
 }
 
 let cat = Cat(name: "Felix", cuteness: 9001, age: 5)
-let Cat(name: _, cuteness: cuteness, age: _) = cat
+let Cat(name: name, cuteness: _, age: _) = cat
+name // "Felix"
+let Cat(cuteness: cuteness, ..) = cat
 cuteness // 9001
-let Cat(name: name, ..) = cat
-name // Felix
 ```
 
 ## Named accessors
