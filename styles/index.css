@@ -324,6 +324,7 @@ tr:nth-child(even) {
   flex-wrap: wrap-reverse;
 }
 
+.top-sponsors li,
 .sponsors-avatars li {
   list-style: none;
 }
@@ -342,4 +343,13 @@ tr:nth-child(even) {
 
 .round {
   border-radius: 100vw;
+}
+
+.top-sponsors {
+  padding: 0;
+  text-align: center;
+}
+
+.sponsor-fly {
+  height: 100px;
 }
