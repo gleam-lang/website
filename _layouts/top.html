@@ -45,23 +45,17 @@
 
     <aside class="sponsors-section">
       <div class="content">
-        <h4>Supporting Gleam</h4>
-        Gleam is made possible by the kind support of its sponsors. If you
-        enjoy Gleam please consider <b><a href="https://github.com/sponsors/lpil">sponsoring the project</a></b>
-        or asking your employer to sponsor the project.
-
-        <p>
-          Thank you to our top sponsors!
-        </p>
+        <h4>Gleam's sponsors</h4>
+        Gleam is made possible by the kind support of its sponsors. If you enjoy
+        Gleam <b><a href="https://github.com/sponsors/lpil">become a sponsor</a></b>
+        or ask your employer to become a sponsor.
 
         <ul class="sponsors-tier-2">
   {% assign sponsors = site.data.sponsors.second_tier | sort: "name" %}
   {% for member in sponsors %}
-          <li><a href="{{ member.url }}">
-              <img src="{{ member.avatar }}" alt="{{ member.name }}">
-            <center>
-              {{ member.name }}
-            </center>
+          <li>
+            <a href="{{ member.url }}">
+              <img src="{{ member.avatar }}"{% unless member.square_avatar %} class="round"{% endunless %} alt="{{ member.name }}">
             </a>
   {% endfor %}
         </ul>

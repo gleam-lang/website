@@ -2,100 +2,129 @@ first_tier:
 - name: "Strand Communications"
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
+  square_avatar: false
 - name: "kee-oth"
   url: "https://github.com/kee-oth"
   avatar: "https://avatars.githubusercontent.com/u/83618848?v=4"
+  square_avatar: false
 - name: "Gitpod"
   url: "https://github.com/gitpod-io"
   avatar: "https://avatars.githubusercontent.com/u/37021919?v=4"
+  square_avatar: false
 - name: "Kapp Technology"
   url: "https://github.com/kapp-technology"
   avatar: "https://avatars.githubusercontent.com/u/30418610?v=4"
+  square_avatar: false
 - name: "Joe Corkerton"
   url: "https://github.com/joecorkerton"
   avatar: "https://avatars.githubusercontent.com/u/20556001?u=9bb65241e81780a28aac2c4f1e7d3f7ce29522c1&v=4"
+  square_avatar: false
 - name: "Scott Wey"
   url: "https://github.com/scottwey"
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
+  square_avatar: false
 - name: "Adi Iyengar"
   url: "https://github.com/thebugcatcher"
   avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
+  square_avatar: false
 - name: "Charles Chamberlain"
   url: "https://github.com/charlesetc"
   avatar: "https://avatars.githubusercontent.com/u/5167293?v=4"
+  square_avatar: false
 - name: "Raúl Chouza "
   url: "https://github.com/chouzar"
   avatar: "https://avatars.githubusercontent.com/u/4700113?u=49315be321466b68760d9f366ab4801bed5d346b&v=4"
+  square_avatar: false
 - name: "Vincent Le Goff"
   url: "https://github.com/vincent-lg"
   avatar: "https://avatars.githubusercontent.com/u/2088354?v=4"
+  square_avatar: false
 - name: "Adam Brodzinski"
   url: "https://github.com/AdamBrodzinski"
-  avatar: "https://avatars.githubusercontent.com/u/1445367?u=51223bbadf674e60fcfd34f782115f2d35ceca49&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/1445367?u=3facd4ad78d85f857d6fc063d427d3873e0e0b68&v=4"
+  square_avatar: false
 - name: "Dan Mueller"
   url: "https://github.com/unthought"
   avatar: "https://avatars.githubusercontent.com/u/1222558?u=be71c6b24db686bf48dee4506af4018c921303f7&v=4"
+  square_avatar: false
 - name: "Jechol Lee"
   url: "https://github.com/jechol"
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
+  square_avatar: false
 - name: "Ingmar Gagen"
   url: "https://github.com/igagen"
   avatar: "https://avatars.githubusercontent.com/u/748593?u=eb762340e9b465a06470a9749b522b69bfe8eed7&v=4"
+  square_avatar: false
 - name: "Wilson Silva"
   url: "https://github.com/wilsonsilva"
   avatar: "https://avatars.githubusercontent.com/u/645203?v=4"
+  square_avatar: false
 - name: "Florian Kraft"
   url: "https://github.com/floriank"
   avatar: "https://avatars.githubusercontent.com/u/498241?v=4"
+  square_avatar: false
 - name: "John Palgut"
   url: "https://github.com/Jwsonic"
   avatar: "https://avatars.githubusercontent.com/u/455046?u=0092bfecadfc3aac5e1df3145ea4e0a55a896787&v=4"
+  square_avatar: false
 - name: "Ben Myles"
   url: "https://github.com/benmyles"
   avatar: "https://avatars.githubusercontent.com/u/164675?u=cf738ec5bec0ba1434e34d817fbcff08230245e2&v=4"
+  square_avatar: false
 - name: "Ali Farhadi"
   url: "https://github.com/farhadi"
   avatar: "https://avatars.githubusercontent.com/u/102497?v=4"
+  square_avatar: false
 - name: "Wojtek Mach"
   url: "https://github.com/wojtekmach"
   avatar: "https://avatars.githubusercontent.com/u/76071?v=4"
-- name: "Jeff Kreeftmeijer"
-  url: "https://github.com/jeffkreeftmeijer"
-  avatar: "https://avatars.githubusercontent.com/u/43621?u=1c4645966bb64be582750467b78e7f49609773d2&v=4"
+  square_avatar: false
 - name: "Erik Terpstra"
   url: "https://github.com/eterps"
   avatar: "https://avatars.githubusercontent.com/u/39518?v=4"
+  square_avatar: false
 - name: "Milton Mazzarri"
   url: "https://github.com/milmazz"
   avatar: "https://avatars.githubusercontent.com/u/34700?u=c8cd22c4d9068fd4abb54132ccaaf9685da41743&v=4"
+  square_avatar: false
 - name: "José Valim"
   url: "https://github.com/josevalim"
   avatar: "https://avatars.githubusercontent.com/u/9582?u=c00cf4c84840538f31a3a8a46fec9dcc7b0ff132&v=4"
+  square_avatar: false
 - name: "Michael Jones"
   url: "https://github.com/michaeljones"
   avatar: "https://avatars.githubusercontent.com/u/5390?u=7c017ec72f57d09b5b3b43fe52f243d9f2df7765&v=4"
+  square_avatar: false
 second_tier:
 - name: "human154"
   url: "https://github.com/human154"
   avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
+  square_avatar: false
 - name: "fly.io"
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
+  square_avatar: false
 - name: "SkunkWerks GmbH"
   url: "https://skunkwerks.at/"
   avatar: "https://avatars.githubusercontent.com/u/6563319?v=4"
+  square_avatar: true
 - name: "Clay"
   url: "https://github.com/connorlay"
   avatar: "https://avatars.githubusercontent.com/u/6548350?u=c5a62ea3102c0ce1559cfd33d6f6b4a95611b0ac&v=4"
+  square_avatar: false
 - name: "NineFX"
   url: "http://www.ninefx.com"
   avatar: "https://gleam.run/images/sponsors/nine-fx.png"
+  square_avatar: true
 - name: "Jonathan Arnett"
   url: "https://github.com/J3RN"
   avatar: "https://avatars.githubusercontent.com/u/2058614?u=ae470bf095b2ed27170b35832616031a895f5ed1&v=4"
+  square_avatar: false
 - name: "Reio Piller"
   url: "https://github.com/hypno2000"
   avatar: "https://avatars.githubusercontent.com/u/417241?u=c2794ccbe033197dbf357b20477e6c85115c9b70&v=4"
+  square_avatar: true
 - name: "SmartLogic"
   url: "https://github.com/smartlogic"
   avatar: "https://avatars.githubusercontent.com/u/45342?v=4"
+  square_avatar: true

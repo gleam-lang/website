@@ -329,6 +329,10 @@ tr:nth-child(even) {
   width: var(--size);
 }
 
+.round {
+  border-radius: 100vw;
+}
+
 .sponsors-tier-1 {
   position: relative;
   display: flex;
