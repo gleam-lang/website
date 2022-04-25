@@ -28,6 +28,11 @@
   avatar: "https://avatars.githubusercontent.com/u/79288140?u=79179775e2caad01e3f87b598e8911b5de397f7b&v=4"
   tier: 1
   square_avatar: false
+- name: "Hayleigh Thompson"
+  url: "https://github.com/hayleigh-dot-dev"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=4c731d8ec989b23ce6d2baa52c6ed81a5dabf17f&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Peter Saxton"
   url: "https://github.com/CrowdHailer"
   avatar: "https://avatars.githubusercontent.com/u/5862302?u=c840e3aac659d48d9d1830acd52c9867eec0af60&v=4"
