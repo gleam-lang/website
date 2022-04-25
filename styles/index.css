@@ -129,11 +129,20 @@ small,
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid;
   border-radius: 8px;
-  padding: 6px 10px;
   transition: all 300ms;
   transition-duration: 3s;
+}
+
+.sponsor-nav-link img {
+  margin-left: var(--s-space);
+  filter: grayscale(100%);
+  transition: all 0.2s ease;
+}
+
+.sponsor-nav-link:hover img {
+  transform: scale(1.3);
+  filter: grayscale(0%);
 }
 
 .flex-spacer {
