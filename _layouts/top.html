@@ -38,7 +38,7 @@
       <a class="pagenav-link" href="/community">Community</a>
       <a class="pagenav-link" href="/documentation">Docs</a>
       <a class="pagenav-link" href="https://github.com/gleam-lang">Code</a>
-      <a class="pagenav-link sponsor-nav-link" href="https://github.com/sponsors/lpil?o=esb" target="_blank">
+      <a class="pagenav-link sponsor-nav-link" href="https://github.com/sponsors/lpil?o=esb" target="_blank" rel="noopener">
         Sponsor
         <img src="/images/sponsor-heart.svg" alt="Heart icon" width="18">
       </a>
@@ -61,7 +61,7 @@
   {% for sponsor in sponsors %}
   {% if sponsor.tier == 3 %}
           <li>
-            <a href="{{ sponsor.url }}">
+            <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
               <img src="{{ sponsor.avatar }}" class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round"{% endunless %} alt="{{ sponsor.name }}">
             </a>
   {% endif %}
@@ -73,7 +73,7 @@
   {% for sponsor in sponsors %}
   {% if sponsor.tier < 3 %}
           <li>
-            <a href="{{ sponsor.url }}">
+            <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
               <img src="{{ sponsor.avatar }}" class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round"{% endunless %} alt="{{ sponsor.name }}">
             </a>
   {% endif %}
