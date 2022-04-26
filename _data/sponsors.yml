@@ -218,6 +218,11 @@
   avatar: "https://avatars.githubusercontent.com/u/183226?u=c1d9eb6a4c6947d16bf573be1276b3c743df1d0b&v=4"
   tier: 1
   square_avatar: false
+- name: "qingliangcn"
+  url: "https://github.com/qingliangcn"
+  avatar: "https://avatars.githubusercontent.com/u/190690?u=27d7c744406b9346822b767f86ce1bfdd239bcb7&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Saša Jurić"
   url: "https://github.com/sasa1977"
   avatar: "https://avatars.githubusercontent.com/u/202498?v=4"
