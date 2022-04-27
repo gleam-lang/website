@@ -31,6 +31,6 @@ Comments may also be indented:
 ```gleam
 pub fn multiply(x, y) {
   // here we are multiplying x by y
-  x * y 
+  x * y
 }
 ```

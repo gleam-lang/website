@@ -345,7 +345,7 @@ pub fn replace(inside string, each pattern, with replacement) {
 }
 ```
 
-```elixir
+```gleam
 replace(each: ",", with: " ", inside: "A,B,C")
 ```
 

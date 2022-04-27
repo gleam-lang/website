@@ -18,7 +18,7 @@ Functions in Gleam are first class values and so can be assigned to variables,
 passed to functions, or anything else you might do with any other data type.
 
 ```gleam
-// This function takes a function as an argument
+/// This function takes a function as an argument
 pub fn twice(f: fn(t) -> t, x: t) -> t {
   f(f(x))
 }
@@ -213,3 +213,17 @@ as the first argument to the call, e.g. `a |> b(1, 2)` would become `b(a, 1, 2)`
 
 If not it falls back to calling the result of the right hand side as a function
 , e.g. `b(1, 2)(a)`.
+
+## Documentation
+
+You may add user facing documentation in front of function definitions with a
+documentation comment `///` per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.
+
+```gleam
+/// Does nothing, returns `Nil`.
+///
+fn returns_nil(a) -> Nil {
+  Nil
+}
+```
