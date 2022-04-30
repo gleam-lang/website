@@ -150,7 +150,7 @@ pub fn multiply(x: Int, y: Int) -&gt; Int {
 </code></pre>
 <p>Functions in Gleam are first class values and so can be assigned to variables,
 passed to functions, or anything else you might do with any other data type.</p>
-<pre><code class="language-gleam">// This function takes a function as an argument
+<pre><code class="language-gleam">/// This function takes a function as an argument
 pub fn twice(f: fn(t) -&gt; t, x: t) -&gt; t {
   f(f(x))
 }
@@ -293,6 +293,16 @@ pub fn run() {
 as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
 <p>If not it falls back to calling the result of the right hand side as a function
 , e.g. <code>b(1, 2)(a)</code>.</p>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<p>You may add user facing documentation in front of function definitions with a
+documentation comment <code>///</code> per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.</p>
+<pre><code class="language-gleam">/// Does nothing, returns `Nil`.
+///
+fn returns_nil(a) -&gt; Nil {
+  Nil
+}
+</code></pre>
 
                     </main>
 
