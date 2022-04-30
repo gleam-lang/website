@@ -1,6 +1,6 @@
 # Expression blocks
 
-Every block in gleam is an expression. All expressions in the block are
+Every block in Gleam is an expression. All expressions in the block are
 executed, and the result of the last expression is returned.
 
 ```gleam
