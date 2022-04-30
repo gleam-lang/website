@@ -228,6 +228,11 @@
   avatar: "https://avatars.githubusercontent.com/u/202498?v=4"
   tier: 1
   square_avatar: false
+- name: "Mark Markaryan"
+  url: "https://github.com/markmark206"
+  avatar: "https://avatars.githubusercontent.com/u/218696?u=06ddfe39562f21d97e7278b8fa687e494e40fa79&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Parker Selbert"
   url: "https://github.com/sorentwo"
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
@@ -280,7 +285,7 @@
   square_avatar: false
 - name: "Anthony Scotti"
   url: "https://github.com/amscotti"
-  avatar: "https://avatars.githubusercontent.com/u/598958?u=8e5b5f45eed20a68934fdd319ff7a6c574d18d9f&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/598958?v=4"
   tier: 1
   square_avatar: false
 - name: "David Bernheisel"
@@ -411,6 +416,11 @@
 - name: "Vincent Le Goff"
   url: "https://github.com/vincent-lg"
   avatar: "https://avatars.githubusercontent.com/u/2088354?v=4"
+  tier: 2
+  square_avatar: false
+- name: "Alex Manning"
+  url: "https://github.com/rawhat"
+  avatar: "https://avatars.githubusercontent.com/u/2095509?u=c891c779ec80e181e60772b4adfdc8be1ee84d2d&v=4"
   tier: 2
   square_avatar: false
 - name: "Simone Vittori"
