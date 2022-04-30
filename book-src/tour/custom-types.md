@@ -112,18 +112,15 @@ pub type Cat {
 let cat = Cat(name: "Felix", cuteness: 9001, age: 5)
 ```
 
-You will need to specify all args for a pattern match or use the spread operator.
+You will need to specify all args for a pattern match, or alternatively use the
+spread operator.
 
 ```gleam
-// Omitted field in pattern match
-let Cat(name: name, cuteness: _) = cat // error: Incorrect arity
-
 // All fields present
 let Cat(name: name, cuteness: _, age: _) = cat
 name // "Felix"
-cuteness // As cuteness is discarded in this pattern match, this will result in: error: Unknown variable
 
-// Spread operator example
+// Other fields ignored by spreading
 let Cat(age: age, ..) = cat
 age // 5
 ```
