@@ -207,4 +207,6 @@ The pipe operator can also be used to pipe in and out of anonymous functions.
 
 ## Summary
 
-In Gleam function capturing allows build more specific functions out of more general functions. The same function capturing syntax can be used within pipes to specify into which argument values are piped to.
+1. In Gleam function capturing allows build more specific functions out of more general functions.
+2. The same function capturing syntax can be used within pipes to specify into which argument values are piped to.
+3. As a special case, if the expression given during a pipe is a complete function, that function is expected to return a function with one argument, which then is executed by passing the value of the pipe into that function.
