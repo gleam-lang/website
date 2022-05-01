@@ -49,7 +49,8 @@ If however you are piping into functions which take multiple arguments, you will
 
 ```gleam
 ["Hello", "Harry!"]
-|> string.join(with: ", ")
+|> string.join(with: " ")
+|> string.append("\n")
 |> string.repeat(2)
 ```
 
