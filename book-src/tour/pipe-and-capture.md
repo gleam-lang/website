@@ -57,11 +57,22 @@ If however you are piping into functions which take multiple arguments, you will
 |> string.repeat(2)
 ```
 
-... is equal to:
+... which is equal to the far less readable:
 
 ```gleam
 string.repeat(string.append(string.join(["Hello", "Harry!"], with: " "), "\n"), 2)
 ```
+
+Note that as with any other function call in Gleam types must match. With piping the return type of the previous function must match the expected type where it is being piped into:
+
+```gleam
+["Hello", "Harry!"] // -> List(String)
+|> string.join(with: " ") // (List(String), with: String) -> String
+|> string.append("\n") // (String, String) -> String
+|> string.repeat(2) // (String, Int) -> String
+```
+
+Here the returned type may change much like the class of object changes in method chaining, but in contrast to object orientated method chaining, in functional piping the values are not mutated, which allows for safe piping into asynchronous or parallely executed code.
 
 Syntax is available to substitute specific arguments of functions that take more than one argument, which is discussed in the chapter [Function capturing](#Function_capturing).
 
