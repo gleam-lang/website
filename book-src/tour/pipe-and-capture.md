@@ -178,14 +178,14 @@ When gleam encounters this in pipes, instead the return value of `print_as("info
 As long as the first argument of a function contains the data to operate on, piping is made easy and the capture operator is not necessary. However sometimes it is required to specify another argument but the first to pipe into. The function capture syntax within pipes allows to specify which argument is being piped into:
 
 ```gleam
-fn substract (minuend a, subtrahend b) {
+fn subtract (minuend a, subtrahend b) {
   a - b
 }
 
 pub fn main() {
-  1 |> substract(2) // -1
-  1 |> substract(_, 2) // -1
-  1 |> substract(2, _) // 1
+  1 |> subtract(2) // -1
+  1 |> subtract(_, 2) // -1
+  1 |> subtract(2, _) // 1
 }
 ```
 
@@ -193,8 +193,8 @@ During piping Gleam also detects holes in functions when specifying named parame
 
 ```gleam
 pub fn main() {
-  1 |> substract(subtrahend: 2) // 1 is piped into minuend, returns 1
-  1 |> substract(minuend: 2) // 1 is piped into subtrahend, returns -1
+  1 |> subtract(subtrahend: 2) // 1 is piped into minuend, returns 1
+  1 |> subtract(minuend: 2) // 1 is piped into subtrahend, returns -1
 }
 ```
 
