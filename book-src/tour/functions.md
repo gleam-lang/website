@@ -32,26 +32,9 @@ pub fn add_two(x: Int) -> Int {
 }
 ```
 
-## Pipe Operator
+## Chaining / Pipe Operator
 
-Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (`|>`). This is similar in functionality to the same operator in Elixir or F#.
-
-The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of `string.reverse` in Gleam:
-
-```gleam
-iodata.to_string(iodata.reverse(iodata.new(string)))
-```
-
-This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.
-
-```gleam
-string
-|> iodata.new
-|> iodata.reverse
-|> iodata.to_string
-```
-
-Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section "Function capturing".
+See [Pipe & Capture](./tour/pipe-and-capture.md#markdown-header-my-paragraph-title#Pipe_Operator)
 
 ## Type annotations
 
@@ -161,58 +144,9 @@ pub fn run() {
 }
 ```
 
-## Function capturing
+## Partial application / function capturing
 
-There is a shorthand syntax for creating anonymous functions that take one
-argument and call another function. The `_` is used to indicate where the
-argument should be passed.
-
-```gleam
-pub fn add(x, y) {
-  x + y
-}
-
-pub fn run() {
-  let add_one = add(1, _)
-
-  add_one(2)
-}
-```
-
-The function capture syntax is often used with the pipe operator to create
-a series of transformations on some data.
-
-```gleam
-pub fn add(x: Int , y: Int ) -> Int {
-  x + y
-}
-
-pub fn run() {
-  // This is the same as add(add(add(1, 3), 6), 9)
-  1
-  |> add(_, 3)
-  |> add(_, 6)
-  |> add(_, 9)
-}
-```
-
-In fact, this usage is so common that there is a special shorthand for it.
-
-```gleam
-pub fn run() {
-  // This is the same as the example above
-  1
-  |> add(3)
-  |> add(6)
-  |> add(9)
-}
-```
-
-The pipe operator will first check to see if the left hand value could be used
-as the first argument to the call, e.g. `a |> b(1, 2)` would become `b(a, 1, 2)`.
-
-If not it falls back to calling the result of the right hand side as a function
-, e.g. `b(1, 2)(a)`.
+See [Pipe & Capture](./tour/pipe-and-capture.md#markdown-header-my-paragraph-title#Function_capturing)
 
 ## Documentation
 

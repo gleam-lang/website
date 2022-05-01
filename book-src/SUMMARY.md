@@ -11,6 +11,7 @@
 - [Tuples](./tour/tuples.md)
 - [Case expressions](./tour/case-expressions.md)
 - [Functions](./tour/functions.md)
+- [Pipe & Capture](./tour/pipe-and-capture.md)
 - [Modules](./tour/modules.md)
 - [Custom types](./tour/custom-types.md)
 - [Result](./tour/result.md)
