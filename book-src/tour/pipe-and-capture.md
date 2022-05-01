@@ -18,7 +18,15 @@ The pipe operator allows you to chain function calls without using a plethora of
 string_builder.to_string(string_builder.reverse(string_builder.new("Hello Hayleigh!")))
 ```
 
-This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.
+This can be expressed more clearly by binding to a variable.
+
+```gleam
+let value = string_builder.new("Hello Hayleigh!")
+let value = string_builder.reverse(value)
+let value = string_builder.to_string(value)
+```
+
+In Gleam we can also express this naturally using the pipe operator, eliminating the need to track parenthesis closure or rebind to variables.
 
 ```gleam
 "Hello Hayleigh!"
@@ -136,24 +144,23 @@ b1(value)
 However, if we define this function:
 
 ```gleam
-let builder = fn (level) {
+let print_as = fn (level) {
   fn (arg) {
-    io.print(string.append("level: ", level))
-    io.print(string.append("arg: ", arg))
+    ["level:", level, "arg:", arg] |> string.concat |> io.print
     arg
   }
 }
 ```
 
-... and are about to call `builder` in a pipe like so:
+... and are about to call `print_as` in a pipe like so:
 
 ```gleam
-value |> builder("info")
+value |> print_as("info")
 ```
 
-... then `value` cannot be piped into `builder("info")`, because the function is complete and there is no capture operator.
+... then `value` cannot be piped into `print_as("info")`, because the function is complete and there is no capture operator.
 
-When gleam encounters this in pipes, instead the return value of `builder("info")` must return a function which gleam then executes while passing `value` into it as an argument.
+When gleam encounters this in pipes, instead the return value of `print_as("info")` must return a function which gleam then executes while passing `value` into it as an argument.
 
 ### Passing values in chains into arbitrary arguments
 
