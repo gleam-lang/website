@@ -1,49 +1,44 @@
 # Piping & Capturing
 
-In many object oriented languages mutating objects by sequentially executing methods is achieved by returning the object itself. In an object oriented chain that object may be of a different type and the [chaining methods](https://en.wikipedia.org/wiki/Method_chaining) must return and take in the whole object to achieve this feature and mutate its properties or returning other objects altogether during the chaining.
+In many object oriented languages mutating objects by sequentially executing methods is achieved by returning the object from the object's methods themselves. In an object oriented method chain that object may be of a different type at each call and the [chaining methods](https://en.wikipedia.org/wiki/Method_chaining).
 
-In functional languages such as F#, Elixir or Gleam exist so called pipe-operators which achieve similar readability while passing around immutable data - instead of mutable objects - which is transformed at every step of the pipe.
+In some functional languages exist *pipe operators* which achieve similar readability while passing around immutable data - instead of mutable objects - which is transformed at every step of the pipe. Due to its type system in Gleam each call in the pipe must match by type.
 
-This also resembles the paradigm of many unix-style command line tools which can be piped one after another. In this wake, similar to unix-style command line tools, to power functional piping it is recommended to build small functions that do one thing or side effect and thus are optimal for flexible pipe composition.
-
-Another similarity to unix-style command line tools is returning posix exit status codes and data. In Gleam a similar thing can be achieved by returning a [Result type](./tour/result.md), a typed variant of result tuples found in Elixir.
-
-TODO: Add remark about railway oriented programming <https://vimeo.com/113707214>, either-monad, either here and/or better more extensive at the end
-TODO: Add remark about <https://redrapids.medium.com/learning-elixir-its-all-reduce-204d05f52ee7>
+Functional piping also resembles the paradigm of many unix-style command line tools which can be piped one after another. Building small functions that do one thing or side effect is a common pattern. These are optimal for flexible pipe composition. Another similarity to unix-style command line tools is returning POSIX exit status codes along with return data. In Gleam a similar thing can be achieved by returning a [Result type](./tour/result.md), a typed variant of result tuples found in Elixir.
 
 Gleam also allow to capture partial function application. This can also be used to enhance piping which will be discussed below.
 
 ## Pipe operator
 
-Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (`|>`). This is similar in functionality to the same operator in Elixir or F#.
+Gleam provides syntax for passing the return value of one function to the arguments of another function, the pipe operator: `|>`. This is similar in functionality to the same operator in Elixir or F#.
 
-The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of `string.reverse` in Gleam:
+The pipe operator allows you to chain function calls without using a plethora of visually ripping open function signatures. For a simple example, consider the following implementation of `string.reverse` in Gleam:
 
 ```gleam
-iodata.to_string(iodata.reverse(iodata.new("Hello Hayleigh!")))
+string_builder.to_string(string_builder.reverse(string_builder.new("Hello Hayleigh!")))
 ```
 
 This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.
 
 ```gleam
 "Hello Hayleigh!"
-|> iodata.new()
-|> iodata.reverse()
-|> iodata.to_string()
+|> string_builder.new()
+|> string_builder.reverse()
+|> string_builder.to_string()
 ```
 
 Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument.
 
-When piping functions with only one argument, the function parenthesis may be omitted:
+When piping into functions with only one argument, the function parenthesis may be omitted:
 
 ```gleam
 "Hello Hayleigh!"
-|> iodata.new
-|> iodata.reverse
-|> iodata.to_string
+|> string_builder.new
+|> string_builder.reverse
+|> string_builder.to_string
 ```
 
-This is because `|>` requires any right side expression to return a function that it will execute.
+This is the case because `|>` requires any right side expression to return a function that it will execute.
 
 If however you are piping into functions which take multiple arguments, you will have to supply all but the first argument, which the pipe operator pushes the return value of the previous expression into by default.
 
@@ -54,8 +49,13 @@ If however you are piping into functions which take multiple arguments, you will
 |> string.repeat(2)
 ```
 
-Syntax is available to substitute specific arguments of functions that take more than one argument;
-for more, look below in the section "Function capturing".
+... is equal to:
+
+```gleam
+string.repeat(string.append(string.join(["Hello", "Harry!"], with: " "), "\n"), 2)
+```
+
+Syntax is available to substitute specific arguments of functions that take more than one argument, which is discussed in the chapter [Function capturing](#Function_capturing).
 
 ## Function capturing
 
@@ -75,10 +75,12 @@ pub fn run() {
 }
 ```
 
+This can be used to create more specific partially applied functions, say functions that define certain defaults.
+
 ## Pipes & function capturing
 
 The function capture syntax is often used with the pipe operator to create
-a series of transformations on some data.
+a series of transformations on a value:
 
 ```gleam
 pub fn add(x: Int , y: Int ) -> Int {
@@ -94,7 +96,7 @@ pub fn run() {
 }
 ```
 
-In fact, this usage is so common that there is a special shorthand for it.
+In fact, this usage is so common that there is a special shorthand for it:
 
 ```gleam
 pub fn run() {
@@ -131,7 +133,7 @@ let b1 = b(_, other_arg)
 b1(value)
 ```
 
-However if this is the case:
+However, if we define this function:
 
 ```gleam
 let builder = fn (level) {
@@ -143,24 +145,46 @@ let builder = fn (level) {
 }
 ```
 
-... and you are about to call `builder` in a pipe like so `value |> builder("info")`, then `value` cannot be piped into `builder("info")`, because the function is complete and there is no capture operator.
+... and are about to call `builder` in a pipe like so:
 
-When gleam encounters this in pipes, instead the return value of `builder("info")` must function which gleam then executes passing `value` into it.
+```gleam
+value |> builder("info")
+```
+
+... then `value` cannot be piped into `builder("info")`, because the function is complete and there is no capture operator.
+
+When gleam encounters this in pipes, instead the return value of `builder("info")` must return a function which gleam then executes while passing `value` into it as an argument.
 
 ### Passing values in chains into arbitrary arguments
 
-While it is generally good design to let the first argument of a function be the data to operator on the function capture syntax within pipes allows to specific which argument is piped into:
+As long as the first argument of a function contains the data to operate on, piping is made easy and the capture operator is not necessary. However sometimes it is required to specify another argument but the first to pipe into. The function capture syntax within pipes allows to specify which argument is being piped into:
 
 ```gleam
 let divider = fn (dividend, divisor) {
   case divisor {
-    0 -> 9_223_372_036_854_775_807 // DivisionResult(Infinity)
-    divisor -> dividend / divisor
+    0.0 -> 1.0
+    divisor -> dividend /. divisor
   }
 }
 
-4 |> divider(2) // 2
-4 |> divider(2, _) // 0, because in gleam the return of a full integer division `2 / 4` is 0
+3.0 |> divider(2.0) // 1.5
+3.0 |> divider(_, 6.0) // 0.5
+2.0 |> divider(4.0, _) // 2.0
+```
+
+### Piping into anonymous functions
+
+The pipe operator can also be used to pipe in and out of anonymous functions.
+
+```gleam
+"Joe"
+|> fn (name) {
+  case name {
+    "CrownHailer" -> "Hello there CrownHailer,"
+    _ -> "Hello Joe,"
+  }
+}
+|> string.append(" have a gleamy day!")
 ```
 
 ## Summary
