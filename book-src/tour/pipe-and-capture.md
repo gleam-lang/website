@@ -20,7 +20,7 @@ Gleam provides syntax for passing the result of one function to the arguments of
 The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of `string.reverse` in Gleam:
 
 ```gleam
-iodata.to_string(iodata.reverse(iodata.new("Hello Quinn!")))
+iodata.to_string(iodata.reverse(iodata.new("Hello Hayleigh!")))
 ```
 
 This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.
