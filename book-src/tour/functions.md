@@ -32,9 +32,9 @@ pub fn add_two(x: Int) -> Int {
 }
 ```
 
-## Chaining / Pipe Operator
+## Chaining / Pipe operator
 
-See [Pipe & Capture](./tour/pipe-and-capture.md#markdown-header-my-paragraph-title#Pipe_Operator)
+See [Pipe & Capture](./tour/pipe-and-capture.md#Pipe_operator)
 
 ## Type annotations
 
@@ -146,7 +146,7 @@ pub fn run() {
 
 ## Partial application / function capturing
 
-See [Pipe & Capture](./tour/pipe-and-capture.md#markdown-header-my-paragraph-title#Function_capturing)
+See [Pipe & Capture](./tour/pipe-and-capture.md#Function_capturing)
 
 ## Documentation
 

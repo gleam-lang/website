@@ -13,7 +13,7 @@ TODO: Add remark about <https://redrapids.medium.com/learning-elixir-its-all-red
 
 Gleam also allow to capture partial function application. This can also be used to enhance piping which will be discussed below.
 
-## Pipe Operator
+## Pipe operator
 
 Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (`|>`). This is similar in functionality to the same operator in Elixir or F#.
 
