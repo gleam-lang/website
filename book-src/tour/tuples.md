@@ -13,11 +13,18 @@ be removed in a future version of Gleam.
 #(1, 4.2, [0]) // Type is #(Int, Float, List(Int))
 ```
 
+## Type
+
+Because it it has a variable number of parameters the tuple type has a dedicated syntax rather than a regular type constructor.
+For example while the type for `["Joe", "says", "hello"]` is `List(String, String, String)` the type of `#("Joe", "says, "hello")` is **not** `Tuple(String, String, String)` but rather `#(String, String, String)`.
+
+## Accessor
+
 Once you have a tuple the values contained can be accessed using the `.0`
 accessor syntax.
 
 ```gleam
 let my_tuple = #("one", "two")
-let first = my_tuple.0   // "one"
+let first = my_tuple.0  // "one"
 let second = my_tuple.1 // "two"
 ```
