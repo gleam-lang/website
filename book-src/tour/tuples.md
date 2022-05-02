@@ -15,7 +15,7 @@ be removed in a future version of Gleam.
 
 ## Type
 
-Because it it has a variable number of parameters the tuple type has a dedicated syntax rather than a regular type constructor.
+Because tuples have a variable number of parameters the tuple type has a dedicated syntax rather than a regular type constructor.
 For example while the type for `["Joe", "says", "hello"]` is `List(String, String, String)` the type of `#("Joe", "says, "hello")` is **not** `Tuple(String, String, String)` but rather `#(String, String, String)`.
 
 ## Accessor
