@@ -189,7 +189,7 @@ pub fn main() {
 }
 ```
 
-During piping Gleam also detects holes in functions when specifying named parameters as such:
+During piping Gleam also detects single holes in functions when specifying named parameters as such:
 
 ```gleam
 pub fn main() {
