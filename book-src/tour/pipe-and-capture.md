@@ -203,13 +203,16 @@ pub fn main() {
 The pipe operator can also be used to pipe in and out of anonymous functions.
 
 ```gleam
-"Joe"
-|> fn (name) {
-  case name {
-    "CrownHailer" -> "Hello there CrownHailer,"
-    _ -> "Hello Joe,"
-  }
+"Hello"
+|> fn (greeting) {
+  io.debug(greeting)
 }
+|> fn (name, greeting) {
+    case name {
+      "CrownHailer" -> greeting |> string.append(" there CrownHailer,")
+      _ -> greeting |> string.append(" Joe,")
+    }
+  }("CrownHailer", _)
 |> string.append(" have a gleamy day!")
 ```
 
