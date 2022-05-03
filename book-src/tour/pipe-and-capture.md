@@ -18,7 +18,7 @@ The pipe operator allows you to chain function calls without using a plethora of
 string_builder.to_string(string_builder.reverse(string_builder.new("Hello Hayleigh!")))
 ```
 
-This can be expressed more clearly by binding to a variable.
+This can be expressed more clearly and verbosely by binding to an intermediate variable.
 
 ```gleam
 let value = string_builder.new("Hello Hayleigh!")
@@ -26,7 +26,7 @@ let value = string_builder.reverse(value)
 let value = string_builder.to_string(value)
 ```
 
-In Gleam we can also express this naturally using the pipe operator, eliminating the need to track parenthesis closure or rebind to variables.
+In Gleam we can also express this naturally using the pipe operator, eliminating the need to track parenthesis closure or binding to intermediate variables.
 
 ```gleam
 "Hello Hayleigh!"
