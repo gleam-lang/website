@@ -1,6 +1,6 @@
 # Piping & Capturing
 
-In many object oriented languages mutating objects by sequentially executing methods is achieved by returning the object from the object's methods themselves. In an object oriented method chain that object may be of a different type at each call and the [chaining methods](https://en.wikipedia.org/wiki/Method_chaining).
+In many object oriented languages mutating objects by sequentially executing methods is achieved by returning the object from the object's methods themselves. In an object oriented method chain that object may be of a different object type for each return value while [chaining methods](https://en.wikipedia.org/wiki/Method_chaining).
 
 In some functional languages exist *pipe operators* which achieve similar readability while passing around immutable data - instead of mutable objects - which is transformed at every step of the pipe. Due to its type system in Gleam each call in the pipe must match by type.
 
