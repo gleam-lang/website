@@ -4,9 +4,9 @@ In many object oriented languages mutating objects by sequentially executing met
 
 In some functional languages exist *pipe operators* which achieve similar readability while passing around immutable data - instead of mutable objects - which is transformed at every step of the pipe. Due to its type system in Gleam each call in the pipe must match by type.
 
-Functional piping also resembles the paradigm of many unix-style command line tools which can be piped one after another. Building small functions that do one thing or side effect is a common pattern. These are optimal for flexible pipe composition. Another similarity to unix-style command line tools is returning POSIX exit status codes along with return data. In Gleam a similar thing can be achieved by returning a [Result type](./tour/result.md), a typed variant of result tuples found in Elixir.
+Functional piping also resembles the paradigm of many unix-style command line tools which can be piped one after another. Building small functions that do one thing or side effect is a common pattern. These are optimal for flexible pipe composition. Another similarity to unix-style command line tools is returning  exit status codes along with return data. In Gleam a similar thing can be achieved by returning a [Result type](./tour/result.md), a typed variant of result tuples found in Elixir.
 
-Gleam also allow to capture partial function application. This can also be used to enhance piping which will be discussed below.
+Gleam also allows to create partially applied functions. This can also be used to enhance piping which will be discussed below.
 
 ## Pipe operator
 
@@ -76,11 +76,11 @@ Here the returned type may change much like the class of object changes in metho
 
 Syntax is available to substitute specific arguments of functions that take more than one argument, which is discussed in the chapter [Function capturing](#Function_capturing).
 
-## Function capturing
+## Function capturing / partial application
 
 There is a shorthand syntax for creating anonymous functions that take one
 argument and call another function. The capture symbol `_` is used to indicate
-where the argument should be passed.
+where the argument should be passed. In Gleam you may only capture one argument.
 
 ```gleam
 pub fn add(x, y) {
