@@ -98,6 +98,11 @@
   avatar: "https://avatars.githubusercontent.com/u/20461?v=4"
   tier: 1
   square_avatar: false
+- name: "John Gallagher"
+  url: "https://github.com/johngallagher"
+  avatar: "https://avatars.githubusercontent.com/u/22185?u=fa71cd6f1f51fea02597313f748f931078ef5809&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Štefan Ľupták"
   url: "https://github.com/stefanluptak"
   avatar: "https://avatars.githubusercontent.com/u/23926?v=4"
