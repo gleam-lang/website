@@ -633,6 +633,11 @@
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
   tier: 4
   square_avatar: false
+- name: "Bernat Jufré Martínez"
+  url: "https://github.com/bjufre"
+  avatar: "https://avatars.githubusercontent.com/u/22913276?u=fc6b151282f6228241117c6688cfb20a8d008e40&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
