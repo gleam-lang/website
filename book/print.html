@@ -167,7 +167,7 @@ line. For comments that extend beyond a single line, you’ll need to include
 <p>Comments may also be indented:</p>
 <pre><code class="language-gleam">pub fn multiply(x, y) {
   // here we are multiplying x by y
-  x * y 
+  x * y
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
@@ -219,8 +219,11 @@ True || True   // =&gt; True
 hand side if they don't have to.</p>
 <p><code>&amp;&amp;</code> evaluates the right hand side if the left hand side is <code>True</code>.</p>
 <p><code>||</code> evaluates the right hand side if the left hand side is <code>False</code>.</p>
-<p>Gleam does not define more bool operators like <code>!</code> (negation).
-Instead, those are available as functions in the <code>gleam/bool</code> module.</p>
+<p>Gleam supports negation of Bools using either the <code>!</code> operator or the
+<code>bool.negate</code> function from the <code>gleam/bool</code> module.</p>
+<pre><code class="language-gleam">!True  // =&gt; False
+!False // =&gt; True
+</code></pre>
 <h2 id="erlang-interop"><a class="header" href="#erlang-interop">Erlang interop</a></h2>
 <p>While written in the code using a capital letter, they are represented at
 runtime with the atoms <code>true</code> and <code>false</code>, making them compatible with Elixir
@@ -295,7 +298,7 @@ x  // =&gt; 2
 y  // =&gt; 1
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="expression-blocks"><a class="header" href="#expression-blocks">Expression blocks</a></h1>
-<p>Every block in gleam is an expression. All expressions in the block are
+<p>Every block in Gleam is an expression. All expressions in the block are
 executed, and the result of the last expression is returned.</p>
 <pre><code class="language-gleam">let value: Bool = {
     &quot;Hello&quot;
@@ -466,7 +469,7 @@ pub fn multiply(x: Int, y: Int) -&gt; Int {
 </code></pre>
 <p>Functions in Gleam are first class values and so can be assigned to variables,
 passed to functions, or anything else you might do with any other data type.</p>
-<pre><code class="language-gleam">// This function takes a function as an argument
+<pre><code class="language-gleam">/// This function takes a function as an argument
 pub fn twice(f: fn(t) -&gt; t, x: t) -&gt; t {
   f(f(x))
 }
@@ -609,11 +612,21 @@ pub fn run() {
 as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
 <p>If not it falls back to calling the result of the right hand side as a function
 , e.g. <code>b(1, 2)(a)</code>.</p>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<p>You may add user facing documentation in front of function definitions with a
+documentation comment <code>///</code> per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.</p>
+<pre><code class="language-gleam">/// Does nothing, returns `Nil`.
+///
+fn returns_nil(a) -&gt; Nil {
+  Nil
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
-<pre><code class="language-gleam">// inside src/nasa/rocket_ship.gleam
+<pre><code class="language-gleam">// inside module src/nasa/rocket_ship.gleam
 
 fn count_down() {
   &quot;3... 2... 1...&quot;
@@ -640,7 +653,7 @@ called by other functions within the same module.</p>
 <h2 id="import"><a class="header" href="#import">Import</a></h2>
 <p>To use functions or types from another module we need to import them using the
 <code>import</code> keyword.</p>
-<pre><code class="language-gleam">// inside src/nasa/moon_base.gleam
+<pre><code class="language-gleam">// inside module src/nasa/moon_base.gleam
 
 import nasa/rocket_ship
 
@@ -682,13 +695,13 @@ This may be useful if you have created a type or value with the same name as
 an item from the prelude.</p>
 <pre><code class="language-gleam">import gleam
 
-// This definition locally overrides the `Result` type 
-// and the `Ok` constructor.
+/// This definition locally overrides the `Result` type
+/// and the `Ok` constructor.
 pub type Result {
   Ok
 }
 
-// The original `Result` and `Ok` can still be used
+/// The original `Result` and `Ok` can still be used
 pub fn go() -&gt; gleam.Result(Int) {
   gleam.Ok(1)
 }
@@ -713,6 +726,10 @@ pub fn go() -&gt; gleam.Result(Int) {
 <li><code>Ok</code></li>
 <li><code>True</code></li>
 </ul>
+<h2 id="documentation-1"><a class="header" href="#documentation-1">Documentation</a></h2>
+<p>You may add user facing documentation at the head of modules with a module
+documentation comment <code>////</code> per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
 <p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
@@ -785,6 +802,23 @@ record constructor matches, and to assign names to any contained values.</p>
 let Points(p) = score
 
 p // =&gt; 50
+</code></pre>
+<p>During destructuring you may also use discards (<code>_</code>) or spreads (<code>..</code>).</p>
+<pre><code class="language-gleam">pub type Cat {
+  Cat(name: String, cuteness: Int, age: Int)
+}
+
+let cat = Cat(name: &quot;Felix&quot;, cuteness: 9001, age: 5)
+</code></pre>
+<p>You will need to specify all args for a pattern match, or alternatively use the
+spread operator.</p>
+<pre><code class="language-gleam">// All fields present
+let Cat(name: name, cuteness: _, age: _) = cat
+name // &quot;Felix&quot;
+
+// Other fields ignored by spreading
+let Cat(age: age, ..) = cat
+age // 5
 </code></pre>
 <h2 id="named-accessors"><a class="header" href="#named-accessors">Named accessors</a></h2>
 <p>If a custom type has only one variant and named fields they can be accessed
@@ -871,11 +905,11 @@ constructor, for use from Erlang.</p>
 Guest
 LoggedIn(&quot;Kim&quot;)
 </code></pre>
-<pre><code># Elixir
+<pre><code class="language-elxir"># Elixir
 :guest
 {:logged_in, &quot;Kim&quot;}
 </code></pre>
-<pre><code>% Erlang
+<pre><code class="language-erlang">% Erlang
 guest,
 {logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
 </code></pre>

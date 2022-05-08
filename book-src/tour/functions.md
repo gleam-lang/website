@@ -36,6 +36,7 @@ pub fn add_two(x: Int) -> Int {
 
 See [Pipe & Capture](./tour/pipe-and-capture.md#Pipe_operator)
 
+
 ## Type annotations
 
 Function arguments are normally annotated with their type, and the

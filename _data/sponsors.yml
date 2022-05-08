@@ -98,6 +98,11 @@
   avatar: "https://avatars.githubusercontent.com/u/20461?v=4"
   tier: 1
   square_avatar: false
+- name: "John Gallagher"
+  url: "https://github.com/johngallagher"
+  avatar: "https://avatars.githubusercontent.com/u/22185?u=fa71cd6f1f51fea02597313f748f931078ef5809&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Štefan Ľupták"
   url: "https://github.com/stefanluptak"
   avatar: "https://avatars.githubusercontent.com/u/23926?v=4"
@@ -228,6 +233,16 @@
   avatar: "https://avatars.githubusercontent.com/u/202498?v=4"
   tier: 1
   square_avatar: false
+- name: "Mark Markaryan"
+  url: "https://github.com/markmark206"
+  avatar: "https://avatars.githubusercontent.com/u/218696?u=06ddfe39562f21d97e7278b8fa687e494e40fa79&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Mathias Jean Johansen"
+  url: "https://github.com/majjoha"
+  avatar: "https://avatars.githubusercontent.com/u/233988?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Parker Selbert"
   url: "https://github.com/sorentwo"
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
@@ -280,7 +295,7 @@
   square_avatar: false
 - name: "Anthony Scotti"
   url: "https://github.com/amscotti"
-  avatar: "https://avatars.githubusercontent.com/u/598958?u=8e5b5f45eed20a68934fdd319ff7a6c574d18d9f&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/598958?v=4"
   tier: 1
   square_avatar: false
 - name: "David Bernheisel"
@@ -413,6 +428,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2088354?v=4"
   tier: 2
   square_avatar: false
+- name: "Alex Manning"
+  url: "https://github.com/rawhat"
+  avatar: "https://avatars.githubusercontent.com/u/2095509?u=c891c779ec80e181e60772b4adfdc8be1ee84d2d&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Simone Vittori"
   url: "https://github.com/simonewebdesign"
   avatar: "https://avatars.githubusercontent.com/u/2126073?v=4"
@@ -533,9 +553,19 @@
   avatar: "https://avatars.githubusercontent.com/u/9317208?u=f6c9eb902275f515342c7b220142d76a27582ec5&v=4"
   tier: 1
   square_avatar: false
+- name: "Charlie Duong"
+  url: "https://github.com/charlieduong94"
+  avatar: "https://avatars.githubusercontent.com/u/9613701?u=94b19a19eb944aaffc5c55f52ae202a64c2631eb&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Shunji Lin"
   url: "https://github.com/shunjilin"
   avatar: "https://avatars.githubusercontent.com/u/10043695?u=a82299c67c5b13855d7ea972420180e37d3c4029&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Copple"
+  url: "https://github.com/kiwicopple"
+  avatar: "https://avatars.githubusercontent.com/u/10214025?u=c6775be2ae667e2acae3ccd347fed62bb3f5b3e7&v=4"
   tier: 1
   square_avatar: false
 - name: "Gustavo Villa"
@@ -608,9 +638,14 @@
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
   tier: 4
   square_avatar: false
+- name: "Bernat Jufré Martínez"
+  url: "https://github.com/bjufre"
+  avatar: "https://avatars.githubusercontent.com/u/22913276?u=fc6b151282f6228241117c6688cfb20a8d008e40&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
-  avatar: "https://avatars.githubusercontent.com/u/24900688?u=33ecb9818acbdc367c753c4ed71f5d13e6a433a4&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
   tier: 1
   square_avatar: false
 - name: "Josías Alvarado"

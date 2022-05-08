@@ -33,7 +33,6 @@ fn cats() {
 }
 ```
 
-
 ## Multiple constructors
 
 Custom types in Gleam can be defined with multiple constructors, making them a
@@ -67,12 +66,12 @@ type User {
   Guest                   // A guest user with no details
 }
 ```
+
 ```gleam
 let sara = LoggedIn(name: "Sara")
 let rick = LoggedIn(name: "Rick")
 let visitor = Guest
 ```
-
 
 ## Destructuring
 
@@ -95,11 +94,35 @@ type Score {
   Points(Int)
 }
 ```
+
 ```gleam
 let score = Points(50)
 let Points(p) = score
 
 p // => 50
+```
+
+During destructuring you may also use discards (`_`) or spreads (`..`).
+
+```gleam
+pub type Cat {
+  Cat(name: String, cuteness: Int, age: Int)
+}
+
+let cat = Cat(name: "Felix", cuteness: 9001, age: 5)
+```
+
+You will need to specify all args for a pattern match, or alternatively use the
+spread operator.
+
+```gleam
+// All fields present
+let Cat(name: name, cuteness: _, age: _) = cat
+name // "Felix"
+
+// Other fields ignored by spreading
+let Cat(age: age, ..) = cat
+age // 5
 ```
 
 ## Named accessors
@@ -171,7 +194,6 @@ access the `value` field. Instead other modules have to manipulate the opaque
 type using the exported functions from the module, in this case `new` and
 `increment`.
 
-
 ## Record updates
 
 Gleam provides a dedicated syntax for updating some of the fields of a custom
@@ -201,7 +223,6 @@ As Gleam records are immutable the update syntax does not alter the fields in
 place, instead it created a new record with the values of the initial record
 with the new values added.
 
-
 ## Erlang interop
 
 At runtime custom type records with no contained values become atoms. The
@@ -217,12 +238,14 @@ constructor, for use from Erlang.
 Guest
 LoggedIn("Kim")
 ```
-```
+
+```elxir
 # Elixir
 :guest
 {:logged_in, "Kim"}
 ```
-```
+
+```erlang
 % Erlang
 guest,
 {logged_in, <<"Kim">>}.
