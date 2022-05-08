@@ -52,6 +52,19 @@ With [MacPorts](https://www.macports.org/) installed run the following:
 sudo port install gleam
 ```
 
+### Windows
+
+#### Using Chocolatey
+
+With [Chocolatey](https://chocolatey.org/) installed on your computer run the
+following:
+
+```
+choco install gleam
+```
+
+This will also install Erlang.
+
 ### Using the Nix package manager
 
 There is a [gleam-nix](https://github.com/vic/gleam-nix) flake you can use to get
