@@ -131,12 +131,30 @@ Once Erlang has been installed you can check it is working by typing `erl
 -version` in your computer's terminal. You will see version information like
 this if all is well:
 
-```
-$ erl -version
+```shell
+erl -version
 Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 12.1.5
 ```
 
 #### Linux
+
+#### Alpine Linux (Community repository)
+
+```shell
+apk add erlang
+```
+
+#### Arch Linux (Community repository)
+
+```shell
+pacman -S erlang
+```
+
+#### Fedora
+
+```shell
+dnf install elixir erlang
+```
 
 ##### Debian, Ubuntu, Raspberry Pi OS
 
