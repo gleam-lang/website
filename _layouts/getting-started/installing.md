@@ -127,33 +127,24 @@ code.
 Precompiled builds for many popular operating systems can be downloaded from
 the [Erlang solutions website](https://www.erlang-solutions.com/resources/download.html).
 
-Guides for installing Erlang on specific operating systems can be found below,
-as well as information on installing multiple versions of Erlang at once using
-version management tools.
-
 Once Erlang has been installed you can check it is working by typing `erl
 -version` in your computer's terminal. You will see version information like
 this if all is well:
 
 ```
 $ erl -version
-Erlang (SMP,ASYNC_THREADS,HIPE) (BEAM) emulator version 10.1
+Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 12.1.5
 ```
 
 #### Linux
 
-##### Debian Linux
+##### Debian, Ubuntu, Raspberry Pi OS
 
-```sh
+```shell
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
+sudo dpkg -i erlang-solutions_2.0_all.deb
 sudo apt-get update
-sudo apt-get install erlang
-```
-
-##### Ubuntu Linux
-
-```sh
-sudo apt-get update
-sudo apt-get install erlang
+sudo apt-get install esl-erlang
 ```
 
 
