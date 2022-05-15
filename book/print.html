@@ -485,13 +485,13 @@ pub fn add_two(x: Int) -&gt; Int {
 <h2 id="pipe-operator"><a class="header" href="#pipe-operator">Pipe Operator</a></h2>
 <p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
 <p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
-<pre><code class="language-gleam">iodata.to_string(iodata.reverse(iodata.new(string)))
+<pre><code class="language-gleam">string_builder.to_string(string_builder.reverse(string_builder.new(string)))
 </code></pre>
 <p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
 <pre><code class="language-gleam">string
-|&gt; iodata.new
-|&gt; iodata.reverse
-|&gt; iodata.to_string
+|&gt; string_builder.new
+|&gt; string_builder.reverse
+|&gt; string_builder.to_string
 </code></pre>
 <p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
 <h2 id="type-annotations"><a class="header" href="#type-annotations">Type annotations</a></h2>
@@ -1202,27 +1202,44 @@ bytes depending on the codepoint size and data.</p>
 Erlang documentation
 <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="external-function"><a class="header" href="#external-function">External function</a></h1>
-<p>Gleam is just one of many languages on the Erlang virtual machine and at times
-we may want to use functions from these other languages in our Gleam programs.
-To enable this Gleam allows the importing of <em>external functions</em>, which may
-be written in any BEAM language.</p>
+<p>Gleam is just one of many languages on the Erlang virtual machine and JavaScript
+runtimes. At times we may want to use functions from these other languages in
+our Gleam programs. To enable this Gleam allows the importing of <em>external
+functions</em>, which may be written in any language on the same runtime.</p>
 <p>External functions are typically written in a different language with a
 different type system, so the compiler is unable to determine the type of the
 function and instead the programmer must inform the compiler the type.</p>
 <p>Gleam trusts that the type given is correct so an inaccurate type annotation
 can result in unexpected behaviour and crashes at runtime. Be careful!</p>
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<h2 id="erlang-external-functions"><a class="header" href="#erlang-external-functions">Erlang external functions</a></h2>
 <p>The Erlang <code>rand</code> module has a function named <code>uniform</code> that takes no
 arguments and returns a <code>Float</code>.</p>
 <p>The Elixir module <code>IO</code> has a function named <code>inspect</code> that takes any value,
 prints it, and returns the same value.</p>
 <p>If we want to import these functions and use them in our program we would do
 so like this:</p>
-<pre><code class="language-gleam">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
+<pre><code class="language-gleam">pub external fn random_float() -&gt; Float =
+  &quot;rand&quot; &quot;uniform&quot;
 
 // Elixir modules start with `Elixir.`
-pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
+pub external fn inspect(a) -&gt; a =
+  &quot;Elixir.IO&quot; &quot;inspect&quot;
 </code></pre>
+<h2 id="javascript-external-functions"><a class="header" href="#javascript-external-functions">JavaScript external functions</a></h2>
+<p>When importing a JavaScript function the path to the module is given instead of
+the module name.</p>
+<pre><code class="language-javascript">// In src/my-module.mjs
+export function run() {
+  return 0;
+}
+</code></pre>
+<pre><code class="language-gleam">// In src/my_program.gleam
+pub external fn run() -&gt; Int =
+  &quot;./my-module.js&quot; &quot;run&quot;
+</code></pre>
+<p>Gleam uses the JavaScript import syntax, so any module imported must use the
+esmodule export syntax, and if you are using the NodeJS runtime the file
+extension must be <code>.mjs</code>.</p>
 <h2 id="labelled-arguments-1"><a class="header" href="#labelled-arguments-1">Labelled arguments</a></h2>
 <p>Like regular functions, external functions can have labelled arguments.</p>
 <pre><code class="language-gleam">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
