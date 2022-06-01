@@ -141,7 +141,7 @@
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
 by other modules in the program.</p>
-<pre><code class="language-gleam">// inside src/nasa/rocket_ship.gleam
+<pre><code class="language-gleam">// inside module src/nasa/rocket_ship.gleam
 
 fn count_down() {
   &quot;3... 2... 1...&quot;
@@ -168,7 +168,7 @@ called by other functions within the same module.</p>
 <h2 id="import"><a class="header" href="#import">Import</a></h2>
 <p>To use functions or types from another module we need to import them using the
 <code>import</code> keyword.</p>
-<pre><code class="language-gleam">// inside src/nasa/moon_base.gleam
+<pre><code class="language-gleam">// inside module src/nasa/moon_base.gleam
 
 import nasa/rocket_ship
 
@@ -210,13 +210,13 @@ This may be useful if you have created a type or value with the same name as
 an item from the prelude.</p>
 <pre><code class="language-gleam">import gleam
 
-// This definition locally overrides the `Result` type 
-// and the `Ok` constructor.
+/// This definition locally overrides the `Result` type
+/// and the `Ok` constructor.
 pub type Result {
   Ok
 }
 
-// The original `Result` and `Ok` can still be used
+/// The original `Result` and `Ok` can still be used
 pub fn go() -&gt; gleam.Result(Int) {
   gleam.Ok(1)
 }
@@ -241,6 +241,10 @@ pub fn go() -&gt; gleam.Result(Int) {
 <li><code>Ok</code></li>
 <li><code>True</code></li>
 </ul>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<p>You may add user facing documentation at the head of modules with a module
+documentation comment <code>////</code> per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.</p>
 
                     </main>
 

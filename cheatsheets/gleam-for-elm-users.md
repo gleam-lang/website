@@ -63,7 +63,7 @@ In Elm, single line comments are written with a `--` prefix and multiline commen
 ```elm
 -- Hello, Joe!
 
-{- Hello, Joe! 
+{- Hello, Joe!
    This is a multiline comment.
 -}
 
@@ -98,7 +98,7 @@ There are no multiline comments in Gleam.
 
 #### Elm
 
-In Elm, you assign variables in let-blocks and you cannot re-assign variables within a let-block. 
+In Elm, you assign variables in let-blocks and you cannot re-assign variables within a let-block.
 
 You also cannot create a variable with the same name as a variable from a higher scope.
 
@@ -273,7 +273,7 @@ pub fn replace(inside string, each pattern, with replacement) {
 }
 ```
 
-```elixir
+```gleam
 replace(each: ",", with: " ", inside: "A,B,C")
 ```
 
@@ -357,7 +357,7 @@ In Elm, expressions can be grouped using `let` and `in`.
 view =
   let
     x = 5
-    y = 
+    y =
       let
          z = 4
          t = 3
@@ -386,7 +386,7 @@ pub fn main() {
 
 ### Numbers
 
-Both Elm and Gleam support `Int` and `Float` as separate number types. 
+Both Elm and Gleam support `Int` and `Float` as separate number types.
 
 #### Elm
 
@@ -475,7 +475,7 @@ Records are used to define and create structured data.
 In Elm, you can declare records using curly braces containing key-value pairs:
 
 ```elm
-person = 
+person =
   { name = "Alice"
   , age = 43
   }
@@ -488,13 +488,13 @@ Records can also be created using a [type alias](#type-aliases) name as a constr
 Record fields can be accessed with a dot syntax:
 
 ```elm
-greeting person = 
+greeting person =
    "Hello, " ++ person.name ++ "!"
 ```
 
 #### Gleam
 
-In Gleam, you cannot create records without creating a custom type first. 
+In Gleam, you cannot create records without creating a custom type first.
 
 ```
 type Person {
@@ -603,7 +603,7 @@ Gleam's custom types allow you to define a collection data type with a fixed num
 ```elm
 type alias Person =
  { name : String
- , age : Int 
+ , age : Int
  }
 
 person = Person "Jake" 35
@@ -673,7 +673,7 @@ fn get_name(user) {
 }
 ```
 
-In Gleam, a custom type with a single entry that has fields of its own fills the role of `type alias` in Elm. 
+In Gleam, a custom type with a single entry that has fields of its own fills the role of `type alias` in Elm.
 
 In order to create an opaque data type, you can use the [`opaque`](../book/tour/custom-types.html#opaque-types) keyword.
 
@@ -707,7 +707,7 @@ The standard library provides the [gleam/option](https://hexdocs.pm/gleam_stdlib
 
 ### Result
 
-Neither Gleam nor Elm have exceptions and instead represent failures using the `Result` type. 
+Neither Gleam nor Elm have exceptions and instead represent failures using the `Result` type.
 
 #### Elm
 
@@ -721,7 +721,7 @@ type Result error value
 
 #### Gleam
 
-In Gleam, the `Result` type is defined in the compiler in order to support helpful warnings and error messages. 
+In Gleam, the `Result` type is defined in the compiler in order to support helpful warnings and error messages.
 
 If it were defined in Gleam, it would look like this:
 
@@ -857,7 +857,7 @@ Elm has 'The Elm architecture' baked into the language and the core modules. Gen
 
 #### Gleam
 
-Gleam does not have a set architecture. It is not focused on making front-end browser applications and so does not share the same constraints. As it compiles to Erlang, Gleam application architecture is influenced by Erlang approaches to building distributed, fault-tolerant systems including working with [OTP](http://erlang.org/faq/introduction.html#idp32109712). In order to create a type-safe version of the OTP approach, Gleam has its own [gleam/otp](https://hexdocs.pm/gleam_otp/) library.  
+Gleam does not have a set architecture. It is not focused on making front-end browser applications and so does not share the same constraints. As it compiles to Erlang, Gleam application architecture is influenced by Erlang approaches to building distributed, fault-tolerant systems including working with [OTP](http://erlang.org/faq/introduction.html#idp32109712). In order to create a type-safe version of the OTP approach, Gleam has its own [gleam/otp](https://hexdocs.pm/gleam_otp/) library.
 
 ## Package management
 
@@ -893,12 +893,12 @@ There are some exceptions to that rule for atoms that are commonly used and have
 
 In general, atoms are not used much in Gleam, and are mostly used for booleans, `Ok` and `Error` result types, and defining custom types.
 
-Custom types in Elm can be used to achieve simmilar things to atoms.
+Custom types in Elm can be used to achieve similar things to atoms.
 
 #### Elm
 
 ```elm
-type Alignment 
+type Alignment
   = Left
   | Centre
   | Right

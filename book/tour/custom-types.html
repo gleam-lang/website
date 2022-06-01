@@ -210,6 +210,23 @@ let Points(p) = score
 
 p // =&gt; 50
 </code></pre>
+<p>During destructuring you may also use discards (<code>_</code>) or spreads (<code>..</code>).</p>
+<pre><code class="language-gleam">pub type Cat {
+  Cat(name: String, cuteness: Int, age: Int)
+}
+
+let cat = Cat(name: &quot;Felix&quot;, cuteness: 9001, age: 5)
+</code></pre>
+<p>You will need to specify all args for a pattern match, or alternatively use the
+spread operator.</p>
+<pre><code class="language-gleam">// All fields present
+let Cat(name: name, cuteness: _, age: _) = cat
+name // &quot;Felix&quot;
+
+// Other fields ignored by spreading
+let Cat(age: age, ..) = cat
+age // 5
+</code></pre>
 <h2 id="named-accessors"><a class="header" href="#named-accessors">Named accessors</a></h2>
 <p>If a custom type has only one variant and named fields they can be accessed
 using <code>.field_name</code>.</p>
@@ -295,11 +312,11 @@ constructor, for use from Erlang.</p>
 Guest
 LoggedIn(&quot;Kim&quot;)
 </code></pre>
-<pre><code># Elixir
+<pre><code class="language-elxir"># Elixir
 :guest
 {:logged_in, &quot;Kim&quot;}
 </code></pre>
-<pre><code>% Erlang
+<pre><code class="language-erlang">% Erlang
 guest,
 {logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
 </code></pre>

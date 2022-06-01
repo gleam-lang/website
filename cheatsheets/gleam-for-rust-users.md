@@ -269,13 +269,13 @@ There is no performance cost to Gleam's labelled arguments as they are
 optimised to regular function calls at compile time, and all the arguments
 are fully type checked.
 
-```rust
+```gleam
 pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ```
 
-```elixir
+```gleam
 replace(each: ",", with: " ", inside: "A,B,C")
 ```
 
@@ -349,12 +349,12 @@ pub fn main() {
 
 Additionally, public constants can be referenced from other modules.
 
-```rust
-// in file other_module.gleam
+```gleam
+//// In module other_module.gleam
 pub const the_answer: Int = 42
 ```
 
-```rust
+```gleam
 import other_module
 
 fn main() {
@@ -604,14 +604,14 @@ In Gleam, each file is a module, named by the file name (and its directory path)
 Gleam uses the `import` keyword to import modules, and the dot `.` operator to access properties and functions inside.
 
 ```gleam
-// in file foo.gleam
+//// In module foo.gleam
 pub fn identity(x) {
   x
 }
 ```
 
-```rust
-// in file main.gleam
+```gleam
+// in module main.gleam
 import foo // if foo was in a folder called `lib` the import would be `lib/foo`
 pub fn main() {
   foo.identity(1)

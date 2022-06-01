@@ -5,7 +5,7 @@ Each module has its own namespace and can export types and values to be used
 by other modules in the program.
 
 ```gleam
-// inside src/nasa/rocket_ship.gleam
+// inside module src/nasa/rocket_ship.gleam
 
 fn count_down() {
   "3... 2... 1..."
@@ -39,7 +39,7 @@ To use functions or types from another module we need to import them using the
 `import` keyword.
 
 ```gleam
-// inside src/nasa/moon_base.gleam
+// inside module src/nasa/moon_base.gleam
 
 import nasa/rocket_ship
 
@@ -100,13 +100,13 @@ an item from the prelude.
 ```gleam
 import gleam
 
-// This definition locally overrides the `Result` type 
-// and the `Ok` constructor.
+/// This definition locally overrides the `Result` type
+/// and the `Ok` constructor.
 pub type Result {
   Ok
 }
 
-// The original `Result` and `Ok` can still be used
+/// The original `Result` and `Ok` can still be used
 pub fn go() -> gleam.Result(Int) {
   gleam.Ok(1)
 }
@@ -131,3 +131,9 @@ And these values:
 - `Nil`
 - `Ok`
 - `True`
+
+## Documentation
+
+You may add user facing documentation at the head of modules with a module
+documentation comment `////` per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.

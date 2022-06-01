@@ -33,7 +33,6 @@ fn cats() {
 }
 ```
 
-
 ## Multiple constructors
 
 Custom types in Gleam can be defined with multiple constructors, making them a
@@ -67,12 +66,12 @@ type User {
   Guest                   // A guest user with no details
 }
 ```
+
 ```gleam
 let sara = LoggedIn(name: "Sara")
 let rick = LoggedIn(name: "Rick")
 let visitor = Guest
 ```
-
 
 ## Destructuring
 
@@ -140,6 +139,7 @@ type Score {
   Points(Int)
 }
 ```
+
 ```gleam
 let score = Points(50)
 let Points(p) = score
@@ -148,8 +148,25 @@ p // => 50
 ```
 
 > 🚨 Note: these destructured let assignments will only work on custom types with
-> a single constructor. If you try and do something similar with our `User` type
-> from earlier you will get a compile error!
+> **one** single constructor. If you try and do something similar with our `User`
+> type from earlier you will get a compile error!
+
+As with case expressions, we can discard fields and values we do not need with
+`_` patterns, or use spread syntax to ignore all remaining fields.
+
+```gleam
+pub type Cat {
+  Cat(name: String, cuteness: Int, age: Int)
+}
+
+let cat = Cat(name: "Felix", cuteness: 9001, age: 5)
+
+let Cat(name: name, cuteness: _, age: _) = cat
+let Cat(age: age, ..) = cat
+
+name // => "Felix"
+age // => 5
+```
 
 ## Named accessors
 
@@ -220,7 +237,6 @@ access the `value` field. Instead other modules have to manipulate the opaque
 type using the exported functions from the module, in this case `new` and
 `increment`.
 
-
 ## Record updates
 
 Gleam provides a dedicated syntax for updating some of the fields of a custom
@@ -250,7 +266,6 @@ As Gleam records are immutable the update syntax does not alter the fields in
 place, instead it created a new record with the values of the initial record
 with the new values added.
 
-
 ## Erlang interop
 
 At runtime custom type records with no contained values become atoms. The
@@ -266,12 +281,14 @@ constructor, for use from Erlang.
 Guest
 LoggedIn("Kim")
 ```
-```
+
+```elxir
 # Elixir
 :guest
 {:logged_in, "Kim"}
 ```
-```
+
+```erlang
 % Erlang
 guest,
 {logged_in, <<"Kim">>}.

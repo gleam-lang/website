@@ -152,11 +152,10 @@ Here's a non-exhaustive list of differences:
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir's compiler is written in Erlang and Elixir, Gleam's is written in Rust.
 - Elixir uses Ruby style syntax, Gleam has a C family style syntax.
-- Elixir code can be difficult to use from other BEAM languages, Gleam code is
-  designed to be usable from all BEAM languages.
-- Elixir has a namespace for module functions and another for anonymous
-  functions, Gleam has one unified namespace (so there's no special `fun.()`
-  syntax).
+- Elixir has a namespace for module functions and another for variables,
+  Gleam has one unified namespace (so there's no special `fun.()` syntax).
+- Gleam standard library is distributed as Hex packages, which makes interoperability
+  with other BEAM languages easier.
 - Both languages compile to Erlang but Elixir compiles to Erlang abstract
   format, while Gleam compiles to Erlang source. Gleam can also compile to
   JavaScript.
