@@ -30,7 +30,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=4c731d8ec989b23ce6d2baa52c6ed81a5dabf17f&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=86247c7122e5e7cd6ea57fed117f2399ad9d49f6&v=4"
   tier: 1
   square_avatar: false
 - name: "Peter Saxton"
@@ -195,7 +195,7 @@
   square_avatar: false
 - name: "David Flanagan"
   url: "https://github.com/rawkode"
-  avatar: "https://avatars.githubusercontent.com/u/145816?u=ad2e48d6b4d1b876dc7039983c1f9789a1df29cc&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/145816?u=2ee28b2e81af50f1210c32d4edff2ecae0a3fda0&v=4"
   tier: 1
   square_avatar: false
 - name: "Martin Janiczek"
@@ -265,7 +265,7 @@
   square_avatar: false
 - name: "Adam Bowen"
   url: "https://github.com/adamnbowen"
-  avatar: "https://avatars.githubusercontent.com/u/475879?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/475879?u=bb6404c592fcac57b2a8497c666ee953045164c5&v=4"
   tier: 1
   square_avatar: false
 - name: "João Veiga"
@@ -281,11 +281,6 @@
 - name: "Graeme Coupar"
   url: "https://github.com/obmarg"
   avatar: "https://avatars.githubusercontent.com/u/556490?v=4"
-  tier: 1
-  square_avatar: false
-- name: "Will Ricketts"
-  url: "https://github.com/willricketts"
-  avatar: "https://avatars.githubusercontent.com/u/583296?u=5e9c075679e5b698c6342cab5a94bd568beef157&v=4"
   tier: 1
   square_avatar: false
 - name: "Ole Michaelis"
@@ -518,6 +513,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5167293?v=4"
   tier: 2
   square_avatar: false
+- name: "Oler ▲"
+  url: "https://github.com/rodrigooler"
+  avatar: "https://avatars.githubusercontent.com/u/5496931?u=326b62e36e9ee77d616ad4c726b63ef4ac33a9f4&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Marcin Puc"
   url: "https://github.com/tranzystorek-io"
   avatar: "https://avatars.githubusercontent.com/u/5671049?u=791f8f592211624cde50e328eedd118b50fc6454&v=4"
@@ -533,20 +533,10 @@
   avatar: "https://avatars.githubusercontent.com/u/6548350?u=c5a62ea3102c0ce1559cfd33d6f6b4a95611b0ac&v=4"
   tier: 3
   square_avatar: false
-- name: "SkunkWerks GmbH"
-  url: "https://skunkwerks.at/"
-  avatar: "https://avatars.githubusercontent.com/u/6563319?v=4"
-  tier: 3
-  square_avatar: true
-- name: "Michael Anhari"
-  url: "https://github.com/anhari"
-  avatar: "https://avatars.githubusercontent.com/u/6628875?u=792c26653d05406a3bb96032956f7ab70169b625&v=4"
-  tier: 1
-  square_avatar: false
 - name: "David Armstrong Lewis"
   url: "https://github.com/davidarmstronglewis"
   avatar: "https://avatars.githubusercontent.com/u/6754950?u=47c92541c08d1cec690962f80557c91d40ae0bf2&v=4"
-  tier: 1
+  tier: 2
   square_avatar: false
 - name: "Michael Chris Lopez"
   url: "https://github.com/mcchrish"
@@ -673,28 +663,23 @@
   avatar: "https://avatars.githubusercontent.com/u/30418610?v=4"
   tier: 2
   square_avatar: false
-- name: "Gitpod"
-  url: "https://github.com/gitpod-io"
-  avatar: "https://avatars.githubusercontent.com/u/37021919?v=4"
-  tier: 2
-  square_avatar: false
 - name: "human154"
   url: "https://github.com/human154"
   avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
-  tier: 3
+  tier: 1
   square_avatar: false
 - name: "WeiZheng Liu"
   url: "https://github.com/weizhengliu"
   avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
   tier: 1
   square_avatar: false
-- name: "kee-oth"
-  url: "https://github.com/kee-oth"
-  avatar: "https://avatars.githubusercontent.com/u/83618848?v=4"
-  tier: 2
-  square_avatar: false
 - name: "Strand Communications"
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
   tier: 2
+  square_avatar: false
+- name: "Beam it Recruitment"
+  url: "https://github.com/BeamitRec"
+  avatar: "https://avatars.githubusercontent.com/u/106676198?u=34a6c8b5469264d1108543e472c14b04390a85be&v=4"
+  tier: 3
   square_avatar: false
