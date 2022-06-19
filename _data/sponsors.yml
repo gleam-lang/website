@@ -33,11 +33,6 @@
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=86247c7122e5e7cd6ea57fed117f2399ad9d49f6&v=4"
   tier: 1
   square_avatar: false
-- name: "Peter Saxton"
-  url: "https://github.com/CrowdHailer"
-  avatar: "https://avatars.githubusercontent.com/u/5862302?u=c840e3aac659d48d9d1830acd52c9867eec0af60&v=4"
-  tier: 1
-  square_avatar: false
 - name: "James MacAulay"
   url: "https://github.com/jamesmacaulay"
   avatar: "https://avatars.githubusercontent.com/u/340?v=4"
@@ -60,7 +55,7 @@
   square_avatar: false
 - name: "Shane Sveller"
   url: "https://github.com/shanesveller"
-  avatar: "https://avatars.githubusercontent.com/u/831?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/831?u=474c7b31ddf0a5c1a03d1142dd18a300279c644a&v=4"
   tier: 1
   square_avatar: false
 - name: "Redmar Kerkhoff"
@@ -106,11 +101,6 @@
 - name: "Štefan Ľupták"
   url: "https://github.com/stefanluptak"
   avatar: "https://avatars.githubusercontent.com/u/23926?v=4"
-  tier: 1
-  square_avatar: false
-- name: "Tim Buchwaldt"
-  url: "https://github.com/timbuchwaldt"
-  avatar: "https://avatars.githubusercontent.com/u/28458?u=1f7ef9e1d905a35caaf0478ca22902ad93f5ee1a&v=4"
   tier: 1
   square_avatar: false
 - name: "Carlos Saltos"
@@ -508,12 +498,7 @@
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   tier: 1
   square_avatar: false
-- name: "Charles Chamberlain"
-  url: "https://github.com/charlesetc"
-  avatar: "https://avatars.githubusercontent.com/u/5167293?v=4"
-  tier: 2
-  square_avatar: false
-- name: "Oler ▲"
+- name: "0xOler ▲"
   url: "https://github.com/rodrigooler"
   avatar: "https://avatars.githubusercontent.com/u/5496931?u=326b62e36e9ee77d616ad4c726b63ef4ac33a9f4&v=4"
   tier: 1
@@ -600,7 +585,7 @@
   square_avatar: false
 - name: "Michele Riva"
   url: "https://github.com/micheleriva"
-  avatar: "https://avatars.githubusercontent.com/u/14977595?u=bd7e67baf837915d60d9069ef498c3be9ff3d2e6&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/14977595?u=2312f3cf49314d261806a11d40a968d523f1c1e3&v=4"
   tier: 1
   square_avatar: false
 - name: "Scott Wey"
