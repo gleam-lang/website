@@ -148,7 +148,7 @@ It is very popular and a great language!
 
 Here's a non-exhaustive list of differences:
 
-- Elixir dynamically typed, Gleam is statically typed.
+- Elixir is dynamically typed, Gleam is statically typed.
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir's compiler is written in Erlang and Elixir, Gleam's is written in Rust.
 - Elixir uses Ruby style syntax, Gleam has a C family style syntax.
