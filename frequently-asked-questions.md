@@ -166,7 +166,7 @@ Here's a non-exhaustive list of differences:
 
 [purerl]: https://github.com/purerl/purerl
 
-[Purerl][purerl] is a backend for the PureScript compiler that output Erlang.
+[Purerl][purerl] is a backend for the PureScript compiler that outputs Erlang.
 Both PureScript and Purerl are fantastic!
 
 Here's a non-exhaustive list of differences:
