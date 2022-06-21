@@ -163,6 +163,11 @@
   avatar: "https://avatars.githubusercontent.com/u/89570?u=2c0679f52953eb82369c16797a0fa6cb28b0361a&v=4"
   tier: 1
   square_avatar: false
+- name: "Rico Leuthold"
+  url: "https://github.com/rico"
+  avatar: "https://avatars.githubusercontent.com/u/92818?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Ali Farhadi"
   url: "https://github.com/farhadi"
   avatar: "https://avatars.githubusercontent.com/u/102497?v=4"
@@ -248,6 +253,11 @@
   avatar: "https://avatars.githubusercontent.com/u/417241?u=c2794ccbe033197dbf357b20477e6c85115c9b70&v=4"
   tier: 3
   square_avatar: true
+- name: "Stefan Hagen"
+  url: "https://github.com/sthagen"
+  avatar: "https://avatars.githubusercontent.com/u/450800?u=40afa5125d883ed9aa5d368202fd9bd27d2f20f1&v=4"
+  tier: 1
+  square_avatar: false
 - name: "John Palgut"
   url: "https://github.com/Jwsonic"
   avatar: "https://avatars.githubusercontent.com/u/455046?u=0092bfecadfc3aac5e1df3145ea4e0a55a896787&v=4"
@@ -505,7 +515,7 @@
   square_avatar: false
 - name: "Marcin Puc"
   url: "https://github.com/tranzystorek-io"
-  avatar: "https://avatars.githubusercontent.com/u/5671049?u=791f8f592211624cde50e328eedd118b50fc6454&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5671049?u=6893155274f16351961f755e27f6d7ad8e91d65e&v=4"
   tier: 1
   square_avatar: false
 - name: "Marius Kalvø"
