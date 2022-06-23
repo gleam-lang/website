@@ -133,3 +133,11 @@ Removes a version of the published documentation from [HexDocs](https://hexdocs.
 
 - `--package <package>`: The name of the package to remove (required).
 - `--version <version>`: The version of the package to remove (required).
+
+
+### `export erlang-shipment`
+
+`gleam export erlang-shipment`
+
+Build a directory of precompiled Erlang bytecode and configuration, suitable for
+deployment.
