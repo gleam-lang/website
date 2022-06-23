@@ -71,6 +71,9 @@ the current directory.
 
 Publish the package to the Hex package manager.
 
+- `--replace`: Replace an existing version. This can only be used shortly after
+  publishing and is to be used to correct mistakes during publishing.
+
 
 ### `deps list`
 
