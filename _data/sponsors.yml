@@ -253,6 +253,11 @@
   avatar: "https://avatars.githubusercontent.com/u/417241?u=c2794ccbe033197dbf357b20477e6c85115c9b70&v=4"
   tier: 3
   square_avatar: true
+- name: "Kayla Washburn"
+  url: "https://github.com/aslilac"
+  avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Stefan Hagen"
   url: "https://github.com/sthagen"
   avatar: "https://avatars.githubusercontent.com/u/450800?u=40afa5125d883ed9aa5d368202fd9bd27d2f20f1&v=4"
