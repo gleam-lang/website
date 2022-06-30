@@ -643,6 +643,11 @@
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
   tier: 1
   square_avatar: false
+- name: "Zsombor Gasparin"
+  url: "https://github.com/gasparinzsombor"
+  avatar: "https://avatars.githubusercontent.com/u/25465322?u=18186bbf5e9df8274c5795f2d8359a06ebf0885c&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Alembic"
   url: "https://alembic.com.au"
   avatar: "https://avatars.githubusercontent.com/u/25500012?v=4"
