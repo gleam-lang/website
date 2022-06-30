@@ -515,7 +515,7 @@
   square_avatar: false
 - name: "0xOler ▲"
   url: "https://github.com/rodrigooler"
-  avatar: "https://avatars.githubusercontent.com/u/5496931?u=326b62e36e9ee77d616ad4c726b63ef4ac33a9f4&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5496931?u=0498087deeb1e5ea56655869169a9aacc2062c75&v=4"
   tier: 1
   square_avatar: false
 - name: "Marcin Puc"
@@ -600,7 +600,7 @@
   square_avatar: false
 - name: "Michele Riva"
   url: "https://github.com/micheleriva"
-  avatar: "https://avatars.githubusercontent.com/u/14977595?u=2312f3cf49314d261806a11d40a968d523f1c1e3&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/14977595?u=24f5274db7316adcf20faaf88fe99000f0878143&v=4"
   tier: 1
   square_avatar: false
 - name: "Scott Wey"
@@ -631,7 +631,7 @@
 - name: "fly.io"
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
-  tier: 4
+  tier: 5
   square_avatar: false
 - name: "Bernat Jufré Martínez"
   url: "https://github.com/bjufre"
@@ -646,7 +646,7 @@
 - name: "Alembic"
   url: "https://alembic.com.au"
   avatar: "https://avatars.githubusercontent.com/u/25500012?v=4"
-  tier: 3
+  tier: 4
   square_avatar: false
 - name: "Josías Alvarado"
   url: "https://github.com/pointerish"
@@ -671,11 +671,6 @@
 - name: "human154"
   url: "https://github.com/human154"
   avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
-  tier: 1
-  square_avatar: false
-- name: "WeiZheng Liu"
-  url: "https://github.com/weizhengliu"
-  avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
   tier: 1
   square_avatar: false
 - name: "Strand Communications"

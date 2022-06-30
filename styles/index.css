@@ -358,8 +358,8 @@ tr:nth-child(even) {
 .sponsors-avatars li { margin: var(--s-space); }
 .sponsor-tier-3 { margin: var(--space); }
 
-.sponsor-tier-3 { --size: 120px; }
-.sponsor-tier-2 { --size: 60px; }
+.sponsor-tier-3 { --size: 100px; }
+.sponsor-tier-2 { --size: 55px; }
 .sponsor-tier-1 { --size: 40px; }
 
 .sponsors-avatars img {
@@ -378,4 +378,13 @@ tr:nth-child(even) {
 
 .sponsor-fly {
   height: 100px;
+  margin-bottom: var(--space);
+}
+
+.sponsor-alembic {
+  height: 38px;
+}
+
+.sponsors-section .sponsor-alembic {
+  filter: brightness(0.8);
 }
