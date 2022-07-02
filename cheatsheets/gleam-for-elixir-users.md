@@ -94,9 +94,9 @@ let size = 1
 #### Elixir
 
 ```elixir
-[x, y] = [1, 2]
+[x, y] = [1, 2] # assert that the value is a list of length 2 and assign the first element to x and the second to y
 2 = y # assert that y is 2
-2 = x # runtime error
+2 = x # runtime error because x's value is 1
 [y] = "Hello" # runtime error
 ```
 
@@ -105,7 +105,7 @@ let size = 1
 In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
 
 ```gleam
-let [x, y] = [1, 2]
+assert [x, y] = [1, 2]
 assert 2 = y // assert that y is 2
 assert 2 = x // runtime error
 assert [y] = "Hello" // compile error, type mismatch
