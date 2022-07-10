@@ -12,6 +12,7 @@ layout: page
   - [Running the project](/writing-gleam/using-the-project)
   - [Documenting the project](/writing-gleam/documenting-the-project)
   - [Example projects](/writing-gleam/example-projects)
+- [Deploying Gleam](/deployment)
 
 ## About Gleam
 
