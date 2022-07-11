@@ -108,11 +108,6 @@
   avatar: "https://avatars.githubusercontent.com/u/32456?u=a2736cdb1eb8318361070ed9616cf2fbfaf1f215&v=4"
   tier: 1
   square_avatar: false
-- name: "Reto Kramer"
-  url: "https://github.com/ret"
-  avatar: "https://avatars.githubusercontent.com/u/33548?u=710efe8071bafe10fa5c2025618b62b8f35606ec&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Milton Mazzarri"
   url: "https://github.com/milmazz"
   avatar: "https://avatars.githubusercontent.com/u/34700?u=c8cd22c4d9068fd4abb54132ccaaf9685da41743&v=4"
@@ -413,6 +408,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1938892?u=5a78046101d2b51614045e214aa1545a9dc792a2&v=4"
   tier: 1
   square_avatar: false
+- name: "Fernando Farias"
+  url: "https://github.com/nandofarias"
+  avatar: "https://avatars.githubusercontent.com/u/1944560?u=7c0d507e8cfd59d8bb7b92e7369dc483d0d888cc&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Lars Wikman"
   url: "https://github.com/lawik"
   avatar: "https://avatars.githubusercontent.com/u/1971237?u=222ac5ebb788ceb72ce71e00f8a807e176485a56&v=4"
@@ -513,7 +513,7 @@
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   tier: 1
   square_avatar: false
-- name: "0xOler ▲"
+- name: "Rodrigo Oler"
   url: "https://github.com/rodrigooler"
   avatar: "https://avatars.githubusercontent.com/u/5496931?u=0498087deeb1e5ea56655869169a9aacc2062c75&v=4"
   tier: 1
@@ -616,7 +616,7 @@
 - name: "Joe Corkerton"
   url: "https://github.com/joecorkerton"
   avatar: "https://avatars.githubusercontent.com/u/20556001?u=9bb65241e81780a28aac2c4f1e7d3f7ce29522c1&v=4"
-  tier: 2
+  tier: 1
   square_avatar: false
 - name: "inoas"
   url: "https://github.com/inoas"
@@ -682,9 +682,4 @@
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
   tier: 2
-  square_avatar: false
-- name: "Beam it Recruitment"
-  url: "https://github.com/BeamitRec"
-  avatar: "https://avatars.githubusercontent.com/u/106676198?u=34a6c8b5469264d1108543e472c14b04390a85be&v=4"
-  tier: 3
   square_avatar: false
