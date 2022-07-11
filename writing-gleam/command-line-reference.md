@@ -73,7 +73,12 @@ Publish the package to the Hex package manager.
 
 - `--replace`: Replace an existing version. This can only be used shortly after
   publishing and is to be used to correct mistakes during publishing.
+- `--yes`: Do not ask for confirmation before publishing.
 
+This command uses this environment variables:
+
+- `HEXPM_USER`: (optional) The Hex username to authenticate with
+- `HEXPM_PASS`: (optional) The Hex username to authenticate with
 
 ### `deps list`
 
@@ -100,6 +105,11 @@ Retire an already published package version from the Hex package manager.
 - `reason`: One of other, invalid, security, deprecated, or renamed.
 - `message`: An optional message explaining why the release was retired.
 
+This command uses this environment variables:
+
+- `HEXPM_USER`: (optional) The Hex username to authenticate with
+- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+
 
 ### `hex unretire`
 
@@ -109,6 +119,11 @@ Un-retire a retired Hex package.
 
 - `package`: The name of the package.
 - `version`: The version to un-retire.
+
+This command uses this environment variables:
+
+- `HEXPM_USER`: (optional) The Hex username to authenticate with
+- `HEXPM_PASS`: (optional) The Hex username to authenticate with
 
 
 ### `docs build`
@@ -124,6 +139,11 @@ Builds the HTML documentation for the project.
 
 Publishes the project documentation to [HexDocs](https://hexdocs.pm).
 
+This command uses this environment variables:
+
+- `HEXPM_USER`: (optional) The Hex username to authenticate with
+- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+
 
 ### `docs remove`
 
@@ -133,6 +153,11 @@ Removes a version of the published documentation from [HexDocs](https://hexdocs.
 
 - `--package <package>`: The name of the package to remove (required).
 - `--version <version>`: The version of the package to remove (required).
+
+This command uses this environment variables:
+
+- `HEXPM_USER`: (optional) The Hex username to authenticate with
+- `HEXPM_PASS`: (optional) The Hex username to authenticate with
 
 
 ### `export erlang-shipment`
