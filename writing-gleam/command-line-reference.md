@@ -77,8 +77,8 @@ Publish the package to the Hex package manager.
 
 This command uses this environment variables:
 
-- `HEXPM_USER`: (optional) The Hex username to authenticate with
-- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+- `HEXPM_USER`: (optional) The Hex username to authenticate with.
+- `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
 ### `deps list`
 
@@ -107,8 +107,8 @@ Retire an already published package version from the Hex package manager.
 
 This command uses this environment variables:
 
-- `HEXPM_USER`: (optional) The Hex username to authenticate with
-- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+- `HEXPM_USER`: (optional) The Hex username to authenticate with.
+- `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
 
 ### `hex unretire`
@@ -122,8 +122,8 @@ Un-retire a retired Hex package.
 
 This command uses this environment variables:
 
-- `HEXPM_USER`: (optional) The Hex username to authenticate with
-- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+- `HEXPM_USER`: (optional) The Hex username to authenticate with.
+- `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
 
 ### `docs build`
@@ -141,8 +141,8 @@ Publishes the project documentation to [HexDocs](https://hexdocs.pm).
 
 This command uses this environment variables:
 
-- `HEXPM_USER`: (optional) The Hex username to authenticate with
-- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+- `HEXPM_USER`: (optional) The Hex username to authenticate with.
+- `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
 
 ### `docs remove`
@@ -156,8 +156,8 @@ Removes a version of the published documentation from [HexDocs](https://hexdocs.
 
 This command uses this environment variables:
 
-- `HEXPM_USER`: (optional) The Hex username to authenticate with
-- `HEXPM_PASS`: (optional) The Hex username to authenticate with
+- `HEXPM_USER`: (optional) The Hex username to authenticate with.
+- `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
 
 ### `export erlang-shipment`
