@@ -10,7 +10,7 @@
   square_avatar: false
 - name: "Cristine Guadelupe"
   url: "https://github.com/cristineguadelupe"
-  avatar: "https://avatars.githubusercontent.com/u/5660941?u=40dea413238e1053773a3ee5ad5f68ef818c5e98&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
   tier: 1
   square_avatar: false
 - name: "Chris Young"
@@ -128,11 +128,6 @@
   avatar: "https://avatars.githubusercontent.com/u/43364?u=cbfab3a095d5b838e74934e3df03627bc16bc827&v=4"
   tier: 1
   square_avatar: false
-- name: "SmartLogic"
-  url: "https://github.com/smartlogic"
-  avatar: "https://avatars.githubusercontent.com/u/45342?v=4"
-  tier: 3
-  square_avatar: true
 - name: "Oliver Searle-Barnes"
   url: "https://github.com/opsb"
   avatar: "https://avatars.githubusercontent.com/u/46232?u=3d43139f0c09689eb733d41eb9ae405aef115201&v=4"
@@ -520,7 +515,7 @@
   square_avatar: false
 - name: "Marcin Puc"
   url: "https://github.com/tranzystorek-io"
-  avatar: "https://avatars.githubusercontent.com/u/5671049?u=6893155274f16351961f755e27f6d7ad8e91d65e&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5671049?u=0dcaa0cec9b087049268f34f6f9026abb8006e54&v=4"
   tier: 1
   square_avatar: false
 - name: "Marius Kalvø"
@@ -611,6 +606,11 @@
 - name: "Kieran Gill"
   url: "https://github.com/kierangilliam"
   avatar: "https://avatars.githubusercontent.com/u/18583882?v=4"
+  tier: 1
+  square_avatar: false
+- name: "Jen Stehlik"
+  url: "https://github.com/okkdev"
+  avatar: "https://avatars.githubusercontent.com/u/20144629?u=f636d587180a8fcc1cc7db565b225bfb8324019f&v=4"
   tier: 1
   square_avatar: false
 - name: "Joe Corkerton"
