@@ -603,6 +603,11 @@
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
   tier: 2
   square_avatar: false
+- name: "Felix Sandelin"
+  url: "https://github.com/felixsandelin"
+  avatar: "https://avatars.githubusercontent.com/u/18054076?u=52fd5ded11c77f78cd8c9186b4b7158546273ca7&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Kieran Gill"
   url: "https://github.com/kierangilliam"
   avatar: "https://avatars.githubusercontent.com/u/18583882?v=4"
