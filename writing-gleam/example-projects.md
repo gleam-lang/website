@@ -7,12 +7,9 @@ When learning a new language it can often be useful to have example code to
 refer to and learn from, so here are some examples:
 
 
-## [Echo Server](https://github.com/gleam-lang/example-echo-server)
+## [TodoMVC](https://github.com/gleam-lang/example-todomvc)
 
-
-A tiny echo server that will reply with any data posted to `/echo`.
-
-Uses the Gleam HTTP library with the Elli web server adapter.
+An example todo-list web application, built with the Gleam HTTP library.
 
 
 ## [The Gleam standard library](https://github.com/gleam-lang/stdlib)
