@@ -20,7 +20,7 @@
   square_avatar: false
 - name: "Quinn Wilton"
   url: "https://github.com/QuinnWilton"
-  avatar: "https://avatars.githubusercontent.com/u/285821?u=10fb8db74c1611676386a8111706ae4255efdd46&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/285821?u=1f6e34c8799daa2e53abd451b02ac7c2d58e3e48&v=4"
   tier: 1
   square_avatar: false
 - name: "YourMother-really"
@@ -51,11 +51,6 @@
 - name: "Chris Lloyd"
   url: "https://github.com/chrislloyd"
   avatar: "https://avatars.githubusercontent.com/u/718?v=4"
-  tier: 1
-  square_avatar: false
-- name: "Shane Sveller"
-  url: "https://github.com/shanesveller"
-  avatar: "https://avatars.githubusercontent.com/u/831?u=474c7b31ddf0a5c1a03d1142dd18a300279c644a&v=4"
   tier: 1
   square_avatar: false
 - name: "Redmar Kerkhoff"
@@ -405,7 +400,7 @@
   square_avatar: false
 - name: "Fernando Farias"
   url: "https://github.com/nandofarias"
-  avatar: "https://avatars.githubusercontent.com/u/1944560?u=7c0d507e8cfd59d8bb7b92e7369dc483d0d888cc&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/1944560?u=16ea7e154a7738b24c0d8c5ba013b87b7677091a&v=4"
   tier: 1
   square_avatar: false
 - name: "Lars Wikman"
@@ -456,11 +451,6 @@
 - name: "Cole Lawrence"
   url: "https://github.com/colelawrence"
   avatar: "https://avatars.githubusercontent.com/u/2925395?u=d29af274d3aaa7e927666e54c8e4311a15eb1ae7&v=4"
-  tier: 1
-  square_avatar: false
-- name: "John Doneth"
-  url: "https://github.com/JohnDoneth"
-  avatar: "https://avatars.githubusercontent.com/u/3239951?u=f447606db4108c5fb3114f55dc0091f880003966&v=4"
   tier: 1
   square_avatar: false
 - name: "Christian Meunier"
@@ -538,11 +528,6 @@
   avatar: "https://avatars.githubusercontent.com/u/7200153?u=bf491ed3c25940918c32207683db3b8aa848ab25&v=4"
   tier: 1
   square_avatar: false
-- name: "Lars Lillo Ulvestad"
-  url: "https://github.com/kodeFant"
-  avatar: "https://avatars.githubusercontent.com/u/9317208?u=f6c9eb902275f515342c7b220142d76a27582ec5&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Charlie Duong"
   url: "https://github.com/charlieduong94"
   avatar: "https://avatars.githubusercontent.com/u/9613701?u=94b19a19eb944aaffc5c55f52ae202a64c2631eb&v=4"
@@ -618,11 +603,6 @@
   avatar: "https://avatars.githubusercontent.com/u/20144629?u=f636d587180a8fcc1cc7db565b225bfb8324019f&v=4"
   tier: 1
   square_avatar: false
-- name: "Joe Corkerton"
-  url: "https://github.com/joecorkerton"
-  avatar: "https://avatars.githubusercontent.com/u/20556001?u=9bb65241e81780a28aac2c4f1e7d3f7ce29522c1&v=4"
-  tier: 1
-  square_avatar: false
 - name: "inoas"
   url: "https://github.com/inoas"
   avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
@@ -637,6 +617,11 @@
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
   tier: 5
+  square_avatar: false
+- name: "brettkolodny"
+  url: "https://github.com/brettkolodny"
+  avatar: "https://avatars.githubusercontent.com/u/22826580?u=c5176167f9f80b5d034d54ebfe71f24c70c2935e&v=4"
+  tier: 1
   square_avatar: false
 - name: "Bernat Jufré Martínez"
   url: "https://github.com/bjufre"
