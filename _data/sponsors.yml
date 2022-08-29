@@ -648,11 +648,6 @@
   avatar: "https://avatars.githubusercontent.com/u/25916517?u=6d9aa4a8a394111698a47080fd5f4fed9d34f300&v=4"
   tier: 1
   square_avatar: false
-- name: "Sebastian Ziemann"
-  url: "https://github.com/corka149"
-  avatar: "https://avatars.githubusercontent.com/u/27023359?u=794f0f15b1052d8f6afb36f8e49a22533da1e73e&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Michał Kowieski"
   url: "https://github.com/utevo"
   avatar: "https://avatars.githubusercontent.com/u/29740731?u=500ad30b9581936882ffedb62c15f4d98cfccfc7&v=4"
@@ -666,6 +661,11 @@
 - name: "human154"
   url: "https://github.com/human154"
   avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
+  tier: 1
+  square_avatar: false
+- name: "Weizheng Liu"
+  url: "https://github.com/weizhliu"
+  avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
   tier: 1
   square_avatar: false
 - name: "Strand Communications"
