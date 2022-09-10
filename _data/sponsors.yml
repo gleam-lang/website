@@ -318,11 +318,6 @@
   avatar: "https://avatars.githubusercontent.com/u/748593?u=eb762340e9b465a06470a9749b522b69bfe8eed7&v=4"
   tier: 2
   square_avatar: false
-- name: "Herdy Handoko"
-  url: "https://github.com/hhandoko"
-  avatar: "https://avatars.githubusercontent.com/u/771674?u=cb39115fb10e7e74b8533e136fb66d90fb66e37a&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Jechol Lee"
   url: "https://github.com/jechol"
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
@@ -661,6 +656,11 @@
 - name: "human154"
   url: "https://github.com/human154"
   avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
+  tier: 1
+  square_avatar: false
+- name: "zaatas"
+  url: "https://github.com/zaatas"
+  avatar: "https://avatars.githubusercontent.com/u/50715394?v=4"
   tier: 1
   square_avatar: false
 - name: "Weizheng Liu"
