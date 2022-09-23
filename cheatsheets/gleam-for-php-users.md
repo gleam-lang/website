@@ -455,7 +455,7 @@ are fully type checked.
 
 Some notes for PHP:
 
-- For bitwise operators, which exist in PHP but no Gleam, see: <https://github.com/gleam-lang/bitwise>.
+- For bitwise operators, which exist in PHP but not in Gleam, see: <https://github.com/gleam-lang/bitwise>.
 - `==` is by default comparing by value:
   - Types may be autocast to be compareable.
   - Two objects with the same members values will equal:
