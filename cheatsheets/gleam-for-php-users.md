@@ -20,8 +20,10 @@ title: Gleam for PHP users
   - [Tuples](#tuples)
   - [Lists](#lists)
   - [Maps](#maps)
+  - [Numbers](#numbers)
 - [Flow control](#flow-control)
   - [Case](#case)
+  - [Piping](#piping)
   - [Try](#try)
 - [Type aliases](#type-aliases)
 - [Custom types](#custom-types)
@@ -430,27 +432,29 @@ are fully type checked.
 | Reference equality | `instanceof` |                     | True only if an object is an instance of a class                                       |
 | Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
 | Not equal          | `!==`  | `!=`                      | Comparison in Gleam is always strict (see note for PHP)                                |
-| Greater than       | `>`    | `>`                       | In Gleam both values must be **ints**                                                  |
-| Greater than       | `>`    | `>.`                      | In Gleam both values must be **floats**                                                |
-| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
-| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
-| Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
-| Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
-| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                  |
-| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                |
-| Boolean and        | `&&`   | `&&`                      | In Gleam both values must be **bools**                                                 |
+| Greater than       | `>`    | `>`                       | In Gleam both values must be **Int**                                                   |
+| Greater than       | `>`    | `>.`                      | In Gleam both values must be **Float**                                                 |
+| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **Int**                                                   |
+| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **Float**                                                 |
+| Less than          | `<`    | `<`                       | In Gleam both values must be **Int**                                                   |
+| Less than          | `<`    | `<.`                      | In Gleam both values must be **Float**                                                 |
+| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **Int**                                                   |
+| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **Float**                                                 |
+| Boolean and        | `&&`   | `&&`                      | In Gleam both values must be **Bool**                                                  |
 | Logical and        | `&&`   |                           | Not available in Gleam                                                                 |
-| Boolean or         | <code>&vert;&vert;</code> | <code>&vert;&vert;</code> | Both values must be **bools**                                       |
+| Boolean or         | <code>&vert;&vert;</code> | <code>&vert;&vert;</code> | Both values must be **Bool**                                        |
 | Logical or         | <code>&vert;&vert;</code> |        | Not available in Gleam                                                                 |
-| Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
-| Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
-| Subtract           | `-`    | `-`                       | In Gleam both values must be **ints**                                                  |
-| Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
-| Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
-| Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
-| Divide             | `/`    | `/`                       | Both values must be **ints**                                                           |
-| Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
-| Modulo             | `%`    | `%`                       | Both values must be **ints**                                                           |
+| Boolean not        | `xor`  |                           | Not available in Gleam                                                                 |
+| Boolean not        | `!`    | `!`                       | In Gleam both values must be **Bool**                                                  |
+| Add                | `+`    | `+`                       | In Gleam both values must be **Int**                                                   |
+| Add                | `+`    | `+.`                      | In Gleam both values must be **Float**                                                 |
+| Subtract           | `-`    | `-`                       | In Gleam both values must be **Int**                                                   |
+| Subtract           | `-`    | `-.`                      | In Gleam both values must be **Float**                                                 |
+| Multiply           | `*`    | `*`                       | In Gleam both values must be **Int**                                                   |
+| Multiply           | `*`    | `*.`                      | In Gleam both values must be **Float**                                                 |
+| Divide             | `/`    | `/`                       | Both values must be **Int**                                                            |
+| Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
+| Modulo             | `%`    | `%`                       | Both values must be **Int**                                                            |
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
 Some notes for PHP:
@@ -653,6 +657,27 @@ map.from_list([#("key1", "value1"), #("key2", "value2")])
 map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
+### Numbers
+
+PHP and Gleam both support `Integer` and `Float`. Integer and Float sizes for both depend on the platform: 64-bit or 32-bit hardware and OS and for Gleam JavaScript and Erlang.
+
+#### PHP
+
+While PHP differentiates between integers and floats it automatically converts floats and integers for you, removing precision or adding floating point decimals.
+
+```php
+1 / 2 // 0.5
+```
+
+#### Gleam
+
+```gleam
+1 / 2 // 0
+1.5 + 10 // Compile time error
+```
+
+You can use the gleam standard library's `int` and `float` modules to convert between floats and integers in various ways including `rounding`, `floor`, `ceiling` and many more.
+
 ## Flow control
 
 ### Case
@@ -799,6 +824,57 @@ case number {
   1 | 3 | 5 | 7 -> "This is an odd number"
   _ -> "I'm not sure"
 }
+```
+
+### Piping
+
+In Gleam most functions, if not all, are data first, which means the main data
+value to work on is the first argument. By this convention and the ability to
+specify the argument to pipe into, Gleam allows writing functional, immutable
+code, that reads imperative-style top down, much like unix tools and piping.
+
+#### PHP
+
+PHP does not offer pipes but it can chain calls by making functions return
+objects which in turn ship with their list of methods.
+
+```php
+// Imaginary PHP code
+(new Session($request))
+  ->authorize()
+  ->setSuccessFlash('Logged in successfully!')
+  ->setFailureFlash('Failed to login!')
+  ->redirectToRequestedUrl();
+```
+
+#### Gleam
+
+```gleam
+// Imaginary Gleam code
+request
+  |> session.new()
+  |> session.authorize()
+  |> flash.set_success_flash('Logged in successfully!')
+  |> flash.set_failure_flash('Failed to login!')
+  |> response.redirect_to_requested_url()
+```
+
+Despite being similar to read and comprehend, the PHP code creates a session object, and calls the authorize method of the session object. That session object then returns another object, say an `AuthorizedUser` object - you don't know by looking at the code what object gets returned. However you know it must implement a successFlash method. At the last step of the chain `redirect` is called on an object returned from `setFailureFlash`.
+
+In the Gleam code the request data is piped into `session.new()`'s first argument and that return value is piped further down. It is readability sugar for:
+
+```gleam
+response.redirect_to_requested_url(
+  flash.set_failure_flash(
+    flash.set_success_flash(
+      session.authorize(
+        session.new(request)
+      ),
+      'Logged in successfully!'
+    ),
+    'Failed to login!'
+  )
+)
 ```
 
 ### Try
