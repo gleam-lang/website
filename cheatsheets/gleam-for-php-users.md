@@ -1113,7 +1113,6 @@ pub fn explore_space() {
 
 #### PHP
 
-
 PHP features namespaces which can be used to rename classes:
 
 ```php
@@ -1204,3 +1203,6 @@ To iterate a few foundational differences:
 - PHP is tailored towards web applications, servers static to low-dynamic frontends.
 - Gleam can be utilized as a JavaScript replacement to drive your frontend application not just your backend web server.
 - Gleam on Erlang/BEAM can be used to write non blocking, massivly concurrent server applications compareable to RadditMQ or game servers.
+
+
+
