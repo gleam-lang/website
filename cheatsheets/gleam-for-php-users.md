@@ -1271,7 +1271,7 @@ To iterate a few foundational differences:
 
 ### Error handling
 
-- Gleam will catch all errors that are expected to happen via `Results`. There can however be other errors, such as missbehavior due accidential to division by 0, crashes on RAM or storage limits, hardware failures and whatnot. In these cases on the BEAM there are ways to manage these via supervision.
+- Gleam will catch all errors that are expected to happen via `Result`s. There can however be other errors, such as missbehavior due accidential to division by 0, crashes on RAM or storage limits, hardware failures and whatnot. In these cases on the BEAM there are ways to manage these via supervision.
 - In contrast PHP will use exceptions to handle errors and by doing so blurs the line between expected errors and unexpected errors. Also function signatures are enlarged de-facto by whatever exceptions they can throw and thus function calls and return types become much harder to manage.
 
 ### Language reach
@@ -1279,6 +1279,3 @@ To iterate a few foundational differences:
 - PHP is tailored towards web applications, servers static to low-dynamic frontends.
 - Gleam can be utilized as a JavaScript replacement to drive your frontend application not just your backend web server.
 - Gleam on Erlang/BEAM can be used to write non blocking, massivly concurrent server applications compareable to RadditMQ or game servers.
-
-
-
