@@ -1138,6 +1138,11 @@ though this is commonly not the case.
 
 ### Gleam
 
+Coming from PHP the closest thing PHP has that are similar to Gleam's modules
+are static classes: Namespaced collections of functions and constants.
+
+However Gleam modules can also contain types.
+
 Gleam's file is a module and named by the file name (and its directory path).
 Since there is no special syntax to create a module, there can be only one
 module in a file and since there is no way to name the module, the filename
