@@ -273,12 +273,13 @@ variable bindings in the outer scope. This is different for PHP's arrow
 functions where they inherit the scope like Gleam does.
 
 The only difference between module functions and anonymous functions in Gleam
-is that module functions heads can also feature argument labels labels:
+is that module functions heads may also feature argument labels, like so:
 
 ```gleam
 pub fn distance(from x: Int, to y: Int) : Int {
   abs(x) - abs(y) |> abs()
 }
+distance(from: 1, to: -2) // 3
 ```
 
 ### Exporting functions
@@ -348,7 +349,10 @@ function mul(int $x, int $y) : bool {
 
 #### Gleam
 
-Functions can **optionally** have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
+Functions can **optionally** have their argument and return types annotated in
+Gleam. These type annotations will always be checked by the compiler and throw
+a compilation error if not valid. The compiler will still type check your
+program using type inference if annotations are omitted.
 
 ```gleam
 fn add(x: Int, y: Int) -> Int {
