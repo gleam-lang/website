@@ -243,20 +243,10 @@
   avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
   tier: 1
   square_avatar: false
-- name: "Stefan Hagen"
-  url: "https://github.com/sthagen"
-  avatar: "https://avatars.githubusercontent.com/u/450800?u=40afa5125d883ed9aa5d368202fd9bd27d2f20f1&v=4"
-  tier: 1
-  square_avatar: false
 - name: "John Palgut"
   url: "https://github.com/Jwsonic"
   avatar: "https://avatars.githubusercontent.com/u/455046?u=0092bfecadfc3aac5e1df3145ea4e0a55a896787&v=4"
   tier: 2
-  square_avatar: false
-- name: "Adam Bowen"
-  url: "https://github.com/adamnbowen"
-  avatar: "https://avatars.githubusercontent.com/u/475879?u=bb6404c592fcac57b2a8497c666ee953045164c5&v=4"
-  tier: 1
   square_avatar: false
 - name: "João Veiga"
   url: "https://github.com/jveiga"
@@ -651,6 +641,11 @@
 - name: "Kapp Technology"
   url: "https://github.com/kapp-technology"
   avatar: "https://avatars.githubusercontent.com/u/30418610?v=4"
+  tier: 2
+  square_avatar: false
+- name: "Bryan Paxton"
+  url: "https://github.com/starbelly"
+  avatar: "https://avatars.githubusercontent.com/u/39971740?u=f234e6106097a35c95d4c6e4696ed966c09cac18&v=4"
   tier: 2
   square_avatar: false
 - name: "human154"
