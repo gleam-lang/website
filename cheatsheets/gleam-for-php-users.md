@@ -77,7 +77,8 @@ class Bar {}
 function quux(string $str) : string { return $str; }
 ```
 
-Docblocks are extracted into generated API documentation.
+Documentation blocks (docblocks) are extracted into generated API
+documentation.
 
 ### Gleam
 
@@ -125,7 +126,8 @@ In local scope PHP has no specific variable keyword. You choose a name
 and that's it!
 
 In class scope for property declaration PHP uses at least one related
-modifier keyword to create properties such as: `public`, `private`, `protected`, `static` or `readonly` (`var` is deprecated).
+modifier keyword to create properties such as: `public`, `private`,
+`protected`, `static` or `readonly` (`var` is deprecated).
 
 ### Gleam
 
@@ -191,18 +193,22 @@ linters, etc.
 ```php
 class Foo {
   private ?string $bar;
-
 }
 ```
 
-As PHP's `array` construct is a multitool across `map` and `array`, the array
-definition itself does not set the type of its members:
+As PHP's `array` structure is a combination of maps and arrays.
+The PHP manual states that it is an *ordered map*.
+While creating arrays in PHP the type of its elements cannot be set explicitly
+and each element can be of a different type:
 
 ```php
 $someList = [1, 2, 3];
 $someTuple = [1, "a", true];
-$someMap = [0 => 1, "foo" => "bar", true => false]
+$someMap = [0 => 1, "foo" => "bar", true => false];
 ```
+
+Single variables cannot be type-annotated unless they are `class` or `trait`
+members.
 
 #### Gleam
 
@@ -210,6 +216,7 @@ In Gleam type annotations can optionally be given when binding variables.
 
 ```gleam
 let some_list: List(Int) = [1, 2, 3]
+let some_String: String = "Foo"
 ```
 
 Gleam will check the type annotation to ensure that it matches the type of the
@@ -225,20 +232,22 @@ In PHP, you can define functions with the `function` keyword. One or many `retur
 keywords are optional.
 
 ```php
-function hello($name = 'Joe') : string {
+function hello($name = 'Joe') : string
+{
   if ($name = 'Joe') {
     return 'Hello back, Joe!';
   }
-  return "Hello $name"
+  return "Hello $name";
 }
 
-function noop() {
+function noop()
+{
   // Will automatically return NULL
 }
 ```
 
-Anonymous functions returning a single expression can also be defined and be bound
-to variables.
+Anonymous functions returning a single expression can also be defined and be
+bound to variables.
 
 ```php
 $x = 2
@@ -276,9 +285,11 @@ The only difference between module functions and anonymous functions in Gleam
 is that module functions heads may also feature argument labels, like so:
 
 ```gleam
+// In some module.gleam
 pub fn distance(from x: Int, to y: Int) : Int {
   abs(x) - abs(y) |> abs()
 }
+// In some other function
 distance(from: 1, to: -2) // 3
 ```
 
@@ -289,7 +300,7 @@ distance(from: 1, to: -2) // 3
 In PHP, top level functions are exported by default. There is no notion of
 private module-level functions.
 
-However at class level, all properties are by default public.
+However at class level, all properties are public, by default.
 
 ```php
 class Foo {
@@ -312,7 +323,8 @@ echo Foo::kek(); // Error
 
 #### Gleam
 
-In Gleam, functions are private by default and need the `pub` keyword to be public.
+In Gleam, functions are private by default and need the `pub` keyword to be
+marked as public.
 
 ```gleam
 // this is public
@@ -326,15 +338,33 @@ fn mul(x, y) {
 }
 ```
 
+### PHP
+
+Global functions may exist in a global scope, and to execute functions or
+create objects and invoke methods at some point they have to be called from
+the global scope. Usually there is one `index.php` file whose global scope
+acts as if it was the `main()` function.
+
+### Gleam
+
+Gleam does not support a global scope. Instead Gleam code is either
+representing a library, which can be required as a dependency, and/or
+features a *main* module and *main* function which will be called via either
+`gleam run` or when the `entrypoint.sh` is executed.
+
+On the Beam, Gleam code can also be invoked from other Erlang code, or it
+can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
+
 ### Function type annotations
 
 #### PHP
 
-Type hints can be used to optionally annotate function arguments and return types.
+Type hints can be used to optionally annotate function arguments and return
+types.
 
-Discrepancies between type hints and actual values at runtime do not prevent interpretation of the code.
-
-Static code analysers (IDE tooling, type checkers like `phpstan`) will be required to detect those errors.
+Discrepancies between type hints and actual values at runtime do not prevent
+interpretation of the code. Static code analysers (IDE tooling, type checkers
+like `phpstan`) will be required to detect those errors.
 
 ```php
 function sum(int $x, int $y) : int {
@@ -369,11 +399,26 @@ fn mul(x: Int, y: Int) -> Bool {
 #### PHP
 
 As long as functions are in scope they can be assigned to a new variable.
+As methods or static functions classes, functions can be accessed via
+`$this->object_instance_method()` or `self::static_class_function()`.
+
+Other than that only anonymous functions can be moved around the same way as
+other values.
+
+```php
+$doubleFn = function($x) { return $x + $x; };
+// Some imaginary pushFunction
+pushFunction($queue, $doubleFn);
+```
+
+However in `PHP` it is not possible to pass around global, class or instance
+functions as values.
 
 #### Gleam
 
-Gleam has a single namespace for values and functions within a module, so there
-is no need for a special syntax to assign a module function to a variable.
+Gleam has a single namespace for constants and functions within a module, so
+there is no need for a special syntax to assign a module function to a
+variable.
 
 ```gleam
 fn identity(x) {
@@ -398,11 +443,11 @@ When calling a function, arguments can be passed:
 - by name, in any order
 
 ```php
-// array fill standard library definition
-function replace(string $each, string $with, string $inside) { /* ... */ }
-// Using positional arguments:
+// Some imaginary replace function
+function replace(string $each, string $with, string $inside) { /* implementation */ }
+// Calling with positional arguments:
 replace(",", " ", "A,B,C")
-// Using named arguments:
+// Calling with named arguments:
 replace(inside: "A,B,C", each: ",", with: " ")
 ```
 
@@ -461,9 +506,10 @@ are fully type checked.
 | Modulo             | `%`    | `%`                       | Both values must be **Int**                                                            |
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
-Some notes for PHP:
+### Notes on operators
 
-- For bitwise operators, which exist in PHP but not in Gleam, see: <https://github.com/gleam-lang/bitwise>.
+- For bitwise operators, which exist in PHP but not in Gleam,
+  see: <https://github.com/glea?m-lang/bitwise>.
 - `==` is by default comparing by value:
   - Types may be autocast to be compareable.
   - Two objects with the same members values will equal:
@@ -485,15 +531,12 @@ Some notes for PHP:
 
 ### PHP
 
-In PHP, constants can either be defined by adding them into the `$_GLOBALS`
-array or within any static or regular class.
+In PHP, constants can only be defined within classes and traits.
 
 ```php
-# in the global scope
-$_GLOBALS['theAnswer'] = 42;
-
+<?php
 class TheQuestion {
-  const theAnswer = 42;
+  public const theAnswer = 42;
 }
 echo TheQuestion::theAnswer; // 42
 ```
@@ -503,6 +546,7 @@ echo TheQuestion::theAnswer; // 42
 In Gleam constants can be created using the `const` keyword.
 
 ```gleam
+// the_question.gleam module
 const the_answer = 42
 
 pub fn main() {
@@ -516,20 +560,27 @@ They can also be marked public via the `pub` keyword and will then be automatica
 
 ### PHP
 
-PHP blocks are always associated with a function / conditional, class or similar declaration.
+PHP blocks are always associated with a function / conditional / loop or
+similar declaration. Blocks are limited to specific language constructs.
 There is no way to create multi-line expressions blocks like in Gleam.
 
-Blocks are declared via curley braces.
+Blocks are declared via curly braces.
 
 ```php
 function a_func() {
-  // A block here
+  // A block starts here
+  if ($foo) {
+    // A block here
+  } else {
+    // A block here
+  }
+	// Block continues
 }
 ```
 
 ### Gleam
 
-In Gleam braces `{` `}` are used to group expressions.
+In Gleam curly braces, `{` and `}`, are used to group expressions.
 
 ```gleam
 pub fn main() {
@@ -542,6 +593,13 @@ pub fn main() {
 }
 ```
 
+Unlike in PHP, in Gleam function blocks are always expressions, so are `case`
+blocks or arithmetic sub groups. Because they are expressions they always
+return a value.
+
+For Gleam the last value in a block's expression is always the value being
+returned from an expression.
+
 ## Data types
 
 ### Strings
@@ -549,14 +607,14 @@ pub fn main() {
 In PHP strings are stored as an array of bytes and an integer indicating the
 length of the buffer. PHP itself has no information about how those bytes
 translate to characters, leaving that task to the programmer. PHP's
-standard library however features a bunch of multibyte compatible functions
+standard library however features a bunch of multi-byte compatible functions
 and conversion functions between UTF-8, ISO-8859-1 and further encodings.
 
 PHP strings allow interpolation.
 
 In Gleam all strings are UTF-8 encoded binaries. Gleam strings do not allow
-interpolation, yet. Gleam however offers a string_builder via its standard
-library for efficient string building.
+interpolation, yet. Gleam however offers a `string_builder` via its standard
+library for performant string building.
 
 #### PHP
 
@@ -636,14 +694,19 @@ let [1, second_element, ..] = list
 
 In PHP, the `array` type also covers maps and can have keys of any type as long as:
 
-- the key type is `null`, an `int`, a `string` or a `bool` (some conversions occur, such as null to `""` and `false` to `0` as well as `true` to `1` and `"1"` to `1`. Float indexes, which are not representing integers indexes are deprecated due to being auto downcast to integers).
+- the key type is `null`, an `int`, a `string` or a `bool` (some conversions
+  occur, such as null to `""` and `false` to `0` as well as `true` to `1`
+  and `"1"` to `1`. Float indexes, which are not representing integers
+  indexes are deprecated due to being auto downcast to integers).
 - the key is unique in the dictionary.
 - the values are of any type.
 
-In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
-The type of key and value can differ from each other.
+In Gleam, maps can have keys and values of any type, but all keys must be of
+the same type in a given map and all values must be of the same type in a
+given map. The type of key and value can differ from each other.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally not used much in Gleam, custom types are more common.
+There is no map literal syntax in Gleam, and you cannot pattern match on a map.
+Maps are generally not used much in Gleam, custom types are more common.
 
 #### PHP
 
@@ -663,11 +726,15 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 ### Numbers
 
-PHP and Gleam both support `Integer` and `Float`. Integer and Float sizes for both depend on the platform: 64-bit or 32-bit hardware and OS and for Gleam JavaScript and Erlang.
+PHP and Gleam both support `Integer` and `Float`. Integer and Float sizes for
+both depend on the platform: 64-bit or 32-bit hardware and OS and for Gleam
+JavaScript and Erlang.
 
 #### PHP
 
-While PHP differentiates between integers and floats it automatically converts floats and integers for you, removing precision or adding floating point decimals.
+While PHP differentiates between integers and floats it automatically converts
+floats and integers for you, removing precision or adding floating point
+decimals.
 
 ```php
 1 / 2 // 0.5
@@ -680,14 +747,17 @@ While PHP differentiates between integers and floats it automatically converts f
 1.5 + 10 // Compile time error
 ```
 
-You can use the gleam standard library's `int` and `float` modules to convert between floats and integers in various ways including `rounding`, `floor`, `ceiling` and many more.
+You can use the gleam standard library's `int` and `float` modules to convert
+between floats and integers in various ways including `rounding`, `floor`,
+`ceiling` and many more.
 
 ## Flow control
 
 ### Case
 
-Case is one of the most used control flow in Gleam. It can be seen as a switch statement on steroids. It provides a terse way to match a value type to an expression.
-It is also used to replace if/else statements.
+Case is one of the most used control flow in Gleam. It can be seen as a switch
+statement on steroids. It provides a terse way to match a value type to an
+expression. It is also used to replace if/else statements.
 
 #### PHP
 
@@ -863,9 +933,16 @@ request
   |> response.redirect_to_requested_url()
 ```
 
-Despite being similar to read and comprehend, the PHP code creates a session object, and calls the authorize method of the session object. That session object then returns another object, say an `AuthorizedUser` object - you don't know by looking at the code what object gets returned. However you know it must implement a successFlash method. At the last step of the chain `redirect` is called on an object returned from `setFailureFlash`.
+Despite being similar to read and comprehend, the PHP code creates a session
+object, and calls the authorize method of the session object. That session
+object then returns another object, say an `AuthorizedUser` object - you don't
+know by looking at the code what object gets returned. However you know it must
+implement a successFlash method. At the last step of the chain `redirect` is
+called on an object returned from `setFailureFlash`.
 
-In the Gleam code the request data is piped into `session.new()`'s first argument and that return value is piped further down. It is readability sugar for:
+In the Gleam code the request data is piped into `session.new()`'s first
+argument and that return value is piped further down. It is readability sugar
+for:
 
 ```gleam
 response.redirect_to_requested_url(
@@ -915,7 +992,8 @@ try {
 
 In contrast in gleam, errors are just containers with an associated value.
 
-A common container to model an operation result is `Result(ReturnType, ErrorType)`.
+A common container to model an operation result is
+`Result(ReturnType, ErrorType)`.
 
 A `Result` is either:
 
@@ -959,7 +1037,6 @@ using `class_alias()`.
 
 ### PHP
 
-PHP
 A simple variable can store the result of a compound set of types.
 
 ```php
@@ -995,8 +1072,8 @@ PHP uses classes to define user-defined, record-like types.
 Properties are defined as class members and initial values are generally set in
 the constructor.
 
-By default the constructor does not provide base initializers in the constructor
-so some boilerplate is needed:
+By default the constructor does not provide base initializers in the
+constructor so some boilerplate is needed:
 
 ```php
 class Person {
@@ -1013,9 +1090,8 @@ $person = new Person(name: "Joe", age: 40);
 
 #### Gleam
 
-Gleam's custom types can be used in much the same way that structs are used
-in Elixir. At runtime, they have a tuple representation and are compatible with
-Erlang records.
+Gleam's custom types can be used as structs. At runtime, they have a tuple
+representation and are compatible with Erlang records.
 
 ```gleam
 type Person {
@@ -1026,13 +1102,14 @@ let person = Person(name: "Joe", age: 40)
 let name = person.name
 ```
 
-An important difference to note is there is no OOP in Gleam:
-Methods can not be added to types.
-However opaque types exist, see below.
+An important difference to note is there is no Java-Style object-orientation in
+Gleam, thus methods can not be added to types. However opaque types exist,
+see below.
 
 ### Unions
 
-PHP generally does not support unions with a few exceptions such as type x or `null` and `Array` or `Traversable`.
+PHP generally does not support unions with a few exceptions such as type x or
+`null` and `Array` or `Traversable`.
 
 In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
@@ -1093,9 +1170,13 @@ class PointObject
   }
 }
 PointObject::spawn(1, 2); // Returns a Point object
+```
 
-This requires mutation, but shields prohibits direct property changes.
+This requires mutation, but prohibits direct property changes.
 
+PHP allows to skip object mutation by using static classes:
+
+```php
 class PointStruct
 {
   public static function spawn(int $x, int $y) {
@@ -1108,7 +1189,8 @@ class PointStruct
 PointStruct::spawn(1, 2); // Returns an array managed by PointStruct
 ```
 
-However PHP will in this case not prohibit the direct alteration the returned structure.
+However PHP will in this case not prohibit the direct alteration the returned
+structure, like Gleam's custom types can.
 
 #### Gleam
 
@@ -1136,9 +1218,9 @@ pub fn main() {
 
 ### PHP
 
-PHP does not feature modules, but many other containers such as classes, traits and interfaces.
-Historically a single file can contain many classes, traits and interfaces one after another,
-though this is commonly not the case.
+PHP does not feature modules, but many other containers such as classes, traits
+and interfaces. Historically a single file can contain many classes, traits and
+interfaces one after another, though this is commonly not the case.
 
 ### Gleam
 
@@ -1201,8 +1283,9 @@ pub fn explore_space() {
 PHP features namespaces which can be used to rename classes:
 
 ```php
-use Unix\Cat; // Must first be added to the autoloader via PSR-4
-use Animal\Cat as Kitty; // Must first be added to the autoloader via PSR-4
+// Source files must first be added to the autoloader
+use Unix\Cat;
+use Animal\Cat as Kitty;
 ```
 
 #### Gleam
@@ -1230,7 +1313,7 @@ use Animal\Cat{
 ```
 
 ```php
-$kitty = Cat(name: "Nubi");
+$kitty = new Cat(name: "Nubi");
 stroke($kitty);
 ```
 
@@ -1251,40 +1334,87 @@ This can be very helpful to import types of `result`, `option` or `order`.
 
 To iterate a few foundational differences:
 
-1. Programming model: java-style object-orientation vs functional immutable programming
-2. Guarantuees: strong static typing vs weak dynamic typing
-3. Runtime model: request-response script vs erlang otp processes
-4. Error handling: exceptions vs return tuples
+1. Programming model: Java-style object-orientation VS functional immutable
+   programming
+2. Guarantuees: weak dynamic typing VS strong static typing
+3. Runtime model: request-response script VS Erlang/OTP processes
+4. Error handling: exceptions VS result type
 5. Language reach
 
 ### Programming model
 
-- PHP mixes imperative, java-style-object-orientation and functional code styles. Gleam offers only functional code style, though it appears imperative and reads easy via pipes.
-- Data structure are never mutated but always updated into a new structure. This allows processes that fail to simply restart as there are no mutated objectes that can be in an invalid state and take the whole application down (such as in Go, Ruby or PHP).
-- Gleam offers syntax to make it easy to extract data out of custom types and update data into new copies of custom types without ever mutating variables. PHP sometimes directly mutates references of simple values such as when using `reset()` or `end()` or `array_pop()`.
-- Gleam allows to rebind variables freely to make it easy to update data structures by making a copy and binding it to the existing variable.
+- PHP mixes imperative, Java-style object-orientation and functional code
+  styles. Gleam offers only functional code style, though it appears
+  imperative and reads easy via pipes.
+- In Gleam, data structure are never mutated but always updated into a new
+  structure. This allows processes that fail to simply restart as there are no
+  mutated objectes that can be in an invalid state and take the whole
+  application down (such as in Go, Ruby or PHP).
+- Gleam offers syntax to make it easy to extract data out of custom types and
+  update data into new copies of custom types without ever mutating variables.
+  PHP sometimes directly mutates references of simple values such as when using
+ `reset()` or `end()` or `array_pop()`.
+- Gleam allows to rebind variables freely to make it easy to update data
+  structures by making a copy and binding it to the existing variable.
+- PHP features a massive, powerful but inconsistent standard library that is
+  always loaded and partially extended and deprecated with new PHP releases.
+- Gleam allows you to opt into a smaller, well polished and consistent standard
+  library.
 
 ### Guarantees and types
 
 - PHP features opt-in static typing which is only checked at runtime.
-- PHP value tend to be automatically cast for comparison purposes or when used as indexes in arrays. Gleam values are not automatically cast.
-- PHP allows comparison between most if not all values, even if it does not make any sense say comparing a file `resource` to a `Date` in terms of order. Gleams comparision operators are very strict and limited, any other comparisions and conversions must happen via function calls.
-- PHP's checks happen at runtime, Gleam's checks (for the most part) do not and rely on the compiler to allow only type safe and sound code to be compiled.
-- Gleam's type inference allows you to be lazy for almost all type definitions. Gleam's type system will always assist you in what types are expected and/or conflicting. Gleam's type system will help you discover APIs.
+- PHP value tend to be automatically cast for comparison purposes or when used
+  as indexes in arrays. Gleam values are not automatically cast.
+- PHP allows comparison between most if not all values, even if it does not
+  make any sense say comparing a file `resource` to a `Date` in terms of order.
+  Gleam's comparison operators are very strict and limited, any other
+  comparisons and conversions must happen via function calls.
+- PHP's checks happen at runtime, Gleam's checks (for the most part) do not
+  and rely on the compiler to allow only type safe and sound code to be
+  compiled.
+- Gleam's type inference allows you to be lazy for almost all type definitions.
+  Gleam's type system will always assist you in what types are expected and/or
+  conflicting. Gleam's type system will help you discover APIs.
 
 ### Runtime model
 
-- Gleam can run on the browser, Deno or Node but also on Erlang/BEAM.
-- On Erlang/BEAM the runtime model has some striking similarities in practise: In PHP a script starts and runs. It allocates memory for this script and frees it upon end or after the max execution time is exceeded (or the memory limit is exceeded). Gleam on Erlang/BEAM allows to processes requests in a similar isolation level that PHP offers in contrast to applications running Go or Ruby. The level of isoluation means that, very similar to PHP, if a process crashes (in PHP read: if a request crashes) then the supervision system can restart that process or after a while or amount of tries abort repeating restarts on the process with that given input data. This means Erlang/BEAM will yield similar robustness that PHP developers are used to and similar isoluation guarantuees.
-- When executing Gleam code in fact its compiled Erlang or JavaScript is executed. So in case there are runtime crashes, the crash log will show Erlang (or Node/Deno/Browser-Console) debug information. In Gleam applications runtime errors should almost never happen but they are harder to read, in PHP applications runtime errors much more often and are easier to read.
+- Gleam can run on Erlang/BEAM, on the browser but also Deno or NodeJS.
+- For Gleam on Erlang/BEAM the runtime model has some striking similarities
+  in practise: In PHP a script starts and runs. It allocates memory for this
+  script and frees it upon end or after the max execution time is exceeded
+  or the memory limit is exceeded). Gleam on Erlang/BEAM allows to processes
+  requests in a similar isolation level that PHP offers in contrast to
+  applications running *Go* or *Ruby*. The level of isoluation means that,
+  very similar to PHP, if a process crashes (in PHP read: if a request crashes)
+  then the supervision system can restart that process or after a while or
+  amount of tries abort repeating restarts on the process with that given
+  input data. This means Erlang/BEAM will yield similar robustness that PHP
+  developers are used to and similar isoluation guarantuees.
+- When executing Gleam code in fact its compiled Erlang or JavaScript is
+  executed. So in case there are runtime crashes, the crash log will show
+  Erlang (or browser-console/NodeJS/Deno) debug information. In Gleam
+  applications runtime errors should almost never happen but they are harder
+  to read, in PHP applications runtime errors much more often and are easier
+  to read.
 
 ### Error handling
 
-- Gleam will catch all errors that are expected to happen via `Result`s. There can however be other errors, such as missbehavior due accidential to division by 0, crashes on RAM or storage limits, hardware failures and whatnot. In these cases on the BEAM there are ways to manage these via supervision.
-- In contrast PHP will use exceptions to handle errors and by doing so blurs the line between expected errors and unexpected errors. Also function signatures are enlarged de-facto by whatever exceptions they can throw and thus function calls and return types become much harder to manage.
+- Gleam will catch all errors that are expected to happen via the `Result`
+  type. There can however be other errors, such as miss-behavior due
+  accidental to division by 0, crashes on RAM or storage limits, hardware
+  failures, etc. In these cases on the BEAM there are ways to manage these
+  via BEAM's supervision.
+- In contrast PHP will use exceptions to handle errors and by doing so blurs
+  the line between expected errors and unexpected errors. Also function
+  signatures are enlarged de-facto by whatever exceptions they can throw
+  and thus function calls and return types become much harder to manage.
 
 ### Language reach
 
-- PHP is tailored towards web applications, servers static to low-dynamic frontends.
-- Gleam can be utilized as a JavaScript replacement to drive your frontend application not just your backend web server.
-- Gleam on Erlang/BEAM can be used to write non blocking, massivly concurrent server applications compareable to RadditMQ or game servers.
+- PHP is tailored towards web applications, servers, and static to low-dynamic
+  frontends.
+- Gleam can be utilized as a JavaScript replacement to drive your frontend
+  application not just your backend web server.
+- Gleam on Erlang/BEAM can be used to write non-blocking, massively concurrent
+  server applications comparable to RadditMQ or multiplayer game servers.
