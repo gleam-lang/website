@@ -934,11 +934,11 @@ request
 ```
 
 Despite being similar to read and comprehend, the PHP code creates a session
-object, and calls the authorize method of the session object. That session
+object, and calls the authorize method of the session object: That session
 object then returns another object, say an `AuthorizedUser` object - you don't
 know by looking at the code what object gets returned. However you know it must
-implement a successFlash method. At the last step of the chain `redirect` is
-called on an object returned from `setFailureFlash`.
+implement a `setSuccessFlash` method. At the last step of the chain `redirect`
+is called on an object returned from `setFailureFlash`.
 
 In the Gleam code the request data is piped into `session.new()`'s first
 argument and that return value is piped further down. It is readability sugar
@@ -979,6 +979,7 @@ The callee block will be able to capture any exception raised in the block
 using a `try/except` set of blocks:
 
 ```php
+// callee block
 try {
     echo 'this line will be executed and thus printed';
     aFunctionThatFails()
@@ -1031,8 +1032,8 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ## Type aliases
 
 Type aliases allow for easy referencing of arbitrary complex types.
-PHP does not have this feature, though either regular classes or static can be
-used to design custom types and class definitions in take can be aliased
+PHP does not have this feature, though either regular classes or static classes
+can be used to design custom types and class definitions in take can be aliased
 using `class_alias()`.
 
 ### PHP
@@ -1052,7 +1053,7 @@ static class Triangle {
 
 ### Gleam
 
-The `type` keyword can be used to create aliases
+The `type` keyword can be used to create aliases.
 
 ```gleam
 pub type Headers =
@@ -1091,7 +1092,7 @@ $person = new Person(name: "Joe", age: 40);
 #### Gleam
 
 Gleam's custom types can be used as structs. At runtime, they have a tuple
-representation and are compatible with Erlang records.
+representation and are compatible with Erlang records (or JavaScript objects).
 
 ```gleam
 type Person {
@@ -1102,14 +1103,16 @@ let person = Person(name: "Joe", age: 40)
 let name = person.name
 ```
 
-An important difference to note is there is no Java-Style object-orientation in
+An important difference to note is there is no Java-style object-orientation in
 Gleam, thus methods can not be added to types. However opaque types exist,
 see below.
 
 ### Unions
 
-PHP generally does not support unions with a few exceptions such as type x or
-`null` and `Array` or `Traversable`.
+PHP generally does not support unions with a few exceptions such as:
+
+- type x or `null`
+- `Array` or `Traversable`.
 
 In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
@@ -1118,7 +1121,7 @@ two different types they must be wrapped in a new custom type.
 
 ```php
 class Foo {
-  public ?string $string_date_of_death
+  public ?string $aStringOrNull;
 }
 ```
 
@@ -1225,17 +1228,19 @@ interfaces one after another, though this is commonly not the case.
 ### Gleam
 
 Coming from PHP the closest thing PHP has that are similar to Gleam's modules
-are static classes: Namespaced collections of functions and constants.
+are static classes: Collections of functions and constants grouped into a
+static class.
 
-However Gleam modules can also contain types.
+In comparison Gleam modules can also contain custom types.
 
-Gleam's file is a module and named by the file name (and its directory path).
+A gleam module name corresponds to its file name and path.
+
 Since there is no special syntax to create a module, there can be only one
 module in a file and since there is no way to name the module, the filename
 always matches the module name which keeps things simple and transparent.
 
 ```gleam
-// in file foo.gleam
+//// module foo in foo.gleam
 pub fn identity(x) {
   x
 }
@@ -1243,7 +1248,7 @@ pub fn identity(x) {
 
 ```gleam
 // in file main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import foo // if foo was in a directory called `lib` the import would be `lib/foo`.
 pub fn main() {
   foo.identity(1)
 }
@@ -1336,7 +1341,7 @@ To iterate a few foundational differences:
 
 1. Programming model: Java-style object-orientation VS functional immutable
    programming
-2. Guarantuees: weak dynamic typing VS strong static typing
+2. Guarantees: weak dynamic typing VS strong static typing
 3. Runtime model: request-response script VS Erlang/OTP processes
 4. Error handling: exceptions VS result type
 5. Language reach
@@ -1346,9 +1351,9 @@ To iterate a few foundational differences:
 - PHP mixes imperative, Java-style object-orientation and functional code
   styles. Gleam offers only functional code style, though it appears
   imperative and reads easy via pipes.
-- In Gleam, data structure are never mutated but always updated into a new
-  structure. This allows processes that fail to simply restart as there are no
-  mutated objectes that can be in an invalid state and take the whole
+- In Gleam, data structures are never mutated but always updated into new
+  structures. This allows processes that fail to simply restart as there are no
+  mutated objects that can be in an invalid state and take the whole
   application down (such as in Go, Ruby or PHP).
 - Gleam offers syntax to make it easy to extract data out of custom types and
   update data into new copies of custom types without ever mutating variables.
