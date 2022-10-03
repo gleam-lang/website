@@ -554,7 +554,8 @@ pub fn main() {
 }
 ```
 
-They can also be marked public via the `pub` keyword and will then be automatically exported.
+They can also be marked public via the `pub` keyword and will then be
+automatically exported.
 
 ## Blocks
 
