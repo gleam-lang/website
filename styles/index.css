@@ -328,6 +328,10 @@ tr:nth-child(even) {
   background-color: white;
   color: var(--color-charcoal);
 }
+.button-light:hover {
+  background: skyblue;
+  transition: 0.5s;
+}
 
 .sponsors-section {
   background-color: var(--color-pink);
