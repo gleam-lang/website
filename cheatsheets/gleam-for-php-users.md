@@ -1265,7 +1265,7 @@ In comparison Gleam modules can also contain custom types.
 A gleam module name corresponds to its file name and path.
 
 Since there is no special syntax to create a module, there can be only one
-module in a file and since there is no way to rename the module: the filename
+module in a file and since there is no way name the module the filename
 always matches the module name which keeps things simple and transparent.
 
 In `/src/foo/bar.gleam`:
@@ -1320,20 +1320,26 @@ pub fn explore_space() {
 
 #### PHP
 
-PHP features namespaces which can be used to rename classes:
+PHP features namespaces which can be used to rename classes when they clash:
 
 ```php
-// Source files must first be added to the autoloader
+// Source files must first be added to the auto-loader
 use Unix\Cat;
 use Animal\Cat as Kitty;
+// Cat and Kitty are available
 ```
 
 #### Gleam
 
+Gleam has as similar feature:
+
 ```gleam
 import unix/cat
 import animal/cat as kitty
+// cat and kitty are available
 ```
+
+This may be useful to differentiate between multiple modules that would have the same default name when imported.
 
 ### Unqualified imports
 
@@ -1354,7 +1360,10 @@ stroke($kitty);
 #### Gleam
 
 ```gleam
-import animal/cat.{Cat, stroke}
+import animal/cat.{
+  Cat,
+  stroke
+}
 
 pub fn main() {
   let kitty = Cat(name: "Nubi")
@@ -1362,7 +1371,8 @@ pub fn main() {
 }
 ```
 
-This can be very helpful to import types of `result`, `option` or `order`.
+Importing common types such as `gleam/order.{Lt, Eq, Gt}` or
+`gleam/option.{Some,None}` can be very helpful.
 
 ## Architecture
 
