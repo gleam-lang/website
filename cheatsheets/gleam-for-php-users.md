@@ -1224,7 +1224,35 @@ pub fn main() {
 
 PHP does not feature modules, but many other containers such as classes, traits
 and interfaces. Historically a single file can contain many classes, traits and
-interfaces one after another, though this is commonly not the case.
+interfaces one after another, though it is best practise to only contain one
+such declaration per file.
+
+Using PHP namespaces these can be placed in a registry that does not need to map
+to the source code file system hierarchy, but by convention should.
+
+In `src/Foo/Bar.php`:
+
+```php
+// Anything declared in this file will be inside namespace Foo
+namespace Foo;
+
+// Creation of (static) class Bar in Foo, thus as Foo/Bar
+class Bar {
+  public static function identity($x) {
+    return $x;
+  }
+}
+```
+
+Making the static class available in the local scope and calling the function
+`index.php` (aka PHP's main function):
+
+```php
+// After auto-loading has happened
+use Foo/Bar;
+
+Bar::identity(1) // 1;
+```
 
 ### Gleam
 
@@ -1237,21 +1265,27 @@ In comparison Gleam modules can also contain custom types.
 A gleam module name corresponds to its file name and path.
 
 Since there is no special syntax to create a module, there can be only one
-module in a file and since there is no way to name the module, the filename
+module in a file and since there is no way to rename the module: the filename
 always matches the module name which keeps things simple and transparent.
 
+In `/src/foo/bar.gleam`:
+
 ```gleam
-//// module foo in foo.gleam
+// Creation of module function identity
+// in module bar
 pub fn identity(x) {
   x
 }
 ```
 
+Importing the `bar` module and calling a module function:
+
 ```gleam
-// in file main.gleam
-import foo // if foo was in a directory called `lib` the import would be `lib/foo`.
+// In src/main.gleam
+import foo/bar // if foo was in a directory called `lib` the import would be `lib/foo/bar`.
+
 pub fn main() {
-  foo.identity(1)
+  bar.identity(1) // 1
 }
 ```
 
@@ -1306,12 +1340,6 @@ import animal/cat as kitty
 #### PHP
 
 ```php
-use Application\{
-  function debug,
-  const DEBUG_LEVEL,
-  Framework\Http
-};
-
 use Animal\Cat{
   Cat,
   function stroke
