@@ -370,9 +370,9 @@ are fully type checked.
 | Less than         | `<`    | `<.`  | In Gleam both values must be **floats**        |
 | Less or equal     | `<=`   | `<=`  | In Gleam both values must be **ints**          |
 | Less or equal     | `<=`   | `<=.` | In Gleam both values must be **floats**        |
-| Boolean and       | `and`  | `&&`  | Both values must be **bools**                  |
+| Boolean and       | `and`  | `&&`  | In Gleam both values must be **bools**         |
 | Logical and       | `&&`   |       | Not available in Gleam                         |
-| Boolean or        | `or`   | `||`  | Both values must be **bools**                  |
+| Boolean or        | `or`   | `||`  | In Gleam both values must be **bools**         |
 | Logical or        | `||`   |       | Not available in Gleam                         |
 | Add               | `+`    | `+`   | In Gleam both values must be **ints**          |
 | Add               | `+`    | `+.`  | In Gleam both values must be **floats**        |
@@ -380,9 +380,9 @@ are fully type checked.
 | Subtract          | `-`    | `-.`  | In Gleam both values must be **floats**        |
 | Multiply          | `*`    | `*`   | In Gleam both values must be **ints**          |
 | Multiply          | `*`    | `*.`  | In Gleam both values must be **floats**        |
-| Divide            | `div`  | `/`   | Both values must be **ints**                   |
+| Divide            | `div`  | `/`   | In Gleam both values **ints**                  |
 | Divide            | `/`    | `/.`  | In Gleam both values must be **floats**        |
-| Remainder         | `rem`  | `%`   | Both values must be **ints**                   |
+| Remainder         | `rem`  | `%`   | In Gleam both values **ints**                  |
 | Pipe              | `|>`   | `|>`  | Gleam's pipe can pipe into anonymous functions |
 
 

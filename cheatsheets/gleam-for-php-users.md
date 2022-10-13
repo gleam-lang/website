@@ -348,10 +348,10 @@ acts as if it was the `main()` function.
 ### Gleam
 
 Gleam does not support a global scope. Instead Gleam code is either
-representing a library, which can be required as a dependency, and/or
-it represents an application with an main module, which must match to the
-application name and `main()`-function which will be called via either
-`gleam run` or when the `entrypoint.sh` is executed.
+representing a library, which can be required as a dependency, and/or it
+represents an application having a main module, whose name must match to the
+application name and within that `main()`-function which will be called via
+either `gleam run` or when the `entrypoint.sh` is executed.
 
 In contrast to PHP, where any PHP file can contain a global scope that can
 be invoked by requiring the file, in Gleam only code that is within functions
@@ -498,7 +498,7 @@ are fully type checked.
 | Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **Float**                                                 |
 | Boolean and        | `&&`   | `&&`                      | In Gleam both values must be **Bool**                                                  |
 | Logical and        | `&&`   |                           | Not available in Gleam                                                                 |
-| Boolean or         | <code>&vert;&vert;</code> | <code>&vert;&vert;</code> | Both values must be **Bool**                                        |
+| Boolean or         | <code>&vert;&vert;</code> | <code>&vert;&vert;</code> | In Gleam both values must be **Bool**                               |
 | Logical or         | <code>&vert;&vert;</code> |        | Not available in Gleam                                                                 |
 | Boolean not        | `xor`  |                           | Not available in Gleam                                                                 |
 | Boolean not        | `!`    | `!`                       | In Gleam both values must be **Bool**                                                  |
