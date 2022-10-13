@@ -75,4 +75,9 @@ application_start_module = "my_app/application"
 # The names of any OTP applications that need to be started in addition to the
 # ones from the project dependencies (optional)
 extra_applications = ["inets", "ssl"]
+
+# Generated JavaScript specific configuration (optional)
+[javascript]
+# Generate TypeScript .d.ts files
+typescript_declarations = true
 ```

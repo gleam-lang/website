@@ -349,6 +349,7 @@ acts as if it was the `main()` function.
 
 Gleam does not support a global scope. Instead Gleam code is either
 representing a library, which can be required as a dependency, and/or
+<<<<<<< HEAD
 it represents an application with an main module, which must match to the
 application name and `main()`-function which will be called via either
 `gleam run` or when the `entrypoint.sh` is executed.
@@ -357,6 +358,11 @@ In contrast to PHP, where any PHP file can contain a global scope that can
 be invoked by requiring the file, in Gleam only code that is within functions
 can be invoked.
 
+=======
+features a *main* module and *main* function which will be called via either
+`gleam run` or when the `entrypoint.sh` is executed.
+
+>>>>>>> main
 On the Beam, Gleam code can also be invoked from other Erlang code, or it
 can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
 
@@ -449,7 +455,13 @@ When calling a function, arguments can be passed:
 
 ```php
 // Some imaginary replace function
+<<<<<<< HEAD
 function replace(string $each, string $with, string $inside) { /* implementation */ }
+=======
+function replace(string $each, string $with, string $inside) {
+  // TODO implementation
+}
+>>>>>>> main
 // Calling with positional arguments:
 replace(",", " ", "A,B,C")
 // Calling with named arguments:
@@ -506,19 +518,19 @@ are fully type checked.
 | Subtract           | `-`    | `-.`                      | In Gleam both values must be **Float**                                                 |
 | Multiply           | `*`    | `*`                       | In Gleam both values must be **Int**                                                   |
 | Multiply           | `*`    | `*.`                      | In Gleam both values must be **Float**                                                 |
-| Divide             | `/`    | `/`                       | Both values must be **Int**                                                            |
+| Divide             | `/`    | `/`                       | In Gleam both values must be **Int**                                                   |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
-| Remainder          | `%`    | `%`                       | Both values must be **Int**                                                            |
+| Remainder          | `%`    | `%`                       | In Gleam both values must be **Int**                                                   |
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
 ### Notes on operators
 
 - For bitwise operators, which exist in PHP but not in Gleam,
-  see: <https://github.com/glea?m-lang/bitwise>.
-- `==` is by default comparing by value:
+  see: <https://github.com/gleam-lang/bitwise>.
+- `==` is by default comparing by value in PHP:
   - Types may be autocast to be compareable.
   - Two objects with the same members values will equal:
-- strict equality `===`:
+- `===` is for comparing by strict equality in PHP:
   - Types will not be autocast for comparison
   - Two objects with the same members will not equal. Only if a variable binds
     to the same reference it will equal.
@@ -539,7 +551,6 @@ are fully type checked.
 In PHP, constants can only be defined within classes and traits.
 
 ```php
-<?php
 class TheQuestion {
   public const theAnswer = 42;
 }
@@ -580,7 +591,7 @@ function a_func() {
   } else {
     // A block here
   }
-	// Block continues
+  // Block continues
 }
 ```
 
@@ -594,7 +605,8 @@ pub fn main() {
     some_function(1)
     2
   }
-  let y = x * {x + 10} // braces are used to change arithmetic operations order
+  // Braces are used to change precedence of arithmetic operators
+  let y = x * {x + 10}
   y
 }
 ```
@@ -763,15 +775,15 @@ between floats and integers in various ways including `rounding`, `floor`,
 
 Case is one of the most used control flow in Gleam. It can be seen as a switch
 statement on steroids. It provides a terse way to match a value type to an
-expression. It is also used to replace if/else statements.
+expression. It is also used to replace `if`/`else` statements.
 
 #### PHP
 
 PHP features 3 different expressions to achieve similar goals:
 
-- if/elseif/else (does not return)
-- switch/case/break/default (does not return, does not autobreak)
-- match (returns)
+- `if`/`else if`/`else` (does not return)
+- `switch`/`case`/`break`/`default` (does not return, does not autobreak)
+- `match` (returns)
 
 ```php
 function http_error_impl_1($status) {
@@ -932,11 +944,11 @@ objects which in turn ship with their list of methods.
 ```gleam
 // Imaginary Gleam code
 request
-  |> session.new()
-  |> session.authorize()
-  |> flash.set_success_flash('Logged in successfully!')
-  |> flash.set_failure_flash('Failed to login!')
-  |> response.redirect_to_requested_url()
+|> session.new()
+|> session.authorize()
+|> flash.set_success_flash('Logged in successfully!')
+|> flash.set_failure_flash('Failed to login!')
+|> response.redirect_to_requested_url()
 ```
 
 Despite being similar to read and comprehend, the PHP code creates a session
@@ -1232,8 +1244,8 @@ and interfaces. Historically a single file can contain many classes, traits and
 interfaces one after another, though it is best practise to only contain one
 such declaration per file.
 
-Using PHP namespaces these can be placed in a registry that does not need to map
-to the source code file system hierarchy, but by convention should.
+Using PHP namespaces, these can be placed in a registry that does not need to
+map to the source code file system hierarchy, but by convention should.
 
 In `src/Foo/Bar.php`:
 
@@ -1307,7 +1319,7 @@ Also see <https://www.php-fig.org/psr/psr-4/>.
 Inside `src/Nasa/MoonBase.php`
 
 ```php
-// imports module src/nasa/rocket_ship.gleam
+// Makes available src/nasa/RocketShip.php
 use Nasa\RocketShip;
 
 class MoonBase {
@@ -1407,8 +1419,8 @@ To iterate a few foundational differences:
 ### Programming model
 
 - PHP mixes imperative, Java-style object-orientation and functional code
-  styles. Gleam offers only functional code style, though it appears
-  imperative and reads easy via pipes.
+  styles. Gleam offers only functional code style, though it can appear
+  imperative and reads easily thanks to pipes.
 - In Gleam, data structures are never mutated but always updated into new
   structures. This allows processes that fail to simply restart as there are no
   mutated objects that can be in an invalid state and take the whole
@@ -1427,7 +1439,7 @@ To iterate a few foundational differences:
 ### Guarantees and types
 
 - PHP features opt-in static typing which is only checked at runtime.
-- PHP value tend to be automatically cast for comparison purposes or when used
+- PHP values tend to be automatically cast for comparison purposes or when used
   as indexes in arrays. Gleam values are not automatically cast.
 - PHP allows comparison between most if not all values, even if it does not
   make any sense say comparing a file `resource` to a `Date` in terms of order.
@@ -1446,14 +1458,15 @@ To iterate a few foundational differences:
 - For Gleam on Erlang/BEAM the runtime model has some striking similarities
   in practise: In PHP a script starts and runs. It allocates memory for this
   script and frees it upon end or after the max execution time is exceeded
-  or the memory limit is exceeded). Gleam on Erlang/BEAM allows to processes
-  requests in a similar isolation level that PHP offers in contrast to
-  applications running *Go* or *Ruby*. The level of isoluation means that,
-  very similar to PHP, if a process crashes (in PHP read: if a request crashes)
-  then the supervision system can restart that process or after a while or
-  amount of tries abort repeating restarts on the process with that given
-  input data. This means Erlang/BEAM will yield similar robustness that PHP
-  developers are used to and similar isoluation guarantuees.
+  or the memory limit is exceeded.
+- Gleam on Erlang/BEAM allows to processes requests in a similar isolation
+  level that PHP offers in contrast to applications running *Go* or *Ruby*.
+  The level of isoluation means that, very similar to PHP, if a process
+  crashes (in PHP read: if a request crashes) then the supervision system
+  can restart that process or after a while or amount of tries abort
+  repeating restarts on the process with that given input data. This means
+  Erlang/BEAM will yield similar robustness that PHP developers are used
+  to and similar isoluation guarantuees.
 - When executing Gleam code in fact its compiled Erlang or JavaScript is
   executed. So in case there are runtime crashes, the crash log will show
   Erlang (or browser-console/NodeJS/Deno) debug information. In Gleam
@@ -1467,7 +1480,7 @@ To iterate a few foundational differences:
   type. There can however be other errors, such as miss-behavior due
   accidental to division by 0, crashes on RAM or storage limits, hardware
   failures, etc. In these cases on the BEAM there are ways to manage these
-  via BEAM's supervision.
+  via BEAM's supervision trees.
 - In contrast PHP will use exceptions to handle errors and by doing so blurs
   the line between expected errors and unexpected errors. Also function
   signatures are enlarged de-facto by whatever exceptions they can throw
