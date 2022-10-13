@@ -508,7 +508,7 @@ are fully type checked.
 | Multiply           | `*`    | `*.`                      | In Gleam both values must be **Float**                                                 |
 | Divide             | `/`    | `/`                       | Both values must be **Int**                                                            |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
-| Modulo             | `%`    | `%`                       | Both values must be **Int**                                                            |
+| Remainder          | `%`    | `%`                       | Both values must be **Int**                                                            |
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
 ### Notes on operators

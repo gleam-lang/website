@@ -382,7 +382,7 @@ are fully type checked.
 | Multiply          | `*`    | `*.`  | In Gleam both values must be **floats**        |
 | Divide            | `div`  | `/`   | Both values must be **ints**                   |
 | Divide            | `/`    | `/.`  | In Gleam both values must be **floats**        |
-| Modulo            | `rem`  | `%`   | Both values must be **ints**                   |
+| Remainder         | `rem`  | `%`   | Both values must be **ints**                   |
 | Pipe              | `|>`   | `|>`  | Gleam's pipe can pipe into anonymous functions |
 
 

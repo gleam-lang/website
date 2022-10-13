@@ -311,9 +311,9 @@ are fully type checked.
 | Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
 | Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                  |
 | Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                |
-| Boolean and        | `and`  | `&&`                      | Both values must be **bools**                                                          |
+| Boolean and        | `and`  | `&&`                      | In Gleam both values must be **bools**                                                 |
 | Logical and        | `and`  |                           | Not available in Gleam                                                                 |
-| Boolean or         | `or`   | <code>&vert;&vert;</code> | Both values must be **bools**                                                          |
+| Boolean or         | `or`   | <code>&vert;&vert;</code> | In Gleam both values must be **bools**                                                 |
 | Logical or         | `or`   |                           | Not available in Gleam                                                                 |
 | Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
 | Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
@@ -321,9 +321,9 @@ are fully type checked.
 | Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
 | Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
 | Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
-| Divide             | `/`    | `/`                       | Both values must be **ints**                                                           |
+| Divide             | `/`    | `/`                       | In Gleam both values must be **ints**                                                  |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
-| Modulo             | `%`    | `%`                       | Both values must be **ints**                                                           |
+| Remainder          | `%`    | `%`                       | In Gleam both values must be **ints**, in Gleam negative values behave differently: Use `int.modulo` to mimick Python's behavior. |
 | Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
 
 Some notes for Python:
