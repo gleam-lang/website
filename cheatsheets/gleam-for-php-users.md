@@ -349,7 +349,6 @@ acts as if it was the `main()` function.
 
 Gleam does not support a global scope. Instead Gleam code is either
 representing a library, which can be required as a dependency, and/or
-<<<<<<< HEAD
 it represents an application with an main module, which must match to the
 application name and `main()`-function which will be called via either
 `gleam run` or when the `entrypoint.sh` is executed.
@@ -358,11 +357,6 @@ In contrast to PHP, where any PHP file can contain a global scope that can
 be invoked by requiring the file, in Gleam only code that is within functions
 can be invoked.
 
-=======
-features a *main* module and *main* function which will be called via either
-`gleam run` or when the `entrypoint.sh` is executed.
-
->>>>>>> main
 On the Beam, Gleam code can also be invoked from other Erlang code, or it
 can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
 
@@ -455,13 +449,9 @@ When calling a function, arguments can be passed:
 
 ```php
 // Some imaginary replace function
-<<<<<<< HEAD
-function replace(string $each, string $with, string $inside) { /* implementation */ }
-=======
 function replace(string $each, string $with, string $inside) {
   // TODO implementation
 }
->>>>>>> main
 // Calling with positional arguments:
 replace(",", " ", "A,B,C")
 // Calling with named arguments:
