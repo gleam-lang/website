@@ -253,6 +253,11 @@
   avatar: "https://avatars.githubusercontent.com/u/498241?v=4"
   tier: 2
   square_avatar: false
+- name: "t bjornrud"
+  url: "https://github.com/bjornrud"
+  avatar: "https://avatars.githubusercontent.com/u/543421?u=c18ac18a244dfbc7f35d76e616c1e8b072db8111&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Graeme Coupar"
   url: "https://github.com/obmarg"
   avatar: "https://avatars.githubusercontent.com/u/556490?v=4"
@@ -303,7 +308,7 @@
   avatar: "https://avatars.githubusercontent.com/u/748593?u=eb762340e9b465a06470a9749b522b69bfe8eed7&v=4"
   tier: 2
   square_avatar: false
-- name: "Jechol Lee"
+- name: "Max Lee"
   url: "https://github.com/jechol"
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
   tier: 2
@@ -451,6 +456,11 @@
 - name: "Filip Figiel"
   url: "https://github.com/megapctr"
   avatar: "https://avatars.githubusercontent.com/u/4096683?u=4f7dd14c03ea645950b699a958a48c2c0858e632&v=4"
+  tier: 1
+  square_avatar: false
+- name: "ontofractal"
+  url: "https://github.com/ontofractal"
+  avatar: "https://avatars.githubusercontent.com/u/4211840?u=97aeb67208068d457fad522a500b62f12908270c&v=4"
   tier: 1
   square_avatar: false
 - name: "Yu Matsuzawa"
