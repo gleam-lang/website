@@ -349,8 +349,13 @@ acts as if it was the `main()` function.
 
 Gleam does not support a global scope. Instead Gleam code is either
 representing a library, which can be required as a dependency, and/or
-features a *main* module and *main* function which will be called via either
+it represents an application with an main module, which must match to the
+application name and `main()`-function which will be called via either
 `gleam run` or when the `entrypoint.sh` is executed.
+
+In contrast to PHP, where any PHP file can contain a global scope that can
+be invoked by requiring the file, in Gleam only code that is within functions
+can be invoked.
 
 On the Beam, Gleam code can also be invoked from other Erlang code, or it
 can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
@@ -647,7 +652,7 @@ $myTuple = ['username', 'password', 10];
 [$_, $pwd, $_] = $myTuple;
 echo $pwd; // "password"
 // Direct index access
-$myTuple[0] // "username"
+echo $myTuple[0]; // "username"
 ```
 
 #### Gleam
@@ -655,9 +660,9 @@ $myTuple[0] // "username"
 ```gleam
 let my_tuple = #("username", "password", 10)
 let #(_, pwd, _) = my_tuple
-pwd // "password"
+io.print(pwd) // "password"
 // Direct index access
-my_tuple.0 // "username"
+io.print(my_tuple.0) // "username"
 ```
 
 ### Lists
@@ -1249,7 +1254,7 @@ Making the static class available in the local scope and calling the function
 
 ```php
 // After auto-loading has happened
-use Foo/Bar;
+use Foo\Bar;
 
 Bar::identity(1) // 1;
 ```
@@ -1299,6 +1304,19 @@ registered for autoloading, they can brought into the scope of a file by using
 the `use`statement which is part of PHP's namespacing.
 Also see <https://www.php-fig.org/psr/psr-4/>.
 
+Inside `src/Nasa/MoonBase.php`
+
+```php
+// imports module src/nasa/rocket_ship.gleam
+use Nasa\RocketShip;
+
+class MoonBase {
+  public static function exploreSpace() {
+    RocketShip::launch();
+  }
+}
+```
+
 #### Gleam
 
 Imports are relative to the app `src` folder.
@@ -1306,8 +1324,9 @@ Imports are relative to the app `src` folder.
 Modules in the same directory will need to reference the entire path from `src`
 for the target module, even if the target module is in the same folder.
 
+Inside module `src/nasa/moon_base.gleam`:
+
 ```gleam
-// inside module src/nasa/moon_base.gleam
 // imports module src/nasa/rocket_ship.gleam
 import nasa/rocket_ship
 
