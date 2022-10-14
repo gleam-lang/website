@@ -663,6 +663,11 @@
   avatar: "https://avatars.githubusercontent.com/u/50715394?v=4"
   tier: 1
   square_avatar: false
+- name: "Signal Insights"
+  url: "https://github.com/signalinsights"
+  avatar: "https://avatars.githubusercontent.com/u/56572268?v=4"
+  tier: 2
+  square_avatar: false
 - name: "Weizheng Liu"
   url: "https://github.com/weizhliu"
   avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
