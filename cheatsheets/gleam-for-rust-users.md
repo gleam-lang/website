@@ -296,17 +296,17 @@ There is no equivalent feature in Rust.
 | Less than        | `<`   | `<.`  | In Gleam both values must be **floats**        |
 | Less or equal    | `<=`  | `<=`  | In Gleam both values must be **ints**          |
 | Less or equal    | `<=`  | `<=.` | In Gleam both values must be **floats**        |
-| Boolean and      | `&&`  | `&&`  | Both values must be **bools**                  |
-| Boolean or       | `||`  | `||`  | Both values must be **bools**                  |
+| Boolean and      | `&&`  | `&&`  | In Gleam both values **bools**                 |
+| Boolean or       | `||`  | `||`  | In Gleam both values **bools**                 |
 | Add              | `+`   | `+`   | In Gleam both values must be **ints**          |
 | Add              | `+`   | `+.`  | In Gleam both values must be **floats**        |
 | Subtract         | `-`   | `-`   | In Gleam both values must be **ints**          |
 | Subtract         | `-`   | `-.`  | In Gleam both values must be **floats**        |
 | Multiply         | `*`   | `*`   | In Gleam both values must be **ints**          |
 | Multiply         | `*`   | `*.`  | In Gleam both values must be **floats**        |
-| Divide           | `/`   | `/`   | Both values must be **ints**                   |
+| Divide           | `/`   | `/`   | In Gleam both values **ints**                  |
 | Divide           | `/`   | `/.`  | In Gleam both values must be **floats**        |
-| Modulo           | `%`   | `%`   | Both values must be **ints**                   |
+| Remainder        | `%`   | `%`   | In Gleam both values **ints**                  |
 | Pipe             |       | `⎮>`  | Gleam's pipe can pipe into anonymous functions |
 
 ## Constants

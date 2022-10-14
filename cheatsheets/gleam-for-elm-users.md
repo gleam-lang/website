@@ -578,17 +578,17 @@ As Gleam does not treat integers and floats generically, there is a pattern of a
 | Less than         | `<`           | `<.`  | In Gleam both values must be **floats**        |
 | Less or equal     | `<=`          | `>=`  | In Gleam both values must be **ints**          |
 | Less or equal     | `<=`          | `>=.` | In Gleam both values must be **floats**        |
-| Boolean and       | `&&`          | `&&`  | Both values must be **bools**                  |
-| Boolean or        | `||`          | `||`  | Both values must be **bools**                  |
+| Boolean and       | `&&`          | `&&`  | In Gleam both values must be **bools**         |
+| Boolean or        | `||`          | `||`  | In Gleam both values must be **bools**         |
 | Add               | `+`           | `+`   | In Gleam both values must be **ints**          |
 | Add               | `+`           | `+.`  | In Gleam both values must be **floats**        |
 | Subtract          | `-`           | `-`   | In Gleam both values must be **ints**          |
 | Subtract          | `-`           | `-.`  | In Gleam both values must be **floats**        |
 | Multiply          | `*`           | `*`   | In Gleam both values must be **ints**          |
 | Multiply          | `*`           | `*.`  | In Gleam both values must be **floats**        |
-| Divide            | `//`          | `/`   | Both values must be **ints**                   |
+| Divide            | `//`          | `/`   | In Gleam Both values must be **ints**          |
 | Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
-| Modulo            | `remainderBy` | `%`   | Both values must be **ints**                   |
+| Remainder         | `remainderBy` | `%`   | In Gleam Both values must be **ints**          |
 | Pipe              | `|>`          | `|>`  | Gleam's pipe can pipe into anonymous functions |
 
 
