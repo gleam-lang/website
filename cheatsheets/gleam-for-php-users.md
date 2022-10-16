@@ -34,7 +34,7 @@ title: Gleam for PHP users
   - [Imports](#imports)
   - [Named imports](#named-imports)
   - [Unqualified imports](#unqualified-imports)
-- [Architecture]
+- [Architecture](#architecture)
 
 ## Comments
 
