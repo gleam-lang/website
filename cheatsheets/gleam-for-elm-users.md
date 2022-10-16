@@ -588,9 +588,8 @@ As Gleam does not treat integers and floats generically, there is a pattern of a
 | Multiply          | `*`           | `*.`  | In Gleam both values must be **floats**        |
 | Divide            | `//`          | `/`   | In Gleam Both values must be **ints**          |
 | Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
-| Remainder         | `remainderBy` | `%`   | In Gleam Both values must be **ints**          |
-| Pipe              | `|>`          | `|>`  | Gleam's pipe can pipe into anonymous functions |
-
+| Modulo            | `remainderBy` | `%`   | In Gleam both values must be **ints**          |
+| Pipe              | `|>`          | `|>`  | Gleam's pipe will try piping into the first position or Elm style as the only argument to a function, using whichever type checks. |
 
 ## Type Aliases
 
