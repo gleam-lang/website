@@ -93,9 +93,9 @@
   avatar: "https://avatars.githubusercontent.com/u/22185?u=fa71cd6f1f51fea02597313f748f931078ef5809&v=4"
   tier: 2
   square_avatar: false
-- name: "Štefan Ľupták"
+- name: "Stefan Luptak"
   url: "https://github.com/stefanluptak"
-  avatar: "https://avatars.githubusercontent.com/u/23926?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/23926?u=94661b890b315853e08b773c426dd8fc36d2962a&v=4"
   tier: 1
   square_avatar: false
 - name: "Carlos Saltos"
@@ -243,6 +243,11 @@
   avatar: "https://avatars.githubusercontent.com/u/455046?u=0092bfecadfc3aac5e1df3145ea4e0a55a896787&v=4"
   tier: 2
   square_avatar: false
+- name: "Robert Ellen"
+  url: "https://github.com/rellen"
+  avatar: "https://avatars.githubusercontent.com/u/459086?u=23ad119ff06755e41a627e3293b12229c8d37170&v=4"
+  tier: 1
+  square_avatar: false
 - name: "João Veiga"
   url: "https://github.com/jveiga"
   avatar: "https://avatars.githubusercontent.com/u/495119?u=362497210ed8265edb850dcad0c668017991f87a&v=4"
@@ -346,6 +351,11 @@
 - name: "Nathaniel Knight"
   url: "https://github.com/nathanielknight"
   avatar: "https://avatars.githubusercontent.com/u/1239091?u=6fb38af8299220ff444f5080aa2c67085132cd50&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Szymon Wygnański"
+  url: "https://github.com/finalclass"
+  avatar: "https://avatars.githubusercontent.com/u/1343930?u=f9688f9a089e581bfe2ccf3c47ced08c3cb09dbf&v=4"
   tier: 1
   square_avatar: false
 - name: "Christopher Keele"
@@ -613,11 +623,6 @@
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=c5176167f9f80b5d034d54ebfe71f24c70c2935e&v=4"
   tier: 1
   square_avatar: false
-- name: "Bernat Jufré Martínez"
-  url: "https://github.com/bjufre"
-  avatar: "https://avatars.githubusercontent.com/u/22913276?u=fc6b151282f6228241117c6688cfb20a8d008e40&v=4"
-  tier: 2
-  square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
@@ -638,9 +643,14 @@
   avatar: "https://avatars.githubusercontent.com/u/25916517?u=6d9aa4a8a394111698a47080fd5f4fed9d34f300&v=4"
   tier: 1
   square_avatar: false
+- name: "Harry Bairstow"
+  url: "https://github.com/HarryET"
+  avatar: "https://avatars.githubusercontent.com/u/29015545?u=4c6fa6d1806186181c7ce5bdcd2e64c1ad1e5db2&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Michał Kowieski"
   url: "https://github.com/utevo"
-  avatar: "https://avatars.githubusercontent.com/u/29740731?u=500ad30b9581936882ffedb62c15f4d98cfccfc7&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/29740731?u=8582d7cf3bee56a610b6db878a7627cbdf32d8de&v=4"
   tier: 1
   square_avatar: false
 - name: "Kapp Technology"
