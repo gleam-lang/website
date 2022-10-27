@@ -20,6 +20,16 @@ and can contain any valid unicode.
 "👩‍💻 こんにちは Gleam 💫"
 ```
 
+## Concatenation
+
+The concatenation operator can be used to join strings together.
+
+```gleam
+let x = "Joe"
+"Hello, " <> x <> "!"
+// "Hello, Joe!"
+```
+
 ## Escape Sequences
 
 Gleam supports common string escape sequences. Here's all of them:

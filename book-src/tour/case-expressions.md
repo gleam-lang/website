@@ -77,6 +77,22 @@ let [a] = [1]    // a is 1
 let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
 ```
 
+# String matching
+
+The string concatenate operator can be used to match against strings that have a
+given prefix.
+
+```gleam
+case x {
+  "Hello, " <> name -> name
+  _ -> "other"
+}
+```
+
+If the variable `x` references the string `"Hello, Joe"` then this case
+expression would evaluate to the string `"Joe"`.
+
+For any other strings it would evaluate to the string `"other"`.
 
 ## Matching on multiple values
 
