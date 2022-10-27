@@ -348,6 +348,7 @@ const answer: Int = 42
 | Multiply         | `*`       | `*.`  | In Gleam both values must be floats
 | Divide           | `div`     | `/`   | In Gleam both values must be ints
 | Remainder        | `rem`     | `%`   | In Gleam both values must be ints
+| Concatenate      |           | `<>`  | In Gleam both values must be strings
 | Pipe             |           | `⎮>`  | See [the pipe section](#pipe) for details
 
 ### Pipe

@@ -511,6 +511,7 @@ are fully type checked.
 | Divide             | `/`    | `/`                       | In Gleam both values must be **Int**                                                   |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **Int**                                                   |
+| Concatenate        | `.`    | `<>`                      | In Gleam both values must be **String**
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
 ### Notes on operators

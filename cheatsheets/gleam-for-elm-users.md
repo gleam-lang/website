@@ -589,6 +589,7 @@ As Gleam does not treat integers and floats generically, there is a pattern of a
 | Divide            | `//`          | `/`   | In Gleam Both values must be **ints**          |
 | Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
 | Modulo            | `remainderBy` | `%`   | In Gleam both values must be **ints**          |
+| Concatenate       | `++`          | `<>`  |                                                |
 | Pipe              | `|>`          | `|>`  | Gleam's pipe will try piping into the first position or Elm style as the only argument to a function, using whichever type checks. |
 
 ## Type Aliases

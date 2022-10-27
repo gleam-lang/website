@@ -324,6 +324,7 @@ are fully type checked.
 | Divide             | `/`    | `/`                       | In Gleam both values must be **ints**                                                  |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **ints**, in Gleam negative values behave differently: Use `int.modulo` to mimick Python's behavior. |
+| Concatenate        | `+`    | `<>`                      | In Gleam both values must be **strings**                                               |
 | Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
 
 Some notes for Python:
