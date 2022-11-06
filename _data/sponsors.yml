@@ -30,7 +30,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=86247c7122e5e7cd6ea57fed117f2399ad9d49f6&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=cc70ab4c4b8d8455582740109404ecf0168ef5f0&v=4"
   tier: 1
   square_avatar: false
 - name: "James MacAulay"
@@ -146,6 +146,11 @@
 - name: "Elliott Pogue"
   url: "https://github.com/epogue"
   avatar: "https://avatars.githubusercontent.com/u/89570?u=2c0679f52953eb82369c16797a0fa6cb28b0361a&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Rico Leuthold"
+  url: "https://github.com/rico"
+  avatar: "https://avatars.githubusercontent.com/u/92818?v=4"
   tier: 1
   square_avatar: false
 - name: "Ali Farhadi"
@@ -400,7 +405,7 @@
   square_avatar: false
 - name: "Lars Wikman"
   url: "https://github.com/lawik"
-  avatar: "https://avatars.githubusercontent.com/u/1971237?u=222ac5ebb788ceb72ce71e00f8a807e176485a56&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/1971237?u=671495fb9f1a273698d28143739868e993be816e&v=4"
   tier: 1
   square_avatar: false
 - name: "jiangplus"
@@ -430,7 +435,7 @@
   square_avatar: false
 - name: "Sascha Wolf"
   url: "https://github.com/sascha-wolf"
-  avatar: "https://avatars.githubusercontent.com/u/2647626?u=fdd5e33d752c02a13d0a0de36906ff452b71e802&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/2647626?u=3026c9ae1911cf21fc8cbfbc14277f7ba583cef0&v=4"
   tier: 1
   square_avatar: false
 - name: "Jan Skriver Sørensen"
@@ -563,6 +568,11 @@
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
   tier: 1
   square_avatar: false
+- name: "Anthony Khong"
+  url: "https://github.com/anthony-khong"
+  avatar: "https://avatars.githubusercontent.com/u/12151757?u=ae67cbe1cad1e8bf6ec696c3439c38ba97c98ec3&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Marcel Lanz"
   url: "https://github.com/marcellanz"
   avatar: "https://avatars.githubusercontent.com/u/12616445?u=4e8d4813ad25dedc75c79554284a0cd7b85583d3&v=4"
@@ -620,7 +630,7 @@
   square_avatar: false
 - name: "brettkolodny"
   url: "https://github.com/brettkolodny"
-  avatar: "https://avatars.githubusercontent.com/u/22826580?u=c5176167f9f80b5d034d54ebfe71f24c70c2935e&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
   tier: 1
   square_avatar: false
 - name: "Ian González"
