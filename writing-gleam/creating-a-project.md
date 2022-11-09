@@ -25,7 +25,7 @@ You'll now have a project with this structure:
 ```
 
 Regular Gleam code goes in the `src` directory, and the tests for this code
-goes in the `test` directory.
+go in the `test` directory.
 
 You can run your project with the `gleam run` command and test it with the
 `gleam test` command.
