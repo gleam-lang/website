@@ -30,7 +30,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=cc70ab4c4b8d8455582740109404ecf0168ef5f0&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=0e0f7d3430784e42c30ce75ad858c0a7ffc9fd7a&v=4"
   tier: 1
   square_avatar: false
 - name: "James MacAulay"
@@ -283,7 +283,7 @@
   avatar: "https://avatars.githubusercontent.com/u/598958?v=4"
   tier: 1
   square_avatar: false
-- name: "Dashuang Li"
+- name: "lidashuang"
   url: "https://github.com/defp"
   avatar: "https://avatars.githubusercontent.com/u/612381?u=8fd36e3beb4c77f3552d37853b60f14786676ea4&v=4"
   tier: 1
@@ -602,6 +602,11 @@
   url: "https://github.com/scottwey"
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
   tier: 2
+  square_avatar: false
+- name: "paca94"
+  url: "https://github.com/paca94"
+  avatar: "https://avatars.githubusercontent.com/u/15952964?v=4"
+  tier: 1
   square_avatar: false
 - name: "Kieran Gill"
   url: "https://github.com/kierangilliam"
