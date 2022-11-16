@@ -81,11 +81,56 @@ record constructor matches, and to assign names to any contained values.
 ```gleam
 fn get_name(user) {
   case user {
-    LoggedIn(name) -> name
+    LoggedIn(username) -> username
     Guest -> "Guest user"
   }
 }
 ```
+
+When a custom type has named fields, we can pattern match on those fields
+explicitly instead of positionally.
+
+```
+fn get_name(user) {
+  case user {
+    LoggedIn(name: username) -> username
+    Guest -> "Guest user"
+  }
+
+```
+
+We've seen in the [case expressions](./case-expressions.md) chapter that the
+spread syntax, `..`, can be used to match lists of arbitrary length by ignoring
+any remaining elements. The same syntax can be used to ignore any remaining
+named fields when pattern matching on custom types.
+
+Perhaps we expand our `User` type to include the timestamp of when they last
+logged in:
+
+```gleam
+type User {
+  LoggedIn(name: String, connected_at: Int)
+  Guest(connected_at: Int)
+}
+```
+
+If we try and recompile our code without changing our `get_name` function it will
+fail: we've added new fields so we have to match on them! By using the spread
+syntax we can save ourselves the effort of explicitly matching fields we don't
+care about:
+
+```gleam
+fn get_name(user) {
+  case user {
+    LoggedIn(name: username, ..) -> username
+    Guest(..) -> "Guest user"
+  }
+}
+```
+
+> 🚨 Note: using the spread pattern means our function will continue to work even
+> as fields get added or removed over time. Sometimes explicitly matching those
+> fields can be useful to those reading our code, though!
 
 Custom types can also be destructured with a `let` binding.
 
@@ -102,7 +147,12 @@ let Points(p) = score
 p // => 50
 ```
 
-During destructuring you may also use discards (`_`) or spreads (`..`).
+> 🚨 Note: these destructured let assignments will only work on custom types with
+> **one** single constructor. If you try and do something similar with our `User`
+> type from earlier you will get a compile error!
+
+As with case expressions, we can discard fields and values we do not need with
+`_` patterns, or use spread syntax to ignore all remaining fields.
 
 ```gleam
 pub type Cat {
@@ -110,19 +160,12 @@ pub type Cat {
 }
 
 let cat = Cat(name: "Felix", cuteness: 9001, age: 5)
-```
 
-You will need to specify all args for a pattern match, or alternatively use the
-spread operator.
-
-```gleam
-// All fields present
 let Cat(name: name, cuteness: _, age: _) = cat
-name // "Felix"
-
-// Other fields ignored by spreading
 let Cat(age: age, ..) = cat
-age // 5
+
+name // => "Felix"
+age // => 5
 ```
 
 ## Named accessors
