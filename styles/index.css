@@ -96,7 +96,7 @@ small,
 }
 
 .content {
-  max-width: 850px;
+  max-width: 950px;
   margin: 0 auto;
   padding: var(--l-space);
   position: relative;
@@ -189,11 +189,6 @@ small,
 
 .hero-blerb h2 {
   font-size: 1.9rem;
-}
-
-.openable-example[open] {
-  position: relative;
-  margin-bottom: var(--l-space);
 }
 
 details summary {
@@ -329,6 +324,11 @@ tr:nth-child(even) {
   color: var(--color-charcoal);
 }
 
+.kindly-supported-by {
+  opacity: 0.7;
+  font-size: 17px;
+}
+
 .sponsors-section {
   background-color: var(--color-pink);
   padding: var(--xl-space) 0;
@@ -391,24 +391,34 @@ tr:nth-child(even) {
 }
 
 
+.home-feature {
+  margin: var(--xl-space);
+}
+
+.home-feature:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
 @media (min-width: 700px) {
-  .hello-world-example {
+  .home-feature {
     display: flex;
     align-items: center;
-    gap: var(--l-space);
-    margin-bottom: var(--l-space);
+    gap: var(--xl-space);
+    margin-bottom: calc(var(--xl-space) * 2);
   }
 
-  .hello-world-example > * {
+  .home-feature > * {
+    width: 50%;
     flex: 1;
   }
 
     /* Override highlight JS */
-  .hello-world-example code {
+  .home-feature code.language-gleam,
+  .home-feature code.language-text {
     padding-right: 3em !important;
   }
-  .hello-world-example code,
-  .hello-world-example pre {
+  .home-feature code,
+  .home-feature pre {
     margin: 0 !important;
   }
 }

@@ -16,7 +16,7 @@ list_sponsors: true
 
 <section class="content">
   <center>
-  <h5>Kindly supported by</h5>
+  <h5 class="kindly-supported-by">Kindly supported by</h5>
   </center>
   <ul class="top-sponsors">
     <li>
@@ -31,7 +31,7 @@ list_sponsors: true
 </section>
 
 <section class="content">
-  <div class="hello-world-example">
+  <div class="home-feature">
     <pre><code class="language-gleam">import gleam/io
 
 pub fn main() {
@@ -39,91 +39,141 @@ pub fn main() {
 }
 </code></pre>
     <div>
-      The power of typed functional programming with the performance and
-      reliability of the Erlang VM, all wrapped up in a familiar modern syntax.
+      <h3>Hello, Gleam!</h3>
+      <p>
+        The power of typed functional programming with the performance and
+        reliability of the Erlang VM, all wrapped up in a familiar modern
+        syntax.
+      </p>
     </div>
   </div>
 
-  <details class="openable-example">
-    <summary>A basic web server</summary>
+  <div class="home-feature">
+    <pre><code class="no-highlight hljs"><span class="hljs-deletion">error:</span> Unknown record field
+  ┌─ ./src/app.gleam:8:16
+  │
+8 │   <span class="hljs-deletion">user.alias</span>
+  │   <span class="hljs-deletion">^^^^^^^^^^</span> Did you mean `name`?
 
-    This little web server responds with the text "Hello, world!" to any
-    HTTP request made to it.
+The value being accessed has this type:
+    User
+It has these fields:
+    .name
+</code></pre>
+    <div>
+      <h3>Productivity focused</h3>
+      <p>
+        No nulls, no exceptions, clear error messages, and a practical type
+        system. Whether you're writing new code or maintaining old code Gleam is
+        designed to make your job as fun and stress-free as possible.
+      </p>
+    </div>
+  </div>
 
-  <pre><code class="language-gleam">import gleam/io
-import gleam/bit_builder
-import gleam/http/elli
-import gleam/http/response
-
-pub fn my_service(_req) {
-  let body = bit_builder.from_string("Hello, world!")
-
-  response.new(200)
-  |> response.set_body(body)
+  <div class="home-feature">
+    <pre><code class="language-gleam">pub type Pet {
+  Cat
+  Dog
+  Other(name: String)
 }
 
-pub fn main() {
-  elli.become(my_service, on_port: 3000)
+pub fn greet(pet) {
+  case pet {
+    Dog -> "Who's a good boy?"
+    Cat -> "What a little sweetie!"
+    Other(name) -> "Hello, " <> name
+  }
 }
 </code></pre>
+    <div>
+      <h3>Model your domain</h3>
+      <p>
+        With Gleam's custom types, generics, and pattern matching features it
+        can implement your business logic precisely and clearly. We think it
+        should always be clear to the reader what code is doing.
+      </p>
+    </div>
+  </div>
 
-    The web server created by this code is fully asynchronous and
-    multi-threaded, seamlessly making use of all the cores of your computer
-    without tricky locks, callbacks, or promises.
-  </details>
+  <div class="home-feature">
+    <pre><code class="no-highlight hljs">~/app $ gleam add gleam_json
+<span class="hljs-keyword">  Resolving</span> versions
+<span class="hljs-keyword">Downloading</span> packages
+<span class="hljs-keyword"> Downloaded</span> 2 packages in 0.01s
+<span class="hljs-keyword">      Added</span> gleam_json v0.5.0
+~/app $ gleam test
+<span class="hljs-keyword">  Compiling</span> thoas
+<span class="hljs-keyword">  Compiling</span> gleam_json
+<span class="hljs-keyword">  Compiling</span> app
+<span class="hljs-keyword">   Compiled</span> in 1.67s
+<span class="hljs-keyword">    Running</span> app_test.main
+<span class="hljs-attribute">.
+1 tests, 0 failures</span>
+</code></pre>
+    <div>
+      <h3>Ready out of the box</h3>
+      <p>
+        Gleam comes with compiler, build tool, formatter, editor integrations,
+        and package manager all built in, so creating a gleam project is just
+        running <code>gleam new</code>.
+      </p>
+      <p>
+        Part of the wider BEAM ecosystem, Gleam programs can use the thousands
+        of packages published packages whether they are written in Gleam,
+        Erlang, or Elixir.
+      </p>
+    </div>
+  </div>
 
-  <details class="openable-example">
-    <summary>Multi-threaded hello world</summary>
-
-    Thanks to the powerful Erlang virtual machine Gleam programs can spin up
-    hundreds of thousands of threads (called processes) without any trouble.
-    Here's "Hello, World!" being printed by a thousand processes
-    concurrently.
-
-    <pre><code class="language-gleam">import gleam/io
-import gleam/int
-import gleam/list
-import gleam/otp/task
-
-pub fn main() {
-  let ints = list.range(0, 1000)
-  let tasks = list.map(ints, with: start_process)
-  tasks
+  <div class="home-feature">
+    <pre><code class="language-gleam">pub fn main() {
+  // Run a million of threads, no problem
+  list.range(0, 1_000_000)
+  |> list.map(spawn_task)
   |> list.each(task.await_forever)
 }
 
-fn start_process(i) {
+fn spawn_task(i) {
   task.async(fn() {
-    let message = "Hello world: " <> int.to_string(i)
-    io.println(message)
+    let n = int.to_string(i)
+    io.println("Hello from " <> n)
   })
 }
 </code></pre>
+    <div>
+      <h3>Made for production</h3>
+      <p>
+        Running on the battle-tested Erlang virtual machine that powers planet
+        scale systems such as WhatsApp and Ericsson, Gleam is ready for
+        workloads of any size.
+      </p>
+      <p>
+        Thanks to a multi-core actor based concurrency system that can run
+        millions of concurrent tasks, fast immutable data structures, and a
+        concurrent garbage collector that never stops the world, your service
+        can scale and stay lighting fast with ease.
+      </p>
+    </div>
+  </div>
 
-    In addition to this low-level process abstraction Gleam has helpful
-    libraries full of building blocks for writing type safe and fault
-    tolerant multi-core programs as quickly as possible.
-  </details>
-</section>
+  <div class="home-feature">
+    <pre><code class="language-gleam">pub fn main() {
+  try el = document.query_selector("button")
 
-<section class="content">
-  <h2>Features</h2>
-  <ul>
-    <li>Actor based multi-core concurrency
-    <li>Algebraic data types
-    <li>Erlang style fault tolerance
-    <li>Fast compilation
-    <li>Full type inference
-    <li>Generics
-    <li>Helpful error messages
-    <li>Immutable data structures
-    <li>No exceptions by default
-    <li>No null
-    <li>No undefined behaviour
-    <li>Reliable package management
-    <li>Small and consistent language design
-    <li>Zero cost interop with Erlang, Elixir, etc
-  </ul>
+  element.add_event_listener(el, fn() {
+    io.println("Button clicked!")
+  })
+}
+</code></pre>
+    <div>
+      <h3>JavaScript compatible</h3>
+      <p>
+        As well as running on the Erlang VM Gleam code can also compile to
+        JavaScript. Reuse your existing backend code in the browser, on mobile
+        devices, or anywhere else JavaScript can run.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section class="content">
