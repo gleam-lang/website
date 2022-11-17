@@ -127,7 +127,7 @@ pub fn greet(pet) {
 
   <div class="home-feature">
     <pre><code class="language-gleam">pub fn main() {
-  // Run a million of threads, no problem
+  // Run a million threads, no problem
   list.range(0, 1_000_000)
   |> list.map(spawn_task)
   |> list.each(task.await_forever)
