@@ -32,12 +32,6 @@ list_sponsors: true
 
 <section class="content">
   <div class="home-feature">
-    <pre><code class="language-gleam">import gleam/io
-
-pub fn main() {
-  io.println("Hello, world!")
-}
-</code></pre>
     <div>
       <h3>Hello, Gleam!</h3>
       <p>
@@ -46,9 +40,23 @@ pub fn main() {
         syntax.
       </p>
     </div>
+    <pre><code class="language-gleam">import gleam/io
+
+pub fn main() {
+  io.println("Hello, world!")
+}
+</code></pre>
   </div>
 
   <div class="home-feature">
+    <div>
+      <h3>Productivity focused</h3>
+      <p>
+        No nulls, no exceptions, clear error messages, and a practical type
+        system. Whether you're writing new code or maintaining old code Gleam is
+        designed to make your job as fun and stress-free as possible.
+      </p>
+    </div>
     <pre><code class="no-highlight hljs"><span class="hljs-deletion">error:</span> Unknown record field
   ┌─ ./src/app.gleam:8:16
   │
@@ -60,17 +68,17 @@ The value being accessed has this type:
 It has these fields:
     .name
 </code></pre>
-    <div>
-      <h3>Productivity focused</h3>
-      <p>
-        No nulls, no exceptions, clear error messages, and a practical type
-        system. Whether you're writing new code or maintaining old code Gleam is
-        designed to make your job as fun and stress-free as possible.
-      </p>
-    </div>
   </div>
 
   <div class="home-feature">
+    <div>
+      <h3>Model your domain</h3>
+      <p>
+        With Gleam's custom types, generics, and pattern matching features it
+        can implement your business logic precisely and clearly. We think it
+        should always be clear to the reader what code is doing.
+      </p>
+    </div>
     <pre><code class="language-gleam">pub type Pet {
   Cat
   Dog
@@ -85,17 +93,22 @@ pub fn greet(pet) {
   }
 }
 </code></pre>
-    <div>
-      <h3>Model your domain</h3>
-      <p>
-        With Gleam's custom types, generics, and pattern matching features it
-        can implement your business logic precisely and clearly. We think it
-        should always be clear to the reader what code is doing.
-      </p>
-    </div>
   </div>
 
   <div class="home-feature">
+    <div>
+      <h3>Ready out of the box</h3>
+      <p>
+        Gleam comes with compiler, build tool, formatter, editor integrations,
+        and package manager all built in, so creating a gleam project is just
+        running <code>gleam new</code>.
+      </p>
+      <p>
+        Part of the wider BEAM ecosystem, Gleam programs can use the thousands
+        of published packages whether they are written in Gleam, Erlang, or
+        Elixir.
+      </p>
+    </div>
     <pre><code class="no-highlight hljs">~/app $ gleam add gleam_json
 <span class="hljs-keyword">  Resolving</span> versions
 <span class="hljs-keyword">Downloading</span> packages
@@ -110,36 +123,9 @@ pub fn greet(pet) {
 <span class="hljs-attribute">.
 1 tests, 0 failures</span>
 </code></pre>
-    <div>
-      <h3>Ready out of the box</h3>
-      <p>
-        Gleam comes with compiler, build tool, formatter, editor integrations,
-        and package manager all built in, so creating a gleam project is just
-        running <code>gleam new</code>.
-      </p>
-      <p>
-        Part of the wider BEAM ecosystem, Gleam programs can use the thousands
-        of published packages whether they are written in Gleam, Erlang, or
-        Elixir.
-      </p>
-    </div>
   </div>
 
   <div class="home-feature">
-    <pre><code class="language-gleam">pub fn main() {
-  // Run a million threads, no problem
-  list.range(0, 1_000_000)
-  |> list.map(spawn_task)
-  |> list.each(task.await_forever)
-}
-
-fn spawn_task(i) {
-  task.async(fn() {
-    let n = int.to_string(i)
-    io.println("Hello from " <> n)
-  })
-}
-</code></pre>
     <div>
       <h3>Made for production</h3>
       <p>
@@ -154,17 +140,23 @@ fn spawn_task(i) {
         can scale and stay lighting fast with ease.
       </p>
     </div>
-  </div>
-
-  <div class="home-feature">
     <pre><code class="language-gleam">pub fn main() {
-  try el = document.query_selector("button")
+  // Run a million threads, no problem
+  list.range(0, 1_000_000)
+  |> list.map(spawn_task)
+  |> list.each(task.await_forever)
+}
 
-  element.add_event_listener(el, fn() {
-    io.println("Button clicked!")
+fn spawn_task(i) {
+  task.async(fn() {
+    let n = int.to_string(i)
+    io.println("Hello from " <> n)
   })
 }
 </code></pre>
+  </div>
+
+  <div class="home-feature">
     <div>
       <h3>JavaScript compatible</h3>
       <p>
@@ -173,6 +165,14 @@ fn spawn_task(i) {
         devices, or anywhere else JavaScript can run.
       </p>
     </div>
+    <pre><code class="language-gleam">pub fn main() {
+  try el = document.query_selector("button")
+
+  element.add_event_listener(el, fn() {
+    io.println("Button clicked!")
+  })
+}
+</code></pre>
   </div>
 </section>
 
