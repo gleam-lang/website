@@ -96,7 +96,7 @@ small,
 }
 
 .content {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
   padding: var(--l-space);
   position: relative;
@@ -373,6 +373,7 @@ tr:nth-child(even) {
 
 .top-sponsors {
   padding: 0;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -387,4 +388,27 @@ tr:nth-child(even) {
 
 .sponsors-section .sponsor-alembic {
   filter: brightness(0.8);
+}
+
+
+@media (min-width: 700px) {
+  .hello-world-example {
+    display: flex;
+    align-items: center;
+    gap: var(--l-space);
+    margin-bottom: var(--l-space);
+  }
+
+  .hello-world-example > * {
+    flex: 1;
+  }
+
+    /* Override highlight JS */
+  .hello-world-example code {
+    padding-right: 3em !important;
+  }
+  .hello-world-example code,
+  .hello-world-example pre {
+    margin: 0 !important;
+  }
 }

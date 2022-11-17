@@ -31,98 +31,18 @@ list_sponsors: true
 </section>
 
 <section class="content">
-  <h2>Why Gleam?</h2>
-
-  <h3 data-before-icon="☔">Safe</h3>
-  <p>
-    Gleam's powerful static type system helps find and prevent bugs at
-    compile time, long before it reaches your users. It also serves as a
-    productive refactoring tool, enabling programmers to confidently make
-    large changes to unfamiliar code, quickly and with low risk.
-  </p>
-  <p>
-    For problems the type system can't solve (such as your server being hit
-    by a bolt of lightning) the Erlang virtual machine provides well tested
-    mechanisms for gracefully handling failure.
-  </p>
-
-  <h3 data-before-icon="💜">Friendly</h3>
-  <p>
-    Hunting down bugs can be stressful so Gleam's compiler provides clear
-    and helpful feedback about any problems. We want to spend more time
-    developing features and less time looking for bugs or deciphering
-    cryptic error messages.
-  </p>
-  <p>
-    As a community we want to be friendly too. People of all backgrounds,
-    genders, and experience levels are welcome and must receive equal
-    respect. See our <a href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md">community code of conduct</a>
-    for more.
-  </p>
-
-  <h3 data-before-icon="🧵">Performant</h3>
-  <p>
-    Gleam builds on top of the Erlang virtual machine, a best-in-class
-    runtime that has enabled companies such as
-    <a href="https://discord.com/">Discord</a>,
-    <a href="https://www.ericsson.com/en">Ericsson</a>,
-    <a href="https://www.heroku.com">Heroku</a>, and
-    <a href="https://www.whatsapp.com/">WhatsApp</a> to provide low-latency
-    services at a global scale. Gleam takes full advantage of the Erlang
-    runtime and adds no overhead of its own, so all Gleam programs are as
-    fast and as efficiently multi-threaded as their Erlang counterpart.
-  </p>
-
-  <h3 data-before-icon="🧩">Erlang compatible</h3>
-  <p>
-    Gleam makes it easy to use code written in other BEAM languages such as
-    Erlang, Elixir and LFE, so there's a rich ecosystem of
-    <a href="https://hex.pm/">thousands of open source libraries </a>
-    for Gleam users to make use of.
-  </p>
-  <p>
-    In return Gleam code can be easily used by programmers of other BEAM
-    languages, either by transparently making use of libraries written in
-    Gleam, or by adding Gleam modules to their existing project with minimal
-    fuss.
-  </p>
-</section>
-
-<section class="content">
-  <h2>Features</h2>
-  <ul>
-    <li>Actor based multi-core concurrency
-    <li>Algebraic data types
-    <li>Erlang style fault tolerance
-    <li>Fast compilation
-    <li>Full type inference
-    <li>Generics
-    <li>Helpful error messages
-    <li>Immutable data structures
-    <li>No exceptions by default
-    <li>No null
-    <li>No undefined behaviour
-    <li>Reliable package management
-    <li>Small and consistent language design
-    <li>Zero cost interop with Erlang, Elixir, etc
-  </ul>
-</section>
-
-<section class="content">
-  <h2>Examples</h2>
-
-  <details class="openable-example" open>
-    <summary>Hello, world!</summary>
-
-    The classic example program that prints "Hello, world!" to the console.
-
-  <pre><code class="language-gleam">import gleam/io
+  <div class="hello-world-example">
+    <pre><code class="language-gleam">import gleam/io
 
 pub fn main() {
   io.println("Hello, world!")
 }
 </code></pre>
-  </details>
+    <div>
+      The power of typed functional programming with the performance and
+      reliability of the Erlang VM, all wrapped up in a familiar modern syntax.
+    </div>
+  </div>
 
   <details class="openable-example">
     <summary>A basic web server</summary>
@@ -184,6 +104,84 @@ fn start_process(i) {
     libraries full of building blocks for writing type safe and fault
     tolerant multi-core programs as quickly as possible.
   </details>
+</section>
+
+<section class="content">
+  <h2>Features</h2>
+  <ul>
+    <li>Actor based multi-core concurrency
+    <li>Algebraic data types
+    <li>Erlang style fault tolerance
+    <li>Fast compilation
+    <li>Full type inference
+    <li>Generics
+    <li>Helpful error messages
+    <li>Immutable data structures
+    <li>No exceptions by default
+    <li>No null
+    <li>No undefined behaviour
+    <li>Reliable package management
+    <li>Small and consistent language design
+    <li>Zero cost interop with Erlang, Elixir, etc
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Gleam's principles</h2>
+
+  <h3 data-before-icon="☔">Safe</h3>
+  <p>
+    Gleam's powerful static type system helps find and prevent bugs at
+    compile time, long before it reaches your users. It also serves as a
+    productive refactoring tool, enabling programmers to confidently make
+    large changes to unfamiliar code, quickly and with low risk.
+  </p>
+  <p>
+    For problems the type system can't solve (such as your server being hit
+    by a bolt of lightning) the Erlang virtual machine provides well tested
+    mechanisms for gracefully handling failure.
+  </p>
+
+  <h3 data-before-icon="💜">Friendly</h3>
+  <p>
+    Hunting down bugs can be stressful so Gleam's compiler provides clear
+    and helpful feedback about any problems. We want to spend more time
+    developing features and less time looking for bugs or deciphering
+    cryptic error messages.
+  </p>
+  <p>
+    As a community we want to be friendly too. People of all backgrounds,
+    genders, and experience levels are welcome and must receive equal
+    respect. See our <a href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md">community code of conduct</a>
+    for more.
+  </p>
+
+  <h3 data-before-icon="🧵">Performant</h3>
+  <p>
+    Gleam builds on top of the Erlang virtual machine, a best-in-class
+    runtime that has enabled companies such as
+    <a href="https://discord.com/">Discord</a>,
+    <a href="https://www.ericsson.com/en">Ericsson</a>,
+    <a href="https://www.heroku.com">Heroku</a>, and
+    <a href="https://www.whatsapp.com/">WhatsApp</a> to provide low-latency
+    services at a global scale. Gleam takes full advantage of the Erlang
+    runtime and adds no overhead of its own, so all Gleam programs are as
+    fast and as efficiently multi-threaded as their Erlang counterpart.
+  </p>
+
+  <h3 data-before-icon="🧩">Erlang compatible</h3>
+  <p>
+    Gleam makes it easy to use code written in other BEAM languages such as
+    Erlang, Elixir and LFE, so there's a rich ecosystem of
+    <a href="https://hex.pm/">thousands of open source libraries </a>
+    for Gleam users to make use of.
+  </p>
+  <p>
+    In return Gleam code can be easily used by programmers of other BEAM
+    languages, either by transparently making use of libraries written in
+    Gleam, or by adding Gleam modules to their existing project with minimal
+    fuss.
+  </p>
 </section>
 
 <section class="content">
