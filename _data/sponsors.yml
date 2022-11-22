@@ -433,6 +433,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2126073?v=4"
   tier: 1
   square_avatar: false
+- name: "Aaron Gunderson"
+  url: "https://github.com/agundy"
+  avatar: "https://avatars.githubusercontent.com/u/2281120?u=9566abaddb75aa4874a0ae6826b6c304f036b9a9&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Sascha Wolf"
   url: "https://github.com/sascha-wolf"
   avatar: "https://avatars.githubusercontent.com/u/2647626?u=3026c9ae1911cf21fc8cbfbc14277f7ba583cef0&v=4"
@@ -507,6 +512,11 @@
   url: "https://github.com/insanitybit"
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   tier: 1
+  square_avatar: false
+- name: "Michał Łępicki"
+  url: "https://github.com/michallepicki"
+  avatar: "https://avatars.githubusercontent.com/u/4972756?u=3f1cbc61ce58ecb99528de5e23702c97155afbc9&v=4"
+  tier: 2
   square_avatar: false
 - name: "Rodrigo Oler"
   url: "https://github.com/rodrigooler"
@@ -637,6 +647,11 @@
   url: "https://github.com/brettkolodny"
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
   tier: 1
+  square_avatar: false
+- name: "Robert Attard"
+  url: "https://github.com/TanklesXL"
+  avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
+  tier: 2
   square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
