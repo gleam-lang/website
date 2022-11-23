@@ -269,6 +269,11 @@ li code {
   font-size: 0.9rem;
 }
 
+.post {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
 .post video,
 .post img {
   box-shadow: var(--slight-shadow);
