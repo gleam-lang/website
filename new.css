@@ -1,11 +1,11 @@
 /* TODO: use local fonts */
 /* TODO: use Cascadia Mono */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Outfit&family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Outfit&family=Roboto+Mono&display=swap");
 
 :root {
-  --font-family-normal: 'Outfit', sans-serif;
-  --font-family-title: 'Lexend', sans-serif;
-  --font-family-monospace: 'Roboto Mono', monospace;
+  --font-family-normal: "Outfit", sans-serif;
+  --font-family-title: "Lexend", sans-serif;
+  --font-family-monospace: "Roboto Mono", monospace;
 
   --color-charcoal: #2f2f2f;
   --color-white: #fefefc;
@@ -19,9 +19,14 @@
 
   --font-size-normal: 18px;
   --font-size-hero-button: 24px;
+  --font-size-pair-text: 24px;
+  --font-size-friendly-text: 24px;
   --font-size-logo: 28px;
   --font-size-hero: 36px;
+  --font-size-pair-title: 36px;
+  --font-size-friendly-title: 36px;
 
+  --font-weight-normal: 400;
   --font-weight-title-bold: 700;
 
   --gap-1: 10px;
@@ -39,11 +44,20 @@
 body {
   padding: 0;
   margin: 0;
-  line-height: 1.25;
   background-color: var(--color-charcoal);
   color: var(--color-white);
   font-family: var(--font-family-normal);
   font-size: var(--font-size-normal);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-normal);
 }
 
 .content {
@@ -113,61 +127,55 @@ body {
   margin-top: var(--gap-2);
 }
 
-/* 
-main .hero {
-  padding: 0 20%;
-  letter-spacing: 1px;
-  font-size: 2.5em;
-}
-main .hero .logo {
-  color: #282828;
-  font-size: 8em;
-}
-main .hero .text {
-  padding: 2em;
-}
-main .hero .text button {
-  margin: 1em 0 0;
-  font-size: 0.8em;
-  display: block;
-  background-color: #593d55;
-  color: white;
-  border: none;
-  padding: 0.5em 1.5em;
-  border-radius: 1em;
-}
-main .waves {
-  height: 10em;
-  width: 100%;
-}
-main .features {
-  padding-bottom: 2em;
-  background-color: #2f2f2f;
-  color: white;
-}
-main .feature {
-  padding: 0 20%;
+.home-pair {
+  padding-top: var(--gap-4);
+  padding-bottom: var(--gap-4);
+  font-size: var(--font-size-pair-text);
+
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  gap: 2em;
+  gap: var(--gap-4);
 }
-main .feature > * {
-  width: 50%;
+
+.home-pair:nth-of-type(2n) {
+  flex-direction: row-reverse;
+}
+
+.home-pair > * {
+  max-width: 50%;
   flex: 1;
 }
-main .feature .description {
-  font-size: 2em;
+
+.home-pair h2 {
+  font-size: var(--font-size-pair-title);
 }
-main .feature h3 {
-  font-size: 1.5em;
-  margin: 0;
+
+.home-pair pre {
+  font-size: var(--font-size-normal);
 }
-main .feature .code {
-  background-color: #262626;
-  white-space: pre;
-  padding: 0.5em 2em;
-  border-radius: 0.5em;
+
+.home-top-sponsors {
+  padding: var(--gap-3) 0;
+  color: var(--color-charcoal);
+  background-color: var(--color-aged-plastic-yellow);
 }
-main .feature code {
-  font-size: 1.5em;
-} */
+
+.home-top-sponsors .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-friendly {
+  color: var(--color-charcoal);
+  text-align: center;
+  background: linear-gradient(0deg, var(--color-faff-pink) 0%, var(--color-white) 300%);
+  padding: var(--gap-4) 0;
+  font-size: var(--font-size-friendly-text);
+}
+
+.home-friendly h2 {
+  font-size: var(--font-size-friendly-title);
+}
