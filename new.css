@@ -91,13 +91,14 @@ h6 {
 
 .hero {
   background-color: var(--color-faff-pink);
-  padding: var(--gap-4) 0;
+  padding-top: var(--gap-4);
   color: var(--color-charcoal);
 }
 
 .hero .content {
   display: flex;
   align-items: center;
+  padding-bottom: var(--gap-6);
 }
 
 .hero .logo {
@@ -143,6 +144,10 @@ h6 {
   flex-direction: row-reverse;
 }
 
+.home-pair.intro {
+  padding-top: 0;
+}
+
 .home-pair > * {
   max-width: 50%;
   flex: 1;
@@ -172,10 +177,18 @@ h6 {
   color: var(--color-charcoal);
   text-align: center;
   background: linear-gradient(0deg, var(--color-faff-pink) 0%, var(--color-white) 300%);
-  padding: var(--gap-4) 0;
+  padding-top: var(--gap-4);
+  margin-bottom: -1px;
   font-size: var(--font-size-friendly-text);
 }
 
 .home-friendly h2 {
   font-size: var(--font-size-friendly-title);
+}
+
+.home-waves {
+  /* Ensure that the waves do not leave a gap at the bottom of the container */
+  position: relative;
+  top: 2px;
+  width: 100%;
 }
