@@ -1,0 +1,173 @@
+/* TODO: use local fonts */
+/* TODO: use Cascadia Mono */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Outfit&family=Roboto+Mono&display=swap');
+
+:root {
+  --font-family-normal: 'Outfit', sans-serif;
+  --font-family-title: 'Lexend', sans-serif;
+  --font-family-monospace: 'Roboto Mono', monospace;
+
+  --color-charcoal: #2f2f2f;
+  --color-white: #fefefc;
+  --color-faff-pink: #ffaff3;
+  --color-aged-plastic-yellow: #fffbe8;
+  --color-unnamed-blue: #a6f0fc;
+
+  --opacity-mid: 0.65;
+
+  --width-content: 960px;
+
+  --font-size-normal: 18px;
+  --font-size-hero-button: 24px;
+  --font-size-logo: 28px;
+  --font-size-hero: 36px;
+
+  --font-weight-title-bold: 700;
+
+  --gap-1: 10px;
+  --gap-2: calc(var(--gap-1) * 2);
+  --gap-3: calc(var(--gap-1) * 3);
+  --gap-4: calc(var(--gap-1) * 4);
+  --gap-5: calc(var(--gap-1) * 5);
+  --gap-6: calc(var(--gap-1) * 6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  line-height: 1.25;
+  background-color: var(--color-charcoal);
+  color: var(--color-white);
+  font-family: var(--font-family-normal);
+  font-size: var(--font-size-normal);
+}
+
+.content {
+  max-width: 100%;
+  width: var(--width-content);
+  margin: 0 auto;
+  padding: var(--gap-2);
+}
+
+.navbar {
+  font-family: var(--font-family-title);
+  background-color: var(--color-faff-pink);
+}
+
+.navbar .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  /* TODO: replace kanji with Lucy */
+  font-size: var(--font-size-logo);
+}
+
+.navbar a {
+  color: var(--color-charcoal);
+  text-decoration: none;
+  margin-left: var(--gap-2);
+}
+
+.hero {
+  background-color: var(--color-faff-pink);
+  padding: var(--gap-4) 0;
+  color: var(--color-charcoal);
+}
+
+.hero .content {
+  display: flex;
+  align-items: center;
+}
+
+.hero .logo {
+  /* TODO: replace kanji with Lucy */
+  font-size: 8em;
+  padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
+}
+
+.hero .text {
+  font-size: var(--font-size-hero);
+  font-family: var(--font-family-title);
+  padding: 0 var(--gap-6);
+}
+
+.hero .text b {
+  font-weight: var(--font-weight-title-bold);
+}
+
+.hero a {
+  font-size: var(--font-size-hero-button);
+  color: var(--color-white);
+  background-color: rgba(0, 0, 0, var(--opacity-mid));
+  padding: var(--gap-1) var(--gap-4);
+  border-radius: 100px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: var(--gap-2);
+}
+
+/* 
+main .hero {
+  padding: 0 20%;
+  letter-spacing: 1px;
+  font-size: 2.5em;
+}
+main .hero .logo {
+  color: #282828;
+  font-size: 8em;
+}
+main .hero .text {
+  padding: 2em;
+}
+main .hero .text button {
+  margin: 1em 0 0;
+  font-size: 0.8em;
+  display: block;
+  background-color: #593d55;
+  color: white;
+  border: none;
+  padding: 0.5em 1.5em;
+  border-radius: 1em;
+}
+main .waves {
+  height: 10em;
+  width: 100%;
+}
+main .features {
+  padding-bottom: 2em;
+  background-color: #2f2f2f;
+  color: white;
+}
+main .feature {
+  padding: 0 20%;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+main .feature > * {
+  width: 50%;
+  flex: 1;
+}
+main .feature .description {
+  font-size: 2em;
+}
+main .feature h3 {
+  font-size: 1.5em;
+  margin: 0;
+}
+main .feature .code {
+  background-color: #262626;
+  white-space: pre;
+  padding: 0.5em 2em;
+  border-radius: 0.5em;
+}
+main .feature code {
+  font-size: 1.5em;
+} */
