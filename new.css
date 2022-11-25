@@ -106,6 +106,7 @@ h6 {
 .pride .home-header {
   background-image: url("/images/pride-wall.svg");
   background-size: cover;
+  background-position: center;
 }
 
 .hero .content {
