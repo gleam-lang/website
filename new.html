@@ -9,78 +9,80 @@ list_sponsors: true
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="content">
-      <div>
-        <a class="logo" href="/">大 Gleam</a>
-      </div>
-      <div>
-        <a href="/news">News</a>
-        <a href="/community">Community</a>
-        <a href="/sponsor">Sponsor</a>
-      </div>
-      <div>
-        <a href="/docs">Documentation</a>
-        <a href="/github">Github</a>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-    <div class="hero">
+  <div class="home-header">
+    <nav class="navbar">
       <div class="content">
-        <div class="logo">大</div>
-        <div class="text">
-          <div>
-            <b>Gleam</b> is a <b>friendly</b> language for building
-            <b>type-safe</b> systems that <b>scale</b>! ✨
-          </div>
-          <a href="/getting-started">Getting Started</a>
+        <div>
+          <a class="logo" href="/">大 Gleam</a>
+        </div>
+        <div>
+          <a href="/news">News</a>
+          <a href="/community">Community</a>
+          <a href="/sponsor">Sponsor</a>
+        </div>
+        <div>
+          <a href="/docs">Documentation</a>
+          <a href="/github">Github</a>
         </div>
       </div>
-      <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
-    </div>
+    </nav>
 
-    <section class="content home-pair intro">
-      <div>
-        <p>
-          The power of a type system, the expressiveness of functional
-          programming, and the reliability of the highly concurrent, fault
-          tolerant Erlang runtime, with a familiar and modern syntax.
-        </p>
+    <main>
+      <div class="hero">
+        <div class="content">
+          <div class="logo">大</div>
+          <div class="text">
+            <div>
+              <b>Gleam</b> is a <b>friendly</b> language for building
+              <b>type-safe</b> systems that <b>scale</b>! <span data-show-pride>✨</span>
+            </div>
+            <a href="/getting-started">Getting Started</a>
+          </div>
+        </div>
+        <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
       </div>
-      <pre><code>import gleam/io
+  </div>
+
+  <section class="content home-pair intro">
+    <div>
+      <p>
+        The power of a type system, the expressiveness of functional
+        programming, and the reliability of the highly concurrent, fault
+        tolerant Erlang runtime, with a familiar and modern syntax.
+      </p>
+    </div>
+    <pre><code>import gleam/io
 
 pub fn main() {
   io.println("hello, friend!")
 }</code></pre>
-    </section>
+  </section>
 
-    <section class="home-top-sponsors">
-      <div class="content">
-        <h2>Kindly supported by</h2>
-        <!-- TODO: replace with logos -->
-        <p>Fly</p>
-        <p>Alembic</p>
-      </div>
-    </section>
+  <section class="home-top-sponsors">
+    <div class="content">
+      <h2>Kindly supported by</h2>
+      <!-- TODO: replace with logos -->
+      <p>Fly</p>
+      <p>Alembic</p>
+    </div>
+  </section>
 
-    <section class="content home-pair">
-      <div>
-        <h2>Reliable and scalable</h2>
-        <p>
-          Running on the battle-tested Erlang virtual machine that powers planet
-          scale systems such as WhatsApp and Ericsson, Gleam is ready for workloads
-          of any size.
-        </p>
-        <p>
-          Thanks to a multi-core actor based concurrency system that can run
-          millions of concurrent tasks, fast immutable data structures, and a
-          concurrent garbage collector that never stops the world, your service can
-          scale and stay lightning fast with ease.
-        </p>
-      </div>
-      <pre><code>fn spawn_task(i) {
+  <section class="content home-pair">
+    <div>
+      <h2>Reliable and scalable</h2>
+      <p>
+        Running on the battle-tested Erlang virtual machine that powers planet
+        scale systems such as WhatsApp and Ericsson, Gleam is ready for workloads
+        of any size.
+      </p>
+      <p>
+        Thanks to a multi-core actor based concurrency system that can run
+        millions of concurrent tasks, fast immutable data structures, and a
+        concurrent garbage collector that never stops the world, your service can
+        scale and stay lightning fast with ease.
+      </p>
+    </div>
+    <pre><code>fn spawn_task(i) {
   task.async(fn() {
     let n = int.to_string(i)
     io.println("Hello from " <> n)
@@ -94,23 +96,23 @@ pub fn main() {
   |> list.each(task.await_forever)
 }
 </code></pre>
-    </section>
+  </section>
 
-    <section class="content home-pair">
-      <div>
-        <h2>Ready when you are</h2>
-        <p>
-          Gleam comes with compiler, build tool, formatter, editor integrations,
-          and package manager all built in, so creating a Gleam project is just
-          running gleam new.
-        </p>
-        <p>
-          As part of the wider BEAM ecosystem, Gleam programs can use thousands
-          of published packages, whether they are written in Gleam, Erlang, or
-          Elixir.
-        </p>
-      </div>
-      <pre><code>➜ (main) gleam add gleam_json
+  <section class="content home-pair">
+    <div>
+      <h2>Ready when you are</h2>
+      <p>
+        Gleam comes with compiler, build tool, formatter, editor integrations,
+        and package manager all built in, so creating a Gleam project is just
+        running gleam new.
+      </p>
+      <p>
+        As part of the wider BEAM ecosystem, Gleam programs can use thousands
+        of published packages, whether they are written in Gleam, Erlang, or
+        Elixir.
+      </p>
+    </div>
+    <pre><code>➜ (main) gleam add gleam_json
   Resolving versions
 Downloading packages
  Downloaded 2 packages in 0.01s
@@ -124,18 +126,18 @@ Downloading packages
 .
 1 tests, 0 failures
 </code></pre>
-    </section>
+  </section>
 
-    <section class="content home-pair">
-      <div>
-        <h2>Here to help</h2>
-        <p>
-          No null values, no exceptions, clear error messages, and a practical
-          type system. Whether you're writing new code or maintaining old code,
-          Gleam is designed to make your job as fun and stress-free as possible.
-        </p>
-      </div>
-      <pre><code>error: Unknown record field
+  <section class="content home-pair">
+    <div>
+      <h2>Here to help</h2>
+      <p>
+        No null values, no exceptions, clear error messages, and a practical
+        type system. Whether you're writing new code or maintaining old code,
+        Gleam is designed to make your job as fun and stress-free as possible.
+      </p>
+    </div>
+    <pre><code>error: Unknown record field
 
   ┌─ ./src/app.gleam:8:16
   │
@@ -148,24 +150,24 @@ The value being accessed has this type:
 It has these fields:
     .name
 </code></pre>
-    </section>
+  </section>
 
-    <section class="content home-pair">
-      <div>
-        <h2>Multilingual</h2>
-        <p>
-          Gleam makes it easy to use code written in other BEAM languages such
-          as Erlang and Elixir, so there's a rich ecosystem of thousands of open
-          source libraries for Gleam users to make use of.
-        </p>
-        <p>
-          Gleam can additionally compile to JavaScript, enabling you to use your
-          code in the browser, or anywhere else JavaScript can run. It also
-          generates TypeScript definitions, so you can interact with your Gleam
-          code confidently, even from the outside.
-        </p>
-      </div>
-      <pre><code>
+  <section class="content home-pair">
+    <div>
+      <h2>Multilingual</h2>
+      <p>
+        Gleam makes it easy to use code written in other BEAM languages such
+        as Erlang and Elixir, so there's a rich ecosystem of thousands of open
+        source libraries for Gleam users to make use of.
+      </p>
+      <p>
+        Gleam can additionally compile to JavaScript, enabling you to use your
+        code in the browser, or anywhere else JavaScript can run. It also
+        generates TypeScript definitions, so you can interact with your Gleam
+        code confidently, even from the outside.
+      </p>
+    </div>
+    <pre><code>
         
         
 external fn as_html(
@@ -184,86 +186,86 @@ pub fn register_event_handler() {
   })
 }
 </code></pre>
-    </section>
+  </section>
 
-    <section class="home-friendly">
-      <!-- TODO: add triangles here -->
-      <div class="content">
-        <h2>Friendly 💜</h2>
-        <p>
-          As a community, we want to be friendly too. People from around the
-          world, of all backgrounds, genders, and experience levels are welcome
-          and respected equally. See our community code of conduct for more.
-        </p>
-        <p>
-          Black lives matter. Trans rights are human rights. No nazi bullsh*t.
-        </p>
+  <section class="home-friendly">
+    <!-- TODO: add triangles here -->
+    <div class="content">
+      <h2>Friendly 💜</h2>
+      <p>
+        As a community, we want to be friendly too. People from around the
+        world, of all backgrounds, genders, and experience levels are welcome
+        and respected equally. See our community code of conduct for more.
+      </p>
+      <p>
+        Black lives matter. Trans rights are human rights. No nazi bullsh*t.
+      </p>
+    </div>
+    <!-- TODO: add Lucy here -->
+    <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
+  </section>
+
+
+  <section class="home-sponsors">
+    <div class="content">
+      <h2>Lovely people</h2>
+      <p>
+        If you enjoy Gleam consider becoming a sponsor (or tell your boss to)
+      </p>
+      <!-- TODO: lots of faces here -->
+    </div>
+  </section>
+
+  <section class="home-still-here">
+    <div class="content">
+      <h2>You're still here?</h2>
+      <p>
+        Well, that&apos;s all this page has to say. Maybe you should go read the
+        language introduction!
+      </p>
+      <a href="/getting-started">Let's go!</a>
+
+      <hr>
+
+      <h2>Wanna keep in touch?</h2>
+      <p>
+        Subscribe to the Gleam newsletter
+      </p>
+      <form>
+        <input type="email" name="email" placeholder="cool.person@example.com">
+      </form>
+      <p>
+        We&apos;ll only use your email address to keep you informed about important
+        updates related to Gleam
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content">
+      <div>
+        <a class="logo" href="/">大 Gleam</a>
       </div>
-      <!-- TODO: add Lucy here -->
-      <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
-    </section>
+      <ul>
+        <li><a href="">News</a>
+        <li><a href="">Discord</a>
+        <li><a href="">GitHub</a>
+        <li><a href="">Forum</a>
+      </ul>
+      <ul>
+        <li><a href="">Cheat Sheets</a>
+        <li><a href="">Language tour</a>
+        <li><a href="">Documentation</a>
+        <li><a href="">CLI Reference</a>
+      </ul>
+      <ul>
+        <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
+        <li><a href="">Pictures of pets</a>
+      </ul>
+    </div>
+  </footer>
 
-
-    <section class="home-sponsors">
-      <div class="content">
-        <h2>Lovely people</h2>
-        <p>
-          If you enjoy Gleam consider becoming a sponsor (or tell your boss to)
-        </p>
-        <!-- TODO: lots of faces here -->
-      </div>
-    </section>
-
-    <section class="home-still-here">
-      <div class="content">
-        <h2>You're still here?</h2>
-        <p>
-          Well, that&apos;s all this page has to say. Maybe you should go read the
-          language introduction!
-        </p>
-        <a href="/getting-started">Let's go!</a>
-
-        <hr>
-
-        <h2>Wanna keep in touch?</h2>
-        <p>
-          Subscribe to the Gleam newsletter
-        </p>
-        <form>
-          <input type="email" name="email" placeholder="cool.person@example.com">
-        </form>
-        <p>
-          We&apos;ll only use your email address to keep you informed about important
-          updates related to Gleam
-        </p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="content">
-        <div>
-          <a class="logo" href="/">大 Gleam</a>
-        </div>
-        <ul>
-          <li><a href="">News</a>
-          <li><a href="">Discord</a>
-          <li><a href="">GitHub</a>
-          <li><a href="">Forum</a>
-        </ul>
-        <ul>
-          <li><a href="">Cheat Sheets</a>
-          <li><a href="">Language tour</a>
-          <li><a href="">Documentation</a>
-          <li><a href="">CLI Reference</a>
-        </ul>
-        <ul>
-          <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
-          <li><a href="">Pictures of pets</a>
-        </ul>
-      </div>
-    </footer>
-
-    <!-- 
+  <!-- 
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
       <path fill="#2F2F2F" fill-opacity="0.5"
         d="M0,96L48,96C96,96,192,96,288,80C384,64,480,32,576,21.3C672,11,768,21,864,37.3C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
@@ -276,4 +278,5 @@ pub fn register_event_handler() {
   </main>
 </body>
 
+  <script src="/new.js"></script>
 </html>

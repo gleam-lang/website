@@ -69,7 +69,6 @@ h6 {
 
 .navbar {
   font-family: var(--font-family-title);
-  background-color: var(--color-faff-pink);
 }
 
 .navbar .content {
@@ -89,10 +88,24 @@ h6 {
   margin-left: var(--gap-2);
 }
 
+[data-show-pride] {
+  user-select: none;
+  cursor: pointer;
+}
+
 .hero {
-  background-color: var(--color-faff-pink);
   padding-top: var(--gap-4);
   color: var(--color-charcoal);
+}
+
+.home-header {
+  background-color: var(--color-faff-pink);
+  transition: all 0.5s ease;
+}
+
+.pride .home-header {
+  background-image: url("/images/pride-wall.svg");
+  background-size: cover;
 }
 
 .hero .content {
