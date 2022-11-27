@@ -38,6 +38,7 @@
   --gap-6: calc(var(--gap-1) * 6);
 
   --waves-height: 140px;
+  --waves-width: 1200px;
 }
 
 * {
@@ -227,16 +228,14 @@ h6 {
 .hero {
   position: relative;
   padding-bottom: var(--waves-height);
+  overflow: hidden;
 }
 
 .home-waves {
-  /* I don't understand why but there is a 22px gap if the bottom is set to 0,
-   * which is what I thought it should be.
-   */
-  bottom: -22px;
+  bottom: -2px;
   height: var(--waves-height);
   position: absolute;
-  right: 0;
-  left: 0;
-  width: 100%;
+  right: 0px;
+  left: min(0px, calc(calc(100vw - var(--waves-width)) * 0.2));
+  width: max(100%, var(--waves-width));
 }
