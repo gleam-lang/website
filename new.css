@@ -190,10 +190,23 @@ h6 {
   background-color: var(--color-aged-plastic-yellow);
 }
 
+.home-top-sponsors h2 {
+  margin: 0;
+}
+
 .home-top-sponsors .content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--gap-3);
+}
+
+.sponsor-fly img {
+  height: 110px;
+}
+
+.sponsor-alembic img {
+  height: 33px;
 }
 
 .home-friendly {
