@@ -18,6 +18,7 @@
   --width-content: 960px;
 
   --font-size-normal: 18px;
+  --font-size-navbar: 18px;
   --font-size-hero-button: 24px;
   --font-size-pair-text: 24px;
   --font-size-friendly-text: 24px;
@@ -35,6 +36,8 @@
   --gap-4: calc(var(--gap-1) * 4);
   --gap-5: calc(var(--gap-1) * 5);
   --gap-6: calc(var(--gap-1) * 6);
+
+  --waves-height: 140px;
 }
 
 * {
@@ -69,6 +72,7 @@ h6 {
 
 .navbar {
   font-family: var(--font-family-title);
+  font-size: var(--font-size-navbar);
 }
 
 .navbar .content {
@@ -78,8 +82,15 @@ h6 {
 }
 
 .navbar .logo {
-  /* TODO: replace kanji with Lucy */
   font-size: var(--font-size-logo);
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  display: inline-block;
+  height: calc(var(--font-size-logo) * 1.2);
+  margin-right: 7px;
 }
 
 .navbar a {
@@ -112,12 +123,10 @@ h6 {
 .hero .content {
   display: flex;
   align-items: center;
-  padding-bottom: var(--gap-6);
 }
 
 .hero .logo {
-  /* TODO: replace kanji with Lucy */
-  font-size: 8em;
+  width: 400px;
   padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
 }
 
@@ -200,9 +209,21 @@ h6 {
   font-size: var(--font-size-friendly-title);
 }
 
-.home-waves {
-  /* Ensure that the waves do not leave a gap at the bottom of the container */
+/* Position the waves appropriately. */
+.home-friendly,
+.hero {
   position: relative;
-  top: 2px;
+  padding-bottom: var(--waves-height);
+}
+
+.home-waves {
+  /* I don't understand why but there is a 22px gap if the bottom is set to 0,
+   * which is what I thought it should be.
+   */
+  bottom: -22px;
+  height: var(--waves-height);
+  position: absolute;
+  right: 0;
+  left: 0;
   width: 100%;
 }
