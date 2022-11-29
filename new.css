@@ -18,6 +18,7 @@
 
   --width-content: 960px;
 
+  --font-size-small: 12px;
   --font-size-normal: 18px;
   --font-size-navbar: 18px;
   --font-size-hero-button: 24px;
@@ -29,6 +30,7 @@
   --font-size-pair-title: 36px;
   --font-size-friendly-title: 36px;
   --font-size-still-here-title: 36px;
+  --font-size-footer-logo: 36px;
 
   --font-weight-normal: 400;
   --font-weight-title-bold: 700;
@@ -67,6 +69,11 @@ h6 {
   font-weight: var(--font-weight-normal);
 }
 
+a:visited,
+a {
+  color: var(--color-charcoal);
+}
+
 .content {
   max-width: 100%;
   width: var(--width-content);
@@ -85,16 +92,17 @@ h6 {
   align-items: center;
 }
 
-.navbar .logo {
+.logo {
   font-size: var(--font-size-logo);
   display: flex;
   align-items: center;
+  white-space: nowrap;
 }
 
-.navbar .logo img {
+.logo img {
   display: inline-block;
-  height: calc(var(--font-size-logo) * 1.2);
-  margin-right: 7px;
+  height: 1.3em;
+  margin-right: 0.25em;
 }
 
 .navbar a {
@@ -151,6 +159,10 @@ h6 {
   border-radius: 100px;
   text-decoration: none;
   display: inline-block;
+}
+
+.button:visited {
+  color: var(--color-white);
 }
 
 .hero a {
@@ -324,4 +336,82 @@ h6 {
   border-color: var(--color-unexpected-aubergine) !important;
   border-radius: 0 100px 100px 0;
   text-decoration: none;
+}
+
+.recaptcha-blerb {
+  font-size: var(--font-size-small);
+  opacity: 0.8;
+}
+
+.footer {
+  padding: var(--gap-4) 0;
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
+  font-family: var(--font-family-title);
+}
+
+.footer .content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-4);
+}
+
+.footer .logo {
+  font-size: var(--font-size-footer-logo);
+}
+
+.footer li {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--gap-2);
+  opacity: 0.9;
+}
+
+.footer ul {
+  padding: 0;
+}
+
+.footer .first {
+  flex: 1;
+  max-width: 250px;
+}
+
+.footer .middle {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.footer .middle li {
+  width: 150px;
+  margin-right: var(--gap-4);
+}
+
+.footer .last {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer .last ul {
+  flex: unset;
+}
+
+.footer .last li {
+  margin-bottom: var(--gap-1);
+  opacity: 0.6;
+  font-size: var(--font-size-small);
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:visited {
+  color: var(--color-charcoal);
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

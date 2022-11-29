@@ -222,14 +222,16 @@ pub fn register_event_handler() {
         </p>
       </div>
       <ul data-randomise-order>
-{% assign sponsors_count = site.data.sponsors | size %}
-{% assign sponsors = site.data.sponsors | sample: sponsors_count %}
-{% for sponsor in sponsors %}
+        {% assign sponsors_count = site.data.sponsors | size %}
+        {% assign sponsors = site.data.sponsors | sample: sponsors_count %}
+        {% for sponsor in sponsors %}
         <li>
           <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
-            <img src="{{ sponsor.avatar }}" class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}" alt="{{ sponsor.name }}">
+            <img src="{{ sponsor.avatar }}"
+              class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}"
+              alt="{{ sponsor.name }}">
           </a>
-{% endfor %}
+          {% endfor %}
       </ul>
     </section>
 
@@ -248,13 +250,16 @@ pub fn register_event_handler() {
         <p>
           Subscribe to the Gleam newsletter
         </p>
-        <!-- <form>
-          <input type="email" name="email" placeholder="cool.person@example.com">
-        </form> -->
-        <script async src="https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js" data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"></script>
+        <script async src="https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js"
+          data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"></script>
         <p>
-          We&apos;ll only use your email address to keep you informed about important
-          updates related to Gleam
+          We'll send you at most one newsletter a month, and we'll never share
+          your email with anyone else.
+        </p>
+        <p class="recaptcha-blerb">
+          This site is protected by reCAPTCHA and the Google
+          <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+          <a href="https://policies.google.com/terms">Terms of Service</a> apply.
         </p>
       </div>
     </section>
@@ -262,25 +267,29 @@ pub fn register_event_handler() {
 
   <footer class="footer">
     <div class="content">
-      <div>
-        <a class="logo" href="/">大 Gleam</a>
+      <div class="first">
+        <a class="logo" href="/">
+          <img src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
+          Gleam
+        </a>
       </div>
-      <ul>
+      <ul class="middle">
         <li><a href="">News</a>
+        <li><a href="">Cheat sheets</a>
         <li><a href="">Discord</a>
-        <li><a href="">GitHub</a>
-        <li><a href="">Forum</a>
-      </ul>
-      <ul>
-        <li><a href="">Cheat Sheets</a>
         <li><a href="">Language tour</a>
+        <li><a href="">GitHub</a>
         <li><a href="">Documentation</a>
-        <li><a href="">CLI Reference</a>
+        <li><a href="">Forum</a>
+        <li><a href="">CLI reference</a>
       </ul>
-      <ul>
-        <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
-        <li><a href="">Pictures of pets</a>
-      </ul>
+      <div class="last">
+        <ul>
+          <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
+          <li><a href="">Code of conduct</a>
+          <li><a href="">Pictures of pets</a>
+        </ul>
+      </div>
     </div>
   </footer>
 </body>
