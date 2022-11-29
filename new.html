@@ -40,7 +40,7 @@ list_sponsors: true
             <b>Gleam</b> is a <b>friendly</b> language for building
             <b>type-safe</b> systems that <b>scale</b>! <span data-show-pride>✨</span>
           </div>
-          <a href="/getting-started">Getting Started</a>
+          <a class="button" href="/getting-started">Getting Started</a>
         </div>
       </div>
       <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
@@ -220,8 +220,17 @@ pub fn register_event_handler() {
         <p>
           If you enjoy Gleam consider becoming a sponsor (or tell your boss to)
         </p>
-        <!-- TODO: lots of faces here -->
       </div>
+      <ul data-randomise-order>
+{% assign sponsors_count = site.data.sponsors | size %}
+{% assign sponsors = site.data.sponsors | sample: sponsors_count %}
+{% for sponsor in sponsors %}
+        <li>
+          <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
+            <img src="{{ sponsor.avatar }}" class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}" alt="{{ sponsor.name }}">
+          </a>
+{% endfor %}
+      </ul>
     </section>
 
     <section class="home-still-here">
@@ -231,17 +240,18 @@ pub fn register_event_handler() {
           Well, that&apos;s all this page has to say. Maybe you should go read the
           language introduction!
         </p>
-        <a href="/getting-started">Let's go!</a>
+        <a class="button" href="/getting-started">Let's go!</a>
 
         <hr>
 
-        <h2>Wanna keep in touch?</h2>
+        <h3>Wanna keep in touch?</h3>
         <p>
           Subscribe to the Gleam newsletter
         </p>
-        <form>
+        <!-- <form>
           <input type="email" name="email" placeholder="cool.person@example.com">
-        </form>
+        </form> -->
+        <script async src="https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js" data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"></script>
         <p>
           We&apos;ll only use your email address to keep you informed about important
           updates related to Gleam
