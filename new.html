@@ -72,10 +72,10 @@ list_sponsors: true
           tolerant Erlang runtime, with a familiar and modern syntax.
         </p>
       </div>
-      <pre><code>import gleam/io
+      <pre><code><span class="code-keyword">import</span> <span class="code-module">gleam/io</span>
 
-pub fn main() {
-  io.println("hello, friend!")
+<span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
+  <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"hello, friend!"</span>)
 }</code></pre>
     </section>
 
@@ -105,18 +105,18 @@ pub fn main() {
           scale and stay lightning fast with ease.
         </p>
       </div>
-      <pre><code>fn spawn_task(i) {
-  task.async(fn() {
-    let n = int.to_string(i)
-    io.println("Hello from " <> n)
+      <pre><code><span class="code-keyword">fn</span> <span class="code-fn">spawn_task</span>(i) {
+  <span class="code-module">task.</span><span class="code-fn">async</span>(<span class="code-keyword">fn</span>() {
+    <span class="code-keyword">let</span> n = <span class="code-module">int.</span><span class="code-fn">to_string</span>(i)
+    <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Hello from "</span> <span class="code-operator">&lt;&gt;</span> n)
   })
 }
 
-pub fn main() {
-  // Run a million threads, no problem
-  list.range(0, 1_000_000)
-  |> list.map(spawn_task)
-  |> list.each(task.await_forever)
+<span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
+  <span class="code-comment">// Run a million threads, no problem</span>
+  <span class="code-module">list.</span><span class="code-fn">range</span>(<span class="code-number">0</span>, <span class="code-number">1_000_000</span>)
+  <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">map</span>(<span class="code-fn">spawn_task</span>)
+  <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">each</span>(<span class="code-module">task.</span><span class="code-fn">await_forever</span>)
 }
 </code></pre>
     </section>
@@ -127,7 +127,7 @@ pub fn main() {
         <p>
           Gleam comes with compiler, build tool, formatter, editor integrations,
           and package manager all built in, so creating a Gleam project is just
-          running gleam new.
+          running <code>gleam new</code>.
         </p>
         <p>
           As part of the wider BEAM ecosystem, Gleam programs can use thousands
@@ -135,19 +135,19 @@ pub fn main() {
           Elixir.
         </p>
       </div>
-      <pre><code>➜ (main) gleam add gleam_json
-  Resolving versions
-Downloading packages
- Downloaded 2 packages in 0.01s
-      Added gleam_json v0.5.0
-➜ (main) gleam test
-  Compiling thoas
-  Compiling gleam_json
-  Compiling app
-   Compiled in 1.67s
-    Running app_test.main
-.
-1 tests, 0 failures
+      <pre><code><span class="code-prompt">➜ (main)</span> gleam add gleam_json
+<span class="code-operator">  Resolving</span> versions
+<span class="code-operator">Downloading</span> packages
+<span class="code-operator"> Downloaded</span> 2 packages in 0.01s
+<span class="code-operator">      Added</span> gleam_json v0.5.0
+<span class="code-prompt">➜ (main)</span> gleam test
+<span class="code-operator"> Compiling</span> thoas
+<span class="code-operator"> Compiling</span> gleam_json
+<span class="code-operator"> Compiling</span> app
+<span class="code-operator">  Compiled</span> in 1.67s
+<span class="code-operator">   Running</span> app_test.main
+<span class="code-success">.
+1 tests, 0 failures</span>
 </code></pre>
     </section>
 
@@ -160,12 +160,12 @@ Downloading packages
           Gleam is designed to make your job as fun and stress-free as possible.
         </p>
       </div>
-      <pre><code>error: Unknown record field
+      <pre><code><span class="code-error">error:</span> Unknown record field
 
   ┌─ ./src/app.gleam:8:16
   │
 8 │ user.alias
-  │ ^^^^^^^^^^ Did you mean `name`?
+  │ <span class="code-error">^^^^^^^^^^ Did you mean `name`?</span>
 
 The value being accessed has this type:
     User
@@ -190,17 +190,17 @@ It has these fields:
           code confidently, even from the outside.
         </p>
       </div>
-      <pre><code>external fn as_html(
-  markdown: String,
-  options: Dynamic,
-) -> EarmarkResult =
-  "Elixir.Earmark" "as_html"
+      <pre><code><span class="code-keyword">external fn</span> <span class="code-fn">as_html</span>(
+  markdown: <span class="code-type">String</span>,
+  options: <span class="code-type">Dynamic</span>,
+) -> <span class="code-type">EarmarkResult</span> =
+  <span class="code-string">"Elixir.Earmark" "as_html"</span>
 
 
-pub fn register_event_handler() {
-  try el = document.query_selector("a")
-  element.add_event_listener(el, fn() {
-    io.println("Clicked!")
+<span class="code-keyword">pub fn</span> <span class="code-fn">register_event_handler</span>() {
+  <span class="code-keyword">try</span> el = <span class="code-module">document.</span><span class="code-fn">query_selector</span>(<span class="code-string">"a"</span>)
+  <span class="code-module">element.</span><span class="code-fn">add_event_listener</span>(el, <span class="code-keyword">fn</span>() {
+    <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Clicked!"</span>)
   })
 }</code></pre>
     </section>
