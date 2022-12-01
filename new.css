@@ -183,6 +183,7 @@ a {
 
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: var(--gap-4);
@@ -197,7 +198,9 @@ a {
 }
 
 .home-pair > * {
-  max-width: 50%;
+  max-width: 100%;
+  min-width: 200px;
+  width: calc(var(--width-content) * 0.5);
   flex: 1;
 }
 
@@ -205,8 +208,9 @@ a {
   font-size: var(--font-size-pair-title);
 }
 
-.home-pair pre {
+.home-pair pre code {
   font-size: var(--font-size-normal);
+  white-space: pre-wrap;
 }
 
 .home-top-sponsors {
@@ -397,6 +401,7 @@ a {
 .footer .content {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--gap-4);
 }
