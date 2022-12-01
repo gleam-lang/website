@@ -1,11 +1,33 @@
-/* TODO: use local fonts */
-/* TODO: use Cascadia Mono */
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Outfit&family=Roboto+Mono&display=swap");
+@font-face {
+  font-family: "Cascadia Mono";
+  font-display: swap;
+  src: url("/fonts/CascadiaMono.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/Lexend.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-display: swap;
+  font-weight: 700;
+  src: url("/fonts/Lexend-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Outfit";
+  font-display: swap;
+  src: url("/fonts/Outfit.woff") format("woff");
+}
 
 :root {
   --font-family-normal: "Outfit", sans-serif;
   --font-family-title: "Lexend", sans-serif;
-  --font-family-monospace: "Roboto Mono", monospace;
+  --font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;
 
   --color-charcoal: #2f2f2f;
   --color-white: #fefefc;
