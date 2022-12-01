@@ -76,6 +76,10 @@ a {
   color: var(--color-charcoal);
 }
 
+pre {
+  margin: 0;
+}
+
 .content {
   max-width: 100%;
   width: var(--width-content);
@@ -92,6 +96,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -141,6 +146,8 @@ a {
 .hero .content {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: var(--gap-6);
 }
 
 .hero .logo {
@@ -151,7 +158,7 @@ a {
 .hero .text {
   font-size: var(--font-size-hero);
   font-family: var(--font-family-title);
-  padding: 0 var(--gap-6);
+  max-width: 600px;
 }
 
 .hero .text b {
@@ -199,7 +206,7 @@ a {
 
 .home-pair > * {
   max-width: 100%;
-  min-width: 200px;
+  min-width: 250px;
   width: calc(var(--width-content) * 0.5);
   flex: 1;
 }
@@ -463,4 +470,24 @@ a {
 
 .grecaptcha-badge {
   visibility: hidden;
+}
+
+/* Same as --width-content */
+@media (max-width: 960px) {
+  .wide-only {
+    display: none;
+  }
+
+  .navbar .content {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .navbar .content > *:first-child {
+    margin-bottom: var(--gap-2);
+  }
+
+  .hero {
+    padding-top: 0;
+  }
 }
