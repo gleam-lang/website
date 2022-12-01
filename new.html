@@ -238,7 +238,7 @@ pub fn register_event_handler() {
     <section class="home-still-here">
       <div class="content">
         <h2>You're still here?</h2>
-        <p>
+        <p class="go-read">
           Well, that&apos;s all this page has to say. Maybe you should go read the
           language introduction!
         </p>
@@ -274,20 +274,21 @@ pub fn register_event_handler() {
         </a>
       </div>
       <ul class="middle">
-        <li><a href="">News</a>
-        <li><a href="">Cheat sheets</a>
-        <li><a href="">Discord</a>
-        <li><a href="">Language tour</a>
-        <li><a href="">GitHub</a>
-        <li><a href="">Documentation</a>
-        <li><a href="">Forum</a>
-        <li><a href="">CLI reference</a>
+        <li><a href="/news">News</a>
+        <li><a href="/documentation#cheatsheets">Cheat sheets</a>
+        <li><a href="https://discord.gg/Fm8Pwmy">Discord</a>
+        <li><a href="https://gleam.run/book/tour/">Language tour</a>
+        <li><a href="https://github.com/gleam-lang">GitHub</a>
+        <li><a href="/documentation">Documentation</a>
+        <li><a href="https://github.com/sponsors/lpil">Sponsor</a>
+        <li><a href="/writing-gleam/command-line-reference">CLI reference</a>
       </ul>
       <div class="last">
         <ul>
           <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
-          <li><a href="">Code of conduct</a>
-          <li><a href="">Pictures of pets</a>
+          <li><a href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a>
+          <!-- TODO: puppies -->
+          <!-- <li><a href="">Pictures of pets</a> -->
         </ul>
       </div>
     </div>
