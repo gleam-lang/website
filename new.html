@@ -230,18 +230,21 @@ It has these fields:
           If you enjoy Gleam consider becoming a sponsor (or tell your boss to)
         </p>
       </div>
-      <ul data-randomise-order>
-        {% assign sponsors_count = site.data.sponsors | size %}
-        {% assign sponsors = site.data.sponsors | sample: sponsors_count %}
-        {% for sponsor in sponsors %}
-        <li>
-          <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
-            <img src="{{ sponsor.avatar }}"
-              class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}"
-              alt="{{ sponsor.name }}">
-          </a>
-          {% endfor %}
-      </ul>
+      <div class="home-sponsors-list">
+        <ul data-randomise-order>
+          {% assign sponsors_count = site.data.sponsors | size %}
+          {% assign sponsors = site.data.sponsors | sample: sponsors_count %}
+          {% for sponsor in sponsors %}
+          <li>
+            <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
+              <img src="{{ sponsor.avatar }}"
+                class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}"
+                alt="{{ sponsor.name }}">
+            </a>
+            {% endfor %}
+        </ul>
+        <a data-expand-sponsors></a>
+      </div>
     </section>
 
     <section class="home-still-here">
