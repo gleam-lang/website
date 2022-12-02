@@ -116,7 +116,7 @@ h6 {
 
 a:visited,
 a {
-  color: var(--color-charcoal);
+  color: var(--color-white);
 }
 
 pre {
@@ -218,7 +218,7 @@ p code {
 }
 
 .button {
-  color: var(--color-white);
+  color: var(--color-white) !important;
   background-color: var(--color-unexpected-aubergine);
   padding: var(--gap-1) var(--gap-4);
   border-radius: 100px;
@@ -324,12 +324,13 @@ p code {
 }
 
 .home-waves {
-  bottom: -4px;
+  --overlap: 5px;
+  bottom: calc(var(--overlap) * -1);
   height: var(--waves-height);
   position: absolute;
   right: 0px;
   left: min(0px, calc(calc(100vw - var(--waves-width)) * 0.2));
-  width: max(100%, var(--waves-width));
+  width: calc(max(100%, var(--waves-width)) + calc(var(--overlap) * 2));
 }
 
 .home-sponsors {
@@ -420,6 +421,11 @@ p code {
     linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
   color: var(--color-charcoal);
   text-align: center;
+}
+
+.home-still-here a:visited,
+.home-still-here a {
+  color: var(--color-charcoal);
 }
 
 .home-still-here .content {
