@@ -51,10 +51,11 @@
   --width-content: 960px;
 
   --font-size-small: 12px;
+  --font-size-pair-code: 16px;
   --font-size-normal: 18px;
   --font-size-navbar: 18px;
   --font-size-hero-button: 24px;
-  --font-size-pair-text: 24px;
+  --font-size-pair-text: 22px;
   --font-size-friendly-text: 24px;
   --font-size-still-here-subtitle: 24px;
   --font-size-still-here-button: 24px;
@@ -64,7 +65,7 @@
   --font-size-still-here-title: 36px;
   --font-size-footer-logo: 36px;
   --font-size-friendly-title: 48px;
-  --font-size-sponsors-title: 72px;
+  --font-size-sponsors-title: 48px;
 
   --font-weight-normal: 400;
   --font-weight-title-bold: 700;
@@ -258,7 +259,7 @@ p code {
 }
 
 .home-pair pre code {
-  font-size: var(--font-size-normal);
+  font-size: var(--font-size-pair-code);
   white-space: pre-wrap;
 }
 
@@ -492,12 +493,7 @@ p code {
 }
 
 .footer .last {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.footer .last ul {
-  flex: unset;
+  text-align: right;
 }
 
 .footer .last li {
