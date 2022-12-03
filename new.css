@@ -200,6 +200,8 @@ p code {
   align-items: center;
   justify-content: center;
   gap: var(--gap-6);
+  padding-top: var(--gap-2);
+  padding-bottom: var(--gap-4);
 }
 
 .hero .logo {
