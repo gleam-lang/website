@@ -250,7 +250,7 @@
   square_avatar: false
 - name: "Robert Ellen"
   url: "https://github.com/rellen"
-  avatar: "https://avatars.githubusercontent.com/u/459086?u=23ad119ff06755e41a627e3293b12229c8d37170&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/459086?u=dae9051904e95a8c27d3c732d7e1be1127c7cc93&v=4"
   tier: 1
   square_avatar: false
 - name: "João Veiga"
@@ -458,11 +458,6 @@
   avatar: "https://avatars.githubusercontent.com/u/2925395?u=d29af274d3aaa7e927666e54c8e4311a15eb1ae7&v=4"
   tier: 1
   square_avatar: false
-- name: "Christian Meunier"
-  url: "https://github.com/tlvenn"
-  avatar: "https://avatars.githubusercontent.com/u/3340262?u=f08a32ca2352f4ee819eed5e1e2418b76cb5d76e&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Uku Taht"
   url: "https://github.com/ukutaht"
   avatar: "https://avatars.githubusercontent.com/u/3731516?v=4"
@@ -573,6 +568,11 @@
   avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
   tier: 2
   square_avatar: false
+- name: "Alexandre Del Vecchio"
+  url: "https://github.com/defgenx"
+  avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Edon Gashi"
   url: "https://github.com/edongashi"
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
@@ -628,6 +628,11 @@
   avatar: "https://avatars.githubusercontent.com/u/20144629?u=f636d587180a8fcc1cc7db565b225bfb8324019f&v=4"
   tier: 1
   square_avatar: false
+- name: "Dmitry Matveyev"
+  url: "https://github.com/greenfork"
+  avatar: "https://avatars.githubusercontent.com/u/20167110?u=0b6768994fb61ed9287bdae99b93e50aa85025ec&v=4"
+  tier: 1
+  square_avatar: false
 - name: "inoas"
   url: "https://github.com/inoas"
   avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
@@ -670,7 +675,7 @@
   square_avatar: false
 - name: "Josías Alvarado"
   url: "https://github.com/pointerish"
-  avatar: "https://avatars.githubusercontent.com/u/25916517?u=6d9aa4a8a394111698a47080fd5f4fed9d34f300&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/25916517?u=4ed7e1680758f4f716ff5c2cbe68b1278eb61a11&v=4"
   tier: 1
   square_avatar: false
 - name: "Harry Bairstow"
