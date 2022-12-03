@@ -501,6 +501,10 @@ p code {
   font-family: var(--font-family-title);
 }
 
+.footer a:visited {
+  color: var(--color-charcoal);
+}
+
 .footer .content {
   display: flex;
   flex-direction: row;
