@@ -664,6 +664,10 @@ pre code {
   margin: var(--gap-2) 0;
 }
 
+.page > h2 {
+  margin-top: var(--gap-6);
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
