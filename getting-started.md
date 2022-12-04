@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Getting started
+subtitle: On your marks, get set, go!
 redirect_from:
   - "/book/getting-started/index.html"
 ---
