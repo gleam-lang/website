@@ -1,5 +1,6 @@
 ---
 title: Using the project
+subtitle: Have some fun with Gleam code!
 layout: page
 redirect_from:
   - "/writing-gleam/running-the-project/index.html"

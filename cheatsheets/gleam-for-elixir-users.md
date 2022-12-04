@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Gleam for Elixir users
+subtitle: Hello Elixir Alchemists!
 ---
 
 - [Comments](#comments)

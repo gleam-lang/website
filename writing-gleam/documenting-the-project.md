@@ -1,5 +1,6 @@
 ---
 title: Documenting the project
+subtitle: Self-documenting is cool but documented is better
 layout: page
 ---
 

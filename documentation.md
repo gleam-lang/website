@@ -1,5 +1,6 @@
 ---
 title: Documentation
+subtitle: Learn all about programming in Gleam!
 layout: page
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Gleam for Rust users
+subtitle: Hello fast and safe Rustaceans 🦀
 ---
 
 - [Comments](#comments)

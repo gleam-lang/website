@@ -1,5 +1,6 @@
 ---
 title: Example projects
+subtitle: Talk is cheap, show me the code!
 layout: page
 ---
 

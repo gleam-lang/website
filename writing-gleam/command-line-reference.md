@@ -1,10 +1,10 @@
 ---
 title: Command line reference
+subtitle: Getting Gleam things done in the terminal
 layout: page
 ---
 
 The `gleam` command uses subcommands to access different parts of the functionality:
-
 ## `new`
 
 `gleam new <name> [project-root]`

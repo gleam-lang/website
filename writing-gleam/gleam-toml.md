@@ -1,5 +1,6 @@
 ---
 title: gleam.toml
+subtitle: Configure your Gleam project
 layout: page
 ---
 

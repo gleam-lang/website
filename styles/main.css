@@ -51,7 +51,7 @@
   --width-content: 960px;
 
   --font-size-small: 12px;
-  --font-size-pair-code: 16px;
+  --font-size-code: 16px;
   --font-size-normal: 18px;
   --font-size-navbar: 18px;
   --font-size-hero-button: 24px;
@@ -59,6 +59,7 @@
   --font-size-friendly-text: 24px;
   --font-size-still-here-subtitle: 24px;
   --font-size-still-here-button: 24px;
+  --font-size-hero-subtitle: 24px;
   --font-size-logo: 28px;
   --font-size-hero: 36px;
   --font-size-pair-title: 36px;
@@ -78,7 +79,7 @@
   --gap-5: calc(var(--gap-1) * 5);
   --gap-6: calc(var(--gap-1) * 6);
 
-  --waves-height: 140px;
+  --waves-height: 100px;
   --waves-width: 1200px;
 
   --sponsor-size: 50px;
@@ -115,6 +116,10 @@ h6 {
   font-weight: var(--font-weight-normal);
 }
 
+.content > *:first-child {
+  margin-top: 0;
+}
+
 a:visited,
 a {
   color: var(--color-white);
@@ -132,6 +137,11 @@ code {
 p code {
   white-space: nowrap;
   opacity: 0.7;
+}
+
+pre code {
+  font-size: var(--font-size-code);
+  white-space: pre-wrap;
 }
 
 .content {
@@ -189,6 +199,11 @@ p code {
 .hero h1 {
   font-size: var(--font-size-hero-title);
   margin: 0;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: var(--font-size-hero-subtitle);
 }
 
 .page-header {
@@ -274,11 +289,6 @@ p code {
 
 .home-pair h2 {
   font-size: var(--font-size-pair-title);
-}
-
-.home-pair pre code {
-  font-size: var(--font-size-pair-code);
-  white-space: pre-wrap;
 }
 
 .home-top-sponsors {
@@ -648,6 +658,10 @@ p code {
 
 .page.content {
   padding-bottom: var(--gap-4);
+}
+
+.page pre {
+  margin: var(--gap-2) 0;
 }
 
 table {
