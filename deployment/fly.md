@@ -1,6 +1,8 @@
 ---
 title: Deploying Gleam on Fly
 layout: page
+redirect_from:
+  - "/deploying-gleam-on-fly/index.html"
 ---
 
 [Fly.io](https://fly.io) is a convenient and easy to use deployment platform

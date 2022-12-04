@@ -2,10 +2,10 @@
 layout: page
 title: News
 ---
-<ul class="posts">
+<ul class="news-posts">
   {% for post in site.posts %}
   <li>
-    <a href="{{ post.url }}"><h5>{{ post.title }}</h5></a>
+    <a href="{{ post.url }}"><h2>{{ post.title }}</h2></a>
     <span>Published {{ post.date | date: "%d %b, %Y" }} by {{ post.author }}</span>
   {% endfor %}
 </ul>

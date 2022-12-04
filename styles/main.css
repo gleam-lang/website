@@ -62,6 +62,7 @@
   --font-size-logo: 28px;
   --font-size-hero: 36px;
   --font-size-pair-title: 36px;
+  --font-size-hero-title: 36px;
   --font-size-still-here-title: 36px;
   --font-size-footer-logo: 36px;
   --font-size-friendly-title: 48px;
@@ -117,6 +118,7 @@ h6 {
 a:visited,
 a {
   color: var(--color-white);
+  text-decoration-color: var(--color-faff-pink);
 }
 
 pre {
@@ -184,12 +186,17 @@ p code {
   color: var(--color-charcoal);
 }
 
-.home-header {
+.hero h1 {
+  font-size: var(--font-size-hero-title);
+  margin: 0;
+}
+
+.page-header {
   background-color: var(--color-faff-pink);
   transition: all 0.5s ease;
 }
 
-.pride .home-header {
+.pride .page-header {
   background-image: url("/images/pride-wall.svg");
   background-size: cover;
   background-position: center;
@@ -608,6 +615,23 @@ p code {
 
 .code-prompt {
   color: var(--color-code-dark-grey);
+}
+
+.news-posts li {
+  list-style: none;
+  margin-bottom: var(--gap-4);
+}
+
+.news-posts li > * {
+  margin: 0 0 var(--gap-1) 0;
+}
+
+.news-posts a {
+  text-decoration: none;
+}
+
+.news-posts h2 {
+  margin: 0;
 }
 
 /* Same as --width-content */

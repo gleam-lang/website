@@ -12,11 +12,6 @@ layout: page
   - [Running the project](/writing-gleam/using-the-project)
   - [Documenting the project](/writing-gleam/documenting-the-project)
   - [Example projects](/writing-gleam/example-projects)
-- [Deploying Gleam](/deployment)
-
-## About Gleam
-
-- [Frequently asked questions](/frequently-asked-questions)
 
 ## Cheatsheets
 
@@ -26,6 +21,14 @@ layout: page
 - [Gleam for PHP users](/cheatsheets/gleam-for-php-users)
 - [Gleam for Python users](/cheatsheets/gleam-for-python-users)
 - [Gleam for Rust users](/cheatsheets/gleam-for-rust-users)
+
+## Deployment
+
+- [Deploying on Fly.io](/deployment/fly)
+
+## About Gleam
+
+- [Frequently asked questions](/frequently-asked-questions)
 
 ## Gleam references
 
