@@ -1,6 +1,7 @@
 ---
 author: Louis Pilfold
 title: Hello, Gleam!
+subtitle: There's a new friendly language in town
 tags:
   - Release
 ---

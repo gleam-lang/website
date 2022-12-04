@@ -30,6 +30,8 @@
   --font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;
 
   --color-charcoal: #2f2f2f;
+  --color-black: #1e1e1e;
+  --color-blacker: #151515;
   --color-white: #fefefc;
   --color-faff-pink: #ffaff3;
   --color-aged-plastic-yellow: #fffbe8;
@@ -142,6 +144,15 @@ p code {
 pre code {
   font-size: var(--font-size-code);
   white-space: pre-wrap;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 5px;
 }
 
 .content {
@@ -480,6 +491,10 @@ pre code {
   font-size: var(--font-size-still-here-button);
 }
 
+.home-still-here a {
+  text-decoration-color: var(--color-charcoal);
+}
+
 [data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"] {
   margin: 0 auto;
 }
@@ -639,6 +654,21 @@ pre code {
   white-space: pre-wrap;
 }
 
+.page.content {
+  padding-bottom: var(--gap-4);
+}
+
+.page pre {
+  margin: var(--gap-3) 0 var(--gap-4) 0;
+  padding: var(--gap-2) var(--gap-2);
+  background-color: var(--color-black);
+  box-shadow: var(--gap-1) var(--gap-1) 0 0 var(--color-blacker);
+}
+
+.page h2 {
+  margin-top: var(--gap-6);
+}
+
 .news-posts li {
   list-style: none;
   margin-bottom: var(--gap-4);
@@ -656,26 +686,59 @@ pre code {
   margin: 0;
 }
 
-.page.content {
-  padding-bottom: var(--gap-4);
+.post {
+  position: relative;
 }
 
-.page pre {
-  margin: var(--gap-2) 0;
+.post iframe,
+.post video,
+.post img {
+  display: block;
+  margin: var(--gap-2) auto;
+  max-width: 100%;
 }
 
-.page > h2 {
-  margin-top: var(--gap-6);
+.post summary {
+  cursor: pointer;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+.post details {
+  margin-bottom: var(--gap-2);
 }
 
-td {
-  padding: 5px;
+.post .top-sponsors {
+  padding: 0;
+  margin-bottom: 0;
+  text-align: center;
 }
+
+.post .top-sponsors li {
+  list-style: none;
+}
+
+.post .sponsor-fly {
+  height: 100px;
+  margin-bottom: var(--space);
+}
+
+.post .sponsor-alembic {
+  height: 38px;
+}
+
+.post .top-sponsors + ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--gap-1);
+  padding: 0;
+}
+
+.post .top-sponsors + ul li {
+  list-style: none;
+  margin: 0 var(--gap-1);
+}
+
 
 /* Same as --width-content */
 @media (max-width: 960px) {
