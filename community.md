@@ -25,7 +25,7 @@ issue is resolved and your identity will be kept private.
 
 - Messaging the `@moderators` group on the [Gleam Discord chat][2].
 - Messaging the [@gleamlang][5] account on Twitter.
-- Emailing gleam at lpil dot uk.
+- Emailing [hello@gleam.run](mailto:hello@gleam.run).
 
 [1]: https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md
 [2]: https://discord.gg/Fm8Pwmy

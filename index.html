@@ -1,6 +1,16 @@
 ---
 layout: layout
 ---
+{% capture header_content %}
+<div>
+  <b>Gleam</b> is a <b>friendly</b> language for building
+  <b>type-safe</b> systems that <b>scale</b>! <span data-show-pride>✨</span>
+</div>
+<a class="button" href="/getting-started">Getting Started</a>
+{% endcapture %}
+{% include page-header.html image="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot"
+content=header_content %}
+
 <main role="main">
   <section class="content home-pair intro">
     <div>
