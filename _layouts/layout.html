@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+  {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{% endcapture %}
+  {% capture description %}{% if page.description %}{{ page.description | strip }}{% else %}The Gleam programming
+  language{% endif %}{% endcapture %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{ title }}</title>
+  <link rel="shortcut icon" href="/images/lucy-circle.svg">
+  {% feed_meta %}
+  <meta name="description" content="{{ description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ site.url }}/images/lucy-circle-2.svg">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <script async defer data-domain="gleam.run" src="https://plausible.io/js/plausible.js"></script>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="home-header">
+
+    <nav class="navbar">
+      <div class="content">
+        <div>
+          <a class="logo" href="/">
+            <img src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
+            Gleam
+          </a>
+        </div>
+        <div>
+          <a href="/news">News</a>
+          <a href="/community">Community</a>
+          <a href="/sponsor">Sponsor</a>
+        </div>
+        <div>
+          <a href="/docs">Documentation</a>
+          <a href="/github">Github</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="content">
+        <img class="logo wide-only" src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
+        <div class="text">
+          <div>
+            <b>Gleam</b> is a <b>friendly</b> language for building
+            <b>type-safe</b> systems that <b>scale</b>! <span data-show-pride>✨</span>
+          </div>
+          <a class="button" href="/getting-started">Getting Started</a>
+        </div>
+      </div>
+      <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
+    </div>
+
+  </div>
+
+{{ content }}
+
+  <footer class="footer">
+    <div class="content">
+      <div class="first">
+        <a class="logo" href="/">
+          <img src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
+          Gleam
+        </a>
+      </div>
+      <ul class="middle">
+        <li><a href="/news">News</a>
+        <li><a href="/documentation#cheatsheets">Cheat sheets</a>
+        <li><a href="https://discord.gg/Fm8Pwmy">Discord</a>
+        <li><a href="https://gleam.run/book/tour/">Language tour</a>
+        <li><a href="https://github.com/gleam-lang">GitHub</a>
+        <li><a href="/documentation">Documentation</a>
+        <li><a href="https://github.com/sponsors/lpil">Sponsor</a>
+        <li><a href="/writing-gleam/command-line-reference">CLI reference</a>
+      </ul>
+      <ul class="last">
+        <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
+        <li><a href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a>
+          <!-- TODO: puppies -->
+          <!-- <li><a href="">Pictures of pets</a> -->
+      </ul>
+    </div>
+  </footer>
+</body>
+
+<script src="/javascript/main.js"></script>
+
+</html>
