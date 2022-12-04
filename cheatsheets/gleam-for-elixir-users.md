@@ -94,7 +94,7 @@ let size = 1
 #### Elixir
 
 ```elixir
-[x, y] = [1, 2] # assert that the value is a list of length 2 and assign the first element to x and the second to y
+[x, y] = [1, 2] # assert that the list has 2 elements
 2 = y # assert that y is 2
 2 = x # runtime error because x's value is 1
 [y] = "Hello" # runtime error
@@ -457,7 +457,8 @@ pub fn main() {
     print(1)
     2
   }
-  let y = x * {x + 10} // braces are used to change arithmetic operations order
+  // Braces are used to change arithmetic operations order
+  let y = x * { x + 10 }
   y
 }
 ```
