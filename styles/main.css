@@ -576,6 +576,8 @@ p code {
   visibility: hidden;
 }
 
+.hljs-variable,
+.hljs-keyword,
 .code-keyword {
   color: var(--color-code-orange);
 }
@@ -588,19 +590,23 @@ p code {
   color: var(--color-code-red);
 }
 
+.hljs-operator,
 .code-operator {
   color: var(--color-code-pink);
 }
 
+.hljs-title,
 .code-type,
 .code-module {
   color: var(--color-code-light-pink);
 }
 
+.hljs-string,
 .code-string {
   color: var(--color-code-green);
 }
 
+.hljs-number,
 .code-number {
   color: var(--color-code-yellow);
 }
@@ -609,6 +615,7 @@ p code {
   color: var(--color-code-blue);
 }
 
+.hljs-comment,
 .code-comment {
   color: var(--color-code-grey);
 }
