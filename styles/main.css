@@ -601,6 +601,7 @@ p code {
   color: var(--color-code-light-pink);
 }
 
+.hljs-symbol,
 .hljs-string,
 .code-string {
   color: var(--color-code-green);
@@ -624,6 +625,10 @@ p code {
   color: var(--color-code-dark-grey);
 }
 
+.hljs {
+  white-space: pre-wrap;
+}
+
 .news-posts li {
   list-style: none;
   margin-bottom: var(--gap-4);
@@ -639,6 +644,19 @@ p code {
 
 .news-posts h2 {
   margin: 0;
+}
+
+.page.content {
+  padding-bottom: var(--gap-4);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 5px;
 }
 
 /* Same as --width-content */
