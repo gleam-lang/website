@@ -2,6 +2,7 @@
 layout: layout
 ---
 
+<!-- TODO: download these from the our domain -->
 <script defer src="//unpkg.com/@highlightjs/cdn-assets@11.0.1/highlight.min.js"></script>
 <script defer src="//unpkg.com/@highlightjs/cdn-assets@11.0.1/languages/elixir.min.js"></script>
 <script defer src="//unpkg.com/@highlightjs/cdn-assets@11.0.1/languages/elm.min.js"></script>
@@ -13,7 +14,7 @@ layout: layout
 <h1>{{ page.title }}</h1>
 <p class="hero-subtitle">{{ page.subtitle }}</p>
 {% endcapture %}
-{% include page-header.html content=header_content %}
+{% include page-header.html image=page.header_image content=header_content %}
 
 <main class="page content">
   {{ content }}
