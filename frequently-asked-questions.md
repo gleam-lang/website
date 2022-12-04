@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Frequently asked questions
+subtitle: What? Why? Where? When? How?
 description: The answers to some things you might be wondering about Gleam!
 ---
 

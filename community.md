@@ -1,10 +1,8 @@
 ---
-title: Community
+title: The Gleam Community
+subtitle: Welcome, friend! It's good to have you
 layout: page
 ---
-
-Welcome to the Gleam community! You are very welcome and we are happy to have
-you.
 
 You can talk to and get help from other Gleam community members in the
 following forums:

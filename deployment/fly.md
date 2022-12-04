@@ -1,5 +1,6 @@
 ---
-title: Deploying Gleam on Fly
+title: Deploying on Fly.io
+subtitle: Run Gleam all over the world. No ops required. 
 layout: page
 redirect_from:
   - "/deploying-gleam-on-fly/index.html"
