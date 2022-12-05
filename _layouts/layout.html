@@ -3,25 +3,28 @@
 
 <head>
   {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{% endcapture %}
-  {% capture description %}{% if page.description %}{{ page.description | strip }}{% else %}The Gleam programming
-  language{% endif %}{% endcapture %}
+  {% capture default_description %}The Gleam programming language{% endcapture %}
+  {% capture description %}{% if page.description %}{{ page.description | strip }}{% else %}{{ default_description }}{%
+  endif %}{% endcapture %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>{{ title }}</title>
   <link rel="shortcut icon" href="/images/lucy-circle.svg">
   {% feed_meta %}
+
+  <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{{ site.url }}/images/lucy-circle-2.svg">
+  <meta property="og:image" content="{{ site.url }}/images/og-image.png">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+
   <script async defer data-domain="gleam.run" src="https://plausible.io/js/plausible.js"></script>
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
-{{ content }}
+  {{ content }}
 
   <footer class="footer">
     <div class="content">
