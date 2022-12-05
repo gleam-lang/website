@@ -535,6 +535,7 @@ td {
   font-family: var(--font-family-title);
 }
 
+.footer a,
 .footer a:visited {
   color: var(--color-charcoal);
 }
