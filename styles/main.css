@@ -523,11 +523,6 @@ td {
   text-decoration: none;
 }
 
-.recaptcha-blerb {
-  font-size: var(--font-size-small);
-  opacity: 0.8;
-}
-
 .footer {
   padding: var(--gap-4) 0;
   background-color: var(--color-white);
@@ -740,6 +735,25 @@ td {
   margin: 0 var(--gap-1);
 }
 
+.mailing-list-page p {
+  font-size: var(--font-size-normal);
+}
+
+.mailing-list-page .recaptcha-blerb,
+.recaptcha-blerb a,
+.recaptcha-blerb a:visited,
+.recaptcha-blerb {
+  color: var(--color-charcoal);
+  font-size: var(--font-size-small);
+}
+
+.recaptcha-blerb {
+  opacity: 0.8;
+}
+
+.recaptcha-blerb a {
+  text-decoration: underline;
+}
 
 /* Same as --width-content */
 @media (max-width: 960px) {
