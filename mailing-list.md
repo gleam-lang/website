@@ -1,5 +1,7 @@
 ---
 layout: layout
+title: Mailing list
+description: The Gleam at-most-monthly mailing list
 ---
 {% capture header_content %}
 <div class="mailing-list-page">
