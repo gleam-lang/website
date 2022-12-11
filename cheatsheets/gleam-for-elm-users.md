@@ -435,9 +435,12 @@ holidayWishes =
 "Hellø, world!"
 ```
 
-Gleam does not have an operator for combining strings. Like Elm, it has [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#concat) in the standard library.
+Similar to Elm, you can combine strings, for that Gleam has the operator `<>` and also functions like [`string.append`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#append) and [`string.concat`](https://hexdocs.pm/gleam_stdlib/gleam/string.html#concat) in the standard library.
 
 ```gleam
+let happy_new_year_wishes =
+  "Happy New Year " <> person.name
+
 let birthday_wishes =
   string.append(to: "Happy Birthday ", suffix: person.name)
 
