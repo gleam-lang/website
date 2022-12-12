@@ -48,7 +48,7 @@ In Rust comments are written with a `//` prefix.
 // Hello, Joe!
 ```
 
-Comments starting with `///` are used to document the following statement. Comments starting with `//! are used to document the current module.
+Comments starting with `///` are used to document the following statement. Comments starting with `//!` are used to document the current module.
 
 ```rust
 //! This module is very important.
