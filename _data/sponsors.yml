@@ -138,11 +138,6 @@
   avatar: "https://avatars.githubusercontent.com/u/79006?u=56ae4c82735d35d7f9e59a9e2f9d472ca730a306&v=4"
   tier: 1
   square_avatar: false
-- name: "Dennis Tel"
-  url: "https://github.com/Eptis"
-  avatar: "https://avatars.githubusercontent.com/u/88688?u=35862007bed11dd91070635a70d5ea868328908b&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Elliott Pogue"
   url: "https://github.com/epogue"
   avatar: "https://avatars.githubusercontent.com/u/89570?u=2c0679f52953eb82369c16797a0fa6cb28b0361a&v=4"
@@ -263,11 +258,6 @@
   avatar: "https://avatars.githubusercontent.com/u/498241?v=4"
   tier: 2
   square_avatar: false
-- name: "t bjornrud"
-  url: "https://github.com/bjornrud"
-  avatar: "https://avatars.githubusercontent.com/u/543421?u=c18ac18a244dfbc7f35d76e616c1e8b072db8111&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Graeme Coupar"
   url: "https://github.com/obmarg"
   avatar: "https://avatars.githubusercontent.com/u/556490?v=4"
@@ -331,6 +321,11 @@
 - name: "Mark Holmes"
   url: "https://github.com/markholmes"
   avatar: "https://avatars.githubusercontent.com/u/921826?u=315e6483dbe88494b733647492faadcbfe77b041&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Seve Salazar"
+  url: "https://github.com/tehprofessor"
+  avatar: "https://avatars.githubusercontent.com/u/995086?u=a6f421a92217f34de47433c1eb57e198b8b9bdd1&v=4"
   tier: 1
   square_avatar: false
 - name: "Sebastian Porto"
@@ -671,7 +666,7 @@
 - name: "Alembic"
   url: "https://alembic.com.au"
   avatar: "https://avatars.githubusercontent.com/u/25500012?v=4"
-  tier: 4
+  tier: 2
   square_avatar: false
 - name: "Josías Alvarado"
   url: "https://github.com/pointerish"
@@ -680,7 +675,7 @@
   square_avatar: false
 - name: "Harry Bairstow"
   url: "https://github.com/HarryET"
-  avatar: "https://avatars.githubusercontent.com/u/29015545?u=4c6fa6d1806186181c7ce5bdcd2e64c1ad1e5db2&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/29015545?u=19b16aa2788512087bbab24876489649b7945d24&v=4"
   tier: 1
   square_avatar: false
 - name: "Michał Kowieski"
