@@ -300,7 +300,7 @@ mod_function(3, 4)
 #### Gleam
 
 ```gleam
-let my_function = fn(x, y) { x + y }
+let anon_function = fn(x, y) { x + y }
 anon_function(1, 2)
 mod_function(3, 4)
 ```
