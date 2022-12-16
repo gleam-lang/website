@@ -755,6 +755,22 @@ td {
   text-decoration: underline;
 }
 
+.bar-chart {
+  padding: 0;
+}
+
+.bar-chart li {
+  list-style: none;
+  margin-bottom: var(--gap-1);
+}
+
+.bar-chart .bar {
+  background-color: var(--color-faff-pink);
+  text-align: right;
+  padding: 0 4px;
+  color: var(--color-charcoal);
+}
+
 /* Same as --width-content */
 @media (max-width: 960px) {
   .wide-only {
