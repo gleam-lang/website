@@ -19,6 +19,48 @@ The results are in! Thank you to everyone who took part! 💖
   {% include chartbar.html amount=4 max=92 label="55 to 64 years old" %}
 </ol>
 
+### What operating systems do you use in production?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=193 max=193 label="Linux" %}
+  {% include chartbar.html amount=10 max=193 label="Windows" %}
+  {% include chartbar.html amount=7 max=193 label="macOS" %}
+  {% include chartbar.html amount=4 max=193 label="OpenBSD" %}
+  {% include chartbar.html amount=2 max=193 label="FreeBSD" %}
+  {% include chartbar.html amount=2 max=193 label="Embedded RTOS" %}
+  {% include chartbar.html amount=1 max=193 label="iOS" %}
+  {% include chartbar.html amount=1 max=193 label="Illumos" %}
+  {% include chartbar.html amount=1 max=193 label="Android" %}
+</ol>
+
+### What operating systems do you use for development?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=149 max=149 label="Linux" %}
+  {% include chartbar.html amount=118 max=149 label="macOS" %}
+  {% include chartbar.html amount=45 max=149 label="Windows" %}
+  {% include chartbar.html amount=3 max=149 label="OpenBSD" %}
+  {% include chartbar.html amount=1 max=149 label="Illumos" %}
+  {% include chartbar.html amount=1 max=149 label="FreeBSD" %}
+  {% include chartbar.html amount=1 max=149 label="Embedded RTOS" %}
+</ol>
+
+### How large is your company?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=39 max=82 label="1 to 10 employees" %}
+  {% include chartbar.html amount=47 max=82 label="11 to 50 employees" %}
+  {% include chartbar.html amount=21 max=82 label="50 to 100 employees" %}
+  {% include chartbar.html amount=82 max=82 label="More than 100 employees" %}
+</ol>
+
+### What Gleam compiler targets do you use?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=84 max=84 label="Erlang" %}
+  {% include chartbar.html amount=21 max=84 label="JavaScript" %}
+</ol>
+
 ### Why do you like Gleam?
 
 <ol class="bar-chart">
@@ -117,6 +159,116 @@ The results are in! Thank you to everyone who took part! 💖
 </ol>
 
 F# got 8 responses, Julia got 7 responses, Clojure got 4 responses, and Nix got
-3 responses.  Crystal, Prolog, Zig, Ada, Dart, GDScript, and PureScript got 2
-responses, and each of BQN, CSS, HTML, Jakt, Lean, Mercury, Nushell, Perl,
+3 responses. Crystal, Prolog, Zig, Ada, Dart, GDScript, and PureScript got 2
+responses, and BQN, CSS, HTML, Jakt, Lean, Mercury, Nushell, Perl,
 Racket, Ren, SML, and SQL got 1 response.
+
+### What Gleam merchandise would you be interested in?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=78 max=78 label="T-shirts" %}
+  {% include chartbar.html amount=65 max=78 label="Stickers" %}
+  {% include chartbar.html amount=52 max=78 label="Hoodies" %}
+  {% include chartbar.html amount=38 max=78 label="Mugs" %}
+  {% include chartbar.html amount=19 max=78 label="Enamel pins" %}
+  {% include chartbar.html amount=16 max=78 label="Earings" %}
+  {% include chartbar.html amount=14 max=78 label="Notepads" %}
+  {% include chartbar.html amount=7 max=78 label="Leggings" %}
+  {% include chartbar.html amount=3 max=78 label="Socks" %}
+  {% include chartbar.html amount=1 max=78 label="Butt plugs" %}
+  {% include chartbar.html amount=1 max=78 label="Hats" %}
+  {% include chartbar.html amount=1 max=78 label="Plushies" %}
+  {% include chartbar.html amount=1 max=78 label="Sweat pants" %}
+  {% include chartbar.html amount=1 max=78 label="Temporary tattoos" %}
+</ol>
+
+### What is your job role?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=77 max=77 label="Software Engineer" %}
+  {% include chartbar.html amount=29 max=77 label="Senior Software Engineer" %}
+  {% include chartbar.html amount=18 max=77 label="Tech Lead" %}
+  {% include chartbar.html amount=10 max=77 label="Principal Engineer" %}
+  {% include chartbar.html amount=9 max=77 label="CEO" %}
+  {% include chartbar.html amount=9 max=77 label="CTO" %}
+  {% include chartbar.html amount=6 max=77 label="Software Architect" %}
+  {% include chartbar.html amount=5 max=77 label="Consultant" %}
+  {% include chartbar.html amount=5 max=77 label="Start-up founder" %}
+  {% include chartbar.html amount=4 max=77 label="Engineering Manager" %}
+  {% include chartbar.html amount=4 max=77 label="Staff Engineer" %}
+  {% include chartbar.html amount=17 max=77 label="Other" %}
+</ol>
+
+Director of Engineering, Head of Engineering, Maker, Infrastructure engineer,
+Student each got 2 responses.  Security engineer, Intern, Data engineer,
+Lecturer, Teaching Assistant, Security Manager, and Agile Coach each got 1
+response.
+
+
+### Where do you get your Gleam news?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=87 max=87 label="The Gleam Discord Server" %}
+  {% include chartbar.html amount=80 max=87 label="@gleamlang on Twitter" %}
+  {% include chartbar.html amount=69 max=87 label="@louispilfold on Twitter" %}
+  {% include chartbar.html amount=51 max=87 label="reddit.com/r/gleamlang" %}
+  {% include chartbar.html amount=41 max=87 label="GitHub" %}
+  {% include chartbar.html amount=19 max=87 label="Erlang Forums" %}
+  {% include chartbar.html amount=11 max=87 label="lobste.rs" %}
+  {% include chartbar.html amount=6 max=87 label="gleam.run" %}
+  {% include chartbar.html amount=4 max=87 label="Hacker News" %}
+  {% include chartbar.html amount=3 max=87 label="Elixir Forum" %}
+  {% include chartbar.html amount=2 max=87 label="reddit.com/r/programming" %}
+  {% include chartbar.html amount=2 max=87 label="reddit.com/r/elixir" %}
+  {% include chartbar.html amount=1 max=87 label="Fediverse" %}
+  {% include chartbar.html amount=1 max=87 label="Elm Slack" %}
+</ol>
+
+### Where do you live?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=50 max=50 label="United States of America" %}
+  {% include chartbar.html amount=16 max=50 label="Germany" %}
+  {% include chartbar.html amount=14 max=50 label="United Kingdom" %}
+  {% include chartbar.html amount=11 max=50 label="Australia" %}
+  {% include chartbar.html amount=11 max=50 label="Canada" %}
+  {% include chartbar.html amount=10 max=50 label="Brazil" %}
+  {% include chartbar.html amount=8 max=50 label="Netherlands" %}
+  {% include chartbar.html amount=7 max=50 label="Sweden" %}
+  {% include chartbar.html amount=7 max=50 label="Poland" %}
+  {% include chartbar.html amount=5 max=50 label="Spain" %}
+  {% include chartbar.html amount=5 max=50 label="Denmark" %}
+  {% include chartbar.html amount=3 max=50 label="China" %}
+  {% include chartbar.html amount=3 max=50 label="Italy" %}
+  {% include chartbar.html amount=3 max=50 label="Switzerland" %}
+  {% include chartbar.html amount=3 max=50 label="Portugal" %}
+  {% include chartbar.html amount=3 max=50 label="India" %}
+  {% include chartbar.html amount=3 max=50 label="France" %}
+  {% include chartbar.html amount=3 max=50 label="New Zealand" %}
+  {% include chartbar.html amount=3 max=50 label="Mexico" %}
+  {% include chartbar.html amount=29 max=50 label="Other" %}
+</ol>
+
+Austria, Nepal, Nepal, Argentina, Argentina, and Czechia each got 2 responses.
+Czechia, Romania, Kenya, Republic of North Macedonia, Japan, Russian Federation,
+Taiwan, Romania, Norway, Finland, Croatia, and Serbia each got 1 response.
+
+### When did you start using Gleam?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=114 max=114 label="Haven't started yet" %}
+  {% include chartbar.html amount=22 max=114 label="Less than 1 month" %}
+  {% include chartbar.html amount=30 max=114 label="1 to 6 months" %}
+  {% include chartbar.html amount=18 max=114 label="6 months to 1 year" %}
+  {% include chartbar.html amount=9 max=114 label="1 year to 2 years" %}
+  {% include chartbar.html amount=12 max=114 label="More than 2 years" %}
+</ol>
+
+### When did you first hear about Gleam?
+
+<ol class="bar-chart">
+  {% include chartbar.html amount=6 max=128 label="Less than 1 month ago" %}
+  {% include chartbar.html amount=27 max=128 label="1 to 6 months ago" %}
+  {% include chartbar.html amount=45 max=128 label="6 months to 1 year ago" %}
+  {% include chartbar.html amount=128 max=128 label="More than 1 year ago" %}
+</ol>
