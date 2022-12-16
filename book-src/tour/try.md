@@ -1,4 +1,4 @@
-# Try
+# Try expressions
 
 In Gleam if a function can either succeed or fail then it normally will
 return the `Result` type. With `Result`, a successful return value is wrapped

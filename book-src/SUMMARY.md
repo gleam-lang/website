@@ -20,5 +20,6 @@
 - [Constants](./tour/constants.md)
 - [Type aliases](./tour/type-aliases.md)
 - [Bit strings](./tour/bit-strings.md)
+- [Use](./tour/use.md)
 - [External functions](./tour/external-functions.md)
 - [External types](./tour/external-types.md)

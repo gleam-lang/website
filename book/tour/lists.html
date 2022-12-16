@@ -8,7 +8,6 @@
 
         <!-- Custom HTML head -->
         
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -34,13 +33,13 @@
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -56,7 +55,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -68,7 +67,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -81,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="../tour/lists.html" class="active"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="../tour/try.html"><strong aria-hidden="true">15.</strong> Try</a></li><li class="chapter-item expanded "><a href="../tour/assert.html"><strong aria-hidden="true">16.</strong> Assert</a></li><li class="chapter-item expanded "><a href="../tour/todo.html"><strong aria-hidden="true">17.</strong> Todo</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">18.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">19.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">20.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">21.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">22.</strong> External types</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="../tour/lists.html" class="active"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="../tour/try.html"><strong aria-hidden="true">15.</strong> Try</a></li><li class="chapter-item expanded "><a href="../tour/assert.html"><strong aria-hidden="true">16.</strong> Assert</a></li><li class="chapter-item expanded "><a href="../tour/todo.html"><strong aria-hidden="true">17.</strong> Todo</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">18.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">19.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">20.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/use.html"><strong aria-hidden="true">21.</strong> Use</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">22.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">23.</strong> External types</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -99,7 +98,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -135,7 +134,7 @@
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -201,22 +200,22 @@ y  // =&gt; [1, 2, 3]
 
 
 
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
 
 
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript" src="../javascript/highlightjs-gleam.js"></script>
-        <script type="text/javascript" src="../javascript/plausible.js"></script>
+        <script src="../javascript/highlightjs-gleam.js"></script>
+        <script src="../javascript/plausible.js"></script>
 
 
     </body>

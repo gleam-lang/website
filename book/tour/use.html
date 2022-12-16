@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Result - The Gleam Book</title>
+        <title>Use - The Gleam Book</title>
 
 
         <!-- Custom HTML head -->
@@ -80,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/result.html" class="active"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="../tour/try.html"><strong aria-hidden="true">15.</strong> Try</a></li><li class="chapter-item expanded "><a href="../tour/assert.html"><strong aria-hidden="true">16.</strong> Assert</a></li><li class="chapter-item expanded "><a href="../tour/todo.html"><strong aria-hidden="true">17.</strong> Todo</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">18.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">19.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">20.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/use.html"><strong aria-hidden="true">21.</strong> Use</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">22.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">23.</strong> External types</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="../tour/try.html"><strong aria-hidden="true">15.</strong> Try</a></li><li class="chapter-item expanded "><a href="../tour/assert.html"><strong aria-hidden="true">16.</strong> Assert</a></li><li class="chapter-item expanded "><a href="../tour/todo.html"><strong aria-hidden="true">17.</strong> Todo</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">18.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">19.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">20.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/use.html" class="active"><strong aria-hidden="true">21.</strong> Use</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">22.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">23.</strong> External types</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,56 +144,51 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="resultvalue-error"><a class="header" href="#resultvalue-error"><code>Result(value, error)</code></a></h1>
-<pre><code class="language-gleam">pub type Result(value, reason) {
-  Ok(value)
-  Error(reason)
+                        <h1 id="use-expressions"><a class="header" href="#use-expressions">Use expressions</a></h1>
+<p>Gleam lacks exceptions, macros, type classes, early returns, and a variety of
+other features, instead going all-in with just first-class-functions and pattern
+matching.</p>
+<p>This makes Gleam code easier to understand, but it can sometimes result in
+excessive indentation.</p>
+<pre><code class="language-gleam">pub fn main() {
+  logger.record_timing(fn() {
+    database.connect(fn(db) {
+      file.open(&quot;file.txt&quot;, fn(f) {
+        // Do with something here...
+      })
+    })
+  })
 }
 </code></pre>
-<p>Gleam doesn't have exceptions or <code>null</code> to represent errors in our programs,
-instead we have the <code>Result</code> type. If a function call fails, wrap the returned
-value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
-if it failed.</p>
-<pre><code class="language-gleam">pub fn lookup(name, phone_book) {
-  // ... we found a phone number in the phone book for the given name here
-  Ok(phone_number)
+<p>This code doesn't look super pretty. Some folks might call this &quot;callback hell&quot;.</p>
+<p>Gleam's <code>use</code> expression helps out here by enabling us to write code like this
+in an unindented style. The above code could be re-written using it like so:</p>
+<pre><code class="language-gleam">pub fn main() {
+  use &lt;- logger.record_timing
+  use db &lt;- database.connect
+  use f &lt;- file.open(&quot;file.txt&quot;)
+  // Do with something here...
 }
 </code></pre>
-<p>The <code>Error</code> type needs to be given a reason for the failure in order to
-return, like so:</p>
-<pre><code class="language-gleam">pub type MyDatabaseError {
-  InvalidQuery
-  NetworkTimeout
-}
-
-pub fn insert(db_row) {
-  // ... something went wrong connecting to a database here
-  Error(NetworkTimeout)
-}
-</code></pre>
-<p>In cases where we don't care about the specific error enough to want to create
-a custom error type, or when the cause of the error is obvious without further
-detail, the <code>Nil</code> type can be used as the <code>Error</code> reason.</p>
-<pre><code class="language-gleam">pub fn lookup(name, phone_book) {
-  // ... That name wasn't found in the phone book
-  Error(Nil)
-}
-</code></pre>
-<p>When we have a <code>Result</code> type returned to us from a function we can pattern
-match on it using <code>case</code> to determine whether we have an <code>Ok</code> result or
-an <code>Error</code> result.</p>
-<p>The standard library <code>gleam/result</code> module contains helpful functions for
-working with the <code>Result</code> type, make good use of them!</p>
+<p>The higher order function being called goes on the right hand side of the <code>&lt;-</code>
+operator. It must take a callback function as its final argument.</p>
+<p>The argument names for the callback function go on the left hand side of the
+<code>&lt;-</code> operator. The function can take any number of arguments, including zero.</p>
+<p>All the following code in the <code>{}</code> block becomes the body of the callback
+function.</p>
+<p>This is a very capable and useful feature, but excessive application of <code>use</code>
+may result in code that is unclear otherwise, especially to beginners. Often
+using the regular function call syntax will result in more approachable code!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../tour/custom-types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tour/bit-strings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../tour/try.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tour/external-functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -203,11 +198,11 @@ working with the <code>Result</code> type, make good use of them!</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../tour/custom-types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../tour/bit-strings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../tour/try.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../tour/external-functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
