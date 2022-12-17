@@ -87,6 +87,8 @@ This command uses this environment variables:
 - `HEXPM_USER`: (optional) The Hex username to authenticate with.
 - `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
+## `deps`
+
 ### `deps list`
 
 `gleam deps list`
@@ -100,6 +102,7 @@ List all the dependencies for the project.
 
 Download all the project dependency packages.
 
+## `hex`
 
 ### `hex retire`
 
@@ -132,6 +135,7 @@ This command uses this environment variables:
 - `HEXPM_USER`: (optional) The Hex username to authenticate with.
 - `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
+## `docs`
 
 ### `docs build`
 
@@ -167,7 +171,7 @@ This command uses this environment variables:
 - `HEXPM_PASS`: (optional) The Hex password to authenticate with.
 
 
-### `export erlang-shipment`
+## `export erlang-shipment`
 
 `gleam export erlang-shipment`
 
