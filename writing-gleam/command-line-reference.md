@@ -53,6 +53,30 @@ Add a new dependency package to the project.
 
 Run an Erlang shell with the project loaded.
 
+## `check`
+
+`gleam check`
+
+Verify the types of Gleam code without performing codegen.
+
+## `clean`
+
+`gleam clean`
+
+Remove build artifacts.
+
+## `update`
+
+`gleam update`
+
+Update dependency packages to their latest versions.
+
+## `help`
+
+`gleam help [subcommand]`
+
+Print help message or the help of the given subcommand(s).
+
 
 ## `format`
 
