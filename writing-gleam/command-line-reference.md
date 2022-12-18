@@ -64,6 +64,11 @@ the current directory.
 - `--check`: Check if the inputs are formatted without changing them.
 - `--stdin`: Read source from standard in.
 
+## `lsp`
+
+`gleam lsp`
+
+Run the language server, to be used by editors.
 
 ## `publish`
 
