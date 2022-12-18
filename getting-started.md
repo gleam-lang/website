@@ -21,3 +21,20 @@ for your text editor to start writing Gleam programs.
 
 Try Gleam without installing it using the community maintained
 [Gleam Playground](https://johndoneth.github.io/gleam-playground/).
+
+
+## Creating a project
+
+The `gleam new [name]` command can be used to [generate a new Gleam project](https://gleam.run/writing-gleam/creating-a-project/).
+
+
+## Running a project
+
+The `gleam run` command can be used to [run the Gleam project](https://gleam.run/writing-gleam/using-the-project).
+
+
+## Documentation
+
+Further cheatsheets, awesome-gleam, FAQ, example projects and more in [the documentation](https://gleam.run/documentation/). 
+
+
