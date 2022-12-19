@@ -757,6 +757,7 @@ td {
 
 .bar-chart {
   padding: 0;
+  margin-bottom: var(--gap-2);
 }
 
 .bar-chart li {
