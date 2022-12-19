@@ -235,7 +235,8 @@ GitHub Actions doesn't support these platforms.
 
 ## Using Gleam
 
-This set of questions is about the participants' experience using Gleam.
+This set of questions is about the participants' experience using Gleam and
+participating in the community.
 
 ### When did you first hear about Gleam?
 
