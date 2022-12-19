@@ -1,7 +1,9 @@
 <li>
   <label>
     {{ include.label }}
-    <div class="bar" style="width: max(1em, calc(({{ include.amount }} / {{ include.max }}) * 100%))">
+    <div class="bar" style="
+width: max(1em, calc(({{ include.amount }} / {{ include.max }}) * 100%));
+">
       {{ include.amount }}
     </div>
   </label>

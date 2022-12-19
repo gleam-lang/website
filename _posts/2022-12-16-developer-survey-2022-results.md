@@ -7,8 +7,11 @@ tags:
 ---
 
 <style>
+  hr {
+    margin: var(--gap-6) 0;
+  }
+
   h3 {
-    margin-top: var(--gap-4);
     margin-bottom: 0;
   }
 </style>
@@ -35,6 +38,8 @@ the most important aspects of Gleam and it is vital that everyone feels welcome
 regardless of who they are, so these questions are intended to give a feel for
 the makeup of the community, and if there is anything we can do to improve.
 
+---
+
 ### Where do you live?
 
 <ol class="bar-chart">
@@ -58,6 +63,8 @@ got 2 responses. Colombia, Croatia, Finland, Greece, Iceland, Iran, Ireland,
 Japan, Kenya, Nicaragua, North Macedonia, Russia, Saudi Arabia, Serbia Taiwan,
 Turkey, and the United Arab Emirates each got 1 response.
 
+---
+
 ### What's your age?
 
 <ol class="bar-chart">
@@ -69,6 +76,8 @@ Turkey, and the United Arab Emirates each got 1 response.
   {% include chartbar.html amount=4 max=92 label="55 to 64 years old" %}
 </ol>
 
+---
+
 ### What's your gender?
 
 <ol class="bar-chart">
@@ -77,12 +86,16 @@ Turkey, and the United Arab Emirates each got 1 response.
   {% include chartbar.html amount=6 max=170 label="Female" %}
 </ol>
 
+---
+
 ### Are you transgender or cisgender?
 
 <ol class="bar-chart">
   {% include chartbar.html amount=166 max=166 label="Cisgender" %}
   {% include chartbar.html amount=12 max=166 label="Transgender" %}
 </ol>
+
+---
 
 ### What's your sexual orientation?
 
@@ -96,6 +109,8 @@ array of different people from different places participating. It is
 disappointing that there are so few responses from women. This certainly is an
 area to improve on in future.
 
+---
+
 
 ## Gleamers as programmers
 
@@ -103,6 +118,8 @@ These questions are about programming without being specific to Gleam, so we can
 get an understanding of where Gleamers are coming from. If we know what
 ecosystems people are familiar with, we can better understand how to help them
 get started with Gleam and if there are any integrations we ought to build.
+
+---
 
 ### How much programming experience do you have?
 
@@ -112,6 +129,8 @@ get started with Gleam and if there are any integrations we ought to build.
   {% include chartbar.html amount=63 max=130 label="5 to 10 years" %}
   {% include chartbar.html amount=130 max=130 label="More than 10 years" %}
 </ol>
+
+---
 
 ### How much professional programming experience do you have?
 
@@ -133,6 +152,8 @@ communicate value to people who are new to programming.
 We should probably also not lump everyone with more than 10 years of experience
 into one group!
 
+---
+
 ### How large is your company?
 
 <ol class="bar-chart">
@@ -141,6 +162,8 @@ into one group!
   {% include chartbar.html amount=21 max=82 label="50 to 100 employees" %}
   {% include chartbar.html amount=82 max=82 label="More than 100 employees" %}
 </ol>
+
+---
 
 ### What is your job role?
 
@@ -165,6 +188,8 @@ Lecturer, Teaching Assistant, Security Manager, and Agile Coach each got 1
 response.
 
 Lots of experience and seniority on show here again!
+
+---
 
 ### Which programming languages do you use?
 
@@ -199,6 +224,8 @@ Racket, Ren, SML, and SQL got 1 response.
 No surprise with Elixir making a very strong showing here! Though I was
 not expecting to see more Rustaceans and Gophers than Erlangers.
 
+---
+
 ### What operating systems do you use for development?
 
 <ol class="bar-chart">
@@ -214,6 +241,8 @@ not expecting to see more Rustaceans and Gophers than Erlangers.
 I think sometimes it can be easy for projects to assume that developers will be
 on macOS, so this is a good reminder that all platforms must have an excellent
 development experience.
+
+---
 
 ### What operating systems do you use in production?
 
@@ -233,10 +262,14 @@ Good to see a range of operating systems in production too. I'd love to have
 have the Gleam test suite also run on OpenBSD and FreeBSD, but unfortunately
 GitHub Actions doesn't support these platforms.
 
+---
+
 ## Using Gleam
 
 This set of questions is about the participants' experience using Gleam and
 participating in the community.
+
+---
 
 ### When did you first hear about Gleam?
 
@@ -249,6 +282,8 @@ participating in the community.
 
 Another question where we probably should have given more options! We
 underestimated how long people have been following the project.
+
+---
 
 ### When did you start using Gleam?
 
@@ -264,6 +299,8 @@ underestimated how long people have been following the project.
 56% of respondents haven't started using Gleam yet. Gleam is a young language so
 this is to be expected, hopefully we'll have much more users next year.
 
+---
+
 ### What Gleam compiler targets do you use?
 
 <ol class="bar-chart">
@@ -274,6 +311,8 @@ this is to be expected, hopefully we'll have much more users next year.
 
 When the JavaScript target was first created it was seen as a value-add to the
 "default" Erlang target, so it is cool to see people using it by itself.
+
+---
 
 ### Why do you like Gleam?
 
@@ -321,6 +360,8 @@ characteristics of Gleam.
 Also, thank you to the peeps who said I'm one of the things they like about Gleam :)
 </sup>
 
+---
+
 ### What Gleam merchandise would you be interested in?
 
 <ol class="bar-chart">
@@ -345,6 +386,8 @@ understand what sort of things people would be interested in.
 
 I don't know if I can make butt plugs, but I'll try my best.
 
+---
+
 
 ### Where do you get your Gleam news?
 
@@ -367,6 +410,9 @@ I don't know if I can make butt plugs, but I'll try my best.
 
 The [Gleam Discord Server](https://discord.gg/Fm8Pwmy) continues to be an
 excellent place for Gleamers to hang out ✨
+
+---
+
 
 And that's all! Once again thank you to everyone who took the time to fill out
 the survey, it has been a great help. See you next year!
