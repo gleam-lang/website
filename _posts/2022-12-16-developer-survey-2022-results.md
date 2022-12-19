@@ -104,6 +104,8 @@ Turkey, and the United Arab Emirates each got 1 response.
   {% include chartbar.html amount=29 max=137 label="Not straight" %}
 </ol>
 
+---
+
 Overall the Gleam community are a wonderful bunch, and I'm glad we've got an
 array of different people from different places participating. It is
 disappointing that there are so few responses from women. This certainly is an
