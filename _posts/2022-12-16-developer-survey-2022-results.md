@@ -17,8 +17,8 @@ tags:
 </style>
 
 The results are in for the first ever Gleam Developer Survey! Over the
-month-and-a-bit the survey was open we had 211 entries! Thank you to everyone
-who took part! 💖
+month-and-a-bit the survey was open we had a total of 211 entries! Thank you to
+everyone who took part! 💖
 
 The survey was a [Gleam web application][src] with both the frontend and the
 backend written in Gleam. It was deployed to [Fly.io](https://fly.io) and wrote
