@@ -68,7 +68,9 @@ the current directory.
 
 `gleam lsp`
 
-Run the language server, to be used by editors.
+Run the language server. Typically you would not run this command yourself,
+instead your text editor would call it for you as it can speak the language
+server protocol.
 
 ## `publish`
 
