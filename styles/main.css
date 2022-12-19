@@ -52,6 +52,7 @@
 
   --width-content: 960px;
 
+  /* TODO: condense these into a few appopriatedly named variables */
   --font-size-small: 12px;
   --font-size-code: 16px;
   --font-size-normal: 18px;
