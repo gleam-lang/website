@@ -213,7 +213,7 @@ the rebar3 Erlang build tool may need to be installed.
 Install rebar3 by following the [official rebar3 installation
 instructions][rebar3-install].
 
-[rebar3-install]: https://rebar3.readme.io/docs/getting-started
+[rebar3-install]: https://rebar3.org/docs/getting-started/
 
 ## Editor Plugins
 
