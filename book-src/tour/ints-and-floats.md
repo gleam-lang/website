@@ -69,3 +69,10 @@ Underscores can also be added to Floats for clarity.
 ```gleam
 1_000_000.0 // One million
 ```
+
+Scientific notation can also be used with Floats:
+
+```gleam
+1.01e3 // 1010
+15.1e-3 // 0.0151
+```
