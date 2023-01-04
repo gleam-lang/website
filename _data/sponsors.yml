@@ -83,6 +83,11 @@
   avatar: "https://avatars.githubusercontent.com/u/9582?u=c00cf4c84840538f31a3a8a46fec9dcc7b0ff132&v=4"
   tier: 2
   square_avatar: false
+- name: "Paul Gideon Dann"
+  url: "https://github.com/giddie"
+  avatar: "https://avatars.githubusercontent.com/u/10906?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Matt Van Horn"
   url: "https://github.com/mattvanhorn"
   avatar: "https://avatars.githubusercontent.com/u/20461?v=4"
@@ -126,6 +131,11 @@
 - name: "Oliver Searle-Barnes"
   url: "https://github.com/opsb"
   avatar: "https://avatars.githubusercontent.com/u/46232?u=3d43139f0c09689eb733d41eb9ae405aef115201&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Steven Joseph"
+  url: "https://github.com/jagguli"
+  avatar: "https://avatars.githubusercontent.com/u/74574?u=ed409e07fdcd87d7e6b2287e798a76a97caa97fd&v=4"
   tier: 1
   square_avatar: false
 - name: "Wojtek Mach"
@@ -428,6 +438,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2126073?v=4"
   tier: 1
   square_avatar: false
+- name: "Manuel Rubio"
+  url: "https://github.com/manuel-rubio"
+  avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Aaron Gunderson"
   url: "https://github.com/agundy"
   avatar: "https://avatars.githubusercontent.com/u/2281120?u=9566abaddb75aa4874a0ae6826b6c304f036b9a9&v=4"
@@ -451,6 +466,11 @@
 - name: "Cole Lawrence"
   url: "https://github.com/colelawrence"
   avatar: "https://avatars.githubusercontent.com/u/2925395?u=d29af274d3aaa7e927666e54c8e4311a15eb1ae7&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Noah Betzen"
+  url: "https://github.com/Nezteb"
+  avatar: "https://avatars.githubusercontent.com/u/3588798?v=4"
   tier: 1
   square_avatar: false
 - name: "Uku Taht"
@@ -600,7 +620,7 @@
   square_avatar: false
 - name: "Michele Riva"
   url: "https://github.com/micheleriva"
-  avatar: "https://avatars.githubusercontent.com/u/14977595?u=24f5274db7316adcf20faaf88fe99000f0878143&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/14977595?u=6c1796da51ce747f3b66e22c3a73e1ec707ab17d&v=4"
   tier: 1
   square_avatar: false
 - name: "Scott Wey"
@@ -656,7 +676,7 @@
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
-  tier: 1
+  tier: 2
   square_avatar: false
 - name: "Zsombor Gasparin"
   url: "https://github.com/gasparinzsombor"
