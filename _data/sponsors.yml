@@ -78,11 +78,6 @@
   avatar: "https://avatars.githubusercontent.com/u/9436?u=d8b13e4655074296d532fbfefa68bc878897be88&v=4"
   tier: 1
   square_avatar: false
-- name: "José Valim"
-  url: "https://github.com/josevalim"
-  avatar: "https://avatars.githubusercontent.com/u/9582?u=c00cf4c84840538f31a3a8a46fec9dcc7b0ff132&v=4"
-  tier: 2
-  square_avatar: false
 - name: "Paul Gideon Dann"
   url: "https://github.com/giddie"
   avatar: "https://avatars.githubusercontent.com/u/10906?v=4"
@@ -538,6 +533,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5671049?u=0dcaa0cec9b087049268f34f6f9026abb8006e54&v=4"
   tier: 1
   square_avatar: false
+- name: "Matthias Benkort"
+  url: "https://github.com/KtorZ"
+  avatar: "https://avatars.githubusercontent.com/u/5680256?u=020eb2bc68211d32c1691695b6ab22ad55478501&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Marius Kalvø"
   url: "https://github.com/mariuskalvo"
   avatar: "https://avatars.githubusercontent.com/u/5960745?u=cb2b3f45ee9742f485afba23af0ea80d8b8d956a&v=4"
@@ -731,6 +731,11 @@
 - name: "Weizheng Liu"
   url: "https://github.com/weizhliu"
   avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Theo Harris"
+  url: "https://github.com/Theosaurus-Rex"
+  avatar: "https://avatars.githubusercontent.com/u/71990001?u=f71c0ff3374641ed747d8011b96d938452b79377&v=4"
   tier: 1
   square_avatar: false
 - name: "Strand Communications"
