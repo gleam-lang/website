@@ -708,6 +708,7 @@ td {
 }
 
 .post .top-sponsors {
+  margin-top: var(--gap-4);
   padding: 0;
   margin-bottom: 0;
   text-align: center;
