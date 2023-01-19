@@ -686,6 +686,11 @@ td {
   position: relative;
 }
 
+.post-published {
+  text-align: right;
+  margin-top: 0;
+}
+
 .post iframe,
 .post video,
 .post img {
