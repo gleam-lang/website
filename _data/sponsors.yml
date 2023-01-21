@@ -548,6 +548,11 @@
   avatar: "https://avatars.githubusercontent.com/u/6548350?u=c5a62ea3102c0ce1559cfd33d6f6b4a95611b0ac&v=4"
   tier: 3
   square_avatar: false
+- name: "Hex"
+  url: "https://github.com/hexpm"
+  avatar: "https://avatars.githubusercontent.com/u/6621265?v=4"
+  tier: 2
+  square_avatar: false
 - name: "David Armstrong Lewis"
   url: "https://github.com/davidarmstronglewis"
   avatar: "https://avatars.githubusercontent.com/u/6754950?u=47c92541c08d1cec690962f80557c91d40ae0bf2&v=4"
