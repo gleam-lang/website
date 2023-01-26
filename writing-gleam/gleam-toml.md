@@ -81,4 +81,26 @@ extra_applications = ["inets", "ssl"]
 [javascript]
 # Generate TypeScript .d.ts files
 typescript_declarations = true
+
+# Which JavaScript runtime to use with `gleam run`, `gleam test` etc.
+runtime = "node" # or "deno"
+
+# Configuration specific to the Deno runtime
+# https://deno.land/manual@v1.30.0/basics/permissions#permissions
+[javascript.deno]
+allow_all = false
+allow_sys = false
+allow_ffi = false
+allow_hrtime = false
+
+# A bool or list of environment variables
+allow_env = ["DATABASE_URL"]
+
+# A bool or a list of IP addresses or hostnames (optionally with ports) 
+allow_net = ["example.com:443"],
+
+# A bool or a list of paths
+allow_run = ["./bin/migrate.sh"],
+allow_read = ["./database.sqlite"],
+allow_write = ["./database.sqlite"],
 ```
