@@ -64,7 +64,7 @@ pages = [
   { title = "My Page", path = "my-page.html", source = "./path/to/my-page.md" },
 ]
 
-# Generated Erlang specific configuration (optional)
+# Erlang specific configuration (optional)
 [erlang]
 # The name of the OTP application module, if the project has one (optional)
 # Typically Gleam projects do not use the Erlang/OTP implicit application boot
@@ -77,7 +77,7 @@ application_start_module = "my_app/application"
 # ones from the project dependencies (optional)
 extra_applications = ["inets", "ssl"]
 
-# Generated JavaScript specific configuration (optional)
+# JavaScript specific configuration (optional)
 [javascript]
 # Generate TypeScript .d.ts files
 typescript_declarations = true
@@ -85,7 +85,7 @@ typescript_declarations = true
 # Which JavaScript runtime to use with `gleam run`, `gleam test` etc.
 runtime = "node" # or "deno"
 
-# Configuration specific to the Deno runtime
+# Configuration specific to the Deno runtime (optional)
 # https://deno.land/manual@v1.30.0/basics/permissions#permissions
 [javascript.deno]
 allow_all = false
