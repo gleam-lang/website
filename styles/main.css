@@ -637,7 +637,11 @@ td {
   color: var(--color-code-blue);
 }
 
-.hljs-comment,
+.hljs-comment {
+  word-break: break-word;
+  color: var(--color-code-grey)
+}
+
 .code-comment {
   color: var(--color-code-grey);
 }
