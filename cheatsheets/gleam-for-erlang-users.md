@@ -512,7 +512,7 @@ arguments is an atom in Erlang.
 There are some exceptions to that rule for atoms that are commonly used and have types built-in to
 Gleam that incorporate them, such as `ok`, `error` and booleans.
 
-In general, atoms are not used much in Gleam, and are mostly used for boolens, `ok` and `error`
+In general, atoms are not used much in Gleam, and are mostly used for booleans, `ok` and `error`
 result types, and defining custom types.
 
 #### Erlang
@@ -613,7 +613,7 @@ number of named fields, and the values in those fields can be of differing types
                  name :: binary()}).
 ```
 ```erlang
-Person = #person{name="name", age=35}.
+Person = #person{name = <<"name">>, age = 35}.
 Name = Person#person.name.
 ```
 
@@ -634,7 +634,7 @@ let name = person.name
 In Erlang a function can take or receive values of multiple different types.
 For example it could return an int some times, and float other times.
 
-In Gleam functions must always take an receive one type. To have a union of
+In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
 
 #### Erlang
@@ -655,8 +655,8 @@ type IntOrFloat {
   AFloat(Float)
 }
 
-fn int_or_float(X) {
-  case X {
+fn int_or_float(x) {
+  case x {
     True -> AnInt(1)
     False -> AFloat(1.0)
   }
