@@ -637,11 +637,7 @@ td {
   color: var(--color-code-blue);
 }
 
-.hljs-comment {
-  word-break: break-word;
-  color: var(--color-code-grey)
-}
-
+.hljs-comment,
 .code-comment {
   color: var(--color-code-grey);
 }
@@ -659,6 +655,7 @@ td {
 }
 
 .page pre {
+  overflow-y: auto;
   margin: var(--gap-3) 0 var(--gap-4) 0;
   padding: var(--gap-2) var(--gap-2);
   background-color: var(--color-black);
