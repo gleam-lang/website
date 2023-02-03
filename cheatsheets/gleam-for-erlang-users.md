@@ -360,7 +360,7 @@ read from top to bottom.
 #### Erlang
 ```erlang
 X1 = trim(Input),
-X2 = csv:parse(X1, <<",">>)
+X2 = csv:parse(X1, <<",">>),
 ledger:from_list(X2).
 ```
 
@@ -421,7 +421,7 @@ main() ->
     print(1),
     2
   end,
-  Y = X * (X + 10).
+  Y = X * (X + 10),
   Y.
 ```
 
