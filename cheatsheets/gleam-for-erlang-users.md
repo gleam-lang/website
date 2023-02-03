@@ -265,7 +265,7 @@ replace(#{inside => String, each => Pattern, with => Replacement}) ->
 ```
 
 ```erlang
-replace(#{each => <<",">>, with => <<" ">>, inside => <<"A,B,C">>).
+replace(#{each => <<",">>, with => <<" ">>, inside => <<"A,B,C">>}).
 ```
 
 Because the arguments are stored in a map there is a small runtime
