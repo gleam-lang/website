@@ -335,8 +335,8 @@ const answer: Int = 42
 | Greater or equal | `>=`      | `>=.` | In Gleam both values must be floats
 | Less than        | `<`       | `<`   | In Gleam both values must be ints
 | Less than        | `<`       | `<.`  | In Gleam both values must be floats
-| Less or equal    | `=<`      | `>=`  | In Gleam both values must be ints
-| Less or equal    | `=<`      | `>=.` | In Gleam both values must be floats
+| Less or equal    | `=<`      | `<=`  | In Gleam both values must be ints
+| Less or equal    | `=<`      | `<=.` | In Gleam both values must be floats
 | Boolean and      | `andalso` | `&&`  | In Gleam both values must be bools
 | Boolean and      | `and`     |       |
 | Boolean or       | `orelse`  | `⎮⎮`  | In Gleam both values must be bools
