@@ -227,3 +227,7 @@ fn returns_nil(a) -> Nil {
   Nil
 }
 ```
+
+## Stdlib references
+
+- [gleam/function](https://hexdocs.pm/gleam_stdlib/gleam/function.html)

@@ -49,5 +49,9 @@ When we have a `Result` type returned to us from a function we can pattern
 match on it using `case` to determine whether we have an `Ok` result or
 an `Error` result.
 
-The standard library `gleam/result` module contains helpful functions for
+The standard library [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result.html) module contains helpful functions for
 working with the `Result` type, make good use of them!
+
+## Stdlib references
+
+- [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result.html)

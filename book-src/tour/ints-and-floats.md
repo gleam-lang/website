@@ -2,7 +2,6 @@
 
 Gleam's main number types are Int and Float.
 
-
 ## Ints
 
 Ints are "whole" numbers.
@@ -76,3 +75,8 @@ Scientific notation can also be used with Floats:
 1.01e3 // 1010
 15.1e-3 // 0.0151
 ```
+
+## Stdlib references
+
+- [gleam/float](https://hexdocs.pm/gleam_stdlib/gleam/float.html)
+- [gleam/int](https://hexdocs.pm/gleam_stdlib/gleam/int.html)
