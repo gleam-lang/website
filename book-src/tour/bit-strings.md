@@ -138,3 +138,8 @@ bytes depending on the codepoint size and data.
 Gleam inherits its Bit String syntax and handling from Erlang. You can find the
 Erlang documentation
 [here](https://erlang.org/doc/reference_manual/expressions.html#bit_syntax).
+
+## Stdlib references
+
+- [gleam/bit_string](https://hexdocs.pm/gleam_stdlib/gleam/bit_string.html)
+- [gleam/bit_builder](https://hexdocs.pm/gleam_stdlib/gleam/bit_builder.html)

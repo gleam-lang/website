@@ -31,3 +31,8 @@ let y = [1, ..x]
 x  // => [2, 3]
 y  // => [1, 2, 3]
 ```
+
+## Stdlib references
+
+- [gleam/list](https://hexdocs.pm/gleam_stdlib/gleam/list.html)
+- [gleam/iterator](https://hexdocs.pm/gleam_stdlib/gleam/iterator.html)

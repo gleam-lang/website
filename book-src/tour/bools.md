@@ -51,3 +51,7 @@ False
 true.
 false.
 ```
+
+## Stdlib references
+
+- [gleam/bool](https://hexdocs.pm/gleam_stdlib/gleam/bool.html)

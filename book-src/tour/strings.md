@@ -58,3 +58,8 @@ Similarly all backslash characters must be escaped:
 // A Decorative border /\/\/\/\
 "/\\/\\/\\/\\"
 ```
+
+## Stdlib references
+
+- [gleam/string](https://hexdocs.pm/gleam_stdlib/gleam/string.html)
+- [gleam/string_builder](https://hexdocs.pm/gleam_stdlib/gleam/string_builder.html)
