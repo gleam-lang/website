@@ -216,6 +216,11 @@ must be escaped by placing a backslash (<code>\</code>) character before it.</p>
 // A Decorative border /\/\/\/\
 &quot;/\\/\\/\\/\\&quot;
 </code></pre>
+<h2 id="stdlib-references"><a class="header" href="#stdlib-references">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/string.html">gleam/string</a></li>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/string_builder.html">gleam/string_builder</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bool"><a class="header" href="#bool">Bool</a></h1>
 <p>A Bool can be either <code>True</code> or <code>False</code>.</p>
 <p>Gleam defines a handful of operators that work with Bools.</p>
@@ -252,6 +257,10 @@ False
 true.
 false.
 </code></pre>
+<h2 id="stdlib-references-1"><a class="header" href="#stdlib-references-1">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bool.html">gleam/bool</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="int-and-float"><a class="header" href="#int-and-float">Int and Float</a></h1>
 <p>Gleam's main number types are Int and Float.</p>
 <h2 id="ints"><a class="header" href="#ints">Ints</a></h2>
@@ -300,6 +309,15 @@ false.
 <p>Underscores can also be added to Floats for clarity.</p>
 <pre><code class="language-gleam">1_000_000.0 // One million
 </code></pre>
+<p>Scientific notation can also be used with Floats:</p>
+<pre><code class="language-gleam">1.01e3 // 1010
+15.1e-3 // 0.0151
+</code></pre>
+<h2 id="stdlib-references-2"><a class="header" href="#stdlib-references-2">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/float.html">gleam/float</a></li>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/int.html">gleam/int</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="let-bindings"><a class="header" href="#let-bindings">Let bindings</a></h1>
 <p>A value can be given a name using <code>let</code>. Names can be reused by later let
 bindings, but the values contained are <em>immutable</em>, meaning the values
@@ -347,6 +365,11 @@ let y = [1, ..x]
 x  // =&gt; [2, 3]
 y  // =&gt; [1, 2, 3]
 </code></pre>
+<h2 id="stdlib-references-3"><a class="header" href="#stdlib-references-3">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html">gleam/list</a></li>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/iterator.html">gleam/iterator</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tuples"><a class="header" href="#tuples">Tuples</a></h1>
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
@@ -647,6 +670,10 @@ fn returns_nil(a) -&gt; Nil {
   Nil
 }
 </code></pre>
+<h2 id="stdlib-references-4"><a class="header" href="#stdlib-references-4">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/function.html">gleam/function</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
 <p>Gleam programs are made up of bundles of functions and types called modules.
 Each module has its own namespace and can export types and values to be used
@@ -976,8 +1003,12 @@ detail, the <code>Nil</code> type can be used as the <code>Error</code> reason.<
 <p>When we have a <code>Result</code> type returned to us from a function we can pattern
 match on it using <code>case</code> to determine whether we have an <code>Ok</code> result or
 an <code>Error</code> result.</p>
-<p>The standard library <code>gleam/result</code> module contains helpful functions for
+<p>The standard library <a href="https://hexdocs.pm/gleam_stdlib/gleam/result.html">gleam/result</a> module contains helpful functions for
 working with the <code>Result</code> type, make good use of them!</p>
+<h2 id="stdlib-references-5"><a class="header" href="#stdlib-references-5">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/result.html">gleam/result</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="try-expressions"><a class="header" href="#try-expressions">Try expressions</a></h1>
 <p>In Gleam if a function can either succeed or fail then it normally will
 return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
@@ -1228,6 +1259,11 @@ bytes depending on the codepoint size and data.</p>
 <p>Gleam inherits its Bit String syntax and handling from Erlang. You can find the
 Erlang documentation
 <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
+<h2 id="stdlib-references-6"><a class="header" href="#stdlib-references-6">Stdlib references</a></h2>
+<ul>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bit_string.html">gleam/bit_string</a></li>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bit_builder.html">gleam/bit_builder</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="use-expressions"><a class="header" href="#use-expressions">Use expressions</a></h1>
 <p>Gleam lacks exceptions, macros, type classes, early returns, and a variety of
 other features, instead going all-in with just first-class-functions and pattern
