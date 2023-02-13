@@ -13,11 +13,6 @@
   avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
   tier: 1
   square_avatar: false
-- name: "Chris Young"
-  url: "https://github.com/worldofchris"
-  avatar: "https://avatars.githubusercontent.com/u/1434500?u=8c986c2b6e307f4b8596e6f97a5e5598dac6fe33&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Quinn Wilton"
   url: "https://github.com/QuinnWilton"
   avatar: "https://avatars.githubusercontent.com/u/285821?u=1f6e34c8799daa2e53abd451b02ac7c2d58e3e48&v=4"
@@ -328,6 +323,11 @@
   avatar: "https://avatars.githubusercontent.com/u/921826?u=315e6483dbe88494b733647492faadcbfe77b041&v=4"
   tier: 1
   square_avatar: false
+- name: "Danny Martini"
+  url: "https://github.com/despairblue"
+  avatar: "https://avatars.githubusercontent.com/u/927609?u=0c51e10f46812b11a0e911a413474df5dbd827e8&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Seve Salazar"
   url: "https://github.com/tehprofessor"
   avatar: "https://avatars.githubusercontent.com/u/995086?u=a6f421a92217f34de47433c1eb57e198b8b9bdd1&v=4"
@@ -525,7 +525,7 @@
   square_avatar: false
 - name: "Rodrigo Oler"
   url: "https://github.com/rodrigooler"
-  avatar: "https://avatars.githubusercontent.com/u/5496931?u=0498087deeb1e5ea56655869169a9aacc2062c75&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5496931?u=8f63f7d69391433f5b302c08f65312c117f21a5a&v=4"
   tier: 1
   square_avatar: false
 - name: "Marcin Puc"
@@ -555,7 +555,7 @@
   square_avatar: false
 - name: "David Armstrong Lewis"
   url: "https://github.com/davidarmstronglewis"
-  avatar: "https://avatars.githubusercontent.com/u/6754950?u=47c92541c08d1cec690962f80557c91d40ae0bf2&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/6754950?u=9ba4ee4ab42d161fdf7eff3db245b318c2b27131&v=4"
   tier: 2
   square_avatar: false
 - name: "Michael Chris Lopez"
