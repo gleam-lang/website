@@ -528,6 +528,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5496931?u=8f63f7d69391433f5b302c08f65312c117f21a5a&v=4"
   tier: 1
   square_avatar: false
+- name: "Chris Ohk"
+  url: "https://github.com/utilForever"
+  avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Marcin Puc"
   url: "https://github.com/tranzystorek-io"
   avatar: "https://avatars.githubusercontent.com/u/5671049?u=0dcaa0cec9b087049268f34f6f9026abb8006e54&v=4"
