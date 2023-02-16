@@ -36,13 +36,13 @@ pub fn add_two(x: Int) -> Int {
 
 Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (`|>`). This is similar in functionality to the same operator in Elixir or F#.
 
-The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of `string.reverse` in Gleam:
+The pipe operator allows you to chain function calls without using a plethora of parentheses. For a simple example, consider the following implementation of `string.reverse` in Gleam:
 
 ```gleam
 string_builder.to_string(string_builder.reverse(string_builder.from_string(string)))
 ```
 
-This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.
+This can be expressed more naturally using the pipe operator, eliminating the need to track parentheses closure.
 
 ```gleam
 string
