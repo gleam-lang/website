@@ -172,10 +172,10 @@ pub fn add_two(x: Int) -&gt; Int {
 </code></pre>
 <h2 id="pipe-operator"><a class="header" href="#pipe-operator">Pipe Operator</a></h2>
 <p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
-<p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
+<p>The pipe operator allows you to chain function calls without using a plethora of parentheses. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
 <pre><code class="language-gleam">string_builder.to_string(string_builder.reverse(string_builder.from_string(string)))
 </code></pre>
-<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
+<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parentheses closure.</p>
 <pre><code class="language-gleam">string
 |&gt; string_builder.from_string
 |&gt; string_builder.reverse
