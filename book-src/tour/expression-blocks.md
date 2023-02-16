@@ -11,7 +11,7 @@ let value: Bool = {
 } // => False
 ```
 
-Expression blocks can be used instead of parenthesis to change the precedence
+Expression blocks can be used instead of parentheses to change the precedence
 of operations.
 
 ```gleam
