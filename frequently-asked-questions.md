@@ -61,7 +61,7 @@ by an actor (which immutably wraps mutable state using recursion) or you can
 use ETS, the Erlang in-memory key-value database.
 
 If you are compiling Gleam to JavaScript the
-[`gleam_javascript`](https://hexdocs.pm/gleam_javascript/index.html) libraries
+[`gleam_javascript`](https://hexdocs.pm/gleam_javascript/index.html) library
 offers mutable references.
 
 
@@ -110,7 +110,7 @@ wonderful project and it was an early inspiration for Gleam!
 
 Here's a non-exhaustive list of differences:
 
-- Alpaca functions are auto-curried, Gleam's are not.
+- Alpaca's functions are auto-curried, Gleam's are not.
 - Alpaca's unions can be untagged, with Gleam all variants in a custom type
   need a name.
 - Alpaca's compiler is written in Erlang, Gleam's is written in Rust.
@@ -176,19 +176,19 @@ Here's a non-exhaustive list of differences:
   compiler.
 - PureScript has a more sophisticated type system than Gleam, featuring rows,
   HKTs, type classes, and more.
-- Purerl's is written in Haskell, Gleam's is written in Rust.
+- Purerl's compiler is written in Haskell, Gleam's is written in Rust.
 - PureScript has an ML family style syntax, Gleam has a C family style
   syntax.
 - Purerl code can be difficult to use from other BEAM languages, Gleam code is
   designed to be usable from all BEAM languages.
-- PureScript has a more mature than Gleam and has a much larger ecosystem,
+- PureScript is more mature than Gleam and has a much larger ecosystem,
   though not all of it can be used with the Purerl compiler backend.
 
 
 ## Should I put Gleam in production?
 
 Gleam is a young language that has not reached version 1.0, so while it is
-robust it is likely to undergo breaking changes in the future, and there may
+robust, it is likely to undergo breaking changes in the future, and there may
 be some annoying bugs in there somewhere. The Gleam ecosystem is also quite
 young, so many libraries that are found in other languages will need to be
 written, or Erlang/Elixir libraries will have to be used in place of pure
@@ -197,18 +197,18 @@ Gleam versions.
 The Erlang VM is extremely mature and well tested, so the runtime aspect of
 the language is ready for production.
 
-If you decide to move away from Gleam the language you can compile your code
+If you decide to move away from Gleam, you can compile your code
 to Erlang and maintain that in future.
 
 
 ## Why is the compiler written in Rust?
 
-Prototype versions of the Gleam compiler was written in Erlang, but a switch was
+Prototype versions of the Gleam compiler were written in Erlang, but a switch was
 made to Rust as the lack of static types was making refactoring a slow and
 error prone process. A full Rust rewrite of the prototype resulted in the
 removal of a lot of tech debt and bugs, and the performance boost is nice too!
 
-One day Gleam may have a compiler written in Gleam, but for now we are focused
+One day, Gleam may have a compiler written in Gleam, but for now we are focused
 on developing other areas of the language such as libraries, tooling, and
 documentation.
 
