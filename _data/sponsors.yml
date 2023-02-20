@@ -223,11 +223,6 @@
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
   tier: 1
   square_avatar: false
-- name: "Eric Meadows-Jönsson"
-  url: "https://github.com/ericmj"
-  avatar: "https://avatars.githubusercontent.com/u/316890?u=e50caf97a4a97f9ee547e58b90b4670bd5352379&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Reio Piller"
   url: "https://github.com/hypno2000"
   avatar: "https://avatars.githubusercontent.com/u/417241?u=c2794ccbe033197dbf357b20477e6c85115c9b70&v=4"
@@ -312,6 +307,11 @@
   url: "https://github.com/jechol"
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
   tier: 2
+  square_avatar: false
+- name: "François Cardinaux"
+  url: "https://github.com/fcardinaux"
+  avatar: "https://avatars.githubusercontent.com/u/877484?u=f4523fe0d150f0d434a8bc3f450488cacb5648d6&v=4"
+  tier: 1
   square_avatar: false
 - name: "Tomasz Kowal"
   url: "https://github.com/tomekowal"
@@ -398,11 +398,6 @@
   avatar: "https://avatars.githubusercontent.com/u/1938892?u=5a78046101d2b51614045e214aa1545a9dc792a2&v=4"
   tier: 1
   square_avatar: false
-- name: "Fernando Farias"
-  url: "https://github.com/nandofarias"
-  avatar: "https://avatars.githubusercontent.com/u/1944560?u=16ea7e154a7738b24c0d8c5ba013b87b7677091a&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Lars Wikman"
   url: "https://github.com/lawik"
   avatar: "https://avatars.githubusercontent.com/u/1971237?u=671495fb9f1a273698d28143739868e993be816e&v=4"
@@ -417,11 +412,6 @@
   url: "https://github.com/J3RN"
   avatar: "https://avatars.githubusercontent.com/u/2058614?u=ae470bf095b2ed27170b35832616031a895f5ed1&v=4"
   tier: 3
-  square_avatar: false
-- name: "Vincent Le Goff"
-  url: "https://github.com/vincent-lg"
-  avatar: "https://avatars.githubusercontent.com/u/2088354?v=4"
-  tier: 2
   square_avatar: false
 - name: "Alex Manning"
   url: "https://github.com/rawhat"
@@ -630,7 +620,7 @@
   square_avatar: false
 - name: "Michele Riva"
   url: "https://github.com/micheleriva"
-  avatar: "https://avatars.githubusercontent.com/u/14977595?u=6c1796da51ce747f3b66e22c3a73e1ec707ab17d&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/14977595?u=0dcb766062a0032856df6e75af16b8247b039651&v=4"
   tier: 1
   square_avatar: false
 - name: "Scott Wey"
@@ -697,11 +687,6 @@
   url: "https://alembic.com.au"
   avatar: "https://avatars.githubusercontent.com/u/25500012?v=4"
   tier: 2
-  square_avatar: false
-- name: "Josías Alvarado"
-  url: "https://github.com/pointerish"
-  avatar: "https://avatars.githubusercontent.com/u/25916517?u=4ed7e1680758f4f716ff5c2cbe68b1278eb61a11&v=4"
-  tier: 1
   square_avatar: false
 - name: "Harry Bairstow"
   url: "https://github.com/HarryET"
