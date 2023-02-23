@@ -241,8 +241,8 @@ Gleam functions can have only one function head. Use a case expression to patter
 ```gleam
 pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
   case x {
-    0 -> true
-    _ -> false
+    0 -> True
+    _ -> False
   }
 }
 ```
