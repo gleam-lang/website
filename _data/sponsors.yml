@@ -58,11 +58,6 @@
   avatar: "https://avatars.githubusercontent.com/u/2767?u=ff72b1ad63026e0729acc2dd41378e28ab704a3f&v=4"
   tier: 1
   square_avatar: false
-- name: "josh rotenberg"
-  url: "https://github.com/joshrotenberg"
-  avatar: "https://avatars.githubusercontent.com/u/3231?u=c9032811c58257dd3b990d7734297229a1bb4c30&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Michael Jones"
   url: "https://github.com/michaeljones"
   avatar: "https://avatars.githubusercontent.com/u/5390?u=7c017ec72f57d09b5b3b43fe52f243d9f2df7765&v=4"
@@ -376,6 +371,11 @@
 - name: "Tomochika Hara"
   url: "https://github.com/thara"
   avatar: "https://avatars.githubusercontent.com/u/1532891?v=4"
+  tier: 1
+  square_avatar: false
+- name: "John Björk"
+  url: "https://github.com/JohnBjrk"
+  avatar: "https://avatars.githubusercontent.com/u/1716064?u=f19404f104d8755da53b00ad665b49a8b497477f&v=4"
   tier: 1
   square_avatar: false
 - name: "clangley"
@@ -736,10 +736,5 @@
 - name: "Strand Communications"
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
-  tier: 2
-  square_avatar: false
-- name: "mklifo"
-  url: "https://github.com/mklifo"
-  avatar: "https://avatars.githubusercontent.com/u/116936778?u=7617e7ddb109617fd4e8361ca170f4e925be7a4b&v=4"
   tier: 2
   square_avatar: false
