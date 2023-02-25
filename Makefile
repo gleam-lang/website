@@ -10,3 +10,6 @@ serve: ## Run the book dev server
 .PHONY: help
 help:
 	@cat $(MAKEFILE_LIST) | grep -E '^[a-zA-Z_-]+:.*?## .*$$' | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+writing-gleam/command-line-reference.md: writing-gleam/command-line-reference.sh
+	sh writing-gleam/command-line-reference.sh > writing-gleam/command-line-reference.md
