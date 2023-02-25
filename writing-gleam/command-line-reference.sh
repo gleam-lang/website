@@ -80,10 +80,8 @@ layout: page
 The \`gleam\` command uses subcommands to access different parts of the functionality:
 EOF
 
-# WIP: this hardcoding is temporary to show a smaller diff, should be
-# subcommands=$(gleam help | find_subcommands)
 # Note: lsp is a "hidden" command so it will not be shown by `gleam help`
-subcommands="new build run test add shell check clean update help format lsp publish deps hex docs export"
+subcommands=$(gleam help | find_subcommands)
 
 for subcommand in $subcommands; do
 
