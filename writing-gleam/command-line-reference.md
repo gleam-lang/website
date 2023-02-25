@@ -8,19 +8,15 @@ layout: page
 
 The `gleam` command uses subcommands to access different parts of the functionality:
 
-## `new`
+## `add`
 
-`gleam new [OPTIONS] <PROJECT_ROOT>`
+`gleam add [OPTIONS] <PACKAGES>...`
 
-Create a new project
+Add new project dependencies
 
 | Option | Description |
 | ------ | ----------- |
-| `--description <DESCRIPTION>`| Description of the project [default: "A Gleam project"]
-| `--name <NAME>`| Name of the project
-| `--skip-git`| Skip git initialization and creation of .gitignore, .git/* and .github/* files
-| `--skip-github`| Skip creation of .github/* files
-| `--template <TEMPLATE>`| [default: lib] [possible values: lib]
+| `--dev`| Add the packages as dev-only dependencies
 
 ## `build`
 
@@ -32,45 +28,6 @@ Build the project
 | ------ | ----------- |
 | `--target <TARGET>`| The platform to target
 | `--warnings-as-errors`| Emit compile time warnings as errors
-
-## `run`
-
-`gleam run [OPTIONS] [ARGUMENTS]...`
-
-Run the project
-
-| Option | Description |
-| ------ | ----------- |
-| `--runtime <RUNTIME>`| [possible values: node, deno]
-| `--target <TARGET>`| The platform to target
-
-## `test`
-
-`gleam test [OPTIONS] [ARGUMENTS]...`
-
-Run the project tests
-
-| Option | Description |
-| ------ | ----------- |
-| `--runtime <RUNTIME>`| 
-| `--target <TARGET>`| The platform to target
-
-## `add`
-
-`gleam add [OPTIONS] <PACKAGES>...`
-
-Add new project dependencies
-
-| Option | Description |
-| ------ | ----------- |
-| `--dev`| Add the packages as dev-only dependencies
-
-## `shell`
-
-`gleam shell`
-
-Start an Erlang shell
-
 
 ## `check`
 
@@ -85,54 +42,6 @@ Type check the project
 
 Clean build artifacts
 
-
-## `update`
-
-`gleam update`
-
-Update dependency packages to their latest versions
-
-
-## `help`
-
-`gleam help [SUBCOMMAND]...`
-
-Print this message or the help of the given subcommand(s)
-
-
-## `format`
-
-`gleam format [OPTIONS] [FILES]...`
-
-Format source code
-
-| Option | Description |
-| ------ | ----------- |
-| `--check`| Check if inputs are formatted without changing them
-| `--stdin`| Read source from STDIN
-
-## `lsp`
-
-`gleam lsp`
-
-Run the language server, to be used by editors
-
-
-## `publish`
-
-`gleam publish [OPTIONS]`
-
-Publish the project to the Hex package manager
-
-This command uses this environment variables:
-
-- HEXPM_USER: (optional) The Hex username to authenticate with.
-- HEXPM_PASS: (optional) The Hex password to authenticate with.
-
-| Option | Description |
-| ------ | ----------- |
-| `--replace`| 
-| `-y, --yes`| 
 
 ## `deps`
 
@@ -160,37 +69,6 @@ List all dependency packages
 `gleam deps update`
 
 Update dependency packages to their latest versions
-
-
-## `hex`
-
-`gleam hex <SUBCOMMAND>`
-
-Work with the Hex package manager
-
-
-### `hex retire`
-
-`gleam hex retire <PACKAGE> <VERSION> <REASON> [MESSAGE]`
-
-Retire a release from Hex
-
-This command uses this environment variables:
-
-- HEXPM_USER: (optional) The Hex username to authenticate with.
-- HEXPM_PASS: (optional) The Hex password to authenticate with.
-
-
-### `hex unretire`
-
-`gleam hex unretire <PACKAGE> <VERSION>`
-
-Un-retire a release from Hex
-
-This command uses this environment variables:
-
-- HEXPM_USER: (optional) The Hex username to authenticate with.
-- HEXPM_PASS: (optional) The Hex password to authenticate with.
 
 
 ## `docs`
@@ -247,4 +125,119 @@ Export something useful from the Gleam project
 `gleam export erlang-shipment`
 
 Precompiled Erlang, suitable for deployment
+
+
+## `format`
+
+`gleam format [OPTIONS] [FILES]...`
+
+Format source code
+
+| Option | Description |
+| ------ | ----------- |
+| `--check`| Check if inputs are formatted without changing them
+| `--stdin`| Read source from STDIN
+
+## `help`
+
+`gleam help [SUBCOMMAND]...`
+
+Print this message or the help of the given subcommand(s)
+
+
+## `hex`
+
+`gleam hex <SUBCOMMAND>`
+
+Work with the Hex package manager
+
+
+### `hex retire`
+
+`gleam hex retire <PACKAGE> <VERSION> <REASON> [MESSAGE]`
+
+Retire a release from Hex
+
+This command uses this environment variables:
+
+- HEXPM_USER: (optional) The Hex username to authenticate with.
+- HEXPM_PASS: (optional) The Hex password to authenticate with.
+
+
+### `hex unretire`
+
+`gleam hex unretire <PACKAGE> <VERSION>`
+
+Un-retire a release from Hex
+
+This command uses this environment variables:
+
+- HEXPM_USER: (optional) The Hex username to authenticate with.
+- HEXPM_PASS: (optional) The Hex password to authenticate with.
+
+
+## `new`
+
+`gleam new [OPTIONS] <PROJECT_ROOT>`
+
+Create a new project
+
+| Option | Description |
+| ------ | ----------- |
+| `--description <DESCRIPTION>`| Description of the project [default: "A Gleam project"]
+| `--name <NAME>`| Name of the project
+| `--skip-git`| Skip git initialization and creation of .gitignore, .git/* and .github/* files
+| `--skip-github`| Skip creation of .github/* files
+| `--template <TEMPLATE>`| [default: lib] [possible values: lib]
+
+## `publish`
+
+`gleam publish [OPTIONS]`
+
+Publish the project to the Hex package manager
+
+This command uses this environment variables:
+
+- HEXPM_USER: (optional) The Hex username to authenticate with.
+- HEXPM_PASS: (optional) The Hex password to authenticate with.
+
+| Option | Description |
+| ------ | ----------- |
+| `--replace`| 
+| `-y, --yes`| 
+
+## `run`
+
+`gleam run [OPTIONS] [ARGUMENTS]...`
+
+Run the project
+
+| Option | Description |
+| ------ | ----------- |
+| `--runtime <RUNTIME>`| [possible values: node, deno]
+| `--target <TARGET>`| The platform to target
+
+## `shell`
+
+`gleam shell`
+
+Start an Erlang shell
+
+
+## `test`
+
+`gleam test [OPTIONS] [ARGUMENTS]...`
+
+Run the project tests
+
+| Option | Description |
+| ------ | ----------- |
+| `--runtime <RUNTIME>`| 
+| `--target <TARGET>`| The platform to target
+
+## `update`
+
+`gleam update`
+
+Update dependency packages to their latest versions
 
