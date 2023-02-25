@@ -25,7 +25,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=0e0f7d3430784e42c30ce75ad858c0a7ffc9fd7a&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=ee659934c0ff5e350ef3d72ca969635fb3d7a0ca&v=4"
   tier: 1
   square_avatar: false
 - name: "James MacAulay"
@@ -368,11 +368,6 @@
   avatar: "https://avatars.githubusercontent.com/u/1445367?u=3facd4ad78d85f857d6fc063d427d3873e0e0b68&v=4"
   tier: 2
   square_avatar: false
-- name: "Tomochika Hara"
-  url: "https://github.com/thara"
-  avatar: "https://avatars.githubusercontent.com/u/1532891?v=4"
-  tier: 1
-  square_avatar: false
 - name: "John Björk"
   url: "https://github.com/JohnBjrk"
   avatar: "https://avatars.githubusercontent.com/u/1716064?u=f19404f104d8755da53b00ad665b49a8b497477f&v=4"
@@ -386,11 +381,6 @@
 - name: "Praveen Perera"
   url: "https://github.com/praveenperera"
   avatar: "https://avatars.githubusercontent.com/u/1775346?u=833a731602445ffb4aea9e36a7eee166cd477e22&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Shuqian Hon"
-  url: "https://github.com/honsq90"
-  avatar: "https://avatars.githubusercontent.com/u/1791439?u=3de7f249a698c500064294b4972defa3aa0399b6&v=4"
   tier: 1
   square_avatar: false
 - name: "Pete Jodo"
@@ -558,6 +548,11 @@
   avatar: "https://avatars.githubusercontent.com/u/7200153?u=bf491ed3c25940918c32207683db3b8aa848ab25&v=4"
   tier: 1
   square_avatar: false
+- name: "Štefan Uram"
+  url: "https://github.com/Sterver47"
+  avatar: "https://avatars.githubusercontent.com/u/7881288?u=c457a2822ee088182382edc29bc3c97f56fde526&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Charlie Duong"
   url: "https://github.com/charlieduong94"
   avatar: "https://avatars.githubusercontent.com/u/9613701?u=94b19a19eb944aaffc5c55f52ae202a64c2631eb&v=4"
@@ -566,11 +561,6 @@
 - name: "Shunji Lin"
   url: "https://github.com/shunjilin"
   avatar: "https://avatars.githubusercontent.com/u/10043695?u=a82299c67c5b13855d7ea972420180e37d3c4029&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Copple"
-  url: "https://github.com/kiwicopple"
-  avatar: "https://avatars.githubusercontent.com/u/10214025?u=c6775be2ae667e2acae3ccd347fed62bb3f5b3e7&v=4"
   tier: 1
   square_avatar: false
 - name: "Gustavo Villa"
@@ -631,6 +621,11 @@
 - name: "paca94"
   url: "https://github.com/paca94"
   avatar: "https://avatars.githubusercontent.com/u/15952964?v=4"
+  tier: 1
+  square_avatar: false
+- name: "noam sauer-utley"
+  url: "https://github.com/noamsauerutley"
+  avatar: "https://avatars.githubusercontent.com/u/17517253?u=f1e073d004668f34ce4f465c38dd1da7e237b087&v=4"
   tier: 1
   square_avatar: false
 - name: "Kieran Gill"
