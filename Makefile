@@ -1,13 +1,11 @@
 .PHONY: build
-## Build the book
-build:
+build: ## Build the book
 	sh writing-gleam/command-line-reference.sh > writing-gleam/command-line-reference.md
 	rm -fr book
 	mdbook build --dest-dir book/
 
 .PHONY: serve
-## Run the book dev server
-serve:
+serve: ## Run the book dev server
 	jekyll server --watch --safe --port 3000 --drafts
 
 .PHONY: help
