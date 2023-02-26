@@ -9,25 +9,45 @@ trim() {
   sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//'
 }
 
+if gleam help | grep -q 'Usage:'; then
+  # Updating should be easy, just change the patterns to match the new output.
+  # Try it, remove this error, and see what the diff looks like!
+  echo >&2 "Looks like gleam is using a clap version other than 3, please update this script."
+  exit 1
+fi
+
+echo >&2 "Assuming clap version 3 when parsing help output."
+HEADING_PATTERN='^[A-Z][A-Z]*:'
+SUBCOMMAND_HEADING='^SUBCOMMANDS:'
+USAGE_HEADING='^USAGE:'
+OPTIONS_HEADING='^OPTIONS:'
+
+drop_headings() {
+  grep -v "$HEADING_PATTERN"
+}
+
 find_description() {
-  sed -n '2,/^USAGE:/p' | grep -v 'USAGE:' | trim
+  # all lines up to the first heading, except the first line
+  sed -n "2,/$HEADING_PATTERN/p" | drop_headings | trim
 }
 
 find_subcommands() {
-  sed -n '/SUBCOMMANDS:/,/^$/p' | grep -v 'SUBCOMMANDS:' | grep -v '^$' | trim | cut -d' ' -f1
+  # all lines between the SUBCOMMANDS heading and the next heading
+  sed -n "/$SUBCOMMAND_HEADING/,/$HEADING_PATTERN/p" | drop_headings | trim | cut -d' ' -f1
 }
 
 find_usage() {
-  sed -n '/USAGE:/,/^$/p' | grep -v 'USAGE:' | grep -v '^$' | trim
+  # all lines between the USAGE heading and the next heading
+  sed -n "/$USAGE_HEADING/,/$HEADING_PATTERN/p" | drop_headings | trim
 }
 
 find_options() {
-  # We ignore the --help option as it is not useful in these docs,
   # grep returns 1 if no matches, we need to ignore that for the pipeline to work.
   set +e
-  # Some subcommands empty lines in the middle of the options lists, so we cannot use `sed -n '/OPTIONS:/,/^$/p'`.
-  # There are some options that span multiple lines, we need to join them.
-  sed -n '/OPTIONS:/,//p' | grep -v 'OPTIONS:' | tr '\n' '§' | sed -E 's/§ *-/\n-/g' | sed 's/§ */ /g' | trim | grep -v -- '--help'
+  # All lines between the OPTIONS heading and the next heading,
+  # except tje --help option as it is not useful in these docs.
+  # Option descriptions can span multiple lines, hence the funky '§' business to join them.
+  sed -n "/$OPTIONS_HEADING/,/$HEADING_PATTERN/p" | drop_headings | tr '\n' '§' | sed -E 's/§ *-/\n-/g' | sed 's/§ */ /g' | trim | grep -v -- '--help'
   set -e
 }
 
