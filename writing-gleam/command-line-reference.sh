@@ -9,7 +9,7 @@ trim() {
   sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//'
 }
 
-if gleam help | grep -q 'Usage:'; then
+if ! gleam help | grep -q 'SUBCOMMANDS:'; then
   # Updating should be easy, just change the patterns to match the new output.
   # Try it, remove this error, and see what the diff looks like!
   echo >&2 "Looks like gleam is using a clap version other than 3, please update this script."
