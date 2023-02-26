@@ -9,14 +9,20 @@ trim() {
   sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//'
 }
 
-if ! gleam help | grep -q 'SUBCOMMANDS:'; then
+printerr() {
+  echo >&2 "$(basename "$0"): $*"
+}
+
+gleam_help="$(gleam help)"
+
+if ! echo "$gleam_help" | grep -q 'SUBCOMMANDS:'; then
   # Updating should be easy, just change the patterns to match the new output.
   # Try it, remove this error, and see what the diff looks like!
-  echo >&2 "Looks like gleam is using a clap version other than 3, please update this script."
+  printerr "Looks like gleam is using a clap version other than 3, please update this script."
   exit 1
 fi
 
-echo >&2 "Assuming clap version 3 when parsing help output."
+printerr "Assuming clap version 3 when parsing help output."
 HEADING_PATTERN='^[A-Z][A-Z]*:'
 SUBCOMMAND_HEADING='^SUBCOMMANDS:'
 USAGE_HEADING='^USAGE:'
@@ -56,16 +62,16 @@ show_docs() {
   subcommand="$1"
   subsubcommand="$2"
 
+  help="$(cat)"
+
   if [ -z "$subsubcommand" ]; then
-    help=$(gleam help "$subcommand")
     heading="## \`$subcommand\`"
   else
-    help=$(gleam help "$subcommand" "$subsubcommand")
     heading="### \`$subcommand $subsubcommand\`"
 
     subsubsubcommand=$(echo "$help" | find_subcommands)
     if [ -n "$subsubsubcommand" ]; then
-      echo >&2 "Subcommand \`$subcommand $subsubcommand\` has subcommands, this is not supported"
+      printerr "Subcommand \`$subcommand $subsubcommand\` has subcommands, this is not supported"
       exit 1
     fi
 
@@ -102,19 +108,21 @@ The \`gleam\` command uses subcommands to access different parts of the function
 EOF
 
 # Note: lsp is a "hidden" command so it will not be shown by `gleam help`
-subcommands=$(gleam help | find_subcommands)
+subcommands=$(echo "$gleam_help" | find_subcommands)
 
 for subcommand in $subcommands; do
 
-  show_docs "$subcommand"
+  command_help=$(gleam help "$subcommand")
+  echo "$command_help" | show_docs "$subcommand"
 
-  for subsubcommand in $(gleam help "$subcommand" | find_subcommands); do
+  for subsubcommand in $(echo "$command_help" | find_subcommands); do
 
     if [ "$subsubcommand" = "help" ]; then
       continue
     fi
 
-    show_docs "$subcommand" "$subsubcommand"
+    subcommand_help=$(gleam help "$subcommand" "$subsubcommand")
+    echo "$subcommand_help" | show_docs "$subcommand" "$subsubcommand"
 
   done
 
