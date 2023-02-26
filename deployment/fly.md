@@ -33,7 +33,7 @@ import gleam/bit_builder
 import gleam/http/response.{Response}
 
 pub fn main() {
-  assert Ok(_) = mist.run_service(8080, web_service)
+  assert Ok(_) = mist.run_service(8080, web_service, max_body_limit: 4_000_000)
   process.sleep_forever()
 }
 
