@@ -33,39 +33,40 @@ find_options() {
 
 # Render markdown help for a subcommand, or a subcommand under it.
 show_docs() {
-    subcommand="$1"
-    subsubcommand="$2"
+  subcommand="$1"
+  subsubcommand="$2"
 
-    if [ -z "$subsubcommand" ]; then
-      help=$(gleam help "$subcommand")
-      heading="## \`$subcommand\`"
-    else
-      help=$(gleam help "$subcommand" "$subsubcommand")
-      heading="### \`$subcommand $subsubcommand\`"
+  if [ -z "$subsubcommand" ]; then
+    help=$(gleam help "$subcommand")
+    heading="## \`$subcommand\`"
+  else
+    help=$(gleam help "$subcommand" "$subsubcommand")
+    heading="### \`$subcommand $subsubcommand\`"
 
-      subsubsubcommand=$(echo "$help" | find_subcommands)
-      if [ -n "$subsubsubcommand" ]; then
-        echo >&2 "Subcommand \`$subcommand $subsubcommand\` has subcommands, this is not supported"
-        exit 1
-      fi
+    subsubsubcommand=$(echo "$help" | find_subcommands)
+    if [ -n "$subsubsubcommand" ]; then
+      echo >&2 "Subcommand \`$subcommand $subsubcommand\` has subcommands, this is not supported"
+      exit 1
     fi
 
-    description=$(echo "$help" | find_description)
-    usage=$(echo "$help" | find_usage)
-    options=$(echo "$help" | find_options)
+  fi
 
-    echo
-    echo "$heading"
-    echo
-    echo \`"$usage"\`
-    echo
-    echo "$description"
-    echo
-    if [ -n "$options" ]; then
-      echo "| Option | Description |"
-      echo "| ------ | ----------- |"
-      echo "$options" | sed 's/^/| \`/' | sed -E 's/(  +|$)/\`| /'
-    fi
+  description=$(echo "$help" | find_description)
+  usage=$(echo "$help" | find_usage)
+  options=$(echo "$help" | find_options)
+
+  echo
+  echo "$heading"
+  echo
+  echo \`"$usage"\`
+  echo
+  echo "$description"
+  echo
+  if [ -n "$options" ]; then
+    echo "| Option | Description |"
+    echo "| ------ | ----------- |"
+    echo "$options" | sed 's/^/| \`/' | sed -E 's/(  +|$)/\`| /'
+  fi
 }
 
 cat <<EOF
