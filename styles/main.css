@@ -119,6 +119,11 @@ h6 {
   font-weight: var(--font-weight-normal);
 }
 
+p {
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
 .content > *:first-child {
   margin-top: 0;
 }
