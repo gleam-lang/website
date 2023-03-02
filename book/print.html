@@ -33,6 +33,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -338,7 +339,7 @@ executed, and the result of the last expression is returned.</p>
     False
 } // =&gt; False
 </code></pre>
-<p>Expression blocks can be used instead of parenthesis to change the precedence
+<p>Expression blocks can be used instead of parentheses to change the precedence
 of operations.</p>
 <pre><code class="language-gleam">let celsius = { fahrenheit - 32 } * 5 / 9
 </code></pre>
@@ -532,10 +533,10 @@ pub fn add_two(x: Int) -&gt; Int {
 </code></pre>
 <h2 id="pipe-operator"><a class="header" href="#pipe-operator">Pipe Operator</a></h2>
 <p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
-<p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
+<p>The pipe operator allows you to chain function calls without using a plethora of parentheses. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
 <pre><code class="language-gleam">string_builder.to_string(string_builder.reverse(string_builder.from_string(string)))
 </code></pre>
-<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
+<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parentheses closure.</p>
 <pre><code class="language-gleam">string
 |&gt; string_builder.from_string
 |&gt; string_builder.reverse
@@ -1061,13 +1062,13 @@ prototype application, so we want to only spend time on the success path for
 now.</p>
 <p>For these situations Gleam provides <code>assert</code>, a keyword that causes the
 program to crash if a pattern does not match.</p>
-<pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;123&quot;)
+<pre><code class="language-gleam">let assert Ok(i) = parse_int(&quot;123&quot;)
 i // =&gt; 123
 </code></pre>
 <p>Here the <code>assert</code> keyword has been used to say &quot;this function must return an
 <code>Ok</code> value&quot; and we haven't had to write any error handling. The inner value
 is assigned the variable <code>i</code> and the program continues.</p>
-<pre><code class="language-gleam">assert Ok(i) = parse_int(&quot;not an int&quot;)
+<pre><code class="language-gleam">let assert Ok(i) = parse_int(&quot;not an int&quot;)
 </code></pre>
 <p>In this case the <code>parse_int</code> function returns an error, so the <code>Ok(i)</code>
 pattern doesn't match and so the program crashes.</p>
@@ -1407,5 +1408,6 @@ pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&qu
         });
         </script>
 
+    </div>
     </body>
 </html>

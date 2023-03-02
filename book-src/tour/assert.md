@@ -21,7 +21,7 @@ For these situations Gleam provides `assert`, a keyword that causes the
 program to crash if a pattern does not match.
 
 ```gleam
-assert Ok(i) = parse_int("123")
+let assert Ok(i) = parse_int("123")
 i // => 123
 ```
 
@@ -30,7 +30,7 @@ Here the `assert` keyword has been used to say "this function must return an
 is assigned the variable `i` and the program continues.
 
 ```gleam
-assert Ok(i) = parse_int("not an int")
+let assert Ok(i) = parse_int("not an int")
 ```
 
 In this case the `parse_int` function returns an error, so the `Ok(i)`
