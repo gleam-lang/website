@@ -144,7 +144,7 @@ It has these fields:
 
 
 <span class="code-keyword">pub fn</span> <span class="code-fn">register_event_handler</span>() {
-  <span class="code-keyword">try</span> el = <span class="code-module">document.</span><span class="code-fn">query_selector</span>(<span class="code-string">"a"</span>)
+  <span class="code-keyword">let</span> el = <span class="code-module">document.</span><span class="code-fn">query_selector</span>(<span class="code-string">"a"</span>)
   <span class="code-module">element.</span><span class="code-fn">add_event_listener</span>(el, <span class="code-keyword">fn</span>() {
     <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Clicked!"</span>)
   })
