@@ -47,8 +47,8 @@ In Python, comments are written with a `#` prefix.
 A docstring (matching """) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
 ````py
-def a_method():
-    """some documentation for this method"""
+def a_function():
+    """Return some important data."""
     pass
 ````
 
@@ -132,9 +132,7 @@ These annotations are accessible at runtime via the `__annotations__` module-lev
 These hints will mainly be used to inform static analysis tools like IDEs, linters...
 
 ```py
-from typing import List
-
-some_list: List[int] = [1, 2, 3]
+some_list: list[int] = [1, 2, 3]
 ```
 
 #### Gleam
@@ -182,7 +180,8 @@ mul(1, 2)
 
 #### Python
 
-In Python, top level functions are exported by default. There is no notion of private module-level functions.
+In Python, top level functions are exported by default. There is no notion of
+private module-level functions.
 
 #### Gleam
 
@@ -353,7 +352,7 @@ There is no notion of constant variables in Python.
 
 ```python
 # in the global scope
-the_answer = 42
+THE_ANSWER = 42
 ```
 
 #### Gleam
@@ -495,17 +494,14 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 ### Case
 
-Case is one of the most used control flow in Gleam. It can be seen as a switch statement on steroids. It provides a terse way to match a value type to an expression.
+Case is one of the most used control flows in Gleam. It can be seen as a switch
+statement on steroids. It provides a terse way to match a value type to an
+expression. Gleam's `case` expression is fairly similar to Python's `match`
+statement.
 
 #### Python
 
-Python does not have switch statements. `if/else` statements paired to the `type` function let the developer to write code that depends on the type and value of a variable.
-
-Until now, there has been no official comparable feature for the case expression used in Gleam.
-
-However this will change in Python 3.10 (currently in [alpha release]([https://docs.python.org/3.10/whatsnew/3.10.html#pep-634-structural-pattern-matching]), at the time of writing) that ships structural pattern matching allowing:
-
-- matching on primitive types
+Matching on primitive types:
 
 ```py
 def http_error(status):
@@ -518,7 +514,7 @@ def http_error(status):
             return "I'm a teapot"
 ```
 
-- matching on tuples with variable capturing:
+Matching on tuples with variable capturing:
 
 ```py
 match point:
@@ -534,7 +530,7 @@ match point:
         raise ValueError("Not a point")
 ```
 
-- matching on type constructors:
+Matching on type constructors:
 
 ```py
 match point:
@@ -550,7 +546,7 @@ match point:
         print("Not a point")
 ```
 
-The match expression will support guards, similar to Gleam:
+The match expression supports guards, similar to Gleam:
 
 ```py
 match point:
@@ -614,25 +610,25 @@ Python uses the notion of exceptions to interrupt the current code flow and pop 
 An exception is raised using the keyword `raise`.
 
 ```py
-def an_fn_that_fails():
-    raise Exception('an error')
+def a_function_that_fails():
+    raise Exception("an error")
 ```
 
 The callee block will be able to capture any exception raised in the block using a `try/except` set of blocks:
 
 ```py
 try:
-    print('executed')
-    an_fn_that_fails()
-    print('not_executed')
+    print("executed")
+    a_function_that_fails()
+    print("not_executed")
 except Exception as e:
-    print('doing something with the exception', e)
+    print("doing something with the exception", e)
 
 ```
 
 #### Gleam
 
-In contrast in gleam, errors are just containers with an associated value.
+In contrast in Gleam, errors are just containers with an associated value.
 
 A common container to model an operation result is `Result(ReturnType, ErrorType)`.
 
@@ -650,19 +646,20 @@ case parse_int("123") {
 }
 ```
 
-In order to simplify this construct, we can use the `try` keyword that will:
+In order to simplify this construct, we can use the `use` expression with the
+`then` function from the `gleam/result` module.
 
-- bind a value to the providing name if Ok(Something) is matched
+- bind a value to the providing name if `Ok(Something)` is matched
 - **interrupt the flow** and return `Error(Something)`
 
 ```gleam
 let a_number = "1"
-let an_error = Error("ouch")
+let an_error = "ouch"
 let another_number = "3"
 
-try int_a_number = parse_int(a_number)
-try attempt_int = parse_int(an_error) // Error will be returned
-try int_another_number = parse_int(another_number) // never gets executed
+use int_a_number <- then(parse_int(a_number))
+use attempt_int <- then(parse_int(an_error)) // Error will be returned
+use int_another_number <- then(parse_int(another_number)) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ```
@@ -676,21 +673,23 @@ Type aliases allow for easy referencing of arbitrary complex types. Even though 
 A simple variable can store the result of a compound set of types.
 
 ```py
-import List from typing
+from typing import TypeAlias
 
-Vector = List[float]
+Headers: TypeAlias = list[tuple[str, str]]
 
 # can now be used to annotate a variable
-tensor: Vector = [1.0, 2.0, 3.0]
+headers: Headers = [("Content-Type", "application/json")]
 ```
 
 ### Gleam
 
-The `type` keyword can be used to create aliases
+The `type` keyword can be used to create aliases:
 
 ```gleam
 pub type Headers =
   List(#(String, String))
+
+let headers: Headers = [#("Content-Type", "application/json")]
 ```
 
 ## Custom types
@@ -719,22 +718,39 @@ person = Person(name="Jake", age=20)
 name = person.name
 ```
 
-A more recent alternative is to leverage the `NamedTuple` base type to generate a constructor with initializers.
+More recent alternatives are to use `dataclasses` or to leverage the
+`NamedTuple` base type to generate a constructor with initializers.
 
-However as the name `Tuple` suggests, the produced members values are immutable.
+By default a class created with the `dataclass` decorator is mutable (although
+you can pass options to the `dataclass` decorator to change the behavior):
+
+```py
+from dataclasses import dataclasses
+
+@dataclass
+class Person:
+    name: str
+    age: int
+
+person = Person(name="Jake", age=20)
+name = person.name
+person.name = "John"  # The name is now "John"
+```
+
+`NamedTuples` on the other hand are immutable:
 
 ```py
 from typing import NamedTuple
 
 class Person(NamedTuple):
     name: str
-    age: init
+    age: int
 
 person = Person(name="Jake", age=20)
 name = person.name
 
 # cannot reassign a value
-person.name = "John" # error
+person.name = "John"  # error
 ```
 
 #### Gleam
@@ -754,7 +770,7 @@ An important difference to note is there is no OOP in Gleam. Methods can not be 
 
 ### Unions
 
-In Python unions are declared using the `Union` type from the `typing module`
+In Python unions can be declared with the `|` operator.
 
 In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
@@ -762,9 +778,11 @@ two different types they must be wrapped in a new custom type.
 #### Python
 
 ```py
-from typing import Union
-
-OptionalString = Union[str, None]
+def int_or_float(x: int | float) -> str:
+    if isinstance(x, int):
+        return f"It's an integer: {x}"
+    else:
+        return f"It's a float: {x}"
 ```
 
 #### Gleam
@@ -775,17 +793,19 @@ type IntOrFloat {
   AFloat(Float)
 }
 
-fn int_or_float(X) {
-  case X {
-    True -> AnInt(1)
-    False -> AFloat(1.0)
+fn int_or_float(x) {
+  case x {
+    AnInt(1) -> "It's an integer: 1"
+    AFloat(1.0) -> "It's a float: 1.0"
   }
 }
 ```
 
 ### Opaque custom types
 
-In Python, constructors cannot be marked as private. Opaque types can be imperfectly emulated using a static methods and some magic property that only updated via the static factory method.
+In Python, constructors cannot be marked as private. Opaque types can be
+imperfectly emulated using a class method and some magic property that only
+updates via the class factory method.
 
 In Gleam, custom types can be defined as being opaque, which causes the
 constructors for the custom type not to be exported from the module. Without
@@ -851,11 +871,12 @@ pub fn main() {
 #### Python
 
 ```py
-import os
+# inside module src/nasa/moon_base.py
+# imports module src/nasa/rocket_ship.py
+from nasa import rocket_ship
 
-# os reference the module itself
-
-if os.platform == ......
+def explore_space():
+    rocket_ship.launch()
 ```
 
 #### Gleam
@@ -885,8 +906,7 @@ import unix.cat as kitty
 #### Gleam
 
 ```gleam
-import unix/cat
-import animal/cat as kitty
+import unix/cat as kitty
 ```
 
 ### Unqualified imports
@@ -895,6 +915,10 @@ import animal/cat as kitty
 
 ```
 from animal.cat import Cat, stroke
+
+def main():
+    kitty = Cat(name="Nubi")
+    stroke(kitty)
 ```
 
 #### Gleam
