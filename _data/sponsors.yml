@@ -183,6 +183,11 @@
   avatar: "https://avatars.githubusercontent.com/u/154392?u=e2455759892678ce94360af4620793f79a91a0e9&v=4"
   tier: 1
   square_avatar: false
+- name: "Michael Kumm"
+  url: "https://github.com/mkumm"
+  avatar: "https://avatars.githubusercontent.com/u/158991?u=4b798fee461a143c60a8db1f3f34d2e0978e6860&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Ben Myles"
   url: "https://github.com/benmyles"
   avatar: "https://avatars.githubusercontent.com/u/164675?u=cf738ec5bec0ba1434e34d817fbcff08230245e2&v=4"
@@ -218,11 +223,6 @@
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
   tier: 1
   square_avatar: false
-- name: "Reio Piller"
-  url: "https://github.com/hypno2000"
-  avatar: "https://avatars.githubusercontent.com/u/417241?u=c2794ccbe033197dbf357b20477e6c85115c9b70&v=4"
-  tier: 3
-  square_avatar: true
 - name: "Kayla Washburn"
   url: "https://github.com/aslilac"
   avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
@@ -245,7 +245,7 @@
   square_avatar: false
 - name: "Florian Kraft"
   url: "https://github.com/floriank"
-  avatar: "https://avatars.githubusercontent.com/u/498241?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/498241?u=125ca8b2e470d493555ff5e75630a794060b03c1&v=4"
   tier: 2
   square_avatar: false
 - name: "Graeme Coupar"
@@ -286,11 +286,6 @@
 - name: "Guilherme de Maio"
   url: "https://github.com/nirev"
   avatar: "https://avatars.githubusercontent.com/u/686510?u=abb24e34725b5f0390f1fded181e4e56f92146cc&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Mike Lapping"
-  url: "https://github.com/mlapping"
-  avatar: "https://avatars.githubusercontent.com/u/734865?v=4"
   tier: 1
   square_avatar: false
 - name: "Ingmar Gagen"
@@ -343,11 +338,6 @@
   avatar: "https://avatars.githubusercontent.com/u/1214337?u=746515aba84bb2fcae408ec38fe3e3f8c2e78ce0&v=4"
   tier: 1
   square_avatar: false
-- name: "Dan Mueller"
-  url: "https://github.com/unthought"
-  avatar: "https://avatars.githubusercontent.com/u/1222558?u=be71c6b24db686bf48dee4506af4018c921303f7&v=4"
-  tier: 2
-  square_avatar: false
 - name: "Nathaniel Knight"
   url: "https://github.com/nathanielknight"
   avatar: "https://avatars.githubusercontent.com/u/1239091?u=6fb38af8299220ff444f5080aa2c67085132cd50&v=4"
@@ -386,6 +376,11 @@
 - name: "Pete Jodo"
   url: "https://github.com/petejodo"
   avatar: "https://avatars.githubusercontent.com/u/1938892?u=5a78046101d2b51614045e214aa1545a9dc792a2&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Fernando Farias"
+  url: "https://github.com/nandofarias"
+  avatar: "https://avatars.githubusercontent.com/u/1944560?u=16ea7e154a7738b24c0d8c5ba013b87b7677091a&v=4"
   tier: 1
   square_avatar: false
 - name: "Lars Wikman"
@@ -503,11 +498,6 @@
   avatar: "https://avatars.githubusercontent.com/u/4972756?u=3f1cbc61ce58ecb99528de5e23702c97155afbc9&v=4"
   tier: 2
   square_avatar: false
-- name: "Rodrigo Oler"
-  url: "https://github.com/rodrigooler"
-  avatar: "https://avatars.githubusercontent.com/u/5496931?u=8f63f7d69391433f5b302c08f65312c117f21a5a&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Chris Ohk"
   url: "https://github.com/utilForever"
   avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
@@ -552,16 +542,6 @@
   url: "https://github.com/Sterver47"
   avatar: "https://avatars.githubusercontent.com/u/7881288?u=c457a2822ee088182382edc29bc3c97f56fde526&v=4"
   tier: 2
-  square_avatar: false
-- name: "Charlie Duong"
-  url: "https://github.com/charlieduong94"
-  avatar: "https://avatars.githubusercontent.com/u/9613701?u=94b19a19eb944aaffc5c55f52ae202a64c2631eb&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Shunji Lin"
-  url: "https://github.com/shunjilin"
-  avatar: "https://avatars.githubusercontent.com/u/10043695?u=a82299c67c5b13855d7ea972420180e37d3c4029&v=4"
-  tier: 1
   square_avatar: false
 - name: "Gustavo Villa"
   url: "https://github.com/gfvcastro"
@@ -628,6 +608,11 @@
   avatar: "https://avatars.githubusercontent.com/u/17517253?u=f1e073d004668f34ce4f465c38dd1da7e237b087&v=4"
   tier: 1
   square_avatar: false
+- name: "Carlo Gilmar"
+  url: "https://github.com/carlogilmar"
+  avatar: "https://avatars.githubusercontent.com/u/17634377?u=439be16dc79c2baa6059ab89319729c4da6e24f3&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Kieran Gill"
   url: "https://github.com/kierangilliam"
   avatar: "https://avatars.githubusercontent.com/u/18583882?v=4"
@@ -636,11 +621,6 @@
 - name: "Jen Stehlik"
   url: "https://github.com/okkdev"
   avatar: "https://avatars.githubusercontent.com/u/20144629?u=f636d587180a8fcc1cc7db565b225bfb8324019f&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Dmitry Matveyev"
-  url: "https://github.com/greenfork"
-  avatar: "https://avatars.githubusercontent.com/u/20167110?u=0b6768994fb61ed9287bdae99b93e50aa85025ec&v=4"
   tier: 1
   square_avatar: false
 - name: "inoas"
@@ -693,19 +673,14 @@
   avatar: "https://avatars.githubusercontent.com/u/29740731?u=8582d7cf3bee56a610b6db878a7627cbdf32d8de&v=4"
   tier: 1
   square_avatar: false
-- name: "Kapp Technology"
-  url: "https://github.com/kapp-technology"
-  avatar: "https://avatars.githubusercontent.com/u/30418610?v=4"
-  tier: 2
-  square_avatar: false
 - name: "Bryan Paxton"
   url: "https://github.com/starbelly"
   avatar: "https://avatars.githubusercontent.com/u/39971740?u=f234e6106097a35c95d4c6e4696ed966c09cac18&v=4"
   tier: 2
   square_avatar: false
-- name: "human154"
-  url: "https://github.com/human154"
-  avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
+- name: "Danielle Maywood"
+  url: "https://github.com/DanielleMaywood"
+  avatar: "https://avatars.githubusercontent.com/u/40153966?u=7f66b1c7d1c5920d54279158bd005aad798e96a4&v=4"
   tier: 1
   square_avatar: false
 - name: "zaatas"
@@ -731,5 +706,10 @@
 - name: "Strand Communications"
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
+  tier: 2
+  square_avatar: false
+- name: "max-tern"
+  url: "https://github.com/max-tern"
+  avatar: "https://avatars.githubusercontent.com/u/107401420?v=4"
   tier: 2
   square_avatar: false
