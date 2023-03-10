@@ -45,3 +45,37 @@ function.
 This is a very capable and useful feature, but excessive application of `use`
 may result in code that is unclear otherwise, especially to beginners. Often
 using the regular function call syntax will result in more approachable code!
+
+## Syntactic sugar
+
+The `use` expression is syntactic sugar for a regular function call and an
+anonymous function.
+
+This code:
+
+```gleam
+use a, b <- my_function
+next(a)
+next(b)
+```
+
+Expands into this code:
+
+```gleam
+my_function(fn(a, b) {
+  next(a)
+  next(b)
+})
+```
+
+To ensure that your `use` code works and is as understandable as possible, the
+right-hand-side ideally should be a function call rather than a pipeline, block,
+or other expression, which may be less clear.
+
+```gleam
+use x <- result.try(
+  current_user
+  |> get_profile
+  |> result.map_error(ProfileError)
+)
+```
