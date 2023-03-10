@@ -21,7 +21,6 @@ for your editor.
 - [Installing Erlang](#installing-erlang)
 - [Installing Rebar3](#installing-rebar3)
 - [Editor Plugins](#editor-plugins)
-- [GitPod online Gleam development environment](#gitpod-online-gleam-development-environment)
 
 
 ## Installing Gleam
