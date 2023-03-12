@@ -94,7 +94,7 @@ compiler](https://www.rust-lang.org/tools/install).
 ```sh
 # Download the Gleam source code git repository
 cd /tmp
-git clone https://github.com/gleam-lang/gleam.git --branch v0.26.1
+git clone https://github.com/gleam-lang/gleam.git --branch v0.27.0
 cd gleam
 
 # Build the Gleam compiler. This will take some time!
