@@ -13,11 +13,6 @@
   avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
   tier: 1
   square_avatar: false
-- name: "Quinn Wilton"
-  url: "https://github.com/QuinnWilton"
-  avatar: "https://avatars.githubusercontent.com/u/285821?u=1f6e34c8799daa2e53abd451b02ac7c2d58e3e48&v=4"
-  tier: 1
-  square_avatar: false
 - name: "YourMother-really"
   url: "https://github.com/YourMother-really"
   avatar: "https://avatars.githubusercontent.com/u/79288140?u=79179775e2caad01e3f87b598e8911b5de397f7b&v=4"
@@ -93,11 +88,6 @@
   avatar: "https://avatars.githubusercontent.com/u/32456?u=a2736cdb1eb8318361070ed9616cf2fbfaf1f215&v=4"
   tier: 1
   square_avatar: false
-- name: "Milton Mazzarri"
-  url: "https://github.com/milmazz"
-  avatar: "https://avatars.githubusercontent.com/u/34700?u=c8cd22c4d9068fd4abb54132ccaaf9685da41743&v=4"
-  tier: 2
-  square_avatar: false
 - name: "Tristan Sloughter"
   url: "https://github.com/tsloughter"
   avatar: "https://avatars.githubusercontent.com/u/36227?v=4"
@@ -107,16 +97,6 @@
   url: "https://github.com/eterps"
   avatar: "https://avatars.githubusercontent.com/u/39518?v=4"
   tier: 2
-  square_avatar: false
-- name: "Arno Dirlam"
-  url: "https://github.com/arnodirlam"
-  avatar: "https://avatars.githubusercontent.com/u/43364?u=cbfab3a095d5b838e74934e3df03627bc16bc827&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Oliver Searle-Barnes"
-  url: "https://github.com/opsb"
-  avatar: "https://avatars.githubusercontent.com/u/46232?u=3d43139f0c09689eb733d41eb9ae405aef115201&v=4"
-  tier: 1
   square_avatar: false
 - name: "Steven Joseph"
   url: "https://github.com/jagguli"
@@ -393,11 +373,6 @@
   avatar: "https://avatars.githubusercontent.com/u/2041398?u=1469d2056e81dc3a0bb876bd0c29e6e7c39000e1&v=4"
   tier: 1
   square_avatar: false
-- name: "Jonathan Arnett"
-  url: "https://github.com/J3RN"
-  avatar: "https://avatars.githubusercontent.com/u/2058614?u=ae470bf095b2ed27170b35832616031a895f5ed1&v=4"
-  tier: 3
-  square_avatar: false
 - name: "Alex Manning"
   url: "https://github.com/rawhat"
   avatar: "https://avatars.githubusercontent.com/u/2095509?u=c891c779ec80e181e60772b4adfdc8be1ee84d2d&v=4"
@@ -588,11 +563,6 @@
   avatar: "https://avatars.githubusercontent.com/u/14046865?u=8a051bed74cc5f9d516a57bf7de4c91a50f48f8b&v=4"
   tier: 1
   square_avatar: false
-- name: "Michele Riva"
-  url: "https://github.com/micheleriva"
-  avatar: "https://avatars.githubusercontent.com/u/14977595?u=0dcb766062a0032856df6e75af16b8247b039651&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Scott Wey"
   url: "https://github.com/scottwey"
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
@@ -671,6 +641,11 @@
 - name: "Michał Kowieski"
   url: "https://github.com/utevo"
   avatar: "https://avatars.githubusercontent.com/u/29740731?u=8582d7cf3bee56a610b6db878a7627cbdf32d8de&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Leon Qadirie"
+  url: "https://github.com/leonqadirie"
+  avatar: "https://avatars.githubusercontent.com/u/39130739?v=4"
   tier: 1
   square_avatar: false
 - name: "Bryan Paxton"
