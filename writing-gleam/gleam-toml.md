@@ -47,6 +47,9 @@ links = [
 #
 # Items in this list are "globs" that are matched against module names. See:
 # https://docs.rs/glob/latest/glob/struct.Pattern.html
+#
+# The default value is as below, with the `name` of your project substituted in
+# place of "my_app".
 internal_modules = [
   "my_app/internal",
   "my_app/internal/*",
