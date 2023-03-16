@@ -41,6 +41,17 @@ links = [
   { title = "Other site", href = "https://another.example.com" },
 ]
 
+# Modules that should be considered "internal" and will not be included in
+# generated documentation. Note this currently only affects documentation;
+# public types and functions defined in these modules are still public.
+#
+# Items in this list are "globs" that are matched against module names. See:
+# https://docs.rs/glob/latest/glob/struct.Pattern.html
+internal_modules = [
+  "my_app/internal",
+  "my_app/internal/*",
+]
+
 # The Hex packages the project needs to compile and run (optional)
 # Uses the Hex version requirement format
 # https://hexdocs.pm/elixir/Version.html#module-requirements
