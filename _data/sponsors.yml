@@ -13,6 +13,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
   tier: 1
   square_avatar: false
+- name: "Sammy Isseyegh"
+  url: "https://github.com/bkspace"
+  avatar: "https://avatars.githubusercontent.com/u/1695350?u=27a9d5486661a7f1ada8ff6fc3ae52d09ca1985f&v=4"
+  tier: 1
+  square_avatar: false
 - name: "YourMother-really"
   url: "https://github.com/YourMother-really"
   avatar: "https://avatars.githubusercontent.com/u/79288140?u=79179775e2caad01e3f87b598e8911b5de397f7b&v=4"
@@ -81,11 +86,6 @@
 - name: "Stefan Luptak"
   url: "https://github.com/stefanluptak"
   avatar: "https://avatars.githubusercontent.com/u/23926?u=94661b890b315853e08b773c426dd8fc36d2962a&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Carlos Saltos"
-  url: "https://github.com/csaltos"
-  avatar: "https://avatars.githubusercontent.com/u/32456?u=a2736cdb1eb8318361070ed9616cf2fbfaf1f215&v=4"
   tier: 1
   square_avatar: false
 - name: "Tristan Sloughter"
@@ -645,7 +645,7 @@
   square_avatar: false
 - name: "Leon Qadirie"
   url: "https://github.com/leonqadirie"
-  avatar: "https://avatars.githubusercontent.com/u/39130739?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/39130739?u=334ef35279398d7ae83adb27190bba0e1cef7e95&v=4"
   tier: 1
   square_avatar: false
 - name: "Bryan Paxton"
@@ -682,6 +682,11 @@
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
   tier: 2
+  square_avatar: false
+- name: "Ernesto Malave"
+  url: "https://github.com/oberernst"
+  avatar: "https://avatars.githubusercontent.com/u/98632774?u=b24987a18b8d7af92a41905689dccae77d50f450&v=4"
+  tier: 1
   square_avatar: false
 - name: "max-tern"
   url: "https://github.com/max-tern"
