@@ -7,16 +7,18 @@ description: The answers to some things you might be wondering about Gleam!
 
 - [Why is it called Gleam?](#why-is-it-called-gleam)
 - [What does Gleam compile to?](#what-does-gleam-compile-to)
-- [Will Gleam have type classes?](#will-gleam-have-type-classes)
-- [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [Does Gleam have mutable state?](#does-gleam-have-mutable-state)
 - [Does Gleam have side effects?](#does-gleam-have-side-effects)
+- [Will Gleam have type classes?](#will-gleam-have-type-classes)
+- [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [How is message passing typed?](#how-is-message-passing-typed)
 - [Can Gleam use Erlang's hot code reloading?](#can-gleam-use-erlangs-hot-code-reloading)
-- [How does Gleam compare to Alpaca?](#how-does-gleam-compare-to-alpaca)
-- [How does Gleam compare to Caramel?](#how-does-gleam-compare-to-caramel)
-- [How does Gleam compare to Elixir?](#how-does-gleam-compare-to-elixir)
-- [How does Gleam compare to Purerl?](#how-does-gleam-compare-to-purerl)
+- [How does Gleam compare to...](#how-does-gleam-compare-to)
+  - [Alpaca?](#how-does-gleam-compare-to-alpaca)
+  - [Caramel?](#how-does-gleam-compare-to-caramel)
+  - [Elixir?](#how-does-gleam-compare-to-elixir)
+  - [Purerl?](#how-does-gleam-compare-to-purerl)
+  - [Rust?](#how-does-gleam-compare-to-rust)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Is it good?](#is-it-good)
@@ -33,22 +35,27 @@ for most people.
 
 ## What does Gleam compile to?
 
-Gleam compiles to Erlang and also JavaScript.
+Gleam compiles to Erlang or JavaScript.
 
 
 ## Will Gleam have type classes?
 
-Some form of ad-hoc polymorphism could be a good addition to the ergonomics of
-the language, though what shape that may take is unclear. Type classes are one
-option, OCaml style implicit modules are another, or perhaps it'll be
-something else entirely.
+Type classes are fun and enable creation very nice concise APIs, but they can
+make it easy to make challenging to understand code, tend to have confusing
+error messages, consuming the code from other languages much harder, have a high
+compile time cost, and have a runtime cost unless the compiler performs
+full-program compiation and expensive monomorphism. This is unfortunately not a
+good fit for Gleam and they are not planned.
 
 
 ## Will Gleam have metaprogramming?
 
-We don't currently have any fixed ideas for what metaprogramming might look
-like in Gleam, but it is an area we are interested in. If you have any ideas
-please do share them!
+We are gently interested in some form of metaprogramming in Gleam. Currently we
+are in the early research and design phase, and it is a lot priority compared to
+tooling and other work needed for a v1.0 release.
+
+If you have some problems that would be solved with metaprogramming, or proposal
+for a metaprogramming design please do share them with us!
 
 
 ## Does Gleam have mutable state?
@@ -97,10 +104,11 @@ safety rather than what you might have with Gleam otherwise.
 
 Generally the OTP libraries for Gleam are optimised for type safety rather than
 upgrades, and use records rather than atom modules so the state upgrade
-callbacks may be slightly more complex to write.
+callbacks may be more complex to write.
 
+## How does Gleam compare to...
 
-## How does Gleam compare to Alpaca?
+### How does Gleam compare to Alpaca?
 
 [alpaca]: https://github.com/alpaca-lang/alpaca
 
@@ -122,7 +130,7 @@ Here's a non-exhaustive list of differences:
 - Gleam is more actively developed than Alpaca (at time of writing).
 
 
-## How does Gleam compare to Caramel?
+### How does Gleam compare to Caramel?
 
 [caramel]: https://github.com/AbstractMachinesLab/caramel
 
@@ -140,7 +148,7 @@ Here's a non-exhaustive list of differences:
 - Gleam is more actively developed than Caramel (at time of writing).
 
 
-## How does Gleam compare to Elixir?
+### How does Gleam compare to Elixir?
 
 [elixir]: https://github.com/elixir-lang/elixir
 
@@ -163,7 +171,7 @@ Here's a non-exhaustive list of differences:
 - Elixir is more mature than Gleam and has a much larger ecosystem.
 
 
-## How does Gleam compare to Purerl?
+### How does Gleam compare to Purerl?
 
 [purerl]: https://github.com/purerl/purerl
 
@@ -183,6 +191,28 @@ Here's a non-exhaustive list of differences:
   designed to be usable from all BEAM languages.
 - PureScript is more mature than Gleam and has a much larger ecosystem,
   though not all of it can be used with the Purerl compiler backend.
+
+
+### How does Gleam compare to Rust?
+
+[rust]: https://github.com/rust-lang/rust
+
+[Rust][rust] is a language that compiles to native code and gives you full
+control of memory use in your program, much like C or C++. Gleam's compiler is
+written in Rust! We're big fans of the language.
+
+Despite having some syntactic similarities, Gleam and Rust are extremely
+different language.
+
+- Rust is a low level programming language, Gleam is a very high level language.
+- Rust is a hybrid functional and imperative language that makes heavy use of
+  mutable state. Gleam is a functional language where everything is immutable.
+- Rust compiles to native code. Gleam runs on the Erlang VM and JavaScript
+  runtimes.
+- Rust is a very large language which can be challenging to learn. Gleam is a
+  small language and is designed to be easy to learn.
+- Rust uses futures with async/await, Gleam uses the actor model on Erlang.
+- Rust features traits and multiple macro systems, Gleam does not.
 
 
 ## Should I put Gleam in production?
