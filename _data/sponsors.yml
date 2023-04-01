@@ -206,6 +206,11 @@
 - name: "Parker Selbert"
   url: "https://github.com/sorentwo"
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
+  tier: 2
+  square_avatar: false
+- name: "Rocky Neurock"
+  url: "https://github.com/jneurock"
+  avatar: "https://avatars.githubusercontent.com/u/326789?v=4"
   tier: 1
   square_avatar: false
 - name: "Kayla Washburn"
@@ -221,7 +226,7 @@
 - name: "Robert Ellen"
   url: "https://github.com/rellen"
   avatar: "https://avatars.githubusercontent.com/u/459086?u=dae9051904e95a8c27d3c732d7e1be1127c7cc93&v=4"
-  tier: 1
+  tier: 2
   square_avatar: false
 - name: "Florian Kraft"
   url: "https://github.com/floriank"
@@ -508,11 +513,6 @@
   avatar: "https://avatars.githubusercontent.com/u/7200153?u=bf491ed3c25940918c32207683db3b8aa848ab25&v=4"
   tier: 1
   square_avatar: false
-- name: "Štefan Uram"
-  url: "https://github.com/Sterver47"
-  avatar: "https://avatars.githubusercontent.com/u/7881288?u=c457a2822ee088182382edc29bc3c97f56fde526&v=4"
-  tier: 2
-  square_avatar: false
 - name: "Cosmo Shin (신의하)"
   url: "https://github.com/XiNiHa"
   avatar: "https://avatars.githubusercontent.com/u/8155259?u=8cb7bdf237a94e2cfd10dec2249e1b04e64479f2&v=4"
@@ -551,11 +551,6 @@
 - name: "porkbrain"
   url: "https://github.com/bausano"
   avatar: "https://avatars.githubusercontent.com/u/13656913?u=19fe08b14433ba8e3262aa4ed9f592d0759363a7&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Julien D"
-  url: "https://github.com/silicium14"
-  avatar: "https://avatars.githubusercontent.com/u/13800015?v=4"
   tier: 1
   square_avatar: false
 - name: "Henry Warren"
@@ -625,7 +620,7 @@
   square_avatar: false
 - name: "Harry Bairstow"
   url: "https://github.com/HarryET"
-  avatar: "https://avatars.githubusercontent.com/u/29015545?u=19b16aa2788512087bbab24876489649b7945d24&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/29015545?u=0d25aeeadca54177559a590af0c2563761015975&v=4"
   tier: 1
   square_avatar: false
 - name: "Leon Qadirie"
@@ -636,11 +631,6 @@
 - name: "Danielle Maywood"
   url: "https://github.com/DanielleMaywood"
   avatar: "https://avatars.githubusercontent.com/u/40153966?u=7f66b1c7d1c5920d54279158bd005aad798e96a4&v=4"
-  tier: 1
-  square_avatar: false
-- name: "zaatas"
-  url: "https://github.com/zaatas"
-  avatar: "https://avatars.githubusercontent.com/u/50715394?v=4"
   tier: 1
   square_avatar: false
 - name: "Signal Insights"
