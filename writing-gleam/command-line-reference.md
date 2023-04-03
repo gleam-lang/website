@@ -134,13 +134,6 @@ Precompiled Erlang, suitable for deployment
 
 
 
-## `fix`
-
-`gleam fix [FILES]...`
-
-Rewrite deprecated Gleam code
-
-
 ## `format`
 
 `gleam format [OPTIONS] [FILES]...`
@@ -228,6 +221,7 @@ Run the project
 
 | Option | Description |
 | ------ | ----------- |
+| `-m, --module <MODULE>`| The module to run
 | `--runtime <RUNTIME>`| 
 | `--target <TARGET>`| The platform to target [possible values: erlang, javascript]
 
