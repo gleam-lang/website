@@ -14,7 +14,6 @@
 - [Modules](./tour/modules.md)
 - [Custom types](./tour/custom-types.md)
 - [Result](./tour/result.md)
-- [Try](./tour/try.md)
 - [Assert](./tour/assert.md)
 - [Todo](./tour/todo.md)
 - [Constants](./tour/constants.md)

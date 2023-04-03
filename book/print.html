@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="tour/try.html"><strong aria-hidden="true">15.</strong> Try</a></li><li class="chapter-item expanded "><a href="tour/assert.html"><strong aria-hidden="true">16.</strong> Assert</a></li><li class="chapter-item expanded "><a href="tour/todo.html"><strong aria-hidden="true">17.</strong> Todo</a></li><li class="chapter-item expanded "><a href="tour/constants.html"><strong aria-hidden="true">18.</strong> Constants</a></li><li class="chapter-item expanded "><a href="tour/type-aliases.html"><strong aria-hidden="true">19.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="tour/bit-strings.html"><strong aria-hidden="true">20.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="tour/use.html"><strong aria-hidden="true">21.</strong> Use</a></li><li class="chapter-item expanded "><a href="tour/external-functions.html"><strong aria-hidden="true">22.</strong> External functions</a></li><li class="chapter-item expanded "><a href="tour/external-types.html"><strong aria-hidden="true">23.</strong> External types</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="tour/assert.html"><strong aria-hidden="true">15.</strong> Assert</a></li><li class="chapter-item expanded "><a href="tour/todo.html"><strong aria-hidden="true">16.</strong> Todo</a></li><li class="chapter-item expanded "><a href="tour/constants.html"><strong aria-hidden="true">17.</strong> Constants</a></li><li class="chapter-item expanded "><a href="tour/type-aliases.html"><strong aria-hidden="true">18.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="tour/bit-strings.html"><strong aria-hidden="true">19.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="tour/use.html"><strong aria-hidden="true">20.</strong> Use</a></li><li class="chapter-item expanded "><a href="tour/external-functions.html"><strong aria-hidden="true">21.</strong> External functions</a></li><li class="chapter-item expanded "><a href="tour/external-types.html"><strong aria-hidden="true">22.</strong> External types</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1010,41 +1010,6 @@ working with the <code>Result</code> type, make good use of them!</p>
 <ul>
 <li><a href="https://hexdocs.pm/gleam_stdlib/gleam/result.html">gleam/result</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="try-expressions"><a class="header" href="#try-expressions">Try expressions</a></h1>
-<p>In Gleam if a function can either succeed or fail then it normally will
-return the <code>Result</code> type. With <code>Result</code>, a successful return value is wrapped
-in an <code>Ok</code> record, and an error value is wrapped in an <code>Error</code> record.</p>
-<pre><code class="language-gleam">// parse_int(String) -&gt; Result(Int, String)
-
-parse_int(&quot;123&quot;) // -&gt; Ok(123)
-parse_int(&quot;erl&quot;) // -&gt; Error(&quot;expected a number, got `erl`&quot;)
-</code></pre>
-<p>When a function returns a <code>Result</code> we can pattern match on it to handle success
-and failure:</p>
-<pre><code class="language-gleam">case parse_int(&quot;123&quot;) {
-  Error(e) -&gt; io.println(&quot;That wasn't an Int&quot;)
-  Ok(i) -&gt; io.println(&quot;We parsed the Int&quot;)
-}
-</code></pre>
-<p>This is such a common pattern in Gleam that the <code>try</code> syntax exists to make it
-more concise.</p>
-<pre><code class="language-gleam">try int_a = parse_int(a)
-try int_b = parse_int(b)
-try int_c = parse_int(c)
-Ok(int_a + int_b + int_c)
-</code></pre>
-<p>When a variable is declared using <code>try</code> Gleam checks to see whether the value
-is an Error or an Ok record. If it's an Ok then the inner value is assigned to
-the variable:</p>
-<pre><code class="language-gleam">try x = Ok(1)
-Ok(x + 1)
-// -&gt; Ok(2)
-</code></pre>
-<p>If it's an Error then the Error is returned immediately:</p>
-<pre><code class="language-gleam">try x = Error(&quot;failure&quot;)
-Ok(x + 1)
-// -&gt; Error(&quot;failure&quot;)
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="assert"><a class="header" href="#assert">Assert</a></h1>
 <p>Some times we have a function that can technically fail, but in practice we
 don't expect it to happen. For example our program may start by opening a
