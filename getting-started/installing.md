@@ -85,6 +85,14 @@ $ pkg install -r FreeBSD lang/gleam lang/erlang-runtime23
 $ export PATH=/usr/local/lib/erlang23/bin:$PATH
 ```
 
+### Void Linux
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```
+sudo xbps-install gleam
+```
+
 ### Build from source
 
 The compiler is written in the Rust programming language and so if you wish to
