@@ -51,7 +51,7 @@ good fit for Gleam and they are not planned.
 ## Will Gleam have metaprogramming?
 
 We are gently interested in some form of metaprogramming in Gleam. Currently we
-are in the early research and design phase, and it is a lot priority compared to
+are in the early research and design phase, and it is a low priority compared to
 tooling and other work needed for a v1.0 release.
 
 If you have some problems that would be solved with metaprogramming, or proposal
