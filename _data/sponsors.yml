@@ -20,7 +20,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=ee659934c0ff5e350ef3d72ca969635fb3d7a0ca&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=927b4728b0c36fe8a498afe48d5b48c17c45ce51&v=4"
   tier: 1
   square_avatar: false
 - name: "James MacAulay"
@@ -31,11 +31,6 @@
 - name: "Chew Choon Keat"
   url: "https://github.com/choonkeat"
   avatar: "https://avatars.githubusercontent.com/u/473?v=4"
-  tier: 1
-  square_avatar: false
-- name: "Justin Blake"
-  url: "https://github.com/blaix"
-  avatar: "https://avatars.githubusercontent.com/u/664?u=75b440f4f5c9c1f93e2df0c82093dfe6181cca13&v=4"
   tier: 1
   square_avatar: false
 - name: "Chris Lloyd"
@@ -208,11 +203,6 @@
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
   tier: 2
   square_avatar: false
-- name: "Rocky Neurock"
-  url: "https://github.com/jneurock"
-  avatar: "https://avatars.githubusercontent.com/u/326789?v=4"
-  tier: 1
-  square_avatar: false
 - name: "Kayla Washburn"
   url: "https://github.com/aslilac"
   avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
@@ -261,7 +251,7 @@
 - name: "Wilson Silva"
   url: "https://github.com/wilsonsilva"
   avatar: "https://avatars.githubusercontent.com/u/645203?v=4"
-  tier: 2
+  tier: 1
   square_avatar: false
 - name: "Nick Reynolds"
   url: "https://github.com/ndreynolds"
@@ -278,7 +268,7 @@
   avatar: "https://avatars.githubusercontent.com/u/748593?u=eb762340e9b465a06470a9749b522b69bfe8eed7&v=4"
   tier: 2
   square_avatar: false
-- name: "Max Lee"
+- name: "Jechol Lee"
   url: "https://github.com/jechol"
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
   tier: 2
@@ -483,11 +473,6 @@
   avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
   tier: 1
   square_avatar: false
-- name: "Marcin Puc"
-  url: "https://github.com/tranzystorek-io"
-  avatar: "https://avatars.githubusercontent.com/u/5671049?u=0dcaa0cec9b087049268f34f6f9026abb8006e54&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Matthias Benkort"
   url: "https://github.com/KtorZ"
   avatar: "https://avatars.githubusercontent.com/u/5680256?u=020eb2bc68211d32c1691695b6ab22ad55478501&v=4"
@@ -531,7 +516,7 @@
 - name: "Adi Iyengar"
   url: "https://github.com/thebugcatcher"
   avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
-  tier: 2
+  tier: 1
   square_avatar: false
 - name: "Alexandre Del Vecchio"
   url: "https://github.com/defgenx"
@@ -548,11 +533,6 @@
   avatar: "https://avatars.githubusercontent.com/u/12151757?u=ae67cbe1cad1e8bf6ec696c3439c38ba97c98ec3&v=4"
   tier: 1
   square_avatar: false
-- name: "Marcel Lanz"
-  url: "https://github.com/marcellanz"
-  avatar: "https://avatars.githubusercontent.com/u/12616445?u=4e8d4813ad25dedc75c79554284a0cd7b85583d3&v=4"
-  tier: 1
-  square_avatar: false
 - name: "porkbrain"
   url: "https://github.com/bausano"
   avatar: "https://avatars.githubusercontent.com/u/13656913?u=19fe08b14433ba8e3262aa4ed9f592d0759363a7&v=4"
@@ -567,11 +547,6 @@
   url: "https://github.com/scottwey"
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
   tier: 2
-  square_avatar: false
-- name: "noam sauer-utley"
-  url: "https://github.com/noamsauerutley"
-  avatar: "https://avatars.githubusercontent.com/u/17517253?u=f1e073d004668f34ce4f465c38dd1da7e237b087&v=4"
-  tier: 1
   square_avatar: false
 - name: "Carlo Gilmar"
   url: "https://github.com/carlogilmar"
@@ -667,4 +642,9 @@
   url: "https://github.com/max-tern"
   avatar: "https://avatars.githubusercontent.com/u/107401420?v=4"
   tier: 2
+  square_avatar: false
+- name: "Yasuo Higano"
+  url: "https://github.com/Yasuo-Higano"
+  avatar: "https://avatars.githubusercontent.com/u/115511765?u=a9f0a7f8885422b3f06ec611c942948d342c5390&v=4"
+  tier: 1
   square_avatar: false
