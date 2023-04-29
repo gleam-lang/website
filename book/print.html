@@ -1240,7 +1240,7 @@ excessive indentation.</p>
   logger.record_timing(fn() {
     database.connect(fn(db) {
       file.open(&quot;file.txt&quot;, fn(f) {
-        // Do with something here...
+        // Do something with `f` here...
       })
     })
   })
@@ -1253,7 +1253,7 @@ in an unindented style. The above code could be re-written using it like so:</p>
   use &lt;- logger.record_timing
   use db &lt;- database.connect
   use f &lt;- file.open(&quot;file.txt&quot;)
-  // Do with something here...
+  // Do something with `f` here...
 }
 </code></pre>
 <p>The higher order function being called goes on the right hand side of the <code>&lt;-</code>
