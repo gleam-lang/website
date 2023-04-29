@@ -12,7 +12,7 @@ pub fn main() {
   logger.record_timing(fn() {
     database.connect(fn(db) {
       file.open("file.txt", fn(f) {
-        // Do with something here...
+        // Do something with `f` here...
       })
     })
   })
@@ -29,7 +29,7 @@ pub fn main() {
   use <- logger.record_timing
   use db <- database.connect
   use f <- file.open("file.txt")
-  // Do with something here...
+  // Do something with `f` here...
 }
 ```
 
