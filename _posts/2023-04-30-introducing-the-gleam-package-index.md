@@ -21,7 +21,7 @@ To solve this problem we have created the [Gleam package index][packages], a
 website for exploring the Gleam subset of the Hex repository. ✨
 
 Today it provides a list of all the Gleam packages on Hex as well as a text
-search, and future we could addd fancy Gleam specific features such as
+search, and future we could add fancy Gleam specific features such as
 [searching by type information][elm-search], or [language server integration][lsp]
 so packages can be discovered directly from your editor.
 
