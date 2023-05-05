@@ -8,3 +8,7 @@ title = "The Gleam Book"
 additional-js = ["javascript/highlightjs-gleam.js", "javascript/plausible.js"]
 git-repository-url = "https://github.com/gleam-lang/website"
 git-repository-icon = "fa-github"
+
+[output.html.redirect]
+"tour/type-annotations" = "./let-bindings.html"
+"tour/type-annotations.html" = "./let-bindings.html"
