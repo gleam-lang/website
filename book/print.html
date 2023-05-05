@@ -330,6 +330,13 @@ let x = 2
 x  // =&gt; 2
 y  // =&gt; 1
 </code></pre>
+<h2 id="type-annotations"><a class="header" href="#type-annotations">Type annotations</a></h2>
+<p>A type annotation can be added to a let binding.</p>
+<pre><code class="language-gleam">let x: Int = 1
+</code></pre>
+<p>These annotations are optional and while they are checked, they do not aid the
+type checker. Gleam code is always fully type checked with or without type
+annotations.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="expression-blocks"><a class="header" href="#expression-blocks">Expression blocks</a></h1>
 <p>Every block in Gleam is an expression. All expressions in the block are
 executed, and the result of the last expression is returned.</p>
@@ -543,7 +550,7 @@ pub fn add_two(x: Int) -&gt; Int {
 |&gt; string_builder.to_string
 </code></pre>
 <p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
-<h2 id="type-annotations"><a class="header" href="#type-annotations">Type annotations</a></h2>
+<h2 id="type-annotations-1"><a class="header" href="#type-annotations-1">Type annotations</a></h2>
 <p>Function arguments are normally annotated with their type, and the
 compiler will check these annotations and ensure they are correct.</p>
 <pre><code class="language-gleam">fn identity(x: some_type) -&gt; some_type {
@@ -1107,7 +1114,7 @@ pub describe(year: Int) -&gt; String {
   }
 }
 </code></pre>
-<h2 id="type-annotations-1"><a class="header" href="#type-annotations-1">Type annotations</a></h2>
+<h2 id="type-annotations-2"><a class="header" href="#type-annotations-2">Type annotations</a></h2>
 <p>Constants can also be given type annotations. </p>
 <pre><code class="language-gleam">pub const name: String = &quot;Gleam&quot;
 pub const size: Int = 100
