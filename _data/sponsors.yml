@@ -20,7 +20,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=927b4728b0c36fe8a498afe48d5b48c17c45ce51&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=2bb5bc13000f36bd94bdf5f69f3e3d37112e79a3&v=4"
   tier: 1
   square_avatar: false
 - name: "James MacAulay"
@@ -48,7 +48,7 @@
   avatar: "https://avatars.githubusercontent.com/u/2767?u=ff72b1ad63026e0729acc2dd41378e28ab704a3f&v=4"
   tier: 1
   square_avatar: false
-- name: "Alexander"
+- name: "Alexander Stensrud"
   url: "https://github.com/spektroskop"
   avatar: "https://avatars.githubusercontent.com/u/3189?v=4"
   tier: 3
@@ -423,6 +423,11 @@
   avatar: "https://avatars.githubusercontent.com/u/3731516?v=4"
   tier: 1
   square_avatar: false
+- name: "David Sancho"
+  url: "https://github.com/davesnx"
+  avatar: "https://avatars.githubusercontent.com/u/3763599?u=9642d3d5effd7b98774ed5b13438b411dc21a1dd&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Dan Dresselhaus"
   url: "https://github.com/ddresselhaus"
   avatar: "https://avatars.githubusercontent.com/u/3826669?u=190d6605bce4ccd6f20eb748f2309fd7556a0bce&v=4"
@@ -538,6 +543,11 @@
   avatar: "https://avatars.githubusercontent.com/u/13656913?u=19fe08b14433ba8e3262aa4ed9f592d0759363a7&v=4"
   tier: 1
   square_avatar: false
+- name: "Natanael Sirqueira"
+  url: "https://github.com/natanaelsirqueira"
+  avatar: "https://avatars.githubusercontent.com/u/13697898?u=2aedada2b840e9a047fbec5b49fc8e0d3e5f7236&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Henry Warren"
   url: "https://github.com/henrysdev"
   avatar: "https://avatars.githubusercontent.com/u/14046865?u=8a051bed74cc5f9d516a57bf7de4c91a50f48f8b&v=4"
@@ -560,7 +570,7 @@
   square_avatar: false
 - name: "Jen Stehlik"
   url: "https://github.com/okkdev"
-  avatar: "https://avatars.githubusercontent.com/u/20144629?u=f636d587180a8fcc1cc7db565b225bfb8324019f&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/20144629?u=a7cc738c98e454d194d6c445d423724da9cbedd3&v=4"
   tier: 1
   square_avatar: false
 - name: "inoas"
@@ -600,7 +610,7 @@
   square_avatar: false
 - name: "Harry Bairstow"
   url: "https://github.com/HarryET"
-  avatar: "https://avatars.githubusercontent.com/u/29015545?u=0d25aeeadca54177559a590af0c2563761015975&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/29015545?u=ec5ce48b751279923c1c1356c871ed32626fc838&v=4"
   tier: 1
   square_avatar: false
 - name: "Leon Qadirie"
