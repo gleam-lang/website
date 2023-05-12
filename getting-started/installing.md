@@ -101,6 +101,17 @@ Gleam is available as part of the official packages repository. Install it with:
 sudo xbps-install gleam
 ```
 
+### Windows
+
+#### Using Scoop
+
+With [Scoop](https://scoop.sh/) installed on your computer run the following:
+
+```
+scoop install gleam
+```
+
+
 ### Build from source
 
 The compiler is written in the Rust programming language and so if you wish to
@@ -196,6 +207,14 @@ following:
 
 ```
 choco install erlang
+```
+
+##### Using Scoop
+
+With [Scoop](https://scoop.sh/) installed on your computer run the following:
+
+```
+scoop install erlang
 ```
 
 #### Using version managers
