@@ -638,6 +638,11 @@
   avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
   tier: 1
   square_avatar: false
+- name: "Benjamin Peinhardt"
+  url: "https://github.com/bcpeinhardt"
+  avatar: "https://avatars.githubusercontent.com/u/61021968?u=17f37181b87e813cdcdf42b4a5aa4340f2159e10&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Theo Harris"
   url: "https://github.com/Theosaurus-Rex"
   avatar: "https://avatars.githubusercontent.com/u/71990001?u=f71c0ff3374641ed747d8011b96d938452b79377&v=4"
