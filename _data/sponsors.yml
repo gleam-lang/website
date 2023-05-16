@@ -588,6 +588,11 @@
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
   tier: 5
   square_avatar: false
+- name: "Willyboar"
+  url: "https://github.com/Willyboar"
+  avatar: "https://avatars.githubusercontent.com/u/22755228?u=a25d2e6735b27e22172aa8fe6944873ccd1e3319&v=4"
+  tier: 1
+  square_avatar: false
 - name: "brettkolodny"
   url: "https://github.com/brettkolodny"
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
