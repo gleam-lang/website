@@ -273,11 +273,6 @@
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
   tier: 2
   square_avatar: false
-- name: "François Cardinaux"
-  url: "https://github.com/fcardinaux"
-  avatar: "https://avatars.githubusercontent.com/u/877484?u=f4523fe0d150f0d434a8bc3f450488cacb5648d6&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Tomasz Kowal"
   url: "https://github.com/tomekowal"
   avatar: "https://avatars.githubusercontent.com/u/907415?v=4"
@@ -601,6 +596,11 @@
 - name: "Robert Attard"
   url: "https://github.com/TanklesXL"
   avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
+  tier: 2
+  square_avatar: false
+- name: "Ian González"
+  url: "https://github.com/Ian-GL"
+  avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
   tier: 2
   square_avatar: false
 - name: "Zsombor Gasparin"
