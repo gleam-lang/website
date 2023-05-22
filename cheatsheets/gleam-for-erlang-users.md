@@ -78,12 +78,12 @@ used to assert that a given term has a specific shape.
 
 #### Gleam
 
-In Gleam the `assert` keyword is used to make assertions using partial
+In Gleam, the `let assert` keyword is used to make assertions using partial
 patterns.
 
 ```gleam
 let [element] = some_list // Compile error! Partial pattern
-assert [element] = some_list
+let assert [element] = some_list
 ```
 
 ### Variables type annotations

@@ -164,7 +164,7 @@ variable names.
 
 In Gleam, `let` and `=` can be used for pattern matching, but you'll get
 compile errors if there's a type mismatch, and a runtime error if there's
-a value mismatch. For assertions, the equivalent `assert` keyword is
+a value mismatch. For assertions, the equivalent `let assert` keyword is
 preferred.
 
 ```gleam
@@ -172,8 +172,8 @@ let #(a, _) = #(1, 2)
 // a = 1
 // `_` matches 2 and is discarded
 
-assert [] = [1] // runtime error
-assert [y] = "Hello" // compile error, type mismatch
+let assert [] = [1] // runtime error
+let assert [y] = "Hello" // compile error, type mismatch
 ```
 
 Asserts should be used with caution.

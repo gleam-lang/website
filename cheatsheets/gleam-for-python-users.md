@@ -112,12 +112,12 @@ for key, value in enumerate(a_dict):
 
 #### Gleam
 
-In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
+In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `let assert` keyword is preferred.
 
 ```gleam
 let #(x, _) = #(1, 2)
-assert [] = [1] // runtime error
-assert [y] = "Hello" // compile error, type mismatch
+let assert [] = [1] // runtime error
+let assert [y] = "Hello" // compile error, type mismatch
 ```
 
 ### Variables type annotations
