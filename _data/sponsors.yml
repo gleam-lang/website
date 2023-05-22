@@ -408,6 +408,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2925395?u=d29af274d3aaa7e927666e54c8e4311a15eb1ae7&v=4"
   tier: 1
   square_avatar: false
+- name: "Barry Moore"
+  url: "https://github.com/chiroptical"
+  avatar: "https://avatars.githubusercontent.com/u/3086255?u=3f489af77c45053d5cbfff9faebd3ae71f020c6a&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Noah Betzen"
   url: "https://github.com/Nezteb"
   avatar: "https://avatars.githubusercontent.com/u/3588798?v=4"
