@@ -103,13 +103,13 @@ let size = 1
 
 #### Gleam
 
-In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
+In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `let assert` keyword is preferred.
 
 ```gleam
-assert [x, y] = [1, 2]
-assert 2 = y // assert that y is 2
-assert 2 = x // runtime error
-assert [y] = "Hello" // compile error, type mismatch
+let assert [x, y] = [1, 2]
+let assert 2 = y // assert that y is 2
+let assert 2 = x // runtime error
+let assert [y] = "Hello" // compile error, type mismatch
 ```
 
 ### Variables type annotations
