@@ -183,6 +183,13 @@ This command uses this environment variables:
 - HEXPM_PASS: (optional) The Hex password to authenticate with.
 
 
+## `lsp`
+
+`gleam lsp`
+
+Run the language server, to be used by editors
+
+
 ## `new`
 
 `gleam new [OPTIONS] <PROJECT_ROOT>`
