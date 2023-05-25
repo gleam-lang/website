@@ -143,6 +143,11 @@
   avatar: "https://avatars.githubusercontent.com/u/128454?v=4"
   tier: 1
   square_avatar: false
+- name: "Adam Mokan"
+  url: "https://github.com/amokan"
+  avatar: "https://avatars.githubusercontent.com/u/140038?u=1b46dc6296c7f00d5ad6046ee2490468a7b47ead&v=4"
+  tier: 1
+  square_avatar: false
 - name: "David Flanagan"
   url: "https://github.com/rawkode"
   avatar: "https://avatars.githubusercontent.com/u/145816?u=2ee28b2e81af50f1210c32d4edff2ecae0a3fda0&v=4"
