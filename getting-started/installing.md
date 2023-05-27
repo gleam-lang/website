@@ -52,11 +52,8 @@ sudo port install gleam
 
 ### Using the Nix package manager
 
-There is a [gleam-nix](https://github.com/vic/gleam-nix) flake you can use to get
-any version of Gleam.
-
 ```sh
-nix shell github:vic/gleam-nix --override-input gleam github:gleam-lang/gleam/main -c gleam --help
+nix profile install gleam
 ```
 
 
