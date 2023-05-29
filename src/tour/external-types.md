@@ -17,3 +17,31 @@ pub external fn length(Queue(a)) -> Int = "queue" "len"
 
 pub external fn push(Queue(a), a) -> Queue(a) = "queue" "in"
 ```
+
+When you need an external type you must use the `import` command to bring them into a module.
+
+There are two ways to refer to an external type.
+
+The first is an explicit named import:
+
+```rust,noplaypen
+import mytypes.{MySpecialType}
+
+...
+
+fn myfun(x: MySpecialType) -> Int
+
+...
+```
+
+The second is a general import with name:
+
+```rust,noplaypen
+import mytypes
+
+...
+
+fn myfun(x: mytypes.MySpecialType) -> Int
+
+...
+```
