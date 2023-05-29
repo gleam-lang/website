@@ -1,0 +1,1891 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Gleam Book</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="chapter-item expanded "><a href="gleams-principles.html"><strong aria-hidden="true">2.</strong> Gleam's Principles</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">3.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/installing-gleam.html"><strong aria-hidden="true">3.1.</strong> Installing Gleam</a></li><li class="chapter-item expanded "><a href="getting-started/installing-erlang.html"><strong aria-hidden="true">3.2.</strong> Installing Erlang</a></li><li class="chapter-item expanded "><a href="getting-started/installing-rebar3.html"><strong aria-hidden="true">3.3.</strong> Installing rebar3</a></li><li class="chapter-item expanded "><a href="getting-started/editor-support.html"><strong aria-hidden="true">3.4.</strong> Editor support</a></li></ol></li><li class="chapter-item expanded "><a href="tour/index.html"><strong aria-hidden="true">4.</strong> Language tour</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tour/comments.html"><strong aria-hidden="true">4.1.</strong> Comments</a></li><li class="chapter-item expanded "><a href="tour/strings.html"><strong aria-hidden="true">4.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="tour/bools.html"><strong aria-hidden="true">4.3.</strong> Bools</a></li><li class="chapter-item expanded "><a href="tour/ints-and-floats.html"><strong aria-hidden="true">4.4.</strong> Ints &amp; Floats</a></li><li class="chapter-item expanded "><a href="tour/let-bindings.html"><strong aria-hidden="true">4.5.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="tour/lists.html"><strong aria-hidden="true">4.6.</strong> Lists</a></li><li class="chapter-item expanded "><a href="tour/tuples.html"><strong aria-hidden="true">4.7.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="tour/case-expressions.html"><strong aria-hidden="true">4.8.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="tour/functions.html"><strong aria-hidden="true">4.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="tour/modules.html"><strong aria-hidden="true">4.10.</strong> Modules</a></li><li class="chapter-item expanded "><a href="tour/custom-types.html"><strong aria-hidden="true">4.11.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="tour/try.html"><strong aria-hidden="true">4.12.</strong> Try</a></li><li class="chapter-item expanded "><a href="tour/todo.html"><strong aria-hidden="true">4.13.</strong> Todo</a></li><li class="chapter-item expanded "><a href="tour/constants.html"><strong aria-hidden="true">4.14.</strong> Constants</a></li><li class="chapter-item expanded "><a href="tour/type-aliases.html"><strong aria-hidden="true">4.15.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="tour/bit-strings.html"><strong aria-hidden="true">4.16.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="tour/external-functions.html"><strong aria-hidden="true">4.17.</strong> External functions</a></li><li class="chapter-item expanded "><a href="tour/external-types.html"><strong aria-hidden="true">4.18.</strong> External types</a></li></ol></li><li class="chapter-item expanded "><a href="writing-gleam/index.html"><strong aria-hidden="true">5.</strong> Writing Gleam</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="writing-gleam/creating-a-project.html"><strong aria-hidden="true">5.1.</strong> Creating a project</a></li><li class="chapter-item expanded "><a href="writing-gleam/running-the-project.html"><strong aria-hidden="true">5.2.</strong> Running the project</a></li><li class="chapter-item expanded "><a href="writing-gleam/documenting-the-project.html"><strong aria-hidden="true">5.3.</strong> Documenting the project</a></li><li class="chapter-item expanded "><a href="writing-gleam/example-projects.html"><strong aria-hidden="true">5.4.</strong> Example projects</a></li></ol></li><li class="chapter-item expanded "><a href="cheatsheets/index.html"><strong aria-hidden="true">6.</strong> Cheatsheets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cheatsheets/gleam-for-erlang-users.html"><strong aria-hidden="true">6.1.</strong> Gleam for Erlang users</a></li></ol></li><li class="chapter-item expanded "><a href="faqs.html"><strong aria-hidden="true">7.</strong> FAQs</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Gleam Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#gleam" id="gleam">Gleam</a></h1>
+<p>Gleam is a statically typed functional programming language for building
+scalable concurrent systems.</p>
+<p>It compiles to <a href="http://www.erlang.org/">Erlang</a> and has straightforward
+interop with other BEAM languages such as Erlang, Elixir and LFE.</p>
+<p>It looks like this:</p>
+<pre><code class="language-rust noplaypen">pub type Tree(value) {
+  Leaf(value)
+  Branch(Tree(value), Tree(value))
+}
+
+pub fn any(tree: Tree(a), check: fn(a) -&gt; Bool) -&gt; Bool {
+  case tree {
+    Leaf(i) -&gt; check(i)
+    Branch(left, right) -&gt; any(left, check) || any(right, check)
+  }
+}
+
+pub fn has_even_leaf(tree: Tree(Int)) -&gt; Bool {
+  any(tree, fn(i) {
+    i % 2 == 0
+  })
+}
+</code></pre>
+<p>The source code can be found at
+<a href="https://github.com/gleam-lang/gleam">https://github.com/gleam-lang/gleam</a>.</p>
+<p>For Gleam chat we have the IRC channel <code>#gleam-lang</code> on Freenode.</p>
+<h2><a class="header" href="#sponsors" id="sponsors">Sponsors</a></h2>
+<p>Gleam is made possible by its sponsors. A special thanks to these people who
+sponsor Gleam development for $20 or more, thank you!</p>
+<ul>
+<li><a href="https://github.com/bees">Arian Daneshvar</a></li>
+<li><a href="https://github.com/benmyles">Ben Myles</a></li>
+<li><a href="https://github.com/starbelly">Bryan Paxton</a></li>
+<li><a href="https://github.com/floriank">Florian Kraft</a></li>
+<li><a href="https://github.com/hendi">Hendrik Richter</a></li>
+<li><a href="https://github.com/igagen">Ingmar Gagen</a></li>
+<li><a href="https://github.com/jechol">Jechol Lee</a></li>
+<li><a href="https://github.com/Jwsonic">John Palgut</a></li>
+<li><a href="https://github.com/josevalim">José Valim</a></li>
+<li><a href="https://github.com/michaeljones">Michael Jones</a></li>
+<li><a href="https://github.com/wojtekmach">Wojtek Mach</a></li>
+</ul>
+<p>If you would like to support Gleam please consider <a href="https://github.com/sponsors/lpil">sponsoring the
+project</a>.</p>
+<h1><a class="header" href="#gleams-principles" id="gleams-principles">Gleam's Principles</a></h1>
+<p>These are Gleam's guiding principles. We believe these ideas have value, and
+all decisions made in the development of Gleam and its ecosystem should
+contribute to these principles.</p>
+<h3><a class="header" href="#be-safe" id="be-safe">Be safe</a></h3>
+<p>An expressive type system inspired by the ML family of languages helps us find
+and prevent bugs at compile time, long before it reaches your users.</p>
+<p>For the problems the type system can't solve (such as your server being hit by
+a bolt of lightning) the Erlang/OTP runtime provides well tested mechanisms
+for gracefully handling failure.</p>
+<h3><a class="header" href="#be-friendly" id="be-friendly">Be friendly</a></h3>
+<p>Hunting down bugs can be stressful so feedback from the compiler should be
+as clear and helpful as possible. We want to spend more time working on our
+application and less time looking for typos or deciphering cryptic error
+messages.</p>
+<p>As a community we want to be friendly too. People of all backgrounds, genders,
+and experience levels are welcome and must receive equal respect.</p>
+<h3><a class="header" href="#be-performant" id="be-performant">Be performant</a></h3>
+<p>The Erlang/OTP runtime is known for its speed and ability to scale, enabling
+organisations such as WhatsApp and Ericsson to reliably handle massive amounts
+of traffic at low latency. Gleam should take full advantage of this runtime
+and be as fast as other BEAM languages such as Erlang and Elixir.</p>
+<h3><a class="header" href="#be-a-good-citizen" id="be-a-good-citizen">Be a good citizen</a></h3>
+<p>Gleam makes it easy to use code written in other BEAM languages such as
+Erlang, Elixir and LFE, so there's a rich ecosystem of tools and library for
+Gleam users to make use of.</p>
+<p>Users of other BEAM languages should in return be able to take advantage of
+Gleam, either by transparently making use of libraries written in Gleam, or by
+adding Gleam modules to their existing project with minimal fuss.</p>
+<h1><a class="header" href="#getting-started" id="getting-started">Getting started</a></h1>
+<p>In this chapter we get the Gleam language set up on your computer and learn
+how to create an navigate a Gleam project.</p>
+<p>Good luck, have fun!</p>
+<h1><a class="header" href="#installing-gleam" id="installing-gleam">Installing Gleam</a></h1>
+<h2><a class="header" href="#precompiled-for-linux-windows-and-macos" id="precompiled-for-linux-windows-and-macos">Precompiled for Linux, Windows, and macOS</a></h2>
+<p>The easiest way to install Gleam on Linux, Windows, and Apple macOS is to download a
+prebuilt version of the compiler from the <a href="https://github.com/gleam-lang/gleam/releases">GitHub release
+page</a>.</p>
+<h2><a class="header" href="#mac-os-x" id="mac-os-x">Mac OS X</a></h2>
+<h3><a class="header" href="#using-homebrew" id="using-homebrew">Using Homebrew</a></h3>
+<p>With <a href="https://brew.sh">Homebrew</a> installed run the following:</p>
+<pre><code class="language-sh">brew update
+brew install gleam
+</code></pre>
+<h2><a class="header" href="#asdf-version-manager" id="asdf-version-manager">asdf version manager</a></h2>
+<p><a href="https://github.com/asdf-vm/asdf">asdf</a> is a tool for installing and managing
+multiple version of programming languages at the same time. Install the
+<a href="https://github.com/vic/asdf-gleam">asdf-gleam plugin</a> to manage Gleam with
+asdf.</p>
+<h2><a class="header" href="#arch-linux" id="arch-linux">Arch Linux</a></h2>
+<p>Gleam is available through the <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">Arch User Repository</a>
+as package <code>gleam</code>. You can use your prefered <a href="https://wiki.archlinux.org/index.php/AUR_helpers">helper</a>
+to install it or clone it for manual build from <a href="https://aur.archlinux.org/gleam.git">https://aur.archlinux.org/gleam.git</a>.</p>
+<h2><a class="header" href="#build-from-source" id="build-from-source">Build from source</a></h2>
+<p>The compiler is written in the Rust programming language and so if you wish to
+build Gleam from source you will need to <a href="https://www.rust-lang.org/tools/install">install the Rust
+compiler</a>.</p>
+<pre><code class="language-sh"># Download the Gleam source code git repository
+cd /tmp
+git clone https://github.com/gleam-lang/gleam.git --branch v0.8.0
+cd gleam
+
+# Build the Gleam compiler. This will take some time!
+make install
+
+# Verify the compiler is installed
+# Prints &quot;gleam $VERSION&quot;
+gleam --version
+</code></pre>
+<h1><a class="header" href="#installing-erlang" id="installing-erlang">Installing Erlang</a></h1>
+<p>Gleam compiles to Erlang code, so Erlang needs to be installed to run Gleam
+code.</p>
+<p>Precompiled builds for many popular operating systems can be downloaded from
+the <a href="https://www.erlang-solutions.com/resources/download.html">Erlang solutions website</a>.</p>
+<p>Guides for installing Erlang on specific operating systems can be found below,
+as well as information on installing multiple versions of Erlang at once using
+version management tools.</p>
+<p>Once Erlang has been installed you can check it is working by typing <code>erl -version</code> in your computer's terminal. You will see version information like
+this if all is well:</p>
+<pre><code>$ erl -version
+Erlang (SMP,ASYNC_THREADS,HIPE) (BEAM) emulator version 10.1
+</code></pre>
+<h3><a class="header" href="#linux" id="linux">Linux</a></h3>
+<h4><a class="header" href="#debian-linux" id="debian-linux">Debian Linux</a></h4>
+<pre><code class="language-sh">sudo apt-get update
+sudo apt-get install erlang
+</code></pre>
+<h4><a class="header" href="#ubuntu-linux" id="ubuntu-linux">Ubuntu Linux</a></h4>
+<pre><code class="language-sh">sudo apt-get update
+sudo apt-get install erlang
+</code></pre>
+<h3><a class="header" href="#mac-os-x-1" id="mac-os-x-1">Mac OS X</a></h3>
+<h4><a class="header" href="#using-homebrew-1" id="using-homebrew-1">Using Homebrew</a></h4>
+<p>With <a href="https://brew.sh">Homebrew</a> installed run the following:</p>
+<pre><code class="language-sh">brew update
+brew install erlang
+</code></pre>
+<h3><a class="header" href="#windows" id="windows">Windows</a></h3>
+<h4><a class="header" href="#using-chocolatey" id="using-chocolatey">Using Chocolatey</a></h4>
+<p>With <a href="https://chocolatey.org/">Chocolatey</a> installed on your computer run the
+following:</p>
+<pre><code>choco install erlang
+</code></pre>
+<h3><a class="header" href="#using-version-managers" id="using-version-managers">Using version managers</a></h3>
+<h4><a class="header" href="#asdf" id="asdf">asdf</a></h4>
+<p>The asdf version manager has a plugin for installing Erlang. Installation and
+usage instructions can be found here:</p>
+<ul>
+<li><a href="https://github.com/asdf-vm/asdf">https://github.com/asdf-vm/asdf</a></li>
+<li><a href="https://github.com/asdf-vm/asdf-erlang">https://github.com/asdf-vm/asdf-erlang</a></li>
+</ul>
+<h1><a class="header" href="#installing-rebar3" id="installing-rebar3">Installing rebar3</a></h1>
+<p>The last item to install is rebar3, the Erlang build tool that we use to
+compile and run Gleam projects.</p>
+<p>Installation instructions can be found on the <a href="https://www.rebar3.org/">rebar3 website</a>.</p>
+<h1><a class="header" href="#editor-support" id="editor-support">Editor support</a></h1>
+<p>Gleam plugins are available for several popular editors. If one exists for
+your editor of choice consider installing it for syntax highlighting and other
+niceties.</p>
+<ul>
+<li><strong>Vim</strong> - <a href="https://github.com/gleam-lang/gleam.vim">https://github.com/gleam-lang/gleam.vim</a></li>
+<li><strong>Emacs</strong> - <a href="https://github.com/gleam-lang/gleam-mode">https://github.com/gleam-lang/gleam-mode</a></li>
+<li><strong>Visual Studio Code</strong> - <a href="https://github.com/rawburt/vscode-gleam-syntax">https://github.com/rawburt/vscode-gleam-syntax</a></li>
+</ul>
+<h1><a class="header" href="#language-tour" id="language-tour">Language Tour</a></h1>
+<p>In this chapter we explore the fundamentals of the Gleam language, namely its
+syntax, core data structures, flow control features, and static type system.</p>
+<p>After completion the reader should know enough to start reading and writing
+Gleam code, assuming they have some prior programming experience.</p>
+<p>In some sections we touch on the runtime representation of various features.
+This is useful for programmers with Erlang or Elixir experience who wish to
+use Gleam alongside these languages. If you are using Gleam alone this
+information can be safely ignored.</p>
+<h1><a class="header" href="#comments" id="comments">Comments</a></h1>
+<p>Gleam allows you to write comments in your code.</p>
+<p>Here’s a simple comment:</p>
+<pre><code class="language-rust noplaypen">// Hello, world!
+</code></pre>
+<p>In Gleam, comments must start with two slashes and continue until the end of the
+line. For comments that extend beyond a single line, you’ll need to include
+<code>//</code> on each line, like this:</p>
+<pre><code class="language-rust noplaypen">// Hello, world! I have a lot to say, so much that it will take multiple
+// lines of text. Therefore, I will start each line with // to denote it
+// as part of a multi-line comment.
+</code></pre>
+<p>Comments can also be placed at the end of lines containing code:</p>
+<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+  x + y // here we are adding two values together
+}
+</code></pre>
+<p>Comments may also be indented:</p>
+<pre><code class="language-rust noplaypen">pub fn multiply(x, y) {
+  // here we are multiplying x by y
+  x * y 
+}
+</code></pre>
+<h1><a class="header" href="#string" id="string">String</a></h1>
+<p>Gleam's has UTF-8 binary strings, written as text surrounded by double quotes.</p>
+<pre><code class="language-rust noplaypen">&quot;Hello, Gleam!&quot;
+</code></pre>
+<p>Strings can span multiple lines.</p>
+<pre><code class="language-rust noplaypen">&quot;Hello
+Gleam!&quot;
+</code></pre>
+<p>Special characters such as <code>&quot;</code> need to be escaped with a <code>\</code> character.</p>
+<pre><code class="language-rust noplaypen">&quot;Here is a double quote -&gt; \&quot; &lt;-&quot;
+</code></pre>
+<h1><a class="header" href="#bool" id="bool">Bool</a></h1>
+<p>A Bool can be either <code>True</code> or <code>False</code>.</p>
+<p>Gleam defines a handful of operators that work with Bools.</p>
+<pre><code class="language-rust noplaypen">False &amp;&amp; False // =&gt; False
+False &amp;&amp; True  // =&gt; False
+True &amp;&amp; False  // =&gt; False
+True &amp;&amp; True   // =&gt; True
+
+False || False // =&gt; False
+False || True  // =&gt; True
+True || False  // =&gt; True
+True || True   // =&gt; True
+</code></pre>
+<p><code>&amp;&amp;</code> and <code>||</code> are <em>short circuiting</em>, meaning they don't evaluate the right
+hand side if they don't have to.</p>
+<p><code>&amp;&amp;</code> evaluates the right hand side if the left hand side is <code>True</code>.</p>
+<p><code>||</code> evaluates the right hand side if the left hand side is <code>False</code>.</p>
+<h2><a class="header" href="#erlang-interop" id="erlang-interop">Erlang interop</a></h2>
+<p>While written in the code using a capital letter, they are represented at
+runtime with the atoms <code>true</code> and <code>false</code>, making them compatible with Elixir
+and Erlang's booleans.</p>
+<p>This is important if you want to use Gleam and Elixir or Erlang together in
+one project.</p>
+<pre><code class="language-rust noplaypen">// Gleam
+True
+False
+</code></pre>
+<pre><code class="language-erlang">% Erlang
+true.
+false.
+</code></pre>
+<h1><a class="header" href="#int-and-float" id="int-and-float">Int and Float</a></h1>
+<p>Gleam's main number types are Int and Float.</p>
+<h2><a class="header" href="#ints" id="ints">Ints</a></h2>
+<p>Ints are &quot;whole&quot; numbers.</p>
+<pre><code class="language-rust noplaypen">1
+2
+-3
+4001
+</code></pre>
+<p>Gleam has several operators that work with Ints.</p>
+<pre><code class="language-rust noplaypen">1 + 1 // =&gt; 2
+5 - 1 // =&gt; 4
+5 / 2 // =&gt; 2
+3 * 3 // =&gt; 9
+5 % 2 // =&gt; 1
+
+2 &gt; 1  // =&gt; True
+2 &lt; 1  // =&gt; False
+2 &gt;= 1 // =&gt; True
+2 &lt;= 1 // =&gt; False
+</code></pre>
+<p>Underscores can be added to Ints for clarity.</p>
+<pre><code class="language-rust noplaypen">1_000_000 // One million
+</code></pre>
+<h2><a class="header" href="#floats" id="floats">Floats</a></h2>
+<p>Floats are numbers that have a decimal point.</p>
+<pre><code class="language-rust noplaypen">1.5
+2.0
+-0.1
+</code></pre>
+<p>Floats also have their own set of operators.</p>
+<pre><code class="language-rust noplaypen">1.0 +. 1.4 // =&gt; 2.4
+5.0 -. 1.5 // =&gt; 3.5
+5.0 /. 2.0 // =&gt; 2.5
+3.0 *. 3.1 // =&gt; 9.3
+
+2.0 &gt;. 1.0  // =&gt; True
+2.0 &lt;. 1.0  // =&gt; False
+2.0 &gt;=. 1.0 // =&gt; True
+2.0 &lt;=. 1.0 // =&gt; False
+</code></pre>
+<p>Underscores can also be added to Floats for clarity.</p>
+<pre><code class="language-rust noplaypen">1_000_000.0 // One million
+</code></pre>
+<h1><a class="header" href="#let-bindings" id="let-bindings">Let bindings</a></h1>
+<p>A value can be given a name using <code>let</code>. Names can be reused by later let
+bindings, but the values contained are <em>immutable</em>, meaning the values
+themselves cannot be changed.</p>
+<pre><code class="language-rust noplaypen">let x = 1
+let y = x
+let x = 2
+
+x  // =&gt; 2
+y  // =&gt; 1
+</code></pre>
+<h1><a class="header" href="#list" id="list">List</a></h1>
+<p>Lists are ordered collections of values. They're one of the most common data
+structures in Gleam.</p>
+<p>Lists are <em>homogeneous</em>, meaning all the elements of a List must be of the
+same type. Attempting to construct a list of multiple types of element will
+result in the compiler presenting a type error.</p>
+<pre><code class="language-rust noplaypen">[1, 2, 3, 4]  // List(Int)
+[1.22, 2.30]  // List(Float)
+[1.22, 3, 4]  // Type error!
+</code></pre>
+<p>Prepending to a list is very fast, and is the preferred way to add new values.</p>
+<pre><code class="language-rust noplaypen">[1, ..[2, 3]]  // =&gt; [1, 2, 3]
+</code></pre>
+<p>Note that as all data structures in Gleam are immutable so prepending to a
+list does not change the original list, instead it efficiently creates a new
+list with the new additional element.</p>
+<pre><code class="language-rust noplaypen">let x = [2, 3]
+let y = [1, ..x]
+
+
+x  // =&gt; [2, 3]
+y  // =&gt; [1, 2, 3]
+</code></pre>
+<h1><a class="header" href="#tuple" id="tuple">Tuple</a></h1>
+<p>Lists are good for when we want a collection of one type, but sometime we want
+to combine multiple values of different types. In this case tuples are a quick
+and convenient option.</p>
+<pre><code class="language-rust noplaypen">fn run() {
+  tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
+  tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
+}
+</code></pre>
+<h1><a class="header" href="#case" id="case">Case</a></h1>
+<p>The <code>case</code> expression is the most common kind of flow control in Gleam code. It
+allows us to say &quot;if the data has this shape then do that&quot;, which we call
+<em>pattern matching</em>.</p>
+<p>Here we match on an <code>Int</code> and return a specific string for the values 0, 1,
+and 2. The final pattern <code>n</code> matches any other value that did not match any of
+the previous patterns.</p>
+<pre><code class="language-rust noplaypen">case some_number {
+  0 -&gt; &quot;Zero&quot;
+  1 -&gt; &quot;One&quot;
+  2 -&gt; &quot;Two&quot;
+  n -&gt; &quot;Some other number&quot; // This matches anything
+}
+</code></pre>
+<p>Pattern matching on a <code>Bool</code> value is the Gleam alternative to the <code>if else</code>
+statement found in other languages.</p>
+<pre><code class="language-rust noplaypen">case some_bool {
+  True -&gt; &quot;It's true!&quot;
+  False -&gt; &quot;It's not true.&quot;
+}
+</code></pre>
+<p>Gleam's <code>case</code> is an expression, meaning it returns a value and can be used
+anywhere we would use a value. For example, we can name the value of a case
+expression with a <code>let</code> binding.</p>
+<pre><code class="language-rust noplaypen">let description =
+  case True {
+    True -&gt; &quot;It's true!&quot;
+    False -&gt; &quot;It's not true.&quot;
+  }
+
+description  // =&gt; &quot;It's true!&quot;
+</code></pre>
+<h2><a class="header" href="#destructuring" id="destructuring">Destructuring</a></h2>
+<p>A <code>case</code> expression can be used to destructure values that
+contain other values, such as tuples and lists.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [] -&gt; &quot;This list is empty&quot;
+  [a] -&gt; &quot;This list has 1 element&quot;
+  [a, b] -&gt; &quot;This list has 2 elements&quot;
+  _other -&gt; &quot;This list has more than 2 elements&quot;
+}
+</code></pre>
+<p>It's not just the top level data structure that can be pattern matches,
+contained values can also be matched. This gives <code>case</code> the ability to
+concisely express flow control that might be verbose without pattern matching.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [[]] -&gt; &quot;The only element is an empty list&quot;
+  [[], ..] -&gt; &quot;The 1st element is an empty list&quot;
+  [[4], ..] -&gt; &quot;The 1st element is a list of the number 4&quot;
+  other -&gt; &quot;Something else&quot;
+}
+</code></pre>
+<p>Pattern matching also works in <code>let</code> bindings, though patterns that do not
+match all instances of that type may result in a runtime error.</p>
+<pre><code class="language-rust noplaypen">let [a] = [1]    // a is 1
+let [b] = [1, 2] // Runtime error! The pattern has 1 element but the value has 2
+</code></pre>
+<h2><a class="header" href="#matching-on-multiple-values" id="matching-on-multiple-values">Matching on multiple values</a></h2>
+<p>Sometimes it is useful to pattern match on multiple values at the same time,
+so <code>case</code> supports having multiple subjects.</p>
+<pre><code class="language-rust noplaypen">case x, y {
+  1, 1 -&gt; &quot;both are 1&quot;
+  1, _ -&gt; &quot;x is 1&quot;
+  _, 1 -&gt; &quot;y is 1&quot;
+  _, _ -&gt; &quot;neither is 1&quot;
+}
+</code></pre>
+<h2><a class="header" href="#assigning-names-to-sub-patterns" id="assigning-names-to-sub-patterns">Assigning names to sub-patterns</a></h2>
+<p>Sometimes when pattern matching we want to assign a name to a value while
+specifying its shape at the same time. We can do this using the <code>as</code> keyword.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [[_, ..] as inner_list] -&gt; inner_list
+  other -&gt; []
+}
+</code></pre>
+<h2><a class="header" href="#checking-equality-and-ordering-in-patterns" id="checking-equality-and-ordering-in-patterns">Checking equality and ordering in patterns</a></h2>
+<p>The <code>if</code> keyword can be used to add a guard expression to a case clause. Both
+the patterns have to match and the guard has to evaluate to <code>True</code> for the
+clause to match. The guard expression can check for equality or ordering for
+<code>Int</code> and <code>Float</code>.</p>
+<pre><code class="language-rust noplaypen">case xs {
+  [a, b, c] if a == b &amp;&amp; b != c -&gt; &quot;ok&quot;
+  _other -&gt; &quot;ko&quot;
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">case xs {
+  [a, b, c] if a &gt;. b &amp;&amp; a &lt;=. c -&gt; &quot;ok&quot;
+  _other -&gt; &quot;ko&quot;
+}
+</code></pre>
+<h2><a class="header" href="#alternative-clause-patterns" id="alternative-clause-patterns">Alternative clause patterns</a></h2>
+<p>Alternative patterns can be given for a case clause using the <code>|</code> operator. If
+any of the patterns match then the clause matches.</p>
+<p>Here the first clause will match if the variable <code>number</code> holds 2, 4, 6 or 8.</p>
+<pre><code class="language-rust noplaypen">case number {
+  2 | 4 | 6 | 8 -&gt; &quot;This is an even number&quot;
+  1 | 3 | 5 | 7 -&gt; &quot;This is an odd number&quot;
+  _ -&gt; &quot;I'm not sure&quot;
+}
+</code></pre>
+<p>If the patterns declare variables then the same variables must be declared in
+all patterns, and the variables must have the same type in all the patterns.</p>
+<pre><code class="language-rust noplaypen">case list {
+  [1, x] | x -&gt; x // Error! Int != List(Int)
+  _ -&gt; 0
+}
+</code></pre>
+<h1><a class="header" href="#function" id="function">Function</a></h1>
+<h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
+<p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
+<pre><code class="language-rust noplaypen">pub fn add(x: Int, y: Int) -&gt; Int {
+  x + y
+}
+
+pub fn multiply(x: Int, y: Int) -&gt; Int {
+  x * y
+}
+</code></pre>
+<p>Functions in Gleam are first class values and so can be assigned to variables,
+passed to functions, or anything else you might do with any other data type.</p>
+<pre><code class="language-rust noplaypen">// This function takes a function as an argument
+pub fn twice(f: fn(t) -&gt; t, x: t) -&gt; t {
+  f(f(x))
+}
+
+pub fn add_one(x: Int) -&gt; Int {
+  x + 1
+}
+
+pub fn add_two(x: Int) -&gt; Int {
+  twice(add_one, x)
+}
+</code></pre>
+<h2><a class="header" href="#pipe-operator" id="pipe-operator">Pipe Operator</a></h2>
+<p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
+<p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
+<pre><code class="language-rust noplaypen">iodata.to_string(iodata.reverse(iodata.new(string)))
+</code></pre>
+<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
+<pre><code class="language-rust noplaypen">string
+|&gt; iodata.new
+|&gt; iodata.reverse
+|&gt; iodata.to_string
+</code></pre>
+<p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
+<h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
+<p>Function arguments are normally annotated with their type, and the
+compiler will check these annotations and ensure they are correct.</p>
+<pre><code class="language-rust noplaypen">fn identity(x: some_type) -&gt; some_type {
+  x
+}
+
+fn inferred_identity(x) {
+  x
+}
+</code></pre>
+<p>The Gleam compiler can infer all the types of Gleam code without annotations
+and both annotated and unannotated code is equally safe. It's considered a
+best practice to always write type annotations for your functions as they
+provide useful documentation, and they encourage thinking about types as code
+is being written.</p>
+<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
+<p>When functions take several arguments it can be difficult for the user to
+remember what the arguments are, and what order they are expected in.</p>
+<p>To help with this Gleam supports <em>labelled arguments</em>, where function
+arguments are given an external label in addition to their internal name.</p>
+<p>Take this function that replaces sections of a string:</p>
+<pre><code class="language-rust noplaypen">pub fn replace(string: String, pattern: String, replacement: String) {
+  // ...
+}
+</code></pre>
+<p>It can be given labels like so.</p>
+<pre><code class="language-rust noplaypen">pub fn replace(
+  in string: String,
+  each pattern: String,
+  with replacement: String,
+) {
+  // The variables `string`, `pattern`, and `replacement` are in scope here
+}
+</code></pre>
+<p>These labels can then be used when calling the function.</p>
+<pre><code class="language-rust noplaypen">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
+
+// Labelled arguments can be given in any order
+replace(each: &quot;,&quot;, with: &quot; &quot;, in: &quot;A,B,C&quot;)
+
+// Arguments can still be given in a positional fashion
+replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
+</code></pre>
+<p>The use of argument labels can allow a function to be called in an expressive,
+sentence-like manner, while still providing a function body that is readable
+and clear in intent.</p>
+<h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
+<p>Anonymous functions can be defined with a similar syntax.</p>
+<pre><code class="language-rust noplaypen">pub fn run() {
+  let add = fn(x, y) { x + y }
+
+  add(1, 2)
+}
+</code></pre>
+<h2><a class="header" href="#function-capturing" id="function-capturing">Function capturing</a></h2>
+<p>There is a shorthand syntax for creating anonymous functions that take one
+argument and call another function. The <code>_</code> is used to indicate where the
+argument should be passed.</p>
+<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+  x + y
+}
+
+pub fn run() {
+  let add_one = add(1, _)
+
+  add_one(2)
+}
+</code></pre>
+<p>The function capture syntax is often used with the pipe operator to create
+a series of transformations on some data.</p>
+<pre><code class="language-rust noplaypen">pub fn add(x: Int , y: Int ) -&gt; Int {
+  x + y
+}
+
+pub fn run() {
+  // This is the same as add(add(add(1, 3), 6), 9)
+  1
+  |&gt; add(_, 3)
+  |&gt; add(_, 6)
+  |&gt; add(_, 9)
+}
+</code></pre>
+<p>In fact, this usage is so common that there is a special shorthand for it.</p>
+<pre><code class="language-rust noplaypen">pub fn run() {
+  // This is the same as the example above
+  1
+  |&gt; add(3)
+  |&gt; add(6)
+  |&gt; add(9)
+}
+</code></pre>
+<p>The pipe operator will first check to see if the left hand value could be used
+as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
+<p>If not it falls back to calling the result of the right hand side as a function
+, e.g. <code>b(1, 2)(a)</code>.</p>
+<h1><a class="header" href="#module" id="module">Module</a></h1>
+<p>Gleam programs are made up of bundles of functions and types called modules.
+Each module has its own namespace and can export types and values to be used
+by other modules in the program.</p>
+<pre><code class="language-rust noplaypen">// inside src/nasa/rocket_ship.gleam
+
+fn count_down() {
+  &quot;3... 2... 1...&quot;
+}
+
+fn blast_off() {
+  &quot;BOOM!&quot;
+}
+
+pub fn launch() {
+  [
+    count_down(),
+    blast_off(),
+  ]
+}
+</code></pre>
+<p>Here we can see a module named <code>nasa/rocket_ship</code>, the name determined by the
+filename <code>src/nasa/rocket_ship.gleam</code>. Typically all the modules for one
+project would live within a directory with the name of the project, such as
+<code>nasa</code> in this example.</p>
+<p>For the functions <code>count_down</code> and <code>blast_off</code> we have omitted the <code>pub</code>
+keyword, so these functions are <em>private</em> module functions. They can only be
+called by other functions within the same module.</p>
+<h2><a class="header" href="#import" id="import">Import</a></h2>
+<p>To use functions or types from another module we need to import them using the
+<code>import</code> keyword.</p>
+<pre><code class="language-rust noplaypen">// inside src/nasa/moon_base.gleam
+
+import nasa/rocket_ship
+
+pub fn explore_space() {
+  rocket_ship.launch()
+}
+</code></pre>
+<p>The statement <code>import nasa/rocket_ship</code> creates a new variable with the name
+<code>rocket_ship</code> and the value of the <code>rocket_ship</code> module.</p>
+<p>In the <code>explore_space</code> function we call the imported module's public <code>launch</code>
+function using the <code>.</code> operator.
+If we had attempted to call <code>count_down</code> it would result in a compile time
+error as this function is private in the <code>rocket_ship</code> module.</p>
+<h2><a class="header" href="#named-import" id="named-import">Named import</a></h2>
+<p>It is also possible to give a module a custom name when importing it using the
+<code>as</code> keyword.</p>
+<pre><code class="language-rust noplaypen">import unix/cat
+import animal/cat as kitty
+</code></pre>
+<p>This may be useful to differentiate between multiple modules that would have
+the same default name when imported.</p>
+<h2><a class="header" href="#unqualified-import" id="unqualified-import">Unqualified import</a></h2>
+<p>Values and types can also be imported in an unqualified fashion.</p>
+<pre><code class="language-rust noplaypen">import animal/cat.{Cat, stroke}
+
+pub fn main() {
+  let kitty = Cat(name: &quot;Nubi&quot;)
+  stroke(kitty)
+}
+</code></pre>
+<p>This may be useful for values that are used frequently in a module, but
+generally qualified imports are preferred as it makes it clearer where the
+value is defined.</p>
+<h1><a class="header" href="#custom-types" id="custom-types">Custom types</a></h1>
+<p>Gleam's custom types are named collections of keys and values. They are
+similar to objects in object oriented languages, though they don't have
+methods.</p>
+<p>Custom types are defined with the <code>type</code> keyword.</p>
+<pre><code class="language-rust noplaypen">pub type Cat {
+  Cat(name: String, cuteness: Int)
+}
+</code></pre>
+<p>Here we have defined a custom type called <code>Cat</code>. Its constructor is called
+<code>Cat</code> and it has two fields: A <code>name</code> field which is a <code>String</code>, and a
+<code>cuteness</code> field which is an <code>Int</code>.</p>
+<p>The <code>pub</code> keyword makes this type usable from other modules.</p>
+<p>Once defined the custom type can be used in functions:</p>
+<pre><code class="language-rust noplaypen">fn cats() {
+  // Labelled fields can be given in any order
+  let cat1 = Cat(name: &quot;Nubi&quot;, cuteness: 2001)
+  let cat2 = Cat(cuteness: 1805, name: &quot;Biffy&quot;)
+
+  // Alternatively fields can be given without labels
+  let cat3 = Cat(&quot;Ginny&quot;, 1950)
+
+  [cat1, cat2, cat3]
+}
+</code></pre>
+<h2><a class="header" href="#multiple-constructors" id="multiple-constructors">Multiple constructors</a></h2>
+<p>Custom types in Gleam can be defined with multiple constructors, making them a
+way of modeling data that can be one of a few different variants.</p>
+<p>We've seen a custom type with multiple constructors already in this chapter -
+<code>Bool</code>.</p>
+<p>Bool is defined like this:</p>
+<pre><code class="language-rust noplaypen">// A Bool is a value that is either `True` or `False`
+pub type Bool {
+  True
+  False
+}
+</code></pre>
+<p>The records created by different constructors for a custom type can contain
+different values. For example a <code>User</code> custom type could have a <code>LoggedIn</code>
+constructors that creates records with a name, and a <code>Guest</code> constructor which
+creates records without any contained values.</p>
+<pre><code class="language-rust noplaypen">type User {
+  LoggedIn(name: String)  // A logged in user with a name
+  Guest                   // A guest user with no details
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">let sara = LoggedIn(name: &quot;Sara&quot;)
+let rick = LoggedIn(name: &quot;Rick&quot;)
+let visitor = Guest
+</code></pre>
+<h2><a class="header" href="#destructuring-1" id="destructuring-1">Destructuring</a></h2>
+<p>When given a custom type record we can pattern match on it to determine which
+record constructor matches, and to assign names to any contained values.</p>
+<pre><code class="language-rust noplaypen">fn get_name(user) {
+  case user {
+    LoggedIn(name) -&gt; name
+    Guest -&gt; &quot;Guest user&quot;
+  }
+}
+</code></pre>
+<p>Custom types can also be destructured with a <code>let</code> binding.</p>
+<pre><code class="language-rust noplaypen">type Score {
+  Points(Int)
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">let score = Points(50)
+let Points(p) = score
+
+p // =&gt; 50
+</code></pre>
+<h2><a class="header" href="#opaque-types" id="opaque-types">Opaque types</a></h2>
+<p>At times it may be useful to create a type and make the constructors and
+fields private so that users of this type can only use the type through
+publically exported functions.</p>
+<p>For example we can create an <code>Counter</code> type which holds an int which can be
+incremented. We don't want the user to alter the int value other than by
+incrementing it, so we can make the opaque opaque to prevent them from being
+able to do this.</p>
+<pre><code class="language-rust noplaypen">// The type is defined with the opaque keyword
+pub opaque type Counter {
+  Counter(value: Int)
+}
+
+pub fn new() {
+  Counter(0)
+}
+
+pub fn increment(counter: Counter) {
+  Counter(counter.value + 1)
+}
+</code></pre>
+<p>Because the <code>Counter</code> type has been marked as <code>opaque</code> it is not possible for
+code in other modules to construct or pattern match on counter values or
+access the <code>value</code> field. Instead other modules have to manipulate the opaque
+type using the exported functions from the module, in this case <code>new</code> and
+<code>increment</code>.</p>
+<h2><a class="header" href="#record-updates" id="record-updates">Record updates</a></h2>
+<p>Gleam provides a dedicated syntax for updating some of the fields of a custom
+type record.</p>
+<pre><code class="language-rust noplaypen">pub type Person {
+  Person(
+    name: String,
+    gender: Option(String),
+    shoe_size: Int,
+    age: Int,
+    is_happy: Bool,
+  )
+}
+
+pub fn have_birthday(person) {
+  // It's this person's birthday, so increment their age and
+  // make them happy
+  Person(..person, age: person.age + 1, is_happy: true)
+}
+</code></pre>
+<p>As Gleam records are immutable the update syntax does not alter the fields in
+place, instead it created a new record with the values of the initial record
+with the new values added.</p>
+<h2><a class="header" href="#commonly-used-custom-types" id="commonly-used-custom-types">Commonly used custom types</a></h2>
+<h3><a class="header" href="#bool-1" id="bool-1"><code>Bool</code></a></h3>
+<pre><code class="language-rust noplaypen">pub type Bool {
+  True
+  False
+}
+</code></pre>
+<p>As seen above Gleam's <code>Bool</code> type is a custom type! Use it to answer yes/no
+questions and to indicate whether something is <code>True</code> or <code>False</code>.</p>
+<h3><a class="header" href="#resultvalue-error" id="resultvalue-error"><code>Result(value, error)</code></a></h3>
+<pre><code class="language-rust noplaypen">pub type Result(value, reason) {
+  Ok(value)
+  Error(reason)
+}
+</code></pre>
+<p>Gleam doesn't have exceptions or <code>null</code> to represent errors in our programs,
+instead we have the <code>Result</code> type. If a function call fail wrap the returned
+value in a <code>Result</code>, either <code>Ok</code> if the function was successful, or <code>Error</code>
+if it failed.</p>
+<pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
+  // ... we found a phone number in the phone book for the given name here
+  Ok(phone_number)
+}
+</code></pre>
+<p>The <code>Error</code> type needs to be given a reason for the failure in order to
+return, like so:</p>
+<pre><code class="language-rust noplaypen">pub type MyDatabaseError {
+  InvalidQuery
+  NetworkTimeout
+}
+
+pub fn insert(db_row) {
+  // ... something went wrong connecting to a database here
+  Error(NetworkTimeout)
+}
+</code></pre>
+<p>In cases where we don't care about the specific error enough to want to create
+a custom error type, or when the cause of the error is obvious without further
+detail, the <code>Nil</code> type can be used as the <code>Error</code> reason.</p>
+<pre><code class="language-rust noplaypen">pub fn lookup(name, phone_book) {
+  // ... That name wasn't found in the phone book
+  Error(Nil)
+}
+</code></pre>
+<p>When we have a <code>Result</code> type returned to us from a function we can pattern
+match on it using <code>case</code> to determine whether we have an <code>Ok</code> result or
+an <code>Error</code> result.</p>
+<p>The standard library <code>gleam/result</code> module contains helpful functions for
+working with the <code>Result</code> type, make good use of them!</p>
+<h2><a class="header" href="#erlang-interop-1" id="erlang-interop-1">Erlang interop</a></h2>
+<p>At runtime custom type records with no contained values become atoms. The
+atoms are written in <code>snake_case</code> rather than <code>CamelCase</code> so <code>LoggedIn</code>
+becomes <code>logged_in</code>.</p>
+<p>Custom type records with contained values are Erlang records. The Gleam
+compiler generates an Erlang header file with a record definition for each
+constructor, for use from Erlang.</p>
+<pre><code class="language-rust noplaypen">// Gleam
+Guest
+LoggedIn(&quot;Kim&quot;)
+</code></pre>
+<pre><code># Elixir
+:guest
+{:logged_in, &quot;Kim&quot;}
+</code></pre>
+<pre><code>% Erlang
+guest,
+{logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
+</code></pre>
+<h1><a class="header" href="#try" id="try">Try</a></h1>
+<p>In Gleam if a function can fail then it returns a Result, wrapping a
+successful return value in an Ok record, or returning detail on the failure in
+an Error record if it's not successful.</p>
+<pre><code class="language-rust noplaypen">// parse_int(String) -&gt; Result(Int, String)
+
+parse_int(&quot;123&quot;) // -&gt; Ok(123)
+parse_int(&quot;erl&quot;) // -&gt; Error(&quot;expected a number, got `erl`&quot;)
+</code></pre>
+<p>When a function returns a Result we can pattern match on it to handle success
+and failure:</p>
+<pre><code class="language-rust noplaypen">case parse_int(&quot;123&quot;) {
+    Error(e) -&gt; io.println(&quot;That wasn't an Int&quot;)
+      Ok(i) -&gt; io.println(&quot;We parsed the Int&quot;)
+}
+</code></pre>
+<p>This is such a common pattern in Gleam that the <code>try</code> syntax exists to make it
+more consise.</p>
+<pre><code class="language-rust noplaypen">try int_a = parse_int(a)
+try int_b = parse_int(b)
+try int_c = parse_int(c)
+Ok(int_a + int_b + int_c)
+</code></pre>
+<p>When a variable is declared using <code>try</code> Gleam checks to see whether the value
+is an Error or an Ok record. If it's an Ok then the inner value is assigned to
+the variable:</p>
+<pre><code class="language-rust noplaypen">try x = Ok(1)
+Ok(x + 1)
+// -&gt; Ok(2)
+</code></pre>
+<p>If it's an Error then the Error is returned immediately:</p>
+<pre><code class="language-rust noplaypen">try x = Error(&quot;failure&quot;)
+Ok(x + 1)
+// -&gt; Error(&quot;failure&quot;)
+</code></pre>
+<h1><a class="header" href="#todo" id="todo">Todo</a></h1>
+<p>Gleam's <code>todo</code> keyword is used to indicate that some code is not yet finished.</p>
+<p>It can be useful when designing a module, type checking functions and types
+but leaving the implementation of the functions until later.</p>
+<pre><code class="language-rust noplaypen">fn favourite_number() -&gt; Int {
+  // The type annotations says this returns an Int, but we don't need
+  // to implement it yet.
+  todo
+}
+
+pub fn main() {
+  favourite_number() * 2
+}
+</code></pre>
+<p>When this code is built Gleam will type check and compile the code to ensure
+it is valid, and the <code>todo</code> will be replaced with code that crashes the
+program if that function is run.</p>
+<p>A message can be given as a form of documentation. The message will be printed
+in the error message when the <code>todo</code> code is run.</p>
+<pre><code class="language-rust noplaypen">fn favourite_number() -&gt; Int {
+  todo(&quot;We're going to decide which number is best tomorrow&quot;)
+}
+</code></pre>
+<p>When the compiler finds a <code>todo</code> it will print a warning, which can be useful
+to avoid accidentally forgetting to remove a <code>todo</code>.</p>
+<p>The warning also includes the expected type of the expression that needs to
+replace the <code>todo</code>. This can be a useful way of asking the compiler what type
+is needed if you are ever unsure.</p>
+<pre><code class="language-rust noplaypen">fn main() {
+  my_complicated_function(
+    // What type does this function take again...?
+    todo
+  )
+}
+</code></pre>
+<h1><a class="header" href="#constants" id="constants">Constants</a></h1>
+<p>Gleam's module constants provide a way to use a certain fixed value in
+multiple places in a Gleam project.</p>
+<pre><code class="language-rust noplaypen">pub const start_year: = 2101
+pub const end_year: = 2111
+
+pub fn is_before(year: Int) -&gt; Bool {
+  year &lt; start_year
+}
+
+pub fn is_during(year: Int) -&gt; Bool {
+  start_year &lt;= year &amp;&amp; year &lt;= end_year
+}
+</code></pre>
+<p>Like all values in Gleam constants are immutable and their values cannot be
+changed, so they cannot be used as global mutable state.</p>
+<p>When a constant is referenced the value is inlined by the compiler, so they
+can be used in case expression guards.</p>
+<pre><code class="language-rust noplaypen">pub const start_year: Int = 2101
+pub const end_year: Int = 2111
+
+pub describe(year: Int) -&gt; String {
+  case year {
+    year if year &lt; start_year -&gt; &quot;Before&quot;
+    year if year &gt; end_year -&gt; &quot;After&quot;
+    _ -&gt; &quot;During&quot;
+  }
+}
+</code></pre>
+<h1><a class="header" href="#type-aliases" id="type-aliases">Type aliases</a></h1>
+<p>Type aliases are a way of creating a new name for an existing type. This is
+useful when the name of the type may be long and awkward to type repeatedly.</p>
+<p>Here we are giving the type <code>List(tuple(String, String))</code> the new name
+<code>Headers</code>. This may be useful in a web application where we want to write
+multiple functions that return headers.</p>
+<pre><code class="language-rust noplaypen">pub type Headers =
+  List(tuple(String, String))
+</code></pre>
+<h1><a class="header" href="#bit-strings" id="bit-strings">Bit strings</a></h1>
+<p>Gleam offers a syntax for working directly with raw data in the form of bit
+strings.</p>
+<pre><code class="language-rust noplaypen">// A bit string of the 8 bit int value 3
+&lt;&lt;3&gt;&gt;
+
+// A bit string of the utf8 encoded string &quot;Gleam&quot;
+&lt;&lt;&quot;Gleam&quot;:utf8&gt;&gt;
+
+// A bit string of 3 bits with the value 0 and 1 bit with the value 1
+&lt;&lt;0:size(1), 0:size(1), 0:size(1), 1:size(1)&gt;&gt;
+</code></pre>
+<p>More information on bit strings can be found in the <a href="https://erlang.org/doc/programming_examples/bit_syntax.html">Erlang
+documentation</a></p>
+<h1><a class="header" href="#external-function" id="external-function">External function</a></h1>
+<p>Gleam is just one of many languages on the Erlang virtual machine and at times
+we may want to use functions from these other languages in our Gleam programs.
+To enable this Gleam allows the importing of <em>external functions</em>, which may
+be written in any BEAM language.</p>
+<p>External functions are typically written in a different language with a
+different type system, so the compiler is unable to determine the type of the
+function and instead the programmer must inform the compiler the type.</p>
+<p>Gleam trusts that the type given is correct so an inaccurate type annotation
+can result in unexpected behaviour and crashes at runtime. Be careful!</p>
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<p>The Erlang <code>rand</code> module has a function named <code>uniform</code> that takes no
+arguments and returns a <code>Float</code>.</p>
+<p>The Elixir module <code>IO</code> has a function named <code>inspect</code> that takes any value,
+prints it, and returns the same value.</p>
+<p>If we want to import these functions and use them in our program we would do
+so like this:</p>
+<pre><code class="language-rust noplaypen">pub external fn random_float() -&gt; Float = &quot;rand&quot; &quot;uniform&quot;
+
+// Elixir modules start with `Elixir.`
+pub external fn inspect(a) -&gt; a = &quot;Elixir.IO&quot; &quot;inspect&quot;
+</code></pre>
+<h2><a class="header" href="#labelled-arguments-1" id="labelled-arguments-1">Labelled arguments</a></h2>
+<p>Like regular functions, external functions can have labelled arguments.</p>
+<pre><code class="language-rust noplaypen">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
+  &quot;my_external_module&quot; &quot;any&quot;
+</code></pre>
+<p>This function has the labelled arguments <code>in</code> and <code>satisfying</code>, and can be
+called like so:</p>
+<pre><code class="language-rust noplaypen">any(in: my_list, satisfying: is_even)
+any(satisfying: is_even, in: my_list)
+</code></pre>
+<h1><a class="header" href="#external-type" id="external-type">External type</a></h1>
+<p>In addition to importing external functions we can also import external types.
+Gleam knows nothing about the runtime representation of these types and so
+they cannot be pattern matched on, but they can be used with external
+functions that know how to work with them.</p>
+<p>Here is an example of importing a <code>Queue</code> data type and some functions from
+Erlang's <code>queue</code> module to work with the new <code>Queue</code> type.</p>
+<pre><code class="language-rust noplaypen">pub external type Queue(a)
+
+pub external fn new() -&gt; Queue(a) = &quot;queue&quot; &quot;new&quot;
+
+pub external fn length(Queue(a)) -&gt; Int = &quot;queue&quot; &quot;len&quot;
+
+pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&quot;
+</code></pre>
+<h1><a class="header" href="#writing-gleam" id="writing-gleam">Writing Gleam</a></h1>
+<p>In this chapter we take a look at how to use Gleam's tooling to create and
+work on a Gleam project. Let's go!</p>
+<h1><a class="header" href="#creating-a-project" id="creating-a-project">Creating a project</a></h1>
+<p>The <code>gleam new</code> command can be used to generate a new Gleam project.</p>
+<pre><code class="language-sh">gleam new my_fantastic_library --description &quot;Getting started with Gleam!&quot;
+cd my_fantastic_library
+</code></pre>
+<p>You'll now have a project with this structure:</p>
+<pre><code>.
+├── gleam.toml
+├── LICENSE
+├── README.md
+├── rebar.config
+├── src
+│   ├── my_fantastic_library.app.src
+│   └── my_fantastic_library.gleam
+└── test
+    └── my_fantastic_library_test.gleam
+
+2 directories, 7 files
+</code></pre>
+<p>Regular Gleam code goes in the <code>src</code> directory, and the tests for this code
+goes in the <code>test</code> directory.</p>
+<h2><a class="header" href="#applications" id="applications">Applications</a></h2>
+<p>The default project generated is a library, but we may want to create an
+runnable application instead. If we specify an alternate template when
+creating a project we can instead generate an application project compatible
+with the Erlang OTP framework.</p>
+<pre><code class="language-sh">gleam new my_fantastic_application --template app
+</code></pre>
+<h1><a class="header" href="#running-the-project" id="running-the-project">Running the project</a></h1>
+<p>We typically run Gleam projects in 3 ways:</p>
+<ul>
+<li>In the tests.</li>
+<li>In the shell.</li>
+<li>In production, using releases.</li>
+</ul>
+<h2><a class="header" href="#tests" id="tests">Tests</a></h2>
+<p>Gleam tests are written using the Erlang test framework eunit.</p>
+<p>To write a test add a function to a module in the <code>test</code>, giving the function
+a name that ends in <code>_test</code>. The <code>gleam/should</code> module can be used to make
+assertions about the behaviour of our code.</p>
+<pre><code class="language-rust noplaypen">import gleam/should
+import my_fantastic_library
+
+pub fn addition_test() {
+  my_fantastic_library.hello_world()
+  |&gt; should.equal(&quot;Hello from my_fantastic_library!&quot;)
+}
+</code></pre>
+<p>Once written the tests can be run using the <code>rebar3 eunit</code> command.</p>
+<h2><a class="header" href="#the-shell" id="the-shell">The shell</a></h2>
+<p>An interactive Erlang shell can be started using the rebar3 build tool:</p>
+<pre><code class="language-sh">rebar3 shell
+# ===&gt; Verifying dependencies...
+# ===&gt; Compiling gleam_stdlib
+# Erlang/OTP 22 [erts-10.4.3] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1]
+# Eshell V10.4.3  (abort with ^G)
+# 1&gt;
+</code></pre>
+<p>Here we can try out our functions by typing them in:</p>
+<pre><code class="language-sh">1&gt; my_fantastic_library:hello_world().
+# &lt;&lt;&quot;Hello from my_fantastic_library&quot;&gt;&gt;
+</code></pre>
+<p>It's important to remember that this is an Erlang shell rather than a Gleam
+shell, so Erlang syntax must be used. Don't forget to put a <code>.</code> at the end of
+the expression otherwise the shell won't do anything.</p>
+<h2><a class="header" href="#releases" id="releases">Releases</a></h2>
+<p>To be run in production Erlang based applications are build into a deployable
+bundle called a release.</p>
+<p>At a later date we will have built in support and documentation for release,
+but for now please refer to these Erlang docs:</p>
+<ul>
+<li>https://adoptingerlang.org/docs/production/releases/</li>
+<li>https://www.rebar3.org/docs/releases</li>
+</ul>
+<h1><a class="header" href="#documenting-the-project" id="documenting-the-project">Documenting the project</a></h1>
+<p>If our project is a library it is important that it is well documented so that
+people understand how to use the code.</p>
+<h2><a class="header" href="#modules-and-functions" id="modules-and-functions">Modules and functions</a></h2>
+<p>To document modules and functions Gleam supports two special comments, <code>///</code>
+which is for documenting types and functions, and <code>////</code> which is for
+documenting the module as a whole.</p>
+<pre><code class="language-rust noplaypen">//// This module contains some useful functions for working
+//// with numbers.
+////
+//// For more information see [this website](https://example.com).
+
+
+import gleam/result
+
+/// A type for representing numbers
+pub type Number {
+  /// This constructor is used when the number is an Int
+  I(Int)
+
+  /// This constructor is used when the number is an Float
+  F(Float)
+}
+
+/// Returns the next number
+///
+/// # Examples
+///
+///   &gt; successor(1)
+///   2
+///
+pub fn successor(i: Int) -&gt; Int {
+  i + 1
+}
+
+/// Returns a number held by an Ok record, returning a default if the
+/// Result is an Error record.
+///
+/// # Examples
+///
+///   &gt; from_result(Ok(1))
+///   1
+///
+///   &gt; from_result(Error(Nil))
+///   0
+///
+pub fn from_result(result: Result(Int, e)) -&gt; Int {
+  result.unwrap(result, 0)
+}
+</code></pre>
+<p>Once documentation comments have been added Gleam can generate HTML
+documentation for the project.</p>
+<h2><a class="header" href="#additional-documentation-pages" id="additional-documentation-pages">Additional documentation pages</a></h2>
+<p>To add additional pages to the documentation for the project that aren't
+automatically generated, simply define them in Markdown and add them to 
+<code>Gleam.toml</code> as follows:</p>
+<pre><code class="language-toml">name = &quot;my_awesome_gleam_app&quot;
+
+[docs]
+pages = [
+  { title = &quot;Hello&quot;, path = &quot;hello.html&quot;, source = &quot;docs/hello_world.md&quot; },
+  { title = &quot;Testing&quot;, path = &quot;testing.html&quot;, source = &quot;docs/testing.md&quot; },
+]
+</code></pre>
+<p>Links will automatically be generated for these additional pages and the
+Markdown will be converted into HTML documentation. </p>
+<p>Your project's <code>README.md</code> file will automatically be used to generate the
+default page for the documentation. </p>
+<h2><a class="header" href="#building-and-pushing" id="building-and-pushing">Building and pushing</a></h2>
+<p>The documentation can be built locally using this command, which renders the
+documentation to <code>gen/docs</code>.</p>
+<pre><code class="language-sh">cd path/to/project
+gleam docs build
+</code></pre>
+<p>Once you are happy with the documentation it can be pushed to HexDocs, the
+documentation hosting website for the Erlang ecosystem.</p>
+<p>Note you will need to have published your project to the the Hex package
+manager before attempting to publish the documentation for that version.</p>
+<pre><code class="language-sh">cd path/to/project
+gleam docs publish --version v1.0.0
+</code></pre>
+<p>Lastly, if you wish to remove documentation from HexDoc (possibly to correct
+an error) then this command can be used:</p>
+<pre><code class="language-sh">cd path/to/project
+gleam docs remove --package my_project_name --version v1.0.0
+</code></pre>
+<h1><a class="header" href="#example-projects" id="example-projects">Example projects</a></h1>
+<p>When learning a new language it can often be useful to have example code to
+refer to and learn from, so here are some examples:</p>
+<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langexample-echo-serverecho-servera" id="a-hrefhttpsgithubcomgleam-langexample-echo-serverecho-servera"><a href="https://github.com/gleam-lang/example-echo-server">Echo Server</a></a></h2>
+<p>A tiny echo server that will reply with any data posted to <code>/echo</code>.</p>
+<p>Uses the Gleam HTTP library with the Elli web server adapter.</p>
+<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-langstdlibthe-gleam-standard-librarya" id="a-hrefhttpsgithubcomgleam-langstdlibthe-gleam-standard-librarya"><a href="https://github.com/gleam-lang/stdlib">The Gleam standard library</a></a></h2>
+<p>A collection of modules for working with the common data structures of Gleam.</p>
+<h2><a class="header" href="#a-hrefhttpsgithubcomgleam-experimentsgleam-experimentsa" id="a-hrefhttpsgithubcomgleam-experimentsgleam-experimentsa"><a href="https://github.com/gleam-experiments">Gleam Experiments</a></a></h2>
+<p>The Gleam Experiments GitHub organisation is home to many useful libraries
+for use in Gleam projects such as OTP bindings, database clients, and lazy
+data structures.</p>
+<h1><a class="header" href="#cheatsheets" id="cheatsheets">Cheatsheets</a></h1>
+<p>This section contains a series of cheatsheets useful for quickly learning
+Gleam by comparing it to another language which may already know.</p>
+<ul>
+<li><a href="cheatsheets/./gleam-for-erlang-users.html">Gleam for Erlang users</a></li>
+</ul>
+<h1><a class="header" href="#gleam-for-erlang-users" id="gleam-for-erlang-users">Gleam for Erlang users</a></h1>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#comments">Comments</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#variables">Variables</a>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#partial-assignments">Partial assignments</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#variable-type-annotations">Variable type annotations</a></li>
+</ul>
+</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#functions">Functions</a>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#exporting-functions">Exporting functions</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#function-type-annotations">Function type annotations</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#function-heads">Function heads</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#function-overloading">Function overloading</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#referencing-function">Referencing functions</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#labelled-arguments">Labelled arguments</a></li>
+</ul>
+</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#operators">Operators</a>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#pipe">Pipe</a></li>
+</ul>
+</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#constants">Constants</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#blocks">Blocks</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#data-types">Data types</a>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#strings">Strings</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#tuples">Tuples</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#lists">Lists</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#atoms">Atoms</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#maps">Maps</a></li>
+</ul>
+</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#type-aliases">Type aliases</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#custom-types">Custom types</a>
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#records">Records</a></li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#unions">Unions</a> TODO</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#opaque-custom-types">Opaque custom types</a> TODO</li>
+</ul>
+</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#flow-control">Flow control</a> TODO
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#case">Case</a> TODO</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#try">Try</a> TODO</li>
+</ul>
+</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#modules">Modules</a> TODO
+<ul>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#imports">Imports</a> TODO</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#nested-modules">Nested modules</a> TODO</li>
+<li><a href="cheatsheets/gleam-for-erlang-users.html#first-class-modules">First class modules</a> TODO</li>
+</ul>
+</li>
+</ul>
+<h1><a class="header" href="#variables" id="variables">Variables</a></h1>
+<h4><a class="header" href="#erlang" id="erlang">Erlang</a></h4>
+<p>In Erlang variables are written with a capital letter, and can only be
+assigned once.</p>
+<pre><code class="language-erlang">Size = 50
+Size2 = Size + 100
+Size2 = 1 % Runtime error! Size2 is 150, not 1
+</code></pre>
+<h4><a class="header" href="#gleam-1" id="gleam-1">Gleam</a></h4>
+<p>In Gleam variables are written with a lowercase letter, and names can be
+reassigned.</p>
+<pre><code class="language-rust noplaypen">let size = 50
+let size = size + 100
+let size = 1 // size now refers to 1
+</code></pre>
+<h2><a class="header" href="#partial-assignments" id="partial-assignments">Partial assignments</a></h2>
+<h4><a class="header" href="#erlang-1" id="erlang-1">Erlang</a></h4>
+<p>In Erlang a partial pattern that does not match all possible values can be
+used to assert that a given term has a specific shape.</p>
+<pre><code class="language-erlang">[Element] = SomeList % assert `SomeList` is a 1 element list
+</code></pre>
+<h4><a class="header" href="#gleam-2" id="gleam-2">Gleam</a></h4>
+<p>In Gleam the <code>assert</code> keyword is used to make assertions using partial
+patterns.</p>
+<pre><code class="language-rust noplaypen">let [element] = some_list // Compile error! Partial pattern
+assert [element] = some_list
+</code></pre>
+<h2><a class="header" href="#variables-type-annotations" id="variables-type-annotations">Variables type annotations</a></h2>
+<h4><a class="header" href="#erlang-2" id="erlang-2">Erlang</a></h4>
+<p>In Erlang it's not possible to give type annotations to variables.</p>
+<h4><a class="header" href="#gleam-3" id="gleam-3">Gleam</a></h4>
+<p>In Gleam type annotations can optionally be given when binding variables.</p>
+<pre><code class="language-rust noplaypen">let some_list: List(Int) = [1, 2, 3]
+</code></pre>
+<p>Gleam will check the type annotation to ensure that it matches the type of the
+assigned value.</p>
+<p>Gleam does not need annotations to type check your code, but you may find it
+useful to annotate variables to hint to the compiler that you want a specific
+type to be inferred.</p>
+<h1><a class="header" href="#functions" id="functions">Functions</a></h1>
+<p>Gleam's top level functions are declared using a syntax similar to Rust or
+JavaScript.</p>
+<h4><a class="header" href="#erlang-3" id="erlang-3">Erlang</a></h4>
+<pre><code class="language-erlang">my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-4" id="gleam-4">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn my_function(x) {
+  x + 1
+}
+</code></pre>
+<h2><a class="header" href="#exporting-functions" id="exporting-functions">Exporting functions</a></h2>
+<p>In Gleam functions are exported with the <code>pub</code> keyword. An export statement is
+not required.</p>
+<h4><a class="header" href="#erlang-4" id="erlang-4">Erlang</a></h4>
+<pre><code class="language-erlang">-export([my_function/1]).
+
+my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-5" id="gleam-5">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">pub fn my_function(x) {
+  x + 1
+}
+</code></pre>
+<h2><a class="header" href="#function-type-annotations" id="function-type-annotations">Function type annotations</a></h2>
+<p>Functions can optionally have their argument and return types annotated.</p>
+<h4><a class="header" href="#erlang-5" id="erlang-5">Erlang</a></h4>
+<pre><code class="language-erlang">-spec my_function(integer()) :: integer().
+my_function(X) -&gt;
+    X + 1.
+</code></pre>
+<h4><a class="header" href="#gleam-6" id="gleam-6">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn my_function(x: Int) -&gt; Int {
+  x + 1
+}
+</code></pre>
+<p>Unlike in Erlang these type annotations will always be checked by the compiler
+and have to be correct for compilation to succeed.</p>
+<h2><a class="header" href="#function-heads" id="function-heads">Function heads</a></h2>
+<p>Unlike Erlang (but similar to Core Erlang) Gleam does not support multiple
+function heads, so to pattern match on an argument a case expression must be
+used.</p>
+<h4><a class="header" href="#erlang-6" id="erlang-6">Erlang</a></h4>
+<pre><code class="language-erlang">identify(1) -&gt;
+    &quot;one&quot;;
+identify(2) -&gt;
+    &quot;two&quot;;
+identify(3) -&gt;
+    &quot;three&quot;;
+identify(_) -&gt;
+    &quot;dunno&quot;.
+</code></pre>
+<h4><a class="header" href="#gleam-7" id="gleam-7">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn identify(x) {
+  case x {
+    1 -&gt; &quot;one&quot;
+    2 -&gt; &quot;two&quot;
+    3 -&gt; &quot;three&quot;
+    _ -&gt; &quot;dunno&quot;
+  }
+}
+</code></pre>
+<h2><a class="header" href="#function-overloading" id="function-overloading">Function overloading</a></h2>
+<p>Gleam does not support function overloading, so there can only be 1 function
+with a given name, and the function can only have a single implementation for
+the types it accepts.</p>
+<h2><a class="header" href="#referencing-functions" id="referencing-functions">Referencing functions</a></h2>
+<p>Gleam has a single namespace for value and functions within a module, so there
+is no need for a special syntax to assign a module function to a variable.</p>
+<h4><a class="header" href="#erlang-7" id="erlang-7">Erlang</a></h4>
+<pre><code class="language-erlang">identity(X) -&gt;
+  X.
+
+main() -&gt;
+  Func = fun identity/1,
+  Func(100).
+</code></pre>
+<h4><a class="header" href="#gleam-8" id="gleam-8">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100)
+}
+</code></pre>
+<p>Gleam's parser allows functions returned from functions to be called directly
+without adding parenthesis around the function call.</p>
+<h4><a class="header" href="#erlang-8" id="erlang-8">Erlang</a></h4>
+<pre><code class="language-erlang">(((some_function(0))(1))(2))(3)
+</code></pre>
+<h4><a class="header" href="#gleam-9" id="gleam-9">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">some_function(0)(1)(2)(3)
+</code></pre>
+<h1><a class="header" href="#comments-1" id="comments-1">Comments</a></h1>
+<h4><a class="header" href="#erlang-9" id="erlang-9">Erlang</a></h4>
+<p>In Erlang comments are written with a <code>%</code> prefix.</p>
+<pre><code class="language-erlang">% Hello, Joe!
+</code></pre>
+<h4><a class="header" href="#gleam-10" id="gleam-10">Gleam</a></h4>
+<p>In Gleam comments are written with a <code>//</code> prefix.</p>
+<pre><code class="language-rust noplaypen">// Hello, Joe!
+</code></pre>
+<p>Comments starting with <code>///</code> are used to document the following statement,
+comments starting with <code>////</code> are used to document the current module.</p>
+<pre><code class="language-rust noplaypen">//// This module is very important.
+
+/// The answer to life, the universe, and everything.
+const answer: Int = 42
+</code></pre>
+<h1><a class="header" href="#operators" id="operators">Operators</a></h1>
+<table><thead><tr><th>Operator</th><th>Erlang</th><th>Gleam</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Equal</td><td><code>=:=</code></td><td><code>==</code></td><td>In Gleam both values must be of the same type</td></tr>
+<tr><td>Equal</td><td><code>==</code></td><td></td><td></td></tr>
+<tr><td>Not equal</td><td><code>=/=</code></td><td><code>!=</code></td><td>In Gleam both values must be of the same type</td></tr>
+<tr><td>Not equal</td><td><code>/=</code></td><td></td><td></td></tr>
+<tr><td>Greater than</td><td><code>&gt;</code></td><td><code>&gt;</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Greater than</td><td><code>&gt;</code></td><td><code>&gt;.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Greater or equal</td><td><code>&gt;=</code></td><td><code>&gt;=</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Greater or equal</td><td><code>&gt;=</code></td><td><code>&gt;=.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Less than</td><td><code>&lt;</code></td><td><code>&lt;</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Less than</td><td><code>&lt;</code></td><td><code>&lt;.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Less or equal</td><td><code>=&lt;</code></td><td><code>&gt;=</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Less or equal</td><td><code>=&lt;</code></td><td><code>&gt;=.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Boolean and</td><td><code>andalso</code></td><td><code>&amp;&amp;</code></td><td>In Gleam both values must be bools</td></tr>
+<tr><td>Boolean and</td><td><code>and</code></td><td></td><td></td></tr>
+<tr><td>Boolean or</td><td><code>orelse</code></td><td><code>⎮⎮</code></td><td>In Gleam both values must be bools</td></tr>
+<tr><td>Boolean or</td><td><code>or</code></td><td></td><td></td></tr>
+<tr><td>Add</td><td><code>+</code></td><td><code>+</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Add</td><td><code>+</code></td><td><code>+.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Subtract</td><td><code>-</code></td><td><code>-</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Subtract</td><td><code>-</code></td><td><code>-.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Multiply</td><td><code>*</code></td><td><code>*</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Multiply</td><td><code>*</code></td><td><code>*.</code></td><td>In Gleam both values must be floats</td></tr>
+<tr><td>Divide</td><td><code>div</code></td><td><code>/</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Modulo</td><td><code>rem</code></td><td><code>%</code></td><td>In Gleam both values must be ints</td></tr>
+<tr><td>Pipe</td><td></td><td><code>⎮&gt;</code></td><td>See <a href="cheatsheets/gleam-for-erlang-users.html#pipe">the pipe section</a> for details</td></tr>
+</tbody></table>
+<h2><a class="header" href="#pipe" id="pipe">Pipe</a></h2>
+<p>The pipe operator can be used to chain together function calls so that they
+read from top to bottom.</p>
+<h4><a class="header" href="#erlang-10" id="erlang-10">Erlang</a></h4>
+<pre><code class="language-erlang">X1 = trim(Input),
+X2 = csv:parse(X1, &lt;&lt;&quot;,&quot;&gt;&gt;)
+ledger:from_list(X2).
+</code></pre>
+<h4><a class="header" href="#gleam-11" id="gleam-11">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">input
+|&gt; trim
+|&gt; csv.parse(&quot;,&quot;)
+|&gt; ledger.from_list
+</code></pre>
+<h1><a class="header" href="#constants-1" id="constants-1">Constants</a></h1>
+<h4><a class="header" href="#erlang-11" id="erlang-11">Erlang</a></h4>
+<p>In Erlang macros can be defined to name literals we may want to use in
+multiple places. They can only be used within the current module</p>
+<pre><code class="language-erlang">-define(the_answer, 42).
+
+main() -&gt;
+  ?the_answer.
+</code></pre>
+<h4><a class="header" href="#gleam-12" id="gleam-12">Gleam</a></h4>
+<p>In Gleam constants can be used to achieve the same.</p>
+<pre><code class="language-rust noplaypen">const the_answer = 42
+
+fn main() {
+  the_answer
+}
+</code></pre>
+<p>Gleam constants can be referenced from other modules.</p>
+<pre><code class="language-rust noplaypen">import other_module
+
+fn main() {
+  other_module.the_answer
+}
+</code></pre>
+<h1><a class="header" href="#blocks" id="blocks">Blocks</a></h1>
+<h4><a class="header" href="#erlang-12" id="erlang-12">Erlang</a></h4>
+<p>In Erlang expressions can be grouped using parenthesis or <code>begin</code> and <code>end</code>.</p>
+<pre><code class="language-erlang">main() -&gt;
+  X = begin
+    print(1),
+    2
+  end,
+  Y = X * (X + 10).
+  Y.
+</code></pre>
+<h4><a class="header" href="#gleam-13" id="gleam-13">Gleam</a></h4>
+<p>In Gleam braces are used to group expressions.</p>
+<pre><code class="language-rust noplaypen">fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  let y = x * {x + 10}
+  y
+}
+</code></pre>
+<h1><a class="header" href="#data-types" id="data-types">Data types</a></h1>
+<h2><a class="header" href="#strings" id="strings">Strings</a></h2>
+<p>All strings in Gleam are UTF-8 encoded binaries.</p>
+<h4><a class="header" href="#erlang-13" id="erlang-13">Erlang</a></h4>
+<pre><code class="language-erlang">&lt;&lt;&quot;Hellø, world!&quot;/utf8&gt;&gt;.
+</code></pre>
+<h4><a class="header" href="#gleam-14" id="gleam-14">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">&quot;Hellø, world!&quot;
+</code></pre>
+<h2><a class="header" href="#tuples" id="tuples">Tuples</a></h2>
+<p>Tuples are very useful in Gleam as they're the only collection data type that allows for mixed
+types of elements in the collection. The syntax for a tuple literal - <code>tuple(&quot;a&quot;, &quot;b&quot;)</code> - can be
+confused for a function call, which it is not!</p>
+<h4><a class="header" href="#erlang-14" id="erlang-14">Erlang</a></h4>
+<pre><code class="language-erlang">Tuple = {&quot;username&quot;, &quot;password&quot;, 10}.
+{_, Password, _} = Tuple.
+</code></pre>
+<h4><a class="header" href="#gleam-15" id="gleam-15">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">let my_tuple = tuple(&quot;username&quot;, &quot;password&quot;, 10)
+let tuple(_, password, _) = my_tuple
+</code></pre>
+<h2><a class="header" href="#lists" id="lists">Lists</a></h2>
+<p>Lists in Erlang are allowed to be of mixed types, but not in Gleam. They retain all of the same
+performance sematics.</p>
+<p>The <code>cons</code> operator works the same way both for pattern matching and for appending elements to the
+head of a list, but it uses a different syntax.</p>
+<h4><a class="header" href="#erlang-15" id="erlang-15">Erlang</a></h4>
+<pre><code class="language-erlang">List0 = [2, 3, 4].
+List1 = [1 | List0].
+[1, SecondElement | _] = List1.
+[1.0 | List1].
+</code></pre>
+<h4><a class="header" href="#gleam-16" id="gleam-16">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">let list = [2, 3, 4]
+let list = [1, ..list]
+let [1, second_element, ..] = list
+[1.0, ..list] // Type error!
+</code></pre>
+<h2><a class="header" href="#atoms" id="atoms">Atoms</a></h2>
+<p>In Erlang atoms can be created as needed, but in Gleam all atoms must be defined as values in a
+custom type before being used. Any value in a type definition in Gleam that does not have any
+arguments is an atom in Erlang.</p>
+<p>There are some exceptions to that rule for atoms that are commonly used and have types built-in to
+Gleam that incorporate them, such as <code>ok</code>, <code>error</code> and booleans.</p>
+<p>In general, atoms are not used much in Gleam, and are mostly used for boolens, <code>ok</code> and <code>error</code>
+result types, and defining custom types.</p>
+<h4><a class="header" href="#erlang-16" id="erlang-16">Erlang</a></h4>
+<pre><code class="language-erlang">Var = my_new_var.
+
+{ok, true}.
+
+{error, false}.
+</code></pre>
+<h4><a class="header" href="#gleam-17" id="gleam-17">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">type MyNewType {
+  MyNewVar
+}
+let var = MyNewVar
+
+Ok(True)
+
+Error(False)
+</code></pre>
+<h2><a class="header" href="#maps" id="maps">Maps</a></h2>
+<p>In Erlang, maps can have keys and values of any type, and they can be mixed in a given map. In
+Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given
+map and all values must be of the same type in a given map.</p>
+<p>There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally
+not used much in Gleam, custom types are more common.</p>
+<h4><a class="header" href="#erlang-17" id="erlang-17">Erlang</a></h4>
+<pre><code class="language-erlang">#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;}.
+#{&quot;key1&quot; =&gt; &quot;value1&quot;, &quot;key2&quot; =&gt; 2}.
+</code></pre>
+<h4><a class="header" href="#gleam-18" id="gleam-18">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">import gleam/map
+
+
+map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, &quot;value2&quot;)])
+map.from_list([tuple(&quot;key1&quot;, &quot;value1&quot;), tuple(&quot;key2&quot;, 2)]) // Type error!
+</code></pre>
+<h1><a class="header" href="#type-aliases-1" id="type-aliases-1">Type aliases</a></h1>
+<h4><a class="header" href="#erlang-18" id="erlang-18">Erlang</a></h4>
+<pre><code class="language-erlang">-type scores() :: list(integer()).
+</code></pre>
+<h4><a class="header" href="#gleam-19" id="gleam-19">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">pub type Scores =
+  List(Int)
+</code></pre>
+<h1><a class="header" href="#custom-types-1" id="custom-types-1">Custom types</a></h1>
+<h2><a class="header" href="#records" id="records">Records</a></h2>
+<p>In Erlang, Records are a specialized data type built on a tuple. Gleam does not have anything
+called a <code>record</code>, but custom types can be used in Gleam in much the same way that records are
+used in Erlang, even though custom types don't actually define a <code>record</code> in Erlang when it is
+compiled.</p>
+<p>The important thing is that a custom type allows you to define a collection data type with a fixed
+number of named fields, and the values in those fields can be of differing types.</p>
+<h4><a class="header" href="#erlang-19" id="erlang-19">Erlang</a></h4>
+<pre><code class="language-erlang">-record(person, {age :: integer(),
+                 name :: binary()}).
+</code></pre>
+<pre><code class="language-erlang">Person = #person{name=&quot;name&quot;, age=35}.
+Name = #Person.name.
+</code></pre>
+<h4><a class="header" href="#gleam-20" id="gleam-20">Gleam</a></h4>
+<pre><code class="language-rust noplaypen">type Person {
+  Person(age: Int, name: String)
+}
+</code></pre>
+<pre><code class="language-rust noplaypen">let person = Person(name: &quot;name&quot;, age: 35)
+let name = person.name
+</code></pre>
+<h1><a class="header" href="#flow-control" id="flow-control">Flow control</a></h1>
+<h1><a class="header" href="#modules" id="modules">Modules</a></h1>
+<h1><a class="header" href="#faqs" id="faqs">FAQs</a></h1>
+<ul>
+<li><a href="faqs.html#why-is-the-compiler-written-in-rust">Why is the compiler written in Rust?</a></li>
+<li><a href="faqs.html#will-gleam-have-type-classes">Will Gleam have type classes?</a></li>
+<li><a href="faqs.html#will-gleam-have-metaprogramming">Will Gleam have metaprogramming?</a></li>
+<li><a href="faqs.html#does-gleam-have-mutable-state">Does Gleam have mutable state?</a></li>
+<li><a href="faqs.html#does-gleam-have-side-effects">Does Gleam have side effects?</a></li>
+<li><a href="faqs.html#how-is-message-passing-typed">How is message passing typed?</a></li>
+<li><a href="faqs.html#can-we-use-the-hot-code-reloading-feature-from-otp">Can we use the hot code reloading feature from OTP?</a></li>
+<li><a href="faqs.html#how-does-gleam-compare-to-alpaca">How does Gleam compare to Alpaca?</a></li>
+<li><a href="faqs.html#should-i-put-gleam-in-production">Should I put Gleam in production?</a></li>
+<li><a href="faqs.html#why-is-it-called-gleam">Why is it called Gleam?</a></li>
+<li><a href="faqs.html#is-it-good">Is it good?</a></li>
+</ul>
+<h2><a class="header" href="#why-is-the-compiler-written-in-rust" id="why-is-the-compiler-written-in-rust">Why is the compiler written in Rust?</a></h2>
+<p>Prototype versions of the Gleam compiler was written in Erlang, but a switch was
+made to Rust as the lack of static types was making refactoring a slow and
+error prone process. A full Rust rewrite of the prototype resulted in the
+removal of a lot of tech debt and bugs, and the performance boost is nice too!</p>
+<p>One day Gleam may have a compiler written in Gleam, but for now we are focused
+on developing other areas of the language such as libraries, tooling, and
+documentation.</p>
+<h2><a class="header" href="#will-gleam-have-type-classes" id="will-gleam-have-type-classes">Will Gleam have type classes?</a></h2>
+<p>Some form of ad-hoc polymorphism could be a good addition to the ergonomics of
+the language, though what shape that may take is unclear. Type classes are one
+option, OCaml style implicit modules are another, or perhaps it'll be
+something else entirely.</p>
+<h2><a class="header" href="#will-gleam-have-metaprogramming" id="will-gleam-have-metaprogramming">Will Gleam have metaprogramming?</a></h2>
+<p>We don't currently have any fixed ideas for what metaprogramming might look
+like in Gleam, but it is an area we are interested in. If you have any ideas
+please do share them!</p>
+<h2><a class="header" href="#does-gleam-have-mutable-state" id="does-gleam-have-mutable-state">Does Gleam have mutable state?</a></h2>
+<p>All data structures in Gleam are immutable and are implemented using
+structural sharing so they can be efficiently updated.</p>
+<p>If your application needs to hold on to some mutable state then it can be held
+by an actor (which immutably wraps mutable state using recursion) or you can
+use ETS, the Erlang in-memory key-value database.</p>
+<h2><a class="header" href="#does-gleam-have-side-effects" id="does-gleam-have-side-effects">Does Gleam have side effects?</a></h2>
+<p>Yes, Gleam is an impure functional language like OCaml or Erlang, so impure
+actions like reading to files and printing to the console is possible without
+special handling.</p>
+<p>We may later introduce an effects system for identifying and tracking any
+impure code in a Gleam application, though this is still an area of research.</p>
+<h2><a class="header" href="#how-is-message-passing-typed" id="how-is-message-passing-typed">How is message passing typed?</a></h2>
+<p>Type safe message passing is implemented in Gleam as a set of libraries,
+rather than being part of the core language itself. This allows us to write safe
+concurrent programs that make use of Erlang's OTP framework while not locking
+us in to one specific approach to typing message passing. This lack of lock-in
+is important as typing message passing is an area of active research, we may
+discover an even better approach at a later date!</p>
+<p>If you'd like to see more consider checking out these libraries:</p>
+<ul>
+<li><a href="https://github.com/gleam-experiments/otp_process">https://github.com/gleam-lang/otp</a></li>
+<li><a href="https://github.com/gleam-experiments/otp_agent">https://github.com/gleam-experiments/otp_agent</a></li>
+<li><a href="https://github.com/gleam-experiments/otp_supervisor">https://github.com/gleam-experiments/otp_supervisor</a></li>
+</ul>
+<h2><a class="header" href="#can-we-use-the-hot-code-reloading-feature-from-otp" id="can-we-use-the-hot-code-reloading-feature-from-otp">Can we use the hot code reloading feature from OTP?</a></h2>
+<p>All the usual Erlang code reloading features work, but it is not possible to
+type check the upgrades themselves as we have no way knowing the types of the
+already running code. This means you would have the usual Erlang amount of
+safety rather than what you might have with Gleam otherwise.</p>
+<p>Generally the OTP libraries for Gleam are optimised for type safety rather than
+upgrades, and use records rather than atom modules so the state upgrade
+callbacks may be slightly more complex to write.</p>
+<h2><a class="header" href="#how-does-gleam-compare-to-alpaca" id="how-does-gleam-compare-to-alpaca">How does Gleam compare to Alpaca?</a></h2>
+<p><a href="https://github.com/alpaca-lang/alpaca">Alpaca</a> is similar to Gleam in that it is a statically typed language
+for the Erlang VM that is inspired by the ML family of languages. It's a
+wonderful project and we hope they are wildly successful!</p>
+<p>Here's a non-exhaustive list of differences:</p>
+<ul>
+<li>Alpaca functions are auto-curried, Gleam's are not.</li>
+<li>Alpaca's unions can be untagged, with Gleam all variants in a custom type
+need a name.</li>
+<li>Alpaca's compiler is written in Erlang, Gleam's is written in Rust.</li>
+<li>Alpaca's syntax is closer to ML family languages, Gleam's is closer to C or
+ECMAScript family languages.</li>
+<li>Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang.</li>
+</ul>
+<p>Alpaca is great, check it out! :)</p>
+<h2><a class="header" href="#should-i-put-gleam-in-production" id="should-i-put-gleam-in-production">Should I put Gleam in production?</a></h2>
+<p>Gleam is a young language that has not reached version 1.0, so while it is
+robust it is likely to undergo breaking changes in the future, and there may
+be some annoying bugs in there somewhere. The Gleam ecosystem is also quite
+young, so many libraries that are found in other languages will need to be
+written, or Erlang/Elixir libraries will have to be used in place of pure
+Gleam versions.</p>
+<p>The Erlang VM is extremely mature and well tested, so the runtime aspect of
+the language is ready for production.</p>
+<p>If you decide to move away from Gleam the language you can compile your code
+to Erlang and maintain that in future.</p>
+<h2><a class="header" href="#why-is-it-called-gleam" id="why-is-it-called-gleam">Why is it called Gleam?</a></h2>
+<p>Gleam rhymes with and is a synonym of &quot;beam&quot;, which is the name of the Erlang
+virtual machine.</p>
+<p>It's also a short and cute word that's hopefully easy to spell and pronounce
+for most people.</p>
+<h2><a class="header" href="#is-it-good" id="is-it-good">Is it good?</a></h2>
+<p>Yes, I think so. :)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

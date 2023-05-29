@@ -1,9 +1,9 @@
 .PHONY: build
-build: docs/index.html ## Build the book
+build: docs/book/index.html ## Build the book
 
 .PHONY: serve
 serve: ## Run the book dev server
-	mdbook serve --open --websocket-port 4200
+	jekyll server --watch --safe --port 3000 --host 0.0.0.0 --livereload --drafts
 
 .PHONY: help
 help:
@@ -13,6 +13,6 @@ help:
 # Files
 #
 
-docs/index.html: $(shell find src -type f)
-	rm -fr docs
-	mdbook build --dest-dir docs/
+book/index.html: $(shell find book -type f)
+	rm -fr book
+	mdbook build --dest-dir book/

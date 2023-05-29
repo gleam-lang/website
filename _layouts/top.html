@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{% endcapture %}
+    {% capture description %}{% if page.description %}{{ page.description | strip }}{% else %}The Gleam programming language{% endif %}{% endcapture %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla&display=swap">
+    <link rel="stylesheet" href="/styles/index.css">
+    <meta name="description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/lucy-charcoal-2.svg">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  </head>
+  <body>
+    <nav class="pagenav content">
+      <a href="/">
+        <h1 class="pagenav-title">Gleam</h1>
+      </a>
+      <span class="flex-spacer"></span>
+
+      <a href="/news">News</a>
+      <a href="https://github.com/gleam-lang">Code</a>
+      <a href="/book">Documentation</a>
+      <iframe src="https://github.com/sponsors/lpil/button" title="Sponsor Gleam" height="35" width="116" style="border: 0; padding-left: 8px"></iframe>
+    </nav>
+
+{{ content }}
+
+    <aside class="hero">
+      <div class="content">
+        <h4>Supporting Gleam</h4>
+        Gleam is made possible by the kind support of its sponsors. If you
+        enjoy Gleam please consider <b><a href="https://github.com/sponsors/lpil">sponsoring the project</a></b>
+        or asking your employer to sponsor the project.
+      </div>
+    </aside>
+
+    <footer class="page-footer">
+      © 2016 – {{ site.time | date: '%Y' }} Louis Pilfold
+    </footer>
+    <link rel="stylesheet" href="/styles/highlighting.css">
+  </body>
+</html>

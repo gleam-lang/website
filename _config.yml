@@ -1,0 +1,25 @@
+baseurl: ""
+url: "https://gleam.run/"
+
+markdown: kramdown
+
+permalink: "/news/:title/"
+
+plugins:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+
+exclude:
+  - README
+  - Makefile
+  - book-src
+
+defaults:
+  -
+    scope:
+      path: ""      # all files
+      type: posts   # limit to posts
+    values:
+      layout: post

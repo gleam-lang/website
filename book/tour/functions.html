@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Functions - The Gleam Book</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Hello, Gleam!</a></li><li class="chapter-item expanded "><a href="../gleams-principles.html"><strong aria-hidden="true">2.</strong> Gleam's Principles</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">3.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/installing-gleam.html"><strong aria-hidden="true">3.1.</strong> Installing Gleam</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-erlang.html"><strong aria-hidden="true">3.2.</strong> Installing Erlang</a></li><li class="chapter-item expanded "><a href="../getting-started/installing-rebar3.html"><strong aria-hidden="true">3.3.</strong> Installing rebar3</a></li><li class="chapter-item expanded "><a href="../getting-started/editor-support.html"><strong aria-hidden="true">3.4.</strong> Editor support</a></li></ol></li><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">4.</strong> Language tour</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">4.1.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">4.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.3.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">4.4.</strong> Ints &amp; Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">4.5.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">4.6.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">4.7.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">4.8.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html" class="active"><strong aria-hidden="true">4.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">4.10.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">4.11.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/try.html"><strong aria-hidden="true">4.12.</strong> Try</a></li><li class="chapter-item expanded "><a href="../tour/todo.html"><strong aria-hidden="true">4.13.</strong> Todo</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">4.14.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">4.15.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">4.16.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">4.17.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">4.18.</strong> External types</a></li></ol></li><li class="chapter-item expanded "><a href="../writing-gleam/index.html"><strong aria-hidden="true">5.</strong> Writing Gleam</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../writing-gleam/creating-a-project.html"><strong aria-hidden="true">5.1.</strong> Creating a project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/running-the-project.html"><strong aria-hidden="true">5.2.</strong> Running the project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/documenting-the-project.html"><strong aria-hidden="true">5.3.</strong> Documenting the project</a></li><li class="chapter-item expanded "><a href="../writing-gleam/example-projects.html"><strong aria-hidden="true">5.4.</strong> Example projects</a></li></ol></li><li class="chapter-item expanded "><a href="../cheatsheets/index.html"><strong aria-hidden="true">6.</strong> Cheatsheets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cheatsheets/gleam-for-erlang-users.html"><strong aria-hidden="true">6.1.</strong> Gleam for Erlang users</a></li></ol></li><li class="chapter-item expanded "><a href="../faqs.html"><strong aria-hidden="true">7.</strong> FAQs</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Gleam Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#function" id="function">Function</a></h1>
+<h2><a class="header" href="#named-functions" id="named-functions">Named functions</a></h2>
+<p>Named functions in Gleam are defined using the <code>pub fn</code> keywords.</p>
+<pre><code class="language-rust noplaypen">pub fn add(x: Int, y: Int) -&gt; Int {
+  x + y
+}
+
+pub fn multiply(x: Int, y: Int) -&gt; Int {
+  x * y
+}
+</code></pre>
+<p>Functions in Gleam are first class values and so can be assigned to variables,
+passed to functions, or anything else you might do with any other data type.</p>
+<pre><code class="language-rust noplaypen">// This function takes a function as an argument
+pub fn twice(f: fn(t) -&gt; t, x: t) -&gt; t {
+  f(f(x))
+}
+
+pub fn add_one(x: Int) -&gt; Int {
+  x + 1
+}
+
+pub fn add_two(x: Int) -&gt; Int {
+  twice(add_one, x)
+}
+</code></pre>
+<h2><a class="header" href="#pipe-operator" id="pipe-operator">Pipe Operator</a></h2>
+<p>Gleam provides syntax for passing the result of one function to the arguments of another function, the pipe operator (<code>|&gt;</code>). This is similar in functionality to the same operator in Elixir or F#.</p>
+<p>The pipe operator allows you to chain function calls without using a plethora of parenthesis. For a simple example, consider the following implementation of <code>string.reverse</code> in Gleam:</p>
+<pre><code class="language-rust noplaypen">iodata.to_string(iodata.reverse(iodata.new(string)))
+</code></pre>
+<p>This can be expressed more naturally using the pipe operator, eliminating the need to track parenthesis closure.</p>
+<pre><code class="language-rust noplaypen">string
+|&gt; iodata.new
+|&gt; iodata.reverse
+|&gt; iodata.to_string
+</code></pre>
+<p>Each line of this expression applies the function to the result of the previous line. This works easily because each of these functions take only one argument. Syntax is available to substitute specific arguments of functions that take more than one argument; for more, look below in the section &quot;Function capturing&quot;.</p>
+<h2><a class="header" href="#type-annotations" id="type-annotations">Type annotations</a></h2>
+<p>Function arguments are normally annotated with their type, and the
+compiler will check these annotations and ensure they are correct.</p>
+<pre><code class="language-rust noplaypen">fn identity(x: some_type) -&gt; some_type {
+  x
+}
+
+fn inferred_identity(x) {
+  x
+}
+</code></pre>
+<p>The Gleam compiler can infer all the types of Gleam code without annotations
+and both annotated and unannotated code is equally safe. It's considered a
+best practice to always write type annotations for your functions as they
+provide useful documentation, and they encourage thinking about types as code
+is being written.</p>
+<h2><a class="header" href="#labelled-arguments" id="labelled-arguments">Labelled arguments</a></h2>
+<p>When functions take several arguments it can be difficult for the user to
+remember what the arguments are, and what order they are expected in.</p>
+<p>To help with this Gleam supports <em>labelled arguments</em>, where function
+arguments are given an external label in addition to their internal name.</p>
+<p>Take this function that replaces sections of a string:</p>
+<pre><code class="language-rust noplaypen">pub fn replace(string: String, pattern: String, replacement: String) {
+  // ...
+}
+</code></pre>
+<p>It can be given labels like so.</p>
+<pre><code class="language-rust noplaypen">pub fn replace(
+  in string: String,
+  each pattern: String,
+  with replacement: String,
+) {
+  // The variables `string`, `pattern`, and `replacement` are in scope here
+}
+</code></pre>
+<p>These labels can then be used when calling the function.</p>
+<pre><code class="language-rust noplaypen">replace(in: &quot;A,B,C&quot;, each: &quot;,&quot;, with: &quot; &quot;)
+
+// Labelled arguments can be given in any order
+replace(each: &quot;,&quot;, with: &quot; &quot;, in: &quot;A,B,C&quot;)
+
+// Arguments can still be given in a positional fashion
+replace(&quot;A,B,C&quot;, &quot;,&quot;, &quot; &quot;)
+</code></pre>
+<p>The use of argument labels can allow a function to be called in an expressive,
+sentence-like manner, while still providing a function body that is readable
+and clear in intent.</p>
+<h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous functions</a></h2>
+<p>Anonymous functions can be defined with a similar syntax.</p>
+<pre><code class="language-rust noplaypen">pub fn run() {
+  let add = fn(x, y) { x + y }
+
+  add(1, 2)
+}
+</code></pre>
+<h2><a class="header" href="#function-capturing" id="function-capturing">Function capturing</a></h2>
+<p>There is a shorthand syntax for creating anonymous functions that take one
+argument and call another function. The <code>_</code> is used to indicate where the
+argument should be passed.</p>
+<pre><code class="language-rust noplaypen">pub fn add(x, y) {
+  x + y
+}
+
+pub fn run() {
+  let add_one = add(1, _)
+
+  add_one(2)
+}
+</code></pre>
+<p>The function capture syntax is often used with the pipe operator to create
+a series of transformations on some data.</p>
+<pre><code class="language-rust noplaypen">pub fn add(x: Int , y: Int ) -&gt; Int {
+  x + y
+}
+
+pub fn run() {
+  // This is the same as add(add(add(1, 3), 6), 9)
+  1
+  |&gt; add(_, 3)
+  |&gt; add(_, 6)
+  |&gt; add(_, 9)
+}
+</code></pre>
+<p>In fact, this usage is so common that there is a special shorthand for it.</p>
+<pre><code class="language-rust noplaypen">pub fn run() {
+  // This is the same as the example above
+  1
+  |&gt; add(3)
+  |&gt; add(6)
+  |&gt; add(9)
+}
+</code></pre>
+<p>The pipe operator will first check to see if the left hand value could be used
+as the first argument to the call, e.g. <code>a |&gt; b(1, 2)</code> would become <code>b(a, 1, 2)</code>.</p>
+<p>If not it falls back to calling the result of the right hand side as a function
+, e.g. <code>b(1, 2)(a)</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../tour/case-expressions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../tour/modules.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../tour/case-expressions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../tour/modules.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
