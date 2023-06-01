@@ -6,7 +6,7 @@ function expandSponsorsSection() {
   document.documentElement.style.setProperty("--sponsors-max-height", "5000px");
 }
 
-if (new Date().getMonth() === 6) showPride();
+if (new Date().getMonth() === 5) showPride();
 
 for (let element of document.querySelectorAll("[data-show-pride]")) {
   element.addEventListener("click", showPride);
