@@ -55,6 +55,11 @@ internal_modules = [
   "my_app/internal/*",
 ]
 
+# The version of the Gleam compiler that the package requires (optional)
+# An error is raised if the version of the compiler used to compile the package
+# does not match this requirement.
+gleam = "> 0.15"
+
 # The Hex packages the project needs to compile and run (optional)
 # Uses the Hex version requirement format
 # https://hexdocs.pm/elixir/Version.html#module-requirements
