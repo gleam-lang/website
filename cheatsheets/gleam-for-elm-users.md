@@ -496,6 +496,14 @@ greeting person =
    "Hello, " ++ person.name ++ "!"
 ```
 
+Records cannot be updated because they are immutable. However, there
+is a special syntax for easily creating a new record based on an
+existing record's fields:
+
+```elm
+personWithSameAge = { person | name = "Bob" }
+```
+
 #### Gleam
 
 In Gleam, you cannot create records without creating a custom type first.
@@ -512,6 +520,14 @@ Record fields can be accessed with a dot syntax:
 
 ```gleam
 greeting = string.concat(["Hello, ",  person.name, "!"])
+```
+
+Records cannot be updated because they are immutable. However, there
+is a special syntax for easily creating a new record based on an
+existing record's fields:
+
+```gleam
+let person_with_same_age = Person(..person, name: "Bob")
 ```
 
 ### Lists
