@@ -54,6 +54,7 @@ has no concept of ports.
 - [Implementation](#implementation)
 - [Other concepts](#other-concepts)
   - [Atoms](#atoms)
+  - [Debugging](#debugging)
 
 ## Comments
 
@@ -932,4 +933,26 @@ type Alignment {
   Centre
   Right
 }
+```
+
+### Debugging
+
+### Elm
+
+To aid debugging, Elm has a `Debug.toString()` function:
+
+```elm
+import Debug
+
+Debug.toString [1,2] == "[1,2]"
+```
+
+### Gleam
+
+To aid debugging, Gleam has a `string.inspect()` function:
+
+```elm
+import gleam/string
+
+string.inspect([1, 2, 3]) == "[1, 2, 3]"
 ```
