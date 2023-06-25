@@ -951,7 +951,7 @@ Debug.toString [1,2] == "[1,2]"
 
 To aid debugging, Gleam has a `string.inspect()` function:
 
-```elm
+```gleam
 import gleam/string
 
 string.inspect([1, 2, 3]) == "[1, 2, 3]"
