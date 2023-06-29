@@ -51,7 +51,7 @@
 - name: "Alexander Stensrud"
   url: "https://github.com/spektroskop"
   avatar: "https://avatars.githubusercontent.com/u/3189?v=4"
-  tier: 3
+  tier: 2
   square_avatar: false
 - name: "Michael Jones"
   url: "https://github.com/michaeljones"
@@ -150,7 +150,7 @@
   square_avatar: false
 - name: "David Flanagan"
   url: "https://github.com/rawkode"
-  avatar: "https://avatars.githubusercontent.com/u/145816?u=2ee28b2e81af50f1210c32d4edff2ecae0a3fda0&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/145816?u=4d471adf016909c7e9ce40afff2adbb9d1492a55&v=4"
   tier: 1
   square_avatar: false
 - name: "Martin Janiczek"
@@ -348,6 +348,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1775346?u=833a731602445ffb4aea9e36a7eee166cd477e22&v=4"
   tier: 1
   square_avatar: false
+- name: "Shuqian Hon"
+  url: "https://github.com/honsq90"
+  avatar: "https://avatars.githubusercontent.com/u/1791439?u=3de7f249a698c500064294b4972defa3aa0399b6&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Pete Jodo"
   url: "https://github.com/petejodo"
   avatar: "https://avatars.githubusercontent.com/u/1938892?u=5a78046101d2b51614045e214aa1545a9dc792a2&v=4"
@@ -410,7 +415,7 @@
   square_avatar: false
 - name: "Cole Lawrence"
   url: "https://github.com/colelawrence"
-  avatar: "https://avatars.githubusercontent.com/u/2925395?u=d29af274d3aaa7e927666e54c8e4311a15eb1ae7&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/2925395?u=ea26e5fb61467b8c071663a54eb5bec0b730ead3&v=4"
   tier: 1
   square_avatar: false
 - name: "Barry Moore"
@@ -541,11 +546,6 @@
 - name: "Anthony Khong"
   url: "https://github.com/anthony-khong"
   avatar: "https://avatars.githubusercontent.com/u/12151757?u=ae67cbe1cad1e8bf6ec696c3439c38ba97c98ec3&v=4"
-  tier: 1
-  square_avatar: false
-- name: "porkbrain"
-  url: "https://github.com/bausano"
-  avatar: "https://avatars.githubusercontent.com/u/13656913?u=19fe08b14433ba8e3262aa4ed9f592d0759363a7&v=4"
   tier: 1
   square_avatar: false
 - name: "Natanael Sirqueira"
