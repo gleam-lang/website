@@ -308,6 +308,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1019721?u=66ffce0baadf67e8e8373e29509e0bf3eacb46b5&v=4"
   tier: 1
   square_avatar: false
+- name: "Michael Duffy"
+  url: "https://github.com/stunthamster"
+  avatar: "https://avatars.githubusercontent.com/u/1030138?u=0b94eab83ae023f4539fd5ac0b82f67dacf520d5&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Damir Vandic"
   url: "https://github.com/dvic"
   avatar: "https://avatars.githubusercontent.com/u/1214337?u=746515aba84bb2fcae408ec38fe3e3f8c2e78ce0&v=4"
@@ -565,7 +570,7 @@
   square_avatar: false
 - name: "Carlo Gilmar"
   url: "https://github.com/carlogilmar"
-  avatar: "https://avatars.githubusercontent.com/u/17634377?u=439be16dc79c2baa6059ab89319729c4da6e24f3&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/17634377?u=35b0a14d8f6fa65e47ef28bb0385b34ccd3948ab&v=4"
   tier: 1
   square_avatar: false
 - name: "Kieran Gill"
