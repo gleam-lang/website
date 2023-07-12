@@ -25,12 +25,12 @@ If we want to import these functions and use them in our program we would do
 so like this:
 
 ```gleam
-pub external fn random_float() -> Float =
-  "rand" "uniform"
+@external(erlang, "rand" "uniform")
+pub fn random_float() -> Float
 
 // Elixir modules start with `Elixir.`
-pub external fn inspect(a) -> a =
-  "Elixir.IO" "inspect"
+@external(erlang, "Elixir.IO" "inspect")
+pub fn inspect(a) -> a
 ```
 
 ## JavaScript external functions
@@ -47,27 +47,42 @@ export function run() {
 
 ```gleam
 // In src/my_program.gleam
-pub external fn run() -> Int =
-  "./my-module.js" "run"
+@external(javascript, "./my-module.js" "run")
+pub fn run() -> Int
 ```
 
 Gleam uses the JavaScript import syntax, so any module imported must use the
 esmodule export syntax, and if you are using the NodeJS runtime the file
 extension must be `.mjs`.
 
-## Labelled arguments
+## Multi-target external functions
 
-Like regular functions, external functions can have labelled arguments.
+An external implementation can be provided for multiple targets by given the
+`@external` attribute multiple times.
 
-```gleam
-pub external fn any(in: List(a), satisfying: fn(a) -> Bool) =
-  "my_external_module" "any"
+```gleam  
+@external(erlang, "rand" "uniform")
+@external(javascript, "./my-module.js" "random")
+pub fn random() -> Float
 ```
 
-This function has the labelled arguments `in` and `satisfying`, and can be
-called like so:
+The appropriate implementation will be chosen based on the target the program is
+being compiled for.
+
+## Gleam fallbacks
+
+A Gleam implementation can be given as a fallback for when no external
+implementation has been specified for the current target.
 
 ```gleam
-any(in: my_list, satisfying: is_even)
-any(satisfying: is_even, in: my_list)
-```
+@external(erlang, "lists" "reverse")
+pub fn reverse(items: List(a)) -> List(a) {
+  do_reverse(items, [])
+}
+
+fn do_reverse(items: List(a), accumulator: List(a)) -> List(a) {
+  case items {
+    [] -> accumulator
+    [first, ..rest] -> do_reverse(rest, [first, ..accumulator])
+  }
+}

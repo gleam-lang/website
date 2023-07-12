@@ -150,15 +150,19 @@
 Gleam knows nothing about the runtime representation of these types and so
 they cannot be pattern matched on, but they can be used with external
 functions that know how to work with them.</p>
-<p>Here is an example of importing a <code>Queue</code> data type and some functions from
-Erlang's <code>queue</code> module to work with the new <code>Queue</code> type.</p>
-<pre><code class="language-gleam">pub external type Queue(a)
+<p>To write an external type define a type but don't give it any constructors. Here
+is an example of importing a <code>Queue</code> data type and some functions from Erlang's
+<code>queue</code> module to work with the new <code>Queue</code> type.</p>
+<pre><code class="language-gleam">pub type Queue(a)
 
-pub external fn new() -&gt; Queue(a) = &quot;queue&quot; &quot;new&quot;
+@external(erlang, &quot;queue&quot; &quot;new&quot;)
+pub fn new() -&gt; Queue(a)
 
-pub external fn length(Queue(a)) -&gt; Int = &quot;queue&quot; &quot;len&quot;
+@external(erlang, &quot;queue&quot; &quot;len&quot;)
+pub fn length(Queue(a)) -&gt; Int
 
-pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&quot;
+@external(erlang, &quot;queue&quot; &quot;in&quot;)
+pub fn push(Queue(a), a) -&gt; Queue(a)
 </code></pre>
 
                     </main>
