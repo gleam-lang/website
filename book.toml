@@ -12,3 +12,4 @@ git-repository-icon = "fa-github"
 [output.html.redirect]
 "tour/type-annotations" = "./let-bindings.html"
 "tour/type-annotations.html" = "./let-bindings.html"
+"tour/todo.html" = "./todo-and-panic.html"

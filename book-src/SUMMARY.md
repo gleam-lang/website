@@ -15,7 +15,7 @@
 - [Custom types](./tour/custom-types.md)
 - [Result](./tour/result.md)
 - [Assert](./tour/assert.md)
-- [Todo](./tour/todo.md)
+- [Todo & Panic](./tour/todo-and-panic.md)
 - [Constants](./tour/constants.md)
 - [Type aliases](./tour/type-aliases.md)
 - [Bit strings](./tour/bit-strings.md)
