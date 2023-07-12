@@ -67,6 +67,8 @@ gleam = "> 0.15"
 gleam_stdlib = "~> 0.18"
 gleam_erlang = "~> 0.2"
 gleam_http = "~> 2.1"
+# Local dependencies can be specified with a path
+my_other_project = { path = "../my_other_project" }
 
 # The Hex packages the project needs for the tests (optional)
 # These will not be included if the package is published to Hex.
