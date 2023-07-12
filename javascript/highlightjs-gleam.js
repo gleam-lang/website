@@ -1,7 +1,6 @@
 hljs.registerLanguage("gleam", function (hljs) {
   const KEYWORDS =
-    "as assert case const external fn if import let " +
-    "panic use opaque pub todo type";
+    "as assert case const fn if import let panic use opaque pub todo type";
   const STRING = {
     className: "string",
     variants: [{ begin: /"/, end: /"/ }],
@@ -75,8 +74,20 @@ hljs.registerLanguage("gleam", function (hljs) {
         ],
       },
       {
+        className: "attribute",
+        begin: "@",
+        end: "\\(",
+        excludeEnd: true,
+      },
+      {
         className: "keyword",
         beginKeywords: KEYWORDS,
+      },
+      {
+        // Attributes
+        className: "title",
+        begin: "\\b@[a-z][a-za-z0-9_]*\\b",
+        relevance: 0,
       },
       {
         // Type names and constructors
