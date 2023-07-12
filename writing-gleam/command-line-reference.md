@@ -80,10 +80,13 @@ Render HTML documentation
 
 ### `docs build`
 
-`gleam docs build`
+`gleam docs build [OPTIONS]`
 
 Render HTML docs locally
 
+| Option | Description |
+| ------ | ----------- |
+| `--open`| Opens the docs in a browser after rendering
 
 ### `docs publish`
 
@@ -133,6 +136,16 @@ Precompiled Erlang, suitable for deployment
 
 
 
+
+## `fix`
+
+`gleam fix [OPTIONS] [FILES]...`
+
+Rewrite deprecated Gleam code
+
+| Option | Description |
+| ------ | ----------- |
+| `-t, --target <TARGET>`| The target to use for external functions when it could not be inferred
 
 ## `format`
 
@@ -219,6 +232,13 @@ This command uses this environment variables:
 | ------ | ----------- |
 | `--replace`| 
 | `-y, --yes`| 
+
+## `remove`
+
+`gleam remove <PACKAGES>...`
+
+Remove project dependencies
+
 
 ## `run`
 
