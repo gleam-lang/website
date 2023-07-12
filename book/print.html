@@ -1312,12 +1312,12 @@ arguments and returns a <code>Float</code>.</p>
 prints it, and returns the same value.</p>
 <p>If we want to import these functions and use them in our program we would do
 so like this:</p>
-<pre><code class="language-gleam">pub external fn random_float() -&gt; Float =
-  &quot;rand&quot; &quot;uniform&quot;
+<pre><code class="language-gleam">@external(erlang, &quot;rand&quot; &quot;uniform&quot;)
+pub fn random_float() -&gt; Float
 
 // Elixir modules start with `Elixir.`
-pub external fn inspect(a) -&gt; a =
-  &quot;Elixir.IO&quot; &quot;inspect&quot;
+@external(erlang, &quot;Elixir.IO&quot; &quot;inspect&quot;)
+pub fn inspect(a) -&gt; a
 </code></pre>
 <h2 id="javascript-external-functions"><a class="header" href="#javascript-external-functions">JavaScript external functions</a></h2>
 <p>When importing a JavaScript function the path to the module is given instead of
@@ -1328,36 +1328,54 @@ export function run() {
 }
 </code></pre>
 <pre><code class="language-gleam">// In src/my_program.gleam
-pub external fn run() -&gt; Int =
-  &quot;./my-module.js&quot; &quot;run&quot;
+@external(javascript, &quot;./my-module.js&quot; &quot;run&quot;)
+pub fn run() -&gt; Int
 </code></pre>
 <p>Gleam uses the JavaScript import syntax, so any module imported must use the
 esmodule export syntax, and if you are using the NodeJS runtime the file
 extension must be <code>.mjs</code>.</p>
-<h2 id="labelled-arguments-1"><a class="header" href="#labelled-arguments-1">Labelled arguments</a></h2>
-<p>Like regular functions, external functions can have labelled arguments.</p>
-<pre><code class="language-gleam">pub external fn any(in: List(a), satisfying: fn(a) -&gt; Bool) =
-  &quot;my_external_module&quot; &quot;any&quot;
+<h2 id="multi-target-external-functions"><a class="header" href="#multi-target-external-functions">Multi-target external functions</a></h2>
+<p>An external implementation can be provided for multiple targets by given the
+<code>@external</code> attribute multiple times.</p>
+<pre><code class="language-gleam">@external(erlang, &quot;rand&quot; &quot;uniform&quot;)
+@external(javascript, &quot;./my-module.js&quot; &quot;random&quot;)
+pub fn random() -&gt; Float
 </code></pre>
-<p>This function has the labelled arguments <code>in</code> and <code>satisfying</code>, and can be
-called like so:</p>
-<pre><code class="language-gleam">any(in: my_list, satisfying: is_even)
-any(satisfying: is_even, in: my_list)
+<p>The appropriate implementation will be chosen based on the target the program is
+being compiled for.</p>
+<h2 id="gleam-fallbacks"><a class="header" href="#gleam-fallbacks">Gleam fallbacks</a></h2>
+<p>A Gleam implementation can be given as a fallback for when no external
+implementation has been specified for the current target.</p>
+<pre><code class="language-gleam">@external(erlang, &quot;lists&quot; &quot;reverse&quot;)
+pub fn reverse(items: List(a)) -&gt; List(a) {
+  do_reverse(items, [])
+}
+
+fn do_reverse(items: List(a), accumulator: List(a)) -&gt; List(a) {
+  case items {
+    [] -&gt; accumulator
+    [first, ..rest] -&gt; do_reverse(rest, [first, ..accumulator])
+  }
+}
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="external-type"><a class="header" href="#external-type">External type</a></h1>
 <p>In addition to importing external functions we can also import external types.
 Gleam knows nothing about the runtime representation of these types and so
 they cannot be pattern matched on, but they can be used with external
 functions that know how to work with them.</p>
-<p>Here is an example of importing a <code>Queue</code> data type and some functions from
-Erlang's <code>queue</code> module to work with the new <code>Queue</code> type.</p>
-<pre><code class="language-gleam">pub external type Queue(a)
+<p>To write an external type define a type but don't give it any constructors. Here
+is an example of importing a <code>Queue</code> data type and some functions from Erlang's
+<code>queue</code> module to work with the new <code>Queue</code> type.</p>
+<pre><code class="language-gleam">pub type Queue(a)
 
-pub external fn new() -&gt; Queue(a) = &quot;queue&quot; &quot;new&quot;
+@external(erlang, &quot;queue&quot; &quot;new&quot;)
+pub fn new() -&gt; Queue(a)
 
-pub external fn length(Queue(a)) -&gt; Int = &quot;queue&quot; &quot;len&quot;
+@external(erlang, &quot;queue&quot; &quot;len&quot;)
+pub fn length(Queue(a)) -&gt; Int
 
-pub external fn push(Queue(a), a) -&gt; Queue(a) = &quot;queue&quot; &quot;in&quot;
+@external(erlang, &quot;queue&quot; &quot;in&quot;)
+pub fn push(Queue(a), a) -&gt; Queue(a)
 </code></pre>
 
                     </main>
