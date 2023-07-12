@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Let bindings - The Gleam Book</title>
+        <title>Todo &amp; Panic - The Gleam Book</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html" class="active"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="../tour/assert.html"><strong aria-hidden="true">15.</strong> Assert</a></li><li class="chapter-item expanded "><a href="../tour/todo-and-panic.html"><strong aria-hidden="true">16.</strong> Todo & Panic</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">17.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">18.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">19.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/use.html"><strong aria-hidden="true">20.</strong> Use</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">21.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">22.</strong> External types</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="../tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="../tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="../tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="../tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="../tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="../tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="../tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="../tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="../tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="../tour/assert.html"><strong aria-hidden="true">15.</strong> Assert</a></li><li class="chapter-item expanded "><a href="../tour/todo-and-panic.html" class="active"><strong aria-hidden="true">16.</strong> Todo & Panic</a></li><li class="chapter-item expanded "><a href="../tour/constants.html"><strong aria-hidden="true">17.</strong> Constants</a></li><li class="chapter-item expanded "><a href="../tour/type-aliases.html"><strong aria-hidden="true">18.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="../tour/bit-strings.html"><strong aria-hidden="true">19.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="../tour/use.html"><strong aria-hidden="true">20.</strong> Use</a></li><li class="chapter-item expanded "><a href="../tour/external-functions.html"><strong aria-hidden="true">21.</strong> External functions</a></li><li class="chapter-item expanded "><a href="../tour/external-types.html"><strong aria-hidden="true">22.</strong> External types</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,34 +145,57 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="let-bindings"><a class="header" href="#let-bindings">Let bindings</a></h1>
-<p>A value can be given a name using <code>let</code>. Names can be reused by later let
-bindings, but the values contained are <em>immutable</em>, meaning the values
-themselves cannot be changed.</p>
-<pre><code class="language-gleam">let x = 1
-let y = x
-let x = 2
+                        <h1 id="todo--panic"><a class="header" href="#todo--panic">Todo &amp; Panic</a></h1>
+<p>Gleam's <code>todo</code> and <code>panic</code> keywords are used to indicate that some code is not
+yet finished, or that a program has encountered an unrecoverable error and
+should crash.</p>
+<p><code>todo</code> can be useful when designing a module, type checking functions and types
+but leaving the implementation of the functions until later.</p>
+<pre><code class="language-gleam">fn favourite_number() -&gt; Int {
+  // The type annotations says this returns an Int, but we don't need
+  // to implement it yet.
+  todo
+}
 
-x  // =&gt; 2
-y  // =&gt; 1
+pub fn main() {
+  favourite_number() * 2
+}
 </code></pre>
-<h2 id="type-annotations"><a class="header" href="#type-annotations">Type annotations</a></h2>
-<p>A type annotation can be added to a let binding.</p>
-<pre><code class="language-gleam">let x: Int = 1
+<p>When this code is built Gleam will type check and compile the code to ensure
+it is valid, and the <code>todo</code> or <code>panic</code> will be replaced with code that crashes
+the program if that function is run.</p>
+<p>A message can be given as a form of documentation. The message will be printed
+in the error message when the code is run.</p>
+<pre><code class="language-gleam">fn favourite_number() -&gt; Int {
+  todo as &quot;We're going to decide which number is best tomorrow&quot;
+}
+
+fn unreachable_function() -&gt; Int {
+  panic as &quot;this function should never be called&quot;
+}
 </code></pre>
-<p>These annotations are optional and while they are checked, they do not aid the
-type checker. Gleam code is always fully type checked with or without type
-annotations.</p>
+<p>When the compiler finds a <code>todo</code> it will print a warning, which can be useful
+to avoid accidentally forgetting to remove a <code>todo</code>.</p>
+<p>The warning also includes the expected type of the expression that needs to
+replace the <code>todo</code>. This can be a useful way of asking the compiler what type
+is needed if you are ever unsure.</p>
+<pre><code class="language-gleam">fn main() {
+  my_complicated_function(
+    // What type does this function take again...?
+    todo
+  )
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../tour/ints-and-floats.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tour/assert.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../tour/expression-blocks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tour/constants.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -182,11 +205,11 @@ annotations.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../tour/ints-and-floats.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../tour/assert.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../tour/expression-blocks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../tour/constants.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

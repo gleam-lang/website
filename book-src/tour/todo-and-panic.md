@@ -1,8 +1,10 @@
-# Todo
+# Todo & Panic
 
-Gleam's `todo` keyword is used to indicate that some code is not yet finished.
+Gleam's `todo` and `panic` keywords are used to indicate that some code is not
+yet finished, or that a program has encountered an unrecoverable error and
+should crash.
 
-It can be useful when designing a module, type checking functions and types
+`todo` can be useful when designing a module, type checking functions and types
 but leaving the implementation of the functions until later.
 
 ```gleam
@@ -18,15 +20,19 @@ pub fn main() {
 ```
 
 When this code is built Gleam will type check and compile the code to ensure
-it is valid, and the `todo` will be replaced with code that crashes the
-program if that function is run.
+it is valid, and the `todo` or `panic` will be replaced with code that crashes
+the program if that function is run.
 
 A message can be given as a form of documentation. The message will be printed
-in the error message when the `todo` code is run.
+in the error message when the code is run.
 
 ```gleam
 fn favourite_number() -> Int {
-  todo("We're going to decide which number is best tomorrow")
+  todo as "We're going to decide which number is best tomorrow"
+}
+
+fn unreachable_function() -> Int {
+  panic as "this function should never be called"
 }
 ```
 
