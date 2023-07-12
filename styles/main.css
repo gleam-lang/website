@@ -621,6 +621,7 @@ td {
   color: var(--color-code-pink);
 }
 
+.hljs-attribute,
 .hljs-title,
 .code-type,
 .code-module {
