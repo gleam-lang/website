@@ -12,12 +12,12 @@ is an example of importing a `Queue` data type and some functions from Erlang's
 ```gleam
 pub type Queue(a)
 
-@external(erlang, "queue" "new")
+@external(erlang, "queue", "new")
 pub fn new() -> Queue(a)
 
-@external(erlang, "queue" "len")
-pub fn length(Queue(a)) -> Int
+@external(erlang, "queue",  "len")
+pub fn length(queue: Queue(a)) -> Int
 
-@external(erlang, "queue" "in")
-pub fn push(Queue(a), a) -> Queue(a)
+@external(erlang, "queue", "in")
+pub fn push(new: a, queue: Queue(a)) -> Queue(a)
 ```
