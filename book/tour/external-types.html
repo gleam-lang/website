@@ -155,14 +155,14 @@ is an example of importing a <code>Queue</code> data type and some functions fro
 <code>queue</code> module to work with the new <code>Queue</code> type.</p>
 <pre><code class="language-gleam">pub type Queue(a)
 
-@external(erlang, &quot;queue&quot; &quot;new&quot;)
+@external(erlang, &quot;queue&quot;, &quot;new&quot;)
 pub fn new() -&gt; Queue(a)
 
-@external(erlang, &quot;queue&quot; &quot;len&quot;)
-pub fn length(Queue(a)) -&gt; Int
+@external(erlang, &quot;queue&quot;,  &quot;len&quot;)
+pub fn length(queue: Queue(a)) -&gt; Int
 
-@external(erlang, &quot;queue&quot; &quot;in&quot;)
-pub fn push(Queue(a), a) -&gt; Queue(a)
+@external(erlang, &quot;queue&quot;, &quot;in&quot;)
+pub fn push(new: a, queue: Queue(a)) -&gt; Queue(a)
 </code></pre>
 
                     </main>
