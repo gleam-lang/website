@@ -250,7 +250,7 @@
   square_avatar: false
 - name: "David Bernheisel"
   url: "https://github.com/dbernheisel"
-  avatar: "https://avatars.githubusercontent.com/u/643967?u=3d18770fe80262154eb779dff0ca507be4180732&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/643967?u=a8d99b8f74fa44c72f8adbe86c379ae84999fc5c&v=4"
   tier: 1
   square_avatar: false
 - name: "Wilson Silva"
@@ -276,7 +276,7 @@
 - name: "Jechol Lee"
   url: "https://github.com/jechol"
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
-  tier: 2
+  tier: 1
   square_avatar: false
 - name: "Tomasz Kowal"
   url: "https://github.com/tomekowal"
@@ -433,11 +433,6 @@
   avatar: "https://avatars.githubusercontent.com/u/3588798?v=4"
   tier: 1
   square_avatar: false
-- name: "Uku Taht"
-  url: "https://github.com/ukutaht"
-  avatar: "https://avatars.githubusercontent.com/u/3731516?v=4"
-  tier: 1
-  square_avatar: false
 - name: "David Sancho"
   url: "https://github.com/davesnx"
   avatar: "https://avatars.githubusercontent.com/u/3763599?u=9642d3d5effd7b98774ed5b13438b411dc21a1dd&v=4"
@@ -570,7 +565,7 @@
   square_avatar: false
 - name: "Carlo Gilmar"
   url: "https://github.com/carlogilmar"
-  avatar: "https://avatars.githubusercontent.com/u/17634377?u=35b0a14d8f6fa65e47ef28bb0385b34ccd3948ab&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/17634377?u=835ff97974423362cdc8d7b6d7dfb5e091a669bc&v=4"
   tier: 1
   square_avatar: false
 - name: "Kieran Gill"
@@ -635,7 +630,7 @@
   square_avatar: false
 - name: "Harry Bairstow"
   url: "https://github.com/HarryET"
-  avatar: "https://avatars.githubusercontent.com/u/29015545?u=ec5ce48b751279923c1c1356c871ed32626fc838&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/29015545?u=8a402ebefc64fe32af1659067dffb5f0d6b9feef&v=4"
   tier: 1
   square_avatar: false
 - name: "Leon Qadirie"
@@ -672,6 +667,11 @@
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
   tier: 2
+  square_avatar: false
+- name: "Coder"
+  url: "https://github.com/coder"
+  avatar: "https://avatars.githubusercontent.com/u/95932066?v=4"
+  tier: 1
   square_avatar: false
 - name: "Ernesto Malave"
   url: "https://github.com/oberernst"
