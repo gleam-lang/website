@@ -1458,7 +1458,7 @@ To iterate a few foundational differences:
   can restart that process or after a while or amount of tries abort
   repeating restarts on the process with that given input data. This means
   Erlang/BEAM will yield similar robustness that PHP developers are used
-  to and similar isoluation guarantuees.
+  to and similar isolation guarantuees.
 - When executing Gleam code in fact its compiled Erlang or JavaScript is
   executed. So in case there are runtime crashes, the crash log will show
   Erlang (or browser-console/NodeJS/Deno) debug information. In Gleam
@@ -1485,4 +1485,4 @@ To iterate a few foundational differences:
 - Gleam can be utilized as a JavaScript replacement to drive your frontend
   application not just your backend web server.
 - Gleam on Erlang/BEAM can be used to write non-blocking, massively concurrent
-  server applications comparable to RadditMQ or multiplayer game servers.
+  server applications comparable to RabbitMQ or multiplayer game servers.
