@@ -6,21 +6,23 @@ redirect_from:
   - "/book/getting-started/index.html"
 ---
 
-## Learn Gleam fundamentals
+## Get an overview of Gleam
 
 To get an overview of the Gleam language check out the 
 [language tour](/book/tour/).
+
+
+## Learn Gleam with the Exercism course
+
+Exercism is a platform for learning programming languages through practice.
+Their [Gleam course](https://exercism.io/tracks/gleam) is a great way to learn
+the language and get mentored by experienced Gleam developers.
+
 
 ## Install Gleam
 
 [Install Gleam on your computer](/getting-started/installing/) and add a plugin
 for your text editor to start writing Gleam programs.
-
-
-## Try Gleam online
-
-Try Gleam without installing it using the community maintained
-[Gleam Playground](https://johndoneth.github.io/gleam-playground/).
 
 
 ## Creating a project
