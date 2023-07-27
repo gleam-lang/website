@@ -58,7 +58,7 @@ internal_modules = [
 # The version of the Gleam compiler that the package requires (optional)
 # An error is raised if the version of the compiler used to compile the package
 # does not match this requirement.
-gleam = "> 0.15"
+gleam = ">= 0.30.0"
 
 # The Hex packages the project needs to compile and run (optional)
 # Uses the Hex version requirement format
