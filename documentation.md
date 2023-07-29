@@ -14,6 +14,14 @@ layout: page
   - [Documenting the project](/writing-gleam/documenting-the-project)
   - [Example projects](/writing-gleam/example-projects)
 
+## Gleam references
+
+- [The Gleam Package Index](https://packages.gleam.run)
+- [Gleam's standard library documentation](https://hexdocs.pm/gleam_stdlib/)
+- [The "Awesome Gleam" resource list](https://github.com/gleam-lang/awesome-gleam)
+- [gleam.toml config file reference](/writing-gleam/gleam-toml)
+- [Command line reference](/writing-gleam/command-line-reference)
+
 ## Cheatsheets
 
 - [Gleam for Elixir users](/cheatsheets/gleam-for-elixir-users)
@@ -30,10 +38,3 @@ layout: page
 ## About Gleam
 
 - [Frequently asked questions](/frequently-asked-questions)
-
-## Gleam references
-
-- [Gleam's standard library documentation](https://hexdocs.pm/gleam_stdlib/)
-- [The "Awesome Gleam" resource list](https://github.com/gleam-lang/awesome-gleam)
-- [gleam.toml config file reference](/writing-gleam/gleam-toml)
-- [Command line reference](/writing-gleam/command-line-reference)
