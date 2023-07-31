@@ -98,11 +98,6 @@
   avatar: "https://avatars.githubusercontent.com/u/39518?v=4"
   tier: 2
   square_avatar: false
-- name: "Steven Joseph"
-  url: "https://github.com/jagguli"
-  avatar: "https://avatars.githubusercontent.com/u/74574?u=ed409e07fdcd87d7e6b2287e798a76a97caa97fd&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Wojtek Mach"
   url: "https://github.com/wojtekmach"
   avatar: "https://avatars.githubusercontent.com/u/76071?v=4"
@@ -143,6 +138,11 @@
   avatar: "https://avatars.githubusercontent.com/u/128454?v=4"
   tier: 1
   square_avatar: false
+- name: "Josef Richter"
+  url: "https://github.com/josefrichter"
+  avatar: "https://avatars.githubusercontent.com/u/134302?u=9eb4d65f42e7769b20bf05cad104dee0b136fdba&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Adam Mokan"
   url: "https://github.com/amokan"
   avatar: "https://avatars.githubusercontent.com/u/140038?u=1b46dc6296c7f00d5ad6046ee2490468a7b47ead&v=4"
@@ -168,11 +168,6 @@
   avatar: "https://avatars.githubusercontent.com/u/154392?u=e2455759892678ce94360af4620793f79a91a0e9&v=4"
   tier: 1
   square_avatar: false
-- name: "Michael Kumm"
-  url: "https://github.com/mkumm"
-  avatar: "https://avatars.githubusercontent.com/u/158991?u=4b798fee461a143c60a8db1f3f34d2e0978e6860&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Ben Myles"
   url: "https://github.com/benmyles"
   avatar: "https://avatars.githubusercontent.com/u/164675?u=cf738ec5bec0ba1434e34d817fbcff08230245e2&v=4"
@@ -196,11 +191,6 @@
 - name: "Mark Markaryan"
   url: "https://github.com/markmark206"
   avatar: "https://avatars.githubusercontent.com/u/218696?u=06ddfe39562f21d97e7278b8fa687e494e40fa79&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Mathias Jean Johansen"
-  url: "https://github.com/majjoha"
-  avatar: "https://avatars.githubusercontent.com/u/233988?v=4"
   tier: 1
   square_avatar: false
 - name: "Parker Selbert"
