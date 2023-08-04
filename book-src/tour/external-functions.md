@@ -25,12 +25,12 @@ If we want to import these functions and use them in our program we would do
 so like this:
 
 ```gleam
-@external(erlang, "rand" "uniform")
+@external(erlang, "rand", "uniform")
 pub fn random_float() -> Float
 
 // Elixir modules start with `Elixir.`
-@external(erlang, "Elixir.IO" "inspect")
-pub fn inspect(a) -> a
+@external(erlang, "Elixir.IO", "inspect")
+pub fn inspect(value: a) -> a
 ```
 
 ## JavaScript external functions
