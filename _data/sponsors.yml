@@ -393,7 +393,7 @@
   avatar: "https://avatars.githubusercontent.com/u/2291502?u=367ad7712549b320466e91233f79160515accacd&v=4"
   tier: 1
   square_avatar: false
-- name: "Sascha Wolf"
+- name: "Wolf"
   url: "https://github.com/sascha-wolf"
   avatar: "https://avatars.githubusercontent.com/u/2647626?u=3026c9ae1911cf21fc8cbfbc14277f7ba583cef0&v=4"
   tier: 1
@@ -562,6 +562,11 @@
   url: "https://github.com/kierangilliam"
   avatar: "https://avatars.githubusercontent.com/u/18583882?v=4"
   tier: 1
+  square_avatar: false
+- name: "NFIBrokerage"
+  url: "https://github.com/NFIBrokerage"
+  avatar: "https://avatars.githubusercontent.com/u/20132342?v=4"
+  tier: 2
   square_avatar: false
 - name: "Jen Stehlik"
   url: "https://github.com/okkdev"
