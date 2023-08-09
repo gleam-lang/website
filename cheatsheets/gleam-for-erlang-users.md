@@ -480,7 +480,7 @@ let #(_, password, _) = my_tuple
 ### Lists
 
 Lists in Erlang are allowed to be of mixed types, but not in Gleam. They retain all of the same
-performance sematics.
+performance semantics.
 
 The `cons` operator works the same way both for pattern matching and for appending elements to the
 head of a list, but it uses a different syntax.
