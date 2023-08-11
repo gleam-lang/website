@@ -578,6 +578,11 @@
   avatar: "https://avatars.githubusercontent.com/u/20364796?u=d2bccedc9ce3d6cf3214c993098649b9a122982c&v=4"
   tier: 1
   square_avatar: false
+- name: "Giacomo Cavalieri"
+  url: "https://github.com/giacomocavalieri"
+  avatar: "https://avatars.githubusercontent.com/u/20598369?u=3ba1ad4894b381626b5aa8503bcd9b06f02554cc&v=4"
+  tier: 1
+  square_avatar: false
 - name: "inoas"
   url: "https://github.com/inoas"
   avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
