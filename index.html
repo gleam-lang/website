@@ -51,20 +51,31 @@ content=header_content %}
         scale and stay lightning fast with ease.
       </p>
     </div>
-    <pre><code><span class="code-keyword">fn</span> <span class="code-fn">spawn_task</span>(i) {
-  <span class="code-module">task.</span><span class="code-fn">async</span>(<span class="code-keyword">fn</span>() {
-    <span class="code-keyword">let</span> n = <span class="code-module">int.</span><span class="code-fn">to_string</span>(i)
-    <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Hello from "</span> <span class="code-operator">&lt;&gt;</span> n)
-  })
-}
+    <pre>
+      <code>
+        <span class="code-comment">// gleam new hello_spawn</span>
+        <span class="code-comment">// gleam add gleam_otp</span>
 
-<span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
-  <span class="code-comment">// Run a million threads, no problem</span>
-  <span class="code-module">list.</span><span class="code-fn">range</span>(<span class="code-number">0</span>, <span class="code-number">1_000_000</span>)
-  <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">map</span>(<span class="code-fn">spawn_task</span>)
-  <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">each</span>(<span class="code-module">task.</span><span class="code-fn">await_forever</span>)
-}
-</code></pre>
+        <span class="code-keyword">import</span> <span class="code-module">gleam/io</span>
+        <span class="code-keyword">import</span> <span class="code-module">gleam/int</span>
+        <span class="code-keyword">import</span> <span class="code-module">gleam/list</span>
+        <span class="code-keyword">import</span> <span class="code-module">gleam/otp/task</span>
+
+        <span class="code-keyword">fn</span> <span class="code-fn">spawn_task</span>(i) {
+        <span class="code-keyword">fn</span> <span class="code-fn">spawn_task</span>(i) {
+        <span class="code-module">task.</span><span class="code-fn">async</span>(<span class="code-keyword">fn</span>() {
+        <span class="code-keyword">let</span> n = <span class="code-module">int.</span><span class="code-fn">to_string</span>(i)
+        <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Hello from "</span> <span class="code-operator">&lt;&gt;</span> n)
+        })
+        }
+        <span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
+        <span class="code-comment">// Run a million threads, no problem</span>
+        <span class="code-module">list.</span><span class="code-fn">range</span>(<span class="code-number">0</span>, <span class="code-number">1_000_000</span>)
+        <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">map</span>(<span class="code-fn">spawn_task</span>)
+        <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">each</span>(<span class="code-module">task.</span><span class="code-fn">await_forever</span>)
+        }
+      </code>
+    </pre>
   </section>
 
   <section class="content home-pair">
