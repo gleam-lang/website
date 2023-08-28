@@ -3,6 +3,26 @@
   avatar: "https://avatars.githubusercontent.com/u/369?u=33067a56bf0f4e3fc7b5e498ed1bd1d5f386de25&v=4"
   tier: 1
   square_avatar: false
+- name: "Benjamin Peinhardt"
+  url: "https://github.com/bcpeinhardt"
+  avatar: "https://avatars.githubusercontent.com/u/61021968?u=17f37181b87e813cdcdf42b4a5aa4340f2159e10&v=4"
+  tier: 2
+  square_avatar: false
+- name: "Danielle Maywood"
+  url: "https://github.com/DanielleMaywood"
+  avatar: "https://avatars.githubusercontent.com/u/40153966?u=7f66b1c7d1c5920d54279158bd005aad798e96a4&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Robert Attard"
+  url: "https://github.com/TanklesXL"
+  avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
+  tier: 2
+  square_avatar: false
+- name: "Giacomo Cavalieri"
+  url: "https://github.com/giacomocavalieri"
+  avatar: "https://avatars.githubusercontent.com/u/20598369?u=3ba1ad4894b381626b5aa8503bcd9b06f02554cc&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Nicklas Sindlev Andersen"
   url: "https://github.com/NicklasXYZ"
   avatar: "https://avatars.githubusercontent.com/u/18580183?u=e78dfbd9cc44a243c17f052250ef73aec4cb3858&v=4"
@@ -16,6 +36,16 @@
 - name: "Sammy Isseyegh"
   url: "https://github.com/bkspace"
   avatar: "https://avatars.githubusercontent.com/u/1695350?u=27a9d5486661a7f1ada8ff6fc3ae52d09ca1985f&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Mark Holmes"
+  url: "https://github.com/markholmes"
+  avatar: "https://avatars.githubusercontent.com/u/921826?u=315e6483dbe88494b733647492faadcbfe77b041&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Kayla Washburn"
+  url: "https://github.com/aslilac"
+  avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
   tier: 1
   square_avatar: false
 - name: "Hayleigh Thompson"
@@ -198,11 +228,6 @@
   avatar: "https://avatars.githubusercontent.com/u/270831?u=3487cbeadcafdcdc8a4df003f2fb97d34edf8104&v=4"
   tier: 2
   square_avatar: false
-- name: "Kayla Washburn"
-  url: "https://github.com/aslilac"
-  avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
-  tier: 1
-  square_avatar: false
 - name: "John Palgut"
   url: "https://github.com/Jwsonic"
   avatar: "https://avatars.githubusercontent.com/u/455046?u=0092bfecadfc3aac5e1df3145ea4e0a55a896787&v=4"
@@ -271,11 +296,6 @@
 - name: "Tomasz Kowal"
   url: "https://github.com/tomekowal"
   avatar: "https://avatars.githubusercontent.com/u/907415?v=4"
-  tier: 1
-  square_avatar: false
-- name: "Mark Holmes"
-  url: "https://github.com/markholmes"
-  avatar: "https://avatars.githubusercontent.com/u/921826?u=315e6483dbe88494b733647492faadcbfe77b041&v=4"
   tier: 1
   square_avatar: false
 - name: "Danny Martini"
@@ -473,6 +493,11 @@
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   tier: 1
   square_avatar: false
+- name: "Chris Rybicki"
+  url: "https://github.com/Chriscbr"
+  avatar: "https://avatars.githubusercontent.com/u/5008987?u=0263ce63fe2c5083367f5f9625ee2435652801b4&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Chris Ohk"
   url: "https://github.com/utilForever"
   avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
@@ -533,6 +558,11 @@
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
   tier: 1
   square_avatar: false
+- name: "Fede Esteban"
+  url: "https://github.com/fmesteban"
+  avatar: "https://avatars.githubusercontent.com/u/11654110?v=4"
+  tier: 2
+  square_avatar: false
 - name: "Edon Gashi"
   url: "https://github.com/edongashi"
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
@@ -583,11 +613,6 @@
   avatar: "https://avatars.githubusercontent.com/u/20364796?u=d2bccedc9ce3d6cf3214c993098649b9a122982c&v=4"
   tier: 1
   square_avatar: false
-- name: "Giacomo Cavalieri"
-  url: "https://github.com/giacomocavalieri"
-  avatar: "https://avatars.githubusercontent.com/u/20598369?u=3ba1ad4894b381626b5aa8503bcd9b06f02554cc&v=4"
-  tier: 1
-  square_avatar: false
 - name: "inoas"
   url: "https://github.com/inoas"
   avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
@@ -612,11 +637,6 @@
   url: "https://github.com/brettkolodny"
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
   tier: 1
-  square_avatar: false
-- name: "Robert Attard"
-  url: "https://github.com/TanklesXL"
-  avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
-  tier: 2
   square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
@@ -643,11 +663,6 @@
   avatar: "https://avatars.githubusercontent.com/u/39130739?u=334ef35279398d7ae83adb27190bba0e1cef7e95&v=4"
   tier: 1
   square_avatar: false
-- name: "Danielle Maywood"
-  url: "https://github.com/DanielleMaywood"
-  avatar: "https://avatars.githubusercontent.com/u/40153966?u=7f66b1c7d1c5920d54279158bd005aad798e96a4&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Signal Insights"
   url: "https://github.com/signalinsights"
   avatar: "https://avatars.githubusercontent.com/u/56572268?v=4"
@@ -657,11 +672,6 @@
   url: "https://github.com/weizhliu"
   avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
   tier: 1
-  square_avatar: false
-- name: "Benjamin Peinhardt"
-  url: "https://github.com/bcpeinhardt"
-  avatar: "https://avatars.githubusercontent.com/u/61021968?u=17f37181b87e813cdcdf42b4a5aa4340f2159e10&v=4"
-  tier: 2
   square_avatar: false
 - name: "Theo Harris"
   url: "https://github.com/Theosaurus-Rex"
