@@ -683,6 +683,11 @@
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
   tier: 2
   square_avatar: false
+- name: "Šárka Slavětínská"
+  url: "https://github.com/sarkasl"
+  avatar: "https://avatars.githubusercontent.com/u/91079368?u=4382566aacb95662ed78242585e9165b14158262&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Coder"
   url: "https://github.com/coder"
   avatar: "https://avatars.githubusercontent.com/u/95932066?v=4"
