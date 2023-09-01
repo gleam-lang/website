@@ -293,6 +293,11 @@
   avatar: "https://avatars.githubusercontent.com/u/795125?u=7220a9e450acf754929feae863021cd59d5ba69a&v=4"
   tier: 1
   square_avatar: false
+- name: "Andy Aylward"
+  url: "https://github.com/aaylward"
+  avatar: "https://avatars.githubusercontent.com/u/846647?u=b690998b02e5476a23c0c638b4b08bc0560711bd&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Tomasz Kowal"
   url: "https://github.com/tomekowal"
   avatar: "https://avatars.githubusercontent.com/u/907415?v=4"
