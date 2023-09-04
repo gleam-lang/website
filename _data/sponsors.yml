@@ -423,6 +423,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2647626?u=3026c9ae1911cf21fc8cbfbc14277f7ba583cef0&v=4"
   tier: 1
   square_avatar: false
+- name: "Dmitry Poroh"
+  url: "https://github.com/poroh"
+  avatar: "https://avatars.githubusercontent.com/u/2820076?v=4"
+  tier: 2
+  square_avatar: false
 - name: "Jan Skriver Sørensen"
   url: "https://github.com/monzool"
   avatar: "https://avatars.githubusercontent.com/u/2856927?u=f33f5ace623eee3cf30837f3499fed9eed4a1b7c&v=4"
