@@ -250,3 +250,23 @@ LoggedIn("Kim")
 guest,
 {logged_in, <<"Kim">>}.
 ```
+
+## JavaScript interop
+
+When compiling to JavaScript, each constructor becomes a class of the same name.
+Each of the generated JavaScript classes has a constructor with the same
+arguments as the original type constructor.
+
+```gleam
+// Gleam
+Guest
+LoggedIn("Kim")
+Cat(name: "Jinx", cuteness: 2002)
+```
+
+```javascript
+// JavaScript
+new Guest();              // => {}
+new LoggedIn("Kim");      // => { 0: "Kim" }
+new Animal("Jinx", 2002); // => { name: "Jinx", cuteness: 2002 }
+```
