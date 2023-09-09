@@ -55,7 +55,7 @@ Multi line comments may be written like so:
  */
 ```
 
-IN PHP, above `trait`, `interface`, `class`, `member`, `function` declarations
+In PHP, above `trait`, `interface`, `class`, `member`, `function` declarations
 there can be `docblocks` like so:
 
 ```php
