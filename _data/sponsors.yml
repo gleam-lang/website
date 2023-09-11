@@ -658,6 +658,11 @@
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
   tier: 2
   square_avatar: false
+- name: "Xetera"
+  url: "https://github.com/Xetera"
+  avatar: "https://avatars.githubusercontent.com/u/24978328?u=e4286d30bfd5917cc750729b877316610cd41c13&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Zsombor Gasparin"
   url: "https://github.com/gasparinzsombor"
   avatar: "https://avatars.githubusercontent.com/u/25465322?u=18186bbf5e9df8274c5795f2d8359a06ebf0885c&v=4"
