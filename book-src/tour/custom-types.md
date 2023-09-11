@@ -266,9 +266,9 @@ Cat(name: "Jinx", cuteness: 2002)
 
 ```javascript
 // JavaScript
-import { Guest, LoggedIn, Animal } from "my_module.mjs";
+import { Guest, LoggedIn, Cat } from "my_module.mjs";
 
 new Guest();
 new LoggedIn("Kim");
-new Animal("Jinx", 2002);
+new Cat("Jinx", 2002);
 ```
