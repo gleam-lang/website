@@ -316,3 +316,32 @@ There is no performance cost to Gleam's labelled arguments as they are
 optimised to regular function calls at compile time, and all the arguments
 are fully type checked.
 
+## Operators
+
+| Operator          | JavaScript | Gleam | Notes                                          |
+| ----------------- | ---------- | ----- | ---------------------------------------------- |
+| Equal             | `==`       | `==`  | In Gleam both values must be of the same type  |
+| Strictly equal to | `===`      | `==`  | Comparison in Gleam is always strict           |
+| Not equal         | `!==`      | `!=`  | In Gleam both values must be of the same type  |
+| Greater than      | `>`        | `>`   | In Gleam both values must be **ints**          |
+| Greater than      | `>`        | `>.`  | In Gleam both values must be **floats**        |
+| Greater or equal  | `>=`       | `>=`  | In Gleam both values must be **ints**          |
+| Greater or equal  | `>=`       | `>=.` | In Gleam both values must be **floats**        |
+| Less than         | `<`        | `<`   | In Gleam both values must be **ints**          |
+| Less than         | `<`        | `<.`  | In Gleam both values must be **floats**        |
+| Less or equal     | `<=`       | `<=`  | In Gleam both values must be **ints**          |
+| Less or equal     | `<=`       | `<=.` | In Gleam both values must be **floats**        |
+| Boolean and       | `&&`       | `&&`  | In Gleam both values must be **bools**         |
+| Boolean or        | `||`       | `||`  | In Gleam both values must be **bools**         |
+| Add               | `+`        | `+`   | In Gleam both values must be **ints**          |
+| Add               | `+`        | `+.`  | In Gleam both values must be **floats**        |
+| Subtract          | `-`        | `-`   | In Gleam both values must be **ints**          |
+| Subtract          | `-`        | `-.`  | In Gleam both values must be **floats**        |
+| Multiply          | `*`        | `*`   | In Gleam both values must be **ints**          |
+| Multiply          | `*`        | `*.`  | In Gleam both values must be **floats**        |
+| Divide            | `/`        | `/`   | In Gleam both values **ints**                  |
+| Divide            | `/`        | `/.`  | In Gleam both values must be **floats**        |
+| Remainder         | `%`        | `%`   | In Gleam both values must be **ints**          |
+| Concatenate       | `+`        | `<>`  | In Gleam both values must be **strings**       |
+| Pipe              |            | `|>`  | Gleam's pipe can pipe into anonymous functions |
+
