@@ -521,7 +521,7 @@ are fully type checked.
   see: <https://github.com/gleam-lang/bitwise>.
 - `==` is by default comparing by value in PHP:
   - Types may be autocast to be compareable.
-  - Two objects with the same members values will equal:
+  - Two objects with the same members values will equal.
 - `===` is for comparing by strict equality in PHP:
   - Types will not be autocast for comparison
   - Two objects with the same members will not equal. Only if a variable binds
