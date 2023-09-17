@@ -402,3 +402,49 @@ fn main() {
 }
 ```
 
+## Blocks
+
+#### JavaScript
+
+In JavaScript statements can be grouped together using braces `{` `}`. These
+blocks are usually associated with specific language constructs like functions,
+conditionals, loops, etc. The only way to create multi-line expression blocks
+like in Gleam is using an immediately-invoked function expression (IIFE).
+
+Parentheses `(` `)` are used to group arithmetic expressions.
+
+```javascript
+function main() {
+  // x gets assigned the result of the IIFE
+  const x = (() => {
+    console.log(1);
+    return 2;
+  })();
+  const y = x * (x + 10);  // parentheses are used to change arithmetic operations order
+  return y;
+}
+```
+
+#### Gleam
+
+In Gleam curly braces, `{` and `}`, are used to group expressions.
+
+```gleam
+pub fn main() {
+  let x = {
+    print(1)
+    2
+  }
+  // Braces are used to change arithmetic operations order
+  let y = x * { x + 10 }
+  y
+}
+```
+
+Unlike in JavaScript, in Gleam function blocks are always expressions, so are
+`case` blocks or arithmetic sub groups. Because they are expressions they always
+return a value.
+
+For Gleam the last value in a block's expression is always the value being
+returned from an expression.
+
