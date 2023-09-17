@@ -1303,7 +1303,7 @@ pub fn main() {
 #### PHP
 
 PHP features ways to load arbitrary PHP code: `require`, `include` and
-autoload such as `spl_autoload_register`. Once class pathes are known and
+autoload such as `spl_autoload_register`. Once class paths are known and
 registered for autoloading, they can brought into the scope of a file by using
 the `use`statement which is part of PHP's namespacing.
 Also see <https://www.php-fig.org/psr/psr-4/>.
@@ -1453,12 +1453,12 @@ To iterate a few foundational differences:
   or the memory limit is exceeded.
 - Gleam on Erlang/BEAM allows to processes requests in a similar isolation
   level that PHP offers in contrast to applications running *Go* or *Ruby*.
-  The level of isoluation means that, very similar to PHP, if a process
+  The level of isolation means that, very similar to PHP, if a process
   crashes (in PHP read: if a request crashes) then the supervision system
   can restart that process or after a while or amount of tries abort
   repeating restarts on the process with that given input data. This means
   Erlang/BEAM will yield similar robustness that PHP developers are used
-  to and similar isolation guarantuees.
+  to and similar isolation guarantees.
 - When executing Gleam code in fact its compiled Erlang or JavaScript is
   executed. So in case there are runtime crashes, the crash log will show
   Erlang (or browser-console/NodeJS/Deno) debug information. In Gleam
