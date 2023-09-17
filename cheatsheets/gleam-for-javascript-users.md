@@ -345,3 +345,60 @@ are fully type checked.
 | Concatenate       | `+`        | `<>`  | In Gleam both values must be **strings**       |
 | Pipe              |            | `|>`  | Gleam's pipe can pipe into anonymous functions |
 
+### Notes on operators
+
+- JavaScript operators are short-circuiting as in Gleam.
+- Gleam's `/` operator always returns an integer.
+- Chains and pipes:
+  - In JavaScript chaining is usually done by constructing class methods that
+    return an object: `foo.bar(1).quux(2)` means `bar(1)` is called as a method
+    of `foo` and then `quux()` is called as a method of the return value
+    (object) of the `bar(1)` call.
+  - In contrast in Gleam piping, no objects are being returned but mere data is
+    pushed from left to right, much like in unix tooling.
+
+## Constants
+
+#### JavaScript
+
+In JavaScript constants are just regular variables using the `const` keyword.
+
+```javascript
+const THE_ANSWER = 42;
+
+function main() {
+  const justANormalVariable = "can also use the const keyword";
+  return THE_ANSWER;
+}
+```
+
+#### Gleam
+
+In Gleam constants are also created using the `const` keyword. The difference to
+JavaScript is that Gleam constants can only live at the top-level of a module
+(not inside a function), and variables defined using `let` can only live inside
+functions (not at the top-level of a module).
+
+```gleam
+const the_answer = 42
+
+pub fn main() {
+  the_answer
+}
+```
+
+Additionally, Gleam constants can be referenced from other modules.
+
+```gleam
+// in file other_module.gleam
+pub const the_answer: Int = 42
+```
+
+```gleam
+import other_module
+
+fn main() {
+  other_module.the_answer
+}
+```
+
