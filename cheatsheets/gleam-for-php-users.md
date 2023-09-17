@@ -512,7 +512,7 @@ are fully type checked.
 | Divide             | `/`    | `/`                       | In Gleam both values must be **Int**                                                   |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **Int**                                                   |
-| Concatenate        | `.`    | `<>`                      | In Gleam both values must be **String**
+| Concatenate        | `.`    | `<>`                      | In Gleam both values must be **String**                                                |
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
 ### Notes on operators
@@ -520,7 +520,7 @@ are fully type checked.
 - For bitwise operators, which exist in PHP but not in Gleam,
   see: <https://github.com/gleam-lang/bitwise>.
 - `==` is by default comparing by value in PHP:
-  - Types may be autocast to be compareable.
+  - Types may be autocast to be comparable.
   - Two objects with the same members values will equal.
 - `===` is for comparing by strict equality in PHP:
   - Types will not be autocast for comparison
