@@ -55,7 +55,7 @@
   /* TODO: condense these into a few appopriatedly named variables */
   --font-size-small: 12px;
   --font-size-code: 16px;
-  --font-size-normal: 18px;
+  --font-size-normal: 22px;
   --font-size-navbar: 18px;
   --font-size-hero-button: 24px;
   --font-size-pair-text: 22px;
@@ -93,7 +93,7 @@
   --sponsors-max-height: calc(
     var(--sponsors-row-height) * var(--sponsors-max-row-count)
   );
-  --sponsors-expand-transition: all 2.0s ease;
+  --sponsors-expand-transition: all 2s ease;
 }
 
 * {
@@ -165,6 +165,10 @@ td {
   width: var(--width-content);
   margin: 0 auto;
   padding: var(--gap-2);
+}
+
+.content li {
+  margin-bottom: var(--gap-1);
 }
 
 .navbar {
