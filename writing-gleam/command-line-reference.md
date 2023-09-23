@@ -26,7 +26,7 @@ Build the project
 
 | Option | Description |
 | ------ | ----------- |
-| `--target <TARGET>`| The platform to target
+| `-t, --target <TARGET>`| The platform to target [possible values: erlang, javascript]
 | `--warnings-as-errors`| Emit compile time warnings as errors
 
 ## `check`
@@ -137,16 +137,6 @@ Precompiled Erlang, suitable for deployment
 
 
 
-## `fix`
-
-`gleam fix [OPTIONS] [FILES]...`
-
-Rewrite deprecated Gleam code
-
-| Option | Description |
-| ------ | ----------- |
-| `-t, --target <TARGET>`| The target to use for external functions when it could not be inferred
-
 ## `format`
 
 `gleam format [OPTIONS] [FILES]...`
@@ -211,7 +201,6 @@ Create a new project
 
 | Option | Description |
 | ------ | ----------- |
-| `--description <DESCRIPTION>`| Description of the project [default: "A Gleam project"]
 | `--name <NAME>`| Name of the project
 | `--skip-git`| Skip git initialization and creation of .gitignore, .git/* and .github/* files
 | `--skip-github`| Skip creation of .github/* files

@@ -997,6 +997,22 @@ LoggedIn(&quot;Kim&quot;)
 guest,
 {logged_in, &lt;&lt;&quot;Kim&quot;&gt;&gt;}.
 </code></pre>
+<h2 id="javascript-interop"><a class="header" href="#javascript-interop">JavaScript interop</a></h2>
+<p>When compiling to JavaScript, each constructor becomes a class of the same name.
+Each of the generated JavaScript classes has a constructor with the same
+arguments as the original type constructor.</p>
+<pre><code class="language-gleam">// Gleam
+Guest
+LoggedIn(&quot;Kim&quot;)
+Cat(name: &quot;Jinx&quot;, cuteness: 2002)
+</code></pre>
+<pre><code class="language-javascript">// JavaScript
+import { Guest, LoggedIn, Cat } from &quot;my_module.mjs&quot;;
+
+new Guest();
+new LoggedIn(&quot;Kim&quot;);
+new Cat(&quot;Jinx&quot;, 2002);
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="resultvalue-error"><a class="header" href="#resultvalue-error"><code>Result(value, error)</code></a></h1>
 <pre><code class="language-gleam">pub type Result(value, reason) {
   Ok(value)
