@@ -4,6 +4,8 @@ title: Gleam for JavaScript users
 subtitle: Hello JavaScripticians!
 ---
 
+<!-- TODO table of contents -->
+
 - [Comments](#comments)
 - [Variables](#variables)
   - [Match operator](#match-operator)
@@ -447,4 +449,97 @@ return a value.
 
 For Gleam the last value in a block's expression is always the value being
 returned from an expression.
+
+## Data types
+
+### Strings
+
+#### JavaScript
+
+In JavaScript strings are sequences of UTF-16 code units, and can be delimited
+by single quotes `'`, double quotes `"`, or backticks <code>&grave;</code>.
+Strings using backticks support interpolation.
+
+```javascript
+const world = 'world';
+"Hellø, world!"
+`Hello, ${world}!`
+```
+
+#### Gleam
+
+In Gleam strings are encoded as UTF-8 binaries, and must be delimited by double
+quotes. Gleam strings do not allow interpolation, yet. Gleam however offers a
+`string_builder` via its standard library for performant string building.
+
+```gleam
+"Hellø, world!"
+```
+
+### Tuples
+
+Tuples are very useful in Gleam as they're the only collection data type that
+allows mixed types in the collection.
+
+#### JavaScript
+
+JavaScript doesn't have a concept of tuples, but some tuple behavior can be
+imitated using arrays.
+
+```javascript
+const myArray = ["username", "password", 10];
+const [_, password] = myArray;
+console.log(password); // "password"
+// Direct index access
+console.log(myArray[0]); // "username"
+```
+
+#### Gleam
+
+```gleam
+let my_tuple = #("username", "password", 10)
+let #(_, pwd, _) = my_tuple
+io.print(pwd) // "password"
+// Direct index access
+io.print(my_tuple.0) // "username"
+```
+
+### Lists
+
+Arrays in JavaScript are allowed to be of mixed types, but not in Gleam.
+
+#### JavaScript
+
+JavaScript arrays are delimited by square brackets `[` `]`. The `...` operator
+can insert one array into another.
+
+```javascript
+let list = [2, 3, 4];
+list = [1, ...list, 3];
+const [firstElement, secondElement, ...rest] = list;
+console.log(["hello", ...list]); // works
+```
+
+#### Gleam
+
+Gleam has a "cons" operator that works for lists destructuring and pattern
+matching. In Gleam lists are immutable so adding and removing elements from the
+start of a list is highly efficient.
+
+```gleam
+let list = [2, 3, 4]
+let list = [1, ..list]
+let [1, second_element, ..] = list
+[1.0, ..list] // compile error, type mismatch
+```
+
+An important difference between Gleam's "cons" operator and JavaScript's `...`
+is that the `..tail` can only appear as the last item between the brackets.
+
+```gleam
+let list = [2, 3, 4]
+let list = [1, ..list] // works
+let list = [1, 2, ..list] // still works
+let list = [1, ..list, 5] // compile error
+```
 
