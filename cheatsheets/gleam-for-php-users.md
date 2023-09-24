@@ -217,7 +217,7 @@ In Gleam type annotations can optionally be given when binding variables.
 
 ```gleam
 let some_list: List(Int) = [1, 2, 3]
-let some_String: String = "Foo"
+let some_string: String = "Foo"
 ```
 
 Gleam will check the type annotation to ensure that it matches the type of the
