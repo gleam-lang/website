@@ -236,7 +236,7 @@ keywords are optional.
 function hello($name = 'Joe') : string
 {
   if ($name = 'Joe') {
-    return 'Hello back, Joe!';
+    return 'Welcome back, Joe!';
   }
   return "Hello $name";
 }
@@ -254,7 +254,7 @@ bound to variables.
 $x = 2
 $phpAnonFn = function($y) use ($x) { return $x * $y; }; // Creates a new scope
 $phpAnonFn(2, 3); // 6
-$phpArrowFn = ($x) => $x * $y; // Uses the outside scope
+$phpArrowFn = ($x) => $x * $y; // Inherits the outer scope
 $phpArrowFn(2, 3); // 6
 ```
 
