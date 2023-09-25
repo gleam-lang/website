@@ -93,7 +93,7 @@
   --sponsors-max-height: calc(
     var(--sponsors-row-height) * var(--sponsors-max-row-count)
   );
-  --sponsors-expand-transition: all 2.0s ease;
+  --sponsors-expand-transition: all 2s ease;
 }
 
 * {
@@ -602,7 +602,6 @@ td {
   visibility: hidden;
 }
 
-.hljs-variable,
 .hljs-keyword,
 .code-keyword {
   color: var(--color-code-orange);
