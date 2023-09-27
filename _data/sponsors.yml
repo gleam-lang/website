@@ -18,6 +18,11 @@
   avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
   tier: 2
   square_avatar: false
+- name: "inoas"
+  url: "https://github.com/inoas"
+  avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Giacomo Cavalieri"
   url: "https://github.com/giacomocavalieri"
   avatar: "https://avatars.githubusercontent.com/u/20598369?u=3ba1ad4894b381626b5aa8503bcd9b06f02554cc&v=4"
@@ -468,6 +473,11 @@
   avatar: "https://avatars.githubusercontent.com/u/3826669?u=190d6605bce4ccd6f20eb748f2309fd7556a0bce&v=4"
   tier: 1
   square_avatar: false
+- name: "NicoVIII"
+  url: "https://github.com/NicoVIII"
+  avatar: "https://avatars.githubusercontent.com/u/3983345?u=6962fb7c0e56ad3a812551fd9e7ff795d42eaf77&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Filip Figiel"
   url: "https://github.com/megapctr"
   avatar: "https://avatars.githubusercontent.com/u/4096683?u=4f7dd14c03ea645950b699a958a48c2c0858e632&v=4"
@@ -538,8 +548,8 @@
   avatar: "https://avatars.githubusercontent.com/u/6621265?v=4"
   tier: 2
   square_avatar: false
-- name: "David Armstrong Lewis"
-  url: "https://github.com/davidarmstronglewis"
+- name: "Ocean Armstrong Lewis"
+  url: "https://github.com/oceanlewis"
   avatar: "https://avatars.githubusercontent.com/u/6754950?u=9ba4ee4ab42d161fdf7eff3db245b318c2b27131&v=4"
   tier: 2
   square_avatar: false
@@ -572,11 +582,6 @@
   url: "https://github.com/defgenx"
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
   tier: 1
-  square_avatar: false
-- name: "Fede Esteban"
-  url: "https://github.com/fmesteban"
-  avatar: "https://avatars.githubusercontent.com/u/11654110?v=4"
-  tier: 2
   square_avatar: false
 - name: "Edon Gashi"
   url: "https://github.com/edongashi"
@@ -626,11 +631,6 @@
 - name: "SEKUN"
   url: "https://github.com/sekunho"
   avatar: "https://avatars.githubusercontent.com/u/20364796?u=d2bccedc9ce3d6cf3214c993098649b9a122982c&v=4"
-  tier: 1
-  square_avatar: false
-- name: "inoas"
-  url: "https://github.com/inoas"
-  avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
   tier: 1
   square_avatar: false
 - name: "Markus"
