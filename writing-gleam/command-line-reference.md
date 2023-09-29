@@ -31,10 +31,13 @@ Build the project
 
 ## `check`
 
-`gleam check`
+`gleam check [OPTIONS]`
 
 Type check the project
 
+| Option | Description |
+| ------ | ----------- |
+| `-t, --target <TARGET>`| The platform to target [possible values: erlang, javascript]
 
 ## `clean`
 
