@@ -28,19 +28,10 @@ subtitle: Hello JavaScripticians!
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
-- [Patterns] TODO
-- [Flow control](#flow-control) TODO
-  - [Case](#case) TODO
-  - [Try](#try) TODO
-- [Type aliases](#type-aliases) TODO
-- [Custom types](#custom-types)
-  - [Records](#records)
-  - [Unions](#unions)
-  - [Opaque custom types](#opaque-custom-types) TODO
-- [Modules](#modules) TODO
-  - [Imports](#imports) TODO
-  - [Nested modules](#nested-modules) TODO
-  - [First class modules](#first-class-modules) TODO
+- [Flow control](#flow-control)
+  - [Case](#case)
+  - [Piping](#piping)
+  - [Try](#try)
 
 
 ## Comments
@@ -73,8 +64,8 @@ class Bar {}
 /**
  * A quux function.
  *
- * @param {string} str        String passed to quux
- * @returns {string}          An unprocessed string
+ * @param {string} str    String passed to quux
+ * @returns {string}      An unprocessed string
  */
 function quux(string) { return str; }
 ```
@@ -542,4 +533,40 @@ let list = [1, ..list] // works
 let list = [1, 2, ..list] // still works
 let list = [1, ..list, 5] // compile error
 ```
+
+### Maps
+
+#### JavaScript
+
+In JavaScript, key–value pairs are usually stored in objects, whose keys can
+only be strings, numbers, or symbols. There is also the `Map` class, which
+allows any type to be used for keys. In both cases, types of keys and values can
+be mixed in a given map.
+
+```javascript
+const map1 = {
+  key1: "value1",
+  key2: 5,
+};
+```
+
+#### Gleam
+
+In a Gleam map, the type for keys and the type for values are fixed. So, for
+example, you can't have a map with some `String` values and some `Int` values,
+and you can't have a map with some `String` keys and some `Int` values. But you
+can have a map with `String` keys and `Int` values.
+
+There is no map literal syntax in Gleam, and you cannot pattern match on a map.
+Maps are generally not used much in Gleam, custom types are more common. (You
+would usually translate a TypeScript `type`, `class`, or `interface` to a Gleam
+custom type, and TypeScript `Map`s and `Record`s to Gleam maps.)
+
+```gleam
+import gleam/map
+
+map.from_list([#("key1", "value1"), #("key2", "value2")])
+map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+```
+
 
