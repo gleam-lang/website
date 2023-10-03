@@ -765,9 +765,9 @@ between floats and integers in various ways including `rounding`, `floor`,
 
 ### Case
 
-Case is one of the most used control flow in Gleam. It can be seen as a switch
-statement on steroids. It provides a terse way to match a value type to an
-expression. It is also used to replace `if`/`else` statements.
+Case is one of the most used control flow methods in Gleam. It can be seen as a
+switch statement on steroids. It provides a terse way to match a value type to
+an expression. It is also used to replace `if`/`else` statements.
 
 #### PHP
 
