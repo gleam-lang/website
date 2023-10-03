@@ -59,8 +59,8 @@ content=header_content %}
 }
 
 <span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
-  <span class="code-comment">// Run a million threads, no problem</span>
-  <span class="code-module">list.</span><span class="code-fn">range</span>(<span class="code-number">0</span>, <span class="code-number">1_000_000</span>)
+  <span class="code-comment">// Run loads of threads, no problem</span>
+  <span class="code-module">list.</span><span class="code-fn">range</span>(<span class="code-number">0</span>, <span class="code-number">200_000</span>)
   <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">map</span>(<span class="code-fn">spawn_task</span>)
   <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">each</span>(<span class="code-module">task.</span><span class="code-fn">await_forever</span>)
 }
