@@ -46,7 +46,7 @@
 - name: "Mark Holmes"
   url: "https://github.com/markholmes"
   avatar: "https://avatars.githubusercontent.com/u/921826?u=315e6483dbe88494b733647492faadcbfe77b041&v=4"
-  tier: 1
+  tier: 2
   square_avatar: false
 - name: "Kayla Washburn"
   url: "https://github.com/aslilac"
@@ -702,6 +702,11 @@
   url: "https://github.com/strandcom"
   avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
   tier: 2
+  square_avatar: false
+- name: "Emma"
+  url: "https://github.com/Emma-Fuller"
+  avatar: "https://avatars.githubusercontent.com/u/89794160?u=001967be40ee0403e58366174118d6fe2a0bd2e1&v=4"
+  tier: 1
   square_avatar: false
 - name: "Šárka Slavětínská"
   url: "https://github.com/sarkasl"
