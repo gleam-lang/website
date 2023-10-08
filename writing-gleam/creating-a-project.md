@@ -21,7 +21,7 @@ You'll now have a project with this structure:
 └── test
     └── my_fantastic_library_test.gleam
 
-2 directories, 7 files
+2 directories, 4 files
 ```
 
 Regular Gleam code goes in the `src` directory, and the tests for this code
