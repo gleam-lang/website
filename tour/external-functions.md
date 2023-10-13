@@ -86,3 +86,4 @@ fn do_reverse(items: List(a), accumulator: List(a)) -> List(a) {
     [first, ..rest] -> do_reverse(rest, [first, ..accumulator])
   }
 }
+```
