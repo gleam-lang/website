@@ -7,7 +7,7 @@ layout: page
 ## Learning Gleam
 
 - [Getting started](/getting-started)
-- [Language tour](/book/tour)
+- [Language tour](/tour)
 - Writing Gleam
   - [Creating a project](/writing-gleam/creating-a-project)
   - [Running the project](/writing-gleam/using-the-project)
