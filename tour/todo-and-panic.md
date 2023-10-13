@@ -1,4 +1,4 @@
-{% include linkedHeading.html heading="Todo & Panic" level=1 %}
+{% include linkedHeading.html heading="Todo and Panic" level=1 %}
 
 Gleam's `todo` and `panic` keywords are used to indicate that some code is not
 yet finished, or that a program has encountered an unrecoverable error and
