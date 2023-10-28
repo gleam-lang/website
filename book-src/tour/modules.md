@@ -93,7 +93,7 @@ value is defined.
 
 There is one module that is built into the language, the `gleam` prelude
 module.  By default its types and values are automatically imported into
-every module you write, but you can still chose to import it the regular way.
+every module you write, but you can still choose to import it the regular way.
 This may be useful if you have created a type or value with the same name as
 an item from the prelude.
 
