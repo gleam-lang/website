@@ -10,7 +10,7 @@
   square_avatar: false
 - name: "Danielle Maywood"
   url: "https://github.com/DanielleMaywood"
-  avatar: "https://avatars.githubusercontent.com/u/40153966?u=7f66b1c7d1c5920d54279158bd005aad798e96a4&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/40153966?u=e0245079f6b34573e921a44d9c2b820e683f7d4c&v=4"
   tier: 1
   square_avatar: false
 - name: "Robert Attard"
@@ -343,6 +343,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1214337?u=746515aba84bb2fcae408ec38fe3e3f8c2e78ce0&v=4"
   tier: 1
   square_avatar: false
+- name: "Timo Sulg"
+  url: "https://github.com/timgluz"
+  avatar: "https://avatars.githubusercontent.com/u/1223889?u=a13c54a9e52d336ac32a11b23e4295e47c6caf4c&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Nathaniel Knight"
   url: "https://github.com/nathanielknight"
   avatar: "https://avatars.githubusercontent.com/u/1239091?u=6fb38af8299220ff444f5080aa2c67085132cd50&v=4"
@@ -420,7 +425,7 @@
   square_avatar: false
 - name: "Aaron Gunderson"
   url: "https://github.com/agundy"
-  avatar: "https://avatars.githubusercontent.com/u/2281120?u=9566abaddb75aa4874a0ae6826b6c304f036b9a9&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/2281120?u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
   tier: 1
   square_avatar: false
 - name: "Jonas Hedman Engström"
@@ -441,11 +446,6 @@
 - name: "Jan Skriver Sørensen"
   url: "https://github.com/monzool"
   avatar: "https://avatars.githubusercontent.com/u/2856927?u=f33f5ace623eee3cf30837f3499fed9eed4a1b7c&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Ryan Winchester"
-  url: "https://github.com/ryanwinchester"
-  avatar: "https://avatars.githubusercontent.com/u/2897340?u=438de06e32045bd97a592ac6bb53606cb5a6ce2b&v=4"
   tier: 1
   square_avatar: false
 - name: "Cole Lawrence"
@@ -481,11 +481,6 @@
 - name: "Filip Figiel"
   url: "https://github.com/megapctr"
   avatar: "https://avatars.githubusercontent.com/u/4096683?u=4f7dd14c03ea645950b699a958a48c2c0858e632&v=4"
-  tier: 1
-  square_avatar: false
-- name: "ontofractal"
-  url: "https://github.com/ontofractal"
-  avatar: "https://avatars.githubusercontent.com/u/4211840?u=97aeb67208068d457fad522a500b62f12908270c&v=4"
   tier: 1
   square_avatar: false
 - name: "Yu Matsuzawa"
@@ -535,7 +530,7 @@
   square_avatar: false
 - name: "Marius Kalvø"
   url: "https://github.com/mariuskalvo"
-  avatar: "https://avatars.githubusercontent.com/u/5960745?u=cb2b3f45ee9742f485afba23af0ea80d8b8d956a&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5960745?v=4"
   tier: 1
   square_avatar: false
 - name: "Clay"
@@ -552,11 +547,6 @@
   url: "https://github.com/oceanlewis"
   avatar: "https://avatars.githubusercontent.com/u/6754950?u=9ba4ee4ab42d161fdf7eff3db245b318c2b27131&v=4"
   tier: 2
-  square_avatar: false
-- name: "Michael Chris Lopez"
-  url: "https://github.com/mcchrish"
-  avatar: "https://avatars.githubusercontent.com/u/7200153?u=bf491ed3c25940918c32207683db3b8aa848ab25&v=4"
-  tier: 1
   square_avatar: false
 - name: "Cosmo Shin (신의하)"
   url: "https://github.com/XiNiHa"
@@ -655,7 +645,7 @@
   square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
-  avatar: "https://avatars.githubusercontent.com/u/24900688?u=f55f5ef982cc7b992eadd7f58fa34dc7abd45233&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/24900688?u=614cfcc202ae1bd60c5e86357af95131b5a9396b&v=4"
   tier: 2
   square_avatar: false
 - name: "Xetera"
@@ -678,6 +668,11 @@
   avatar: "https://avatars.githubusercontent.com/u/29015545?u=1f25c8e1072f284ee2c1168d06d5f92af8dacc80&v=4"
   tier: 1
   square_avatar: false
+- name: "Joey Kilpatrick"
+  url: "https://github.com/joeykilpatrick"
+  avatar: "https://avatars.githubusercontent.com/u/29028840?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Leon Qadirie"
   url: "https://github.com/leonqadirie"
   avatar: "https://avatars.githubusercontent.com/u/39130739?u=334ef35279398d7ae83adb27190bba0e1cef7e95&v=4"
@@ -693,15 +688,15 @@
   avatar: "https://avatars.githubusercontent.com/u/60593974?u=0ce23ad23896110ac595b7c0b40eaec6ab8d034c&v=4"
   tier: 1
   square_avatar: false
+- name: "Tyler"
+  url: "https://github.com/gittgott"
+  avatar: "https://avatars.githubusercontent.com/u/70244874?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Theo Harris"
   url: "https://github.com/Theosaurus-Rex"
   avatar: "https://avatars.githubusercontent.com/u/71990001?u=f71c0ff3374641ed747d8011b96d938452b79377&v=4"
   tier: 1
-  square_avatar: false
-- name: "Strand Communications"
-  url: "https://github.com/strandcom"
-  avatar: "https://avatars.githubusercontent.com/u/86405143?v=4"
-  tier: 2
   square_avatar: false
 - name: "Emma"
   url: "https://github.com/Emma-Fuller"
