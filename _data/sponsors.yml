@@ -140,7 +140,7 @@
   square_avatar: false
 - name: "Mike Roach"
   url: "https://github.com/mroach"
-  avatar: "https://avatars.githubusercontent.com/u/79006?u=56ae4c82735d35d7f9e59a9e2f9d472ca730a306&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/79006?u=c9afda3a9a7b694e8ef7f1c70184559add8d8655&v=4"
   tier: 1
   square_avatar: false
 - name: "Elliott Pogue"
@@ -157,11 +157,6 @@
   url: "https://github.com/prashantpawar"
   avatar: "https://avatars.githubusercontent.com/u/101647?u=575944b8f11d7f942392a670ae910dc931c111f0&v=4"
   tier: 1
-  square_avatar: false
-- name: "Ali Farhadi"
-  url: "https://github.com/farhadi"
-  avatar: "https://avatars.githubusercontent.com/u/102497?v=4"
-  tier: 2
   square_avatar: false
 - name: "Brian Glusman"
   url: "https://github.com/bglusman"
@@ -195,7 +190,7 @@
   square_avatar: false
 - name: "Martin Janiczek"
   url: "https://github.com/Janiczek"
-  avatar: "https://avatars.githubusercontent.com/u/149425?u=c456e2ff72f775c3ede9fe7c58ca24aa9c2ad493&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/149425?u=45e293ad63d2bf7962eae677cc4c4548a05daff0&v=4"
   tier: 1
   square_avatar: false
 - name: "Ben Marx"
@@ -463,6 +458,11 @@
   avatar: "https://avatars.githubusercontent.com/u/3588798?v=4"
   tier: 1
   square_avatar: false
+- name: "James Birtles"
+  url: "https://github.com/jamesbirtles"
+  avatar: "https://avatars.githubusercontent.com/u/3743418?u=291e0147cbc923d5e92668fb5ac5b93fad442910&v=4"
+  tier: 1
+  square_avatar: false
 - name: "David Sancho"
   url: "https://github.com/davesnx"
   avatar: "https://avatars.githubusercontent.com/u/3763599?u=9642d3d5effd7b98774ed5b13438b411dc21a1dd&v=4"
@@ -543,15 +543,15 @@
   avatar: "https://avatars.githubusercontent.com/u/6621265?v=4"
   tier: 2
   square_avatar: false
+- name: "matt-savvy"
+  url: "https://github.com/matt-savvy"
+  avatar: "https://avatars.githubusercontent.com/u/6637105?u=13bf3c171573bae76a4671125ca1f9fc95f35fba&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Ocean Armstrong Lewis"
   url: "https://github.com/oceanlewis"
   avatar: "https://avatars.githubusercontent.com/u/6754950?u=9ba4ee4ab42d161fdf7eff3db245b318c2b27131&v=4"
   tier: 2
-  square_avatar: false
-- name: "Cosmo Shin (신의하)"
-  url: "https://github.com/XiNiHa"
-  avatar: "https://avatars.githubusercontent.com/u/8155259?u=8cb7bdf237a94e2cfd10dec2249e1b04e64479f2&v=4"
-  tier: 1
   square_avatar: false
 - name: "Hazel Bachrach"
   url: "https://github.com/hibachrach"
