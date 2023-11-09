@@ -100,6 +100,14 @@ sudo xbps-install gleam
 
 ### Windows
 
+#### Using Chocolatey
+
+With [Chocolatey](https://chocolatey.org/) installed on your computer run the following from an Administator PowerShell:
+
+```
+choco install gleam
+```
+
 #### Using Scoop
 
 With [Scoop](https://scoop.sh/) installed on your computer run the following:
