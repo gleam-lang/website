@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="tour/modules.html"><strong aria-hidden="true">12.</strong> Modules</a></li><li class="chapter-item expanded "><a href="tour/custom-types.html"><strong aria-hidden="true">13.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="tour/assert.html"><strong aria-hidden="true">15.</strong> Assert</a></li><li class="chapter-item expanded "><a href="tour/todo-and-panic.html"><strong aria-hidden="true">16.</strong> Todo & Panic</a></li><li class="chapter-item expanded "><a href="tour/constants.html"><strong aria-hidden="true">17.</strong> Constants</a></li><li class="chapter-item expanded "><a href="tour/type-aliases.html"><strong aria-hidden="true">18.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="tour/bit-strings.html"><strong aria-hidden="true">19.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="tour/use.html"><strong aria-hidden="true">20.</strong> Use</a></li><li class="chapter-item expanded "><a href="tour/external-functions.html"><strong aria-hidden="true">21.</strong> External functions</a></li><li class="chapter-item expanded "><a href="tour/external-types.html"><strong aria-hidden="true">22.</strong> External types</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="tour/index.html"><strong aria-hidden="true">1.</strong> Language tour</a></li><li class="chapter-item expanded "><a href="tour/comments.html"><strong aria-hidden="true">2.</strong> Comments</a></li><li class="chapter-item expanded "><a href="tour/strings.html"><strong aria-hidden="true">3.</strong> Strings</a></li><li class="chapter-item expanded "><a href="tour/bools.html"><strong aria-hidden="true">4.</strong> Bools</a></li><li class="chapter-item expanded "><a href="tour/ints-and-floats.html"><strong aria-hidden="true">5.</strong> Ints & Floats</a></li><li class="chapter-item expanded "><a href="tour/let-bindings.html"><strong aria-hidden="true">6.</strong> Let bindings</a></li><li class="chapter-item expanded "><a href="tour/expression-blocks.html"><strong aria-hidden="true">7.</strong> Expression blocks</a></li><li class="chapter-item expanded "><a href="tour/lists.html"><strong aria-hidden="true">8.</strong> Lists</a></li><li class="chapter-item expanded "><a href="tour/tuples.html"><strong aria-hidden="true">9.</strong> Tuples</a></li><li class="chapter-item expanded "><a href="tour/case-expressions.html"><strong aria-hidden="true">10.</strong> Case expressions</a></li><li class="chapter-item expanded "><a href="tour/functions.html"><strong aria-hidden="true">11.</strong> Functions</a></li><li class="chapter-item expanded "><a href="tour/custom-types.html"><strong aria-hidden="true">12.</strong> Custom types</a></li><li class="chapter-item expanded "><a href="tour/modules.html"><strong aria-hidden="true">13.</strong> Modules</a></li><li class="chapter-item expanded "><a href="tour/result.html"><strong aria-hidden="true">14.</strong> Result</a></li><li class="chapter-item expanded "><a href="tour/assert.html"><strong aria-hidden="true">15.</strong> Assert</a></li><li class="chapter-item expanded "><a href="tour/todo-and-panic.html"><strong aria-hidden="true">16.</strong> Todo & Panic</a></li><li class="chapter-item expanded "><a href="tour/constants.html"><strong aria-hidden="true">17.</strong> Constants</a></li><li class="chapter-item expanded "><a href="tour/type-aliases.html"><strong aria-hidden="true">18.</strong> Type aliases</a></li><li class="chapter-item expanded "><a href="tour/bit-strings.html"><strong aria-hidden="true">19.</strong> Bit strings</a></li><li class="chapter-item expanded "><a href="tour/use.html"><strong aria-hidden="true">20.</strong> Use</a></li><li class="chapter-item expanded "><a href="tour/external-functions.html"><strong aria-hidden="true">21.</strong> External functions</a></li><li class="chapter-item expanded "><a href="tour/external-types.html"><strong aria-hidden="true">22.</strong> External types</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -370,7 +370,7 @@ executed, and the result of the last expression is returned.</p>
     False
 } // =&gt; False
 </code></pre>
-<p>Expression blocks can be used instead of parentheses to change the precedence
+<p>Expression blocks are used instead of parentheses to change the precedence
 of operations.</p>
 <pre><code class="language-gleam">let celsius = { fahrenheit - 32 } * 5 / 9
 </code></pre>
@@ -706,114 +706,6 @@ fn returns_nil(a) -&gt; Nil {
 <ul>
 <li><a href="https://hexdocs.pm/gleam_stdlib/gleam/function.html">gleam/function</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
-<p>Gleam programs are made up of bundles of functions and types called modules.
-Each module has its own namespace and can export types and values to be used
-by other modules in the program.</p>
-<pre><code class="language-gleam">// inside module src/nasa/rocket_ship.gleam
-
-fn count_down() {
-  &quot;3... 2... 1...&quot;
-}
-
-fn blast_off() {
-  &quot;BOOM!&quot;
-}
-
-pub fn launch() {
-  [
-    count_down(),
-    blast_off(),
-  ]
-}
-</code></pre>
-<p>Here we can see a module named <code>nasa/rocket_ship</code>, the name determined by the
-filename <code>src/nasa/rocket_ship.gleam</code>. Typically all the modules for one
-project would live within a directory with the name of the project, such as
-<code>nasa</code> in this example.</p>
-<p>For the functions <code>count_down</code> and <code>blast_off</code> we have omitted the <code>pub</code>
-keyword, so these functions are <em>private</em> module functions. They can only be
-called by other functions within the same module.</p>
-<h2 id="import"><a class="header" href="#import">Import</a></h2>
-<p>To use functions or types from another module we need to import them using the
-<code>import</code> keyword.</p>
-<pre><code class="language-gleam">// inside module src/nasa/moon_base.gleam
-
-import nasa/rocket_ship
-
-pub fn explore_space() {
-  rocket_ship.launch()
-}
-</code></pre>
-<p>The statement <code>import nasa/rocket_ship</code> creates a new variable with the name
-<code>rocket_ship</code> and the value of the <code>rocket_ship</code> module.</p>
-<p>In the <code>explore_space</code> function we call the imported module's public <code>launch</code>
-function using the <code>.</code> operator. If we had attempted to call <code>count_down</code> it
-would result in a compile time error as this function is private to the
-<code>rocket_ship</code> module.</p>
-<h2 id="named-import"><a class="header" href="#named-import">Named import</a></h2>
-<p>It is also possible to give a module a custom name when importing it using the
-<code>as</code> keyword.</p>
-<pre><code class="language-gleam">import unix/cat
-import animal/cat as kitty
-</code></pre>
-<p>This may be useful to differentiate between multiple modules that would have
-the same default name when imported.</p>
-<h2 id="unqualified-import"><a class="header" href="#unqualified-import">Unqualified import</a></h2>
-<p>Values and types can also be imported in an unqualified fashion.</p>
-<pre><code class="language-gleam">import animal/cat.{Cat, stroke}
-
-pub fn main() {
-  let kitty = Cat(name: &quot;Nubi&quot;)
-  stroke(kitty)
-}
-</code></pre>
-<p>This may be useful for values that are used frequently in a module, but
-generally qualified imports are preferred as it makes it clearer where the
-value is defined.</p>
-<h2 id="the-prelude-module"><a class="header" href="#the-prelude-module">The prelude module</a></h2>
-<p>There is one module that is built into the language, the <code>gleam</code> prelude
-module.  By default its types and values are automatically imported into
-every module you write, but you can still chose to import it the regular way.
-This may be useful if you have created a type or value with the same name as
-an item from the prelude.</p>
-<pre><code class="language-gleam">import gleam
-
-/// This definition locally overrides the `Result` type
-/// and the `Ok` constructor.
-pub type Result {
-  Ok
-}
-
-/// The original `Result` and `Ok` can still be used
-pub fn go() -&gt; gleam.Result(Int) {
-  gleam.Ok(1)
-}
-</code></pre>
-<p>The prelude module contains these types:</p>
-<ul>
-<li><code>BitString</code></li>
-<li><code>Bool</code></li>
-<li><code>Float</code></li>
-<li><code>Int</code></li>
-<li><code>List(element)</code></li>
-<li><code>Nil</code></li>
-<li><code>Result(value, error)</code></li>
-<li><code>String</code></li>
-<li><code>UtfCodepoint</code></li>
-</ul>
-<p>And these values:</p>
-<ul>
-<li><code>Error</code></li>
-<li><code>False</code></li>
-<li><code>Nil</code></li>
-<li><code>Ok</code></li>
-<li><code>True</code></li>
-</ul>
-<h2 id="documentation-1"><a class="header" href="#documentation-1">Documentation</a></h2>
-<p>You may add user facing documentation at the head of modules with a module
-documentation comment <code>////</code> per line. Markdown is supported and this text
-will be included with the module's entry in generated HTML documentation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="custom-types"><a class="header" href="#custom-types">Custom types</a></h1>
 <p>Gleam's custom types are named collections of keys and values. They are
 similar to objects in object oriented languages, though they don't have
@@ -1013,6 +905,114 @@ new Guest();
 new LoggedIn(&quot;Kim&quot;);
 new Cat(&quot;Jinx&quot;, 2002);
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
+<p>Gleam programs are made up of bundles of functions and types called modules.
+Each module has its own namespace and can export types and values to be used
+by other modules in the program.</p>
+<pre><code class="language-gleam">// inside module src/nasa/rocket_ship.gleam
+
+fn count_down() {
+  &quot;3... 2... 1...&quot;
+}
+
+fn blast_off() {
+  &quot;BOOM!&quot;
+}
+
+pub fn launch() {
+  [
+    count_down(),
+    blast_off(),
+  ]
+}
+</code></pre>
+<p>Here we can see a module named <code>nasa/rocket_ship</code>, the name determined by the
+filename <code>src/nasa/rocket_ship.gleam</code>. Typically all the modules for one
+project would live within a directory with the name of the project, such as
+<code>nasa</code> in this example.</p>
+<p>For the functions <code>count_down</code> and <code>blast_off</code> we have omitted the <code>pub</code>
+keyword, so these functions are <em>private</em> module functions. They can only be
+called by other functions within the same module.</p>
+<h2 id="import"><a class="header" href="#import">Import</a></h2>
+<p>To use functions or types from another module we need to import them using the
+<code>import</code> keyword.</p>
+<pre><code class="language-gleam">// inside module src/nasa/moon_base.gleam
+
+import nasa/rocket_ship
+
+pub fn explore_space() {
+  rocket_ship.launch()
+}
+</code></pre>
+<p>The statement <code>import nasa/rocket_ship</code> creates a new variable with the name
+<code>rocket_ship</code> and the value of the <code>rocket_ship</code> module.</p>
+<p>In the <code>explore_space</code> function we call the imported module's public <code>launch</code>
+function using the <code>.</code> operator. If we had attempted to call <code>count_down</code> it
+would result in a compile time error as this function is private to the
+<code>rocket_ship</code> module.</p>
+<h2 id="named-import"><a class="header" href="#named-import">Named import</a></h2>
+<p>It is also possible to give a module a custom name when importing it using the
+<code>as</code> keyword.</p>
+<pre><code class="language-gleam">import unix/cat
+import animal/cat as kitty
+</code></pre>
+<p>This may be useful to differentiate between multiple modules that would have
+the same default name when imported.</p>
+<h2 id="unqualified-import"><a class="header" href="#unqualified-import">Unqualified import</a></h2>
+<p>Values and types can also be imported in an unqualified fashion.</p>
+<pre><code class="language-gleam">import animal/pet.{type Pet, Cat, stroke}
+
+pub fn main() {
+  let kitty: Pet = Cat(name: &quot;Nubi&quot;)
+  stroke(kitty)
+}
+</code></pre>
+<p>This may be useful for values that are used frequently in a module, but
+generally qualified imports are preferred as it makes it clearer where the
+value is defined.</p>
+<h2 id="the-prelude-module"><a class="header" href="#the-prelude-module">The prelude module</a></h2>
+<p>There is one module that is built into the language, the <code>gleam</code> prelude
+module.  By default its types and values are automatically imported into
+every module you write, but you can still choose to import it the regular way.
+This may be useful if you have created a type or value with the same name as
+an item from the prelude.</p>
+<pre><code class="language-gleam">import gleam
+
+/// This definition locally overrides the `Result` type
+/// and the `Ok` constructor.
+pub type Result {
+  Ok
+}
+
+/// The original `Result` and `Ok` can still be used
+pub fn go() -&gt; gleam.Result(Int) {
+  gleam.Ok(1)
+}
+</code></pre>
+<p>The prelude module contains these types:</p>
+<ul>
+<li><code>BitString</code></li>
+<li><code>Bool</code></li>
+<li><code>Float</code></li>
+<li><code>Int</code></li>
+<li><code>List(element)</code></li>
+<li><code>Nil</code></li>
+<li><code>Result(value, error)</code></li>
+<li><code>String</code></li>
+<li><code>UtfCodepoint</code></li>
+</ul>
+<p>And these values:</p>
+<ul>
+<li><code>Error</code></li>
+<li><code>False</code></li>
+<li><code>Nil</code></li>
+<li><code>Ok</code></li>
+<li><code>True</code></li>
+</ul>
+<h2 id="documentation-1"><a class="header" href="#documentation-1">Documentation</a></h2>
+<p>You may add user facing documentation at the head of modules with a module
+documentation comment <code>////</code> per line. Markdown is supported and this text
+will be included with the module's entry in generated HTML documentation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="resultvalue-error"><a class="header" href="#resultvalue-error"><code>Result(value, error)</code></a></h1>
 <pre><code class="language-gleam">pub type Result(value, reason) {
   Ok(value)

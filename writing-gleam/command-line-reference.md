@@ -137,7 +137,28 @@ Precompiled Erlang, suitable for deployment
 
 `gleam export hex-tarball`
 
+The package bundled into a tarball, suitable for publishing to Hex
 
+
+### `export javascript-prelude`
+
+`gleam export javascript-prelude`
+
+The JavaScript prelude module
+
+
+### `export typescript-prelude`
+
+`gleam export typescript-prelude`
+
+
+
+
+## `fix`
+
+`gleam fix`
+
+Rewrite deprecated Gleam code
 
 
 ## `format`
