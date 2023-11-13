@@ -76,10 +76,10 @@ the same default name when imported.
 Values and types can also be imported in an unqualified fashion.
 
 ```gleam
-import animal/cat.{Cat, stroke}
+import animal/pet.{type Pet, Cat, stroke}
 
 pub fn main() {
-  let kitty = Cat(name: "Nubi")
+  let kitty: Pet = Cat(name: "Nubi")
   stroke(kitty)
 }
 ```
