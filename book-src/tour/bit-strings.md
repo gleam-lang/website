@@ -1,14 +1,14 @@
-# Bit strings
+# Bit arrays
 
 Gleam has a convenient syntax for working directly with binary data called a
-Bit String. Bit Strings represent a sequence of 1s and 0s.
+Bit Array. Bit Arrays represent a sequence of 1s and 0s.
 
-Bit Strings are written literally with opening brackets `<<`, any number of bit
-string segments separated by commas, and closing brackets `>>`.
+Bit Arrays are written literally with opening brackets `<<`, any number of bit
+array segments separated by commas, and closing brackets `>>`.
 
-## Bit String Segments
+## Bit Array Segments
 
-By default a Bit String segment represents 8 bits, also known as 1 byte.
+By default a Bit Array segment represents 8 bits, also known as 1 byte.
 
 ```gleam
 // This is the number 3 as an 8 bit value.
@@ -31,7 +31,7 @@ You can specify any positive integer as the bit size.
 
 ```gleam
 // This is not same as above, remember we're working with a series of 1s and 0s.
-// This Bit String is 16 bits long: 0000000000000011
+// This Bit Array is 16 bits long: 0000000000000011
 <<3:size(16)>>
 ```
 
@@ -42,7 +42,7 @@ You can have any number of segments separated by commas.
 <<0:4, 1:3, 1:1>> == <<3>>
 ```
 
-## Bit String Segment Options
+## Bit Array Segment Options
 
 There are a few more options you can attach to a segment to describe its size
 and bit layout.
@@ -57,17 +57,17 @@ a `size` option.
 ```
 
 The `utf8`, `utf16` and `utf32` options let you put a String directly into a
-Bit String.
+Bit Array.
 
 ```gleam
 <<"Hello Gleam 💫":utf8>>
 ```
 
-The `bit_string` option lets you put any other Bit String into a Bit String.
+The `bits` option lets you put any other Bit Array into a Bit Array.
 
 ```gleam
 let a = <<0:1, 1:1, 1:1>>
-<<a:bit_string, 1:5>> == <<"a":utf8>> // True
+<<a:bits, 1:5>> == <<"a":utf8>> // True
 ```
 
 Here Is the full list of options and their meaning:
@@ -76,7 +76,7 @@ Here Is the full list of options and their meaning:
 
 | Option     | Meaning                                                |
 | ---------- | ------------------------------------------------------ |
-| bit_string | a bitstring that is any bit size                       |
+| bits       | a bitarray that is any bit size                       |
 | float      | default size of 64 bits                                |
 | int        | default size of 8 bits                                 |
 | size       | the size of the segment in bits                        |
@@ -92,8 +92,8 @@ Here Is the full list of options and their meaning:
 
 | Option          | Meaning                                                |
 | --------------- | ------------------------------------------------------ |
-| binary          | a bitstring that is a multiple of 8 bits               |
-| bit_string      | a bitstring that is any bit size                       |
+| bytes           | a bitarray that is a multiple of 8 bits               |
+| bits            | a bitarray that is any bit size                       |
 | float           | float value, size of exactly 64 bits                   |
 | int             | int value, default size of 8 bits                      |
 | big             | big endian                                             |
@@ -112,7 +112,7 @@ Here Is the full list of options and their meaning:
 
 ## Values vs Patterns
 
-Bit Strings can appear on either the left or the right side of an equals sign.
+Bit Arrays can appear on either the left or the right side of an equals sign.
 On the left they are called **patterns**, and on the right they are called
 **values**.
 
@@ -121,7 +121,7 @@ different rules.
 
 ### Rules for Patterns
 
-You can match on a variable length segment with the `bit_string` or `binary`
+You can match on a variable length segment with the `bits` or `bytes`
 options. A pattern can have at most 1 variable length segment and it must be
 the last segment.
 
@@ -135,11 +135,11 @@ bytes depending on the codepoint size and data.
 
 ## Further Reading
 
-Gleam inherits its Bit String syntax and handling from Erlang. You can find the
+Gleam inherits its Bit Array syntax and handling from Erlang. You can find the
 Erlang documentation
 [here](https://erlang.org/doc/reference_manual/expressions.html#bit_syntax).
 
 ## Stdlib references
 
-- [gleam/bit_string](https://hexdocs.pm/gleam_stdlib/gleam/bit_string.html)
-- [gleam/bit_builder](https://hexdocs.pm/gleam_stdlib/gleam/bit_builder.html)
+- [gleam/bit_array](https://hexdocs.pm/gleam_stdlib/gleam/bit_array.html)
+- [gleam/bytes_builder](https://hexdocs.pm/gleam_stdlib/gleam/bytes_builder.html)
