@@ -1176,13 +1176,13 @@ multiple functions that return headers.</p>
 <pre><code class="language-gleam">pub type Headers =
   List(#(String, String))
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="bit-strings"><a class="header" href="#bit-strings">Bit strings</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bit-arrays"><a class="header" href="#bit-arrays">Bit arrays</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
-Bit String. Bit Strings represent a sequence of 1s and 0s.</p>
-<p>Bit Strings are written literally with opening brackets <code>&lt;&lt;</code>, any number of bit
-string segments separated by commas, and closing brackets <code>&gt;&gt;</code>.</p>
-<h2 id="bit-string-segments"><a class="header" href="#bit-string-segments">Bit String Segments</a></h2>
-<p>By default a Bit String segment represents 8 bits, also known as 1 byte.</p>
+Bit Array. Bit Arrays represent a sequence of 1s and 0s.</p>
+<p>Bit Arrays are written literally with opening brackets <code>&lt;&lt;</code>, any number of bit
+array segments separated by commas, and closing brackets <code>&gt;&gt;</code>.</p>
+<h2 id="bit-array-segments"><a class="header" href="#bit-array-segments">Bit Array Segments</a></h2>
+<p>By default a Bit Array segment represents 8 bits, also known as 1 byte.</p>
 <pre><code class="language-gleam">// This is the number 3 as an 8 bit value.
 // Written in binary it would be 00000011
 &lt;&lt;3&gt;&gt;
@@ -1197,14 +1197,14 @@ string segments separated by commas, and closing brackets <code>&gt;&gt;</code>.
 </code></pre>
 <p>You can specify any positive integer as the bit size.</p>
 <pre><code class="language-gleam">// This is not same as above, remember we're working with a series of 1s and 0s.
-// This Bit String is 16 bits long: 0000000000000011
+// This Bit Array is 16 bits long: 0000000000000011
 &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
 <p>You can have any number of segments separated by commas.</p>
 <pre><code class="language-gleam">// This is True
 &lt;&lt;0:4, 1:3, 1:1&gt;&gt; == &lt;&lt;3&gt;&gt;
 </code></pre>
-<h2 id="bit-string-segment-options"><a class="header" href="#bit-string-segment-options">Bit String Segment Options</a></h2>
+<h2 id="bit-array-segment-options"><a class="header" href="#bit-array-segment-options">Bit Array Segment Options</a></h2>
 <p>There are a few more options you can attach to a segment to describe its size
 and bit layout.</p>
 <p><code>unit()</code> lets you create a segment of repeating size. The segment will
@@ -1214,17 +1214,17 @@ a <code>size</code> option.</p>
 &lt;&lt;3:size(4)-unit(4)&gt;&gt; == &lt;&lt;3:size(16)&gt;&gt;
 </code></pre>
 <p>The <code>utf8</code>, <code>utf16</code> and <code>utf32</code> options let you put a String directly into a
-Bit String.</p>
+Bit Array.</p>
 <pre><code class="language-gleam">&lt;&lt;&quot;Hello Gleam 💫&quot;:utf8&gt;&gt;
 </code></pre>
-<p>The <code>bit_string</code> option lets you put any other Bit String into a Bit String.</p>
+<p>The <code>bits</code> option lets you put any other Bit Array into a Bit Array.</p>
 <pre><code class="language-gleam">let a = &lt;&lt;0:1, 1:1, 1:1&gt;&gt;
-&lt;&lt;a:bit_string, 1:5&gt;&gt; == &lt;&lt;&quot;a&quot;:utf8&gt;&gt; // True
+&lt;&lt;a:bits, 1:5&gt;&gt; == &lt;&lt;&quot;a&quot;:utf8&gt;&gt; // True
 </code></pre>
 <p>Here Is the full list of options and their meaning:</p>
 <h3 id="options-in-values"><a class="header" href="#options-in-values">Options in Values</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
-<tr><td>bit_string</td><td>a bitstring that is any bit size</td></tr>
+<tr><td>bits</td><td>a bitarray that is any bit size</td></tr>
 <tr><td>float</td><td>default size of 64 bits</td></tr>
 <tr><td>int</td><td>default size of 8 bits</td></tr>
 <tr><td>size</td><td>the size of the segment in bits</td></tr>
@@ -1239,8 +1239,8 @@ Bit String.</p>
 </div>
 <h3 id="options-in-patterns"><a class="header" href="#options-in-patterns">Options in Patterns</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
-<tr><td>binary</td><td>a bitstring that is a multiple of 8 bits</td></tr>
-<tr><td>bit_string</td><td>a bitstring that is any bit size</td></tr>
+<tr><td>bytes</td><td>a bitarray that is a multiple of 8 bits</td></tr>
+<tr><td>bits</td><td>a bitarray that is any bit size</td></tr>
 <tr><td>float</td><td>float value, size of exactly 64 bits</td></tr>
 <tr><td>int</td><td>int value, default size of 8 bits</td></tr>
 <tr><td>big</td><td>big endian</td></tr>
@@ -1259,13 +1259,13 @@ Bit String.</p>
 </tbody></table>
 </div>
 <h2 id="values-vs-patterns"><a class="header" href="#values-vs-patterns">Values vs Patterns</a></h2>
-<p>Bit Strings can appear on either the left or the right side of an equals sign.
+<p>Bit Arrays can appear on either the left or the right side of an equals sign.
 On the left they are called <strong>patterns</strong>, and on the right they are called
 <strong>values</strong>.</p>
 <p>This is an important distinction because values and patterns have slightly
 different rules.</p>
 <h3 id="rules-for-patterns"><a class="header" href="#rules-for-patterns">Rules for Patterns</a></h3>
-<p>You can match on a variable length segment with the <code>bit_string</code> or <code>binary</code>
+<p>You can match on a variable length segment with the <code>bits</code> or <code>bytes</code>
 options. A pattern can have at most 1 variable length segment and it must be
 the last segment.</p>
 <p>In a pattern the types <code>utf8</code>, <code>utf16</code>, and <code>utf32</code> must be an exact string.
@@ -1275,13 +1275,13 @@ of a binary with an exact encoding.</p>
 <code>utf16_codepoint</code>, and <code>utf32_codepoint</code> which will match the correct number of
 bytes depending on the codepoint size and data.</p>
 <h2 id="further-reading"><a class="header" href="#further-reading">Further Reading</a></h2>
-<p>Gleam inherits its Bit String syntax and handling from Erlang. You can find the
+<p>Gleam inherits its Bit Array syntax and handling from Erlang. You can find the
 Erlang documentation
 <a href="https://erlang.org/doc/reference_manual/expressions.html#bit_syntax">here</a>.</p>
 <h2 id="stdlib-references-6"><a class="header" href="#stdlib-references-6">Stdlib references</a></h2>
 <ul>
-<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bit_string.html">gleam/bit_string</a></li>
-<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bit_builder.html">gleam/bit_builder</a></li>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bit_array.html">gleam/bit_array</a></li>
+<li><a href="https://hexdocs.pm/gleam_stdlib/gleam/bytes_builder.html">gleam/bytes_builder</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="use-expressions"><a class="header" href="#use-expressions">Use expressions</a></h1>
 <p>Gleam lacks exceptions, macros, type classes, early returns, and a variety of

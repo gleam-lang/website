@@ -26,7 +26,7 @@ Build the project
 
 | Option | Description |
 | ------ | ----------- |
-| `-t, --target <TARGET>`| The platform to target [possible values: erlang, javascript]
+| `-t, --target <TARGET>`| The platform to target
 | `--warnings-as-errors`| Emit compile time warnings as errors
 
 ## `check`
@@ -37,7 +37,7 @@ Type check the project
 
 | Option | Description |
 | ------ | ----------- |
-| `-t, --target <TARGET>`| The platform to target [possible values: erlang, javascript]
+| `-t, --target <TARGET>`| The platform to target
 
 ## `clean`
 
@@ -263,7 +263,7 @@ Run the project
 | ------ | ----------- |
 | `-m, --module <MODULE>`| The module to run
 | `--runtime <RUNTIME>`| 
-| `--target <TARGET>`| The platform to target [possible values: erlang, javascript]
+| `-t, --target <TARGET>`| The platform to target
 
 ## `shell`
 
@@ -281,7 +281,7 @@ Run the project tests
 | Option | Description |
 | ------ | ----------- |
 | `--runtime <RUNTIME>`| 
-| `--target <TARGET>`| The platform to target [possible values: erlang, javascript]
+| `-t, --target <TARGET>`| The platform to target
 
 ## `update`
 
