@@ -13,6 +13,11 @@
   avatar: "https://avatars.githubusercontent.com/u/40153966?u=e0245079f6b34573e921a44d9c2b820e683f7d4c&v=4"
   tier: 1
   square_avatar: false
+- name: "Robert Attard"
+  url: "https://github.com/TanklesXL"
+  avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
+  tier: 2
+  square_avatar: false
 - name: "inoas"
   url: "https://github.com/inoas"
   avatar: "https://avatars.githubusercontent.com/u/20972207?u=886cccd641cbc44d3657b12bac4e42206e46416c&v=4"
@@ -112,11 +117,6 @@
   url: "https://github.com/johngallagher"
   avatar: "https://avatars.githubusercontent.com/u/22185?u=fa71cd6f1f51fea02597313f748f931078ef5809&v=4"
   tier: 2
-  square_avatar: false
-- name: "Stefan Luptak"
-  url: "https://github.com/stefanluptak"
-  avatar: "https://avatars.githubusercontent.com/u/23926?u=94661b890b315853e08b773c426dd8fc36d2962a&v=4"
-  tier: 1
   square_avatar: false
 - name: "Carlos Saltos"
   url: "https://github.com/csaltos"
