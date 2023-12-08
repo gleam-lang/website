@@ -6,7 +6,7 @@
 - name: "Benjamin Peinhardt"
   url: "https://github.com/bcpeinhardt"
   avatar: "https://avatars.githubusercontent.com/u/61021968?u=17f37181b87e813cdcdf42b4a5aa4340f2159e10&v=4"
-  tier: 2
+  tier: 3
   square_avatar: false
 - name: "Danielle Maywood"
   url: "https://github.com/DanielleMaywood"
@@ -503,6 +503,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5008987?u=0263ce63fe2c5083367f5f9625ee2435652801b4&v=4"
   tier: 1
   square_avatar: false
+- name: "Jimpjorps™"
+  url: "https://github.com/hunkyjimpjorps"
+  avatar: "https://avatars.githubusercontent.com/u/5170341?v=4"
+  tier: 2
+  square_avatar: false
 - name: "Chris Ohk"
   url: "https://github.com/utilForever"
   avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
@@ -676,6 +681,11 @@
 - name: "Theo Harris"
   url: "https://github.com/Theosaurus-Rex"
   avatar: "https://avatars.githubusercontent.com/u/71990001?u=c2f36e63ffcfbb58b679a9e303b174467dc14a4d&v=4"
+  tier: 1
+  square_avatar: false
+- name: "F. Schwalbe"
+  url: "https://github.com/fschwalbe"
+  avatar: "https://avatars.githubusercontent.com/u/88447041?v=4"
   tier: 1
   square_avatar: false
 - name: "Emma"
