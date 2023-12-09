@@ -498,6 +498,11 @@
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   tier: 1
   square_avatar: false
+- name: "Michał Łępicki"
+  url: "https://github.com/michallepicki"
+  avatar: "https://avatars.githubusercontent.com/u/4972756?u=3f1cbc61ce58ecb99528de5e23702c97155afbc9&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Chris Rybicki"
   url: "https://github.com/Chriscbr"
   avatar: "https://avatars.githubusercontent.com/u/5008987?u=0263ce63fe2c5083367f5f9625ee2435652801b4&v=4"
