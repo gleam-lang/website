@@ -19,6 +19,7 @@ description: The answers to some things you might be wondering about Gleam!
   - [Elixir?](#how-does-gleam-compare-to-elixir)
   - [Purerl?](#how-does-gleam-compare-to-purerl)
   - [Rust?](#how-does-gleam-compare-to-rust)
+- [Can I use Elixir code with Gleam?](#can-i-use-elixir-code-with-gleam)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
 - [Is it good?](#is-it-good)
@@ -213,6 +214,17 @@ different language.
   small language and is designed to be easy to learn.
 - Rust uses futures with async/await, Gleam uses the actor model on Erlang.
 - Rust features traits and multiple macro systems, Gleam does not.
+
+
+## Can I use Elixir code with Gleam?
+
+Yes! The Gleam build tool has support for Elixir and can compile both Elixir
+dependencies and Elixir source files in your Gleam project. Elixir has to be
+installed on your computer for this to work.
+
+Elixir macros cannot be called from outside of Elixir, so some Elixir APIs
+cannot be used directly from Gleam. To use one of these you can write an Elixir
+module that uses the macros, and then use that module in your Gleam code.
 
 
 ## Should I put Gleam in production?
