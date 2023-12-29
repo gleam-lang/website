@@ -100,23 +100,18 @@
   square_avatar: false
 - name: "Arnaud Berthomier"
   url: "https://github.com/oz"
-  avatar: "https://avatars.githubusercontent.com/u/9436?u=d8b13e4655074296d532fbfefa68bc878897be88&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9436?u=89acda23bc3415d71ec567d099640117922394dd&v=4"
   tier: 1
   square_avatar: false
 - name: "Paul Gideon Dann"
   url: "https://github.com/giddie"
-  avatar: "https://avatars.githubusercontent.com/u/10906?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/10906?u=ee1cf4c7ab2d9905813985b68a49a5c1b4eb9b07&v=4"
   tier: 1
   square_avatar: false
 - name: "Matt Van Horn"
   url: "https://github.com/mattvanhorn"
   avatar: "https://avatars.githubusercontent.com/u/20461?v=4"
   tier: 1
-  square_avatar: false
-- name: "John Gallagher"
-  url: "https://github.com/johngallagher"
-  avatar: "https://avatars.githubusercontent.com/u/22185?u=fa71cd6f1f51fea02597313f748f931078ef5809&v=4"
-  tier: 2
   square_avatar: false
 - name: "Carlos Saltos"
   url: "https://github.com/csaltos"
@@ -220,7 +215,7 @@
   square_avatar: false
 - name: "Saša Jurić"
   url: "https://github.com/sasa1977"
-  avatar: "https://avatars.githubusercontent.com/u/202498?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/202498?u=71c741d8bb7e45e98f9bed3adb51c98575fee650&v=4"
   tier: 1
   square_avatar: false
 - name: "Mark Markaryan"
@@ -323,6 +318,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1030138?u=0b94eab83ae023f4539fd5ac0b82f67dacf520d5&v=4"
   tier: 1
   square_avatar: false
+- name: "Ryan Ponce"
+  url: "https://github.com/ryanponce"
+  avatar: "https://avatars.githubusercontent.com/u/1124762?u=b0abb272fb72ee1a8e419c5cfd01e2fd54432dc2&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Damir Vandic"
   url: "https://github.com/dvic"
   avatar: "https://avatars.githubusercontent.com/u/1214337?u=746515aba84bb2fcae408ec38fe3e3f8c2e78ce0&v=4"
@@ -423,6 +423,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2291502?u=367ad7712549b320466e91233f79160515accacd&v=4"
   tier: 1
   square_avatar: false
+- name: "Dillon Mulroy"
+  url: "https://github.com/dmmulroy"
+  avatar: "https://avatars.githubusercontent.com/u/2755722?u=a9746c9f33b5a17bee04d58b578a12a013b4d41b&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Dmitry Poroh"
   url: "https://github.com/poroh"
   avatar: "https://avatars.githubusercontent.com/u/2820076?u=37f9a5f3afefd3146852a73e4eeedb61ae71dc28&v=4"
@@ -513,6 +518,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5170341?v=4"
   tier: 2
   square_avatar: false
+- name: "Philip Giuliani"
+  url: "https://github.com/philipgiuliani"
+  avatar: "https://avatars.githubusercontent.com/u/5446019?u=bc87f3244d17de8596e46b4b9f7806456a9d2386&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Chris Ohk"
   url: "https://github.com/utilForever"
   avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
@@ -525,7 +535,7 @@
   square_avatar: false
 - name: "Marius Kalvø"
   url: "https://github.com/mariuskalvo"
-  avatar: "https://avatars.githubusercontent.com/u/5960745?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/5960745?u=2775476bcdd3e1fb96129ad777dd2e30fef76baf&v=4"
   tier: 1
   square_avatar: false
 - name: "Hex"
