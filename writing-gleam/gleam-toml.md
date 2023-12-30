@@ -32,6 +32,9 @@ repository = { type = "github", user = "example", repo = "my_project" }
 # It can also be one of these formats
 # repository = { type = "gitlab", user = "example", repo = "my_project" }
 # repository = { type = "bitbucket", user = "example", repo = "my_project" }
+# repository = { type = "codeberg", user = "example", repo = "my_project" }
+# repository = { type = "forgejo", host = "example.com", user = "example", repo = "my_project" }
+# repository = { type = "gitea", host = "example.com", user = "example", repo = "my_project" }
 # repository = { type = "custom", url = "https://example.com/my_project" }
 
 # Links to any related website (optional)
