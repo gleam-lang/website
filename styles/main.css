@@ -451,8 +451,8 @@ td {
 .home-still-here {
   --lucy-x: min(-120px, calc(100vw - var(--width-content) - 400px));
 
-  background: url("/images/lucy-ponder.svg") var(--lucy-x) 120% / 350px auto
-      no-repeat,
+  background:
+    url("/images/lucy-ponder.svg") var(--lucy-x) 120% / 350px auto no-repeat,
     linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
   color: var(--color-charcoal);
   text-align: center;
@@ -664,6 +664,10 @@ td {
   margin: var(--gap-3) 0 var(--gap-4) 0;
   padding: var(--gap-2) var(--gap-2);
   background-color: var(--color-black);
+}
+
+.page pre,
+.page .shadow {
   box-shadow: var(--gap-1) var(--gap-1) 0 0 var(--color-blacker);
 }
 
@@ -701,8 +705,15 @@ td {
 .post video,
 .post img {
   display: block;
-  margin: var(--gap-2) auto;
+  margin: var(--gap-3) auto;
   max-width: 100%;
+}
+
+.post blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--color-faff-pink);
+  margin: 0;
+  padding: 0 var(--gap-2);
 }
 
 .post summary {
