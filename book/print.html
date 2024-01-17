@@ -1143,9 +1143,9 @@ pub fn is_during(year: Int) -&gt; Bool {
   start_year &lt;= year &amp;&amp; year &lt;= end_year
 }
 </code></pre>
-<p>Like all values in Gleam constants are immutable and their values cannot be
+<p>Like all values in Gleam, constants are immutable and their values cannot be
 changed, so they cannot be used as global mutable state.</p>
-<p>When a constant is referenced the value is inlined by the compiler, so they
+<p>When a constant is referenced, the value is inlined by the compiler, so they
 can be used in case expression guards.</p>
 <pre><code class="language-gleam">pub const start_year = 2101
 pub const end_year = 2111
