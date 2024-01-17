@@ -16,10 +16,10 @@ pub fn is_during(year: Int) -> Bool {
 }
 ```
 
-Like all values in Gleam constants are immutable and their values cannot be
+Like all values in Gleam, constants are immutable and their values cannot be
 changed, so they cannot be used as global mutable state.
 
-When a constant is referenced the value is inlined by the compiler, so they
+When a constant is referenced, the value is inlined by the compiler, so they
 can be used in case expression guards.
 
 ```gleam
