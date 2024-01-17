@@ -29,13 +29,14 @@ target = "erlang"
 # The source code repository location (optional)
 # This will be used in generated documentation and displayed on Hex.
 repository = { type = "github", user = "example", repo = "my_project" }
-# It can also be one of these formats
-# repository = { type = "gitlab", user = "example", repo = "my_project" }
-# repository = { type = "bitbucket", user = "example", repo = "my_project" }
-# repository = { type = "codeberg", user = "example", repo = "my_project" }
-# repository = { type = "forgejo", host = "example.com", user = "example", repo = "my_project" }
-# repository = { type = "gitea", host = "example.com", user = "example", repo = "my_project" }
-# repository = { type = "custom", url = "https://example.com/my_project" }
+# `repository` can also be one of these formats
+# { type = "forgejo",   host = "example.com", user = "example", repo = "my_project" }
+# { type = "gitea",     host = "example.com", user = "example", repo = "my_project" }
+# { type = "gitlab",    user = "example", repo = "my_project" }
+# { type = "sourcehut", user = "example", repo = "my_project" }
+# { type = "bitbucket", user = "example", repo = "my_project" }
+# { type = "codeberg",  user = "example", repo = "my_project" }
+# { type = "custom",    url = "https://example.com/my_project" }
 
 # Links to any related website (optional)
 # This will be displayed in generated documentation and on Hex.
