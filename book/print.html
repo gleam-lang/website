@@ -1372,7 +1372,7 @@ export function run() {
 }
 </code></pre>
 <pre><code class="language-gleam">// In src/my_program.gleam
-@external(javascript, &quot;./my-module.js&quot; &quot;run&quot;)
+@external(javascript, &quot;./my-module.js&quot;, &quot;run&quot;)
 pub fn run() -&gt; Int
 </code></pre>
 <p>Gleam uses the JavaScript import syntax, so any module imported must use the
@@ -1381,8 +1381,8 @@ extension must be <code>.mjs</code>.</p>
 <h2 id="multi-target-external-functions"><a class="header" href="#multi-target-external-functions">Multi-target external functions</a></h2>
 <p>An external implementation can be provided for multiple targets by given the
 <code>@external</code> attribute multiple times.</p>
-<pre><code class="language-gleam">@external(erlang, &quot;rand&quot; &quot;uniform&quot;)
-@external(javascript, &quot;./my-module.js&quot; &quot;random&quot;)
+<pre><code class="language-gleam">@external(erlang, &quot;rand&quot;, &quot;uniform&quot;)
+@external(javascript, &quot;./my-module.js&quot;, &quot;random&quot;)
 pub fn random() -&gt; Float
 </code></pre>
 <p>The appropriate implementation will be chosen based on the target the program is
@@ -1390,7 +1390,7 @@ being compiled for.</p>
 <h2 id="gleam-fallbacks"><a class="header" href="#gleam-fallbacks">Gleam fallbacks</a></h2>
 <p>A Gleam implementation can be given as a fallback for when no external
 implementation has been specified for the current target.</p>
-<pre><code class="language-gleam">@external(erlang, &quot;lists&quot; &quot;reverse&quot;)
+<pre><code class="language-gleam">@external(erlang, &quot;lists&quot;, &quot;reverse&quot;)
 pub fn reverse(items: List(a)) -&gt; List(a) {
   do_reverse(items, [])
 }
