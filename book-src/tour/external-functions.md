@@ -47,7 +47,7 @@ export function run() {
 
 ```gleam
 // In src/my_program.gleam
-@external(javascript, "./my-module.js" "run")
+@external(javascript, "./my-module.js", "run")
 pub fn run() -> Int
 ```
 
@@ -61,8 +61,8 @@ An external implementation can be provided for multiple targets by given the
 `@external` attribute multiple times.
 
 ```gleam  
-@external(erlang, "rand" "uniform")
-@external(javascript, "./my-module.js" "random")
+@external(erlang, "rand", "uniform")
+@external(javascript, "./my-module.js", "random")
 pub fn random() -> Float
 ```
 
@@ -75,7 +75,7 @@ A Gleam implementation can be given as a fallback for when no external
 implementation has been specified for the current target.
 
 ```gleam
-@external(erlang, "lists" "reverse")
+@external(erlang, "lists", "reverse")
 pub fn reverse(items: List(a)) -> List(a) {
   do_reverse(items, [])
 }
