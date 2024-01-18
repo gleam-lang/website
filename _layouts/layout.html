@@ -1,67 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
+  <head>
+    {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif
+    %}Gleam{% endcapture %} {% capture default_description %}The Gleam
+    programming language{% endcapture %} {% capture description %}{% if
+    page.description %}{{ page.description | strip }}{% else %}{{
+    default_description }}{% endif %}{% endcapture %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/images/lucy-circle.svg" />
+    {% feed_meta %}
 
-<head>
-  {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{% endcapture %}
-  {% capture default_description %}The Gleam programming language{% endcapture %}
-  {% capture description %}{% if page.description %}{{ page.description | strip }}{% else %}{{ default_description }}{%
-  endif %}{% endcapture %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="shortcut icon" href="/images/lucy-circle.svg">
-  {% feed_meta %}
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ site.url }}/images/og-image.png" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="{{ site.url }}/images/og-image.png">
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ site.url }}" />
+    <meta property="twitter:title" content="{{ title }}" />
+    <meta property="twitter:description" content="{{ description }}" />
+    <meta
+      property="twitter:image"
+      content="{{ site.url }}/images/og-image.png"
+    />
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="{{ site.url }}">
-  <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="{{ site.url }}/images/og-image.png">
+    <script
+      async
+      defer
+      data-domain="gleam.run"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
 
+  <body>
+    {{ content }}
 
-
-  <script async defer data-domain="gleam.run" src="https://plausible.io/js/plausible.js"></script>
-  <link rel="stylesheet" href="/styles/main.css">
-</head>
-
-<body>
-  {{ content }}
-
-  <footer class="footer">
-    <div class="content">
-      <div class="first">
-        <a class="logo" href="/">
-          <img src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
-          Gleam
-        </a>
+    <footer class="footer">
+      <div class="content">
+        <div class="first">
+          <a class="logo" href="/">
+            <img
+              src="/images/lucy-charcoal-2.svg"
+              alt="Lucy the star, Gleam's mascot"
+            />
+            Gleam
+          </a>
+        </div>
+        <ul class="middle">
+          <li><a href="/news">News</a></li>
+          <li><a href="/documentation#cheatsheets">Cheat sheets</a></li>
+          <li><a href="https://discord.gg/Fm8Pwmy">Discord</a></li>
+          <li><a href="https://gleam.run/book/tour/">Language tour</a></li>
+          <li><a href="https://github.com/gleam-lang">GitHub</a></li>
+          <li><a href="/documentation">Documentation</a></li>
+          <li><a href="https://github.com/sponsors/lpil">Sponsor</a></li>
+          <li><a href="https://packages.gleam.run/">Packages</a></li>
+        </ul>
+        <ul class="last">
+          <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold</li>
+          <li>
+            <a
+              href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md"
+              >Code of conduct</a
+            >
+            <!-- TODO: puppies -->
+            <!-- <li><a href="">Pictures of pets</a> -->
+          </li>
+        </ul>
       </div>
-      <ul class="middle">
-        <li><a href="/news">News</a>
-        <li><a href="/documentation#cheatsheets">Cheat sheets</a>
-        <li><a href="https://discord.gg/Fm8Pwmy">Discord</a>
-        <li><a href="https://gleam.run/book/tour/">Language tour</a>
-        <li><a href="https://github.com/gleam-lang">GitHub</a>
-        <li><a href="/documentation">Documentation</a>
-        <li><a href="https://github.com/sponsors/lpil">Sponsor</a>
-        <li><a href="https://packages.gleam.run/">Packages</a>
-      </ul>
-      <ul class="last">
-        <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold
-        <li><a href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a>
-          <!-- TODO: puppies -->
-          <!-- <li><a href="">Pictures of pets</a> -->
-      </ul>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 
-<script src="/javascript/main.js?v={{ site.time | date: '%Y%m%d' }}"></script>
-
+  <script src="/javascript/main.js?v={{ site.time | date: '%Y%m%d' }}"></script>
 </html>
