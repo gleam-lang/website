@@ -11,7 +11,7 @@ JavaScript runtimes. Today Gleam's new language tour has been launched, a way to
 try and to learn Gleam without having to install anything on your computer.
 Check it out, it looks like this:
 
-<img alt="A Gleam project being created and compiled with dependencies from both targets" src="/images/news/gleams-new-interactive-language-tour/browser.png">
+<a href="https://tour.gleam.run/"><img alt="A Gleam project being created and compiled with dependencies from both targets" src="/images/news/gleams-new-interactive-language-tour/browser.png"></a>
 
 The language tour guides you through the language, from the basics to the most
 advanced features, introducing each concept in a way that builds on what has
