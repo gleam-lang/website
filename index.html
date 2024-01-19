@@ -1,15 +1,15 @@
 ---
 layout: layout
 ---
+
 {% capture header_content %}
 <div>
   <b>Gleam</b> is a <b>friendly</b> language for building
   <b>type-safe</b> systems that <b>scale</b>! <span data-show-pride>✨</span>
 </div>
-<a class="button" href="/getting-started">Getting Started</a>
-{% endcapture %}
-{% include page-header.html image="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot"
-content=header_content %}
+<a class="button" href="https://tour.gleam.run/">Try Gleam</a>
+{% endcapture %} {% include page-header.html image="/images/lucy-charcoal-2.svg"
+alt="Lucy the star, Gleam's mascot" content=header_content %}
 
 <main role="main">
   <section class="content home-pair intro">
@@ -30,8 +30,13 @@ content=header_content %}
   <section class="home-top-sponsors">
     <div class="content">
       <h2>Kindly supported by</h2>
-      <a class="sponsor-fly" href="https://fly.io" rel="noopener" target="_blank">
-        <img src="/images/sponsors/fly.svg" alt="Fly">
+      <a
+        class="sponsor-fly"
+        href="https://fly.io"
+        rel="noopener"
+        target="_blank"
+      >
+        <img src="/images/sponsors/fly.svg" alt="Fly" />
       </a>
     </div>
   </section>
@@ -47,8 +52,8 @@ content=header_content %}
       <p>
         Thanks to a multi-core actor based concurrency system that can run
         millions of concurrent tasks, fast immutable data structures, and a
-        concurrent garbage collector that never stops the world, your service can
-        scale and stay lightning fast with ease.
+        concurrent garbage collector that never stops the world, your service
+        can scale and stay lightning fast with ease.
       </p>
     </div>
     <pre><code><span class="code-keyword">fn</span> <span class="code-fn">spawn_task</span>(i) {
@@ -76,8 +81,8 @@ content=header_content %}
         running <code>gleam new</code>.
       </p>
       <p>
-        As part of the wider BEAM ecosystem, Gleam programs can use thousands
-        of published packages, whether they are written in Gleam, Erlang, or
+        As part of the wider BEAM ecosystem, Gleam programs can use thousands of
+        published packages, whether they are written in Gleam, Erlang, or
         Elixir.
       </p>
     </div>
@@ -125,8 +130,8 @@ It has these fields:
     <div>
       <h2>Multilingual</h2>
       <p>
-        Gleam makes it easy to use code written in other BEAM languages such
-        as Erlang and Elixir, so there's a rich ecosystem of thousands of open
+        Gleam makes it easy to use code written in other BEAM languages such as
+        Erlang and Elixir, so there's a rich ecosystem of thousands of open
         source libraries for Gleam users to make use of.
       </p>
       <p>
@@ -166,9 +171,12 @@ It has these fields:
       </p>
     </div>
     <!-- TODO: add Lucy here -->
-    <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
+    <img
+      class="home-waves"
+      src="/images/waves.svg"
+      alt="a soft wavey boundary between two sections of the website"
+    />
   </section>
-
 
   <section class="home-sponsors">
     <div class="content">
@@ -181,16 +189,19 @@ It has these fields:
     </div>
     <div class="home-sponsors-list">
       <ul data-randomise-order>
-        {% assign sponsors_count = site.data.sponsors | size %}
-        {% assign sponsors = site.data.sponsors | sample: sponsors_count %}
-        {% for sponsor in sponsors %}
+        {% assign sponsors_count = site.data.sponsors | size %} {% assign
+        sponsors = site.data.sponsors | sample: sponsors_count %} {% for sponsor
+        in sponsors %}
         <li>
           <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
-            <img src="{{ sponsor.avatar }}"
+            <img
+              src="{{ sponsor.avatar }}"
               class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}"
-              alt="{{ sponsor.name }}">
+              alt="{{ sponsor.name }}"
+            />
           </a>
           {% endfor %}
+        </li>
       </ul>
       <a data-expand-sponsors></a>
     </div>
@@ -205,14 +216,15 @@ It has these fields:
       </p>
       <a class="button" href="/getting-started">Let's go!</a>
 
-      <hr>
+      <hr />
 
       <h3>Wanna keep in touch?</h3>
-      <p>
-        Subscribe to the Gleam newsletter
-      </p>
-      <script async src="https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js"
-        data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"></script>
+      <p>Subscribe to the Gleam newsletter</p>
+      <script
+        async
+        src="https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js"
+        data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"
+      ></script>
       <p>
         We send emails at most a few times a year, and we'll never share your
         email with anyone else.
