@@ -3,7 +3,10 @@
     <div class="content">
       <div>
         <a class="logo" href="/">
-          <img src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
+          <img
+            src="/images/lucy-charcoal-2.svg"
+            alt="Lucy the star, Gleam's mascot"
+          />
           Gleam
         </a>
       </div>
@@ -13,8 +16,9 @@
         <a href="https://github.com/sponsors/lpil">Sponsor</a>
       </div>
       <div>
-        <a href="/documentation">Documentation</a>
-        <a href="https://github.com/gleam-lang">GitHub</a>
+        <a href="https://packages.gleam.run">Packages</a>
+        <a href="/documentation">Docs</a>
+        <a href="https://github.com/gleam-lang">Code</a>
       </div>
     </div>
   </nav>
@@ -22,12 +26,18 @@
   <div class="hero">
     <div class="content">
       {% if include.image %}
-      <img class="logo wide-only" src="{{ include.image }}" alt="{{ include.alt }}">
+      <img
+        class="logo wide-only"
+        src="{{ include.image }}"
+        alt="{{ include.alt }}"
+      />
       {% endif %}
-      <div class="text">
-        {{ include.content }}
-      </div>
+      <div class="text">{{ include.content }}</div>
     </div>
-    <img class="home-waves" src="/images/waves.svg" alt="a soft wavey boundary between two sections of the website">
+    <img
+      class="home-waves"
+      src="/images/waves.svg"
+      alt="a soft wavey boundary between two sections of the website"
+    />
   </div>
 </div>
