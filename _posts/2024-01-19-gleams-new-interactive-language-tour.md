@@ -77,7 +77,7 @@ The [CodeFlask][codeflask] library is used to provide the code editor and syntax
 highlighting. This was selected as it's a lightweight and easy to use text
 editor that has just the features we need, and no more.
 
-[codeflask]: https://kazzkiq.github.io/CodeFlask.js/
+[codeflask]: https://kazzkiq.github.io/CodeFlask
 
 The website is a static site that is deployed to [GitHub Pages][pages]. Rather
 than using any specific static site generator it is built using a small Gleam
