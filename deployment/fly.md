@@ -33,13 +33,16 @@ import gleam/bit_builder
 import gleam/http/response.{Response}
 
 pub fn main() {
-  let assert Ok(_) = mist.run_service(8080, web_service, max_body_limit: 4_000_000)
+  let assert Ok(_) =
+    |> mist.new
+    |> mist.port(8080)
+    |> mist.start_http
   process.sleep_forever()
 }
 
 fn web_service(_request) {
   let body = bit_builder.from_string("Hello, Joe!")
-  Response(200, [], body)
+  Response(200, [], mist.Bytes(body))
 }
 ```
 
