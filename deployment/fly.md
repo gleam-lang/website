@@ -34,6 +34,7 @@ import gleam/http/response.{Response}
 
 pub fn main() {
   let assert Ok(_) =
+    web_service
     |> mist.new
     |> mist.port(8080)
     |> mist.start_http
