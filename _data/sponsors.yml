@@ -23,11 +23,6 @@
   avatar: "https://avatars.githubusercontent.com/u/921826?u=315e6483dbe88494b733647492faadcbfe77b041&v=4"
   tier: 2
   square_avatar: false
-- name: "Kayla Washburn-Love"
-  url: "https://github.com/aslilac"
-  avatar: "https://avatars.githubusercontent.com/u/418348?u=a9405b44bf3e919392ddca58bbf3586ae8d59664&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Nicklas Sindlev Andersen"
   url: "https://github.com/NicklasXYZ"
   avatar: "https://avatars.githubusercontent.com/u/18580183?u=e78dfbd9cc44a243c17f052250ef73aec4cb3858&v=4"
@@ -55,7 +50,7 @@
   square_avatar: false
 - name: "Danielle Maywood"
   url: "https://github.com/DanielleMaywood"
-  avatar: "https://avatars.githubusercontent.com/u/40153966?u=e0245079f6b34573e921a44d9c2b820e683f7d4c&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/40153966?u=7e8e266d391727da20564f18359c227682b7319a&v=4"
   tier: 1
   square_avatar: false
 - name: "Hayleigh Thompson"
@@ -63,9 +58,9 @@
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
   tier: 1
   square_avatar: false
-- name: "OldhamMade"
-  url: "https://github.com/OldhamMade"
-  avatar: "https://avatars.githubusercontent.com/u/111193?v=4"
+- name: "Philip Giuliani"
+  url: "https://github.com/philipgiuliani"
+  avatar: "https://avatars.githubusercontent.com/u/5446019?u=bc87f3244d17de8596e46b4b9f7806456a9d2386&v=4"
   tier: 1
   square_avatar: false
 - name: "Chris Ohk"
@@ -116,6 +111,11 @@
 - name: "Gustavo Villa"
   url: "https://github.com/gfvcastro"
   avatar: "https://avatars.githubusercontent.com/u/10352597?u=0690cc0978e46b86f777a6c6f611b5305edec445&v=4"
+  tier: 1
+  square_avatar: false
+- name: "OldhamMade"
+  url: "https://github.com/OldhamMade"
+  avatar: "https://avatars.githubusercontent.com/u/111193?v=4"
   tier: 1
   square_avatar: false
 - name: "Jonas Hedman Engström"
@@ -203,16 +203,6 @@
   avatar: "https://avatars.githubusercontent.com/u/5008987?u=0263ce63fe2c5083367f5f9625ee2435652801b4&v=4"
   tier: 1
   square_avatar: false
-- name: "Philip Giuliani"
-  url: "https://github.com/philipgiuliani"
-  avatar: "https://avatars.githubusercontent.com/u/5446019?u=bc87f3244d17de8596e46b4b9f7806456a9d2386&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Xetera"
-  url: "https://github.com/Xetera"
-  avatar: "https://avatars.githubusercontent.com/u/24978328?u=e4286d30bfd5917cc750729b877316610cd41c13&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Zsombor Gasparin"
   url: "https://github.com/gasparinzsombor"
   avatar: "https://avatars.githubusercontent.com/u/25465322?u=18186bbf5e9df8274c5795f2d8359a06ebf0885c&v=4"
@@ -233,6 +223,11 @@
   avatar: "https://avatars.githubusercontent.com/u/39130739?u=334ef35279398d7ae83adb27190bba0e1cef7e95&v=4"
   tier: 1
   square_avatar: false
+- name: "Kryštof Řezáč"
+  url: "https://github.com/krystofrezac"
+  avatar: "https://avatars.githubusercontent.com/u/39591095?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Arut Jinadit"
   url: "https://github.com/arut-ji"
   avatar: "https://avatars.githubusercontent.com/u/43962033?u=9bc357af138f6a69329949147fabbf519a2fa14d&v=4"
@@ -241,7 +236,7 @@
 - name: "human154"
   url: "https://github.com/human154"
   avatar: "https://avatars.githubusercontent.com/u/46430360?v=4"
-  tier: 1
+  tier: 2
   square_avatar: false
 - name: "Signal Insights"
   url: "https://github.com/signalinsights"
@@ -345,7 +340,7 @@
   square_avatar: false
 - name: "SEKUN"
   url: "https://github.com/sekunho"
-  avatar: "https://avatars.githubusercontent.com/u/20364796?u=136fba2d4e337f59104ee99f2d4a226c1d85d32b&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/20364796?u=5cade410236443af83ef153029eb7b379ab15205&v=4"
   tier: 1
   square_avatar: false
 - name: "Dennis Dang"
