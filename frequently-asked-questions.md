@@ -250,9 +250,9 @@ made to Rust as the lack of static types was making refactoring a slow and
 error prone process. A full Rust rewrite of the prototype resulted in the
 removal of a lot of tech debt and bugs, and the performance boost is nice too!
 
-One day, Gleam may have a compiler written in Gleam, but for now we are focused
-on developing other areas of the language such as libraries, tooling, and
-documentation.
+The community may one day implement a Gleam compiler written in Gleam, but the
+core team are focused on developing other areas of the ecosystem such as
+libraries, tooling, and documentation, as this will provide more value overall.
 
 
 ## Is it good?
