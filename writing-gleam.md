@@ -25,7 +25,7 @@ Ready? Let's go!
 ## The project
 
 In this guide we're going to make a small command line program for printing
-environment variables. It is to have two commands:
+environment variables.
 
 In use it'll look like this:
 ```sh
@@ -310,3 +310,6 @@ chmod +x ./vars
 This `vars` file can be run on any computer that has a compatible version of
 Erlang installed. Typically this will be within a few major versions of the
 version of Erlang on the computer used to compile the escript.
+
+And that's it! Get hacking! And do drop by [the Gleam Discord server](https://discord.gg/Fm8Pwmy)
+to get help or share what you're working on.
