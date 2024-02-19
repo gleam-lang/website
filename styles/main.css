@@ -27,7 +27,7 @@
 :root {
   --font-family-normal: "Outfit", sans-serif;
   --font-family-title: "Lexend", sans-serif;
-  --font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;
+  /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
 
   --color-charcoal: #2f2f2f;
   --color-black: #1e1e1e;
@@ -138,12 +138,11 @@ pre {
   margin: 0;
 }
 
-code {
-  font-family: var(--font-family-monospace);
-}
-
-p code {
-  opacity: 0.7;
+li > code,
+p > code {
+  font-size: 0.9em;
+  opacity: 0.75;
+  margin: 0 2px;
 }
 
 pre code {
