@@ -3,7 +3,9 @@ layout: page
 title: Writing Gleam
 subtitle: Learn to work with Gleam projects
 redirect_from:
+  - "/book/getting-started/index.html"
   - "/getting-started/index.html"
+  - "/writing-gleam/documenting-the-project/index.html"
   - "/writing-gleam/creating-a-project/index.html"
   - "/writing-gleam/using-the-project/index.html"
 ---
