@@ -6,10 +6,8 @@ layout: page
 
 ## Learning Gleam
 
-- [Getting started](/getting-started)
-- [Language tour](/book/tour)
-- [Writing Gleam][/writing-gleam]
-- [Example projects](/writing-gleam/example-projects)
+- [Language tour](https://tour.gleam.run)
+- [Writing Gleam](/writing-gleam)
 
 ## Gleam references
 
