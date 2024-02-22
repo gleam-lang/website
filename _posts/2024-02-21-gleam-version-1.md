@@ -110,11 +110,73 @@ Gleam is a practical language intended for making real things, so our focus for
 Gleam post-v1 is to be split between productivity for Gleam users and
 sustainability for the Gleam project.
 
+
 ### Productivity for Gleam users
 
+As well as not introducing breaking changes we will also be avoiding language
+bloat. It's easy to keep adding new features to a language to aid with specific
+problems, but with each new language feature or new way of solving a problem the
+language as a whole becomes more complex and harder to learn and understand.
+Simplicity is a feature in Gleam and that will not change going forward.
+There is scope adding new features to the language, but we will be doing so
+extremely conservatively. Any new feature has to be generally useful and enable
+new things not otherwise possible in Gleam, while being a worthwhile trade
+for the added complexity it brings to the language.
+
+Rather than adding new features to the language we will be continuously
+improving the Gleam developer experience and enhancing real-world productivity.
+Initially the focus will be on improving the Gleam language server as it is
+immature compared to the rest of the Gleam tooling. We will also be working on
+all the libraries and such that folks will likely want when making production
+systems in Gleam, with a particular emphasis on development of websites and web
+services.
+
+Documentation is also a priority. We want to have tutorials and guides for all
+manner of tasks in Gleam. It should always be easy to find how to do something
+in Gleam, so you can focus on achieving your goal.
 
 
 ### Sustainability for the Gleam project
 
+Gleam is not a project from Microsoft or Google, it's a community project. There
+is one full-time developer working on Gleam (me!) and a number of part time
+volunteers who do excellent work. With this small team we need to be efficient
+with our efforts. Anything we work on needs to be impactful and meaningful to
+the whole Gleam community, we cannot afford to spend time on niche or
+unimportant situations.
+
+Internal documentation is also important. As an open source project we want
+folks to be able to open up the codebase and make their contribution as easily
+as possible. So far the feedback has been that the Gleam compiler and build tool
+are easy to contribute to. This is encouraging, and we will continue to work on
+this to ensure that the Gleam project never gets to a point where only a select
+few people are able to meaningfully contribute to its maintenance.
+
+The last part of sustainability is financial.
+
+I am able to afford to work on Gleam full time thanks to the support of the
+project's sponsors on [GitHub Sponsors][sponsors]. The largest contributor is
+[Fly.io](https://fly.io), who provide approixmately half the funding.
+
+[sponsors]: https://github.com/sponsors/lpil
+
+<ul class="top-sponsors">
+  <li>
+    <a href="https://fly.io" rel="noopener" target="_blank">
+      <img class="sponsor-fly no-shadow" src="/images/sponsors/fly.svg" alt="Fly">
+    </a>
+    Thank you Fly.io! We wouldn't be here today without your support!
+  </li>
+</ul>
+
+Going forward I would like to diversify the funding with more corporate
+sponsors, as well as other revenue streams. I earn less than half of what I
+would make with the median lead developer salary in London, the city in which I
+live. This is enough money for my to get by, but I would very much like to earn
+the around what I would if I had some other job.
+
+Long term I would like to be able to financially reward the regular contributors
+to Gleam. The folks in the core team are wonderfully talented and they should be
+rewarded appropriately for their work.
 
 Thanks for reading! Happy hacking! 💜
