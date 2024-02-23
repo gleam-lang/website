@@ -195,6 +195,7 @@ It has these fields:
         <li>
           <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
             <img
+              loading="lazy"
               src="{{ sponsor.avatar }}"
               class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}"
               alt="{{ sponsor.name }}"
