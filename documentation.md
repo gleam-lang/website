@@ -8,6 +8,7 @@ layout: page
 
 - [Language tour](https://tour.gleam.run)
 - [Writing Gleam](/writing-gleam)
+- [Installing Gleam](/getting-started/installing)
 
 ## Gleam references
 
