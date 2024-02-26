@@ -39,7 +39,7 @@ find_description() {
 
 find_subcommands() {
   # all lines between the SUBCOMMANDS heading and the next heading
-  sed -n "/$SUBCOMMAND_HEADING/,/$HEADING_PATTERN/p" | drop_headings | trim | cut -d' ' -f1
+	sed -n "/$SUBCOMMAND_HEADING/,/$HEADING_PATTERN/p" | drop_headings | grep '^    \w' | trim | cut -d' ' -f1
 }
 
 find_usage() {
