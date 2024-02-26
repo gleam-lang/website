@@ -30,6 +30,7 @@
   /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
 
   --color-charcoal: #2f2f2f;
+  --color-underwater-blue: #292d3e;
   --color-black: #1e1e1e;
   --color-blacker: #151515;
   --color-white: #fefefc;
@@ -103,7 +104,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--color-charcoal);
+  background-color: var(--color-underwater-blue);
   color: var(--color-white);
   font-family: var(--font-family-normal);
   font-size: var(--font-size-normal);
@@ -429,7 +430,7 @@ img.logo:hover {
   left: 0;
   background: linear-gradient(
     0deg,
-    var(--color-charcoal) 30%,
+    var(--color-underwater-blue) 30%,
     transparent 100%
   );
   font-size: 75px;
@@ -491,7 +492,7 @@ img.logo:hover {
 }
 
 .home-still-here hr {
-  border: 1px solid var(--color-charcoal);
+  border: 1px solid var(--color-underwater-blue);
   opacity: 0.2;
   margin: var(--gap-4);
 }
