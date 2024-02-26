@@ -58,14 +58,9 @@
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
   tier: 1
   square_avatar: false
-- name: "Aaron Gunderson"
-  url: "https://github.com/agundy"
-  avatar: "https://avatars.githubusercontent.com/u/2281120?u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Philip Giuliani"
-  url: "https://github.com/philipgiuliani"
-  avatar: "https://avatars.githubusercontent.com/u/5446019?u=bc87f3244d17de8596e46b4b9f7806456a9d2386&v=4"
+- name: "Jonas Hedman Engström"
+  url: "https://github.com/JonasHedEng"
+  avatar: "https://avatars.githubusercontent.com/u/2291502?u=367ad7712549b320466e91233f79160515accacd&v=4"
   tier: 1
   square_avatar: false
 - name: "Chris Ohk"
@@ -118,9 +113,9 @@
   avatar: "https://avatars.githubusercontent.com/u/10352597?u=0690cc0978e46b86f777a6c6f611b5305edec445&v=4"
   tier: 1
   square_avatar: false
-- name: "Jonas Hedman Engström"
-  url: "https://github.com/JonasHedEng"
-  avatar: "https://avatars.githubusercontent.com/u/2291502?u=367ad7712549b320466e91233f79160515accacd&v=4"
+- name: "Adi Iyengar"
+  url: "https://github.com/thebugcatcher"
+  avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
   tier: 1
   square_avatar: false
 - name: "ggobbe"
@@ -208,6 +203,11 @@
   avatar: "https://avatars.githubusercontent.com/u/5008987?u=0263ce63fe2c5083367f5f9625ee2435652801b4&v=4"
   tier: 1
   square_avatar: false
+- name: "Philip Giuliani"
+  url: "https://github.com/philipgiuliani"
+  avatar: "https://avatars.githubusercontent.com/u/5446019?u=bc87f3244d17de8596e46b4b9f7806456a9d2386&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=614cfcc202ae1bd60c5e86357af95131b5a9396b&v=4"
@@ -293,11 +293,6 @@
   avatar: "https://avatars.githubusercontent.com/u/115511765?u=a9f0a7f8885422b3f06ec611c942948d342c5390&v=4"
   tier: 1
   square_avatar: false
-- name: "Adi Iyengar"
-  url: "https://github.com/thebugcatcher"
-  avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Alexandre Del Vecchio"
   url: "https://github.com/defgenx"
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
@@ -376,6 +371,11 @@
 - name: "brettkolodny"
   url: "https://github.com/brettkolodny"
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
+  tier: 1
+  square_avatar: false
+- name: "LighghtEeloo"
+  url: "https://github.com/LighghtEeloo"
+  avatar: "https://avatars.githubusercontent.com/u/24841828?v=4"
   tier: 1
   square_avatar: false
 - name: "James MacAulay"
@@ -468,9 +468,9 @@
   avatar: "https://avatars.githubusercontent.com/u/236550?v=4"
   tier: 1
   square_avatar: false
-- name: "John Palgut"
-  url: "https://github.com/Jwsonic"
-  avatar: "https://avatars.githubusercontent.com/u/455046?u=0092bfecadfc3aac5e1df3145ea4e0a55a896787&v=4"
+- name: "Robert Ellen"
+  url: "https://github.com/rellen"
+  avatar: "https://avatars.githubusercontent.com/u/459086?u=dae9051904e95a8c27d3c732d7e1be1127c7cc93&v=4"
   tier: 2
   square_avatar: false
 - name: "Chew Choon Keat"
@@ -563,11 +563,6 @@
   avatar: "https://avatars.githubusercontent.com/u/101647?u=575944b8f11d7f942392a670ae910dc931c111f0&v=4"
   tier: 1
   square_avatar: false
-- name: "Damir Vandic"
-  url: "https://github.com/dvic"
-  avatar: "https://avatars.githubusercontent.com/u/1214337?u=746515aba84bb2fcae408ec38fe3e3f8c2e78ce0&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Timo Sulg"
   url: "https://github.com/timgluz"
   avatar: "https://avatars.githubusercontent.com/u/1223889?u=a13c54a9e52d336ac32a11b23e4295e47c6caf4c&v=4"
@@ -653,10 +648,10 @@
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
   tier: 1
   square_avatar: false
-- name: "Robert Ellen"
-  url: "https://github.com/rellen"
-  avatar: "https://avatars.githubusercontent.com/u/459086?u=dae9051904e95a8c27d3c732d7e1be1127c7cc93&v=4"
-  tier: 2
+- name: "Aaron Gunderson"
+  url: "https://github.com/agundy"
+  avatar: "https://avatars.githubusercontent.com/u/2281120?u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
+  tier: 1
   square_avatar: false
 - name: "Florian Kraft"
   url: "https://github.com/floriank"
@@ -741,5 +736,10 @@
 - name: "Michael Duffy"
   url: "https://github.com/stunthamster"
   avatar: "https://avatars.githubusercontent.com/u/1030138?u=0b94eab83ae023f4539fd5ac0b82f67dacf520d5&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Damir Vandic"
+  url: "https://github.com/dvic"
+  avatar: "https://avatars.githubusercontent.com/u/1214337?u=746515aba84bb2fcae408ec38fe3e3f8c2e78ce0&v=4"
   tier: 1
   square_avatar: false
