@@ -35,6 +35,10 @@
       src="https://plausible.io/js/plausible.js"
     ></script>
     <link rel="stylesheet" href="/styles/main.css" />
+
+    {% for preload in page.preload %}
+    <link rel="preload" href="{{ preload.href }}" as="{{ preload.as }}" />
+    {% endfor %}
   </head>
 
   <body>
