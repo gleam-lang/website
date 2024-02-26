@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="en-GB">
   <head>
-    {% capture title %}{% if page.title %}{{ page.title | strip }} – {% endif
-    %}Gleam{% endcapture %} {% capture default_description %}The Gleam
-    programming language{% endcapture %} {% capture description %}{% if
-    page.description %}{{ page.description | strip }}{% else %}{{
-    default_description }}{% endif %}{% endcapture %}
+    <!-- prettier-ignore -->
+    {%- capture title -%}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{%- endcapture -%}
+    <!-- prettier-ignore -->
+    {%- capture default_description -%}The Gleam programming language{%- endcapture -%}
+    <!-- prettier-ignore -->
+    {%- capture description -%}{% if page.description %}{{ page.description | strip }}{% else %}{{ default_description }}{% endif %}{%- endcapture -%}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" href="/images/lucy/lucy.svg" />
     {% feed_meta %}
 
     <title>{{ title }}</title>
-    <meta name="description" content="{{ description }}" />
+    <meta name="description" content="{{ description | strip_newlines }}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="{{ site.url }}/images/og-image.png" />
     <meta property="og:title" content="{{ title }}" />
