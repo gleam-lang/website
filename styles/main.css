@@ -206,7 +206,7 @@ img.logo:hover {
 }
 
 .navbar a {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   text-decoration: none;
   margin-left: var(--gap-2);
 }
@@ -222,7 +222,7 @@ img.logo:hover {
 
 .hero {
   padding-top: var(--gap-4);
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .hero h1 {
@@ -322,7 +322,7 @@ img.logo:hover {
 
 .home-top-sponsors {
   padding: var(--gap-3) 0;
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   background-color: var(--color-faff-pink);
 }
 
@@ -346,7 +346,7 @@ img.logo:hover {
 }
 
 .home-friendly {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   text-align: center;
   background: linear-gradient(
     0deg,
@@ -467,13 +467,13 @@ img.logo:hover {
   background:
     url("/images/lucy/lucymail.svg") var(--lucy-x) 120% / 350px auto no-repeat,
     linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   text-align: center;
 }
 
 .home-still-here a:visited,
 .home-still-here a {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .home-still-here .content {
@@ -544,13 +544,13 @@ img.logo:hover {
 .footer {
   padding: var(--gap-4) 0;
   background-color: var(--color-white);
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   font-family: var(--font-family-title);
 }
 
 .footer a,
 .footer a:visited {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .footer .content {
@@ -608,7 +608,7 @@ img.logo:hover {
 }
 
 .footer a:visited {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .grecaptcha-badge {
@@ -780,7 +780,7 @@ img.logo:hover {
 .recaptcha-blerb a,
 .recaptcha-blerb a:visited,
 .recaptcha-blerb {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   font-size: var(--font-size-small);
 }
 

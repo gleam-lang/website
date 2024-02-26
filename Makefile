@@ -1,6 +1,7 @@
 .PHONY: build
 build:
 	sh writing-gleam/command-line-reference.sh > writing-gleam/command-line-reference.md
+	jekyll build
 
 .PHONY: serve
 serve:
