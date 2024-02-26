@@ -256,6 +256,7 @@ img.logo:hover {
 }
 
 .hero .logo {
+  height: 307px;
   width: 400px;
   padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
 }
