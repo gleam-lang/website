@@ -166,6 +166,10 @@ td {
   padding: var(--gap-2);
 }
 
+main.content {
+  padding-top: 0;
+}
+
 .navbar {
   font-family: var(--font-family-title);
   font-size: var(--font-size-navbar);
@@ -178,17 +182,27 @@ td {
   flex-wrap: wrap;
 }
 
+.hero .logo {
+  transform: rotate(-10deg);
+}
+
 .logo {
   font-size: var(--font-size-logo);
   display: flex;
   align-items: center;
   white-space: nowrap;
+  transition: transform 0.2s ease;
 }
 
 .logo img {
   display: inline-block;
   height: 1.3em;
   margin-right: 0.25em;
+}
+
+img.logo:hover {
+  content: url("/images/lucy/lucyhappy.svg");
+  transform: rotate(13deg);
 }
 
 .navbar a {
@@ -222,7 +236,7 @@ td {
 }
 
 .page-header {
-  background-color: var(--color-faff-pink);
+  background-color: var(--color-aged-plastic-yellow);
   transition: all 0.5s ease;
 }
 
@@ -309,7 +323,7 @@ td {
 .home-top-sponsors {
   padding: var(--gap-3) 0;
   color: var(--color-charcoal);
-  background-color: var(--color-aged-plastic-yellow);
+  background-color: var(--color-faff-pink);
 }
 
 .home-top-sponsors h2 {
@@ -448,10 +462,10 @@ td {
 }
 
 .home-still-here {
-  --lucy-x: min(-120px, calc(100vw - var(--width-content) - 400px));
+  --lucy-x: min(-80px, calc(100vw - var(--width-content) - 400px));
 
   background:
-    url("/images/lucy-ponder.svg") var(--lucy-x) 120% / 350px auto no-repeat,
+    url("/images/lucy/lucymail.svg") var(--lucy-x) 120% / 350px auto no-repeat,
     linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
   color: var(--color-charcoal);
   text-align: center;
@@ -670,6 +684,7 @@ td {
   box-shadow: var(--gap-1) var(--gap-1) 0 0 var(--color-blacker);
 }
 
+.page h1,
 .page h2 {
   margin-top: var(--gap-6);
 }
