@@ -34,3 +34,4 @@ layout: page
 ## About Gleam
 
 - [Frequently asked questions](/frequently-asked-questions)
+- [Gleam's Branding](/branding)
