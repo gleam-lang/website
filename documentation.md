@@ -8,7 +8,7 @@ layout: page
 
 - [Language tour](https://tour.gleam.run)
 - [Writing Gleam](/writing-gleam)
-- [Exercises & Mentoring](https://exercism.org/tracks/gleam)
+- [Community Resources](https://github.com/gleam-lang/awesome-gleam?tab=readme-ov-file#resources)
 - [Installing Gleam](/getting-started/installing)
 
 ## Gleam references
