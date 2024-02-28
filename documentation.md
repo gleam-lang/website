@@ -8,7 +8,6 @@ layout: page
 
 - [Language tour](https://tour.gleam.run)
 - [Writing Gleam](/writing-gleam)
-- [Community Resources](https://github.com/gleam-lang/awesome-gleam?tab=readme-ov-file#resources)
 - [Installing Gleam](/getting-started/installing)
 
 ## Gleam references
@@ -35,3 +34,6 @@ layout: page
 ## About Gleam
 
 - [Frequently asked questions](/frequently-asked-questions)
+
+## Community Resources
+- [Courses, Mentoring, Talks...](https://github.com/gleam-lang/awesome-gleam?tab=readme-ov-file#resources)
