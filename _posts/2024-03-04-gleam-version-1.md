@@ -164,7 +164,7 @@ Fly.io! We wouldn't be here today without your support!
 Going forward I would like to diversify the funding with more corporate
 sponsors, as well as other revenue streams. I earn less than half of what I
 would make with the median lead developer salary in London, the city in which I
-live. This is enough money for my to get by, but I would very much like to earn
+live. This is enough money for me to get by, but I would very much like to earn
 the around what I would if I had some other job.
 
 Long term I would like to be able to financially reward the regular contributors
