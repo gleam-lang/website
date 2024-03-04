@@ -240,7 +240,7 @@ fn get(name: String) -> Nil {
 ```
 ```gleam
 // in src/vars/internal.gleam
-fn format_pair(name: String, value: String) -> String {
+pub fn format_pair(name: String, value: String) -> String {
   name <> "=" <> value
 }
 ```
