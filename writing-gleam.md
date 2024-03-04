@@ -213,7 +213,7 @@ function.
 
 To call the `format_pair` function from a module in the `test/` directory we
 will need to make it public. We don't want it to be part of the public API of the
-package, so we'll move it to a _internal module_, which by default are modules
+package, so we'll move it to an _internal module_, which by default are modules
 named `packagename/internal` and `packagename/internal/*`.
 
 Public functions in these modules can be imported by other modules, but they're
