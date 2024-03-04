@@ -15,7 +15,10 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ description | strip_newlines }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ site.url }}/images/og-image.png" />
+    <meta
+      property="og:image"
+      content="{{ site.url }}/images/social-image.png"
+    />
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:description" content="{{ description }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
@@ -26,7 +29,7 @@
     <meta property="twitter:description" content="{{ description }}" />
     <meta
       property="twitter:image"
-      content="{{ site.url }}/images/og-image.png"
+      content="{{ site.url }}/images/social-image.png"
     />
 
     <script
