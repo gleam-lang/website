@@ -29,7 +29,7 @@ defines a micro web application.
 ```gleam
 import mist
 import gleam/erlang/process
-import gleam/byte_builder
+import gleam/bytes_builder
 import gleam/http/response.{Response}
 
 pub fn main() {
@@ -42,7 +42,7 @@ pub fn main() {
 }
 
 fn web_service(_request) {
-  let body = byte_builder.from_string("Hello, Joe!")
+  let body = bytes_builder.from_string("Hello, Joe!")
   Response(200, [], mist.Bytes(body))
 }
 ```
