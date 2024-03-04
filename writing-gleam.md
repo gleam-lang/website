@@ -257,7 +257,7 @@ pub fn main() {
 }
 
 pub fn format_pair_test() {
-  format_pair("hello", "world")
+  internal.format_pair("hello", "world")
   |> should.equal("hello=world")
 }
 ```
