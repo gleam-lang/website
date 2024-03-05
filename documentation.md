@@ -35,3 +35,7 @@ layout: page
 
 - [Frequently asked questions](/frequently-asked-questions)
 - [Gleam's Branding](/branding)
+
+## Community Resources
+
+- [Courses, Mentoring, Talks...](https://github.com/gleam-lang/awesome-gleam?tab=readme-ov-file#resources)
