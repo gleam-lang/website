@@ -156,7 +156,7 @@ The last part of sustainability is financial.
 
 I am able to afford to work on Gleam full time thanks to the support of the
 project's sponsors on [GitHub Sponsors][sponsors]. The largest contributor is
-[Fly.io](https://fly.io), who provide approixmately half the funding. Thank you
+[Fly.io](https://fly.io), who provide approximately half the funding. Thank you
 Fly.io! We wouldn't be here today without your support!
 
 [sponsors]: https://github.com/sponsors/lpil
