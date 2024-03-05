@@ -38,4 +38,5 @@ layout: page
 
 ## Community Resources
 
-- [Courses, Mentoring, Talks...](https://github.com/gleam-lang/awesome-gleam?tab=readme-ov-file#resources)
+- [Exercism's Gleam track](https://exercism.org/tracks/gleam). Learn Gleam by
+  solving problems and getting feedback from mentors.
