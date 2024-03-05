@@ -147,11 +147,21 @@ The package bundled into a tarball, suitable for publishing to Hex
 The JavaScript prelude module
 
 
+### `export package-interface`
+
+`gleam export package-interface --out <OUTPUT>`
+
+Information on the modules, functions, and types in the project in JSON format
+
+| Option | Description |
+| ------ | ----------- |
+| `--out <OUTPUT>`| The path to write the JSON file to
+
 ### `export typescript-prelude`
 
 `gleam export typescript-prelude`
 
-
+The TypeScript prelude module
 
 
 ## `fix`

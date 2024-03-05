@@ -30,6 +30,7 @@
   /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
 
   --color-charcoal: #2f2f2f;
+  --color-underwater-blue: #292d3e;
   --color-black: #1e1e1e;
   --color-blacker: #151515;
   --color-white: #fefefc;
@@ -103,7 +104,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--color-charcoal);
+  background-color: var(--color-underwater-blue);
   color: var(--color-white);
   font-family: var(--font-family-normal);
   font-size: var(--font-size-normal);
@@ -166,6 +167,10 @@ td {
   padding: var(--gap-2);
 }
 
+main.content {
+  padding-top: 0;
+}
+
 .navbar {
   font-family: var(--font-family-title);
   font-size: var(--font-size-navbar);
@@ -178,6 +183,11 @@ td {
   flex-wrap: wrap;
 }
 
+.navbar .logo img {
+  height: 1.5em;
+  margin-right: var(--gap-1);
+}
+
 .logo {
   font-size: var(--font-size-logo);
   display: flex;
@@ -186,13 +196,27 @@ td {
 }
 
 .logo img {
+  transform: rotate(-10deg);
   display: inline-block;
   height: 1.3em;
   margin-right: 0.25em;
 }
 
+.hero-lucy {
+  height: 307px;
+  width: 400px;
+  padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
+  transform: rotate(-10deg);
+  transition: transform 0.2s ease;
+}
+
+.hero-lucy:hover {
+  content: url("/images/lucy/lucyhappy.svg");
+  transform: rotate(13deg);
+}
+
 .navbar a {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   text-decoration: none;
   margin-left: var(--gap-2);
 }
@@ -208,7 +232,7 @@ td {
 
 .hero {
   padding-top: var(--gap-4);
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .hero h1 {
@@ -222,7 +246,7 @@ td {
 }
 
 .page-header {
-  background-color: var(--color-faff-pink);
+  background-color: var(--color-aged-plastic-yellow);
   transition: all 0.5s ease;
 }
 
@@ -239,11 +263,6 @@ td {
   gap: var(--gap-6);
   padding-top: var(--gap-2);
   padding-bottom: var(--gap-4);
-}
-
-.hero .logo {
-  width: 400px;
-  padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
 }
 
 .hero .text {
@@ -308,8 +327,8 @@ td {
 
 .home-top-sponsors {
   padding: var(--gap-3) 0;
-  color: var(--color-charcoal);
-  background-color: var(--color-aged-plastic-yellow);
+  color: var(--color-blacker);
+  background-color: var(--color-faff-pink);
 }
 
 .home-top-sponsors h2 {
@@ -332,7 +351,7 @@ td {
 }
 
 .home-friendly {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   text-align: center;
   background: linear-gradient(
     0deg,
@@ -414,7 +433,7 @@ td {
   left: 0;
   background: linear-gradient(
     0deg,
-    var(--color-charcoal) 30%,
+    var(--color-underwater-blue) 30%,
     transparent 100%
   );
   font-size: 75px;
@@ -448,18 +467,18 @@ td {
 }
 
 .home-still-here {
-  --lucy-x: min(-120px, calc(100vw - var(--width-content) - 400px));
+  --lucy-x: min(-80px, calc(100vw - var(--width-content) - 400px));
 
   background:
-    url("/images/lucy-ponder.svg") var(--lucy-x) 120% / 350px auto no-repeat,
+    url("/images/lucy/lucymail.svg") var(--lucy-x) 120% / 350px auto no-repeat,
     linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   text-align: center;
 }
 
 .home-still-here a:visited,
 .home-still-here a {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .home-still-here .content {
@@ -476,7 +495,7 @@ td {
 }
 
 .home-still-here hr {
-  border: 1px solid var(--color-charcoal);
+  border: 1px solid var(--color-underwater-blue);
   opacity: 0.2;
   margin: var(--gap-4);
 }
@@ -530,13 +549,13 @@ td {
 .footer {
   padding: var(--gap-4) 0;
   background-color: var(--color-white);
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   font-family: var(--font-family-title);
 }
 
 .footer a,
 .footer a:visited {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .footer .content {
@@ -594,7 +613,7 @@ td {
 }
 
 .footer a:visited {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
 }
 
 .grecaptcha-badge {
@@ -670,6 +689,7 @@ td {
   box-shadow: var(--gap-1) var(--gap-1) 0 0 var(--color-blacker);
 }
 
+.page h1,
 .page h2 {
   margin-top: var(--gap-6);
 }
@@ -765,7 +785,7 @@ td {
 .recaptcha-blerb a,
 .recaptcha-blerb a:visited,
 .recaptcha-blerb {
-  color: var(--color-charcoal);
+  color: var(--color-blacker);
   font-size: var(--font-size-small);
 }
 

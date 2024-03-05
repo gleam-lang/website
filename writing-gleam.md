@@ -240,7 +240,7 @@ fn get(name: String) -> Nil {
 ```
 ```gleam
 // in src/vars/internal.gleam
-fn format_pair(name: String, value: String) -> String {
+pub fn format_pair(name: String, value: String) -> String {
   name <> "=" <> value
 }
 ```
@@ -257,7 +257,7 @@ pub fn main() {
 }
 
 pub fn format_pair_test() {
-  format_pair("hello", "world")
+  internal.format_pair("hello", "world")
   |> should.equal("hello=world")
 }
 ```
