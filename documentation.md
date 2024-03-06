@@ -29,6 +29,7 @@ layout: page
 
 ## Deployment
 
+- [Deploying on Cleveer Cloud](https://github.com/davlgd/gleam-demo)
 - [Deploying on Fly.io](/deployment/fly)
 
 ## About Gleam
