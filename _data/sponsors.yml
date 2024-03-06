@@ -58,9 +58,9 @@
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
   tier: 1
   square_avatar: false
-- name: "James MacAulay"
-  url: "https://github.com/jamesmacaulay"
-  avatar: "https://avatars.githubusercontent.com/u/340?v=4"
+- name: "Aaron Gunderson"
+  url: "https://github.com/agundy"
+  avatar: "https://avatars.githubusercontent.com/u/2281120?u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
   tier: 1
   square_avatar: false
 - name: "Chris Ohk"
@@ -403,6 +403,11 @@
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=614cfcc202ae1bd60c5e86357af95131b5a9396b&v=4"
   tier: 2
   square_avatar: false
+- name: "James MacAulay"
+  url: "https://github.com/jamesmacaulay"
+  avatar: "https://avatars.githubusercontent.com/u/340?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Brian Glusman"
   url: "https://github.com/bglusman"
   avatar: "https://avatars.githubusercontent.com/u/105444?v=4"
@@ -618,6 +623,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1239091?u=6fb38af8299220ff444f5080aa2c67085132cd50&v=4"
   tier: 1
   square_avatar: false
+- name: "Brian Dawn"
+  url: "https://github.com/brian-dawn"
+  avatar: "https://avatars.githubusercontent.com/u/1274409?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Szymon Wygnański"
   url: "https://github.com/finalclass"
   avatar: "https://avatars.githubusercontent.com/u/1343930?u=f9688f9a089e581bfe2ccf3c47ced08c3cb09dbf&v=4"
@@ -686,11 +696,6 @@
 - name: "Manuel Rubio"
   url: "https://github.com/manuel-rubio"
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Aaron Gunderson"
-  url: "https://github.com/agundy"
-  avatar: "https://avatars.githubusercontent.com/u/2281120?u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
   tier: 1
   square_avatar: false
 - name: "Mario Flach"
