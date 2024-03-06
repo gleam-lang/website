@@ -58,9 +58,14 @@
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
   tier: 1
   square_avatar: false
-- name: "Jonas Hedman Engström"
-  url: "https://github.com/JonasHedEng"
-  avatar: "https://avatars.githubusercontent.com/u/2291502?u=367ad7712549b320466e91233f79160515accacd&v=4"
+- name: "James MacAulay"
+  url: "https://github.com/jamesmacaulay"
+  avatar: "https://avatars.githubusercontent.com/u/340?v=4"
+  tier: 1
+  square_avatar: false
+- name: "Chris Ohk"
+  url: "https://github.com/utilForever"
+  avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
   tier: 1
   square_avatar: false
 - name: "Matthias Benkort"
@@ -118,9 +123,9 @@
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
   tier: 1
   square_avatar: false
-- name: "Edon Gashi"
-  url: "https://github.com/edongashi"
-  avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
+- name: "Jonas Hedman Engström"
+  url: "https://github.com/JonasHedEng"
+  avatar: "https://avatars.githubusercontent.com/u/2291502?u=367ad7712549b320466e91233f79160515accacd&v=4"
   tier: 1
   square_avatar: false
 - name: "ggobbe"
@@ -213,9 +218,9 @@
   avatar: "https://avatars.githubusercontent.com/u/5446019?u=bc87f3244d17de8596e46b4b9f7806456a9d2386&v=4"
   tier: 1
   square_avatar: false
-- name: "Chris Ohk"
-  url: "https://github.com/utilForever"
-  avatar: "https://avatars.githubusercontent.com/u/5622661?u=93bd75f06e31797768173b035f9c5c268d00a9c3&v=4"
+- name: "Edon Gashi"
+  url: "https://github.com/edongashi"
+  avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
   tier: 1
   square_avatar: false
 - name: "Zsombor Gasparin"
@@ -398,11 +403,6 @@
   avatar: "https://avatars.githubusercontent.com/u/24900688?u=614cfcc202ae1bd60c5e86357af95131b5a9396b&v=4"
   tier: 2
   square_avatar: false
-- name: "James MacAulay"
-  url: "https://github.com/jamesmacaulay"
-  avatar: "https://avatars.githubusercontent.com/u/340?v=4"
-  tier: 1
-  square_avatar: false
 - name: "Brian Glusman"
   url: "https://github.com/bglusman"
   avatar: "https://avatars.githubusercontent.com/u/105444?v=4"
@@ -488,14 +488,14 @@
   avatar: "https://avatars.githubusercontent.com/u/227075?u=526d331cd80d12287f96affae0150b0c419bde7d&v=4"
   tier: 1
   square_avatar: false
+- name: "Pawel Biernacki"
+  url: "https://github.com/biernacki"
+  avatar: "https://avatars.githubusercontent.com/u/230085?u=0567467ff401f114eca8ab3a64e96b2f3acf234a&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Richard Viney"
   url: "https://github.com/richard-viney"
   avatar: "https://avatars.githubusercontent.com/u/236550?v=4"
-  tier: 1
-  square_avatar: false
-- name: "Max McDonnell"
-  url: "https://github.com/maxmcd"
-  avatar: "https://avatars.githubusercontent.com/u/283903?u=7267840cc5a5e268b9a10a0547bada4cba1eb34e&v=4"
   tier: 1
   square_avatar: false
 - name: "Chew Choon Keat"
@@ -591,6 +591,11 @@
 - name: "Prashant Singh Pawar"
   url: "https://github.com/prashantpawar"
   avatar: "https://avatars.githubusercontent.com/u/101647?u=575944b8f11d7f942392a670ae910dc931c111f0&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Max McDonnell"
+  url: "https://github.com/maxmcd"
+  avatar: "https://avatars.githubusercontent.com/u/283903?u=7267840cc5a5e268b9a10a0547bada4cba1eb34e&v=4"
   tier: 1
   square_avatar: false
 - name: "Michael Duffy"
