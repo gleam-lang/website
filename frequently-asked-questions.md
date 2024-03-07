@@ -51,12 +51,10 @@ good fit for Gleam and they are not planned.
 
 ## Will Gleam have metaprogramming?
 
-We are gently interested in some form of metaprogramming in Gleam. Currently we
-are in the early research and design phase, and it is a low priority compared to
-tooling and other work needed for a v1.0 release.
-
-If you have some problems that would be solved with metaprogramming, or proposal
-for a metaprogramming design please do share them with us!
+We are gently interested in some form of metaprogramming in Gleam. We are
+currently in the early research and design phase. If you have some problems 
+that would be solved with metaprogramming, or proposal for a metaprogramming 
+design please do share them with us!
 
 
 ## Does Gleam have mutable state?
@@ -229,18 +227,10 @@ module that uses the macros, and then use that module in your Gleam code.
 
 ## Should I put Gleam in production?
 
-Gleam is a young language that has not reached version 1.0, so while it is
-robust, it is likely to undergo breaking changes in the future, and there may
-be some annoying bugs in there somewhere. The Gleam ecosystem is also quite
-young, so many libraries that are found in other languages will need to be
-written, or Erlang/Elixir libraries will have to be used in place of pure
-Gleam versions.
-
-The Erlang VM is extremely mature and well tested, so the runtime aspect of
+Gleam is a production-ready programming language with a vibrant community and 
+a young but growing [package ecosystem](https://packages.gleam.run/). In 
+addition, the Erlang VM is extremely mature and well-tested, so the runtime of
 the language is ready for production.
-
-If you decide to move away from Gleam, you can compile your code
-to Erlang and maintain that in future.
 
 
 ## Why is the compiler written in Rust?
