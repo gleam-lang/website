@@ -20,44 +20,22 @@ subtitle: Hello Gophers!
   - [Strings](#strings)
   - [Tuples](#tuples)
   - [Lists](#lists)
-  - [Maps](#maps)---
-layout: page
-title: Gleam for Go users
-subtitle: Hello Hypertext crafters!
----
-
-- [Comments](#comments)
-- [Variables](#variables)
-  - [Match operator](#match-operator)
-  - [Variables type annotations](#variables-type-annotations)
-- [Functions](#functions)
-  - [Exporting functions](#exporting-functions)
-  - [Function type annotations](#function-type-annotations)
-  - [Referencing functions](#referencing-functions)
-  - [Labelled arguments](#labelled-arguments)
-- [Operators](#operators)
-- [Constants](#constants)
-- [Blocks](#blocks)
-- [Data types](#data-types)
-  - [Strings](#strings)
-  - [Tuples](#tuples)
-  - [Lists](#lists)
   - [Maps](#maps)
-  - [Numbers](#numbers)
-- [Flow control](#flow-control)
-  - [Case](#case)
-  - [Piping](#piping)
-  - [Try](#try)
-- [Type aliases](#type-aliases)
-- [Custom types](#custom-types)
-  - [Records](#records)
-  - [Unions](#unions)
-  - [Opaque custom types](#opaque-custom-types)
-- [Modules](#modules)
-  - [Imports](#imports)
-  - [Named imports](#named-imports)
-  - [Unqualified imports](#unqualified-imports)
-- [Architecture](#architecture)
+  - [Numbers](#numbers) IN PROGRESS
+- [Flow control](#flow-control) IN PROGRESS
+  - [Case](#case) IN PROGRESS
+  - [Piping](#piping) IN PROGRESS
+  - [Try](#try) IN PROGRESS
+- [Type aliases](#type-aliases) IN PROGRESS
+- [Custom types](#custom-types) IN PROGRESS
+  - [Records](#records) IN PROGRESS
+  - [Unions](#unions) IN PROGRESS
+  - [Opaque custom types](#opaque-custom-types) IN PROGRESS
+- [Modules](#modules) IN PROGRESS
+  - [Imports](#imports) IN PROGRESS
+  - [Named imports](#named-imports) IN PROGRESS
+  - [Unqualified imports](#unqualified-imports) IN PROGRESS
+- [Architecture](#architecture) IN PROGRESS
 
 ## Comments
 
@@ -185,34 +163,17 @@ Asserts should be used with caution.
 
 #### Go
 
-Go is a dynamically typed language. Types are only checked at runtime and
-a variable can have different types in its lifetime.
-
-Go gradually introduced more and more type hints that are optional.
-The type information is accessible via `get_type()` at runtime.
-
-These hints will mainly be used to inform static analysis tools like IDEs,
-linters, etc.
+Go is a statically typed language, and type annotations are generally required in most places.  The exception is when variables or constants are initialized with a value. Multiple consecutive struct fields or function arguments of the same time can combined their type annotation. 
 
 ```Go
-class Foo {
-  private ?string $bar;
+type Bar struct {
+  field string
+  otherField int
+  x, y float64
 }
+
+func multipleArgsOfSameType(str string, x, y float64) {}
 ```
-
-As Go's `array` structure is a combination of maps and arrays.
-The Go manual states that it is an *ordered map*.
-While creating arrays in Go the type of its elements cannot be set explicitly
-and each element can be of a different type:
-
-```Go
-$someList = [1, 2, 3];
-$someTuple = [1, "a", true];
-$someMap = [0 => 1, "foo" => "bar", true => false];
-```
-
-Single variables cannot be type-annotated unless they are `class` or `trait`
-members.
 
 #### Gleam
 
@@ -232,33 +193,28 @@ a specific type to be inferred.
 
 ### Go
 
-In Go, you can define functions with the `function` keyword. One or many `return`
-keywords are optional.
+In Go, you can define functions with the `func` keyword. The `return`
+keyword is required if the function has a return value, and optional otherwise.
 
 ```Go
-function hello($name = 'Joe') : string
-{
-  if ($name = 'Joe') {
-    return 'Welcome back, Joe!';
+func hello(name string) string {
+  if name == 'Joe' {
+    return 'Welcome back, Joe!'
   }
-  return "Hello $name";
+  return "Hello $name"
 }
 
-function noop()
-{
-  // Will automatically return NULL
+func noop() {
+  // No return value
 }
 ```
 
-Anonymous functions returning a single expression can also be defined and be
-bound to variables.
+Anonymous functions can also be defined and be bound to variables.
 
 ```Go
-$x = 2
-$GoAnonFn = function($y) use ($x) { return $x * $y; }; // Creates a new scope
-$GoAnonFn(2, 3); // 6
-$GoArrowFn = ($x) => $x * $y; // Inherits the outer scope
-$GoArrowFn(2, 3); // 6
+x := 2
+GoAnonFn := func(y) { return x * y } // Captures x
+GoAnonFn(2, 3) // 6
 ```
 
 ### Gleam
@@ -279,11 +235,11 @@ mul(1, 2)
 ```
 
 A difference between Go's and Gleam's anonymous functions is that in Go they
-create a new local scope, in Gleam they close over the local scope, aka create
-a copy and inherit all variables in the scope. This means that in Gleam you can
-shadow local variables within anonymous functions but you cannot influence the
-variable bindings in the outer scope. This is different for Go's arrow
-functions where they inherit the scope like Gleam does.
+create a new local scope but inherit the surrounding scope, in Gleam they close 
+over the local scope, aka create a copy and inherit all variables in the scope.
+This means that in Gleam you can shadow local variables within anonymous functions
+but you cannot influence the variable bindings in the outer scope.  In Go you can
+actually change the values in the outer scope, even if that scope has been returned.
 
 The only difference between module functions and anonymous functions in Gleam
 is that module functions heads may also feature argument labels, like so:
@@ -301,28 +257,22 @@ distance(from: 1, to: -2) // 3
 
 #### Go
 
-In Go, top level functions are exported by default. There is no notion of
-private module-level functions.
-
-However at class level, all properties are public, by default.
+In Go, functions are exported if their name is capitalized, and private to the package otherwise.
 
 ```Go
-class Foo {
-  static $bar = 5;
-  private $quux = 6;
-
-  static function batz() {
-    return "Hello Joe!";
+func PublicHello(name string) string {  // Exported
+  if name == 'Joe' {
+    return 'Welcome back, Joe!'
   }
-
-  private static function kek() {
-    return "Hello Rasmus!";
-  }
+  return "Hello $name"
 }
-echo Foo::$bar; // 5
-echo Foo::$quux; // Error
-echo Foo::batz(); // "Hello Joe"
-echo Foo::kek(); // Error
+
+func privateHello(name string) string { // Package private
+  if name == 'Joe' {
+    return 'Welcome back, Joe!'
+  }
+  return "Hello $name"
+}
 ```
 
 #### Gleam
@@ -344,10 +294,12 @@ fn mul(x, y) {
 
 ### Go
 
-Global functions may exist in a global scope, and to execute functions or
-create objects and invoke methods at some point they have to be called from
-the global scope. Usually there is one `index.Go` file whose global scope
-acts as if it was the `main()` function.
+Go does not support a global scope.  All variables are scoped to the package
+in which they are defined.  A package is all Go files in a single directory,
+so two files in the same package can see all symbols in that package whether
+they are exported or not.  This allows for complicated functionality to be
+easily spread across multiple files without worrying about any sort of hard
+boundary between them.
 
 ### Gleam
 
@@ -357,9 +309,7 @@ represents an application having a main module, whose name must match to the
 application name and within that `main()`-function which will be called via
 either `gleam run` or when the `entrypoint.sh` is executed.
 
-In contrast to Go, where any Go file can contain a global scope that can
-be invoked by requiring the file, in Gleam only code that is within functions
-can be invoked.
+Like Go, in Gleam only code that is within functions can be invoked.
 
 On the Beam, Gleam code can also be invoked from other Erlang code, or it
 can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
@@ -368,21 +318,17 @@ can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
 
 #### Go
 
-Type hints can be used to optionally annotate function arguments and return
-types.
-
-Discrepancies between type hints and actual values at runtime do not prevent
-interpretation of the code. Static code analysers (IDE tooling, type checkers
-like `Gostan`) will be required to detect those errors.
+You are required to annotate function arguments and return types.  They will be
+checked by the compiler and the program will fail to build if type checking fails.
+Again, multiple consecutive arugments of the same type can share an annotation.
 
 ```Go
-function sum(int $x, int $y) : int {
-    return $x + $y;
+func sum(x, y int) int {
+    return x + y
 }
 
-function mul(int $x, int $y) : bool {
-    # no errors from the interpreter.
-    return $x * $y;
+func mul(x, y int) bool {
+    return x * y // This will be a compile-time error
 }
 ```
 
@@ -407,21 +353,39 @@ fn mul(x: Int, y: Int) -> Bool {
 
 #### Go
 
-As long as functions are in scope they can be assigned to a new variable.
-As methods or static functions classes, functions can be accessed via
-`$this->object_instance_method()` or `self::static_class_function()`.
-
-Other than that only anonymous functions can be moved around the same way as
-other values.
+In Go, functions are called the same way, using C style function call syntax.
+Functions are first class values, and can be function arguments and return values.
+You can even return methods - even if the struct the method belongs to a scope that
+has returned.
 
 ```Go
-$doubleFn = function($x) { return $x + $x; };
-// Some imaginary pushFunction
-pushFunction($queue, $doubleFn);
-```
+func returnsAFunc() func() {
+	x := 2
+	return func() {
+		x = x + 1
+		fmt.Printf("%d\n", x)
+	}
+}
 
-However in `Go` it is not possible to pass around global, class or instance
-functions as values.
+type Bar struct {
+	something string
+}
+
+func (b Bar) Func() {
+	fmt.Printf("This bar has %s in something field", b.something)
+}
+
+func returnsAMethod() func() {
+	bar := Bar{"Hello"}
+	return bar.Func
+}
+
+func main() {
+	fn := returnsAFunc()
+	fn()
+	returnsAMethod()()
+}
+```
 
 #### Gleam
 
@@ -442,31 +406,20 @@ fn main() {
 
 ### Labelled arguments
 
-Both Go and Gleam have ways to give arguments names and in any order.
-
 #### Go
 
-When calling a function, arguments can be passed:
-
-- positionally, in the same order of the function declaration
-- by name, in any order
-
-```Go
-// Some imaginary replace function
-function replace(string $each, string $with, string $inside) {
-  // TODO implementation
-}
-// Calling with positional arguments:
-replace(",", " ", "A,B,C")
-// Calling with named arguments:
-replace(inside: "A,B,C", each: ",", with: " ")
-```
+Go has no way to supply arguments out of order or by name.  To do so
+would require one of two things:
+- Creating a struct that represents the parameters.  Any fields of that
+  struct not explicitly set would default to the zero value of their type.
+- Using the _functional option parameter_ pattern, where the function takes
+  a varargs parameters that is of a interface type that can be created by a
+  number of functions that are available to create values that implement said
+  interface.
 
 #### Gleam
 
 In Gleam arguments can be given a label as well as an internal name.
-Contrary to Go, the name used at the call-site does not have to match
-the name used for the variable inside the function.
 
 ```gleam
 pub fn replace(inside str, each pattern, with replacement) {
@@ -485,13 +438,11 @@ are fully type checked.
 
 ## Operators
 
-| Operator           | Go    | Gleam                     | Notes                                                                                  |
+| Operator           | Go     | Gleam                     | Notes                                                                                  |
 | ------------------ | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
-| Equal              | `==`   | `==`                      | In Gleam both values must be of the same type                                          |
-| Strictly equal to  | `===`  | `==`                      | Comparison in Gleam is always strict. (see note for Go)                               |
+| Equal              | `==`   | `==`                      | Both values must be of the same type                                                   |
 | Reference equality | `instanceof` |                     | True only if an object is an instance of a class                                       |
 | Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
-| Not equal          | `!==`  | `!=`                      | Comparison in Gleam is always strict (see note for Go)                                |
 | Greater than       | `>`    | `>`                       | In Gleam both values must be **Int**                                                   |
 | Greater than       | `>`    | `>.`                      | In Gleam both values must be **Float**                                                 |
 | Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **Int**                                                   |
@@ -501,9 +452,7 @@ are fully type checked.
 | Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **Int**                                                   |
 | Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **Float**                                                 |
 | Boolean and        | `&&`   | `&&`                      | In Gleam both values must be **Bool**                                                  |
-| Logical and        | `&&`   |                           | Not available in Gleam                                                                 |
-| Boolean or         | <code>&vert;&vert;</code> | <code>&vert;&vert;</code> | In Gleam both values must be **Bool**                               |
-| Logical or         | <code>&vert;&vert;</code> |        | Not available in Gleam                                                                 |
+| Boolean or         | <code>&vert;&vert;</code> | <code>&vert;&vert;</code> | In Gleam and Go both values must be **Bool**                        |
 | Boolean not        | `xor`  |                           | Not available in Gleam                                                                 |
 | Boolean not        | `!`    | `!`                       | In Gleam both values must be **Bool**                                                  |
 | Add                | `+`    | `+`                       | In Gleam both values must be **Int**                                                   |
@@ -515,42 +464,33 @@ are fully type checked.
 | Divide             | `/`    | `/`                       | In Gleam both values must be **Int**                                                   |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **Int**                                                   |
-| Concatenate        | `.`    | `<>`                      | In Gleam both values must be **String**
-| Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for Go                                |
+| Concatenate        | `+`    | `<>`                      | In Gleam and Go both values must be **String**                                         |
+| Pipe               | N/A    | <code>&vert;></code>      | Gleam's pipe can chain function calls. Go does not support this                        |
 
 ### Notes on operators
 
 - For bitwise operators, which exist in Go but not in Gleam,
   see: <https://github.com/gleam-lang/bitwise>.
-- `==` is by default comparing by value in Go:
-  - Types may be autocast to be compareable.
-  - Two objects with the same members values will equal:
-- `===` is for comparing by strict equality in Go:
-  - Types will not be autocast for comparison
-  - Two objects with the same members will not equal. Only if a variable binds
-    to the same reference it will equal.
+- `==` is by default comparing value for primtive values, and reference for structs, arrays, and interface values in Go.
+  - In Gleam it is always by value.
 - Go operators are short-circuiting as in Gleam.
-- Chains and pipes:
-  - In Go chaining is usually done by constructing class methods that return
-    an object: `$foo->bar(1)->quux(2)` means `bar(1)` is called as a method
-    of `$foo` and then `quux()` is called as a method of the return value
-    (object) of the `bar(1)` call. The objects in this chain usually
-    mutate to keep the changed state and carry it forward in the chain.
-  - In contrast in Gleam piping, no objects are being returned but mere data
-    is pushed from left to right much like in unix tooling.
+- In Go, all the arithmetic operators must have both arguments be of the same type, so `int` and `int32` values must be converted to one common type.
 
 ## Constants
 
 ### Go
 
-In Go, constants can only be defined within classes and traits.
+In Go, constants can only be defined at the top level of any file.
 
 ```Go
-class TheQuestion {
-  public const theAnswer = 42;
+const theAnswer int = 42
+
+func main() {
+  fmt.Printf("%d\n", theAnswer) // 42
 }
-echo TheQuestion::theAnswer; // 42
 ```
+
+They are exported by capitalizing it's name.
 
 ### Gleam
 
@@ -574,14 +514,15 @@ automatically exported.
 
 Go blocks are always associated with a function / conditional / loop or
 similar declaration. Blocks are limited to specific language constructs.
-There is no way to create multi-line expressions blocks like in Gleam.
+You can create an arbitrary block as well, but it is not an expression
+like in Gleam.
 
 Blocks are declared via curly braces.
 
 ```Go
-function a_func() {
+func aFunc() {
   // A block starts here
-  if ($foo) {
+  if foo {
     // A block here
   } else {
     // A block here
@@ -617,13 +558,13 @@ returned from an expression.
 
 ### Strings
 
-In Go strings are stored as an array of bytes and an integer indicating the
-length of the buffer. Go itself has no information about how those bytes
-translate to characters, leaving that task to the programmer. Go's
-standard library however features a bunch of multi-byte compatible functions
-and conversion functions between UTF-8, ISO-8859-1 and further encodings.
-
-Go strings allow interpolation.
+In Go strings are slices (dynamically sized arrays) of bytes. Those bytes are
+arbitrary, and are not required to contain Unicode or any other string encoding.
+Go's standard library however has extensive support for string operations. Strings
+can be built efficiently with a `StringBuilder` type from the `strings` package in
+the standard library.  Interpolation can be accomplished using `Sprintf` and other
+similar functions found in `fmt` package amongst others in the standard library.
+This uses C `strfmt` style format strings that are statically checked at compile time.
 
 In Gleam all strings are UTF-8 encoded binaries. Gleam strings do not allow
 interpolation, yet. Gleam however offers a `string_builder` via its standard
@@ -632,9 +573,9 @@ library for performant string building.
 #### Go
 
 ```Go
-$what = 'world';
-'Hellø, world!';
-"Hellø, ${what}!";
+what := "world"
+"Hellø, world!"
+fmt.Sprintf("Hellø, %d!", what);
 ```
 
 #### Gleam
@@ -650,16 +591,26 @@ allows mixed types in the collection.
 
 #### Go
 
-Go does not really support tuples, but its array type can easily be used to
-mimick tuples. Unpacking can be used to bind a name to a specific value of
-the tuple.
+Go does not support tuples.  It does however support multiple return values, and
+anonymous struct types.
 
-```Go
-$myTuple = ['username', 'password', 10];
-[$_, $pwd, $_] = $myTuple;
-echo $pwd; // "password"
-// Direct index access
-echo $myTuple[0]; // "username"
+```go
+myTuple := struct{ username, pwd string; age int }{ "username", "password", 10 }
+pwd := myTuple.pwd
+fmt.Print(pwd)
+fmt.Print(myTuple.pwd)
+```
+
+```go
+// This is not idiomatic Go!
+func returnUserInfo() (string, string, int) {
+  return "username", "password", 10
+}
+
+func main() {
+  _, pwd, _ := returnUserInfo()
+  fmt.Print(pwd)
+}
 ```
 
 #### Gleam
@@ -674,21 +625,24 @@ io.print(my_tuple.0) // "username"
 
 ### Lists
 
-Arrays in Go are allowed to have values of mixed types, but not in Gleam.
+Go and Gleam have very different data structures for representing an ordered
+collection of elements of the same type.
 
 #### Go
 
-Go does not feature special syntax for list handling.
+Go has both arrays - that are statically sized - and slices - that are growable
+and dynamically sized. They have a type declared when constructed
 
 ```Go
-$list = [2, 3, 4];
-$head = array_slice($list, 0, 1)[0];
-$tail = array_slice($list, 1);
-# $head == 2
-# $tail == [3, 4]
-$arr = array_merge($tail, [1.1]);
-# $arr == [3, 4, 1.1]
+array := [3]int{ 2, 3, 4 }
+slice := []int{ 2, 3, 4 }
+slice = append(slice, 5, 6) // Adds 5 and 6 to the slice
 ```
+
+Slices have some unique concerns as regards to references as if you append to
+a slice, the underlying array may no longer be in the same memory location as
+it was before and some mutative operations can have unexpected behavior for the
+unpracticed (or even experienced) Gopher.
 
 #### Gleam
 
@@ -705,27 +659,16 @@ let [1, second_element, ..] = list
 
 ### Maps
 
-In Go, the `array` type also covers maps and can have keys of any type as long as:
-
-- the key type is `null`, an `int`, a `string` or a `bool` (some conversions
-  occur, such as null to `""` and `false` to `0` as well as `true` to `1`
-  and `"1"` to `1`. Float indexes, which are not representing integers
-  indexes are deprecated due to being auto downcast to integers).
-- the key is unique in the dictionary.
-- the values are of any type.
-
-In Gleam, maps can have keys and values of any type, but all keys must be of
-the same type in a given map and all values must be of the same type in a
-given map. The type of key and value can differ from each other.
-
-There is no map literal syntax in Gleam, and you cannot pattern match on a map.
-Maps are generally not used much in Gleam, custom types are more common.
+Maps are similar in Go and Gleam, except that they are mutated in Go and
+immutable in Gleam.
 
 #### Go
 
 ```Go
-["key1" => "value1", "key2" => "value2"]
-["key1" => "1", "key2" => 2]
+myMap := map[string]string{
+  "key1": "value1"
+}
+fmt.Print(myMap["key1"])
 ```
 
 #### Gleam
