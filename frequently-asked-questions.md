@@ -22,6 +22,7 @@ description: The answers to some things you might be wondering about Gleam!
 - [Can I use Elixir code with Gleam?](#can-i-use-elixir-code-with-gleam)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
+- [What are Gleam programmers called?](#what-are-gleam-programmers-called)
 - [Is it good?](#is-it-good)
 
 
@@ -243,6 +244,11 @@ removal of a lot of tech debt and bugs, and the performance boost is nice too!
 The community may one day implement a Gleam compiler written in Gleam, but the
 core team are focused on developing other areas of the ecosystem such as
 libraries, tooling, and documentation, as this will provide more value overall.
+
+
+## What are Gleam programmers called?
+
+Gleamlins, according to [the Gleam Discord server](https://discord.gg/Fm8Pwmy).
 
 
 ## Is it good?
