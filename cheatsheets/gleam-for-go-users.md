@@ -21,9 +21,9 @@ subtitle: Hello Gophers!
   - [Tuples](#tuples)
   - [Lists](#lists)
   - [Maps](#maps)
-  - [Numbers](#numbers) IN PROGRESS
-- [Flow control](#flow-control) IN PROGRESS
-  - [Case](#case) IN PROGRESS
+  - [Numbers](#numbers)
+- [Flow control](#flow-control)
+  - [Case](#case)
   - [Piping](#piping) IN PROGRESS
   - [Try](#try) IN PROGRESS
 - [Type aliases](#type-aliases) IN PROGRESS
@@ -682,18 +682,20 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 ### Numbers
 
-Go and Gleam both support `Integer` and `Float`. Integer and Float sizes for
-both depend on the platform: 64-bit or 32-bit hardware and OS and for Gleam
-JavaScript and Erlang.
+Go and Gleam both support platform-dependent sized integer and float types.
+`Integer` and `Float` in Gleam and `int` and `float` in Go sizes for both depend
+on the platform: 64-bit or 32-bit hardware and OS and for Gleam JavaScript and Erlang.
 
 #### Go
 
-While Go differentiates between integers and floats it automatically converts
-floats and integers for you, removing precision or adding floating point
-decimals.
+In Go ints and float are distinct types and there is no automatic type coercion.
+You must explicitly convert between even different sized ints and floats
 
 ```Go
-1 / 2 // 0.5
+var x int32 = 2
+var y int = 22
+x + y // Will not compile
+x + int32(int) // Will compile
 ```
 
 #### Gleam
@@ -717,48 +719,35 @@ expression. It is also used to replace `if`/`else` statements.
 
 #### Go
 
-Go features 3 different expressions to achieve similar goals:
+Go features 2 different expressions to achieve similar goals:
 
-- `if`/`else if`/`else` (does not return)
-- `switch`/`case`/`break`/`default` (does not return, does not autobreak)
-- `match` (returns)
+- `if`/`else if`/`else`
+- `switch`/`case`/`default`
 
 ```Go
-function http_error_impl_1($status) {
-  if ($status === 400) {
-      return "Bad request";
-  } else if ($status === 404) {
-      return "Not found";
-  } else if ($status === 418) {
-      return "I'm a teapot";
+func httpErrorImpl1(status int) string {
+  if status == 400 {
+      return "Bad request"
+  } else if status == 404 {
+      return "Not found"
+  } else if status == 418 {
+      return "I'm a teapot"
   } else {
-    return "Internal Server Error";
+    return "Internal Server Error"
   }
 }
 
-function http_error_impl_2($status) {
-  switch ($status) {
-    case "400": // Will work because switch ($status) compares non-strict as in ==
-      return "Bad request";
-      break; // Not strictly required here, but combined with weak typing multiple cases could be executed if break is omitted
+func httpErrorImpl2(status int) string {
+  switch (status) {
+    case 400:
+      return "Bad request"
     case 404:
-      return "Not found";
-      break;
+      return "Not found"
     case 418:
-      return "I'm a teapot";
-      break;
+      return "I'm a teapot"
     default:
-      return "Internal Server Error";
+      return "Internal Server Error"
   }
-}
-
-function http_error_impl_3($status) {
-  return match($status) { // match($status) compares strictly
-    400 => "Bad request",
-    404 => "Not found",
-    418 => "I'm a teapot",
-    default => "Internal Server Error"
-  };
 }
 ```
 
@@ -865,16 +854,13 @@ code, that reads imperative-style top down, much like unix tools and piping.
 
 #### Go
 
-Go does not offer pipes but it can chain calls by making functions return
-objects which in turn ship with their list of methods.
+Go does not offer pipes but if a method returns a type that has methods, they
+can be chained.  These sort of methods are not idiomatic in Go and not seen
+often.
 
 ```Go
 // Imaginary Go code
-(new Session($request))
-  ->authorize()
-  ->setSuccessFlash('Logged in successfully!')
-  ->setFailureFlash('Failed to login!')
-  ->redirectToRequestedUrl();
+// TODO: Pick up here!
 ```
 
 #### Gleam
