@@ -24,11 +24,11 @@ subtitle: Hello Gophers!
   - [Numbers](#numbers)
 - [Flow control](#flow-control)
   - [Case](#case)
-  - [Piping](#piping) IN PROGRESS
-  - [Try](#try) IN PROGRESS
-- [Type aliases](#type-aliases) IN PROGRESS
-- [Custom types](#custom-types) IN PROGRESS
-  - [Records](#records) IN PROGRESS
+  - [Piping](#piping)
+  - [Error Handling](#error-handling)
+- [Type aliases](#type-aliases)
+- [Custom types](#custom-types)
+  - [Records](#records)
   - [Unions](#unions) IN PROGRESS
   - [Opaque custom types](#opaque-custom-types) IN PROGRESS
 - [Modules](#modules) IN PROGRESS
@@ -900,36 +900,36 @@ response.redirect_to_requested_url(
 )
 ```
 
-### Try
+### Error handling
 
-Error management is approached differently in Go and Gleam.
+Error management is approached slightly differently in Go and Gleam.
 
 #### Go
 
-Go uses the notion of exceptions to interrupt the current code flow and
-pop up the error to the caller.
-
-An exception is raised using the keyword `throw`.
-
+Idiomatic error handling in Go revolves around Error values.  Coupled with Go's
+support for multiple return values creates a very straightforward pattern
+for error handling that almost defines the Go experience.
 ```Go
-function aFunctionThatFails() {
-  throw new RuntimeException('an error');
+func aFunctionThatFails() error {
+  return errors.New("This is an error")
 }
 ```
 
-The callee block will be able to capture any exception raised in the block
-using a `try/except` set of blocks:
+The callee just needs to check that the err value is nil.
 
 ```Go
 // callee block
-try {
-    echo 'this line will be executed and thus printed';
-    aFunctionThatFails()
-    echo 'this line will not be executed and thus not printed';
-} catch (Throwable $e) {
-    var_dump(['doing something with the exception', $e]);
+err := aFunctionThatFails()
+if err != nil {
+	// Handle err
 }
+// Continue
 ```
+
+Go also has panics to signal that an error was so extraordinary, the state
+of the current goroutine should not continue execution.  Panics can be recovered
+from, but this should only happen at a high level and only if it makes sense to
+recover.
 
 #### Gleam
 
@@ -973,24 +973,16 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 
 ## Type aliases
 
-Type aliases allow for easy referencing of arbitrary complex types.
-Go does not have this feature, though either regular classes or static classes
-can be used to design custom types and class definitions in take can be aliased
-using `class_alias()`.
+Type aliases allow for easy referencing of arbitrary complex types. They are
+supported by both Gleam and Go.
 
 ### Go
 
-A simple variable can store the result of a compound set of types.
+Type aliases in Go allow an Identifier to refer to a different type with it's
+scope.
 
-```Go
-static class Point {
-  // Can act as an opaque type and utilize Point
-  // Can be class_aliased to Coordinate
-}
-
-static class Triangle {
-  // Can act as an opaque type definition and utilize Point
-}
+```go
+type Headers = []struct{key, value string}
 ```
 
 ### Gleam
@@ -1011,24 +1003,29 @@ named fields, and the values in those fields can be of differing types.
 
 #### Go
 
-Go uses classes to define user-defined, record-like types.
-Properties are defined as class members and initial values are generally set in
-the constructor.
+Go uses structs to define user-defined, record-like types.
+Properties are defined as fields and initial values are generally set in
+the literal form. Any unset fields during construction are defaulted to
+their zero value.
 
-By default the constructor does not provide base initializers in the
-constructor so some boilerplate is needed:
+Go does not use constructors, but many Go developers will create one or more
+functions to construct a struct in an ergonomic way.
 
 ```Go
-class Person {
-  public string $name;
-  public int $age;
-  function __construct(string $name, int $age) {
-    $this->name = $name;
-    $this->age = $age;
-  }
+type Person struct {
+  name string
+  age int
 }
-$person = new Person(name: "Joe", age: 40);
-// $person->name // Joe;
+
+func NewPerson(name string, age int) Person {
+    return Person{ name, age } // Short hand literal construction
+    // Could also be done with
+    // return Person { name: name, age: age }
+}
+
+// Inside of a function
+person := NewPerson("Joe", 40);
+person.name // Joe;
 ```
 
 #### Gleam
@@ -1051,21 +1048,60 @@ see below.
 
 ### Unions
 
-Go generally does not support unions with a few exceptions such as:
-
-- type x or `null`
-- `Array` or `Traversable`.
+Go generally does not support unions, with a small exception to that.
 
 In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
 
 #### Go
 
+Generally the usecase of wanting to use multiple concrete types is solved with
+Interfaces.
+
 ```Go
-class Foo {
-  public ?string $aStringOrNull;
+type Stringer interface {
+	String() string // Types must have a function with this signature defined
+}
+
+type StructA struct {
+	name string
+	age int
+}
+
+func (s StructA) String() string {  // This method fulfills the Stringer interface
+	return fmt.Sprintf("%s,%d", s.name, s.age)
+}
+
+type StructB struct {
+	x int
+	y int
+}
+
+func (s StructB) String() string {  // This method fulfills the Stringer interface
+	return fmt.Sprintf("%d,%d", s.x, s.y)
+}
+
+func print(str Stringer) {
+	fmt.Print(str.String())
+}
+
+func main() {
+	print(StructA{ "Bob", 47}) // Prints Bob,47
+	print(StructB{ 42,0 }) // Prints 42,0
 }
 ```
+
+The only place where Go uses something related to true unions or sum types is in Type Sets,
+which are constraints on a Generic.
+
+```go
+type Num interface {
+	int | float
+}
+```
+
+Unfortunately, these unions provide little value to the Go Developer due to their
+constraints.
 
 #### Gleam
 
