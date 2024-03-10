@@ -8,14 +8,19 @@
   avatar: "https://avatars.githubusercontent.com/u/1445367?u=3facd4ad78d85f857d6fc063d427d3873e0e0b68&v=4"
   tier: 2
   square_avatar: false
-- name: "Adam Mokan"
-  url: "https://github.com/amokan"
-  avatar: "https://avatars.githubusercontent.com/u/140038?u=1b46dc6296c7f00d5ad6046ee2490468a7b47ead&v=4"
+- name: "Adam Johnston"
+  url: "https://github.com/adjohnston"
+  avatar: "https://avatars.githubusercontent.com/u/666676?v=4"
   tier: 1
   square_avatar: false
 - name: "Adi Iyengar"
   url: "https://github.com/thebugcatcher"
   avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Adi Salimgereyev"
+  url: "https://github.com/abs0luty"
+  avatar: "https://avatars.githubusercontent.com/u/68709264?u=2f286d2b4f9eb41d160fbd9f2250185c68dd6967&v=4"
   tier: 1
   square_avatar: false
 - name: "Aiden Fox Ivey"
@@ -228,6 +233,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2820076?u=37f9a5f3afefd3146852a73e4eeedb61ae71dc28&v=4"
   tier: 2
   square_avatar: false
+- name: "Dmytro Utkin"
+  url: "https://github.com/gothy"
+  avatar: "https://avatars.githubusercontent.com/u/131037?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Edon Gashi"
   url: "https://github.com/edongashi"
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
@@ -303,6 +313,11 @@
   avatar: "https://avatars.githubusercontent.com/u/8454804?u=ba78ed06d1714fb4a5df9ff997b60f362e2d1837&v=4"
   tier: 1
   square_avatar: false
+- name: "Henry Firth"
+  url: "https://github.com/h14h"
+  avatar: "https://avatars.githubusercontent.com/u/121139610?u=18c06eef47088f44e0765d60033b0962b584a348&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Henry Warren"
   url: "https://github.com/henrysdev"
   avatar: "https://avatars.githubusercontent.com/u/14046865?u=8a051bed74cc5f9d516a57bf7de4c91a50f48f8b&v=4"
@@ -367,11 +382,6 @@
   url: "https://github.com/josefrichter"
   avatar: "https://avatars.githubusercontent.com/u/134302?u=9eb4d65f42e7769b20bf05cad104dee0b136fdba&v=4"
   tier: 1
-  square_avatar: false
-- name: "Joseph T. Lyons"
-  url: "https://github.com/JosephTLyons"
-  avatar: "https://avatars.githubusercontent.com/u/19867440?u=e0661f3ee8bbaf05392340616c9e5ae392911945&v=4"
-  tier: 2
   square_avatar: false
 - name: "Julian Schurhammer"
   url: "https://github.com/schurhammer"
@@ -568,6 +578,11 @@
   avatar: "https://avatars.githubusercontent.com/u/101647?u=575944b8f11d7f942392a670ae910dc931c111f0&v=4"
   tier: 1
   square_avatar: false
+- name: "Rahul Butani"
+  url: "https://github.com/rrbutani"
+  avatar: "https://avatars.githubusercontent.com/u/7833358?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Raúl Chouza "
   url: "https://github.com/chouzar"
   avatar: "https://avatars.githubusercontent.com/u/4700113?u=49315be321466b68760d9f366ab4801bed5d346b&v=4"
@@ -596,6 +611,11 @@
 - name: "Robert Ellen"
   url: "https://github.com/rellen"
   avatar: "https://avatars.githubusercontent.com/u/459086?u=dae9051904e95a8c27d3c732d7e1be1127c7cc93&v=4"
+  tier: 2
+  square_avatar: false
+- name: "Robert Malko"
+  url: "https://github.com/malkomalko"
+  avatar: "https://avatars.githubusercontent.com/u/763?u=a129acaa2c1d801e36baaf0bf14fecf4626abb7f&v=4"
   tier: 2
   square_avatar: false
 - name: "Sam Aaron"
