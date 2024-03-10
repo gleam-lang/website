@@ -462,7 +462,7 @@ let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ```
 
-### Maps
+### Dictionaries
 
 In Python, maps are called dictionaries and can have keys of any type as long as:
 
@@ -484,10 +484,10 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Flow control
