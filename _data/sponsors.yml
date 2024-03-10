@@ -493,10 +493,20 @@
   avatar: "https://avatars.githubusercontent.com/u/5390?u=7c017ec72f57d09b5b3b43fe52f243d9f2df7765&v=4"
   tier: 2
   square_avatar: false
+- name: "Michael Kieran O'Reilly"
+  url: "https://github.com/SoTeKie"
+  avatar: "https://avatars.githubusercontent.com/u/33070089?u=d3c9b478da178e38034917a95136b1fde6835ca7&v=4"
+  tier: 3
+  square_avatar: false
 - name: "Mike Roach"
   url: "https://github.com/mroach"
   avatar: "https://avatars.githubusercontent.com/u/79006?u=c9afda3a9a7b694e8ef7f1c70184559add8d8655&v=4"
   tier: 1
+  square_avatar: false
+- name: "Moshe Goldberg"
+  url: "https://github.com/mogold"
+  avatar: "https://avatars.githubusercontent.com/u/7964129?v=4"
+  tier: 2
   square_avatar: false
 - name: "NFIBrokerage"
   url: "https://github.com/NFIBrokerage"
