@@ -1088,12 +1088,7 @@ constructor so some boilerplate is needed:
 
 ```php
 class Person {
-  public string $name;
-  public int $age;
-  function __construct(string $name, int $age) {
-    $this->name = $name;
-    $this->age = $age;
-  }
+  public function __construct(public string $name, public int $age) { }
 }
 $person = new Person(name: "Joe", age: 40);
 // $person->name // Joe;
