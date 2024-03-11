@@ -254,7 +254,7 @@ bound to variables.
 $x = 2
 $phpAnonFn = function($y) use ($x) { return $x * $y; }; // Creates a new scope
 $phpAnonFn(3); // 6
-$phpArrowFn = ($y) => $x * $y; // Inherits the outer scope
+$phpArrowFn = fn ($y) => $x * $y; // Inherits the outer scope
 $phpArrowFn(3); // 6
 ```
 
