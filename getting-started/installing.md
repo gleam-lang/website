@@ -31,6 +31,12 @@ The easiest way to install Gleam on Linux, Windows, and Apple macOS is to downlo
 prebuilt version of the compiler from the [GitHub release
 page](https://github.com/gleam-lang/gleam/releases).
 
+If you prefer, a script is also available to use on Linux and macOS.
+
+```sh
+curl -fsSL https://gleam.pink/install.sh | sh
+```
+
 ### Mac OS X
 
 #### Using Homebrew
@@ -99,6 +105,14 @@ sudo xbps-install gleam
 ```
 
 ### Windows
+
+#### Using Chocolatey
+
+With [Chocolatey](https://chocolatey.org/) installed on your computer run the following from an Administator PowerShell:
+
+```
+choco install gleam
+```
 
 #### Using Scoop
 
