@@ -3,6 +3,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2281120?u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
   tier: 1
   square_avatar: false
+- name: "Abdulrhman Alkhodiry"
+  url: "https://github.com/zeroows"
+  avatar: "https://avatars.githubusercontent.com/u/401352?u=af0e8dea9088c96f363f636cd8a5c2c004dd5baa&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Adam Brodzinski"
   url: "https://github.com/AdamBrodzinski"
   avatar: "https://avatars.githubusercontent.com/u/1445367?u=3facd4ad78d85f857d6fc063d427d3873e0e0b68&v=4"
@@ -53,6 +58,11 @@
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
   tier: 1
   square_avatar: false
+- name: "Ameen Radwan"
+  url: "https://github.com/Acepie"
+  avatar: "https://avatars.githubusercontent.com/u/5996838?u=b73983727be86f0f684ea33da7161791e3567fcc&v=4"
+  tier: 1
+  square_avatar: false
 - name: "NineFX"
   url: "http://www.ninefx.com"
   avatar: "https://gleam.run/images/sponsors/nine-fx.png"
@@ -76,6 +86,11 @@
 - name: "Arnaud Berthomier"
   url: "https://github.com/oz"
   avatar: "https://avatars.githubusercontent.com/u/9436?u=89acda23bc3415d71ec567d099640117922394dd&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Ash Joseph"
+  url: "https://github.com/TeriyakiBomb"
+  avatar: "https://avatars.githubusercontent.com/u/12913978?u=386127e8e6910c93cc6a298bdfdac5c504d3df10&v=4"
   tier: 1
   square_avatar: false
 - name: "Barry Moore"
@@ -303,6 +318,11 @@
   avatar: "https://avatars.githubusercontent.com/u/10352597?u=0690cc0978e46b86f777a6c6f611b5305edec445&v=4"
   tier: 1
   square_avatar: false
+- name: "Hannes Schnaitter"
+  url: "https://github.com/ildorn"
+  avatar: "https://avatars.githubusercontent.com/u/277070?u=1f4612b0d29ffee4021bc8024bd24a748c7c5fe3&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
@@ -343,6 +363,11 @@
   avatar: "https://avatars.githubusercontent.com/u/183226?u=c1d9eb6a4c6947d16bf573be1276b3c743df1d0b&v=4"
   tier: 1
   square_avatar: false
+- name: "Jacob Lamb"
+  url: "https://github.com/jacobdalamb"
+  avatar: "https://avatars.githubusercontent.com/u/44789941?u=8bc640f3a90316e150cc91cc702d1d054d8672ec&v=4"
+  tier: 1
+  square_avatar: false
 - name: "James Birtles"
   url: "https://github.com/jamesbirtles"
   avatar: "https://avatars.githubusercontent.com/u/3743418?u=43836dde211bd25e8cbb71e6eed7b3a807089c9e&v=4"
@@ -368,6 +393,11 @@
   avatar: "https://avatars.githubusercontent.com/u/29028840?v=4"
   tier: 1
   square_avatar: false
+- name: "Johan Strand"
+  url: "https://github.com/johan-st"
+  avatar: "https://avatars.githubusercontent.com/u/53336235?u=552f8e1e16c4e8e3d160b3dfc6b7a061f8bb0f79&v=4"
+  tier: 2
+  square_avatar: false
 - name: "John Björk"
   url: "https://github.com/JohnBjrk"
   avatar: "https://avatars.githubusercontent.com/u/1716064?u=f19404f104d8755da53b00ad665b49a8b497477f&v=4"
@@ -382,6 +412,11 @@
   url: "https://github.com/josefrichter"
   avatar: "https://avatars.githubusercontent.com/u/134302?u=9eb4d65f42e7769b20bf05cad104dee0b136fdba&v=4"
   tier: 1
+  square_avatar: false
+- name: "Joshua Steele"
+  url: "https://github.com/joshocalico"
+  avatar: "https://avatars.githubusercontent.com/u/35418916?u=c9f593616491294e2b03f792b9f221b735cd31be&v=4"
+  tier: 2
   square_avatar: false
 - name: "Julian Schurhammer"
   url: "https://github.com/schurhammer"
@@ -426,6 +461,11 @@
 - name: "Marcøs"
   url: "https://github.com/ideaMarcos"
   avatar: "https://avatars.githubusercontent.com/u/571086?u=783a2cecfb87b7161b8a6b1a9cf6969b8443eab6&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Mariano Uvalle"
+  url: "https://github.com/AYM1607"
+  avatar: "https://avatars.githubusercontent.com/u/24952509?u=3d31d5974afd09f9eb42135138ebf8dc579ce365&v=4"
   tier: 1
   square_avatar: false
 - name: "Mario Flach"
@@ -586,6 +626,11 @@
 - name: "Prashant Singh Pawar"
   url: "https://github.com/prashantpawar"
   avatar: "https://avatars.githubusercontent.com/u/101647?u=575944b8f11d7f942392a670ae910dc931c111f0&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Race Williams"
+  url: "https://github.com/r4c3"
+  avatar: "https://avatars.githubusercontent.com/u/63271957?u=8798e7a8cc722cd97602558c4548f1abce9253e2&v=4"
   tier: 1
   square_avatar: false
 - name: "Rahul Butani"
