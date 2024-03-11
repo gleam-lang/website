@@ -31,7 +31,7 @@ The easiest way to install Gleam on Linux, Windows, and Apple macOS is to downlo
 prebuilt version of the compiler from the [GitHub release
 page](https://github.com/gleam-lang/gleam/releases).
 
-### Mac OS X
+### macOS
 
 #### Using Homebrew
 
@@ -176,7 +176,7 @@ sudo apt-get install esl-erlang
 ```
 
 
-#### Mac OS X
+#### macOS
 
 ##### Using Homebrew
 
