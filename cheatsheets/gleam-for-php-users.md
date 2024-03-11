@@ -253,9 +253,9 @@ bound to variables.
 ```php
 $x = 2
 $phpAnonFn = function($y) use ($x) { return $x * $y; }; // Creates a new scope
-$phpAnonFn(2, 3); // 6
+$phpAnonFn(3); // 6
 $phpArrowFn = ($x) => $x * $y; // Inherits the outer scope
-$phpArrowFn(2, 3); // 6
+$phpArrowFn(3); // 6
 ```
 
 ### Gleam
