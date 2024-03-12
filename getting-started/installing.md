@@ -69,6 +69,9 @@ asdf.
 Gleam is available through the [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
 as package `gleam`. You can use your prefered [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
 to install it or clone it for manual build from [https://aur.archlinux.org/packages/gleam-git](https://aur.archlinux.org/packages/gleam-git).
+```sh
+paru -S gleam
+```
 
 ### FreeBSD
 
