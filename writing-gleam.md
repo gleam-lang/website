@@ -288,7 +288,7 @@ of the Erlang runtime. Add the `gleescript` package as a dependency.
 gleam add --dev gleescript
 ```
 
-The `--dev` flag is used to indicate that this package is only used building,
+The `--dev` flag is used to indicate that this package is only used for building,
 developing, and testing the project, and should not be included in the final
 production builds. The build tool will then add `gleescript` to the
 `[dev-dependencies]` section rather than the regular `[dependencies]` section.
