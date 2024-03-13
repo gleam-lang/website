@@ -64,6 +64,14 @@ multiple version of programming languages at the same time. Install the
 [asdf-gleam plugin](https://github.com/vic/asdf-gleam) to manage Gleam with
 asdf.
 
+### Alpine Linux
+
+Gleam is available in the Community repository of Alpine Linux as a package `gleam`. Install it with:
+
+```
+apk add gleam
+```
+
 ### Arch Linux
 
 Gleam is available through the [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
