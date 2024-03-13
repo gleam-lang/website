@@ -75,7 +75,7 @@ offers mutable references.
 ## Does Gleam have side effects?
 
 Yes, Gleam is an impure functional language like OCaml or Erlang. Impure
-actions like reading to files and printing to the console are possible without
+actions like writing to files and printing to the console are possible without
 special handling.
 
 We may later introduce an effects system for identifying and tracking any
