@@ -158,9 +158,19 @@
   avatar: "https://avatars.githubusercontent.com/u/2767?u=ff72b1ad63026e0729acc2dd41378e28ab704a3f&v=4"
   tier: 1
   square_avatar: false
+- name: "Carlo Munguia"
+  url: "https://github.com/carlomunguia"
+  avatar: "https://avatars.githubusercontent.com/u/43321570?u=fa86e33dadca898c3127c8e92c13cce29b058d1a&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Carlos Saltos"
   url: "https://github.com/csaltos"
   avatar: "https://avatars.githubusercontent.com/u/32456?u=a2736cdb1eb8318361070ed9616cf2fbfaf1f215&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Chaz Watkins"
+  url: "https://github.com/chazwatkins"
+  avatar: "https://avatars.githubusercontent.com/u/9411090?u=3e24d7de72913730b6a4675126cf6ef550cc0238&v=4"
   tier: 1
   square_avatar: false
 - name: "Chew Choon Keat"
@@ -322,6 +332,11 @@
   url: "https://github.com/ffigiel"
   avatar: "https://avatars.githubusercontent.com/u/4096683?u=4f7dd14c03ea645950b699a958a48c2c0858e632&v=4"
   tier: 1
+  square_avatar: false
+- name: "Florian Hammerschmidt"
+  url: "https://github.com/fhammerschmidt"
+  avatar: "https://avatars.githubusercontent.com/u/18074327?u=f9ca1b7b8ed3b4818fcab3d4573eb6f1cb73a62f&v=4"
+  tier: 3
   square_avatar: false
 - name: "Florian Kraft"
   url: "https://github.com/floriank"
@@ -897,11 +912,6 @@
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
   tier: 5
-  square_avatar: false
-- name: "ggobbe"
-  url: "https://github.com/ggobbe"
-  avatar: "https://avatars.githubusercontent.com/u/2607273?u=79ba5419e131102768a102292fc518bcd986453f&v=4"
-  tier: 3
   square_avatar: false
 - name: "human154"
   url: "https://github.com/human154"
