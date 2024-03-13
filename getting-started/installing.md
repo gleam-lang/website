@@ -100,6 +100,14 @@ sudo xbps-install gleam
 
 ### Windows
 
+#### Using Winget
+
+With [Winget](https://learn.microsoft.com/en-us/windows/package-manager/) installed on your computer run the following:
+
+```
+winget install Gleam.Gleam
+```
+
 #### Using Scoop
 
 With [Scoop](https://scoop.sh/) installed on your computer run the following:
@@ -196,6 +204,14 @@ sudo port install erlang
 ```
 
 #### Windows
+
+##### Using Winget
+
+With [Winget](https://learn.microsoft.com/en-us/windows/package-manager/) installed on your computer run the following:
+
+```
+winget install Erlang.ErlangOTP
+```
 
 ##### Using Chocolatey
 
