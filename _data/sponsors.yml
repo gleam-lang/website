@@ -388,6 +388,11 @@
   avatar: "https://avatars.githubusercontent.com/u/8454804?u=ba78ed06d1714fb4a5df9ff997b60f362e2d1837&v=4"
   tier: 1
   square_avatar: false
+- name: "Henning Dahlheim"
+  url: "https://github.com/hdahlheim"
+  avatar: "https://avatars.githubusercontent.com/u/16597280?u=cb4fbbcece55df20084132fa5544424d7af33fd3&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Henry Firth"
   url: "https://github.com/h14h"
   avatar: "https://avatars.githubusercontent.com/u/121139610?u=18c06eef47088f44e0765d60033b0962b584a348&v=4"
@@ -516,6 +521,11 @@
 - name: "Linda Vitali"
   url: "https://github.com/vitlinda"
   avatar: "https://avatars.githubusercontent.com/u/62563336?u=bf6d34cc65bc187a8f22a36c5919bdcc550ab44a&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Lucian Petic"
+  url: "https://github.com/lpetic"
+  avatar: "https://avatars.githubusercontent.com/u/40602497?u=a5c0f4f2cefb0441e544bd92723185815839598d&v=4"
   tier: 1
   square_avatar: false
 - name: "Manuel Rubio"
@@ -808,6 +818,11 @@
   avatar: "https://avatars.githubusercontent.com/u/2126073?v=4"
   tier: 1
   square_avatar: false
+- name: "Siraj"
+  url: "https://github.com/syhner"
+  avatar: "https://avatars.githubusercontent.com/u/71605633?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Szymon Wygnański"
   url: "https://github.com/finalclass"
   avatar: "https://avatars.githubusercontent.com/u/1343930?u=f9688f9a089e581bfe2ccf3c47ced08c3cb09dbf&v=4"
@@ -878,6 +893,11 @@
   avatar: "https://avatars.githubusercontent.com/u/645203?v=4"
   tier: 1
   square_avatar: false
+- name: "Yamen Sader"
+  url: "https://github.com/yamen"
+  avatar: "https://avatars.githubusercontent.com/u/350695?u=6a7a00d535d933b556b569ca46bd71a210956e7d&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Yasuo Higano"
   url: "https://github.com/Yasuo-Higano"
   avatar: "https://avatars.githubusercontent.com/u/115511765?u=a9f0a7f8885422b3f06ec611c942948d342c5390&v=4"
@@ -906,6 +926,11 @@
 - name: "ds2600"
   url: "https://github.com/ds2600"
   avatar: "https://avatars.githubusercontent.com/u/227075?u=526d331cd80d12287f96affae0150b0c419bde7d&v=4"
+  tier: 1
+  square_avatar: false
+- name: "eli"
+  url: "https://github.com/dropwhile"
+  avatar: "https://avatars.githubusercontent.com/u/59039?u=0dfcffe1630e843df672cefa0458818dad2f320b&v=4"
   tier: 1
   square_avatar: false
 - name: "fly.io"
