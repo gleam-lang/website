@@ -46,11 +46,11 @@ In Python, comments are written with a `#` prefix.
 
 A docstring (matching """) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
-````py
+```py
 def a_function():
     """Return some important data."""
     pass
-````
+```
 
 #### Gleam
 
@@ -297,35 +297,35 @@ are fully type checked.
 
 ## Operators
 
-| Operator           | Python | Gleam                     | Notes                                                                                  |
-| ------------------ | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
-| Equal              | `==`   | `==`                      | In Gleam both values must be of the same type                                          |
-| Strictly equal to  | `==`   | `==`                      | Comparison in Gleam is always strict. (see note for Python)                            |
-| Reference equality | `is`   |                           | True only if the two objects have the same reference                                   |
-| Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
-| Greater than       | `>`    | `>`                       | In Gleam both values must be **ints**                                                  |
-| Greater than       | `>`    | `>.`                      | In Gleam both values must be **floats**                                                |
-| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
-| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
-| Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
-| Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
-| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                  |
-| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                |
-| Boolean and        | `and`  | `&&`                      | In Gleam both values must be **bools**                                                 |
-| Logical and        | `and`  |                           | Not available in Gleam                                                                 |
-| Boolean or         | `or`   | <code>&vert;&vert;</code> | In Gleam both values must be **bools**                                                 |
-| Logical or         | `or`   |                           | Not available in Gleam                                                                 |
-| Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
-| Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
-| Subtract           | `-`    | `-`                       | In Gleam both values must be **ints**                                                  |
-| Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
-| Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
-| Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
-| Divide             | `/`    | `/`                       | In Gleam both values must be **ints**                                                  |
-| Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
+| Operator           | Python | Gleam                     | Notes                                                                                                                             |
+| ------------------ | ------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Equal              | `==`   | `==`                      | In Gleam both values must be of the same type                                                                                     |
+| Strictly equal to  | `==`   | `==`                      | Comparison in Gleam is always strict. (see note for Python)                                                                       |
+| Reference equality | `is`   |                           | True only if the two objects have the same reference                                                                              |
+| Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                                                                     |
+| Greater than       | `>`    | `>`                       | In Gleam both values must be **ints**                                                                                             |
+| Greater than       | `>`    | `>.`                      | In Gleam both values must be **floats**                                                                                           |
+| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                                                             |
+| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                                                           |
+| Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                                                             |
+| Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                                                           |
+| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                                                             |
+| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                                                           |
+| Boolean and        | `and`  | `&&`                      | In Gleam both values must be **bools**                                                                                            |
+| Logical and        | `and`  |                           | Not available in Gleam                                                                                                            |
+| Boolean or         | `or`   | <code>&vert;&vert;</code> | In Gleam both values must be **bools**                                                                                            |
+| Logical or         | `or`   |                           | Not available in Gleam                                                                                                            |
+| Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                                                             |
+| Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                                                           |
+| Subtract           | `-`    | `-`                       | In Gleam both values must be **ints**                                                                                             |
+| Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                                                           |
+| Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                                                             |
+| Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                                                           |
+| Divide             | `/`    | `/`                       | In Gleam both values must be **ints**                                                                                             |
+| Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                                                           |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **ints**, in Gleam negative values behave differently: Use `int.modulo` to mimick Python's behavior. |
-| Concatenate        | `+`    | `<>`                      | In Gleam both values must be **strings**                                               |
-| Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
+| Concatenate        | `+`    | `<>`                      | In Gleam both values must be **strings**                                                                                          |
+| Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python                                            |
 
 Some notes for Python:
 
@@ -647,7 +647,7 @@ case parse_int("123") {
 ```
 
 In order to simplify this construct, we can use the `use` expression with the
-`then` function from the `gleam/result` module.
+`try` function from the `gleam/result` module.
 
 - bind a value to the providing name if `Ok(Something)` is matched
 - **interrupt the flow** and return `Error(Something)`
@@ -657,9 +657,9 @@ let a_number = "1"
 let an_error = "ouch"
 let another_number = "3"
 
-use int_a_number <- then(parse_int(a_number))
-use attempt_int <- then(parse_int(an_error)) // Error will be returned
-use int_another_number <- then(parse_int(another_number)) // never gets executed
+use int_a_number <- try(parse_int(a_number))
+use attempt_int <- try(parse_int(an_error)) // Error will be returned
+use int_another_number <- try(parse_int(another_number)) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ```
