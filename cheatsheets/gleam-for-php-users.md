@@ -287,11 +287,11 @@ is that module functions heads may also feature argument labels, like so:
 
 ```gleam
 // In some module.gleam
-pub fn absolute_distance(from x: Int, to y: Int) -> Int {
-  abs(x) - abs(y) |> abs()
+pub fn distance(from x: Int, to y: Int) -> Int {
+  x - y |> int.absolute_value()
 }
 // In some other function
-absolute_distance(from: 1, to: -2) // 1
+distance(from: 1, to: -2) // 3
 ```
 
 ### Exporting functions
