@@ -13,6 +13,7 @@ description: The answers to some things you might be wondering about Gleam!
 - [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [How is message passing typed?](#how-is-message-passing-typed)
 - [Can Gleam use Erlang's hot code reloading?](#can-gleam-use-erlangs-hot-code-reloading)
+- [Why does division by zero return zero?](#why-does-division-by-zero-return-zero)
 - [How does Gleam compare to...](#how-does-gleam-compare-to)
   - [Alpaca?](#how-does-gleam-compare-to-alpaca)
   - [Caramel?](#how-does-gleam-compare-to-caramel)
@@ -105,6 +106,25 @@ safety rather than what you might have with Gleam otherwise.
 Generally the OTP libraries for Gleam are optimised for type safety rather than
 upgrades, and use records rather than atom modules so the state upgrade
 callbacks may be more complex to write.
+
+## Why does division by zero return zero?
+
+There are three common approaches to handling division by zero in programming
+languages:
+
+- Throw an exception and crash the program.
+- Return a special `Infinity` value.
+- Return `0`.
+
+Gleam does not implicitly throw exceptions, so throwing an exception is not
+an option. The BEAM VM does not have a `Infinity` value, so that is not an
+option. Therefore Gleam returns `0` when dividing by zero.
+
+The standard library provides functions which return a `Result` type for
+division by zero which you can use if that is more suitable for your program.
+
+For more information on division by zero from a mathematical perspective, see
+[this article by Hillel Wayne](https://www.hillelwayne.com/post/divide-by-zero/).
 
 ## How does Gleam compare to...
 
