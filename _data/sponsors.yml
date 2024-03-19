@@ -308,6 +308,11 @@
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
   tier: 1
   square_avatar: false
+- name: "Elie Labeca"
+  url: "https://github.com/elabeca"
+  avatar: "https://avatars.githubusercontent.com/u/1290092?u=a88d472760abaa8cbb020250fa8432b3a3c09671&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Elliott Pogue"
   url: "https://github.com/epogue"
   avatar: "https://avatars.githubusercontent.com/u/89570?u=2c0679f52953eb82369c16797a0fa6cb28b0361a&v=4"
@@ -331,6 +336,11 @@
 - name: "F. Schwalbe"
   url: "https://github.com/fschwalbe"
   avatar: "https://avatars.githubusercontent.com/u/88447041?v=4"
+  tier: 1
+  square_avatar: false
+- name: "Felix Mayer"
+  url: "https://github.com/yerTools"
+  avatar: "https://avatars.githubusercontent.com/u/31420747?u=dc0eaae8f8f1467f8c1322525c6efe6ff6fe2827&v=4"
   tier: 1
   square_avatar: false
 - name: "Fernando Farias"
@@ -388,6 +398,11 @@
   avatar: "https://avatars.githubusercontent.com/u/128047144?u=9d372b54c5da4d0db1ec8eb71c7b77c811b22030&v=4"
   tier: 1
   square_avatar: false
+- name: "Hampus Kraft"
+  url: "https://github.com/hampuskraft"
+  avatar: "https://avatars.githubusercontent.com/u/24176136?u=bb30f912bb9bae189257b0b51056e1d2a9b6a9ca&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Hannes Schnaitter"
   url: "https://github.com/ildorn"
   avatar: "https://avatars.githubusercontent.com/u/277070?u=1f4612b0d29ffee4021bc8024bd24a748c7c5fe3&v=4"
@@ -441,6 +456,11 @@
 - name: "Ivar Vong"
   url: "https://github.com/ivarvong"
   avatar: "https://avatars.githubusercontent.com/u/183226?u=c1d9eb6a4c6947d16bf573be1276b3c743df1d0b&v=4"
+  tier: 1
+  square_avatar: false
+- name: "J. Rinaldi"
+  url: "https://github.com/m-rinaldi"
+  avatar: "https://avatars.githubusercontent.com/u/2664441?u=dcda85ef225ba375fc16d0c36c9fe6ec101e68cc&v=4"
   tier: 1
   square_avatar: false
 - name: "Jacob Lamb"
@@ -547,6 +567,11 @@
   url: "https://github.com/vitlinda"
   avatar: "https://avatars.githubusercontent.com/u/62563336?u=bf6d34cc65bc187a8f22a36c5919bdcc550ab44a&v=4"
   tier: 1
+  square_avatar: false
+- name: "Loïc Tosser"
+  url: "https://github.com/wowi42"
+  avatar: "https://avatars.githubusercontent.com/u/7694420?u=56f3fd08e9639f246cac550a418da9957c3fbba6&v=4"
+  tier: 2
   square_avatar: false
 - name: "Lucian Petic"
   url: "https://github.com/lpetic"
@@ -803,6 +828,11 @@
   avatar: "https://avatars.githubusercontent.com/u/369?u=33067a56bf0f4e3fc7b5e498ed1bd1d5f386de25&v=4"
   tier: 1
   square_avatar: false
+- name: "Sami Fouad"
+  url: "https://github.com/samifouad"
+  avatar: "https://avatars.githubusercontent.com/u/6378290?u=e8451703eb7afafb132e282ca023991c44aa17ea&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Sammy Isseyegh"
   url: "https://github.com/bkspace"
   avatar: "https://avatars.githubusercontent.com/u/1695350?u=27a9d5486661a7f1ada8ff6fc3ae52d09ca1985f&v=4"
@@ -837,6 +867,11 @@
   url: "https://github.com/tehprofessor"
   avatar: "https://avatars.githubusercontent.com/u/995086?u=a6f421a92217f34de47433c1eb57e198b8b9bdd1&v=4"
   tier: 1
+  square_avatar: false
+- name: "Shaun McCarthy"
+  url: "https://github.com/isocuda"
+  avatar: "https://avatars.githubusercontent.com/u/8029534?u=b870d56e30e994060967ef10fce5da0f6b07616f&v=4"
+  tier: 2
   square_avatar: false
 - name: "Shuqian Hon"
   url: "https://github.com/honsq90"
@@ -943,6 +978,11 @@
   avatar: "https://avatars.githubusercontent.com/u/25465322?u=18186bbf5e9df8274c5795f2d8359a06ebf0885c&v=4"
   tier: 1
   square_avatar: false
+- name: "ad-ops"
+  url: "https://github.com/ad-ops"
+  avatar: "https://avatars.githubusercontent.com/u/57237184?v=4"
+  tier: 1
+  square_avatar: false
 - name: "brettkolodny"
   url: "https://github.com/brettkolodny"
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
@@ -953,6 +993,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1743033?u=6a81965c5d45e719c3b89281493f54f89624a599&v=4"
   tier: 1
   square_avatar: false
+- name: "dennistruemper"
+  url: "https://github.com/dennistruemper"
+  avatar: "https://avatars.githubusercontent.com/u/16500337?u=bfb610a304289ae7aaed3be968e01785216a6b72&v=4"
+  tier: 1
+  square_avatar: false
 - name: "ds2600"
   url: "https://github.com/ds2600"
   avatar: "https://avatars.githubusercontent.com/u/227075?u=526d331cd80d12287f96affae0150b0c419bde7d&v=4"
@@ -960,13 +1005,18 @@
   square_avatar: false
 - name: "eli"
   url: "https://github.com/dropwhile"
-  avatar: "https://avatars.githubusercontent.com/u/59039?u=0dfcffe1630e843df672cefa0458818dad2f320b&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/59039?u=4360e1f740ab5355c238c79d5223357206e2092d&v=4"
   tier: 1
   square_avatar: false
 - name: "fly.io"
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
   tier: 5
+  square_avatar: false
+- name: "grotto"
+  url: "https://github.com/grottohub"
+  avatar: "https://avatars.githubusercontent.com/u/18193667?u=c409cedcc2903cb6841e381a06860d72d9181371&v=4"
+  tier: 1
   square_avatar: false
 - name: "human154"
   url: "https://github.com/human154"
@@ -998,6 +1048,16 @@
   avatar: "https://avatars.githubusercontent.com/u/107401420?v=4"
   tier: 2
   square_avatar: false
+- name: "n8n - Workflow Automation"
+  url: "https://github.com/n8nio"
+  avatar: "https://avatars.githubusercontent.com/u/52133374?v=4"
+  tier: 3
+  square_avatar: false
+- name: "optizio"
+  url: "https://github.com/optizio"
+  avatar: "https://avatars.githubusercontent.com/u/65961177?v=4"
+  tier: 1
+  square_avatar: false
 - name: "qingliangcn"
   url: "https://github.com/qingliangcn"
   avatar: "https://avatars.githubusercontent.com/u/190690?u=27d7c744406b9346822b767f86ce1bfdd239bcb7&v=4"
@@ -1006,6 +1066,11 @@
 - name: "sekun"
   url: "https://github.com/sekunho"
   avatar: "https://avatars.githubusercontent.com/u/20364796?u=5cade410236443af83ef153029eb7b379ab15205&v=4"
+  tier: 1
+  square_avatar: false
+- name: "victorybhg"
+  url: "https://github.com/victorybhg"
+  avatar: "https://avatars.githubusercontent.com/u/164061269?v=4"
   tier: 1
   square_avatar: false
 - name: "xhh"
