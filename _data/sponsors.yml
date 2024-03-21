@@ -258,6 +258,11 @@
   avatar: "https://avatars.githubusercontent.com/u/927609?u=0c51e10f46812b11a0e911a413474df5dbd827e8&v=4"
   tier: 1
   square_avatar: false
+- name: "Darshak Parikh"
+  url: "https://github.com/dar5hak"
+  avatar: "https://avatars.githubusercontent.com/u/8205055?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Dave Lucia"
   url: "https://github.com/davydog187"
   avatar: "https://avatars.githubusercontent.com/u/1019721?u=66ffce0baadf67e8e8373e29509e0bf3eacb46b5&v=4"
@@ -578,6 +583,11 @@
   avatar: "https://avatars.githubusercontent.com/u/40602497?u=a5c0f4f2cefb0441e544bd92723185815839598d&v=4"
   tier: 1
   square_avatar: false
+- name: "Léopold Hubert"
+  url: "https://github.com/leopoldhub"
+  avatar: "https://avatars.githubusercontent.com/u/21125567?u=7818fe787ec65abbc36e7dc52edee5c8ee823fdd&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Manuel Rubio"
   url: "https://github.com/manuel-rubio"
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
@@ -691,6 +701,11 @@
 - name: "Nathaniel Knight"
   url: "https://github.com/nathanielknight"
   avatar: "https://avatars.githubusercontent.com/u/1239091?u=6fb38af8299220ff444f5080aa2c67085132cd50&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Nayuki"
+  url: "https://github.com/Kuuuuuuuu"
+  avatar: "https://avatars.githubusercontent.com/u/69802296?u=f48eba952fa71109bea6d1923e4a7eb0daa2c9c7&v=4"
   tier: 1
   square_avatar: false
 - name: "Nick Reynolds"
@@ -981,6 +996,11 @@
 - name: "ad-ops"
   url: "https://github.com/ad-ops"
   avatar: "https://avatars.githubusercontent.com/u/57237184?v=4"
+  tier: 1
+  square_avatar: false
+- name: "aldrin-ronco"
+  url: "https://github.com/aldrin-ronco"
+  avatar: "https://avatars.githubusercontent.com/u/8396833?v=4"
   tier: 1
   square_avatar: false
 - name: "brettkolodny"
