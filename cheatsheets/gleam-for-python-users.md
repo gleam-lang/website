@@ -445,8 +445,8 @@ Lists in Python are allowed to have values of mixed types, but not in Gleam.
 Python can emulate the `cons` operator of Gleam using the `*` operator and unpacking:
 
 ```py
-list = [2, 3, 4]
-[head, *tail] = list
+lst = [2, 3, 4]
+[head, *tail] = lst
 # head == 2
 # tail == [3, 4]
 ```
@@ -673,9 +673,7 @@ Type aliases allow for easy referencing of arbitrary complex types. Even though 
 A simple variable can store the result of a compound set of types.
 
 ```py
-from typing import TypeAlias
-
-Headers: TypeAlias = list[tuple[str, str]]
+type Headers = list[tuple[str, str]]
 
 # can now be used to annotate a variable
 headers: Headers = [("Content-Type", "application/json")]
@@ -706,10 +704,11 @@ Properties are defined as class members and initial values are generally set in 
 By default the constructor does not provide base initializers in the constructor so some boilerplate is needed:
 
 ```py
-class Person():
+class Person:
     name: str
     age: int
-    def __init__(name: str, age: int):
+
+    def __init__(name: str, age: int) -> None:
         self.name = name
         self.age = age
 
@@ -815,7 +814,7 @@ using the intended API.
 #### Python
 
 ```py
-class OnlyCreatable(object):
+class OnlyCreatable:
 
     __create_key = object()
 
