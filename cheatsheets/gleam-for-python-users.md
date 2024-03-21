@@ -151,7 +151,7 @@ Gleam will check the type annotation to ensure that it matches the type of the a
 
 In Python, you can define functions with the `def` keyword. In that case, the `return` keyword is mandatory.
 
-```python
+```py
 def sum(x, y):
     return x + y
 ```
@@ -350,7 +350,7 @@ In Python, top-level declarations are in the global/module scope is the highest 
 
 There is no notion of constant variables in Python.
 
-```python
+```py
 # in the global scope
 THE_ANSWER = 42
 ```
@@ -406,7 +406,7 @@ In Gleam all strings are UTF-8 encoded binaries.
 
 #### Python
 
-```python
+```py
 "Hellø, world!"
 ```
 
@@ -424,7 +424,7 @@ Tuples are very useful in Gleam as they're the only collection data type that al
 
 Python tuples are immutable, fixed-size lists that can contain mixed value types. Unpacking can be used to bind a name to a specific value of the tuple.
 
-```python
+```py
 my_tuple = ("username", "password", 10)
 _, password, _ = my_tuple
 ```
@@ -444,7 +444,7 @@ Lists in Python are allowed to have values of mixed types, but not in Gleam.
 
 Python can emulate the `cons` operator of Gleam using the `*` operator and unpacking:
 
-```python
+```py
 list = [2, 3, 4]
 [head, *tail] = list
 # head == 2
@@ -476,7 +476,7 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 
 #### Python
 
-```python
+```py
 {"key1": "value1", "key2": "value2"}
 {"key1":  "1", "key2": 2}
 ```
@@ -705,7 +705,7 @@ Properties are defined as class members and initial values are generally set in 
 
 By default the constructor does not provide base initializers in the constructor so some boilerplate is needed:
 
-```python
+```py
 class Person():
     name: str
     age: int
@@ -913,7 +913,7 @@ import unix/cat as kitty
 
 #### Python
 
-```
+```py
 from animal.cat import Cat, stroke
 
 def main():
