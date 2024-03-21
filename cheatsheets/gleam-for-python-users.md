@@ -711,7 +711,7 @@ class Person():
     age: int
     def __init__(name: str, age: int):
         self.name = name
-        self.age = int
+        self.age = age
 
 person = Person(name="Jake", age=20)
 # or with positional arguments Person("Jake", 20)
