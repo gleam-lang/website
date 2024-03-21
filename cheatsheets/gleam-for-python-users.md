@@ -159,7 +159,7 @@ def sum(x, y):
 Anonymous functions returning a single expression can also be defined with the `lambda` keyword and be assigned into variables.
 
 ```py
-mul = lambda (x, y): x * y
+mul = lambda x, y: x * y
 mul(1, 2)
 ```
 
