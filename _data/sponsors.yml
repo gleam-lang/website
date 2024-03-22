@@ -173,6 +173,11 @@
   avatar: "https://avatars.githubusercontent.com/u/315988?v=4"
   tier: 1
   square_avatar: false
+- name: "Charlie Govea"
+  url: "https://github.com/charlie-n01r"
+  avatar: "https://avatars.githubusercontent.com/u/67932262?u=cea7aaed31e47e442e397cd433ea4c968389d192&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Chaz Watkins"
   url: "https://github.com/chazwatkins"
   avatar: "https://avatars.githubusercontent.com/u/9411090?u=3e24d7de72913730b6a4675126cf6ef550cc0238&v=4"
@@ -496,6 +501,11 @@
 - name: "Jen Stehlik"
   url: "https://github.com/okkdev"
   avatar: "https://avatars.githubusercontent.com/u/20144629?u=a7cc738c98e454d194d6c445d423724da9cbedd3&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Jiri Luzny"
+  url: "https://github.com/jluzny"
+  avatar: "https://avatars.githubusercontent.com/u/6214030?v=4"
   tier: 1
   square_avatar: false
 - name: "Joey Kilpatrick"
