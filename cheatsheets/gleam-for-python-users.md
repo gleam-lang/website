@@ -40,13 +40,13 @@ subtitle: Hello productive pragmatic Pythonistas!
 
 In Python, comments are written with a `#` prefix.
 
-```py
+```python
 # Hello, Joe!
 ```
 
 A docstring (matching """) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
-```py
+```python
 def a_function():
     """Return some important data."""
     pass
@@ -75,7 +75,7 @@ You can reassign variables in both languages.
 
 #### Python
 
-```py
+```python
 size = 50
 size = size + 100
 size = 1
@@ -100,7 +100,7 @@ let size = 1
 Python supports basic, one directional destructuring (also called unpacking).
 Tuple of values can be unpacked and inner values can be assigned to left-hand variable names.
 
-```py
+```python
 (a, b) = (1, 2)
 # a == 1
 # b == 2
@@ -131,7 +131,7 @@ These annotations are accessible at runtime via the `__annotations__` module-lev
 
 These hints will mainly be used to inform static analysis tools like IDEs, linters...
 
-```py
+```python
 some_list: list[int] = [1, 2, 3]
 ```
 
@@ -151,14 +151,14 @@ Gleam will check the type annotation to ensure that it matches the type of the a
 
 In Python, you can define functions with the `def` keyword. In that case, the `return` keyword is mandatory.
 
-```py
+```python
 def sum(x, y):
     return x + y
 ```
 
 Anonymous functions returning a single expression can also be defined with the `lambda` keyword and be assigned into variables.
 
-```py
+```python
 mul = lambda x, y: x * y
 mul(1, 2)
 ```
@@ -209,7 +209,7 @@ Discrepancies between type hints and actual values at runtime do not prevent int
 
 Static code analysers (IDE tooling, type checkers like mypy) will be required to detect those errors.
 
-```py
+```python
 def sum(x: int, y: int) -> int:
     return x + y
 
@@ -267,7 +267,7 @@ When calling a function, arguments can be passed
 - positionally, in the same order of the function declaration
 - by name, in any order
 
-```py
+```python
 def replace(inside: str, each: str, with_string: str):
     pass
 
@@ -350,7 +350,7 @@ In Python, top-level declarations are in the global/module scope is the highest 
 
 There is no notion of constant variables in Python.
 
-```py
+```python
 # in the global scope
 THE_ANSWER = 42
 ```
@@ -375,7 +375,7 @@ Python blocks are always associated with a function / conditional / class declar
 
 Blocks are declared via indentation.
 
-```py
+```python
 def a_func():
     # A block here
     pass
@@ -406,7 +406,7 @@ In Gleam all strings are UTF-8 encoded binaries.
 
 #### Python
 
-```py
+```python
 "Hellø, world!"
 ```
 
@@ -424,7 +424,7 @@ Tuples are very useful in Gleam as they're the only collection data type that al
 
 Python tuples are immutable, fixed-size lists that can contain mixed value types. Unpacking can be used to bind a name to a specific value of the tuple.
 
-```py
+```python
 my_tuple = ("username", "password", 10)
 _, password, _ = my_tuple
 ```
@@ -444,9 +444,9 @@ Lists in Python are allowed to have values of mixed types, but not in Gleam.
 
 Python can emulate the `cons` operator of Gleam using the `*` operator and unpacking:
 
-```py
-lst = [2, 3, 4]
-[head, *tail] = lst
+```python
+list = [2, 3, 4]
+[head, *tail] = list
 # head == 2
 # tail == [3, 4]
 ```
@@ -476,7 +476,7 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 
 #### Python
 
-```py
+```python
 {"key1": "value1", "key2": "value2"}
 {"key1":  "1", "key2": 2}
 ```
@@ -503,7 +503,7 @@ statement.
 
 Matching on primitive types:
 
-```py
+```python
 def http_error(status):
     match status:
         case 400:
@@ -516,7 +516,7 @@ def http_error(status):
 
 Matching on tuples with variable capturing:
 
-```py
+```python
 match point:
     case (0, 0):
         print("Origin")
@@ -532,7 +532,7 @@ match point:
 
 Matching on type constructors:
 
-```py
+```python
 match point:
     case Point(x=0, y=0):
         print("Origin is the point's location.")
@@ -548,7 +548,7 @@ match point:
 
 The match expression supports guards, similar to Gleam:
 
-```py
+```python
 match point:
     case Point(x, y) if x == y:
         print(f"The point is located on the diagonal Y=X at {x}.")
@@ -609,14 +609,14 @@ Python uses the notion of exceptions to interrupt the current code flow and pop 
 
 An exception is raised using the keyword `raise`.
 
-```py
+```python
 def a_function_that_fails():
     raise Exception("an error")
 ```
 
 The callee block will be able to capture any exception raised in the block using a `try/except` set of blocks:
 
-```py
+```python
 try:
     print("executed")
     a_function_that_fails()
@@ -672,7 +672,7 @@ Type aliases allow for easy referencing of arbitrary complex types. Even though 
 
 A simple variable can store the result of a compound set of types.
 
-```py
+```python
 type Headers = list[tuple[str, str]]
 
 # can now be used to annotate a variable
@@ -703,7 +703,7 @@ Properties are defined as class members and initial values are generally set in 
 
 By default the constructor does not provide base initializers in the constructor so some boilerplate is needed:
 
-```py
+```python
 class Person:
     name: str
     age: int
@@ -723,7 +723,7 @@ More recent alternatives are to use `dataclasses` or to leverage the
 By default a class created with the `dataclass` decorator is mutable (although
 you can pass options to the `dataclass` decorator to change the behavior):
 
-```py
+```python
 from dataclasses import dataclasses
 
 @dataclass
@@ -738,7 +738,7 @@ person.name = "John"  # The name is now "John"
 
 `NamedTuples` on the other hand are immutable:
 
-```py
+```python
 from typing import NamedTuple
 
 class Person(NamedTuple):
@@ -776,7 +776,7 @@ two different types they must be wrapped in a new custom type.
 
 #### Python
 
-```py
+```python
 def int_or_float(x: int | float) -> str:
     if isinstance(x, int):
         return f"It's an integer: {x}"
@@ -813,7 +813,7 @@ using the intended API.
 
 #### Python
 
-```py
+```python
 class OnlyCreatable:
 
     __create_key = object()
@@ -869,7 +869,7 @@ pub fn main() {
 
 #### Python
 
-```py
+```python
 # inside module src/nasa/moon_base.py
 # imports module src/nasa/rocket_ship.py
 from nasa import rocket_ship
@@ -898,7 +898,7 @@ pub fn explore_space() {
 
 #### Python
 
-```py
+```python
 import unix.cat as kitty
 ```
 
@@ -912,7 +912,7 @@ import unix/cat as kitty
 
 #### Python
 
-```py
+```python
 from animal.cat import Cat, stroke
 
 def main():
