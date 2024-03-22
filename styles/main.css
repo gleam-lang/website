@@ -294,6 +294,18 @@ main.content {
   margin-top: var(--gap-2);
 }
 
+.hero-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-2);
+}
+
+.hero-link {
+  color: var(--color-unexpected-aubergine) !important;
+}
+
 .home-pair {
   padding-top: var(--gap-4);
   padding-bottom: var(--gap-4);
