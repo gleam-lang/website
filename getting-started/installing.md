@@ -88,7 +88,15 @@ Gleam is available through the [Arch User Repository](https://wiki.archlinux.org
 as package `gleam`. You can use your prefered [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
 to install it or clone it for manual build from [https://aur.archlinux.org/packages/gleam-git](https://aur.archlinux.org/packages/gleam-git).
 
-#### FreeBSD
+#### Void Linux
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```
+sudo xbps-install gleam
+```
+
+### FreeBSD
 
 Gleam is available in ports, and also in binary packages. You may need
 to use the `latest` package repo, amend per instructions in
@@ -100,20 +108,12 @@ $ pkg install -r FreeBSD lang/gleam lang/erlang-runtime23
 $ export PATH=/usr/local/lib/erlang23/bin:$PATH
 ```
 
-#### OpenBSD
+### OpenBSD
 
 For OpenBSD -current, Gleam is available as a binary package. You can install it with:
 
 ```
 $ doas pkg_add gleam
-```
-
-#### Void Linux
-
-Gleam is available as part of the official packages repository. Install it with:
-
-```
-sudo xbps-install gleam
 ```
 
 ### Windows
