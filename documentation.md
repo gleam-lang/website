@@ -26,6 +26,7 @@ layout: page
 - [Gleam for PHP users](/cheatsheets/gleam-for-php-users)
 - [Gleam for Python users](/cheatsheets/gleam-for-python-users)
 - [Gleam for Rust users](/cheatsheets/gleam-for-rust-users)
+- [Gleam for TypeScript users](/cheatsheets/gleam-for-typescript-users)
 
 ## Deployment
 
