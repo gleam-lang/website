@@ -131,6 +131,7 @@ p {
 
 a:visited,
 a {
+  word-break: break-all;
   color: var(--color-white);
   text-decoration-color: var(--color-faff-pink);
 }

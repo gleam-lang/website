@@ -219,7 +219,6 @@ mul(1, 2)
 
 In Elm, functions can **optionally** have their argument and return types annotated. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.
 
-
 ```elm
 sum : number -> number -> number
 sum x y = x + y
@@ -294,7 +293,6 @@ identity : a -> a
 identity x =
     x
 ```
-
 
 #### Gleam
 
@@ -587,31 +585,31 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 As Gleam does not treat integers and floats generically, there is a pattern of an extra `.` to separate `Int` operators from `Float` operators.
 
-| Operator          | Elm           | Gleam | Notes                                          |
-| ----------------- | ------------- | ----- | ---------------------------------------------- |
-| Equal             | `==`          | `==`  | In Gleam both values must be of the same type  |
-| Not equal         | `/=`          | `!=`  | In Gleam both values must be of the same type  |
-| Greater than      | `>`           | `>`   | In Gleam both values must be **ints**          |
-| Greater than      | `>`           | `>.`  | In Gleam both values must be **floats**        |
-| Greater or equal  | `>=`          | `>=`  | In Gleam both values must be **ints**          |
-| Greater or equal  | `>=`          | `>=.` | In Gleam both values must be **floats**        |
-| Less than         | `<`           | `<`   | In Gleam both values must be **ints**          |
-| Less than         | `<`           | `<.`  | In Gleam both values must be **floats**        |
-| Less or equal     | `<=`          | `>=`  | In Gleam both values must be **ints**          |
-| Less or equal     | `<=`          | `>=.` | In Gleam both values must be **floats**        |
-| Boolean and       | `&&`          | `&&`  | In Gleam both values must be **bools**         |
-| Boolean or        | `||`          | `||`  | In Gleam both values must be **bools**         |
-| Add               | `+`           | `+`   | In Gleam both values must be **ints**          |
-| Add               | `+`           | `+.`  | In Gleam both values must be **floats**        |
-| Subtract          | `-`           | `-`   | In Gleam both values must be **ints**          |
-| Subtract          | `-`           | `-.`  | In Gleam both values must be **floats**        |
-| Multiply          | `*`           | `*`   | In Gleam both values must be **ints**          |
-| Multiply          | `*`           | `*.`  | In Gleam both values must be **floats**        |
-| Divide            | `//`          | `/`   | In Gleam Both values must be **ints**          |
-| Divide            | `/`           | `/.`  | In Gleam both values must be **floats**        |
-| Modulo            | `remainderBy` | `%`   | In Gleam both values must be **ints**          |
-| Concatenate       | `++`          | `<>`  |                                                |
-| Pipe              | `|>`          | `|>`  | Gleam's pipe will try piping into the first position or Elm style as the only argument to a function, using whichever type checks. |
+| Operator         | Elm           | Gleam | Notes                                         |
+| ---------------- | ------------- | ----- | --------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------- |
+| Equal            | `==`          | `==`  | In Gleam both values must be of the same type |
+| Not equal        | `/=`          | `!=`  | In Gleam both values must be of the same type |
+| Greater than     | `>`           | `>`   | In Gleam both values must be **ints**         |
+| Greater than     | `>`           | `>.`  | In Gleam both values must be **floats**       |
+| Greater or equal | `>=`          | `>=`  | In Gleam both values must be **ints**         |
+| Greater or equal | `>=`          | `>=.` | In Gleam both values must be **floats**       |
+| Less than        | `<`           | `<`   | In Gleam both values must be **ints**         |
+| Less than        | `<`           | `<.`  | In Gleam both values must be **floats**       |
+| Less or equal    | `<=`          | `>=`  | In Gleam both values must be **ints**         |
+| Less or equal    | `<=`          | `>=.` | In Gleam both values must be **floats**       |
+| Boolean and      | `&&`          | `&&`  | In Gleam both values must be **bools**        |
+| Boolean or       | `             |       | `                                             | `   |                                                                                                                                    | `   | In Gleam both values must be **bools** |
+| Add              | `+`           | `+`   | In Gleam both values must be **ints**         |
+| Add              | `+`           | `+.`  | In Gleam both values must be **floats**       |
+| Subtract         | `-`           | `-`   | In Gleam both values must be **ints**         |
+| Subtract         | `-`           | `-.`  | In Gleam both values must be **floats**       |
+| Multiply         | `*`           | `*`   | In Gleam both values must be **ints**         |
+| Multiply         | `*`           | `*.`  | In Gleam both values must be **floats**       |
+| Divide           | `//`          | `/`   | In Gleam Both values must be **ints**         |
+| Divide           | `/`           | `/.`  | In Gleam both values must be **floats**       |
+| Modulo           | `remainderBy` | `%`   | In Gleam both values must be **ints**         |
+| Concatenate      | `++`          | `<>`  |                                               |
+| Pipe             | `             | >`    | `                                             | >`  | Gleam's pipe will try piping into the first position or Elm style as the only argument to a function, using whichever type checks. |
 
 ## Type Aliases
 
@@ -698,7 +696,6 @@ In Gleam, a custom type with a single entry that has fields of its own fills the
 
 In order to create an opaque data type, you can use the [`opaque`](../book/tour/custom-types.html#opaque-types) keyword.
 
-
 ### Maybe
 
 Neither Gleam nor Elm have a concept of 'null' in their type system. Elm uses `Maybe` to handle this case. Gleam uses a similar approach called `Option`.
@@ -755,8 +752,19 @@ pub type Result(value, reason) {
 
 The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result.html) module for interacting with `Result` values.
 
-Gleam has a `try` keyword that allows for early exit from a block if a `Result` is an error. The equivalent in Elm would require the use of `Result.andThen`. The `try` keyword in Gleam provides syntactic sugar which simplifies functions that handle results.
+Similar to the Elm function `Result.andThen`, the Gleam standard library includes a [result.try](https://hexdocs.pm/gleam_stdlib/gleam/result.html#try) function that allows for chaining together functions that return `Result` values. This can be used in conjuntion with the `use` keyword to allow for early returns from a function. A `use` expression will take the value from the passed in `Result` and treat the rest of the function body as the function that should be called if the `Result` is `Ok`. If the passed in `Result` is an `Error`, the rest of the function body will not get called and the `Error` will be immediately returned.
 
+```gleam
+let a_number = "1"
+let an_error = "ouch"
+let another_number = "3"
+
+use int_a_number <- try(parse_int(a_number)) // parse_int(a_number) returns Ok(1) so int_a_number is bound to 1
+use attempt_int <- try(parse_int(an_error)) // parse_int(a_number) returns an Error and will be returned
+use int_another_number <- try(parse_int(another_number)) // never gets executed
+
+Ok(int_a_number + attempt_int + int_another_number) // never gets executed
+```
 
 ## If expressions
 
@@ -827,7 +835,6 @@ case x, y {
 
 Guard expressions can also be used to limit when certain patterns are matched:
 
-
 ```gleam
 case xs {
   [a, b, c] if a == b && b != c -> "ok"
@@ -853,7 +860,6 @@ Gleam is not a pure language and so does not have a command system for managing 
 
 Elm programs compile to JavaScript and primarily allow you to talk to JavaScript via [ports](https://guide.elm-lang.org/interop/ports.html). Elm does not have an accessible foreign function interface for calling JavaScript directly from Elm code. Only core modules can do that. Ports provide a message-passing interface between the Elm application and JavaScript. It is very safe. It is almost impossible to cause runtime errors in your Elm code by passing incorrect values to or from ports. This makes Elm a very safe language with very good guarantees against runtime exceptions but at the cost of some friction when the developer wants to interact with JavaScript.
 
-
 #### Gleam
 
 Gleam provides syntax for directly calling Erlang functions. The developer specifies the types for the Erlang function and the compiler assumes those types are accurate. This means less friction when calling Erlang code but also means less of a guarantee of safety as the developer might get the types wrong.
@@ -861,7 +867,6 @@ Gleam provides syntax for directly calling Erlang functions. The developer speci
 Functions that call Erlang code directly use the `external` keyword and use strings to refer to the Erlang function to call.
 
 It is possible to call functions provided by other languages on the Erlang Virtual Machine but only via the Erlang name that those functions end up with.
-
 
 ```gleam
 pub external fn random_float() -> Float = "rand" "uniform"
