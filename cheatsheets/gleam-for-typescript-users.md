@@ -294,7 +294,7 @@ io.print(my_tuple.0) // "username"
 ```
 
 
-### Destructuring Arrays amd Tuples
+### Destructuring Arrays and Tuples
 
 #### TypeScript
 
