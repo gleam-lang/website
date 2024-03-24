@@ -13,10 +13,10 @@ subtitle: Hello TypeScripters!
 - [Data types](#data-types) -->
   - [Strings](#strings)
   - [Numbers](#numbers)
-  - [Tuples, Arrays, Lists](#tuples-arrays-lists)
-  - [Objects and Records](#objects-and-records)
-  - [Maps](#maps)
-- [Destructuring Arrays and Tuples](#destructuring-arrays-and-tuples)
+  - [Arrays and Lists](#arrays-and-lists)
+  - [Tuples](#tuples)
+  - [Destructuring Arrays and Tuples](#destructuring-arrays-and-tuples)
+  - [Objects, Records, Maps](#objects-records-maps)
 <!-- - [Functions](#functions) -->
   <!-- - [Exporting functions](#exporting-functions) -->
   <!-- - [Function type annotations](#function-type-annotations) -->
@@ -36,12 +36,6 @@ subtitle: Hello TypeScripters!
   <!-- - [Imports](#imports) -->
   <!-- - [Named imports](#named-imports) -->
   <!-- - [Unqualified imports](#unqualified-imports) -->
-<!-- - [Architecture](#architecture) -->
-
-<!--
-Other misc reminders
-- [ ] string concatenation
--->
 
 ## Comments
 
@@ -255,6 +249,39 @@ Floats in gleam use float-specific operators like `+.` and `/.` instead of shari
 1.0 /. 2.0 // 0.5
 ```
 
+### Arrays and Lists
+
+Arrays in TypeScript are allowed to have values of mixed types, but lists in Gleam can only have a single type.
+
+#### TypeScript
+
+TypeScript has arrays that support mixed types.
+
+```ts
+const arrayOfNumbers = [2, 3, 4];
+const arr2 = [1, "wow", true];
+const arr3: number[] = [1, 2, 3];
+const arr4: Array<number> = [1, 2, 3]; // eqvuialent
+
+const arr5: Array<string|number> = [1, "2", 3]; // Valid. Array of numbers and/or strings
+const arr6: number[] | string[] = [1, 2, 3]; // Valid. Array of numbers OR array of strings
+const arr7: number[] | string[] = ["one", "two", "three"]; // Valid
+const arr6: number[] | string[] = ["one", 2, "three"]; // Invalid
+```
+
+#### Gleam
+
+Gleam has a `cons` operator that works for lists destructuring and
+pattern matching. In Gleam lists are immutable so adding and removing elements
+from the start of a list is highly efficient.
+
+```gleam
+let list = [2, 3, 4]
+let list = [1, ..list]
+let [1, second_element, ..] = list
+[1.0, ..list] // compile error, type mismatch
+```
+
 ### Tuples
 
 #### TypeScript
@@ -281,70 +308,6 @@ io.print(pwd) // "password"
 io.print(my_tuple.0) // "username"
 ```
 
-<!-- ### Lists
-
-Arrays in PHP are allowed to have values of mixed types, but not in Gleam.
-
-#### PHP
-
-PHP does not feature special syntax for list handling.
-
-```php
-$list = [2, 3, 4];
-$head = array_slice($list, 0, 1)[0];
-$tail = array_slice($list, 1);
-# $head == 2
-# $tail == [3, 4]
-$arr = array_merge($tail, [1.1]);
-# $arr == [3, 4, 1.1]
-```
-
-#### Gleam
-
-Gleam has a `cons` operator that works for lists destructuring and
-pattern matching. In Gleam lists are immutable so adding and removing elements
-from the start of a list is highly efficient.
-
-```gleam
-let list = [2, 3, 4]
-let list = [1, ..list]
-let [1, second_element, ..] = list
-[1.0, ..list] // compile error, type mismatch
-``` -->
-
-<!-- ### Maps
-
-In PHP, the `array` type also covers maps and can have keys of any type as long as:
-
-- the key type is `null`, an `int`, a `string` or a `bool` (some conversions
-  occur, such as null to `""` and `false` to `0` as well as `true` to `1`
-  and `"1"` to `1`. Float indexes, which are not representing integers
-  indexes are deprecated due to being auto downcast to integers).
-- the key is unique in the dictionary.
-- the values are of any type.
-
-In Gleam, maps can have keys and values of any type, but all keys must be of
-the same type in a given map and all values must be of the same type in a
-given map. The type of key and value can differ from each other.
-
-There is no map literal syntax in Gleam, and you cannot pattern match on a map.
-Maps are generally not used much in Gleam, custom types are more common.
-
-#### PHP
-
-```php
-["key1" => "value1", "key2" => "value2"]
-["key1" => "1", "key2" => 2]
-```
-
-#### Gleam
-
-```gleam
-import gleam/map
-
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
-``` -->
 
 ### Destructuring Arrays amd Tuples
 
@@ -397,4 +360,91 @@ pub fn main() {
   io.debug(a) // [11]
   io.debug(rest) // [22, 33]
 }
+```
+
+### Objects, Records, and Maps
+
+The data structures in TypeScript and Gleam don't quite align one-to-one. TypeScript
+has objects (which can be typed as a record) and maps. Gleam has dictionaries.
+
+#### TypeScript
+
+```ts
+const obj = {
+  a: 1,
+  b: 'two',
+  c: {
+    neat: true,
+  }
+}
+
+obj.a; // 1
+obj['a']; // 1
+obj.c.neat; // true;
+```
+
+There are several ways to types objects in TypeScript. They provide a Record type,
+however, it is not a true record. Though, there is [a proposal to add true records
+and tuples](https://github.com/tc39/proposal-record-tuple) to JavaScript.
+
+```ts
+const obj1: { a: number } = { a: 1 };
+const obj2: { [key: string]: number } = { a: 1};
+const obj3: Record<string, number> = { a: 1 };
+
+{a: 1} === {a: 1} // false
+{a: 1} == {a: 1} // false
+```
+
+Maps in TypeScript are a class that are similar to objects, but separate.
+
+```ts
+const myMap = new Map<string, number>;
+
+myMap.set('a', 1);
+myMap.has('a'); // true
+myMap.get('a'); // 1
+```
+
+#### Gleam
+
+A dict, in Gleam, is a collection of keys and values which other languages may call a hashmap or table.
+
+```gleam
+import gleam/io
+import gleam/dict
+
+pub fn main() {
+  let scores = dict.from_list([#("Lucy", 13), #("Drew", 15)])
+  io.debug(scores) // dict.from_list([#("Drew", 15), #("Lucy", 13)])
+
+  let scores =
+    scores
+    |> dict.insert("Bushra", 16)
+    |> dict.insert("Darius", 14)
+    |> dict.delete("Drew")
+  io.debug(scores) // dict.from_list([#("Darius", 14), #("Bushra", 16), #("Lucy", 13)])
+}
+```
+
+### Sets
+
+#### TypeScript
+
+```ts
+const nums = new Set();
+
+nums.add(1);
+nums.has(1); // true
+```
+
+#### Gleam
+
+```gleam
+import gleam/set
+
+set.new()
+|> set.insert(2)
+|> set.contains(2)
+// -> True
 ```
