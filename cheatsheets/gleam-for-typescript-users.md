@@ -414,16 +414,27 @@ pub fn main() {
 
 ### Sets
 
+A set is a collection of unique members. Both TypeScript and Gleam support sets.
+
 #### TypeScript
+
+A set in TypeScript can a set can have multiple types.
 
 ```ts
 const nums = new Set();
 
 nums.add(1);
 nums.has(1); // true
+nums.has(999); // false
+nums.add('12'); // no runtime enforcement of types
+nums.has('12') // true
+
+const strictNums = new Set<number>(); // example declaration to limit type (at compile time)
 ```
 
 #### Gleam
+
+In Gleam, a set can only have a single type of value.
 
 ```gleam
 import gleam/set
