@@ -551,10 +551,31 @@ case is_admin {
 if/elseif/else example:
 
 ```gleam
-case True {
-  _ if is_admin == True -> "allow access"
-  _ if is_confirmed_by_mail == True -> "allow access"
-  _ -> "deny access"
+pub fn main() {
+  let x = 3
+  let y = 2
+  
+  let result = case x {
+    // Match specific values
+    // "if x is 0..."
+    0 -> {
+
+      // Nested case expression
+      // "and y is..."
+      case y {
+        1 -> "hello"
+        _ -> "goodbye"
+      }
+    } 
+    // "else if x is 1"
+    1 -> "One"
+
+    // Match any other value
+    // "else..."
+    _ -> "Other"
+  }
+
+  io.debug(result)
 }
 ```
 
