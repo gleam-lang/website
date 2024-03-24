@@ -4,8 +4,6 @@ title: Gleam for TypeScript users
 subtitle: Hello TypeScripters!
 ---
 
-<!-- Copy of PHP Table of Contents -->
-<!-- ----------------------------------------------------------------------- -->
 - [Comments](#comments)
 - [Variables](#variables)
 - [Constants](#constants)
@@ -17,25 +15,14 @@ subtitle: Hello TypeScripters!
   - [Tuples](#tuples)
   - [Destructuring Arrays and Tuples](#destructuring-arrays-and-tuples)
   - [Objects, Records, Maps](#objects-records-maps)
-<!-- - [Functions](#functions) -->
-  <!-- - [Exporting functions](#exporting-functions) -->
-  <!-- - [Function type annotations](#function-type-annotations) -->
-  <!-- - [Referencing functions](#referencing-functions) -->
-  <!-- - [Labelled arguments](#labelled-arguments) -->
-<!-- - [Operators](#operators) -->
-<!-- - [Blocks](#blocks) -->
-<!-- - [Flow control](#flow-control) -->
-  <!-- - [Case](#case) -->
-  <!-- - [Piping](#piping) -->
-  <!-- - [Try](#try) -->
-<!-- - [Custom types](#custom-types) -->
-  <!-- - [Records](#records) -->
-  <!-- - [Unions](#unions) -->
-  <!-- - [Opaque custom types](#opaque-custom-types) -->
-<!-- - [Modules](#modules) -->
-  <!-- - [Imports](#imports) -->
-  <!-- - [Named imports](#named-imports) -->
-  <!-- - [Unqualified imports](#unqualified-imports) -->
+- [Functions](#functions)
+- [Blocks](#blocks)
+- [Flow control](#flow-control) -->
+  - [Conditionals](#conditionals)
+  - [Switch and Case](#switch-and-case)
+  - [Piping](#piping)
+  - [Try](#try)
+- [Modules](#modules)
 
 ## Comments
 
@@ -185,8 +172,6 @@ Gleam will check the type annotation to ensure that it matches the type of the
 assigned value. It does not need annotations to type check your code, but you
 may find it useful to annotate variables to hint to the compiler that you want
 a specific type to be inferred.
-
-
 ## Data types
 
 ### Strings
@@ -448,3 +433,362 @@ set.new()
 |> set.contains(2)
 // -> True
 ```
+## Functions
+
+Both TypeScript and Gleam have first-class functions. Both support functions as values,
+as well as higher-order functions, partial application, currying, and similar patterns.
+
+### TypeScript
+
+```ts
+// Traditional function declaration
+function example4() {
+  return 'a';
+}
+
+// Declaration as a variable with an anonymous function
+const example2 = function() {
+  return 'b';
+}
+
+// Anonymous arrow function expressions
+const example3 = () => 'c'; // implicit return
+const addOne = x => x + 1; // single arguments don't require parentheses
+
+const example4 = example3; // functions can be passed as values
+
+example4(); // 'c'
+```
+
+### Gleam
+
+The basic syntax for functions in Gleam is similar. One key difference is that the last
+expression in a function is returned implicitly without a `return` keyword.
+
+```gleam
+fn identity(x) {
+  x
+}
+
+fn main() {
+  let func = identity
+  func(100) // 100
+
+  let func2 = fn() { "b" }
+
+  func2() // "b"
+}
+```
+
+## Blocks
+
+### Gleam
+
+Gleam has support for blocks, which are similar to functions without arguments.
+
+```gleam
+let example = {
+  let ratio = get_ratio()
+  some_value * ratio()
+}
+
+// Also used for explicit math precendence.
+let total = { x - 3} * 12
+```
+
+### TypeScript
+
+The equivalent in TypeScript would be an [IIFE (Immediately Invoked Function Expression)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE).
+
+```ts
+const example = (() => {
+  const ratio = getRatio();
+
+  return someValue * ratio;
+})();
+```
+
+## Flow Control
+
+### Conditionals
+
+#### TypeScript
+
+```ts
+if (x === 1) {
+  console.log('one');
+} else if (x === 2) {
+  console.log('two');
+} else {
+  console.log('something else');
+}
+```
+
+#### Gleam
+
+Gleam does not have the same if/else syntax and uses `case` statements/expressions instead.
+
+if/else example:
+
+```gleam
+case is_admin {
+  True -> "allow access"
+  False -> "disallow access"
+}
+```
+
+if/elseif/else example:
+
+```gleam
+case True {
+  _ if is_admin == True -> "allow access"
+  _ if is_confirmed_by_mail == True -> "allow access"
+  _ -> "deny access"
+}
+```
+
+### Switch and Case
+
+#### TypeScript
+
+TypeScript has simple switch statements that allow for some basic matching of a value.
+
+There is a language proposal for [a pattern matching syntax](https://github.com/tc39/proposal-pattern-matching).
+
+```ts
+switch (num) {
+  case 1:
+    console.log('one');
+    break;
+  case 2:
+  case 3:
+    console.log('two or three');
+    break;
+  default:
+    console.log('something else');
+}
+```
+
+#### Gleam
+
+Case statements in Gleam are robust and allow for pattern matching.
+
+```gleam
+case some_number {
+  0 -> "Zero"
+  1 -> "One"
+  2 -> "Two"
+  n -> "Some other number" // This matches anything
+}
+```
+
+As all expressions the case expression will return the matched value.
+
+They can be used to mimick if/else or if/elseif/else, with the exception that
+any branch must return unlike in TypeScript, where it is possible to mutate a
+variable of the outer block/scope and not return at all.
+
+```gleam
+let is_status_within_4xx = status / 400 == 1
+case status {
+  400 -> "Bad Request"
+  404 -> "Not Found"
+  _ if is_status_within_4xx -> "4xx" // This works as of now
+  // status if status / 400 == 1 -> "4xx" // This will work in future versions of Gleam
+  _ -> "I'm not sure"
+}
+```
+
+Exhaustiveness checking at compile time, which is in the works, will make
+certain that you must check for all possible values. A lazy and common way is
+to check of expected values and have a catchall clause with a single underscore
+`_`:
+
+```gleam
+case scale {
+  0 -> "none"
+  1 -> "one"
+  2 -> "pair"
+  _ -> "many"
+}
+```
+
+The case operator especially coupled with destructuring to provide native pattern
+matching:
+
+```gleam
+case xs {
+  [] -> "This list is empty"
+  [a] -> "This list has 1 element"
+  [a, b] -> "This list has 2 elements"
+  _other -> "This list has more than 2 elements"
+}
+```
+
+The case operator supports guards:
+
+```gleam
+case xs {
+  [a, b, c] if a >. b && a <=. c -> "ok"
+  _other -> "ko"
+}
+```
+
+...and disjoint union matching:
+
+```gleam
+case number {
+  2 | 4 | 6 | 8 -> "This is an even number"
+  1 | 3 | 5 | 7 -> "This is an odd number"
+  _ -> "I'm not sure"
+}
+```
+
+### Piping
+
+In Gleam most functions, if not all, are data first, which means the main data
+value to work on is the first argument. By this convention and the ability to
+specify the argument to pipe into, Gleam allows writing functional, immutable
+code, that reads imperative-style top down, much like unix tools and piping.
+
+#### TypeScript
+
+TypeScript does not offer pipes (yet, although there's [a proposal for a pipeline operator](https://github.com/tc39/proposal-pipeline-operator)) but it can chain calls by making functions return
+objects which in turn ship with their list of methods.
+
+```ts
+const value = add(1, subtract(multiply(1, 2), 1));
+```
+
+#### Gleam
+
+```gleam
+100
+  |> multiply(2)
+  |> subtract(1)
+  |> add(1)
+```
+
+
+### Try
+
+Error management is approached differently in TypeScript and Gleam.
+
+#### TypeScript
+
+TypeScript uses the notion of exceptions to interrupt the current code flow and
+bubble up the error to the caller.
+
+An exception is raised using the keyword `throw`.
+
+```ts
+function aFunctionThatFails() {
+  throw new Error('an error');
+}
+```
+
+The callee block will be able to capture any exception raised in the block
+using a `try/except` set of blocks:
+
+```ts
+try {
+  // callee block
+  console.log('this line will be executed and thus printed');
+  aFunctionThatFails();
+  console.log('this line will not be executed and thus not printed');
+} catch (err) {
+  console.error(err)
+}
+```
+
+#### Gleam
+
+In contrast in gleam, errors are just containers with an associated value.
+
+A common container to model an operation result is
+`Result(ReturnType, ErrorType)`.
+
+A `Result` is either:
+
+- an `Error(ErrorValue)`
+- or an `Ok(Data)` record
+
+Handling errors actually means to match the return value against those two
+scenarios, using a case for instance:
+
+```gleam
+case parse_int("123") {
+  Ok(i) -> io.println("We parsed the Int")
+  Error(e) -> io.println("That wasn't an Int")
+}
+```
+
+In order to simplify this construct, we can use the `try` keyword that will:
+
+- either bind a value to the providing name if `Ok(Something)` is matched,
+- or **interrupt the current block's flow** and return `Error(Something)` from
+  the given block.
+
+```gleam
+let a_number = "1"
+let an_error = Error("ouch")
+let another_number = "3"
+
+try int_a_number = parse_int(a_number)
+try attempt_int = parse_int(an_error) // Error will be returned
+try int_another_number = parse_int(another_number) // never gets executed
+
+Ok(int_a_number + attempt_int + int_another_number) // never gets executed
+```
+
+## Modules
+
+### TypeScript
+
+```ts
+import example from './my-module';
+
+export const myFunction = () => {
+  example();
+}
+```
+
+### Gleam
+
+```gleam
+import gleam/io
+
+pub fn main() {
+  io.debug(12)
+}
+```
+
+Gleam also has unqualified imports to access exports more directly. However,
+it is recommended to use the qualfied syntax like `io.debug(12)`.
+
+```gleam
+import gleam/io.{debug}
+
+pub fn main() {
+  debug(12)
+  io.debug(12) // still valid
+}
+```
+
+<!--
+
+Potential content to add:
+
+  - Architecture Comaprison
+  - Compiling Gleam to JavaScript
+  - Exporting TypeScript types from Gleam
+  - Labelled arguments (vs options objects in TypeScript)
+  - Classes in TypeScript
+  - Import aliases
+  - Unions
+  - Operators
+  - Promises
+  - Concurrency patterns 
+  - Examples of array/list operations
+
+-->
