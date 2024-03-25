@@ -305,6 +305,7 @@ chmod +x ./vars
 
 # Run the program
 ./vars get USER
+escript ./vars get USER # On Windows
 ```
 
 This `vars` file can be run on any computer that has a compatible version of
