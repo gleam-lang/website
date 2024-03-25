@@ -143,6 +143,11 @@
   avatar: "https://avatars.githubusercontent.com/u/727370?v=4"
   tier: 1
   square_avatar: false
+- name: "Brian Corbin"
+  url: "https://github.com/briancorbinxyz"
+  avatar: "https://avatars.githubusercontent.com/u/1385012?v=4"
+  tier: 1
+  square_avatar: false
 - name: "Brian Dawn"
   url: "https://github.com/brian-dawn"
   avatar: "https://avatars.githubusercontent.com/u/1274409?v=4"
@@ -186,6 +191,11 @@
 - name: "Chew Choon Keat"
   url: "https://github.com/choonkeat"
   avatar: "https://avatars.githubusercontent.com/u/473?v=4"
+  tier: 1
+  square_avatar: false
+- name: "Chris King"
+  url: "https://github.com/Morzaram"
+  avatar: "https://avatars.githubusercontent.com/u/70202379?u=96615b6ed2807e06cddee4d5c325c16c1c064e46&v=4"
   tier: 1
   square_avatar: false
 - name: "Chris Lloyd"
@@ -256,6 +266,11 @@
 - name: "Danielle Maywood"
   url: "https://github.com/DanielleMaywood"
   avatar: "https://avatars.githubusercontent.com/u/40153966?u=7e8e266d391727da20564f18359c227682b7319a&v=4"
+  tier: 1
+  square_avatar: false
+- name: "Danny Arnold"
+  url: "https://github.com/pinnet"
+  avatar: "https://avatars.githubusercontent.com/u/5225217?u=fc4c4c9067182f77a10a04c53f913ee4bb7cb316&v=4"
   tier: 1
   square_avatar: false
 - name: "Danny Martini"
@@ -558,6 +573,11 @@
   avatar: "https://avatars.githubusercontent.com/u/39591095?v=4"
   tier: 1
   square_avatar: false
+- name: "Krzysztof G."
+  url: "https://github.com/krzysztofgb"
+  avatar: "https://avatars.githubusercontent.com/u/24556218?u=c70e47de506de3bf34ca190d0848c1457acb61d1&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Lars Wikman"
   url: "https://github.com/lawik"
   avatar: "https://avatars.githubusercontent.com/u/1971237?u=671495fb9f1a273698d28143739868e993be816e&v=4"
@@ -773,6 +793,11 @@
   avatar: "https://avatars.githubusercontent.com/u/1938892?u=5a78046101d2b51614045e214aa1545a9dc792a2&v=4"
   tier: 1
   square_avatar: false
+- name: "Peter"
+  url: "https://github.com/peterpanduro"
+  avatar: "https://avatars.githubusercontent.com/u/2345735?u=31c9321cb99f144ee2118de4a5c0fc9b030cf839&v=4"
+  tier: 1
+  square_avatar: false
 - name: "Peter Rice"
   url: "https://github.com/pvsr"
   avatar: "https://avatars.githubusercontent.com/u/12705140?v=4"
@@ -794,7 +819,7 @@
   tier: 1
   square_avatar: false
 - name: "Race Williams"
-  url: "https://github.com/r4c3"
+  url: "https://github.com/raquentin"
   avatar: "https://avatars.githubusercontent.com/u/63271957?u=8798e7a8cc722cd97602558c4548f1abce9253e2&v=4"
   tier: 1
   square_avatar: false
@@ -948,6 +973,11 @@
   avatar: "https://avatars.githubusercontent.com/u/154392?u=e2455759892678ce94360af4620793f79a91a0e9&v=4"
   tier: 1
   square_avatar: false
+- name: "Vic Valenzuela"
+  url: "https://github.com/sandsower"
+  avatar: "https://avatars.githubusercontent.com/u/302322?u=d0dfb89c55fb48d78b05f737ddb52d1585715abd&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Victor Rodrigues"
   url: "https://github.com/rodrigues"
   avatar: "https://avatars.githubusercontent.com/u/128147?u=ca06210e8377eb67b9420a79233bcb7820f14b33&v=4"
@@ -1016,6 +1046,11 @@
 - name: "brettkolodny"
   url: "https://github.com/brettkolodny"
   avatar: "https://avatars.githubusercontent.com/u/22826580?u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4"
+  tier: 1
+  square_avatar: false
+- name: "bucsi"
+  url: "https://github.com/bucsi"
+  avatar: "https://avatars.githubusercontent.com/u/11545252?u=07123e7da757ad53d79e6128781f535116a355dd&v=4"
   tier: 1
   square_avatar: false
 - name: "clangley"
