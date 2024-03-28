@@ -55,7 +55,7 @@ Multi line comments may be written like so:
  */
 ```
 
-IN PHP, above `trait`, `interface`, `class`, `member`, `function` declarations
+In PHP, above `trait`, `interface`, `class`, `member`, `function` declarations
 there can be `docblocks` like so:
 
 ```php
@@ -512,7 +512,7 @@ are fully type checked.
 | Divide             | `/`    | `/`                       | In Gleam both values must be **Int**                                                   |
 | Divide             | `/`    | `/.`                      | In Gleam both values must be **Float**                                                 |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **Int**                                                   |
-| Concatenate        | `.`    | `<>`                      | In Gleam both values must be **String**
+| Concatenate        | `.`    | `<>`                      | In Gleam both values must be **String**                                                |
 | Pipe               | `->`   | <code>&vert;></code>      | Gleam's pipe can chain function calls. See note for PHP                                |
 
 ### Notes on operators
@@ -520,8 +520,8 @@ are fully type checked.
 - For bitwise operators, which exist in PHP but not in Gleam,
   see: <https://github.com/gleam-lang/bitwise>.
 - `==` is by default comparing by value in PHP:
-  - Types may be autocast to be compareable.
-  - Two objects with the same members values will equal:
+  - Types may be autocast to be comparable.
+  - Two objects with the same members values will equal.
 - `===` is for comparing by strict equality in PHP:
   - Types will not be autocast for comparison
   - Two objects with the same members will not equal. Only if a variable binds
@@ -765,9 +765,9 @@ between floats and integers in various ways including `rounding`, `floor`,
 
 ### Case
 
-Case is one of the most used control flow in Gleam. It can be seen as a switch
-statement on steroids. It provides a terse way to match a value type to an
-expression. It is also used to replace `if`/`else` statements.
+Case is one of the most used control flow methods in Gleam. It can be seen as a
+switch statement on steroids. It provides a terse way to match a value type to
+an expression. It is also used to replace `if`/`else` statements.
 
 #### PHP
 
@@ -1293,7 +1293,7 @@ pub fn main() {
 #### PHP
 
 PHP features ways to load arbitrary PHP code: `require`, `include` and
-autoload such as `spl_autoload_register`. Once class pathes are known and
+autoload such as `spl_autoload_register`. Once class paths are known and
 registered for autoloading, they can brought into the scope of a file by using
 the `use`statement which is part of PHP's namespacing.
 Also see <https://www.php-fig.org/psr/psr-4/>.
@@ -1443,12 +1443,12 @@ To iterate a few foundational differences:
   or the memory limit is exceeded.
 - Gleam on Erlang/BEAM allows to processes requests in a similar isolation
   level that PHP offers in contrast to applications running *Go* or *Ruby*.
-  The level of isoluation means that, very similar to PHP, if a process
+  The level of isolation means that, very similar to PHP, if a process
   crashes (in PHP read: if a request crashes) then the supervision system
   can restart that process or after a while or amount of tries abort
   repeating restarts on the process with that given input data. This means
   Erlang/BEAM will yield similar robustness that PHP developers are used
-  to and similar isolation guarantuees.
+  to and similar isolation guarantees.
 - When executing Gleam code in fact its compiled Erlang or JavaScript is
   executed. So in case there are runtime crashes, the crash log will show
   Erlang (or browser-console/NodeJS/Deno) debug information. In Gleam
