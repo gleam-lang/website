@@ -822,5 +822,6 @@ Potential content to add:
   - Promises
   - Concurrency patterns 
   - Examples of array/list operations
+  - Generics
 
 -->
