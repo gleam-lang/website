@@ -202,7 +202,7 @@ It has these fields:
             <img
               loading="lazy"
               src="{{ sponsor.avatar }}"
-              class="sponsor-tier-{{ sponsor.tier }} {% unless sponsor.square_avatar %} round{% endunless %}"
+              class="{% unless sponsor.square_avatar %}round{% endunless %}"
               alt="{{ sponsor.name }}"
             />
           </a>
