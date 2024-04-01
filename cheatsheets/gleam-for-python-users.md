@@ -640,7 +640,7 @@ A Result is either:
 Handling errors actually means to match the return value against those two scenarios, using a case for instance:
 
 ```gleam
-case parse_int("123") {
+case int.parse("123") {
   Error(e) -> io.println("That wasn't an Int")
   Ok(i) -> io.println("We parsed the Int")
 }
