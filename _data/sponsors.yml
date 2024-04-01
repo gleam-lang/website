@@ -193,6 +193,11 @@
   avatar: "https://avatars.githubusercontent.com/u/473?v=4"
   tier: 1
   square_avatar: false
+- name: "Chris Donnelly"
+  url: "https://github.com/ceedon"
+  avatar: "https://avatars.githubusercontent.com/u/2904426?u=ce03755dfbcb8621134535e1b3d72ec5f61e5db3&v=4"
+  tier: 2
+  square_avatar: false
 - name: "Chris King"
   url: "https://github.com/Morzaram"
   avatar: "https://avatars.githubusercontent.com/u/70202379?u=96615b6ed2807e06cddee4d5c325c16c1c064e46&v=4"
@@ -251,6 +256,11 @@
 - name: "Colin"
   url: "https://github.com/insanitybit"
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
+  tier: 1
+  square_avatar: false
+- name: "Comamoca"
+  url: "https://github.com/Comamoca"
+  avatar: "https://avatars.githubusercontent.com/u/93137338?u=95a9601ff7e08488494cca78d0cd4958a13beefb&v=4"
   tier: 1
   square_avatar: false
 - name: "Cristine Guadelupe"
@@ -530,7 +540,7 @@
   square_avatar: false
 - name: "Jiri Luzny"
   url: "https://github.com/jluzny"
-  avatar: "https://avatars.githubusercontent.com/u/6214030?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/6214030?u=3765aee5bc3778d2307306a648911c4f93dba17d&v=4"
   tier: 1
   square_avatar: false
 - name: "Joey Kilpatrick"
@@ -608,11 +618,6 @@
   avatar: "https://avatars.githubusercontent.com/u/24841828?v=4"
   tier: 1
   square_avatar: false
-- name: "Linda Vitali"
-  url: "https://github.com/vitlinda"
-  avatar: "https://avatars.githubusercontent.com/u/62563336?u=bf6d34cc65bc187a8f22a36c5919bdcc550ab44a&v=4"
-  tier: 1
-  square_avatar: false
 - name: "Loïc Tosser"
   url: "https://github.com/wowi42"
   avatar: "https://avatars.githubusercontent.com/u/7694420?u=56f3fd08e9639f246cac550a418da9957c3fbba6&v=4"
@@ -641,11 +646,6 @@
 - name: "Mariano Uvalle"
   url: "https://github.com/AYM1607"
   avatar: "https://avatars.githubusercontent.com/u/24952509?u=3d31d5974afd09f9eb42135138ebf8dc579ce365&v=4"
-  tier: 1
-  square_avatar: false
-- name: "Mario Flach"
-  url: "https://github.com/redrabbit"
-  avatar: "https://avatars.githubusercontent.com/u/430974?u=a331b5bfa7b803a4ceb531c0a86b50a46922e2d1&v=4"
   tier: 1
   square_avatar: false
 - name: "Marius Kalvø"
@@ -750,7 +750,7 @@
   square_avatar: false
 - name: "Nayuki"
   url: "https://github.com/Kuuuuuuuu"
-  avatar: "https://avatars.githubusercontent.com/u/69802296?u=f48eba952fa71109bea6d1923e4a7eb0daa2c9c7&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/69802296?u=bc0a63f5e48e7e35c65896384317afc001d0a981&v=4"
   tier: 1
   square_avatar: false
 - name: "Nick Reynolds"
