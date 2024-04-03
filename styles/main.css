@@ -210,8 +210,14 @@ main.content {
   transform: rotate(-10deg);
   transition: transform 0.2s ease;
 }
-
-.hero-lucy:hover {
+.footer-lucy {
+  transition: transform 200ms ease;
+}
+.logo:hover .footer-lucy {
+  content: url("/images/lucy/lucyhappy.svg");
+  transform: rotate(13deg);
+}
+.hero-lucy:hover{
   content: url("/images/lucy/lucyhappy.svg");
   transform: rotate(13deg);
 }
