@@ -275,6 +275,10 @@
   url: "https://github.com/gothy"
   avatar: "https://avatars.githubusercontent.com/u/131037?v=4"
   square_avatar: false
+- name: "EMR Technical Solutions"
+  url: "https://github.com/EMRTS"
+  avatar: "https://avatars.githubusercontent.com/u/13780078?v=4"
+  square_avatar: false
 - name: "Edon Gashi"
   url: "https://github.com/edongashi"
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
@@ -398,6 +402,10 @@
 - name: "Igor Rumiha"
   url: "https://github.com/irumiha"
   avatar: "https://avatars.githubusercontent.com/u/100465?v=4"
+  square_avatar: false
+- name: "Ismael Abreu"
+  url: "https://github.com/ismaelga"
+  avatar: "https://avatars.githubusercontent.com/u/492663?u=0897dde364f2a2c0368711ac09c8d97558a0ac87&v=4"
   square_avatar: false
 - name: "Ivar Vong"
   url: "https://github.com/ivarvong"
@@ -707,6 +715,10 @@
   url: "https://github.com/malkomalko"
   avatar: "https://avatars.githubusercontent.com/u/763?u=a129acaa2c1d801e36baaf0bf14fecf4626abb7f&v=4"
   square_avatar: false
+- name: "Ross Bratton"
+  url: "https://github.com/brattonross"
+  avatar: "https://avatars.githubusercontent.com/u/26525065?u=5365c1ecda1aafece8d1e6ef9d46baea3e58eff5&v=4"
+  square_avatar: false
 - name: "Ross Cousens"
   url: "https://github.com/rcousens"
   avatar: "https://avatars.githubusercontent.com/u/6834920?u=0410e0993b422a277e13536740bdb5da77253d99&v=4"
@@ -730,6 +742,10 @@
 - name: Samu
   url: "https://github.com/scristobal"
   avatar: "https://avatars.githubusercontent.com/u/9478529?u=8ef9ddec6be3c7231e2b58d0c20d825b352e629f&v=4"
+  square_avatar: false
+- name: "Santi Lertsumran"
+  url: "https://github.com/mrgleam"
+  avatar: "https://avatars.githubusercontent.com/u/11692854?u=12baaf22f39c59c6284b4db9322255a5d827ac9d&v=4"
   square_avatar: false
 - name: "Saša Jurić"
   url: "https://github.com/sasa1977"
