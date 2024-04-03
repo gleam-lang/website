@@ -273,4 +273,4 @@ Gleamlins, according to [the Gleam Discord server](https://discord.gg/Fm8Pwmy).
 
 ## Is it good?
 
-Yes, I think so. :)
+[Yes](https://news.ycombinator.com/item?id=3067434), I think so. :)
