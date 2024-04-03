@@ -702,6 +702,7 @@ main.content {
   position: relative;
   list-style: none;
   margin-bottom: var(--gap-4);
+  padding-left: 20px;
 }
 .news-posts li::before {
   content: '';
@@ -709,7 +710,7 @@ main.content {
   display: block;
   width: 4px;
   height: 100%;
-  left: -20px;
+  left: 0;
   background-color: var(--color-faff-pink);
   border-radius: 50vw;
 }
@@ -721,13 +722,17 @@ main.content {
 .news-posts a {
   text-decoration: none;
 }
-
-.news-posts h2 {
-  margin: 0;
+.news-posts .links {
   transition: color 200ms ease-in-out;
 }
-.news-posts h2:hover {
+.news-posts .links:hover {
   color: var(--color-faff-pink);
+}
+.news-posts .author {
+  text-decoration: underline;
+}
+.news-posts h2 {
+  margin: 0;
 }
 .news-posts span {
   color: var(--color-code-grey);
