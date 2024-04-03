@@ -197,7 +197,7 @@ this v1.0.0 release possible through sponsorship or code contributions:
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
-      <img class="sponsor-fly no-shadow" src="/images/sponsors/fly.svg" alt="Fly">
+      <img class="sponsor-fly no-shadow" src="/images/sponsors/fly-invert.svg" alt="Fly">
     </a>
   </li>
 </ul>
