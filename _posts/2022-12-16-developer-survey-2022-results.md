@@ -1,5 +1,6 @@
 ---
 author: Louis Pilfold
+author-link: https://github.com/lpil
 title: Developer Survey 2022 Results
 subtitle: What did we learn about the Gleamers?
 tags:
