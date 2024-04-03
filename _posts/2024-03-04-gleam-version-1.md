@@ -1,5 +1,6 @@
 ---
 author: Louis Pilfold
+author-link: https://github.com/lpil
 title: Gleam version 1
 subtitle: It's finally here! 🎉
 tags:
