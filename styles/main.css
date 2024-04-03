@@ -696,8 +696,22 @@ main.content {
 }
 
 .news-posts li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   list-style: none;
   margin-bottom: var(--gap-4);
+}
+.news-posts li::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 100%;
+  left: -20px;
+  background-color: var(--color-faff-pink);
+  border-radius: 50vw;
 }
 
 .news-posts li > * {
@@ -710,8 +724,15 @@ main.content {
 
 .news-posts h2 {
   margin: 0;
+  transition: color 200ms ease-in-out;
 }
-
+.news-posts h2:hover {
+  color: var(--color-faff-pink);
+}
+.news-posts span {
+  color: var(--color-code-grey);
+  font-size: var(--font-size-small);
+}
 .post {
   position: relative;
 }
