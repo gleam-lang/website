@@ -5,7 +5,7 @@ subtitle: What's happening in the Gleam world?
 ---
 <ul class="news-posts">
   {% for post in site.posts %}
-  <li post-tags="{% for tag in post.tags %}{{ tag }} {% endfor %}" post-author="{{post.author}}">
+  <li>
     <a href="{{ post.url }}"><h2 class="links">{{ post.title }}</h2></a>
     {% if post.subtitle %}
     <p>{{ post.subtitle }}</p>
