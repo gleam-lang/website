@@ -732,7 +732,7 @@ main.content {
 .news-posts .links:hover {
   color: var(--color-faff-pink);
 }
-.news-posts .author {
+.news-posts .links.author {
   text-decoration: underline;
 }
 .news-posts h2 {
