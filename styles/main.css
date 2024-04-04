@@ -707,7 +707,6 @@ main.content {
   position: relative;
   list-style: none;
   margin-bottom: var(--gap-4);
-  padding-left: 20px;
 }
 .news-posts li::before {
   content: '';
@@ -715,7 +714,7 @@ main.content {
   display: block;
   width: 4px;
   height: 100%;
-  left: 0;
+  left: -20px;
   background-color: var(--color-faff-pink);
   border-radius: 50vw;
 }
