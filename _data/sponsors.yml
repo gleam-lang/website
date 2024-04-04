@@ -367,6 +367,10 @@
   url: "https://github.com/ildorn"
   avatar: "https://avatars.githubusercontent.com/u/277070?u=1f4612b0d29ffee4021bc8024bd24a748c7c5fe3&v=4"
   square_avatar: false
+- name: "Hayes Hundman"
+  url: "https://github.com/jhundman"
+  avatar: "https://avatars.githubusercontent.com/u/24263908?v=4"
+  square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
   avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
@@ -439,6 +443,10 @@
   url: "https://github.com/okkdev"
   avatar: "https://avatars.githubusercontent.com/u/20144629?u=a7cc738c98e454d194d6c445d423724da9cbedd3&v=4"
   square_avatar: false
+- name: "Jimpjorps™"
+  url: "https://github.com/hunkyjimpjorps"
+  avatar: "https://avatars.githubusercontent.com/u/5170341?v=4"
+  square_avatar: false
 - name: "Jiri Luzny"
   url: "https://github.com/jluzny"
   avatar: "https://avatars.githubusercontent.com/u/6214030?u=3765aee5bc3778d2307306a648911c4f93dba17d&v=4"
@@ -454,6 +462,10 @@
 - name: "John Björk"
   url: "https://github.com/JohnBjrk"
   avatar: "https://avatars.githubusercontent.com/u/1716064?u=f19404f104d8755da53b00ad665b49a8b497477f&v=4"
+  square_avatar: false
+- name: "John Pavlick"
+  url: "https://github.com/jmpavlick"
+  avatar: "https://avatars.githubusercontent.com/u/431497?u=a3a06d79d5c7d5f78dafb5df080551cb292959b4&v=4"
   square_avatar: false
 - name: "Jonas Hedman Engström"
   url: "https://github.com/JonasHedEng"
