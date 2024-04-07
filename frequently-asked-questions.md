@@ -248,10 +248,11 @@ module that uses the macros, and then use that module in your Gleam code.
 
 ## Should I put Gleam in production?
 
-Gleam is a production-ready programming language with a vibrant community and 
-a young but growing [package ecosystem](https://packages.gleam.run/). In 
-addition, the Erlang VM is extremely mature and well-tested, so the runtime of
-the language is ready for production.
+Yes!
+
+Gleam is a production-ready and the the Erlang and JavaScript runtimes it runs
+on are extremely mature and battle-tested. Gleam is ready for mission critical
+workloads.
 
 
 ## Why is the compiler written in Rust?
