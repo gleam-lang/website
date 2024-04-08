@@ -19,10 +19,6 @@
   url: "https://github.com/thebugcatcher"
   avatar: "https://avatars.githubusercontent.com/u/10440910?u=15493fb3a073935b9e9e41eebbd32e1cca53dc0b&v=4"
   square_avatar: false
-- name: "Adi Salimgereyev"
-  url: "https://github.com/abs0luty"
-  avatar: "https://avatars.githubusercontent.com/u/68709264?u=a66284236e51ad91b981636e4e9afefc78ebd107&v=4"
-  square_avatar: false
 - name: "Aiden Fox Ivey"
   url: "https://github.com/aidenfoxivey"
   avatar: "https://avatars.githubusercontent.com/u/71291879?u=e6b0a8c645261bca84e7ffbd15887fd57517950c&v=4"
@@ -607,6 +603,10 @@
   url: "https://github.com/mogold"
   avatar: "https://avatars.githubusercontent.com/u/7964129?v=4"
   square_avatar: false
+- name: MzRyuKa
+  url: "https://github.com/rykawamu"
+  avatar: "https://avatars.githubusercontent.com/u/38804392?v=4"
+  square_avatar: false
 - name: NFIBrokerage
   url: "https://github.com/NFIBrokerage"
   avatar: "https://avatars.githubusercontent.com/u/20132342?v=4"
@@ -622,6 +622,10 @@
 - name: Nayuki
   url: "https://github.com/Kuuuuuuuu"
   avatar: "https://avatars.githubusercontent.com/u/69802296?u=bc0a63f5e48e7e35c65896384317afc001d0a981&v=4"
+  square_avatar: false
+- name: "Nick Chapman"
+  url: "https://github.com/nchapman"
+  avatar: "https://avatars.githubusercontent.com/u/3095?u=1c0038e3305d41b5911a005d818f8f4f10c2af4e&v=4"
   square_avatar: false
 - name: "Nick Reynolds"
   url: "https://github.com/ndreynolds"
@@ -763,6 +767,10 @@
   url: "https://github.com/sasa1977"
   avatar: "https://avatars.githubusercontent.com/u/202498?u=71c741d8bb7e45e98f9bed3adb51c98575fee650&v=4"
   square_avatar: false
+- name: "Scott Trinh"
+  url: "https://github.com/scotttrinh"
+  avatar: "https://avatars.githubusercontent.com/u/1682194?u=120233eb27f98f574a4ad36891d7ea3f6e578928&v=4"
+  square_avatar: false
 - name: "Scott Wey"
   url: "https://github.com/scottwey"
   avatar: "https://avatars.githubusercontent.com/u/15810260?u=8affe6b0b2bf506998a3a28b6be70255bd46c51f&v=4"
@@ -854,10 +862,6 @@
 - name: Willyboar
   url: "https://github.com/Willyboar"
   avatar: "https://avatars.githubusercontent.com/u/22755228?u=a25d2e6735b27e22172aa8fe6944873ccd1e3319&v=4"
-  square_avatar: false
-- name: "Wilson Silva"
-  url: "https://github.com/wilsonsilva"
-  avatar: "https://avatars.githubusercontent.com/u/645203?v=4"
   square_avatar: false
 - name: "Yamen Sader"
   url: "https://github.com/yamen"
