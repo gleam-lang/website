@@ -250,7 +250,7 @@ module that uses the macros, and then use that module in your Gleam code.
 
 Yes!
 
-Gleam is a production-ready and the the Erlang and JavaScript runtimes it runs
+Gleam is a production-ready programming language and the Erlang and JavaScript runtimes it runs
 on are extremely mature and battle-tested. Gleam is ready for mission critical
 workloads.
 
