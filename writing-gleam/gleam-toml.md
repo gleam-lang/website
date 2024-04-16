@@ -108,7 +108,7 @@ extra_applications = ["inets", "ssl"]
 typescript_declarations = true
 
 # Which JavaScript runtime to use with `gleam run`, `gleam test` etc.
-runtime = "node" # or "deno"
+runtime = "node" # or "deno" or "bun"
 
 # Configuration specific to the Deno runtime (optional)
 # https://deno.land/manual@v1.30.0/basics/permissions#permissions
