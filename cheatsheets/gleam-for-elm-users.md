@@ -8,7 +8,7 @@ subtitle: Hello Elm type magicians!
 
 Elm and Gleam have similar goals of providing a robust and sound type system with a friendly and approachable set of features.
 
-They have some differences in their output and focus. Where Elm compiles to JavaScript, Gleam compiles to Erlang, and where Elm is best suited for front-end browser based applications, Gleam initially targets back-end and server-side application development.
+They have some differences in their output and focus. Where Elm compiles to JavaScript, Gleam compiles to both Erlang and JavaScript, and where Elm is best suited for front-end browser based applications, Gleam targets back-end and front-end application development.
 
 Another area in which Elm and Gleam differ is around talking to other languages.
 Elm does not provide user-defined foreign function interfaces for interacting
@@ -308,6 +308,7 @@ pub fn identity(x) {
 ```gleam
 // in file main.gleam
 import one // if foo was in a folder called `lib` the import would be `lib/one`
+
 pub fn main() {
   one.identity(1)
 }
@@ -585,20 +586,20 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 As Gleam does not treat integers and floats generically, there is a pattern of an extra `.` to separate `Int` operators from `Float` operators.
 
-| Operator         | Elm           | Gleam | Notes                                         |
-| ---------------- | ------------- | ----- | --------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------- |
+| Operator         | Elm           | Gleam&nbsp;&nbsp; | Notes                                         |
+|:-----------------|:--------------|:------|:----------------------------------------------|
 | Equal            | `==`          | `==`  | In Gleam both values must be of the same type |
 | Not equal        | `/=`          | `!=`  | In Gleam both values must be of the same type |
 | Greater than     | `>`           | `>`   | In Gleam both values must be **ints**         |
 | Greater than     | `>`           | `>.`  | In Gleam both values must be **floats**       |
-| Greater or equal | `>=`          | `>=`  | In Gleam both values must be **ints**         |
+| Greater&nbsp;or&nbsp;equal | `>=`          | `>=`  | In Gleam both values must be **ints**         |
 | Greater or equal | `>=`          | `>=.` | In Gleam both values must be **floats**       |
 | Less than        | `<`           | `<`   | In Gleam both values must be **ints**         |
 | Less than        | `<`           | `<.`  | In Gleam both values must be **floats**       |
 | Less or equal    | `<=`          | `>=`  | In Gleam both values must be **ints**         |
 | Less or equal    | `<=`          | `>=.` | In Gleam both values must be **floats**       |
 | Boolean and      | `&&`          | `&&`  | In Gleam both values must be **bools**        |
-| Boolean or       | `             |       | `                                             | `   |                                                                                                                                    | `   | In Gleam both values must be **bools** |
+| Boolean or       | `||`          | `||`  | In Gleam both values must be **bools**        |
 | Add              | `+`           | `+`   | In Gleam both values must be **ints**         |
 | Add              | `+`           | `+.`  | In Gleam both values must be **floats**       |
 | Subtract         | `-`           | `-`   | In Gleam both values must be **ints**         |
@@ -609,7 +610,7 @@ As Gleam does not treat integers and floats generically, there is a pattern of a
 | Divide           | `/`           | `/.`  | In Gleam both values must be **floats**       |
 | Modulo           | `remainderBy` | `%`   | In Gleam both values must be **ints**         |
 | Concatenate      | `++`          | `<>`  |                                               |
-| Pipe             | `             | >`    | `                                             | >`  | Gleam's pipe will try piping into the first position or Elm style as the only argument to a function, using whichever type checks. |
+| Pipe             | `|>`          | `|>`  | Gleam's pipe will try piping into the first position or Elm style as the only argument to a function, using whichever type checks. |
 
 ## Type Aliases
 
@@ -694,7 +695,7 @@ fn get_name(user) {
 
 In Gleam, a custom type with a single entry that has fields of its own fills the role of `type alias` in Elm.
 
-In order to create an opaque data type, you can use the [`opaque`](../book/tour/custom-types.html#opaque-types) keyword.
+In order to create an opaque data type, you can use the [`opaque`](https://tour.gleam.run/everything/#advanced-features-opaque-types) keyword.
 
 ### Maybe
 
@@ -760,7 +761,7 @@ let an_error = "ouch"
 let another_number = "3"
 
 use int_a_number <- try(parse_int(a_number)) // parse_int(a_number) returns Ok(1) so int_a_number is bound to 1
-use attempt_int <- try(parse_int(an_error)) // parse_int(a_number) returns an Error and will be returned
+use attempt_int <- try(parse_int(an_error)) // parse_int(an_error) returns an Error and will be returned
 use int_another_number <- try(parse_int(another_number)) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
@@ -842,7 +843,7 @@ case xs {
 }
 ```
 
-For more information and examples, see the [case expressions](../book/tour/case-expressions.html) entry in the [Gleam language tour](../book/tour/index.html).
+For more information and examples, see the [case expressions](https://tour.gleam.run/everything/#flow-control-case-expressions) entry in the [Gleam language tour](https://tour.gleam.run/).
 
 ## Commands
 
@@ -864,16 +865,26 @@ Elm programs compile to JavaScript and primarily allow you to talk to JavaScript
 
 Gleam provides syntax for directly calling Erlang functions. The developer specifies the types for the Erlang function and the compiler assumes those types are accurate. This means less friction when calling Erlang code but also means less of a guarantee of safety as the developer might get the types wrong.
 
-Functions that call Erlang code directly use the `external` keyword and use strings to refer to the Erlang function to call.
+Gleam also provides a similar syntax for calling JavaScript functions via wrapper modules you provide.
+
+Functions that call Erlang or JavaScript code directly use the `@external` attribute and use strings to refer to the module/function to call.
 
 It is possible to call functions provided by other languages on the Erlang Virtual Machine but only via the Erlang name that those functions end up with.
 
 ```gleam
-pub external fn random_float() -> Float = "rand" "uniform"
+@external(erlang, "rand", "uniform")
+pub fn random_float() -> Float
 
 // Elixir modules start with `Elixir.`
-pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
+@external(erlang, "Elixir.IO", "inspect")
+pub fn inspect(a) -> a
+
+@external(erlang, "calendar", "local_time")
+@external(javascript, "./my_package_ffi.mjs", "now")
+pub fn now() -> DateTime
 ```
+
+For more information and examples, see the [Externals](https://tour.gleam.run/everything/#advanced-features-externals) entry in the [Gleam language tour](https://tour.gleam.run/).
 
 ## Architecture
 
@@ -907,7 +918,7 @@ The Elm compiler is written in [Haskell](https://www.haskell.org/) and distribut
 
 #### Gleam
 
-The Gleam compiler is written in [Rust](https://www.rust-lang.org/) and distributed as [precompiled binaries](https://gleam.run/getting-started/#installing-gleam) or via some [package managers](https://gleam.run/getting-started/#installing-gleam). The core libraries are written in a mix of Gleam and Erlang.
+The Gleam compiler is written in [Rust](https://www.rust-lang.org/) and distributed as [precompiled binaries](https://github.com/gleam-lang/gleam/releases) or via some [package managers](https://gleam.run/getting-started/installing/#installing-gleam). The core libraries are written in a mix of Gleam and Erlang.
 
 ## Other concepts
 
