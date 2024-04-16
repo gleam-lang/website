@@ -47,8 +47,8 @@ Type classes are fun and enable creation of very nice, concise APIs, but they ca
 make it easy to make challenging to understand code, tend to have confusing
 error messages, make consuming the code from other languages much harder, have a
 high compile time cost, and have a runtime cost unless the compiler performs
-full-program compilation and expensive monomorphism. This is unfortunately not a
-good fit for Gleam and they are not planned.
+full-program compilation and expensive monomorphization. This is unfortunately
+not a good fit for Gleam and they are not planned.
 
 
 ## Will Gleam have metaprogramming?
