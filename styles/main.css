@@ -131,7 +131,6 @@ p {
 
 a:visited,
 a {
-  word-break: break-all;
   color: var(--color-white);
   text-decoration-color: var(--color-faff-pink);
 }
@@ -217,7 +216,7 @@ main.content {
   content: url("/images/lucy/lucyhappy.svg");
   transform: rotate(13deg);
 }
-.hero-lucy:hover{
+.hero-lucy:hover {
   content: url("/images/lucy/lucyhappy.svg");
   transform: rotate(13deg);
 }
@@ -681,6 +680,7 @@ main.content {
 
 .page.content {
   padding-bottom: var(--gap-4);
+  overflow-wrap: break-word;
 }
 
 .page pre {
@@ -709,7 +709,7 @@ main.content {
   margin-bottom: var(--gap-4);
 }
 .news-posts li::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 4px;
