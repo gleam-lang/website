@@ -68,8 +68,8 @@ gleam = ">= 0.30.0"
 # Uses the Hex version requirement format
 # https://hexdocs.pm/elixir/Version.html#module-requirements
 [dependencies]
-gleam_stdlib = ">= 0.18.0 and < 0.19.0"
-gleam_erlang = ">= 0.2.0 and < 0.3.0"
+gleam_stdlib = ">= 0.18.0 and < 2.0.0"
+gleam_erlang = ">= 0.2.0 and < 2.0.0"
 gleam_http = ">= 2.1.0 and < 3.0.0"
 # Local dependencies can be specified with a path
 my_other_project = { path = "../my_other_project" }
@@ -79,8 +79,7 @@ my_other_project = { path = "../my_other_project" }
 # This table cannot include any packages that are already found in the
 # `dependencies` table.
 [dev-dependencies]
-gleeunit = ">= 0.3.0 and < 0.4.0"
-gleam_bitwise = ">= 0.3.0 and < 0.4.0"
+gleeunit = ">= 1.0.0 and < 2.0.0"
 
 # Documentation specific configuration (optional)
 [documentation]
