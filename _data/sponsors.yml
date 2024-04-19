@@ -67,6 +67,10 @@
   url: "https://github.com/anthony-khong"
   avatar: "https://avatars.githubusercontent.com/u/12151757?u=ae67cbe1cad1e8bf6ec696c3439c38ba97c98ec3&v=4"
   square_avatar: false
+- name: "Anthony Maxwell"
+  url: "https://github.com/Illbjorn"
+  avatar: "https://avatars.githubusercontent.com/u/133805840?u=07e8ba13affdd1025b1add7f0cf96af68b01ca8f&v=4"
+  square_avatar: false
 - name: "Anthony Scotti"
   url: "https://github.com/amscotti"
   avatar: "https://avatars.githubusercontent.com/u/598958?v=4"
@@ -357,7 +361,7 @@
   square_avatar: false
 - name: "Hayleigh Thompson"
   url: "https://github.com/hayleigh-dot-dev"
-  avatar: "https://avatars.githubusercontent.com/u/9001354?u=92cd6cf9acabcd3320f314d5e285dffc941c9053&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/9001354?u=16311cd035e27edadd352cb377a541e0b11bc632&v=4"
   square_avatar: false
 - name: "Hazel Bachrach"
   url: "https://github.com/hibachrach"
@@ -390,6 +394,10 @@
 - name: "Igor Rumiha"
   url: "https://github.com/irumiha"
   avatar: "https://avatars.githubusercontent.com/u/100465?v=4"
+  square_avatar: false
+- name: "Isaac Harris-Holt"
+  url: "https://github.com/isaacharrisholt"
+  avatar: "https://avatars.githubusercontent.com/u/47423046?u=2f967bd888efd962f41319abb72cc4c9a347a147&v=4"
   square_avatar: false
 - name: "Ismael Abreu"
   url: "https://github.com/ismaelga"
@@ -779,10 +787,6 @@
   url: "https://github.com/tehprofessor"
   avatar: "https://avatars.githubusercontent.com/u/995086?u=a6f421a92217f34de47433c1eb57e198b8b9bdd1&v=4"
   square_avatar: false
-- name: "Shaun McCarthy"
-  url: "https://github.com/isocuda"
-  avatar: "https://avatars.githubusercontent.com/u/8029534?u=b870d56e30e994060967ef10fce5da0f6b07616f&v=4"
-  square_avatar: false
 - name: "Shuqian Hon"
   url: "https://github.com/honsq90"
   avatar: "https://avatars.githubusercontent.com/u/1791439?u=3de7f249a698c500064294b4972defa3aa0399b6&v=4"
@@ -954,10 +958,6 @@
 - name: sekun
   url: "https://github.com/sekunho"
   avatar: "https://avatars.githubusercontent.com/u/20364796?u=5cade410236443af83ef153029eb7b379ab15205&v=4"
-  square_avatar: false
-- name: victorybhg
-  url: "https://github.com/victorybhg"
-  avatar: "https://avatars.githubusercontent.com/u/164061269?v=4"
   square_avatar: false
 - name: xhh
   url: "https://github.com/xhh"
