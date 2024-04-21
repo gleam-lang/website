@@ -9,12 +9,12 @@ following forums:
 
 <ul class="community-socials">
     <li>
-        <a target="_blank" href="https://discord.gg/Fm8Pwmy">
+        <a target="_blank" title="Gleam’s web chat on Discord" href="https://discord.gg/Fm8Pwmy">
             <img src="/images/community/discord.svg" alt="Discord Icon" />
         </a>
     </li>
     <li>
-        <a target="_blank" href="https://github.com/gleam-lang/gleam/discussions">
+        <a target="_blank" title="Gleam discussions on Github" href="https://github.com/gleam-lang/gleam/discussions">
             <img src="/images/community/github.svg" alt="GitHub Icon" />
         </a>
     </li>
