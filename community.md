@@ -7,9 +7,18 @@ layout: page
 You can talk to and get help from other Gleam community members in the
 following forums:
 
-- [Gleam's web chat on Discord][2].
-- [Gleam discussions on Github][3].
-
+<ul class="community-socials">
+    <li>
+        <a target="_blank" href="https://discord.gg/Fm8Pwmy">
+            <img src="/images/community/discord.svg" alt="Discord Icon" />
+        </a>
+    </li>
+    <li>
+        <a target="_blank" href="https://github.com/gleam-lang/gleam/discussions">
+            <img src="/images/community/github.svg" alt="GitHub Icon" />
+        </a>
+    </li>
+</ul>
 
 ## Code of Conduct
 
@@ -21,10 +30,8 @@ please send a message to us via one of the channels below. We will ensure the
 issue is resolved and your identity will be kept private.
 
 - Messaging the `@moderators` group on the [Gleam Discord chat][2].
-- Messaging the [@gleamlang][4] account on Twitter.
+- Messaging the [@gleamlang][2] account on Twitter.
 - Emailing [hello@gleam.run](mailto:hello@gleam.run).
 
 [1]: https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md
-[2]: https://discord.gg/Fm8Pwmy
-[3]: https://github.com/gleam-lang/gleam/discussions
-[4]: https://twitter.com/gleamlang
+[2]: https://twitter.com/gleamlang

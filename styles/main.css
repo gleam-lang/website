@@ -864,3 +864,36 @@ main.content {
     padding-top: 0;
   }
 }
+
+.community-socials {
+  padding: 2rem;
+  padding-bottom: 0;
+  list-style-type: none;
+  gap: 2rem;
+}
+
+.community-socials > li {
+  background-color: var(--color-white);
+  border-radius: 50%;
+}
+
+.community-socials li:hover img {
+  transform: rotateZ(-10deg);
+}
+
+.community-socials,
+.community-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.community-socials a {
+  padding: 0.5rem
+}
+
+.community-socials img {
+  width: 3rem;
+  height: 3rem;
+  transition: transform ease-in-out 150ms;
+}
