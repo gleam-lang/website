@@ -113,7 +113,7 @@
   square_avatar: false
 - name: "Brian Corbin"
   url: "https://github.com/briancorbinxyz"
-  avatar: "https://avatars.githubusercontent.com/u/1385012?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/1385012?u=07e9b7a8d1a4ee2cd0a1243c027a0ca07c79b389&v=4"
   square_avatar: false
 - name: "Brian Dawn"
   url: "https://github.com/brian-dawn"
@@ -122,6 +122,10 @@
 - name: "Brian Glusman"
   url: "https://github.com/bglusman"
   avatar: "https://avatars.githubusercontent.com/u/105444?v=4"
+  square_avatar: false
+- name: "Bruno B."
+  url: "https://github.com/b-bruno"
+  avatar: "https://avatars.githubusercontent.com/u/109900306?u=6ee2cbf0b7486a6b61c28b2ff3d2b528d39bf28a&v=4"
   square_avatar: false
 - name: "Bruno Michel"
   url: "https://github.com/nono"
@@ -495,10 +499,6 @@
   url: "https://github.com/krzysztofgb"
   avatar: "https://avatars.githubusercontent.com/u/24556218?u=c70e47de506de3bf34ca190d0848c1457acb61d1&v=4"
   square_avatar: false
-- name: "Lars Wikman"
-  url: "https://github.com/lawik"
-  avatar: "https://avatars.githubusercontent.com/u/1971237?u=671495fb9f1a273698d28143739868e993be816e&v=4"
-  square_avatar: false
 - name: "Leandro Ostera"
   url: "https://github.com/leostera"
   avatar: "https://avatars.githubusercontent.com/u/854222?u=63eed26d2a9e7f964490a390010edded5497af3e&v=4"
@@ -518,10 +518,6 @@
 - name: "Lucian Petic"
   url: "https://github.com/lpetic"
   avatar: "https://avatars.githubusercontent.com/u/40602497?u=a5c0f4f2cefb0441e544bd92723185815839598d&v=4"
-  square_avatar: false
-- name: "Léopold Hubert"
-  url: "https://github.com/leopoldhub"
-  avatar: "https://avatars.githubusercontent.com/u/21125567?u=7818fe787ec65abbc36e7dc52edee5c8ee823fdd&v=4"
   square_avatar: false
 - name: "Manuel Rubio"
   url: "https://github.com/manuel-rubio"
@@ -839,6 +835,10 @@
   url: "https://github.com/rodrigues"
   avatar: "https://avatars.githubusercontent.com/u/128147?u=ca06210e8377eb67b9420a79233bcb7820f14b33&v=4"
   square_avatar: false
+- name: "Vincent Costa"
+  url: "https://github.com/VincentCosta6"
+  avatar: "https://avatars.githubusercontent.com/u/37250561?u=bcb8d321fe37179d2402b635c0e903368e448b87&v=4"
+  square_avatar: false
 - name: "Viv Verner"
   url: "https://github.com/PerpetualPossum"
   avatar: "https://avatars.githubusercontent.com/u/140846346?u=8680355810ade71e097281ab15bd882defa9f195&v=4"
@@ -882,10 +882,6 @@
 - name: ad-ops
   url: "https://github.com/ad-ops"
   avatar: "https://avatars.githubusercontent.com/u/57237184?v=4"
-  square_avatar: false
-- name: aldrin-ronco
-  url: "https://github.com/aldrin-ronco"
-  avatar: "https://avatars.githubusercontent.com/u/8396833?v=4"
   square_avatar: false
 - name: brettkolodny
   url: "https://github.com/brettkolodny"
