@@ -119,6 +119,16 @@ For OpenBSD -current, Gleam is available as a binary package. You can install it
 $ doas pkg_add gleam
 ```
 
+### openSUSE
+
+For openSUSE the package is in the process of being accepted into the official repository.
+For now you will have to add the package's repository yourself and then install from it:
+```
+# zypper addrepo -f https://download.opensuse.org/repositories/home:/Pi-Cla/openSUSE_Tumbleweed/ gleam_repo
+# zypper refresh
+# zypper install gleam
+```
+
 ### Windows
 
 #### Using Scoop
