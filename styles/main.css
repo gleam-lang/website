@@ -205,7 +205,6 @@ main.content {
   height: 307px;
   width: 400px;
   padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
-  transform: rotate(-10deg);
   transition: transform 0.2s ease;
 }
 .footer-lucy {
@@ -213,11 +212,11 @@ main.content {
 }
 .logo:hover .footer-lucy {
   content: url("/images/lucy/lucyhappy.svg");
-  transform: rotate(13deg);
+  transform: rotate(23deg);
 }
 .hero-lucy:hover {
   content: url("/images/lucy/lucyhappy.svg");
-  transform: rotate(13deg);
+  transform: rotate(23deg);
 }
 
 .navbar a {
