@@ -6,9 +6,25 @@ layout: page
 
 ## Learning Gleam
 
-- [Language tour](https://tour.gleam.run)
-- [Writing Gleam](/writing-gleam)
-- [Installing Gleam](/getting-started/installing)
+- [Language tour](https://tour.gleam.run): An in-browser interactive introduction the teaches the whole language.
+- [Writing Gleam](/writing-gleam): A guide on creating and developing projects in Gleam.
+- [Installing Gleam](/getting-started/installing): How to get Gleam on your computer.
+
+### Unofficial courses
+
+- [Exercism's Gleam track](https://exercism.org/tracks/gleam)
+
+  Develop skills in Gleam and 70+ other languages with a unique blend of learning,
+  practicing, and mentoring from skilled programmers. An educational non-profit
+  and free forever.
+
+- [CodeCrafters](https://app.codecrafters.io/join?via=lpil)
+
+  Practice writing complex software in Gleam and 20 other languages by
+  implementing real-world systems such as Redis from scratch.
+
+  _This is a referral link and a portion of any money paid will go to supporting
+  Gleam development_.
 
 ## Gleam references
 
