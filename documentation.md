@@ -6,9 +6,17 @@ layout: page
 
 ## Learning Gleam
 
-- [Language tour](https://tour.gleam.run): An in-browser interactive introduction the teaches the whole language.
-- [Writing Gleam](/writing-gleam): A guide on creating and developing projects in Gleam.
-- [Installing Gleam](/getting-started/installing): How to get Gleam on your computer.
+- [Language tour](https://tour.gleam.run)
+
+  An in-browser interactive introduction the teaches the whole language.
+
+- [Writing Gleam](/writing-gleam)
+  
+  A guide on creating and developing projects in Gleam.
+
+- [Installing Gleam](/getting-started/installing)
+
+  How to get Gleam on your computer.
 
 ### Unofficial courses
 
