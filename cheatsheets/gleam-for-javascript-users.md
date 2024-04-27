@@ -592,10 +592,34 @@ dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ### Case
 
 `case` is one of the most used control flow methods in Gleam. It can be seen as
-a switch statement on steroids. It provides a terse way to match a value type to
-an expression. It is also used to replace `if`/`else` statements, which Gleam
+a `switch` statement on steroids. It provides a terse way to match a value type
+to an expression. It is also used to replace `if`/`else` statements, which Gleam
 doesn't have.
 
-#### JavaScript
+### Piping
 
+In JavaScript, method calls are easy to chain together:
 
+```javascript
+"hello, world".toUpperCase().repeat(2).split(',')
+```
+
+Since Gleam doesn't have objects with methods, the equivalent code might look
+like this:
+
+```gleam
+import gleam/string
+
+string.split(string.repeat(string.uppercase("hello, world"), times: 2), ",")
+```
+
+To make this more readable, Gleam has the pipe operator `|>`
+
+```gleam
+import gleam/string
+
+"hello, world"
+|> string.uppercase
+|> string.repeat(2)      // defaults to piping into the first argument
+|> string.split(_, ",")  // you can use _ to specify the argument to pipe into
+```
