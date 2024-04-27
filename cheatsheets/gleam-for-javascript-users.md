@@ -282,7 +282,7 @@ order, but this behavior can be approximated using an object literal.
 
 ```javascript
 function replace({ inside: string, each: pattern, with: replacement }) {
-  go(string, pattern, replacement)
+  return string.replace(new RegExp(pattern, "g"), replacement);
 }
 ```
 
@@ -301,7 +301,7 @@ inside the function.
 
 ```gleam
 pub fn replace(inside string, each pattern, with replacement) {
-  go(string, pattern, replacement)
+  // ...
 }
 ```
 
