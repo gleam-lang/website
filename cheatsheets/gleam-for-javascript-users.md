@@ -102,7 +102,7 @@ let size = 50;
 size = size + 100;
 
 const height = 60;
-const height = height + 100; // Error!
+height = height + 100; // Error!
 ```
 
 #### Gleam
@@ -135,7 +135,10 @@ In Gleam type annotations can optionally be given when binding variables.
 let some_list: List(Int) = [1, 2, 3]
 ```
 
-Gleam will check the type annotation to ensure that it matches the type of the assigned value. It does not need annotations to type-check your code, but you may find it useful to annotate variables to hint to the compiler that you want a specific type to be inferred.
+Gleam will check the type annotation to ensure that it matches the type of the
+assigned value. It does not need annotations to type-check your code, but you
+may find it useful to annotate variables to hint to the compiler that you want a
+specific type to be inferred.
 
 ## Functions
 
@@ -154,7 +157,8 @@ const mul = (x, y) => x * y;
 
 #### Gleam
 
-Gleam's functions are declared using a syntax similar to Rust. Gleam's anonymous functions have a similar syntax, just without the function name.
+Gleam's functions are declared using a syntax similar to Rust. Gleam's anonymous
+functions have a similar syntax, just without the function name.
 
 ```gleam
 pub fn sum(x, y) {
