@@ -320,6 +320,62 @@ There is no performance cost to Gleam's labelled arguments as they are
 optimised to regular function calls at compile time, and all the arguments
 are fully type checked.
 
+## Modules
+
+Just like in JavaScript, each Gleam file is a module, and values can only be
+accessed if they are explicitly made public. Gleam doesn't have an equivalent of
+JavaScript's `export default` -- all exports are named.
+
+### JavaScript
+
+In JavaScript, `export` marks values as public. Import paths are usually
+relative to the current file.
+
+```javascript
+//// my_library/tools/math.js
+export function add(a, b) {
+  return a + b;
+}
+
+//// my_library/other_file.js
+import { add } from "./tools/math";
+import * as math from "./tools/math";
+
+add(2, 2);
+math.add(2, 2);
+```
+
+### Gleam
+
+In Gleam, `pub` marks values as public. Import paths are always absolute,
+starting at the project root.
+
+```gleam
+//// my_library/tools/math.gleam
+pub type Color {
+  Red
+  Green
+  Blue
+}
+
+pub fn add(a, b) {
+  a + b
+}
+
+//// my_library/other_file.gleam
+// You can import a whole module
+import my_library/tools/math
+
+let pixel = math.Green
+let sum = math.add(2, 2)
+
+// Or specify exactly what you want
+import my_library/tools/math.{type Color, Red, add}
+
+let colors: Color = [Red, math.Green]
+let sum = add(2, 2)
+```
+
 ## Operators
 
 | Operator          | JavaScript | Gleam | Notes                                          |
