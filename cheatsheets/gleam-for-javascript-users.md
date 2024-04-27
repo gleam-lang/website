@@ -14,7 +14,6 @@ subtitle: Hello JavaScripticians!
   - [Exporting functions](#exporting-functions)
   - [Function type annotations](#function-type-annotations)
   - [Function heads](#function-heads)
-  - [Function overloading](#function-overloading)
   - [Referencing functions](#referencing-function)
   - [Calling anonymous functions](#calling-anonymous-functions)
   - [Labelled arguments](#labelled-arguments)
@@ -236,12 +235,6 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
   x * y
 }
 ```
-
-### Function overloading
-
-Like JavaScript, Gleam does not support function overloading, so there can only
-be 1 function with a given name, and the function can only have a single
-implementation for the types it accepts.
 
 ### Referencing functions
 
