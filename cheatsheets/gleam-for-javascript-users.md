@@ -545,6 +545,18 @@ let list = [1, 2, ..list] // still works
 let list = [1, ..list, 5] // compile error
 ```
 
+To store items of different types in a list, you need to create a custom type:
+
+```gleam
+type Value {
+  Number(Int)
+  Text(String)
+  BinaryData(BitArray)
+}
+
+let my_list = [BinaryData(<<"hello":utf8>>), Text("👋"), Number(5)]
+```
+
 ### Dicts
 
 #### JavaScript
