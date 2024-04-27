@@ -305,8 +305,10 @@ used at the call-site does not have to match the name used for the variable
 inside the function.
 
 ```gleam
+import gleam/string
+
 pub fn replace(inside string, each pattern, with replacement) {
-  // ...
+  string.replace(string, pattern, replacement)
 }
 ```
 
