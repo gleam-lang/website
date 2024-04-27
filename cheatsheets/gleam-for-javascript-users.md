@@ -573,10 +573,10 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 ### Case
 
-Case is one of the most used control flow methods in Gleam. It can be seen as a
-switch statement on steroids. It provides a terse way to match a value type to
-    an expression. It is also used to replace `if`/`else` statements, which
-    Gleam doesn't have.
+`case` is one of the most used control flow methods in Gleam. It can be seen as
+a switch statement on steroids. It provides a terse way to match a value type to
+an expression. It is also used to replace `if`/`else` statements, which Gleam
+doesn't have.
 
 #### JavaScript
 
