@@ -4,18 +4,15 @@ title: Gleam for JavaScript users
 subtitle: Hello JavaScripticians!
 ---
 
-<!-- TODO table of contents -->
-
 - [Comments](#comments)
 - [Variables](#variables)
   - [Match operator](#match-operator)
   - [Variables type annotations](#variables-type-annotations)
 - [Functions](#functions)
+  - [Function capturing with `_`](#function-capturing-with-_)
   - [Exporting functions](#exporting-functions)
   - [Function type annotations](#function-type-annotations)
-  - [Function heads](#function-heads)
   - [Referencing functions](#referencing-function)
-  - [Calling anonymous functions](#calling-anonymous-functions)
   - [Labelled arguments](#labelled-arguments)
 - [Modules](#modules)
 - [Operators](#operators)
@@ -30,7 +27,6 @@ subtitle: Hello JavaScripticians!
 - [Flow control](#flow-control)
   - [Case](#case)
   - [Piping](#piping)
-  - [Try](#try)
 
 
 ## Comments
@@ -80,7 +76,8 @@ In Gleam comments are written with a `//` prefix.
 // Hello, Joe!
 ```
 
-Comments starting with `///` are used to document the following statement. Comments starting with `////` are used to document the current module.
+Comments starting with `///` are used to document the following statement.
+Comments starting with `////` are used to document the current module.
 
 ```gleam
 //// This module is very important.
@@ -167,6 +164,23 @@ pub fn sum(x, y) {
 let mul = fn(x, y) { x * y }
 mul(1, 2)
 ```
+
+### Function capturing with `_`
+
+To turn a multi-parameter function into a function with just one parameter,
+Gleam has a special function-capturing syntax:
+
+```gleam
+fn add(a: Int, b: Int) -> Int {
+  a + b
+}
+
+let add2 = fn(x) { add(x, 2) }
+// is equivalent to:
+let add2 = add(_, 2)
+```
+
+This is particularly useful in combination with the [pipe operator](#piping).
 
 ### Exporting functions
 
@@ -271,7 +285,7 @@ fn main() {
 #### JavaScript
 
 JavaScript doesn't really have a syntax for passing arguments by name and in any
-order, but this behavior can be approximated using an object literal.
+order, but this behaviour can be approximated using an object literal.
 
 ```javascript
 function replace({ inside: string, each: pattern, with: replacement }) {
