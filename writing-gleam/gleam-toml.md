@@ -29,10 +29,14 @@ target = "erlang"
 # The source code repository location (optional)
 # This will be used in generated documentation and displayed on Hex.
 repository = { type = "github", user = "example", repo = "my_project" }
-# It can also be one of these formats
-# repository = { type = "gitlab", user = "example", repo = "my_project" }
-# repository = { type = "bitbucket", user = "example", repo = "my_project" }
-# repository = { type = "custom", url = "https://example.com/my_project" }
+# `repository` can also be one of these formats
+# { type = "forgejo",   host = "example.com", user = "example", repo = "my_project" }
+# { type = "gitea",     host = "example.com", user = "example", repo = "my_project" }
+# { type = "gitlab",    user = "example", repo = "my_project" }
+# { type = "sourcehut", user = "example", repo = "my_project" }
+# { type = "bitbucket", user = "example", repo = "my_project" }
+# { type = "codeberg",  user = "example", repo = "my_project" }
+# { type = "custom",    url = "https://example.com/my_project" }
 
 # Links to any related website (optional)
 # This will be displayed in generated documentation and on Hex.
@@ -64,9 +68,9 @@ gleam = ">= 0.30.0"
 # Uses the Hex version requirement format
 # https://hexdocs.pm/elixir/Version.html#module-requirements
 [dependencies]
-gleam_stdlib = "~> 0.18"
-gleam_erlang = "~> 0.2"
-gleam_http = "~> 2.1"
+gleam_stdlib = ">= 0.18.0 and < 2.0.0"
+gleam_erlang = ">= 0.2.0 and < 2.0.0"
+gleam_http = ">= 2.1.0 and < 3.0.0"
 # Local dependencies can be specified with a path
 my_other_project = { path = "../my_other_project" }
 
@@ -75,8 +79,7 @@ my_other_project = { path = "../my_other_project" }
 # This table cannot include any packages that are already found in the
 # `dependencies` table.
 [dev-dependencies]
-gleeunit = "~> 0.3"
-gleam_bitwise = "~> 0.3"
+gleeunit = ">= 1.0.0 and < 2.0.0"
 
 # Documentation specific configuration (optional)
 [documentation]
@@ -104,7 +107,7 @@ extra_applications = ["inets", "ssl"]
 typescript_declarations = true
 
 # Which JavaScript runtime to use with `gleam run`, `gleam test` etc.
-runtime = "node" # or "deno"
+runtime = "node" # or "deno" or "bun"
 
 # Configuration specific to the Deno runtime (optional)
 # https://deno.land/manual@v1.30.0/basics/permissions#permissions

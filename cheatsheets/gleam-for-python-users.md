@@ -40,17 +40,17 @@ subtitle: Hello productive pragmatic Pythonistas!
 
 In Python, comments are written with a `#` prefix.
 
-```py
+```python
 # Hello, Joe!
 ```
 
 A docstring (matching """) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
-````py
+```python
 def a_function():
     """Return some important data."""
     pass
-````
+```
 
 #### Gleam
 
@@ -75,7 +75,7 @@ You can reassign variables in both languages.
 
 #### Python
 
-```py
+```python
 size = 50
 size = size + 100
 size = 1
@@ -100,7 +100,7 @@ let size = 1
 Python supports basic, one directional destructuring (also called unpacking).
 Tuple of values can be unpacked and inner values can be assigned to left-hand variable names.
 
-```py
+```python
 (a, b) = (1, 2)
 # a == 1
 # b == 2
@@ -131,7 +131,7 @@ These annotations are accessible at runtime via the `__annotations__` module-lev
 
 These hints will mainly be used to inform static analysis tools like IDEs, linters...
 
-```py
+```python
 some_list: list[int] = [1, 2, 3]
 ```
 
@@ -158,8 +158,8 @@ def sum(x, y):
 
 Anonymous functions returning a single expression can also be defined with the `lambda` keyword and be assigned into variables.
 
-```py
-mul = lambda (x, y): x * y
+```python
+mul = lambda x, y: x * y
 mul(1, 2)
 ```
 
@@ -209,7 +209,7 @@ Discrepancies between type hints and actual values at runtime do not prevent int
 
 Static code analysers (IDE tooling, type checkers like mypy) will be required to detect those errors.
 
-```py
+```python
 def sum(x: int, y: int) -> int:
     return x + y
 
@@ -267,7 +267,7 @@ When calling a function, arguments can be passed
 - positionally, in the same order of the function declaration
 - by name, in any order
 
-```py
+```python
 def replace(inside: str, each: str, with_string: str):
     pass
 
@@ -297,35 +297,35 @@ are fully type checked.
 
 ## Operators
 
-| Operator           | Python | Gleam                     | Notes                                                                                  |
-| ------------------ | ------ | ------------------------- | -------------------------------------------------------------------------------------- |
-| Equal              | `==`   | `==`                      | In Gleam both values must be of the same type                                          |
-| Strictly equal to  | `==`   | `==`                      | Comparison in Gleam is always strict. (see note for Python)                            |
-| Reference equality | `is`   |                           | True only if the two objects have the same reference                                   |
-| Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                          |
-| Greater than       | `>`    | `>`                       | In Gleam both values must be **ints**                                                  |
-| Greater than       | `>`    | `>.`                      | In Gleam both values must be **floats**                                                |
-| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                  |
-| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                |
-| Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                  |
-| Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                |
-| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                  |
-| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                |
-| Boolean and        | `and`  | `&&`                      | In Gleam both values must be **bools**                                                 |
-| Logical and        | `and`  |                           | Not available in Gleam                                                                 |
-| Boolean or         | `or`   | <code>&vert;&vert;</code> | In Gleam both values must be **bools**                                                 |
-| Logical or         | `or`   |                           | Not available in Gleam                                                                 |
-| Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                  |
-| Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                |
-| Subtract           | `-`    | `-`                       | In Gleam both values must be **ints**                                                  |
-| Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                |
-| Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                  |
-| Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                |
-| Divide             | `/`    | `/`                       | In Gleam both values must be **ints**                                                  |
-| Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                |
+| Operator           | Python | Gleam                     | Notes                                                                                                                             |
+| ------------------ | ------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Equal              | `==`   | `==`                      | In Gleam both values must be of the same type                                                                                     |
+| Strictly equal to  | `==`   | `==`                      | Comparison in Gleam is always strict. (see note for Python)                                                                       |
+| Reference equality | `is`   |                           | True only if the two objects have the same reference                                                                              |
+| Not equal          | `!=`   | `!=`                      | In Gleam both values must be of the same type                                                                                     |
+| Greater than       | `>`    | `>`                       | In Gleam both values must be **ints**                                                                                             |
+| Greater than       | `>`    | `>.`                      | In Gleam both values must be **floats**                                                                                           |
+| Greater or equal   | `>=`   | `>=`                      | In Gleam both values must be **ints**                                                                                             |
+| Greater or equal   | `>=`   | `>=.`                     | In Gleam both values must be **floats**                                                                                           |
+| Less than          | `<`    | `<`                       | In Gleam both values must be **ints**                                                                                             |
+| Less than          | `<`    | `<.`                      | In Gleam both values must be **floats**                                                                                           |
+| Less or equal      | `<=`   | `<=`                      | In Gleam both values must be **ints**                                                                                             |
+| Less or equal      | `<=`   | `<=.`                     | In Gleam both values must be **floats**                                                                                           |
+| Boolean and        | `and`  | `&&`                      | In Gleam both values must be **bools**                                                                                            |
+| Logical and        | `and`  |                           | Not available in Gleam                                                                                                            |
+| Boolean or         | `or`   | <code>&vert;&vert;</code> | In Gleam both values must be **bools**                                                                                            |
+| Logical or         | `or`   |                           | Not available in Gleam                                                                                                            |
+| Add                | `+`    | `+`                       | In Gleam both values must be **ints**                                                                                             |
+| Add                | `+`    | `+.`                      | In Gleam both values must be **floats**                                                                                           |
+| Subtract           | `-`    | `-`                       | In Gleam both values must be **ints**                                                                                             |
+| Subtract           | `-`    | `-.`                      | In Gleam both values must be **floats**                                                                                           |
+| Multiply           | `*`    | `*`                       | In Gleam both values must be **ints**                                                                                             |
+| Multiply           | `*`    | `*.`                      | In Gleam both values must be **floats**                                                                                           |
+| Divide             | `/`    | `/`                       | In Gleam both values must be **ints**                                                                                             |
+| Divide             | `/`    | `/.`                      | In Gleam both values must be **floats**                                                                                           |
 | Remainder          | `%`    | `%`                       | In Gleam both values must be **ints**, in Gleam negative values behave differently: Use `int.modulo` to mimick Python's behavior. |
-| Concatenate        | `+`    | `<>`                      | In Gleam both values must be **strings**                                               |
-| Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python |
+| Concatenate        | `+`    | `<>`                      | In Gleam both values must be **strings**                                                                                          |
+| Pipe               |        | <code>&vert;></code>      | Gleam's pipe can pipe into anonymous functions. This operator does not exist in python                                            |
 
 Some notes for Python:
 
@@ -375,7 +375,7 @@ Python blocks are always associated with a function / conditional / class declar
 
 Blocks are declared via indentation.
 
-```py
+```python
 def a_func():
     # A block here
     pass
@@ -462,7 +462,7 @@ let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ```
 
-### Maps
+### Dictionaries
 
 In Python, maps are called dictionaries and can have keys of any type as long as:
 
@@ -484,10 +484,10 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Flow control
@@ -503,7 +503,7 @@ statement.
 
 Matching on primitive types:
 
-```py
+```python
 def http_error(status):
     match status:
         case 400:
@@ -516,7 +516,7 @@ def http_error(status):
 
 Matching on tuples with variable capturing:
 
-```py
+```python
 match point:
     case (0, 0):
         print("Origin")
@@ -532,7 +532,7 @@ match point:
 
 Matching on type constructors:
 
-```py
+```python
 match point:
     case Point(x=0, y=0):
         print("Origin is the point's location.")
@@ -548,7 +548,7 @@ match point:
 
 The match expression supports guards, similar to Gleam:
 
-```py
+```python
 match point:
     case Point(x, y) if x == y:
         print(f"The point is located on the diagonal Y=X at {x}.")
@@ -609,14 +609,14 @@ Python uses the notion of exceptions to interrupt the current code flow and pop 
 
 An exception is raised using the keyword `raise`.
 
-```py
+```python
 def a_function_that_fails():
     raise Exception("an error")
 ```
 
 The callee block will be able to capture any exception raised in the block using a `try/except` set of blocks:
 
-```py
+```python
 try:
     print("executed")
     a_function_that_fails()
@@ -640,14 +640,14 @@ A Result is either:
 Handling errors actually means to match the return value against those two scenarios, using a case for instance:
 
 ```gleam
-case parse_int("123") {
+case int.parse("123") {
   Error(e) -> io.println("That wasn't an Int")
   Ok(i) -> io.println("We parsed the Int")
 }
 ```
 
 In order to simplify this construct, we can use the `use` expression with the
-`then` function from the `gleam/result` module.
+`try` function from the `gleam/result` module.
 
 - bind a value to the providing name if `Ok(Something)` is matched
 - **interrupt the flow** and return `Error(Something)`
@@ -657,9 +657,9 @@ let a_number = "1"
 let an_error = "ouch"
 let another_number = "3"
 
-use int_a_number <- then(parse_int(a_number))
-use attempt_int <- then(parse_int(an_error)) // Error will be returned
-use int_another_number <- then(parse_int(another_number)) // never gets executed
+use int_a_number <- try(parse_int(a_number))
+use attempt_int <- try(parse_int(an_error)) // Error will be returned
+use int_another_number <- try(parse_int(another_number)) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ```
@@ -672,10 +672,8 @@ Type aliases allow for easy referencing of arbitrary complex types. Even though 
 
 A simple variable can store the result of a compound set of types.
 
-```py
-from typing import TypeAlias
-
-Headers: TypeAlias = list[tuple[str, str]]
+```python
+type Headers = list[tuple[str, str]]
 
 # can now be used to annotate a variable
 headers: Headers = [("Content-Type", "application/json")]
@@ -706,12 +704,13 @@ Properties are defined as class members and initial values are generally set in 
 By default the constructor does not provide base initializers in the constructor so some boilerplate is needed:
 
 ```python
-class Person():
+class Person:
     name: str
     age: int
-    def __init__(name: str, age: int):
+
+    def __init__(name: str, age: int) -> None:
         self.name = name
-        self.age = int
+        self.age = age
 
 person = Person(name="Jake", age=20)
 # or with positional arguments Person("Jake", 20)
@@ -724,7 +723,7 @@ More recent alternatives are to use `dataclasses` or to leverage the
 By default a class created with the `dataclass` decorator is mutable (although
 you can pass options to the `dataclass` decorator to change the behavior):
 
-```py
+```python
 from dataclasses import dataclasses
 
 @dataclass
@@ -739,7 +738,7 @@ person.name = "John"  # The name is now "John"
 
 `NamedTuples` on the other hand are immutable:
 
-```py
+```python
 from typing import NamedTuple
 
 class Person(NamedTuple):
@@ -777,7 +776,7 @@ two different types they must be wrapped in a new custom type.
 
 #### Python
 
-```py
+```python
 def int_or_float(x: int | float) -> str:
     if isinstance(x, int):
         return f"It's an integer: {x}"
@@ -814,8 +813,8 @@ using the intended API.
 
 #### Python
 
-```py
-class OnlyCreatable(object):
+```python
+class OnlyCreatable:
 
     __create_key = object()
 
@@ -870,7 +869,7 @@ pub fn main() {
 
 #### Python
 
-```py
+```python
 # inside module src/nasa/moon_base.py
 # imports module src/nasa/rocket_ship.py
 from nasa import rocket_ship
@@ -899,7 +898,7 @@ pub fn explore_space() {
 
 #### Python
 
-```py
+```python
 import unix.cat as kitty
 ```
 
@@ -913,7 +912,7 @@ import unix/cat as kitty
 
 #### Python
 
-```
+```python
 from animal.cat import Cat, stroke
 
 def main():

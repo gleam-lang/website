@@ -307,7 +307,7 @@ There is no equivalent feature in Rust.
 | Multiply         | `*`   | `*.`  | In Gleam both values must be **floats**        |
 | Divide           | `/`   | `/`   | In Gleam both values must be **ints**          |
 | Divide           | `/`   | `/.`  | In Gleam both values must be **floats**        |
-| Remainder        | `%`   | `%`   | In Gleam both values must be**ints**           |
+| Remainder        | `%`   | `%`   | In Gleam both values must be **ints**          |
 | Concatenate      |       | `<>`  | In Gleam both values must be **strings**       |
 | Pipe             |       | `⎮>`  | Gleam's pipe can pipe into anonymous functions |
 

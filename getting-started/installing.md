@@ -31,7 +31,7 @@ The easiest way to install Gleam on Linux, Windows, and Apple macOS is to downlo
 prebuilt version of the compiler from the [GitHub release
 page](https://github.com/gleam-lang/gleam/releases).
 
-### Mac OS X
+### macOS
 
 #### Using Homebrew
 
@@ -50,25 +50,54 @@ With [MacPorts](https://www.macports.org/) installed run the following:
 sudo port install gleam
 ```
 
-### Using the Nix package manager
+### Linux
+
+#### Using Homebrew
+
+With [Homebrew](https://brew.sh) installed run the following:
+
+```sh
+brew update
+brew install gleam
+```
+
+#### Using the Nix package manager
 
 ```sh
 nix profile install gleam
 ```
 
-
-### asdf version manager
+#### asdf version manager
 
 [asdf](https://github.com/asdf-vm/asdf) is a tool for installing and managing
 multiple version of programming languages at the same time. Install the
 [asdf-gleam plugin](https://github.com/vic/asdf-gleam) to manage Gleam with
 asdf.
 
-### Arch Linux
+#### Alpine Linux
+
+Gleam is available in the Community repository of Alpine Linux as a package `gleam`. Install it with:
+
+```
+apk add gleam
+```
+
+#### Arch Linux
 
 Gleam is available through the [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
 as package `gleam`. You can use your prefered [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
 to install it or clone it for manual build from [https://aur.archlinux.org/packages/gleam-git](https://aur.archlinux.org/packages/gleam-git).
+```sh
+yay -S gleam
+```
+
+#### Void Linux
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```
+sudo xbps-install gleam
+```
 
 ### FreeBSD
 
@@ -90,12 +119,14 @@ For OpenBSD -current, Gleam is available as a binary package. You can install it
 $ doas pkg_add gleam
 ```
 
-### Void Linux
+### openSUSE
 
-Gleam is available as part of the official packages repository. Install it with:
-
+For openSUSE the package is in the process of being accepted into the official repository.
+For now you will have to add the package's repository yourself and then install from it:
 ```
-sudo xbps-install gleam
+# zypper addrepo -f https://download.opensuse.org/repositories/home:/Pi-Cla/openSUSE_Tumbleweed/ gleam_repo
+# zypper refresh
+# zypper install gleam
 ```
 
 ### Windows
@@ -132,7 +163,8 @@ gleam --version
 ## Installing Erlang
 
 Gleam compiles to Erlang code, so Erlang needs to be installed to run Gleam
-code.
+code. Some of the above package managers (e.g. Homebrew) will install Erlang
+alongside Gleam automatically.
 
 Precompiled builds for many popular operating systems can be downloaded from
 the [Erlang solutions website](https://www.erlang-solutions.com/resources/download.html).
@@ -146,7 +178,17 @@ erl -version
 Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 12.1.5
 ```
 
-#### Linux
+### Linux
+
+#### Using Homebrew
+
+[Homebrew](https://brew.sh) will install Erlang alongside Gleam automatically,
+though it can be manually installed by running the following:
+
+```sh
+brew update
+brew install erlang
+```
 
 #### Alpine Linux (Community repository)
 
@@ -166,7 +208,7 @@ pacman -S erlang
 dnf install elixir erlang
 ```
 
-##### Debian, Ubuntu, Raspberry Pi OS
+#### Debian, Ubuntu, Raspberry Pi OS
 
 ```shell
 wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
@@ -175,12 +217,12 @@ sudo apt-get update
 sudo apt-get install esl-erlang
 ```
 
+### macOS
 
-#### Mac OS X
+#### Using Homebrew
 
-##### Using Homebrew
-
-With [Homebrew](https://brew.sh) installed run the following:
+[Homebrew](https://brew.sh) will install Erlang alongside Gleam automatically,
+though it can be manually installed by running the following:
 
 ```sh
 brew update
@@ -195,9 +237,9 @@ With [MacPorts](https://www.macports.org/) installed run the following:
 sudo port install erlang
 ```
 
-#### Windows
+### Windows
 
-##### Using Chocolatey
+#### Using Chocolatey
 
 With [Chocolatey](https://chocolatey.org/) installed on your computer run the
 following:
@@ -206,7 +248,7 @@ following:
 choco install erlang
 ```
 
-##### Using Scoop
+#### Using Scoop
 
 With [Scoop](https://scoop.sh/) installed on your computer run the following:
 
@@ -214,9 +256,9 @@ With [Scoop](https://scoop.sh/) installed on your computer run the following:
 scoop install erlang
 ```
 
-#### Using version managers
+### Using version managers
 
-##### asdf
+#### asdf
 
 The asdf version manager has a plugin for installing Erlang. Installation and
 usage instructions can be found here:

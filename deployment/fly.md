@@ -29,17 +29,21 @@ defines a micro web application.
 ```gleam
 import mist
 import gleam/erlang/process
-import gleam/bit_builder
+import gleam/bytes_builder
 import gleam/http/response.{Response}
 
 pub fn main() {
-  let assert Ok(_) = mist.run_service(8080, web_service, max_body_limit: 4_000_000)
+  let assert Ok(_) =
+    web_service
+    |> mist.new
+    |> mist.port(8080)
+    |> mist.start_http
   process.sleep_forever()
 }
 
 fn web_service(_request) {
-  let body = bit_builder.from_string("Hello, Joe!")
-  Response(200, [], body)
+  let body = bytes_builder.from_string("Hello, Joe!")
+  Response(200, [], mist.Bytes(body))
 }
 ```
 
@@ -55,7 +59,7 @@ for deployment.
 Add a file named `Dockerfile` with these contents:
 
 ```dockerfile
-FROM ghcr.io/gleam-lang/gleam:v0.22.0-erlang-alpine
+FROM ghcr.io/gleam-lang/gleam:v1.0.0-erlang-alpine
 
 # Add project code
 COPY . /build/

@@ -381,7 +381,7 @@ are fully type checked.
 | Subtract          | `-`    | `-.`  | In Gleam both values must be **floats**        |
 | Multiply          | `*`    | `*`   | In Gleam both values must be **ints**          |
 | Multiply          | `*`    | `*.`  | In Gleam both values must be **floats**        |
-| Divide            | `div`  | `/`   | In Gleam both values **ints**                  |
+| Divide            | `div`  | `/`   | In Gleam both values must be **ints**          |
 | Divide            | `/`    | `/.`  | In Gleam both values must be **floats**        |
 | Remainder         | `rem`  | `%`   | In Gleam both values must be **ints**          |
 | Concatenate       | `<>`   | `<>`  | In Gleam both values must be **strings**       |
@@ -503,7 +503,7 @@ let #(_, password, _) = my_tuple
 
 ### Lists
 
-Lists in Elixir are allowed to be of mixed types, but not in Gleam. They retain all of the same performance sematics.
+Lists in Elixir are allowed to be of mixed types, but not in Gleam. They retain all of the same performance semantics.
 
 The `cons` operator works the same way both for pattern matching and for appending elements to the head of a list, but it uses a different syntax.
 

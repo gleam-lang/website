@@ -13,14 +13,17 @@ description: The answers to some things you might be wondering about Gleam!
 - [Will Gleam have metaprogramming?](#will-gleam-have-metaprogramming)
 - [How is message passing typed?](#how-is-message-passing-typed)
 - [Can Gleam use Erlang's hot code reloading?](#can-gleam-use-erlangs-hot-code-reloading)
+- [Why does division by zero return zero?](#why-does-division-by-zero-return-zero)
 - [How does Gleam compare to...](#how-does-gleam-compare-to)
   - [Alpaca?](#how-does-gleam-compare-to-alpaca)
   - [Caramel?](#how-does-gleam-compare-to-caramel)
   - [Elixir?](#how-does-gleam-compare-to-elixir)
   - [Purerl?](#how-does-gleam-compare-to-purerl)
   - [Rust?](#how-does-gleam-compare-to-rust)
+- [Can I use Elixir code with Gleam?](#can-i-use-elixir-code-with-gleam)
 - [Should I put Gleam in production?](#should-i-put-gleam-in-production)
 - [Why is the compiler written in Rust?](#why-is-the-compiler-written-in-rust)
+- [What are Gleam programmers called?](#what-are-gleam-programmers-called)
 - [Is it good?](#is-it-good)
 
 
@@ -40,22 +43,20 @@ Gleam compiles to Erlang or JavaScript.
 
 ## Will Gleam have type classes?
 
-Type classes are fun and enable creation very nice concise APIs, but they can
+Type classes are fun and enable creation of very nice, concise APIs, but they can
 make it easy to make challenging to understand code, tend to have confusing
-error messages, consuming the code from other languages much harder, have a high
-compile time cost, and have a runtime cost unless the compiler performs
-full-program compilation and expensive monomorphism. This is unfortunately not a
-good fit for Gleam and they are not planned.
+error messages, make consuming the code from other languages much harder, have a
+high compile time cost, and have a runtime cost unless the compiler performs
+full-program compilation and expensive monomorphization. This is unfortunately
+not a good fit for Gleam and they are not planned.
 
 
 ## Will Gleam have metaprogramming?
 
-We are gently interested in some form of metaprogramming in Gleam. Currently we
-are in the early research and design phase, and it is a low priority compared to
-tooling and other work needed for a v1.0 release.
-
-If you have some problems that would be solved with metaprogramming, or proposal
-for a metaprogramming design please do share them with us!
+We are gently interested in some form of metaprogramming in Gleam. We are
+currently in the early research and design phase. If you have some problems 
+that would be solved with metaprogramming, or proposal for a metaprogramming 
+design please do share them with us!
 
 
 ## Does Gleam have mutable state?
@@ -75,7 +76,7 @@ offers mutable references.
 ## Does Gleam have side effects?
 
 Yes, Gleam is an impure functional language like OCaml or Erlang. Impure
-actions like reading to files and printing to the console is possible without
+actions like writing to files and printing to the console are possible without
 special handling.
 
 We may later introduce an effects system for identifying and tracking any
@@ -105,6 +106,25 @@ safety rather than what you might have with Gleam otherwise.
 Generally the OTP libraries for Gleam are optimised for type safety rather than
 upgrades, and use records rather than atom modules so the state upgrade
 callbacks may be more complex to write.
+
+## Why does division by zero return zero?
+
+There are three common approaches to handling division by zero in programming
+languages:
+
+- Throw an exception and crash the program.
+- Return a special `Infinity` value.
+- Return `0`.
+
+Gleam does not implicitly throw exceptions, so throwing an exception is not
+an option. The BEAM VM does not have a `Infinity` value, so that is not an
+option. Therefore Gleam returns `0` when dividing by zero.
+
+The standard library provides functions which return a `Result` type for
+division by zero which you can use if that is more suitable for your program.
+
+For more information on division by zero from a mathematical perspective, see
+[this article by Hillel Wayne](https://www.hillelwayne.com/post/divide-by-zero/).
 
 ## How does Gleam compare to...
 
@@ -215,20 +235,24 @@ different language.
 - Rust features traits and multiple macro systems, Gleam does not.
 
 
+## Can I use Elixir code with Gleam?
+
+Yes! The Gleam build tool has support for Elixir and can compile both Elixir
+dependencies and Elixir source files in your Gleam project. Elixir has to be
+installed on your computer for this to work.
+
+Elixir macros cannot be called from outside of Elixir, so some Elixir APIs
+cannot be used directly from Gleam. To use one of these you can write an Elixir
+module that uses the macros, and then use that module in your Gleam code.
+
+
 ## Should I put Gleam in production?
 
-Gleam is a young language that has not reached version 1.0, so while it is
-robust, it is likely to undergo breaking changes in the future, and there may
-be some annoying bugs in there somewhere. The Gleam ecosystem is also quite
-young, so many libraries that are found in other languages will need to be
-written, or Erlang/Elixir libraries will have to be used in place of pure
-Gleam versions.
+Yes!
 
-The Erlang VM is extremely mature and well tested, so the runtime aspect of
-the language is ready for production.
-
-If you decide to move away from Gleam, you can compile your code
-to Erlang and maintain that in future.
+Gleam is a production-ready programming language and the Erlang and JavaScript runtimes it runs
+on are extremely mature and battle-tested. Gleam is ready for mission critical
+workloads.
 
 
 ## Why is the compiler written in Rust?
@@ -238,9 +262,14 @@ made to Rust as the lack of static types was making refactoring a slow and
 error prone process. A full Rust rewrite of the prototype resulted in the
 removal of a lot of tech debt and bugs, and the performance boost is nice too!
 
-One day, Gleam may have a compiler written in Gleam, but for now we are focused
-on developing other areas of the language such as libraries, tooling, and
-documentation.
+The community may one day implement a Gleam compiler written in Gleam, but the
+core team are focused on developing other areas of the ecosystem such as
+libraries, tooling, and documentation, as this will provide more value overall.
+
+
+## What are Gleam programmers called?
+
+Gleamlins, according to [the Gleam Discord server](https://discord.gg/Fm8Pwmy).
 
 
 ## Is it good?

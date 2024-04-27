@@ -1,5 +1,6 @@
 ---
 author: Louis Pilfold
+author-link: https://github.com/lpil
 title: Introducing the Gleam package index
 subtitle: Find packages for your Gleam projects
 tags:

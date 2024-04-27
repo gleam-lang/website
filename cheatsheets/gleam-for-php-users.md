@@ -217,7 +217,7 @@ In Gleam type annotations can optionally be given when binding variables.
 
 ```gleam
 let some_list: List(Int) = [1, 2, 3]
-let some_String: String = "Foo"
+let some_string: String = "Foo"
 ```
 
 Gleam will check the type annotation to ensure that it matches the type of the
@@ -235,8 +235,8 @@ keywords are optional.
 ```php
 function hello($name = 'Joe') : string
 {
-  if ($name = 'Joe') {
-    return 'Hello back, Joe!';
+  if ($name == 'Joe') {
+    return 'Welcome back, Joe!';
   }
   return "Hello $name";
 }
@@ -251,11 +251,11 @@ Anonymous functions returning a single expression can also be defined and be
 bound to variables.
 
 ```php
-$x = 2
+$x = 2;
 $phpAnonFn = function($y) use ($x) { return $x * $y; }; // Creates a new scope
-$phpAnonFn(2, 3); // 6
-$phpArrowFn = ($x) => $x * $y; // Uses the outside scope
-$phpArrowFn(2, 3); // 6
+$phpAnonFn(3); // 6
+$phpArrowFn = fn ($y) => $x * $y; // Inherits the outer scope
+$phpArrowFn(3); // 6
 ```
 
 ### Gleam
@@ -287,8 +287,8 @@ is that module functions heads may also feature argument labels, like so:
 
 ```gleam
 // In some module.gleam
-pub fn distance(from x: Int, to y: Int) : Int {
-  abs(x) - abs(y) |> abs()
+pub fn distance(from x: Int, to y: Int) -> Int {
+  x - y |> int.absolute_value()
 }
 // In some other function
 distance(from: 1, to: -2) // 3
@@ -454,9 +454,9 @@ function replace(string $each, string $with, string $inside) {
   // TODO implementation
 }
 // Calling with positional arguments:
-replace(",", " ", "A,B,C")
+replace(",", " ", "A,B,C");
 // Calling with named arguments:
-replace(inside: "A,B,C", each: ",", with: " ")
+replace(inside: "A,B,C", each: ",", with: " ");
 ```
 
 #### Gleam
@@ -992,7 +992,7 @@ using a `try/except` set of blocks:
 // callee block
 try {
     echo 'this line will be executed and thus printed';
-    aFunctionThatFails()
+    aFunctionThatFails();
     echo 'this line will not be executed and thus not printed';
 } catch (Throwable $e) {
     var_dump(['doing something with the exception', $e]);
@@ -1051,12 +1051,12 @@ using `class_alias()`.
 A simple variable can store the result of a compound set of types.
 
 ```php
-static class Point {
+class Point {
   // Can act as an opaque type and utilize Point
   // Can be class_aliased to Coordinate
 }
 
-static class Triangle {
+class Triangle {
   // Can act as an opaque type definition and utilize Point
 }
 ```
@@ -1088,15 +1088,10 @@ constructor so some boilerplate is needed:
 
 ```php
 class Person {
-  public string $name;
-  public int $age;
-  function __construct(string $name, int $age) {
-    $this->name = $name;
-    $this->age = $age;
-  }
+  public function __construct(public string $name, public int $age) { }
 }
 $person = new Person(name: "Joe", age: 40);
-// $person->name // Joe;
+$person->name; // Joe
 ```
 
 #### Gleam
@@ -1167,12 +1162,7 @@ using the intended API.
 ```php
 class PointObject
 {
-  private int $x;
-  private int $y;
-
-  private function __construct(int $x, int $y) {
-      $this->x = $x;
-      $this->y = $y;
+  private function __construct(public int $x, public int $y) {
   }
 
   public static function spawn(int $x, int $y) {
@@ -1260,7 +1250,7 @@ Making the static class available in the local scope and calling the function
 // After auto-loading has happened
 use Foo\Bar;
 
-Bar::identity(1) // 1;
+Bar::identity(1); // 1
 ```
 
 ### Gleam
@@ -1369,7 +1359,7 @@ This may be useful to differentiate between multiple modules that would have the
 #### PHP
 
 ```php
-use Animal\Cat{
+use Animal\Cat\{
   Cat,
   function stroke
 };

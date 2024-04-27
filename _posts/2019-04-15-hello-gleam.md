@@ -1,5 +1,6 @@
 ---
 author: Louis Pilfold
+author-link: https://github.com/lpil
 title: Hello, Gleam!
 subtitle: There's a new friendly language in town
 tags:

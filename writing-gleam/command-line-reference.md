@@ -26,15 +26,18 @@ Build the project
 
 | Option | Description |
 | ------ | ----------- |
-| `--target <TARGET>`| The platform to target
+| `-t, --target <TARGET>`| The platform to target
 | `--warnings-as-errors`| Emit compile time warnings as errors
 
 ## `check`
 
-`gleam check`
+`gleam check [OPTIONS]`
 
 Type check the project
 
+| Option | Description |
+| ------ | ----------- |
+| `-t, --target <TARGET>`| The platform to target
 
 ## `clean`
 
@@ -134,18 +137,39 @@ Precompiled Erlang, suitable for deployment
 
 `gleam export hex-tarball`
 
+The package bundled into a tarball, suitable for publishing to Hex
 
+
+### `export javascript-prelude`
+
+`gleam export javascript-prelude`
+
+The JavaScript prelude module
+
+
+### `export package-interface`
+
+`gleam export package-interface --out <OUTPUT>`
+
+Information on the modules, functions, and types in the project in JSON format
+
+| Option | Description |
+| ------ | ----------- |
+| `--out <OUTPUT>`| The path to write the JSON file to
+
+### `export typescript-prelude`
+
+`gleam export typescript-prelude`
+
+The TypeScript prelude module
 
 
 ## `fix`
 
-`gleam fix [OPTIONS] [FILES]...`
+`gleam fix`
 
 Rewrite deprecated Gleam code
 
-| Option | Description |
-| ------ | ----------- |
-| `-t, --target <TARGET>`| The target to use for external functions when it could not be inferred
 
 ## `format`
 
@@ -211,7 +235,6 @@ Create a new project
 
 | Option | Description |
 | ------ | ----------- |
-| `--description <DESCRIPTION>`| Description of the project [default: "A Gleam project"]
 | `--name <NAME>`| Name of the project
 | `--skip-git`| Skip git initialization and creation of .gitignore, .git/* and .github/* files
 | `--skip-github`| Skip creation of .github/* files
@@ -250,7 +273,7 @@ Run the project
 | ------ | ----------- |
 | `-m, --module <MODULE>`| The module to run
 | `--runtime <RUNTIME>`| 
-| `--target <TARGET>`| The platform to target [possible values: erlang, javascript]
+| `-t, --target <TARGET>`| The platform to target
 
 ## `shell`
 
@@ -268,7 +291,7 @@ Run the project tests
 | Option | Description |
 | ------ | ----------- |
 | `--runtime <RUNTIME>`| 
-| `--target <TARGET>`| The platform to target [possible values: erlang, javascript]
+| `-t, --target <TARGET>`| The platform to target
 
 ## `update`
 
