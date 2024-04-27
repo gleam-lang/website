@@ -27,7 +27,7 @@ subtitle: Hello JavaScripticians!
   - [Tuples](#tuples)
   - [Lists](#lists)
   - [Atoms](#atoms)
-  - [Maps](#maps)
+  - [Dicts](#dicts)
 - [Flow control](#flow-control)
   - [Case](#case)
   - [Piping](#piping)
@@ -534,7 +534,7 @@ let list = [1, 2, ..list] // still works
 let list = [1, ..list, 5] // compile error
 ```
 
-### Maps
+### Dicts
 
 #### JavaScript
 
@@ -548,25 +548,32 @@ const map1 = {
   key1: "value1",
   key2: 5,
 };
+
+const actualMap = new Map([
+  ["key1", "value1"],
+  [9, 5],
+]);
 ```
 
 #### Gleam
 
-In a Gleam map, the type for keys and the type for values are fixed. So, for
-example, you can't have a map with some `String` values and some `Int` values,
-and you can't have a map with some `String` keys and some `Int` values. But you
-can have a map with `String` keys and `Int` values.
+In a Gleam `dict`, the type for keys and the type for values are fixed. So, for
+example, you can't have a dict with some `String` values and some `Int` values,
+and you can't have a dict with some `String` keys and some `Int` keys. But you
+can have a dict with `String` keys and `Int` values.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map.
-Maps are generally not used much in Gleam, custom types are more common. (You
-would usually translate a TypeScript `type`, `class`, or `interface` to a Gleam
-custom type, and TypeScript `Map`s and `Record`s to Gleam maps.)
+There is no dict literal syntax in Gleam, and you cannot pattern match on a
+dict. Maps are generally not used much in Gleam, custom types are more common.
+
+(You would usually translate a TypeScript `type` or `class` to a Gleam custom
+type, and only use a Gleam `Map` for arbitrary key–value pairs, equivalent to a
+TypeScript `Map` or `Record`.)
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Flow control
