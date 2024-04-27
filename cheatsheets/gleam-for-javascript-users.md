@@ -101,13 +101,20 @@ height = height + 100; // Error!
 
 #### Gleam
 
-Gleam has the `let` keyword before each variable assignment. Variables can be
-reassigned, but each assignment must start with the `let` keyword.
+Gleam has the `let` keyword before each variable assignment. Variables can't be
+mutated or reassigned. If a new variable has the same name as an existing
+variable, the new definition _shadows_ the old one, but the old variable is not
+overwritten:
 
 ```gleam
+import gleam/io
+
 let size = 50
+let print_it = fn() { io.debug(size) }
 let size = size + 100
 let size = 1
+io.debug(size) // prints 1
+print_it() // prints 50
 ```
 
 ### Variables type annotations
