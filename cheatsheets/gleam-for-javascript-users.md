@@ -6,7 +6,6 @@ subtitle: Hello JavaScripticians!
 
 - [Comments](#comments)
 - [Variables](#variables)
-  - [Match operator](#match-operator)
   - [Variables type annotations](#variables-type-annotations)
 - [Functions](#functions)
   - [Function capturing with `_`](#function-capturing-with-_)
@@ -22,7 +21,6 @@ subtitle: Hello JavaScripticians!
   - [Strings](#strings)
   - [Tuples](#tuples)
   - [Lists](#lists)
-  - [Atoms](#atoms)
   - [Dicts](#dicts)
 - [Flow control](#flow-control)
   - [Case](#case)
