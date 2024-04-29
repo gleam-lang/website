@@ -1041,7 +1041,7 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 
 ## Type aliases
 
-Type aliases allow for easy referencing of arbitrarily complex types.
+Type aliases allow for easy referencing of arbitrary complex types.
 PHP does not have this feature, though either regular classes or static classes
 can be used to design custom types and class definitions in take can be aliased
 using `class_alias()`.
