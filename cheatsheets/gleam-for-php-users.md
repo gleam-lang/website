@@ -765,9 +765,9 @@ between floats and integers in various ways including `rounding`, `floor`,
 
 ### Case
 
-Case is one of the most used control flow methods in Gleam. It can be seen as a
-switch statement on steroids. It provides a terse way to match a value type to
-an expression. It is also used to replace `if`/`else` statements.
+`case` is how flow control is done in Gleam. It can be seen as a switch
+statement on steroids. It provides a terse way to match a value type to an
+expression. It is also used to replace `if`/`else` statements.
 
 #### PHP
 
@@ -986,7 +986,7 @@ function aFunctionThatFails() {
 ```
 
 The callee block will be able to capture any exception raised in the block
-using a `try/except` set of blocks:
+using a `try/catch` set of blocks:
 
 ```php
 // callee block
@@ -1001,7 +1001,7 @@ try {
 
 #### Gleam
 
-In contrast in gleam, errors are just containers with an associated value.
+In contrast in Gleam, errors are just containers with an associated value.
 
 A common container to model an operation result is
 `Result(ReturnType, ErrorType)`.
@@ -1041,7 +1041,7 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 
 ## Type aliases
 
-Type aliases allow for easy referencing of arbitrary complex types.
+Type aliases allow for easy referencing of arbitrarily complex types.
 PHP does not have this feature, though either regular classes or static classes
 can be used to design custom types and class definitions in take can be aliased
 using `class_alias()`.
