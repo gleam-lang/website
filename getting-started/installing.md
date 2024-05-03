@@ -121,13 +121,13 @@ $ doas pkg_add gleam
 
 ### openSUSE
 
-For openSUSE the package is in the process of being accepted into the official repository.
-For now you will have to add the package's repository yourself and then install from it:
+Gleam is available as part of the official packages repository. Install it with:
+
 ```
-# zypper addrepo -f https://download.opensuse.org/repositories/home:/Pi-Cla/openSUSE_Tumbleweed/ gleam_repo
-# zypper refresh
 # zypper install gleam
 ```
+
+There are also nightlies available at this [home project](https://build.opensuse.org/project/show/home:Pi-Cla:gleam-nightly)
 
 ### Windows
 
