@@ -587,6 +587,10 @@
   url: "https://github.com/mattvanhorn"
   avatar: "https://avatars.githubusercontent.com/u/20461?v=4"
   square_avatar: false
+- name: "Matthew Jackson"
+  url: "https://github.com/matthewj-dev"
+  avatar: "https://avatars.githubusercontent.com/u/13512861?u=302c005476d3d94629683e1b8c2ffc4f0108c3d6&v=4"
+  square_avatar: false
 - name: "Matthias Benkort"
   url: "https://github.com/KtorZ"
   avatar: "https://avatars.githubusercontent.com/u/5680256?u=020eb2bc68211d32c1691695b6ab22ad55478501&v=4"
@@ -615,9 +619,17 @@
   url: "https://github.com/mkumm"
   avatar: "https://avatars.githubusercontent.com/u/158991?u=4b798fee461a143c60a8db1f3f34d2e0978e6860&v=4"
   square_avatar: false
+- name: Mike
+  url: "https://liberapay.com/Daybowbow/"
+  avatar: "https://seccdn.libravatar.org/avatar/cb50e113b59357c0daa8dde324afeae8?s=160&d=404"
+  square_avatar: false
 - name: "Mike Roach"
   url: "https://github.com/mroach"
   avatar: "https://avatars.githubusercontent.com/u/79006?u=c9afda3a9a7b694e8ef7f1c70184559add8d8655&v=4"
+  square_avatar: false
+- name: "Mikey J"
+  url: "https://liberapay.com/mikej/"
+  avatar: "https://avatars.githubusercontent.com/u/1358499??s=160&d=404"
   square_avatar: false
 - name: "Moshe Goldberg"
   url: "https://github.com/mogold"
@@ -775,10 +787,6 @@
   url: "https://github.com/Ozame"
   avatar: "https://avatars.githubusercontent.com/u/15949214?v=4"
   square_avatar: false
-- name: "Santi Lertsumran"
-  url: "https://github.com/mrgleam"
-  avatar: "https://avatars.githubusercontent.com/u/11692854?u=12baaf22f39c59c6284b4db9322255a5d827ac9d&v=4"
-  square_avatar: false
 - name: "Saša Jurić"
   url: "https://github.com/sasa1977"
   avatar: "https://avatars.githubusercontent.com/u/202498?u=71c741d8bb7e45e98f9bed3adb51c98575fee650&v=4"
@@ -834,6 +842,10 @@
 - name: "Timo Sulg"
   url: "https://github.com/timgluz"
   avatar: "https://avatars.githubusercontent.com/u/1223889?u=a13c54a9e52d336ac32a11b23e4295e47c6caf4c&v=4"
+  square_avatar: false
+- name: "Tom Schuster"
+  url: "https://github.com/tomjschuster"
+  avatar: "https://avatars.githubusercontent.com/u/19388254?u=ec7783d90c6098292e7de55491404cc887b95063&v=4"
   square_avatar: false
 - name: "Tomasz Kowal"
   url: "https://github.com/tomekowal"
@@ -939,6 +951,10 @@
   url: "https://github.com/dropwhile"
   avatar: "https://avatars.githubusercontent.com/u/59039?u=4360e1f740ab5355c238c79d5223357206e2092d&v=4"
   square_avatar: false
+- name: erikareads
+  url: "https://liberapay.com/erikareads/"
+  avatar: "https://seccdn.libravatar.org/avatar/3beb6ba272afe47c05f19288b480cbcb?s=160&d=404"
+  square_avatar: false
 - name: "fly.io"
   url: "https://github.com/superfly"
   avatar: "https://avatars.githubusercontent.com/u/22525303?v=4"
@@ -990,6 +1006,10 @@
 - name: xhh
   url: "https://github.com/xhh"
   avatar: "https://avatars.githubusercontent.com/u/159740?u=cc0335c586e95e7f3eb893afa9c582f811645e4b&v=4"
+  square_avatar: false
+- name: "~1847917"
+  url: "https://liberapay.com/~1847917/"
+  avatar: "https://seccdn.libravatar.org/avatar/0837ca2eb9199aa134c4b2fc9ce382a2?s=160&d=404"
   square_avatar: false
 - name: "Šárka Slavětínská"
   url: "https://github.com/sarkasl"
