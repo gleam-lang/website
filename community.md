@@ -9,13 +9,19 @@ following forums:
 
 <ul class="community-socials">
     <li>
-        <a target="_blank" title="Gleam’s web chat on Discord" href="https://discord.gg/Fm8Pwmy">
-            <img src="/images/community/discord.svg" alt="Discord Icon" />
+        <a target="_blank" href="https://discord.gg/Fm8Pwmy">
+            <span class="community-socials__logo">
+                <img src="/images/community/discord.svg" alt="Discord Icon" />
+            </span>
+            <span>Gleam’s web chat on Discord</span>
         </a>
     </li>
     <li>
-        <a target="_blank" title="Gleam discussions on Github" href="https://github.com/gleam-lang/gleam/discussions">
-            <img src="/images/community/github.svg" alt="GitHub Icon" />
+        <a target="_blank" href="https://github.com/gleam-lang/gleam/discussions">
+            <span class="community-socials__logo">
+                <img src="/images/community/github.svg" alt="GitHub Icon" />
+            </span>
+            <span>Gleam discussions on Github</span>
         </a>
     </li>
 </ul>
