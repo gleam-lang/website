@@ -234,11 +234,7 @@ mul(1, 2)
 ```
 
 A difference between Go's and Gleam's anonymous functions is that in Go they
-create a new local scope but inherit the surrounding scope, in Gleam they close 
-over the local scope, aka create a copy and inherit all variables in the scope.
-This means that in Gleam you can shadow local variables within anonymous functions
-but you cannot influence the variable bindings in the outer scope.  In Go you can
-actually change the values in the outer scope, even if that scope has been returned.
+create a new local scope but inherit the surrounding scope, allowing you to mutate variables in that scope. In Gleam you can shadow local variables within anonymous functions but you cannot influence the variable bindings in the outer scope.  In Go you can actually change the values in the outer scope, even if that scope has been returned.
 
 The only difference between module functions and anonymous functions in Gleam
 is that module functions heads may also feature argument labels, like so:
@@ -302,16 +298,10 @@ boundary between them.
 
 ### Gleam
 
-Gleam does not support a global scope. Instead Gleam code is either
-representing a library, which can be required as a dependency, and/or it
-represents an application having a main module, whose name must match to the
-application name and within that `main()`-function which will be called via
-either `gleam run` or when the `entrypoint.sh` is executed.
+Gleam does not support a global scope. Like Go, in Gleam only code that is within functions can be invoked.
 
-Like Go, in Gleam only code that is within functions can be invoked.
-
-On the BEAM, Gleam code can also be invoked from other Erlang code, or it
-can be invoked from JavaScript runtime calls.
+On the BEAM, Gleam code can also be invoked from other Erlang code. It
+can also be invoked from JavaScript runtime calls.
 
 ### Function type annotations
 
@@ -334,9 +324,7 @@ func mul(x, y int) bool {
 #### Gleam
 
 Functions can **optionally** have their argument and return types annotated in
-Gleam. These type annotations will always be checked by the compiler and throw
-a compilation error if not valid. The compiler will still type check your
-program using type inference if annotations are omitted.
+Gleam. These type annotations don't change how type checking works, but are good documentation for you and other readers of your code.
 
 ```gleam
 fn add(x: Int, y: Int) -> Int {
@@ -469,7 +457,7 @@ are fully type checked.
 ### Notes on operators
 
 - For bitwise operators, which exist in Go but not in Gleam,
-  see: <https://github.com/gleam-lang/bitwise>.
+  instead use the `bitwise_*` functions exposed in the `gleam/int` standard library module.
 - `==` is by default comparing value for primtive values, and reference for structs, arrays, and interface values in Go.
   - In Gleam equality is checked for structurally.
 - Go operators are short-circuiting as in Gleam.
@@ -583,8 +571,8 @@ fmt.Sprintf("Hellø, %d!", what);
 
 ### Tuples
 
-Tuples are very useful in Gleam as they're the only collection data type that
-allows mixed types in the collection.
+Tuples are very useful in Gleam as they're a fixed-length collection data type that
+allows mixed types in the collection without naming the fields.
 
 #### Go
 
@@ -642,9 +630,7 @@ unpracticed (or even experienced) Gopher.
 
 #### Gleam
 
-Gleam has a `cons` operator that works for lists destructuring and
-pattern matching. In Gleam lists are immutable so adding and removing elements
-from the start of a list is highly efficient.
+Gleam has syntax for lists destructuring and pattern matching. In Gleam lists are immutable so adding and removing elements from the start of a list is highly efficient.
 
 ```gleam
 let list = [2, 3, 4]
@@ -749,7 +735,7 @@ func httpErrorImpl2(status int) string {
 
 #### Gleam
 
-The case operator is a top level construct in Gleam:
+In Gleam, the case expression is similar in concept:
 
 ```gleam
 case some_number {
@@ -856,7 +842,11 @@ often.
 
 ```Go
 // Imaginary Go code
-// TODO: Pick up here!
+func setOptions() somePkg.Options {
+  return options.New().
+    WithDelay(200).
+    WithCompression(true);
+}
 ```
 
 #### Gleam
@@ -946,23 +936,34 @@ case parse_int("123") {
 }
 ```
 
-In order to simplify this construct, we can use the `try` keyword that will:
-
-- either bind a value to the providing name if `Ok(Something)` is matched,
-- or **interrupt the current block's flow** and return `Error(Something)` from
-  the given block.
+Sometimes this can get complicated, and there are functions like `try` from the `gleam/result` module in the standard library that can help:
 
 ```gleam
-let a_number = "1"
-let an_error = Error("ouch")
-let another_number = "3"
-
-try int_a_number = parse_int(a_number)
-try attempt_int = parse_int(an_error) // Error will be returned
-try int_another_number = parse_int(another_number) // never gets executed
-
-Ok(int_a_number + attempt_int + int_another_number) // never gets executed
+pub fn without_use() {
+  result.try(get_username(), fn(username) {
+    result.try(get_password(), fn(password) {
+      result.map(log_in(username, password), fn(greeting) {
+        greeting <> ", " <> username
+      })
+    })
+  })
+}
 ```
+
+But this can get nested quickly.  In order to simplify these scenarios, we can use the `use` construct which allows for a flattening of callbacks to make this code much easier
+to read, and somewhat gives one the feel of an early return.
+
+```gleam
+pub fn with_use() {
+  use username <- result.try(get_username()) // If this fails, we return its error
+  use password <- result.try(get_password()) // If this fails, we return its error
+  use greeting <- result.map(log_in(username, password))
+  greeting <> ", " <> username
+}
+```
+
+You can see that `use` is great not just for error handling with `result.try`, but for
+dealing with higher order functions of all sorts.
 
 ## Type aliases
 
@@ -1094,6 +1095,8 @@ constraints.
 
 #### Gleam
 
+Data modeling in Gleam will often use unions like seen below.  It's a great way to hold single values of different types in a single value.  Pattern matching makes them easy to work with and reason about.
+
 ```gleam
 type IntOrFloat {
   AnInt(Int)
@@ -1112,7 +1115,10 @@ fn int_or_float(X) {
 
 In Go, you can choose to not export a type and then they will be considered
 opaque to the user of your package.  Just have the type have a lowercase
-identifier.
+identifier.  Or, if it's desirable to have the type be referenceable by a
+consuming package, the name of the type can be uppercase(public), but all fields
+and methods of the type be lowercase(private).  In the latter case the consumer
+will be able to construct a zero value for the type, which might not be desirable.
 
 In Gleam, custom types can be defined as being opaque, which causes the
 constructors for the custom type not to be exported from the module. Without
@@ -1123,7 +1129,7 @@ using the intended API.
 
 ```Go
 package mypkg
-type myType struct { // Can't be used outside of this package
+type myType struct { // Can't be referenced outside of this package
 
 }
 
@@ -1356,14 +1362,14 @@ Importing common types such as `gleam/order.{Lt, Eq, Gt}` or
 
 ## Architecture
 
-To iterate a few foundational differences:
+To iterate a few foundational differences (Go VS Gleam):
 
 1. Programming model: imperative VS functional immutable
    programming
-2. Guarantees: implicit nillability vs explicit nillability
+2. Guarantees: implicit nullability VS explicit nullability
 3. Runtime model: lightweight coroutines(`goroutines`) VS Erlang/OTP processes
-4. Error handling: error value (and very few panics) VS result type
-5. Distribution: Single static binaries vs BEAM virtual machine bytecode
+4. Error handling: error value VS result type .  Both do have some form of runtime panic or exception which can be recovered from.
+5. Distribution: Single static binaries VS BEAM virtual machine bytecode (or Javascript code).
 
 ### Programming model
 
@@ -1383,8 +1389,7 @@ To iterate a few foundational differences:
 - Go features a massive, powerful standard library centered around simple interfaces.
   Everything from string manipulation to the tools to create an http server are included
   out of the box.  It has been tuned for over 15 years for performance and has strong
-  guarantees about backwards and forwards compatibility.
-- Gleam allows you to opt into a smaller, well polished and consistent standard
+  guarantees about backwards and forwards compatibility. While Gleam allows you to opt into a smaller, well polished and consistent standard
   library.
 
 ### Guarantees and types
@@ -1395,9 +1400,7 @@ To iterate a few foundational differences:
   comparisons and conversions must happen via function calls or other explicit type
   conversion mechanisms.
 - Go's checks happen at compile time (except for reflection), Gleam uses the compiler
-  and pattern matching to allow for robust compile time check but does have interop
-  with Erlang, a dynamically language that relies on good interfaces written in Gleam
-  to provide any type-safety.
+  and pattern matching to allow for robust compile-time checks. But Gleam does have interop with Erlang, a dynamically-typed language that relies on good interfaces written in Gleam to provide any type-safety for those interactions.
 - Go has limited type inference, all functions and data structures require explicit types.
   Gleam's type inference allows you to be lazy for almost all type definitions.
   Gleam's type system will always assist you in what types are expected and/or
@@ -1406,7 +1409,7 @@ To iterate a few foundational differences:
 ### Runtime model
 
 - Gleam can run on Erlang or JavaScript runtimes.
-- Gleam on Erlang/BEAM allows to processes requests in complete isolation,
+- Gleam on Erlang allows to processes requests in complete isolation,
   unlike Go, where memory sharing is allowed - though communicating through
   channels is recommended.  Channels and Goroutines allow for good isolation
   if used in a disciplined manner.  That being said, Mutexes and other shared
