@@ -55,7 +55,7 @@ Multi line comments may be written like so:
  */
 ```
 
-IN Go, top level declarations can be annotated with a comment directly above it to create documentation for that symbol.
+In Go, top level declarations can be annotated with a comment directly above it to create documentation for that symbol.
 
 ```Go
 // This is a special interface
@@ -163,7 +163,7 @@ Asserts should be used with caution.
 
 #### Go
 
-Go is a statically typed language, and type annotations are generally required in most places.  The exception is when variables or constants are initialized with a value. Multiple consecutive struct fields or function arguments of the same time can combined their type annotation. 
+In Go type annotations are generally required in most places.  The exception is when variables or constants are initialized with a value. Multiple consecutive struct fields or function arguments of the same time can combined their type annotation. 
 
 ```Go
 type Bar struct {
@@ -186,8 +186,7 @@ let some_string: String = "Foo"
 
 Gleam will check the type annotation to ensure that it matches the type of the
 assigned value. It does not need annotations to type check your code, but you
-may find it useful to annotate variables to hint to the compiler that you want
-a specific type to be inferred.
+may find them useful for documentation purposes.
 
 ## Functions
 
@@ -311,8 +310,8 @@ either `gleam run` or when the `entrypoint.sh` is executed.
 
 Like Go, in Gleam only code that is within functions can be invoked.
 
-On the Beam, Gleam code can also be invoked from other Erlang code, or it
-can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
+On the BEAM, Gleam code can also be invoked from other Erlang code, or it
+can be invoked from JavaScript runtime calls.
 
 ### Function type annotations
 
@@ -472,9 +471,8 @@ are fully type checked.
 - For bitwise operators, which exist in Go but not in Gleam,
   see: <https://github.com/gleam-lang/bitwise>.
 - `==` is by default comparing value for primtive values, and reference for structs, arrays, and interface values in Go.
-  - In Gleam it is always by value.
+  - In Gleam equality is checked for structurally.
 - Go operators are short-circuiting as in Gleam.
-- In Go, all the arithmetic operators must have both arguments be of the same type, so `int` and `int32` values must be converted to one common type.
 
 ## Constants
 
@@ -566,9 +564,8 @@ the standard library.  Interpolation can be accomplished using `Sprintf` and oth
 similar functions found in `fmt` package amongst others in the standard library.
 This uses C `strfmt` style format strings that are statically checked at compile time.
 
-In Gleam all strings are UTF-8 encoded binaries. Gleam strings do not allow
-interpolation, yet. Gleam however offers a `string_builder` via its standard
-library for performant string building.
+In Gleam all strings are unicode binaries. Gleam however offers a `StringBuilder` type via its standard
+library which may be more performant than joining strings in some scenarios.
 
 #### Go
 
@@ -602,7 +599,6 @@ fmt.Print(myTuple.pwd)
 ```
 
 ```go
-// This is not idiomatic Go!
 func returnUserInfo() (string, string, int) {
   return "username", "password", 10
 }
@@ -683,7 +679,7 @@ map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ### Numbers
 
 Go and Gleam both support platform-dependent sized integer and float types.
-`Integer` and `Float` in Gleam and `int` and `float` in Go sizes for both depend
+`Int` and `Float` in Gleam and `int` and `float` in Go sizes for both depend
 on the platform: 64-bit or 32-bit hardware and OS and for Gleam JavaScript and Erlang.
 
 #### Go
@@ -713,8 +709,8 @@ between floats and integers in various ways including `rounding`, `floor`,
 
 ### Case
 
-Case is one of the most used control flow in Gleam. It can be seen as a switch
-statement on steroids. It provides a terse way to match a value type to an
+Case is how control flow is done in Gleam. It can be seen as a switch
+statement with extra abilities. It provides a terse way to match a value type to an
 expression. It is also used to replace `if`/`else` statements.
 
 #### Go
@@ -933,15 +929,12 @@ recover.
 
 #### Gleam
 
-In contrast in gleam, errors are just containers with an associated value.
-
-A common container to model an operation result is
-`Result(ReturnType, ErrorType)`.
+In Gleam functions that can fail return the `Result(success, error)` generic type.
 
 A `Result` is either:
 
-- an `Error(ErrorValue)`
-- or an `Ok(Data)` record
+- an `Ok` record holding a success value
+- an `Error` record holding an error value
 
 Handling errors actually means to match the return value against those two
 scenarios, using a case for instance:
@@ -978,16 +971,12 @@ supported by both Gleam and Go.
 
 ### Go
 
-Type aliases in Go allow an Identifier to refer to a different type with it's
-scope.
-
 ```go
 type Headers = []struct{key, value string}
 ```
 
 ### Gleam
 
-The `type` keyword can be used to create aliases.
 
 ```gleam
 pub type Headers =
@@ -1042,7 +1031,7 @@ let person = Person(name: "Joe", age: 40)
 let name = person.name
 ```
 
-An important difference to note is there is no Java-style object-orientation in
+An important difference to note is there is no object-orientation in
 Gleam, thus methods can not be added to types. However opaque types exist,
 see below.
 
@@ -1374,7 +1363,7 @@ To iterate a few foundational differences:
 2. Guarantees: implicit nillability vs explicit nillability
 3. Runtime model: lightweight coroutines(`goroutines`) VS Erlang/OTP processes
 4. Error handling: error value (and very few panics) VS result type
-5. Distribution: Single static binaries vs Dynamically linked binary that relies on Erlang runtime
+5. Distribution: Single static binaries vs BEAM virtual machine bytecode
 
 ### Programming model
 
@@ -1416,7 +1405,7 @@ To iterate a few foundational differences:
 
 ### Runtime model
 
-- Gleam can run on Erlang/BEAM, on the browser but also Deno or NodeJS.
+- Gleam can run on Erlang or JavaScript runtimes.
 - Gleam on Erlang/BEAM allows to processes requests in complete isolation,
   unlike Go, where memory sharing is allowed - though communicating through
   channels is recommended.  Channels and Goroutines allow for good isolation
@@ -1426,12 +1415,12 @@ To iterate a few foundational differences:
   The level of isolation means that, if a process crashes then the supervision
   system can restart that process or after a while or amount of tries abort
   repeating restarts on the process with that given input data. This means
-  Erlang/BEAM will yield incredibly robust concurrent systems, even superior
+  Erlang can yield incredibly robust concurrent systems, even superior
   to what experienced Gophers can accomplish with Goroutines, Channels, and
   recover patterns.
 - When executing Gleam code in fact its compiled Erlang or JavaScript is
   executed. So in case there are runtime crashes, the crash log will show
-  Erlang (or browser-console/NodeJS/Deno) debug information. In Gleam
+  Erlang or JavaScript debug information. In Gleam
   applications runtime errors should almost never happen but they are harder
   to read, in Go applications runtime errors might be more common but the will be
   easier to read.
@@ -1442,7 +1431,7 @@ To iterate a few foundational differences:
   type. There can however be other errors, such as miss-behavior due
   accidental to division by 0, crashes on RAM or storage limits, hardware
   failures, etc. In these cases on the BEAM there are ways to manage these
-  via BEAM's supervision trees.
+  via Erlang/OTP's supervision trees.
 - Go has explicit errors as well, and pairs it with multiple return values
   to provide a similar experience to Gleam, but in an imperative, non-monadic
   form.  Go does have panics which will crash the running goroutine (and if that
