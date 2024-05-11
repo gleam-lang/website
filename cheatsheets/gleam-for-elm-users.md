@@ -558,11 +558,11 @@ The standard library provides the [gleam/list](https://hexdocs.pm/gleam_stdlib/g
 
 ### Dicts
 
-Dict in Elm and Map in Gleam have similar properties and purpose.
+Dict in Elm and Dict in Gleam have similar properties and purpose.
 
-In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
+In Gleam, dicts can have keys and values of any type, but all keys must be of the same type in a given dict and all values must be of the same type in a given dict.
 
-Like Elm, there is no map literal syntax in Gleam, and you cannot pattern match on a map.
+Like Elm, there is no dict literal syntax in Gleam, and you cannot pattern match on a dict.
 
 #### Elm
 
@@ -576,10 +576,10 @@ Dict.fromList [ ("key1", "value1"), ("key2", 2) ] -- Compile error
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Operators

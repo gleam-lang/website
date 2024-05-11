@@ -20,7 +20,7 @@ subtitle: Hello Hypertext crafters!
   - [Strings](#strings)
   - [Tuples](#tuples)
   - [Lists](#lists)
-  - [Maps](#maps)
+  - [Dicts](#dicts)
   - [Numbers](#numbers)
 - [Flow control](#flow-control)
   - [Case](#case)
@@ -197,8 +197,8 @@ class Foo {
 }
 ```
 
-As PHP's `array` structure is a combination of maps and arrays.
-The PHP manual states that it is an *ordered map*.
+PHP's `array` structure is an *ordered map*, as stated in the PHP manual,
+and it can be treated as an array, dictionary, etc.
 While creating arrays in PHP the type of its elements cannot be set explicitly
 and each element can be of a different type:
 
@@ -700,9 +700,9 @@ let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ```
 
-### Maps
+### Dicts
 
-In PHP, the `array` type also covers maps and can have keys of any type as long as:
+In PHP, the `array` type can also be treated as a dictionary and can have keys of any type as long as:
 
 - the key type is `null`, an `int`, a `string` or a `bool` (some conversions
   occur, such as null to `""` and `false` to `0` as well as `true` to `1`
@@ -711,12 +711,12 @@ In PHP, the `array` type also covers maps and can have keys of any type as long 
 - the key is unique in the dictionary.
 - the values are of any type.
 
-In Gleam, maps can have keys and values of any type, but all keys must be of
-the same type in a given map and all values must be of the same type in a
-given map. The type of key and value can differ from each other.
+In Gleam, dicts can have keys and values of any type, but all keys must be of
+the same type in a given dict and all values must be of the same type in a
+given dict. The type of key and value can differ from each other.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map.
-Maps are generally not used much in Gleam, custom types are more common.
+There is no dict literal syntax in Gleam, and you cannot pattern match on a dict.
+Dicts are generally not used much in Gleam, custom types are more common.
 
 #### PHP
 
@@ -728,10 +728,10 @@ Maps are generally not used much in Gleam, custom types are more common.
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ### Numbers
