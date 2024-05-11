@@ -20,7 +20,7 @@ subtitle: Hello productive pragmatic Pythonistas!
   - [Strings](#strings)
   - [Tuples](#tuples)
   - [Lists](#lists)
-  - [Maps](#maps)
+  - [Dicts](#dictionaries)
 - [Flow control](#flow-control)
   - [Case](#case)
   - [Try](#try)
@@ -464,15 +464,15 @@ let [1, second_element, ..] = list
 
 ### Dictionaries
 
-In Python, maps are called dictionaries and can have keys of any type as long as:
+In Python, dictionaries can have keys of any type as long as:
 
 - the key type is `hashable`, such as integers, strings, tuples (due to their immutable values), functions... and custom mutable objects implementing the `__hash__` method.
 - the key is unique in the dictionary.
   and values of any type.
 
-In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
+In Gleam, dicts can have keys and values of any type, but all keys must be of the same type in a given dict and all values must be of the same type in a given dict.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally not used much in Gleam, custom types are more common.
+There is no dict literal syntax in Gleam, and you cannot pattern match on a dict. Dicts are generally not used much in Gleam, custom types are more common.
 
 #### Python
 

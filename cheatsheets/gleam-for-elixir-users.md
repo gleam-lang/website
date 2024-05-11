@@ -25,7 +25,7 @@ subtitle: Hello Elixir Alchemists!
   - [Tuples](#tuples)
   - [Lists](#lists)
   - [Atoms](#atoms)
-  - [Maps](#maps)
+  - [Dicts](#dicts)
 - [Patterns] TODO
 - [Flow control](#flow-control) TODO
   - [Case](#case) TODO
@@ -556,11 +556,11 @@ Ok(True)
 Error(False)
 ```
 
-### Maps
+### Dicts
 
-In Elixir, maps can have keys and values of any type, and they can be mixed in a given map. In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
+In Elixir, maps can have keys and values of any type, and they can be mixed in a given map. In Gleam, maps are called Dict (Dictionary) and provided by the standard library. Dicts can have keys and values of any type, but all keys must be of the same type in a given dict and all values must be of the same type in a given dict.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally not used much in Gleam, custom types are more common.
+There is no dictionary literal syntax in Gleam, and you cannot pattern match on a dict. Dicts are generally not used much in Gleam, custom types are more common.
 
 #### Elixir
 
@@ -572,10 +572,10 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Custom types
