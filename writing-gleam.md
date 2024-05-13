@@ -60,7 +60,7 @@ You'll now have a project with this structure:
 ├── README.md
 ├── gleam.toml
 ├── src/vars.gleam
-└── test/vars.gleam
+└── test/vars_test.gleam
 ```
 
 - `README.md` file is where you'd write introductory documentation for your
