@@ -279,21 +279,29 @@
   url: "https://github.com/dmmulroy"
   avatar: "https://avatars.githubusercontent.com/u/2755722?u=a9746c9f33b5a17bee04d58b578a12a013b4d41b&v=4"
   square_avatar: false
+- name: "Dima Utkin"
+  url: "https://github.com/gothy"
+  avatar: "https://avatars.githubusercontent.com/u/131037?v=4"
+  square_avatar: false
 - name: "Dmitry Poroh"
   url: "https://github.com/poroh"
   avatar: "https://avatars.githubusercontent.com/u/2820076?u=37f9a5f3afefd3146852a73e4eeedb61ae71dc28&v=4"
-  square_avatar: false
-- name: "Dmytro Utkin"
-  url: "https://github.com/gothy"
-  avatar: "https://avatars.githubusercontent.com/u/131037?v=4"
   square_avatar: false
 - name: "EMR Technical Solutions"
   url: "https://github.com/EMRTS"
   avatar: "https://avatars.githubusercontent.com/u/13780078?v=4"
   square_avatar: false
+- name: "Edgars Burtnieks"
+  url: "https://github.com/edburtnieks"
+  avatar: "https://avatars.githubusercontent.com/u/85392357?u=935e0a2130c740cdae9e1125a2f62c9002b418fa&v=4"
+  square_avatar: false
 - name: "Edon Gashi"
   url: "https://github.com/edongashi"
   avatar: "https://avatars.githubusercontent.com/u/12145268?v=4"
+  square_avatar: false
+- name: "Efstathiadis Dimitris"
+  url: "https://github.com/EfstathiadisD"
+  avatar: "https://avatars.githubusercontent.com/u/48406873?u=caa64a50cc02b2df29afc7c51df593b1be283b48&v=4"
   square_avatar: false
 - name: "Elie Labeca"
   url: "https://github.com/elabeca"
@@ -318,10 +326,6 @@
 - name: "Ernesto Malave"
   url: "https://github.com/oberernst"
   avatar: "https://avatars.githubusercontent.com/u/98632774?u=b24987a18b8d7af92a41905689dccae77d50f450&v=4"
-  square_avatar: false
-- name: "F. Schwalbe"
-  url: "https://github.com/fschwalbe"
-  avatar: "https://avatars.githubusercontent.com/u/88447041?v=4"
   square_avatar: false
 - name: "Felix Mayer"
   url: "https://github.com/yerTools"
@@ -365,7 +369,7 @@
   square_avatar: false
 - name: "Hampus Kraft"
   url: "https://github.com/hampuskraft"
-  avatar: "https://avatars.githubusercontent.com/u/24176136?u=bb30f912bb9bae189257b0b51056e1d2a9b6a9ca&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/24176136?u=bf7d17c35395fe7cb33a091af4990e3e67deb3a5&v=4"
   square_avatar: false
 - name: "Hannes Schnaitter"
   url: "https://github.com/ildorn"
@@ -451,6 +455,10 @@
   url: "https://github.com/okkdev"
   avatar: "https://avatars.githubusercontent.com/u/20144629?u=a7cc738c98e454d194d6c445d423724da9cbedd3&v=4"
   square_avatar: false
+- name: "Jeremy Jacob"
+  url: "https://github.com/jeremyjacob"
+  avatar: "https://avatars.githubusercontent.com/u/44799944?u=c49316300b17473204a0efab63cf792c5c986630&v=4"
+  square_avatar: false
 - name: "Jimpjorps™"
   url: "https://github.com/hunkyjimpjorps"
   avatar: "https://avatars.githubusercontent.com/u/5170341?v=4"
@@ -535,13 +543,17 @@
   url: "https://github.com/lpetic"
   avatar: "https://avatars.githubusercontent.com/u/40602497?u=a5c0f4f2cefb0441e544bd92723185815839598d&v=4"
   square_avatar: false
+- name: "Luna Schwalbe"
+  url: "https://github.com/lunagl"
+  avatar: "https://avatars.githubusercontent.com/u/88447041?v=4"
+  square_avatar: false
 - name: "Manuel Rubio"
   url: "https://github.com/manuel-rubio"
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
   square_avatar: false
 - name: "Marcus André"
   url: "https://github.com/marcusandre"
-  avatar: "https://avatars.githubusercontent.com/u/102828?u=5fea458a89eaf0f3186b71fbed96d3e653d9e2f9&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/102828?u=6b860fdc31683388d3052a0e74ed3e12af485002&v=4"
   square_avatar: false
 - name: "Marcøs"
   url: "https://github.com/ideaMarcos"
@@ -786,6 +798,10 @@
 - name: "Samu Kumpulainen"
   url: "https://github.com/Ozame"
   avatar: "https://avatars.githubusercontent.com/u/15949214?v=4"
+  square_avatar: false
+- name: "Santi Lertsumran"
+  url: "https://github.com/mrgleam"
+  avatar: "https://avatars.githubusercontent.com/u/11692854?u=12baaf22f39c59c6284b4db9322255a5d827ac9d&v=4"
   square_avatar: false
 - name: "Saša Jurić"
   url: "https://github.com/sasa1977"
