@@ -61,12 +61,6 @@ brew update
 brew install gleam
 ```
 
-#### Using the Nix package manager
-
-```sh
-nix profile install gleam
-```
-
 #### asdf version manager
 
 [asdf](https://github.com/asdf-vm/asdf) is a tool for installing and managing
