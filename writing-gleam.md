@@ -144,7 +144,7 @@ gleeunit = ">= 1.0.0 and < 2.0.0"
 ```
 
 The `>= 1.0.1 and < 2.0.0` version constraint means that the project wants any version 
-greater than or equal to 1.0, but less than 2.0, which will maximise compatibility while
+greater than or equal to 1.0.1, but less than 2.0.0, which will maximise compatibility while
 avoiding breaking changes as Hex packages adhere to [semantic versioning][semver].
 
 [semver]: https://semver.org/
