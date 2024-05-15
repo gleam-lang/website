@@ -131,16 +131,16 @@ gleam add envoy argv
 If you look at the `gleam.toml` file you'll see that the dependencies have been
 added to the `[dependencies]` section.
 ```toml
-name = "backlog"
+name = "vars"
 version = "1.0.0"
 
 [dependencies]
-gleam_stdlib = "~> 1.0"
-envoy = "~> 1.0"
-argv = "~> 1.0"
+gleam_stdlib = ">= 0.34.0 and < 2.0.0"
+envoy = ">= 1.0.1 and < 2.0.0"
+argv = ">= 1.0.2 and < 2.0.0"
 
 [dev-dependencies]
-gleeunit = "~> 1.0"
+gleeunit = ">= 1.0.0 and < 2.0.0"
 ```
 
 The `~> 1.0` version constraint means that the project wants any version greater
