@@ -91,6 +91,10 @@
   url: "https://github.com/aweagel"
   avatar: "https://avatars.githubusercontent.com/u/5428607?v=4"
   square_avatar: false
+- name: "Austin Daily"
+  url: "https://github.com/austindaily"
+  avatar: "https://avatars.githubusercontent.com/u/135095754?u=ea529390925bf0db45edd4037f77f64e7ecf475c&v=4"
+  square_avatar: false
 - name: "Barry Moore"
   url: "https://github.com/chiroptical"
   avatar: "https://avatars.githubusercontent.com/u/3086255?u=3f489af77c45053d5cbfff9faebd3ae71f020c6a&v=4"
@@ -559,6 +563,10 @@
   url: "https://github.com/lpetic"
   avatar: "https://avatars.githubusercontent.com/u/40602497?u=a5c0f4f2cefb0441e544bd92723185815839598d&v=4"
   square_avatar: false
+- name: Luna
+  url: "https://github.com/2kool4idkwhat"
+  avatar: "https://avatars.githubusercontent.com/u/120322313?u=b25a49a4010be10a0ca53f05572aeb55889cf974&v=4"
+  square_avatar: false
 - name: "Luna Schwalbe"
   url: "https://github.com/lunagl"
   avatar: "https://avatars.githubusercontent.com/u/88447041?v=4"
@@ -770,6 +778,10 @@
 - name: "Rico Leuthold"
   url: "https://github.com/rico"
   avatar: "https://avatars.githubusercontent.com/u/92818?u=14f235610bc0087faf2253c5980590db6c7907da&v=4"
+  square_avatar: false
+- name: "Ripta Pasay"
+  url: "https://github.com/ripta"
+  avatar: "https://avatars.githubusercontent.com/u/9858?u=861ceb726209b5c4cd0231bb5fb0554ee3a7da03&v=4"
   square_avatar: false
 - name: "Robert Attard"
   url: "https://github.com/TanklesXL"
