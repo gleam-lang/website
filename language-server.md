@@ -53,7 +53,7 @@ manager and then add the language server to your `init.lua`.
 require('lspconfig').gleam.setup({})
 ```
 
-The language server will then me automatically started when you open a Gleam
+The language server will then be automatically started when you open a Gleam
 file.
 
 If you are using [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter)
