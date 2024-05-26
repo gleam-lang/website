@@ -287,7 +287,7 @@ There is no performance cost to Gleam's labelled arguments as they are optimised
 In Elm, the `module` keyword allows to create a module. Each module maps to a single file. The module name must be explicitly stated and must match the file name.
 
 ```elm
-module Foo exposing (identity)
+module One exposing (identity)
 
 identity : a -> a
 identity x =
