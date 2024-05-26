@@ -26,7 +26,7 @@ subtitle: Hello Elixir Alchemists!
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Dicts](#dicts)
-- [Patterns] TODO
+- [Patterns](#patterns)
 - [Flow control](#flow-control) TODO
   - [Case](#case) TODO
   - [Try](#try) TODO
@@ -660,4 +660,33 @@ pub fn main() {
   foo.identity(1)
 }
 ```
+
+## Patterns
+
+Same as Elixir, Gleam has pattern matching. Which is used for matching complex structured data.
+
+#### Gleam
+
+```gleam
+let list = [1, 2, 3]
+
+let assert [first, second .. rest] = list
+let assert [1, second .. rest] = list
+
+let assert Foo(foo: 10, bar: bar) = Foo(foo: 10, bar: 20)
+let assert 20 = bar
+```
+
+#### Elixir
+
+```elixir
+list = [1, 2, 3]
+[first, second | rest] = list
+[1, second | rest] = list
+
+%Foo{foo: 10, name: 20} = %Foo{foo: 10, bar: 20}
+20 = name
+```
+
+
 
