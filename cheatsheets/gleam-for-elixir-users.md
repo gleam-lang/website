@@ -661,29 +661,29 @@ pub fn main() {
 
 ## Patterns
 
-Same as Elixir, Gleam has pattern matching. Which is used for matching complex structured data.
+Same as Elixir, Gleam has pattern matching, which is used for matching complex structured data. In Gleam we use `as` to name the variable, same as using `=` in Elixir.
 
 #### Gleam
 
 ```gleam
 let list = [1, 2, 3]
 
-let assert [first, second .. rest] = list
-let assert [1, second .. rest] = list
+let assert [first as 1, second .. rest] = list
 
-let assert Foo(foo: 10, bar: bar) = Foo(foo: 10, bar: 20)
-let assert 20 = bar
+let assert Foo(foo: 10 as foo, bar: 20 as bar) = Foo(foo: 10, bar: 20)
+
+#(1 as a, 2 as b) = #(1, 2)
 ```
 
 #### Elixir
 
 ```elixir
 list = [1, 2, 3]
-[first, second | rest] = list
-[1, second | rest] = list
+[1 = first, second | rest] = list
 
 %Foo{foo: 10, name: 20} = %Foo{foo: 10, bar: 20}
-20 = name
+
+{1 = a, 2 = b} = {1, 2}
 ```
 
 
