@@ -307,7 +307,7 @@ pub fn identity(x) {
 
 ```gleam
 // in file main.gleam
-import one // if foo was in a folder called `lib` the import would be `lib/one`
+import one // if `one` was in a folder called `lib` the import would be `lib/one`
 
 pub fn main() {
   one.identity(1)
