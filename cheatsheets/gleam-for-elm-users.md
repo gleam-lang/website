@@ -596,8 +596,8 @@ As Gleam does not treat integers and floats generically, there is a pattern of a
 | Greater or equal | `>=`          | `>=.` | In Gleam both values must be **floats**       |
 | Less than        | `<`           | `<`   | In Gleam both values must be **ints**         |
 | Less than        | `<`           | `<.`  | In Gleam both values must be **floats**       |
-| Less or equal    | `<=`          | `>=`  | In Gleam both values must be **ints**         |
-| Less or equal    | `<=`          | `>=.` | In Gleam both values must be **floats**       |
+| Less or equal    | `<=`          | `<=`  | In Gleam both values must be **ints**         |
+| Less or equal    | `<=`          | `<=.` | In Gleam both values must be **floats**       |
 | Boolean and      | `&&`          | `&&`  | In Gleam both values must be **bools**        |
 | Boolean or       | `||`          | `||`  | In Gleam both values must be **bools**        |
 | Add              | `+`           | `+`   | In Gleam both values must be **ints**         |
