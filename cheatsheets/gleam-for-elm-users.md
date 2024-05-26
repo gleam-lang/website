@@ -395,7 +395,7 @@ Elm has a built-in `number` concept that allows it to treat `Int` and `Float` ge
 
 #### Gleam
 
-Operators in Gleam as not generic over `Int` and `Float` so there are separate symbols for `Int` and `Float` operations. For example, `+` adds integers together whilst `+.` adds floats together. The pattern of the additional `.` extends to the other common operators.
+Operators in Gleam are not generic over `Int` and `Float` so there are separate symbols for `Int` and `Float` operations. For example, `+` adds integers together whilst `+.` adds floats together. The pattern of the additional `.` extends to the other common operators.
 
 Additionally, underscores can be added to both integers and floats for clarity.
 
