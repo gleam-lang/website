@@ -592,7 +592,7 @@ As Gleam does not treat integers and floats generically, there is a pattern of a
 | Not equal        | `/=`          | `!=`  | In Gleam both values must be of the same type |
 | Greater than     | `>`           | `>`   | In Gleam both values must be **ints**         |
 | Greater than     | `>`           | `>.`  | In Gleam both values must be **floats**       |
-| Greater&nbsp;or&nbsp;equal | `>=`          | `>=`  | In Gleam both values must be **ints**         |
+| Greater or equal | `>=`          | `>=`  | In Gleam both values must be **ints**         |
 | Greater or equal | `>=`          | `>=.` | In Gleam both values must be **floats**       |
 | Less than        | `<`           | `<`   | In Gleam both values must be **ints**         |
 | Less than        | `<`           | `<.`  | In Gleam both values must be **floats**       |
