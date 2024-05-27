@@ -1,7 +1,7 @@
 ---
 author: Louis Pilfold
 author-link: https://github.com/lpil
-title: Gleam's New Interactive Language Tour
+title: Gleam's new interactive language tour
 subtitle: Learn Gleam in your browser!
 tags:
   - Release
