@@ -25,7 +25,7 @@ fix it before compilation can be attempted again.
 The main advantage of this is that the programmer has just the first and
 most important error, rather than a mix of the real error and a bunch of
 red-herring cascading errors. On the other hand, if there's multiple genuine
-errors the programmer can only see first the one, which may not be the one they
+errors the programmer can only see the first one, which may not be the one they
 want to work on, or the most understandable.
 
 Even worse, this halting behaviour causes major issues for the Gleam Language
@@ -41,7 +41,7 @@ code and the reality.
 With this release when the compiler encounters an error during analysis it will
 move on to the next definition in the module, returning all of the errors along
 with updated code information once the whole module has been analysed. This has
-resulted in a dramatic improvement in the experience when using the Gleam
+resulted in a dramatic improvement in the experience of using the Gleam
 language server, it being much more responsive and accurate in its feedback.
 
 In future releases we will continue to improve the granularity of the fault
@@ -103,7 +103,7 @@ for this feature!
 Gleam's [`use` expressions](https://tour.gleam.run/advanced-features/use-sugar/)
 are very powerful and can be used to replicate many built-in features of other
 languages such as Go's `defer`, procedural languages' early returns, Haskell's
-do-notation, and more. As an unusual and powerful feature they can be confusing
+do-notation, and more. As an unusual and powerful feature it can be confusing
 at first, and that was made worse as any type errors from incorrect `use`
 expressions would be generic ones rather than being specific to `use`.
 
@@ -226,7 +226,7 @@ panic("The session is no longer valid, this should never happen!")
 ```
 
 This is valid Gleam code, but it is not using that string as a message for the
-panic. The string unreachable as the program panics before it is evaluated. A
+panic. The string is unreachable as the program panics before it is evaluated. A
 compiler warning is now emitted when code like this is found.
 ```text
 warning: Todo used as a function
@@ -351,7 +351,7 @@ Hint: Please run `gleam update` to fix it.
 ```
 
 Previously when no package versions could be found that satisfy the project's
-requirements a very cryptic message would printed that detailed all the
+requirements, a very cryptic message would printed that detailed all the
 constraints from all the versions that were incompatible. This was overwhelming
 and practically impossible to read, so it has been replaced with a much simpler
 message.
