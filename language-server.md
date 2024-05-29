@@ -60,6 +60,13 @@ If you are using [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-tre
 you can run `:TSInstall gleam` to get syntax highlighting and other tree-sitter
 features.
 
+### What About Mason?
+Gleam's toolchain comes bundled with everything in a single binary, including the LSP. 
+This means if you install Gleam using Mason, Neovim gets a second version of Gleam, which 
+can lead to version conflicts between your editor and your actual build.
+
+Because of this, it is recommended to just add the manual configuration line above using `lspconfig`.
+
 ## VS Code
 
 Install the [VS Code Gleam plugin](https://marketplace.visualstudio.com/items?itemName=Gleam.gleam).
