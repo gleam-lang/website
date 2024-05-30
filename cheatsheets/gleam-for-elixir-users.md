@@ -670,7 +670,7 @@ Same as Elixir, Gleam has pattern matching, which is used for matching complex s
 ```gleam
 let list = [1, 2, 3]
 
-let assert [first as 1, second .. rest] = list
+let assert [1 as first, second, ..rest] = list
 
 let assert Foo(foo: 10 as foo, bar: 20 as bar) = Foo(foo: 10, bar: 20)
 
