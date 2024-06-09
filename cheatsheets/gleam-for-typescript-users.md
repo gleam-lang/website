@@ -172,6 +172,7 @@ Gleam will check the type annotation to ensure that it matches the type of the
 assigned value. It does not need annotations to type check your code, but you
 may find it useful to annotate variables to hint to the compiler that you want
 a specific type to be inferred.
+
 ## Data types
 
 ### Strings
