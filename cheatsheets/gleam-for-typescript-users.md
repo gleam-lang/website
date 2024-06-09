@@ -94,6 +94,7 @@ type Dog {
 
 `//` comments are not used while generating documentation files, while
 `////` and `///` will appear in them.
+
 ## Variables
 
 You can rebind variables in both languages.
