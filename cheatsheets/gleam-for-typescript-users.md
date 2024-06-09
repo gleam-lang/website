@@ -696,9 +696,9 @@ const value = add(1, subtract(multiply(1, 2), 1));
 
 ```gleam
 100
-  |> multiply(2)
-  |> subtract(1)
-  |> add(1)
+|> multiply(2)
+|> subtract(1)
+|> add(1)
 ```
 
 
