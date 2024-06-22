@@ -16,7 +16,17 @@ This document details the current state of the language server and its features.
   - [Zed](#zed)
   - [Other editors](#other-editors)
 - [Features](#features)
-- [Code Actions](#code-actions)
+  - [Multiple project support](#multiple-project-support)
+  - [Project compilation](#project-compilation)
+  - [Error and warning diagnostics](#error-and-warning-diagnostics)
+  - [Code formatting](#code-formatting)
+  - [Hover](#hover)
+  - [Go-to definition](#go-to-definition)
+  - [Code completion](#code-completion)
+  - [Code Actions](#code-actions)
+    - [Remove unused imports](#remove-unused-imports)
+    - [Remove redundant tuples](#remove-redundant-tuples)
+- [Security](#security)
 - [Use outside of Gleam projects](#use-outside-of-gleam-projects)
 
 
@@ -80,7 +90,55 @@ Any other editor that supports the Language Server Protocol can use the Gleam
 Language Server. Configure your editor to run `gleam lsp` from the root of your
 workspace.
 
-
 # Features
 
-# Code Actions
+## Multiple project support
+
+You can open Gleam files from multiple projects in one editor session and the
+Gleam language server will understand which projects they each belong to, and
+how to work with each of them.
+
+## Project compilation
+
+The language server will automatically compile code in Gleam projects opened in
+the editor. Code generation and Erlang compilation are not performed.
+
+If any files are edited in the editor but not yet saved then these edited
+versions will be used when compiling in the language server.
+
+The target specified in `gleam.toml` is used by the language server. If no
+target is specified then it defaults to Erlang.
+
+## Error and warning diagnostics
+
+Any errors and warnings found when compiling Gleam code are surfaced in the
+editor as language server diagnostics.
+
+## Code formatting
+
+The language server can format Gleam code using the Gleam formatter. You may
+want to configure your code to run this automatically when you save a file.
+
+## Hover
+
+## Go-to definition
+
+## Code completion
+
+## Code Actions
+
+### Remove unused imports
+
+### Remove redundant tuples
+
+# Security
+
+The language server does not perform code generation or compile Erlang or Elixir
+code, so there is no chance of any code execution occurring due to opening a
+file in an editor using the Gleam language server.
+
+# Use outside Gleam projects
+
+The language server is unable to build Gleam code that are not in Gleam
+projects. When one of these files is opened the language server will provide
+code formatting but other features are not available.
