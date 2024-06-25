@@ -123,6 +123,16 @@ Gleam is available as part of the official packages repository. Install it with:
 
 There are also nightlies available at this [home project](https://build.opensuse.org/project/show/home:Pi-Cla:gleam-nightly)
 
+### Android
+
+#### Termux
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```
+$ pkg install gleam
+```
+
 ### Windows
 
 #### Using Scoop
