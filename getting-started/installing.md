@@ -129,8 +129,8 @@ There are also nightlies available at this [home project](https://build.opensuse
 
 Gleam is available as part of the official packages repository. Install it with:
 
-```
-$ pkg install gleam
+```sh
+pkg install gleam
 ```
 
 ### Windows
