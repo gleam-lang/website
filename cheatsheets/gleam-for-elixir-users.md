@@ -26,7 +26,7 @@ subtitle: Hello Elixir Alchemists!
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Dicts](#dicts)
-- [Patterns] TODO
+- [Patterns](#patterns)
 - [Flow control](#flow-control) TODO
   - [Case](#case) TODO
   - [Try](#try) TODO
@@ -658,4 +658,33 @@ pub fn main() {
   foo.identity(1)
 }
 ```
+
+## Patterns
+
+Same as Elixir, Gleam has pattern matching, which is used for matching complex structured data. In Gleam we use `as` to name the variable, same as using `=` in Elixir.
+
+#### Gleam
+
+```gleam
+let list = [1, 2, 3]
+
+let assert [1 as first, second, ..rest] = list
+
+let assert Foo(foo: 10 as foo, bar: 20 as bar) = Foo(foo: 10, bar: 20)
+
+#(1 as a, 2 as b) = #(1, 2)
+```
+
+#### Elixir
+
+```elixir
+list = [1, 2, 3]
+[1 = first, second | rest] = list
+
+%Foo{foo: 10, name: 20} = %Foo{foo: 10, bar: 20}
+
+{1 = a, 2 = b} = {1, 2}
+```
+
+
 
