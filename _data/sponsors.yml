@@ -219,6 +219,10 @@
   url: "https://github.com/insanitybit"
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   square_avatar: false
+- name: Collin
+  url: "https://github.com/CollinBrennan"
+  avatar: "https://avatars.githubusercontent.com/u/63979930?u=83e2ba89e842a5f942f53affa6c49ce9d66ca08b&v=4"
+  square_avatar: false
 - name: Comamoca
   url: "https://github.com/Comamoca"
   avatar: "https://avatars.githubusercontent.com/u/93137338?u=95a9601ff7e08488494cca78d0cd4958a13beefb&v=4"
@@ -230,6 +234,10 @@
 - name: "Cristine Guadelupe"
   url: "https://github.com/cristineguadelupe"
   avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
+  square_avatar: false
+- name: "Daigo Shitara"
+  url: "https://github.com/sdaigo"
+  avatar: "https://avatars.githubusercontent.com/u/25382291?u=1f31c04c42b96d48be02e72ba538d5ac91626cd8&v=4"
   square_avatar: false
 - name: "Damir Vandic"
   url: "https://github.com/dvic"
@@ -402,6 +410,10 @@
 - name: "Humberto Piaia"
   url: "https://github.com/hpiaia"
   avatar: "https://avatars.githubusercontent.com/u/4452287?u=99dcac91a1a52ea46823ff787b0cc9b698e956bd&v=4"
+  square_avatar: false
+- name: "Iain H"
+  url: "https://github.com/iainh"
+  avatar: "https://avatars.githubusercontent.com/u/519512?u=a2d55b8a6a8fd0b4f807113b5e326377cc1cc94c&v=4"
   square_avatar: false
 - name: "Ian González"
   url: "https://github.com/Ian-GL"
