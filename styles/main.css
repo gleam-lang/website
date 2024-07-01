@@ -201,10 +201,19 @@ main.content {
   margin-right: 0.25em;
 }
 
+.hero-lucy-container {
+  flex-shrink: 0;
+  height: 268px;
+  width: 280px;
+  margin: 0 var(--gap-5) var(--gap-2) var(--gap-5);
+  overflow: hidden;
+  /* Needed to not cut Lucy's corners when rotating: */
+  padding: var(--gap-1);
+  box-sizing: content-box;
+}
 .hero-lucy {
-  height: 307px;
-  width: 400px;
-  padding: var(--gap-1) var(--gap-6) var(--gap-3) var(--gap-6);
+  height: 100%;
+  width: 100%;
   transition: transform 0.2s ease;
 }
 .footer-lucy {
@@ -214,7 +223,7 @@ main.content {
   content: url("/images/lucy/lucyhappy.svg");
   transform: rotate(23deg);
 }
-.hero-lucy:hover {
+.hero-lucy-container:hover .hero-lucy {
   content: url("/images/lucy/lucyhappy.svg");
   transform: rotate(23deg);
 }
