@@ -219,7 +219,7 @@ Found the keyword `type`, expected one of:
 ## OTP 27 keyword support
 
 Erlang/OTP 27 introduced two new keywords to Erlang, `maybe` and `else`.
-[Jak Barszcz](https://github.com/barszcz) and [Giacomo Cavalieri](https://github.com/giacomocavalieri)
+[Jake Barszcz](https://github.com/barszcz) and [Giacomo Cavalieri](https://github.com/giacomocavalieri)
 have updated Gleam's Erlang code generation to appropriately escape any
 functions, types, and record constructors which would clash with the new Erlang
 syntax.
