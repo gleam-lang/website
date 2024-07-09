@@ -35,9 +35,17 @@
   url: "https://alembic.com.au"
   avatar: "https://avatars.githubusercontent.com/u/25500012?v=4"
   square_avatar: false
+- name: "Alex Houseago"
+  url: "https://github.com/ahouseago"
+  avatar: "https://avatars.githubusercontent.com/u/41902631?v=4"
+  square_avatar: false
 - name: "Alex Manning"
   url: "https://github.com/rawhat"
   avatar: "https://avatars.githubusercontent.com/u/2095509?u=c891c779ec80e181e60772b4adfdc8be1ee84d2d&v=4"
+  square_avatar: false
+- name: "Alex Viscreanu"
+  url: "https://github.com/aexvir"
+  avatar: "https://avatars.githubusercontent.com/u/8055505?u=3cc5cc4daba1b0eb027c6b20b29720831832025d&v=4"
   square_avatar: false
 - name: "Alexander Koutmos"
   url: "https://github.com/akoutmos"
