@@ -72,7 +72,7 @@ On top of that completions are no longer provided inside comments, thank you
 ## Import cycles diagnostics
 
 The language server protocol has a way for servers to send messages to the
-client to be displayed to user. However, one newer editor that is very popular
+client to be displayed to the user. However, one newer editor that is very popular
 with Gleam programmers doesn't support this API yet, so any project errors sent
 this way wouldn't be displayed to the programmer.
 
