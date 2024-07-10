@@ -82,7 +82,7 @@ be attached to the locations of all of the import statements which cause the
 cycle.
 
 As part of this work the language server diagnostics system has been upgraded to
-make use of the protocol's ability to have diagnostic nested within each other,
+make use of the protocol's ability to have diagnostics nested within each other,
 a feature which can benefit more errors and warnings in future.
 
 ## Helpful hidden hovering
