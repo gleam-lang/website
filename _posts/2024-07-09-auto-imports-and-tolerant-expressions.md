@@ -55,7 +55,7 @@ as when performing a refactoring.
 
 Fault tolerance was introduced in v1.2.0 and was at a module definition level
 granularity. [Ameen Radwan](https://github.com/Acepie) has improved this to be
-expression level, giving further information in functions which has errors
+expression level, giving further information in functions which have errors
 within them.
 
 ## Completion improvements
