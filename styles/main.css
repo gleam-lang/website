@@ -797,13 +797,13 @@ main.content {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--gap-1);
+  gap: var(--gap-2);
   padding: 0;
 }
 
 .post .top-sponsors + ul li {
   list-style: none;
-  margin: 0 var(--gap-1);
+  max-width: 100%;
 }
 
 .mailing-list-page p {

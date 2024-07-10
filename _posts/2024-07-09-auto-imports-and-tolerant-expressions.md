@@ -298,6 +298,11 @@ Alternatively consider using our [referral link for CodeCrafters](https://app.co
 who have courses on implementing Redis, SQLite, and grep in Gleam. Use your
 training budget to learn and to support Gleam too!
 
+<ul class="top-sponsors">
+  <li>
+  </li>
+</ul>
+
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
 - [Abdulrhman Alkhodiry](https://github.com/zeroows)
