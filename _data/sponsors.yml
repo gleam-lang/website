@@ -104,7 +104,7 @@
   avatar: "https://avatars.githubusercontent.com/u/5428607?v=4"
   square_avatar: false
 - name: "Austin Daily"
-  url: "https://github.com/austinKane95"
+  url: "https://github.com/austinDaily"
   avatar: "https://avatars.githubusercontent.com/u/135095754?u=ea529390925bf0db45edd4037f77f64e7ecf475c&v=4"
   square_avatar: false
 - name: "Barry Moore"
@@ -158,10 +158,6 @@
 - name: "Carlos Saltos"
   url: "https://github.com/csaltos"
   avatar: "https://avatars.githubusercontent.com/u/32456?u=a2736cdb1eb8318361070ed9616cf2fbfaf1f215&v=4"
-  square_avatar: false
-- name: "Carter Davis"
-  url: "https://github.com/orvitpng"
-  avatar: "https://avatars.githubusercontent.com/u/55005263?u=38c31ee3ca29cfa28225c38b4e5868129636c157&v=4"
   square_avatar: false
 - name: "Chad Selph"
   url: "https://github.com/chadselph"
@@ -386,6 +382,10 @@
 - name: "Hampus Kraft"
   url: "https://github.com/hampuskraft"
   avatar: "https://avatars.githubusercontent.com/u/24176136?u=bf7d17c35395fe7cb33a091af4990e3e67deb3a5&v=4"
+  square_avatar: false
+- name: "Hannes Nevalainen"
+  url: "https://github.com/kwando"
+  avatar: "https://avatars.githubusercontent.com/u/891566?u=ada205321160d641e3968fb79905312cd77a1396&v=4"
   square_avatar: false
 - name: "Hannes Schnaitter"
   url: "https://github.com/ildorn"
@@ -831,6 +831,10 @@
   url: "https://github.com/ripta"
   avatar: "https://avatars.githubusercontent.com/u/9858?u=861ceb726209b5c4cd0231bb5fb0554ee3a7da03&v=4"
   square_avatar: false
+- name: Rob
+  url: "https://github.com/robertwayne"
+  avatar: "https://avatars.githubusercontent.com/u/13954303?u=cff224b0bcdac6cf743ec13a01de5824c6f52f6d&v=4"
+  square_avatar: false
 - name: "Robert Attard"
   url: "https://github.com/TanklesXL"
   avatar: "https://avatars.githubusercontent.com/u/22840519?u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4"
@@ -1082,6 +1086,10 @@
 - name: lidashuang
   url: "https://github.com/defp"
   avatar: "https://avatars.githubusercontent.com/u/612381?u=8fd36e3beb4c77f3552d37853b60f14786676ea4&v=4"
+  square_avatar: false
+- name: martonkaufmann
+  url: "https://github.com/martonkaufmann"
+  avatar: "https://avatars.githubusercontent.com/u/53054243?v=4"
   square_avatar: false
 - name: max-tern
   url: "https://github.com/max-tern"
