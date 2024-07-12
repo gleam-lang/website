@@ -107,7 +107,7 @@ $ export PATH=/usr/local/lib/erlang23/bin:$PATH
 
 ### OpenBSD
 
-For OpenBSD -current, Gleam is available as a binary package. You can install it with:
+Gleam is available as a binary package. You can install it with:
 
 ```
 $ doas pkg_add gleam
