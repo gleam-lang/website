@@ -149,7 +149,7 @@ Gleam will check the type annotation to ensure that it matches the type of the a
 
 ### Python
 
-In Python, you can define functions with the `def` keyword. In that case, the `return` keyword is mandatory.
+In Python, you can define functions with the `def` keyword. In that case, you have to use the `return` keyword to return a value other than `None`.
 
 ```python
 def sum(x, y):
@@ -207,7 +207,7 @@ Type hints can be used to optionally annotate function arguments and return type
 
 Discrepancies between type hints and actual values at runtime do not prevent interpretation of the code.
 
-Static code analysers (IDE tooling, type checkers like mypy) will be required to detect those errors.
+Static code analysers (IDE tooling, type checkers like mypy) are necessary to detect those errors.
 
 ```python
 def sum(x: int, y: int) -> int:
@@ -273,7 +273,7 @@ def replace(inside: str, each: str, with_string: str):
 
 # equivalent calls
 replace('hello world', 'world', 'you')
-replace(each='world', inside='hello world',  with_string='you')
+replace(each='world', inside='hello world', with_string='you')
 ```
 
 #### Gleam
@@ -472,13 +472,13 @@ In Python, dictionaries can have keys of any type as long as:
 
 In Gleam, dicts can have keys and values of any type, but all keys must be of the same type in a given dict and all values must be of the same type in a given dict.
 
-There is no dict literal syntax in Gleam, and you cannot pattern match on a dict. Dicts are generally not used much in Gleam, custom types are more common.
+There is no dict literal syntax in Gleam, and you cannot pattern match on a dict. Dicts are generally not used much in Gleam, as custom types are more common.
 
 #### Python
 
 ```python
 {"key1": "value1", "key2": "value2"}
-{"key1":  "1", "key2": 2}
+{"key1": "1", "key2": 2}
 ```
 
 #### Gleam
@@ -605,7 +605,7 @@ Error management is approached differently in Python and Gleam.
 
 #### Python
 
-Python uses the notion of exceptions to interrupt the current code flow and pop up the error to the caller.
+Python uses the notion of exceptions to interrupt the current code flow and propagate the error to the caller.
 
 An exception is raised using the keyword `raise`.
 
@@ -708,7 +708,7 @@ class Person:
     name: str
     age: int
 
-    def __init__(name: str, age: int) -> None:
+    def __init__(self, name: str, age: int) -> None:
         self.name = name
         self.age = age
 
@@ -717,14 +717,14 @@ person = Person(name="Jake", age=20)
 name = person.name
 ```
 
-More recent alternatives are to use `dataclasses` or to leverage the
+More recent alternatives use `dataclasses` or leverage the
 `NamedTuple` base type to generate a constructor with initializers.
 
 By default a class created with the `dataclass` decorator is mutable (although
 you can pass options to the `dataclass` decorator to change the behavior):
 
 ```python
-from dataclasses import dataclasses
+from dataclasses import dataclass
 
 @dataclass
 class Person:
