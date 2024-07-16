@@ -59,10 +59,6 @@
   url: "https://github.com/defgenx"
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
   square_avatar: false
-- name: Alyx
-  url: "https://github.com/AlyxPink"
-  avatar: "https://avatars.githubusercontent.com/u/152620834?u=bbac6f90c4a324af4108e909e4604c82f0ffa309&v=4"
-  square_avatar: false
 - name: "Ameen Radwan"
   url: "https://github.com/Acepie"
   avatar: "https://avatars.githubusercontent.com/u/5996838?u=afb74e94eb5438bae05a0aa092a648f66e0f7ec7&v=4"
@@ -235,10 +231,6 @@
   url: "https://github.com/Comamoca"
   avatar: "https://avatars.githubusercontent.com/u/93137338?u=95a9601ff7e08488494cca78d0cd4958a13beefb&v=4"
   square_avatar: false
-- name: "Constantine Manakov"
-  url: "https://github.com/c-manakov"
-  avatar: "https://avatars.githubusercontent.com/u/17596521?v=4"
-  square_avatar: false
 - name: "Cristine Guadelupe"
   url: "https://github.com/cristineguadelupe"
   avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
@@ -334,6 +326,10 @@
 - name: "Ernesto Malave"
   url: "https://github.com/oberernst"
   avatar: "https://avatars.githubusercontent.com/u/98632774?u=b24987a18b8d7af92a41905689dccae77d50f450&v=4"
+  square_avatar: false
+- name: "Evan Johnson"
+  url: "https://github.com/evanj2357"
+  avatar: "https://avatars.githubusercontent.com/u/23486953?u=cbabbbcdd78cb085fb824bd40290c878933ae288&v=4"
   square_avatar: false
 - name: "Felix Mayer"
   url: "https://github.com/yerTools"
@@ -611,6 +607,10 @@
   url: "https://github.com/manuel-rubio"
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
   square_avatar: false
+- name: "Maor Kadosh"
+  url: "https://github.com/it-is-wednesday"
+  avatar: "https://avatars.githubusercontent.com/u/4103412?u=24e830a65d58fc1ef3d8ea171f22c59fb606911c&v=4"
+  square_avatar: false
 - name: "Marcus André"
   url: "https://github.com/marcusandre"
   avatar: "https://avatars.githubusercontent.com/u/102828?u=83eb63598c1298cf0d5bb37e566f4873b718db69&v=4"
@@ -799,10 +799,6 @@
   url: "https://github.com/rrbutani"
   avatar: "https://avatars.githubusercontent.com/u/7833358?v=4"
   square_avatar: false
-- name: "Ratio PBC"
-  url: "https://github.com/RatioPBC"
-  avatar: "https://avatars.githubusercontent.com/u/79671579?v=4"
-  square_avatar: false
 - name: "Raúl Chouza "
   url: "https://github.com/chouzar"
   avatar: "https://avatars.githubusercontent.com/u/4700113?u=49315be321466b68760d9f366ab4801bed5d346b&v=4"
@@ -847,6 +843,10 @@
   url: "https://github.com/malkomalko"
   avatar: "https://avatars.githubusercontent.com/u/763?u=a129acaa2c1d801e36baaf0bf14fecf4626abb7f&v=4"
   square_avatar: false
+- name: "Rodrigo Heinzen de Moraes"
+  url: "https://github.com/R0DR160HM"
+  avatar: "https://avatars.githubusercontent.com/u/50843703?u=7e4a40dbe62f979bf60bee638fad17d0c97c5e4b&v=4"
+  square_avatar: false
 - name: "Ross Bratton"
   url: "https://github.com/brattonross"
   avatar: "https://avatars.githubusercontent.com/u/26525065?u=5365c1ecda1aafece8d1e6ef9d46baea3e58eff5&v=4"
@@ -867,10 +867,6 @@
   url: "https://github.com/samaaron"
   avatar: "https://avatars.githubusercontent.com/u/369?u=33067a56bf0f4e3fc7b5e498ed1bd1d5f386de25&v=4"
   square_avatar: false
-- name: "Sami Fouad"
-  url: "https://github.com/samifouad"
-  avatar: "https://avatars.githubusercontent.com/u/6378290?u=e8451703eb7afafb132e282ca023991c44aa17ea&v=4"
-  square_avatar: false
 - name: "Sammy Isseyegh"
   url: "https://github.com/bkspace"
   avatar: "https://avatars.githubusercontent.com/u/1695350?u=27a9d5486661a7f1ada8ff6fc3ae52d09ca1985f&v=4"
@@ -882,6 +878,10 @@
 - name: "Santi Lertsumran"
   url: "https://github.com/mrgleam"
   avatar: "https://avatars.githubusercontent.com/u/11692854?u=12baaf22f39c59c6284b4db9322255a5d827ac9d&v=4"
+  square_avatar: false
+- name: Savva
+  url: "https://github.com/castletaste"
+  avatar: "https://avatars.githubusercontent.com/u/74972418?u=cbba19cb268755aff763eba91930bb8ce9cab5fe&v=4"
   square_avatar: false
 - name: "Saša Jurić"
   url: "https://github.com/sasa1977"
