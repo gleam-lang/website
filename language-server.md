@@ -1,6 +1,6 @@
 ---
 layout: page
-title: The Gleam Language Server Manual
+title: The Gleam Language Server reference
 subtitle: Gleam IDE features for all editors
 ---
 
@@ -121,15 +121,91 @@ want to configure your code to run this automatically when you save a file.
 
 ## Hover
 
+The language server will show documentation, types, and other information when
+hovering on:
+
+- Constants.
+- Import statements, including unqualified values and types.
+- Module functions.
+- Patterns.
+- The `..` used to ignore additional fields in record pattern.
+- Type annotations.
+- Values.
+
 ## Go-to definition
 
+The language server supports go-to definition for:
+
+- Constants.
+- Functions.
+- Import statements, including unqualified values and types.
+- Type annotations.
+- Variables.
+
 ## Code completion
+
+The language server support completion of:
+
+- Modules in import statements.
+- Unqualified types and values in import statements.
+- Type constructors in type annotations.
+- Record fields.
+- Functions and constants defined in the same module.
+- Functions and constants defined in other modules, automatically adding import
+  statements if the module has not yet been imported.
 
 ## Code Actions
 
 ### Remove unused imports
 
+This code action can be used to delete unused import statements from a module.
+
+Given this code:
+
+```gleam
+import gleam/io
+import gleam/list
+
+pub fn main() {
+  io.println("Hello, Joe!")
+}
+```
+
+If your cursor is within the unused `import gleam/list` import the code action
+will be suggested, and if run the module will be updated to this:
+
+```gleam
+import gleam/io
+
+pub fn main() {
+  io.println("Hello, Joe!")
+}
+```
+
 ### Remove redundant tuples
+
+This code action removes redundant tuples from case expression subjects and
+patterns.
+
+Given this code:
+
+```gleam
+case #(a, b) {
+  #(1, 2) -> todo
+  _ -> todo
+}
+```
+
+If your cursor is within the case expression the code action will be suggested,
+and if run the module will be updated to this:
+
+```gleam
+case a, b {
+  1, 2 -> todo
+  _, _ -> todo
+}
+```
+
 
 # Security
 
