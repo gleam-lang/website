@@ -80,8 +80,8 @@ binary is included on VS Code's `PATH`, and consider restarting VS Code.
 
 ## Zed
 
-Helix supports the language server out-of-the-box. No additional configuration
-is required and Helix will automatically start the language server when a Gleam
+Zed supports the language server out-of-the-box. No additional configuration
+is required and Zed will automatically start the language server when a Gleam
 file is opened.
 
 ## Other Editors
