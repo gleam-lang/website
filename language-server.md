@@ -74,7 +74,7 @@ features.
 
 Install the [VS Code Gleam plugin](https://marketplace.visualstudio.com/items?itemName=Gleam.gleam).
 
-The language server will then me automatically started when you open a Gleam
+The language server will then automatically started when you open a Gleam
 file. If VS Code is unable to run the language server ensure that the `gleam`
 binary is included on VS Code's `PATH`, and consider restarting VS Code.
 
