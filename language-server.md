@@ -38,7 +38,7 @@ but it does not have all the features you might find in more mature language
 servers for older languages.
 
 If you wish to to see what is currently being worked on you can view 
-[the project roadmap](https://github.com/ogs/gleam-lang/projects/4/views/1) on GitHub.
+[the project roadmap](https://github.com/orgs/gleam-lang/projects/4) on GitHub.
 
 
 # Installation
