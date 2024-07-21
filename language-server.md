@@ -27,7 +27,7 @@ This document details the current state of the language server and its features.
     - [Remove unused imports](#remove-unused-imports)
     - [Remove redundant tuples](#remove-redundant-tuples)
 - [Security](#security)
-- [Use outside of Gleam projects](#use-outside-of-gleam-projects)
+- [Use outside Gleam projects](#use-outside-gleam-projects)
 
 
 # Project Status
