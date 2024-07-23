@@ -354,12 +354,38 @@ main.content {
   gap: var(--gap-3);
 }
 
-.sponsor-fly img {
+.sponsor-level0 img {
+  transition: transform 100ms ease-in-out;
+  height: 110px;
+  animation: pulse-animation 2.2s infinite;
+  border-radius: 100px;
+}
+
+.sponsor-level0 img:hover {
+  transform: rotate(-10deg) scale(1.2);
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
+
+.sponsor-level1 img {
   height: 110px;
 }
 
-.sponsor-alembic img {
+.sponsor-level2 img {
   height: 33px;
+}
+
+.sponsors-like-you,
+.sponsors-like-you:visited {
+  font-size: var(--font-size-hero-title);
+  color: var(--black);
 }
 
 .home-friendly {
