@@ -167,10 +167,6 @@
   url: "https://github.com/chazwatkins"
   avatar: "https://avatars.githubusercontent.com/u/9411090?u=3e24d7de72913730b6a4675126cf6ef550cc0238&v=4"
   square_avatar: false
-- name: "Chetan Bhasin"
-  url: "https://github.com/ChetanBhasin"
-  avatar: "https://avatars.githubusercontent.com/u/7336842?u=61ce6e75bebb42815bb546cbb5861436dbcc6257&v=4"
-  square_avatar: false
 - name: "Chew Choon Keat"
   url: "https://github.com/choonkeat"
   avatar: "https://avatars.githubusercontent.com/u/473?v=4"
@@ -230,10 +226,6 @@
 - name: Comamoca
   url: "https://github.com/Comamoca"
   avatar: "https://avatars.githubusercontent.com/u/93137338?u=95a9601ff7e08488494cca78d0cd4958a13beefb&v=4"
-  square_avatar: false
-- name: "Cristine Guadelupe"
-  url: "https://github.com/cristineguadelupe"
-  avatar: "https://avatars.githubusercontent.com/u/5660941?u=ef057cfcc633756687355ac49270acd2f2b9a829&v=4"
   square_avatar: false
 - name: "Daigo Shitara"
   url: "https://github.com/sdaigo"
@@ -369,7 +361,7 @@
   square_avatar: false
 - name: "Guillaume Hivert"
   url: "https://github.com/ghivert"
-  avatar: "https://avatars.githubusercontent.com/u/7314118?u=d0561bedccca8f2ba536266217aed2c5549a64db&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/7314118?u=357a18cb8a00b4ba24380636f445c2f0f9604927&v=4"
   square_avatar: false
 - name: "Hammad Javed"
   url: "https://github.com/hammad-r-javed"
@@ -441,7 +433,7 @@
   square_avatar: false
 - name: "Igor Rumiha"
   url: "https://github.com/irumiha"
-  avatar: "https://avatars.githubusercontent.com/u/100465?u=78f862566451c5c9c5e2a1c307d428dde00a7194&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/100465?u=352812be39444e7ae9735b05277dd4cbb86f7b04&v=4"
   square_avatar: false
 - name: Isaac
   url: "https://github.com/graphiteisaac"
@@ -739,7 +731,7 @@
   url: "https://github.com/nomio"
   avatar: "https://avatars.githubusercontent.com/u/47601243?v=4"
   square_avatar: false
-- name: "Ocean Armstrong Lewis"
+- name: Ocean
   url: "https://github.com/oceanlewis"
   avatar: "https://avatars.githubusercontent.com/u/6754950?u=9ba4ee4ab42d161fdf7eff3db245b318c2b27131&v=4"
   square_avatar: false
@@ -926,10 +918,6 @@
 - name: Strandinator
   url: "https://github.com/Strandinator"
   avatar: "https://avatars.githubusercontent.com/u/45405887?v=4"
-  square_avatar: false
-- name: "Szymon Wygnański"
-  url: "https://github.com/finalclass"
-  avatar: "https://avatars.githubusercontent.com/u/1343930?u=f9688f9a089e581bfe2ccf3c47ced08c3cb09dbf&v=4"
   square_avatar: false
 - name: "Sławomir Ehlert"
   url: "https://github.com/slafs"
