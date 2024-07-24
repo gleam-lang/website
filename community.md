@@ -26,6 +26,8 @@ following forums:
     </li>
 </ul>
 
+You can also subscribe to updates from community newsletter [Gleam Weekly](https://gleamweekly.com/).
+
 ## Code of Conduct
 
 The Gleam community is a space where we treat each other kindly and with
