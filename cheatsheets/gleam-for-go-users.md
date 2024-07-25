@@ -59,10 +59,10 @@ In Go, top level declarations can be annotated with a comment directly above it 
 
 ```Go
 // This is a special interface
-type Foo interface {}
+type Stringer interface {}
 
-// Bar struct
-type Bar Struct {}
+// Config struct
+type Config Struct {}
 
 // This will quux a string
 func Quux(str string) string {
@@ -166,7 +166,7 @@ Asserts should be used with caution.
 In Go type annotations are generally required in most places.  The exception is when variables or constants are initialized with a value. Multiple consecutive struct fields or function arguments of the same time can combined their type annotation. 
 
 ```Go
-type Bar struct {
+type SomethingElse struct {
   field string
   otherField int
   x, y float64
@@ -181,7 +181,7 @@ In Gleam type annotations can optionally be given when binding variables.
 
 ```gleam
 let some_list: List(Int) = [1, 2, 3]
-let some_string: String = "Foo"
+let some_string: String = "A string"
 ```
 
 Gleam will check the type annotation to ensure that it matches the type of the
@@ -354,17 +354,17 @@ func returnsAFunc() func() {
 	}
 }
 
-type Bar struct {
+type SomethingElse struct {
 	something string
 }
 
-func (b Bar) Func() {
-	fmt.Printf("This bar has %s in something field", b.something)
+func (b SomethingElse) Func() {
+	fmt.Printf("This somethingElse has %s in something field", b.something)
 }
 
 func returnsAMethod() func() {
-	bar := Bar{"Hello"}
-	return bar.Func
+	somethingElse := SomethingElse{"Hello"}
+	return somethingElse.Func
 }
 
 func main() {
@@ -508,7 +508,7 @@ Blocks are declared via curly braces.
 ```Go
 func aFunc() {
   // A block starts here
-  if foo {
+  if someBool {
     // A block here
   } else {
     // A block here
@@ -1185,10 +1185,10 @@ common dependencies and are stored alongside one another.  A _package_
 in Go is closer to the Gleam concept of _modules_.  The biggest difference
 is that a _package_ in Go can be spread across many files in one directory.
 
-In `mymod/foo/foo.go`:
+In `mymod/something/something.go`:
 ```Go
-// Anything declared in the foo directory will be inside the <path-to-mymod>/foo package
-package foo
+// Anything declared in the something directory will be inside the <path-to-mymod>/something package
+package something
 
 // This function is available for import by other packages
 func Identity(x any) {
@@ -1198,10 +1198,10 @@ func Identity(x any) {
 func privateFunc() {}
 ```
 
-In `mymod/foo/other.go`:
+In `mymod/something/other.go`:
 ```Go
-// Anything declared in the foo directory will be inside the <path-to-mymod>/foo package
-package foo
+// Anything declared in the something directory will be inside the <path-to-mymod>/something package
+package something
 
 func otherFunc(x any) {
   privateFunc() // Can be used here
@@ -1218,11 +1218,11 @@ package main
 import (
   "fmt"
 m
-  "someurl.com/mymod/foo"
+  "someurl.com/mymod/something"
 )
 
 func main() {
-  fmt.Println(foo.Identity("Hello, world!"))
+  fmt.Println(something.Identity("Hello, world!"))
   // privateFunc is not visible here
 }
 ```
@@ -1241,24 +1241,24 @@ Since there is no special syntax to create a module, there can be only one
 module in a file and since there is no way name the module the filename
 always matches the module name which keeps things simple and transparent.
 
-In `/src/foo/bar.gleam`:
+In `/src/something/somethingElse.gleam`:
 
 ```gleam
 // Creation of module function identity
-// in module bar
+// in module somethingElse
 pub fn identity(x) {
   x
 }
 ```
 
-Importing the `bar` module and calling a module function:
+Importing the `somethingElse` module and calling a module function:
 
 ```gleam
 // In src/main.gleam
-import foo/bar // if foo was in a directory called `lib` the import would be `lib/foo/bar`.
+import something/somethingElse // if something was in a directory called `lib` the import would be `lib/something/somethingElse`.
 
 pub fn main() {
-  bar.identity(1) // 1
+  somethingElse.identity(1) // 1
 }
 ```
 
