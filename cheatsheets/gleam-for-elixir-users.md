@@ -672,9 +672,9 @@ let list = [1, 2, 3]
 
 let assert [1 as first, second, ..rest] = list
 
-let assert Foo(foo: 10 as foo, bar: 20 as bar) = Foo(foo: 10, bar: 20)
+let assert Person(name: "Jack" as name, age: 20 as age) = Person(name: "Jack", age: 20)
 
-#(1 as a, 2 as b) = #(1, 2)
+let assert #(1 as a, 2 as b) = #(1, 2)
 ```
 
 #### Elixir
@@ -683,7 +683,7 @@ let assert Foo(foo: 10 as foo, bar: 20 as bar) = Foo(foo: 10, bar: 20)
 list = [1, 2, 3]
 [1 = first, second | rest] = list
 
-%Foo{foo: 10, name: 20} = %Foo{foo: 10, bar: 20}
+%Person{name: "Jack", age: 20} = %Person{name: "Jack", age: 20}
 
 {1 = a, 2 = b} = {1, 2}
 ```
