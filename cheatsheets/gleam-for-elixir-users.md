@@ -582,6 +582,8 @@ dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 
 Custom type allows you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
 
+### Records
+
 #### Elixir
 
 Elixir uses Structs which are implemented using Erlang's Map.
