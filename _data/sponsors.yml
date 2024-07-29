@@ -219,10 +219,6 @@
   url: "https://github.com/insanitybit"
   avatar: "https://avatars.githubusercontent.com/u/4956357?v=4"
   square_avatar: false
-- name: Collin
-  url: "https://github.com/CollinBrennan"
-  avatar: "https://avatars.githubusercontent.com/u/63979930?u=83e2ba89e842a5f942f53affa6c49ce9d66ca08b&v=4"
-  square_avatar: false
 - name: Comamoca
   url: "https://github.com/Comamoca"
   avatar: "https://avatars.githubusercontent.com/u/93137338?u=95a9601ff7e08488494cca78d0cd4958a13beefb&v=4"
@@ -627,6 +623,10 @@
   url: "https://github.com/markmark206"
   avatar: "https://avatars.githubusercontent.com/u/218696?u=06ddfe39562f21d97e7278b8fa687e494e40fa79&v=4"
   square_avatar: false
+- name: "Mark Spink"
+  url: "https://github.com/codebay"
+  avatar: "https://avatars.githubusercontent.com/u/44681773?u=4d287e67b079d02a636baeb518576ce35d929443&v=4"
+  square_avatar: false
 - name: "Martin Janiczek"
   url: "https://github.com/Janiczek"
   avatar: "https://avatars.githubusercontent.com/u/149425?u=45e293ad63d2bf7962eae677cc4c4548a05daff0&v=4"
@@ -833,7 +833,7 @@
   square_avatar: false
 - name: "Robert Malko"
   url: "https://github.com/malkomalko"
-  avatar: "https://avatars.githubusercontent.com/u/763?u=a129acaa2c1d801e36baaf0bf14fecf4626abb7f&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/763?u=404005e973404d3b6d3fcb835e19584577811f55&v=4"
   square_avatar: false
 - name: "Rodrigo Heinzen de Moraes"
   url: "https://github.com/R0DR160HM"
@@ -843,17 +843,9 @@
   url: "https://github.com/brattonross"
   avatar: "https://avatars.githubusercontent.com/u/26525065?u=5365c1ecda1aafece8d1e6ef9d46baea3e58eff5&v=4"
   square_avatar: false
-- name: "Ross Cousens"
-  url: "https://github.com/rcousens"
-  avatar: "https://avatars.githubusercontent.com/u/6834920?u=0410e0993b422a277e13536740bdb5da77253d99&v=4"
-  square_avatar: false
 - name: "Ruslan Ustitc"
   url: "https://github.com/ustitc"
   avatar: "https://avatars.githubusercontent.com/u/7880921?u=b464fbdcde9cf3a900b475f85bf23ceaaab00872&v=4"
-  square_avatar: false
-- name: "Ryan Moore"
-  url: "https://github.com/mooreryan"
-  avatar: "https://avatars.githubusercontent.com/u/3172014?u=5efa6914e7730fa3b9e743d9030575bc6b48ebee&v=4"
   square_avatar: false
 - name: "Sam Aaron"
   url: "https://github.com/samaaron"
