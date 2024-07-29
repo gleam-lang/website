@@ -62,20 +62,20 @@ there can be `docblocks` like so:
 /**
  * a very special trait.
  */
-trait Foo {}
+trait Wibble {}
 
 /**
- * A Bar class
+ * A Wabble class
  */
-class Bar {}
+class Wabble {}
 
 /**
- * A quux function.
+ * A wubble function.
  *
- * @var string $str        String passed to quux
+ * @var string $str        String passed to wubble
  * @return string          An unprocessed string
  */
-function quux(string $str) : string { return $str; }
+function wubble(string $str) : string { return $str; }
 ```
 
 Documentation blocks (docblocks) are extracted into generated API
@@ -153,8 +153,8 @@ variable names.
 // $a == 1
 // $b == 2
 
-[1 => $idx2] = ['foo', 'bar', 'quux'];
-// $idx2 == 'bar'
+[1 => $idx2] = ['wibble', 'wabble', 'wubble'];
+// $idx2 == 'wabble'
 
 ["profession" => $job] = ['name' => 'Joe', 'profession' => 'hacker'];
 // $job == 'hacker'
@@ -192,8 +192,8 @@ These hints will mainly be used to inform static analysis tools like IDEs,
 linters, etc.
 
 ```php
-class Foo {
-  private ?string $bar;
+class Wibble {
+  private ?string $wabble;
 }
 ```
 
@@ -205,7 +205,7 @@ and each element can be of a different type:
 ```php
 $someList = [1, 2, 3];
 $someTuple = [1, "a", true];
-$someMap = [0 => 1, "foo" => "bar", true => false];
+$someMap = [0 => 1, "wibble" => "wabble", true => false];
 ```
 
 Single variables cannot be type-annotated unless they are `class` or `trait`
@@ -217,7 +217,7 @@ In Gleam type annotations can optionally be given when binding variables.
 
 ```gleam
 let some_list: List(Int) = [1, 2, 3]
-let some_string: String = "Foo"
+let some_string: String = "Wibble"
 ```
 
 Gleam will check the type annotation to ensure that it matches the type of the
@@ -304,22 +304,22 @@ private module-level functions.
 However at class level, all properties are public, by default.
 
 ```php
-class Foo {
-  static $bar = 5;
-  private $quux = 6;
+class Wibble {
+  static $wabble = 5;
+  private $wubble = 6;
 
-  static function batz() {
+  static function wobble() {
     return "Hello Joe!";
   }
 
-  private static function kek() {
+  private static function webble() {
     return "Hello Rasmus!";
   }
 }
-echo Foo::$bar; // 5
-echo Foo::$quux; // Error
-echo Foo::batz(); // "Hello Joe"
-echo Foo::kek(); // Error
+echo Wibble::$wabble; // 5
+echo Wibble::$wubble; // Error
+echo Wibble::wobble(); // "Hello Joe"
+echo Wibble::webble(); // Error
 ```
 
 #### Gleam
@@ -529,9 +529,9 @@ are fully type checked.
 - PHP operators are short-circuiting as in Gleam.
 - Chains and pipes:
   - In PHP chaining is usually done by constructing class methods that return
-    an object: `$foo->bar(1)->quux(2)` means `bar(1)` is called as a method
-    of `$foo` and then `quux()` is called as a method of the return value
-    (object) of the `bar(1)` call. The objects in this chain usually
+    an object: `$wibble->wabble(1)->wubble(2)` means `wabble(1)` is called as a method
+    of `$wibble` and then `wubble()` is called as a method of the return value
+    (object) of the `wabble(1)` call. The objects in this chain usually
     mutate to keep the changed state and carry it forward in the chain.
   - In contrast in Gleam piping, no objects are being returned but mere data
     is pushed from left to right much like in unix tooling.
@@ -578,7 +578,7 @@ Blocks are declared via curly braces.
 ```php
 function a_func() {
   // A block starts here
-  if ($foo) {
+  if ($wibble) {
     // A block here
   } else {
     // A block here
@@ -1125,7 +1125,7 @@ two different types they must be wrapped in a new custom type.
 #### PHP
 
 ```php
-class Foo {
+class Wibble {
   public ?string $aStringOrNull;
 }
 ```
@@ -1229,14 +1229,14 @@ such declaration per file.
 Using PHP namespaces, these can be placed in a registry that does not need to
 map to the source code file system hierarchy, but by convention should.
 
-In `src/Foo/Bar.php`:
+In `src/Wibble/Wabble.php`:
 
 ```php
-// Anything declared in this file will be inside namespace Foo
-namespace Foo;
+// Anything declared in this file will be inside namespace Wibble
+namespace Wibble;
 
-// Creation of (static) class Bar in Foo, thus as Foo/Bar
-class Bar {
+// Creation of (static) class Wabble in Wibble, thus as Wibble/Wabble
+class Wabble {
   public static function identity($x) {
     return $x;
   }
@@ -1248,9 +1248,9 @@ Making the static class available in the local scope and calling the function
 
 ```php
 // After auto-loading has happened
-use Foo\Bar;
+use Wibble\Wabble;
 
-Bar::identity(1); // 1
+Wabble::identity(1); // 1
 ```
 
 ### Gleam
@@ -1267,24 +1267,24 @@ Since there is no special syntax to create a module, there can be only one
 module in a file and since there is no way name the module the filename
 always matches the module name which keeps things simple and transparent.
 
-In `/src/foo/bar.gleam`:
+In `/src/wibble/wabble.gleam`:
 
 ```gleam
 // Creation of module function identity
-// in module bar
+// in module wabble
 pub fn identity(x) {
   x
 }
 ```
 
-Importing the `bar` module and calling a module function:
+Importing the `wabble` module and calling a module function:
 
 ```gleam
 // In src/main.gleam
-import foo/bar // if foo was in a directory called `lib` the import would be `lib/foo/bar`.
+import wibble/wabble // if wibble was in a directory called `lib` the import would be `lib/wibble/wabble`.
 
 pub fn main() {
-  bar.identity(1) // 1
+  wabble.identity(1) // 1
 }
 ```
 

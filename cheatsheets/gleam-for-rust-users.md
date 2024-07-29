@@ -584,17 +584,17 @@ In Rust, the `mod` keyword allows to create a module. Multiple modules can be de
 Rust uses the `use` keyword to import modules, and the `::` operator to access properties and functions inside.
 
 ```rust
-mod foo {
+mod wibble {
     pub fn identity(x: u64) -> u64 {
         x
     }
 }
 
-mod bar {
-    use super::foo;
+mod wobble {
+    use super::wibble;
 
     fn main() {
-        foo::identity(1);
+        wibble::identity(1);
     }
 }
 ```
@@ -606,7 +606,7 @@ In Gleam, each file is a module, named by the file name (and its directory path)
 Gleam uses the `import` keyword to import modules, and the dot `.` operator to access properties and functions inside.
 
 ```gleam
-//// In module foo.gleam
+//// In module wibble.gleam
 pub fn identity(x) {
   x
 }
@@ -614,8 +614,8 @@ pub fn identity(x) {
 
 ```gleam
 // in module main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import wibble // if wibble was in a folder called `lib` the import would be `lib/wibble`
 pub fn main() {
-  foo.identity(1)
+  wibble.identity(1)
 }
 ```

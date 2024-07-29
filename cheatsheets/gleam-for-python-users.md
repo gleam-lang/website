@@ -851,7 +851,7 @@ There is no special syntax to define modules as files are modules in Python
 Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
 
 ```gleam
-// in file foo.gleam
+// in file wibble.gleam
 pub fn identity(x) {
   x
 }
@@ -859,9 +859,9 @@ pub fn identity(x) {
 
 ```gleam
 // in file main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import wibble // if wibble was in a folder called `lib` the import would be `lib/wibble`
 pub fn main() {
-  foo.identity(1)
+  wibble.identity(1)
 }
 ```
 
