@@ -428,7 +428,6 @@ fn main() {
 }
 ```
 
-
 ## Blocks
 
 #### Elixir
@@ -436,7 +435,7 @@ fn main() {
 In Elixir expressions can be grouped using `do` and `end`.
 
 ```elixir
-defmodule Foo do
+defmodule Wibble do
   def main() do
     x = do
       print(1)
@@ -629,15 +628,15 @@ let name = person.name
 In Elixir, the `defmodule` keyword allows to create a module. Multiple modules can be defined in a single file.
 
 ```elixir
-defmodule Foo do
+defmodule Wibble do
   def identity(x) do
     x
   end
 end
 
-defmodule Bar do
+defmodule Wobble do
   def main(x) do
-    Foo.identity(1)
+    Wibble.identity(1)
   end
 end
 ```
@@ -647,7 +646,7 @@ end
 Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
 
 ```gleam
-// in file foo.gleam
+// in file Wibble.gleam
 pub fn identity(x) {
   x
 }
@@ -655,9 +654,9 @@ pub fn identity(x) {
 
 ```gleam
 // in file main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import Wibble // if Wibble was in a folder called `lib` the import would be `lib/Wibble`
 pub fn main() {
-  foo.identity(1)
+  Wibble.identity(1)
 }
 ```
 
