@@ -8,8 +8,8 @@ tags:
 ---
 
 Gleam is a type safe and scalable language for the Erlang virtual machine and
-JavaScript runtimes. Today Gleam [v1.4.0][release] has been published, and we're
-going to go over all that's new.
+JavaScript runtimes. Today Gleam [v1.4.0][release] has been published, so let's
+go over all that's new.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.4.0
 
@@ -17,7 +17,7 @@ going to go over all that's new.
 ## A shorthand syntax for labels
 
 Gleam's labelled arguments are a way to give a parameter a name that can be used
-at the call site, to serve as documentation and to make code easier to read and
+at the call site. These serve as documentation and to make code easier to read and
 modify. Here the function `date` takes 3 labelled arguments, `day`, `month`, and
 `year`.
 
@@ -30,10 +30,10 @@ pub fn main() {
 }
 ```
 
-It's common in Gleam programs to have this repetition of a label and a variable
-with the same name. The new label shorthand means that the variable name can be
-omitted if it matches the name of the variable to be supplied, so the above
-would be written like so:
+It's relatively common in Gleam programs to have this repetition of a label and
+a variable with the same name. The new label shorthand means that the variable
+name can be omitted if it matches the name of the variable to be supplied. With
+this the above would be written like so:
 
 ```gleam
 pub fn main() {
@@ -57,17 +57,16 @@ pub fn get_year(data: Date) -> Year {
 ## Label shorthand code action
 
 There is also a new language server code-action (an automated code edit you can
-trigger in your editor) to convert to the shorthand syntax. Given code like this
-that uses appropriate labels:
+trigger in your editor) to convert to the shorthand syntax.
 
 ```gleam
+// Before
 case date {
   Day(day: day, month: month, year: year) -> todo
 }
 ```
-Trigging the code action will edit it to use the shorthand:
-
 ```gleam
+// After
 case date {
   Day(day:, month:, year:) -> todo
 }
@@ -78,17 +77,16 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for these fea
 ## Adding labels action
 
 The second code action in this release is one to automatically add the labels
-that a call accepts. Given this code:
+that a call accepts.
 
 ```gleam
+// Before
 pub fn main() {
   Date()
 }
 ```
-
-Triggering the action results in this code:
-
 ```gleam
+// After
 pub fn main() {
   Date(year: todo, month: todo, day: todo)
 }
@@ -138,10 +136,10 @@ be recompiled if its definition changes. This means that Gleam compile times
 stay low even as codebases grow very large.
 
 One problem with the implementation was that if a module emitted a warning
-during compilation, for example: if it uses a deprecated function, then the
-warning would not be shown unless the module definition changes. This could
-result in people not realising that their project has warnings as nothing was
-displayed when they run `gleam build` or `gleam test`.
+during compilation it would not be printed during future compilation unless
+the module was edited, as it would be cached instead. This could result in
+people not realising that their project has warnings as nothing was displayed
+when they run `gleam build` or `gleam test`.
 
 Warnings are now emitted each time the project is built, ensuring that this
 mistake can no longer happen.
@@ -160,9 +158,9 @@ for your project. Thank you [Jiangda Wang](https://github.com/frank-iii)!
 ## Even more fault tolerance!
 
 Gleam's compiler implements _fault tolerant anaylsis_. This means that when
-there is some error in the code that means the code is invalid and cannot be
-compiled, it can still continue to analyse the code to the best of its ability,
-ignoring the invalid parts. This means that the Gleam language server can have a
+there is some error in the code that means it is invalid and cannot be compiled,
+the compiler can still continue to analyse the code to the best of its ability,
+ignoring the invalid parts. Because of this Gleam language server can have a
 good understanding of the code and provide IDE feature even when the codebase is
 in an invalid state.
 
@@ -174,7 +172,7 @@ giving you a better experience in your text editor.
 ## Help for a common type definition mistake
 
 This is Gleam's syntax for defining a type named `User` that has a single
-constructor also named `User`.
+constructor also named `User`:
 
 ```gleam
 pub type User {
@@ -235,15 +233,15 @@ Thank you again [Thomas](https://github.com/DeviousStoat)!
 
 ## More JavaScript bit array support
 
-Gleam's has a literal syntax for constructing and pattern matching on bit
+Gleam has a literal syntax for constructing and pattern matching on bit
 arrays, providing a convenient and easier to understand alternative using
-bitwise operators as is common in other languages. Currently not all options
+bitwise operations, as is common in other languages. Currently not all options
 supported on the Erlang target are supported on the JavaScript target.
 
 In this release [Richard Viney](https://github.com/richard-viney) has added
 support for the `little` and `big` endianness options, the `signed` and
-`unsigned` int options, sized floats (32-bit and 64-bit), and `utf8` option.
-Thank you Richard!
+`unsigned` int options, 32-bit and 64-bit sized float options, and `utf8`
+option. Thank you Richard!
 
 ## Document symbols
 
@@ -317,6 +315,11 @@ substantially less than I earned before I dedicated all my time to Gleam.
 
 If you appreciate Gleam, please [support the project on GitHub
 Sponsors][sponsor] with any amount you comfortably can.
+
+
+<a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
+  <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
+</a>
 
 [sponsor]: https://github.com/sponsors/lpil
 
