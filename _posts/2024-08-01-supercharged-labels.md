@@ -99,6 +99,23 @@ are appropriate, and they didn't have to refer to the documentation to remember
 what the labels are.
 Thanks [Giacomo Cavalieri](https://github.com/giacomocavalieri) once again!
 
+## Label access completion
+
+And lastly on the label front, [Ameen Radwan](https://github.com/Acepie) has
+added support for completion of labelled record fields. 
+
+Type a dot (`.`) after a record and the language server will suggest the fields
+you can access on the record, along with their types. Labels will also be
+suggested when when writing a function call or record construction that has
+labels. 
+
+Completions are now sorted by priority based on why the completion is in the
+list. This means that more specific completions like labels and local
+definitions will be shown before more broad completions like functions from a
+not yet imported module.
+
+Thank you Ameen!
+
 ## Signature help
 
 The Gleam language server now implemented _signature help_. This means that when
@@ -228,86 +245,80 @@ support for the `little` and `big` endianness options, the `signed` and
 `unsigned` int options, sized floats (32-bit and 64-bit), and `utf8` option.
 Thank you Richard!
 
-### Language Server
+## Document symbols
 
-- The language server can now show completions for fields if a record access is
-  being attempted.
-  ([Ameen Radwan](https://github.com/Acepie))
+The language server now supports listing document symbols, such as functions
+and constants, for the current Gleam file. You may use this in your editor to
+help you get a high-level overview of a module, or to help you navigate around a
+large file. This was added by [PgBiel](https://github.com/PgBiel), thank you!
 
-- The language server now suggests a code a action to rename variables, types
-  and functions when they don't match the Gleam naming requirements:
+## Case correction
 
-  ```gleam
-  let myNumber = 10
-  ```
+Gleam uses `snake_case` for variables and functions, and `PascalCase` for types
+and record constructors. Using a different case is a compile error, so you're
+never have an argument about which case to use in Gleam!
 
-  Becomes:
+In the event you accidentally use the wrong one the language server now suggests
+a code a action to automatically adjust the case to be correct.
 
-  ```gleam
-  let my_number = 10
-  ```
+```gleam
+// Before
+let myNumber = 10
+```
+```gleam
+// After
+let my_number = 10
+```
 
-  ([Surya Rose](https://github.com/gearsdatapacks))
+Thank you [Surya Rose](https://github.com/gearsdatapacks) for this feature!
 
-- The language server can now suggest a code action to convert `let assert` into
-  a case expression:
+## Assert to case
 
-  ```gleam
-  let assert Ok(value) = get_result()
-  ```
+The final code action, also from [Surya Rose](https://github.com/gearsdatapacks)
+is one to convert a `let assert` expression into a semantically equivalent
+`case` and `panic` expression.
 
-  Becomes:
+```gleam
+// Before
+let assert Ok(value) = get_result()
+```
+```gleam
+// After
+let value = case get_result() {
+  Ok(value) -> value
+  _ -> panic
+}
+```
 
-  ```gleam
-  let value = case get_result() {
-    Ok(value) -> value
-    _ -> panic
-  }
-  ```
+Thank you Surya!
 
-  ([Surya Rose](https://github.com/gearsdatapacks))
-
-- The language server now supports listing document symbols, such as functions
-  and constants, for the current Gleam file.
-  ([PgBiel](https://github.com/PgBiel))
-
-- The language server can now show completions for labels when writing a
-  function call or record construction.
-  ([Ameen Radwan](https://github.com/Acepie))
-
-- Completions are now sorted by priority based on why the completion is in the
-  list. This means that more specific completions like labels and local
-  definitions will be shown before more broad completions like functions from a
-  not yet imported module.
-  ([Ameen Radwan](https://github.com/Acepie))
 
 ## And the rest
 
-There's even more in this release! An extra special shout out to the bug hunters 
+An extra special shout out to the bug hunters 
 [Ameen Radwan](https://github.com/Acepie), [Connor Szczepaniak](https://github.com/cszczepaniak),
 [Giacomo Cavalieri](https://github.com/giacomocavalieri), [Juraj Petráš](https://github.com/Hackder),
 [PgBiel](https://github.com/PgBiel), [sobolevn](https://github.com/sobolevn),
-and [Surya Rose](https://github.com/gearsdatapacks).
+and [Surya Rose](https://github.com/gearsdatapacks)! You stars!
 
 If you'd like to see all the changes for this release, including all the bug
 fixes, check out [the changelog][changelog] in the git repository.
 
 [changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.4.md
 
-## Thanks
+# A call for support
 
-Gleam is made possible by the support of all the kind people and companies who have
-very generously [**sponsored**][sponsor] or contributed to the project. Thank you all!
+Gleam has no corporate backing and is entirely supported by individuals, most of
+which contributing between $5 and $20 USD per month. I am fantastically grateful
+for your support, thank you so much.
 
-If you like Gleam consider sponsoring or asking your employer to
-[sponsor Gleam development][sponsor]. I work full time on Gleam and your kind
-sponsorship is how I pay my bills!
+I currently earn 32% the median salary tech lead salary for the UK,
+substantially less than I earned before I dedicated all my time to Gleam.
+
+If you appreciate Gleam, please [support the project on GitHub
+Sponsors][sponsor] with any amount you comfortably can.
 
 [sponsor]: https://github.com/sponsors/lpil
-
-Alternatively consider using our [referral link for CodeCrafters](https://app.codecrafters.io/join?via=lpil),
-who have courses on implementing Redis, SQLite, and grep in Gleam. Use your
-training budget to learn and to support Gleam too!
 
 <ul class="top-sponsors">
   <li>
