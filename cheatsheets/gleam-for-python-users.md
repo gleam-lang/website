@@ -44,7 +44,7 @@ In Python, comments are written with a `#` prefix.
 # Hello, Joe!
 ```
 
-A docstring (matching """) that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
+A docstring that occurs as the first statement in a module, function, class, or method definition will become the `__doc__` attribute of that object.
 
 ```python
 def a_function():
@@ -126,7 +126,7 @@ let assert [y] = "Hello" // compile error, type mismatch
 
 Python is a dynamically typed language. Types are only checked at runtime and a variable can have different types in its lifetime.
 
-Type hints (Python 3+) are optional annotations that document the code with type information.
+Type hints are optional annotations that document the code with type information.
 These annotations are accessible at runtime via the `__annotations__` module-level variable.
 
 These hints will mainly be used to inform static analysis tools like IDEs, linters...
@@ -180,8 +180,7 @@ mul(1, 2)
 
 #### Python
 
-In Python, top level functions are exported by default. There is no notion of
-private module-level functions.
+In Python, top level functions are exported by default. Functions starting with `_` are considered protected and should not be used outside of their defining scope.
 
 #### Gleam
 
@@ -351,8 +350,10 @@ In Python, top-level declarations are in the global/module scope is the highest 
 There is no notion of constant variables in Python.
 
 ```python
+from typing import Final
+
 # in the global scope
-THE_ANSWER = 42
+THE_ANSWER: Final = 42
 ```
 
 #### Gleam
@@ -453,7 +454,7 @@ list = [2, 3, 4]
 
 #### Gleam
 
-Gleam has a `cons` operator that works for lists destructuring and pattern matching. In Gleam lists are immutable so adding and removing elements from the start of a list is highly efficient.
+Gleam has a `..` (known as `cons`) operator that works for lists destructuring and pattern matching. In Gleam lists are immutable so adding and removing elements from the start of a list is highly efficient.
 
 ```gleam
 let list = [2, 3, 4]
@@ -466,7 +467,7 @@ let [1, second_element, ..] = list
 
 In Python, dictionaries can have keys of any type as long as:
 
-- the key type is `hashable`, such as integers, strings, tuples (due to their immutable values), functions... and custom mutable objects implementing the `__hash__` method.
+- the key type is `hashable`, such as integers, strings, tuples (due to their immutable values), functions... and custom objects implementing the `__hash__` method.
 - the key is unique in the dictionary.
   and values of any type.
 
@@ -792,7 +793,7 @@ type IntOrFloat {
   AFloat(Float)
 }
 
-fn int_or_float(x) {
+fn int_or_float(x: IntOrFloat) {
   case x {
     AnInt(1) -> "It's an integer: 1"
     AFloat(1.0) -> "It's a float: 1.0"
@@ -814,18 +815,13 @@ using the intended API.
 #### Python
 
 ```python
-class OnlyCreatable:
+from typing import NewType
 
-    __create_key = object()
+# Is protected: people must not use it out side of this module!
+_Identifier = NewType('Identifier', int)
 
-    @classmethod
-    def create(cls, value):
-        return OnlyCreatable(cls.__create_key, value)
-
-    def __init__(self, create_key, value):
-        assert(create_key == OnlyCreatable.__create_key), \
-            "OnlyCreatable objects must be created using OnlyCreatable.create"
-        self.value = value
+def get_id() -> _Identifier:
+    return _Identifier(100)
 ```
 
 #### Gleam
