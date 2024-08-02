@@ -157,7 +157,7 @@ for your project. Thank you [Jiangda Wang](https://github.com/frank-iii)!
 
 ## Even more fault tolerance!
 
-Gleam's compiler implements _fault tolerant anaylsis_. This means that when
+Gleam's compiler implements _fault tolerant analysis_. This means that when
 there is some error in the code that means it is invalid and cannot be compiled,
 the compiler can still continue to analyse the code to the best of its ability,
 ignoring the invalid parts. Because of this Gleam language server can have a
