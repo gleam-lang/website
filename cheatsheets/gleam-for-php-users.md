@@ -368,6 +368,7 @@ can be invoked from browser's JavaScript, Deno or NodeJS runtime calls.
 Type hints can be used to optionally annotate function arguments and return
 types.
 
+//TODO check if runtime won't prevent, I think new versions do that
 Discrepancies between type hints and actual values at runtime do not prevent
 interpretation of the code. Static code analysers (IDE tooling, type checkers
 like `phpstan`) will be required to detect those errors.
@@ -407,7 +408,8 @@ fn mul(x: Int, y: Int) -> Bool {
 As long as functions are in scope they can be assigned to a new variable.
 As methods or static functions classes, functions can be accessed via
 `$this->object_instance_method()` or `self::static_class_function()`.
-
+//TODO update this, with callable syntax since 8.1 other functions can be moved around
+// see https://www.php.net/manual/en/functions.first_class_callable_syntax.php
 Other than that only anonymous functions can be moved around the same way as
 other values.
 
@@ -417,6 +419,7 @@ $doubleFn = function($x) { return $x + $x; };
 pushFunction($queue, $doubleFn);
 ```
 
+//TODO update as above
 However in `PHP` it is not possible to pass around global, class or instance
 functions as values.
 
@@ -1419,7 +1422,7 @@ To iterate a few foundational differences:
   library.
 
 ### Guarantees and types
-
+//TODO check and possibly update this
 - PHP features opt-in static typing which is only checked at runtime.
 - PHP values tend to be automatically cast for comparison purposes or when used
   as indexes in arrays. Gleam values are not automatically cast.
