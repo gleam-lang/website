@@ -48,7 +48,7 @@ The shorthand can be used for labelled record fields and in pattern matching
 too.
 
 ```gleam
-pub fn get_year(data: Date) -> Year {
+pub fn get_year(date: Date) -> Year {
   let Date(year:, ..) = date
   year
 }
