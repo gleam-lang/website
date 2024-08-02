@@ -123,7 +123,7 @@ function as well as highlight which argument you need to supply next.
 A picture is worth a thousand words, so presumably a video is a small book.
 Here's a demonstration:
 
-<video autoplay loop muted playsinline style="max-width: 720px">
+<video autoplay loop muted playsinline style="width: 720px; max-width: 100%">
   <source src="/images/news/gleam-v1.4-released/help.mp4" type="video/mp4">
 </video>
 
