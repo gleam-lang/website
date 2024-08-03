@@ -25,8 +25,10 @@ title: Gleam for Elixir users
   - [Lists](#lists)
   - [Atoms](#atoms)
   - [Maps](#maps)
-- [Patterns] TODO
-- [Flow control](#flow-control) TODO
+- [Patterns](#patterns) 
+- [Dicts](#dicts)
+- [Patterns](#patterns)
+- [Flow control](#flow-control) IN-PROGRESS
   - [Case](#case) TODO
   - [Try](#try) TODO
 - [Type aliases](#type-aliases) TODO
@@ -656,3 +658,35 @@ pub fn main() {
 }
 ```
 
+## Patterns
+
+Same as Elixir, Gleam has pattern matching, which is used for matching complex structured data. In Gleam we use `as` to name the variable, same as using `=` in Elixir.
+
+#### Gleam
+
+```gleam
+let list = [1, 2, 3]
+
+let assert [1 as first, second, ..rest] = list
+
+let assert Person(name: "Jack" as name, age: 20 as age) = Person(name: "Jack", age: 20)
+
+let assert #(1 as a, 2 as b) = #(1, 2)
+```
+
+#### Elixir
+
+```elixir
+list = [1, 2, 3]
+[1 = first, second | rest] = list
+
+%Person{name: "Jack", age: 20} = %Person{name: "Jack", age: 20}
+
+{1 = a, 2 = b} = {1, 2}
+```
+
+## Flow Control
+
+### Case
+
+Even though both Elixir and Gleam are functional programming language. There is a huge difference between them and with others non-functional language, which is not providing `if/else`, the fundamental part for most programming language. In other hand, we use `match` instead. Gleam features a strong pattern matching feature like Elixir.
