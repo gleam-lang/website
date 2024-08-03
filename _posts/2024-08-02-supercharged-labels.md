@@ -253,7 +253,7 @@ large file. This was added by [PgBiel](https://github.com/PgBiel), thank you!
 ## Case correction
 
 Gleam uses `snake_case` for variables and functions, and `PascalCase` for types
-and record constructors. Using a different case is a compile error, so you're
+and record constructors. Using a different case is a compile error, so you'll
 never have an argument about which case to use in Gleam!
 
 In the event you accidentally use the wrong one the language server now suggests
