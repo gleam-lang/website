@@ -212,8 +212,8 @@ Anonymous functions can also be defined and be bound to variables.
 
 ```Go
 x := 2
-GoAnonFn := func(y) { return x * y } // Captures x
-GoAnonFn(2, 3) // 6
+GoAnonFn := func(y int) int { return x * y } // Captures x
+GoAnonFn(3) // 6
 ```
 
 ### Gleam
@@ -472,7 +472,7 @@ In Go, constants can only be defined at the top level of any file.
 const theAnswer int = 42
 
 func main() {
-  fmt.Printf("%d\n", theAnswer) // 42
+	fmt.Printf("%d\n", theAnswer) // 42
 }
 ```
 
@@ -507,13 +507,13 @@ Blocks are declared via curly braces.
 
 ```Go
 func aFunc() {
-  // A block starts here
-  if someBool {
-    // A block here
-  } else {
-    // A block here
-  }
-  // Block continues
+	// A block starts here
+	if someBool {
+		// A block here
+	} else {
+		// A block here
+	}
+	// Block continues
 }
 ```
 
@@ -546,11 +546,7 @@ returned from an expression.
 
 In Go strings are slices (dynamically sized arrays) of bytes. Those bytes are
 arbitrary, and are not required to contain Unicode or any other string encoding.
-Go's standard library however has extensive support for string operations. Strings
-can be built efficiently with a `StringBuilder` type from the `strings` package in
-the standard library.  Interpolation can be accomplished using `Sprintf` and other
-similar functions found in `fmt` package amongst others in the standard library.
-This uses C `strfmt` style format strings that are statically checked at compile time.
+Go's standard library however has extensive support for string operations, that relies heavily on C `strfmt` style format strings that are statically checked at compile time.
 
 In Gleam all strings are unicode binaries. Gleam however offers a `StringBuilder` type via its standard
 library which may be more performant than joining strings in some scenarios.
@@ -559,8 +555,8 @@ library which may be more performant than joining strings in some scenarios.
 
 ```Go
 what := "world"
-"Hellø, world!"
-fmt.Sprintf("Hellø, %d!", what);
+// "Hellø, world!"
+fmt.Sprintf("Hellø, %v!", what)
 ```
 
 #### Gleam
@@ -641,14 +637,14 @@ let [1, second_element, ..] = list
 
 ### Maps
 
-Maps are similar in Go and Gleam, except that they are mutated in Go and
+Maps are similar in Go and Gleam(where they are called Dicts), except that they are mutated in Go and
 immutable in Gleam.
 
 #### Go
 
 ```Go
 myMap := map[string]string{
-  "key1": "value1"
+	"key1": "value1"
 }
 fmt.Print(myMap["key1"])
 ```
@@ -708,28 +704,28 @@ Go features 2 different expressions to achieve similar goals:
 
 ```Go
 func httpErrorImpl1(status int) string {
-  if status == 400 {
-      return "Bad request"
-  } else if status == 404 {
-      return "Not found"
-  } else if status == 418 {
-      return "I'm a teapot"
-  } else {
-    return "Internal Server Error"
-  }
+	if status == 400 {
+			return "Bad request"
+	} else if status == 404 {
+			return "Not found"
+	} else if status == 418 {
+			return "I'm a teapot"
+	} else {
+		return "Internal Server Error"
+	}
 }
 
 func httpErrorImpl2(status int) string {
-  switch (status) {
-    case 400:
-      return "Bad request"
-    case 404:
-      return "Not found"
-    case 418:
-      return "I'm a teapot"
-    default:
-      return "Internal Server Error"
-  }
+	switch (status) {
+		case 400:
+			return "Bad request"
+		case 404:
+			return "Not found"
+		case 418:
+			return "I'm a teapot"
+		default:
+			return "Internal Server Error"
+	}
 }
 ```
 
@@ -843,9 +839,9 @@ often.
 ```Go
 // Imaginary Go code
 func setOptions() somePkg.Options {
-  return options.New().
-    WithDelay(200).
-    WithCompression(true);
+	return options.New().
+		WithDelay(200).
+		WithCompression(true);
 }
 ```
 
@@ -897,7 +893,7 @@ support for multiple return values creates a very straightforward pattern
 for error handling that almost defines the Go experience.
 ```Go
 func aFunctionThatFails() error {
-  return errors.New("This is an error")
+	return errors.New("This is an error")
 }
 ```
 
@@ -1003,14 +999,14 @@ functions to construct a struct in an ergonomic way.
 
 ```Go
 type Person struct {
-  name string
-  age int
+	name string
+	age int
 }
 
 func NewPerson(name string, age int) Person {
-    return Person{ name, age } // Short hand literal construction
-    // Could also be done with
-    // return Person { name: name, age: age }
+		return Person{ name, age } // Short hand literal construction
+		// Could also be done with
+		// return Person { name: name, age: age }
 }
 
 // Inside of a function
@@ -1058,7 +1054,7 @@ type StructA struct {
 	age int
 }
 
-func (s StructA) String() string {  // This method fulfills the Stringer interface
+func (s StructA) String() string {	// This method fulfills the Stringer interface
 	return fmt.Sprintf("%s,%d", s.name, s.age)
 }
 
@@ -1067,7 +1063,7 @@ type StructB struct {
 	y int
 }
 
-func (s StructB) String() string {  // This method fulfills the Stringer interface
+func (s StructB) String() string {	// This method fulfills the Stringer interface
 	return fmt.Sprintf("%d,%d", s.x, s.y)
 }
 
@@ -1143,10 +1139,10 @@ package main
 import "someurl.com/mymodule/mypkg"
 
 func main() {
-  mt := mypkg.SomeFunc()
-  if mypkg.OtherFunc(mt) {
-    fmt.Println("I can use the opaque type but can't create it!")
-  }
+	mt := mypkg.SomeFunc()
+	if mypkg.OtherFunc(mt) {
+		fmt.Println("I can use the opaque type but can't create it!")
+	}
 }
 ```
 
@@ -1192,7 +1188,7 @@ package something
 
 // This function is available for import by other packages
 func Identity(x any) {
-  return x;
+	return x;
 }
 
 func privateFunc() {}
@@ -1204,8 +1200,8 @@ In `mymod/something/other.go`:
 package something
 
 func otherFunc(x any) {
-  privateFunc() // Can be used here
-  return x;
+	privateFunc() // Can be used here
+	return x;
 }
 
 ```
@@ -1216,14 +1212,13 @@ We can now call Identity from the main package in your binary.
 package main
 
 import (
-  "fmt"
-m
-  "someurl.com/mymod/something"
+	"fmt"
+	"someurl.com/mymod/something"
 )
 
 func main() {
-  fmt.Println(something.Identity("Hello, world!"))
-  // privateFunc is not visible here
+	fmt.Println(something.Identity("Hello, world!"))
+	// privateFunc is not visible here
 }
 ```
 
@@ -1275,11 +1270,11 @@ qualifier is the name of the containing module, which by convention is the url
 at which the module is hosted.
 
 ```go
-import "fmt" // Single import.  Stdlib packages are referenced bare, no path required
+import "fmt" // Single import.	Stdlib packages are referenced bare, no path required
 import ( // Multi-package import
-  "strings" // Available for use as `strings`
+	"strings" // Available for use as `strings`
 
-  "github.com/example/example-go-project/somepkg" // Will be available as `somepkg`
+	"github.com/example/example-go-project/somepkg" // Will be available as `somepkg`
 )
 ```
 
@@ -1317,11 +1312,11 @@ Go allows you to alias a package import
 
 ```go
 import (
-  other "github.com/example/example-go-project/somepkg"
+	other "github.com/example/example-go-project/somepkg"
 )
 
 func main() {
-  other.SomeFunc()
+	other.SomeFunc()
 }
 ```
 
