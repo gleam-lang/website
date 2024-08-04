@@ -9,7 +9,7 @@
   square_avatar: false
 - name: "Abdulrhman Alkhodiry"
   url: "https://github.com/zeroows"
-  avatar: "https://avatars.githubusercontent.com/u/401352?u=af0e8dea9088c96f363f636cd8a5c2c004dd5baa&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/401352?u=eb5681f1ecafd7a4a3b6c764b93f7e05be0d6c65&v=4"
   square_avatar: false
 - name: "Adam Brodzinski"
   url: "https://github.com/AdamBrodzinski"
@@ -86,6 +86,10 @@
 - name: "Andy Aylward"
   url: "https://github.com/aaylward"
   avatar: "https://avatars.githubusercontent.com/u/846647?u=b690998b02e5476a23c0c638b4b08bc0560711bd&v=4"
+  square_avatar: false
+- name: Antharuu
+  url: "https://github.com/antharuu"
+  avatar: "https://avatars.githubusercontent.com/u/10176626?u=3f6ef490b330d5a9bbaa3137560b5d1d4cf13a4a&v=4"
   square_avatar: false
 - name: "Anthony Khong"
   url: "https://github.com/anthony-khong"
@@ -275,6 +279,10 @@
   url: "https://github.com/dbernheisel"
   avatar: "https://avatars.githubusercontent.com/u/643967?u=a8d99b8f74fa44c72f8adbe86c379ae84999fc5c&v=4"
   square_avatar: false
+- name: "David Cornu"
+  url: "https://github.com/davidcornu"
+  avatar: "https://avatars.githubusercontent.com/u/325821?u=72749098165273a5b166f126b4ca8861487a1ef2&v=4"
+  square_avatar: false
 - name: "David Sancho"
   url: "https://github.com/davesnx"
   avatar: "https://avatars.githubusercontent.com/u/3763599?u=9642d3d5effd7b98774ed5b13438b411dc21a1dd&v=4"
@@ -299,6 +307,14 @@
   url: "https://github.com/poroh"
   avatar: "https://avatars.githubusercontent.com/u/2820076?v=4"
   square_avatar: false
+- name: "Donnie Flood"
+  url: "https://github.com/floodfx"
+  avatar: "https://avatars.githubusercontent.com/u/35109?v=4"
+  square_avatar: false
+- name: "Dylan Carlson"
+  url: "https://github.com/gdcrisp"
+  avatar: "https://avatars.githubusercontent.com/u/171501478?v=4"
+  square_avatar: false
 - name: "EMR Technical Solutions"
   url: "https://github.com/EMRTS"
   avatar: "https://avatars.githubusercontent.com/u/13780078?v=4"
@@ -318,6 +334,10 @@
 - name: Emma
   url: "https://github.com/Emma-Fuller"
   avatar: "https://avatars.githubusercontent.com/u/89794160?u=001967be40ee0403e58366174118d6fe2a0bd2e1&v=4"
+  square_avatar: false
+- name: "Eric Koslow"
+  url: "https://github.com/ekosz"
+  avatar: "https://avatars.githubusercontent.com/u/212829?u=b74261b7ed7347ae20ccad9d27c62fc788137a19&v=4"
   square_avatar: false
 - name: "Erik Terpstra"
   url: "https://github.com/eterps"
@@ -371,6 +391,10 @@
   url: "https://github.com/giacomocavalieri"
   avatar: "https://avatars.githubusercontent.com/u/20598369?u=3ba1ad4894b381626b5aa8503bcd9b06f02554cc&v=4"
   square_avatar: false
+- name: "Giovanni Kock Bonetti"
+  url: "https://github.com/giovannibonetti"
+  avatar: "https://avatars.githubusercontent.com/u/3451581?u=739da1d4c233cd5a5fe0880cff4bed9461fdb66d&v=4"
+  square_avatar: false
 - name: "Graeme Coupar"
   url: "https://github.com/obmarg"
   avatar: "https://avatars.githubusercontent.com/u/556490?v=4"
@@ -423,13 +447,13 @@
   url: "https://github.com/henrysdev"
   avatar: "https://avatars.githubusercontent.com/u/14046865?u=8a051bed74cc5f9d516a57bf7de4c91a50f48f8b&v=4"
   square_avatar: false
-- name: Hex
-  url: "https://github.com/hexpm"
-  avatar: "https://avatars.githubusercontent.com/u/6621265?v=4"
-  square_avatar: false
 - name: "Humberto Piaia"
   url: "https://github.com/hpiaia"
   avatar: "https://avatars.githubusercontent.com/u/4452287?u=99dcac91a1a52ea46823ff787b0cc9b698e956bd&v=4"
+  square_avatar: false
+- name: "ILLIA NEGOVORA"
+  url: "https://github.com/nilliax"
+  avatar: "https://avatars.githubusercontent.com/u/45668987?u=c8cb607db05d7c52d7ac91f10e11aceffe8497ce&v=4"
   square_avatar: false
 - name: "Iain H"
   url: "https://github.com/iainh"
@@ -478,6 +502,10 @@
 - name: "Jacob Lamb"
   url: "https://github.com/jacobdalamb"
   avatar: "https://avatars.githubusercontent.com/u/44789941?u=0f85ea0e3de87bddb991c423d1279cceb28edda9&v=4"
+  square_avatar: false
+- name: "Jake Cleary"
+  url: "https://github.com/jakecleary"
+  avatar: "https://avatars.githubusercontent.com/u/4572429?u=ed22a6f6ed072e99c2d585119209852ee3be8bef&v=4"
   square_avatar: false
 - name: "James Birtles"
   url: "https://github.com/jamesbirtles"
@@ -534,6 +562,10 @@
 - name: "John Thile"
   url: "https://github.com/jthile"
   avatar: "https://avatars.githubusercontent.com/u/1424402?u=8ad11454630896e11dd23bab83ee8c59a8208929&v=4"
+  square_avatar: false
+- name: "Jonas E. P"
+  url: "https://github.com/igern"
+  avatar: "https://avatars.githubusercontent.com/u/26411661?v=4"
   square_avatar: false
 - name: "Jonas Hedman Engström"
   url: "https://github.com/JonasHedEng"
@@ -627,6 +659,10 @@
   url: "https://github.com/lukasmeihsner"
   avatar: "https://avatars.githubusercontent.com/u/91562017?u=2794b8e6484ec3dc49bbea695588c77e3b65a829&v=4"
   square_avatar: false
+- name: "Luke Amdor"
+  url: "https://github.com/lamdor"
+  avatar: "https://avatars.githubusercontent.com/u/1580?u=a766174cc0229b5ab2309f3820f61f883ee3a09c&v=4"
+  square_avatar: false
 - name: Luna
   url: "https://github.com/2kool4idkwhat"
   avatar: "https://avatars.githubusercontent.com/u/120322313?u=b25a49a4010be10a0ca53f05572aeb55889cf974&v=4"
@@ -650,6 +686,10 @@
 - name: "Mariano Uvalle"
   url: "https://github.com/AYM1607"
   avatar: "https://avatars.githubusercontent.com/u/24952509?u=3d31d5974afd09f9eb42135138ebf8dc579ce365&v=4"
+  square_avatar: false
+- name: "Marius Iversen"
+  url: "https://github.com/P1llus"
+  avatar: "https://avatars.githubusercontent.com/u/8027539?u=c89f530c788d440862b1cbcea1fb35083ad57cb4&v=4"
   square_avatar: false
 - name: "Marius Kalvø"
   url: "https://github.com/mariuskalvo"
@@ -779,6 +819,14 @@
   url: "https://github.com/NicklasXYZ"
   avatar: "https://avatars.githubusercontent.com/u/18580183?u=e78dfbd9cc44a243c17f052250ef73aec4cb3858&v=4"
   square_avatar: false
+- name: NicoVIII
+  url: "https://github.com/NicoVIII"
+  avatar: "https://avatars.githubusercontent.com/u/3983345?u=6962fb7c0e56ad3a812551fd9e7ff795d42eaf77&v=4"
+  square_avatar: false
+- name: "Niket Shah"
+  url: "https://github.com/mrniket"
+  avatar: "https://avatars.githubusercontent.com/u/2016308?u=4e7d3322e9c77a1e705317b773985ac3798fc32d&v=4"
+  square_avatar: false
 - name: Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   url: "https://github.com/l1f"
   avatar: "https://avatars.githubusercontent.com/u/38247461?u=e6eba332364fbccc81ef0a2fdb79a3fb6c0d5d15&v=4"
@@ -794,6 +842,10 @@
 - name: OldhamMade
   url: "https://github.com/OldhamMade"
   avatar: "https://avatars.githubusercontent.com/u/111193?v=4"
+  square_avatar: false
+- name: "Oliver Medhurst"
+  url: "https://github.com/CanadaHonk"
+  avatar: "https://avatars.githubusercontent.com/u/19228318?u=eea29901f58d6357f0fc2992747d0b4b80d23c8e&v=4"
   square_avatar: false
 - name: "Osman Cea"
   url: "https://github.com/daslaf"
@@ -850,6 +902,10 @@
 - name: "Praveen Perera"
   url: "https://github.com/praveenperera"
   avatar: "https://avatars.githubusercontent.com/u/1775346?u=833a731602445ffb4aea9e36a7eee166cd477e22&v=4"
+  square_avatar: false
+- name: Qdentity
+  url: "https://github.com/qdentity"
+  avatar: "https://avatars.githubusercontent.com/u/1351994?v=4"
   square_avatar: false
 - name: "Race Williams"
   url: "https://github.com/raquentin"
@@ -971,9 +1027,17 @@
   url: "https://github.com/simonewebdesign"
   avatar: "https://avatars.githubusercontent.com/u/2126073?v=4"
   square_avatar: false
+- name: Spec
+  url: "https://github.com/spectacle-cat"
+  avatar: "https://avatars.githubusercontent.com/u/82361338?u=1a45d584d12e44ed35b65226ff2c13198a113d2a&v=4"
+  square_avatar: false
 - name: "Stephen Belanger"
   url: "https://github.com/Qard"
   avatar: "https://avatars.githubusercontent.com/u/205482?u=de3265fd6a286e3e51965136cbe7a04bb9ec051a&v=4"
+  square_avatar: false
+- name: "Steve Powers"
+  url: "https://github.com/stvpwrs"
+  avatar: "https://avatars.githubusercontent.com/u/2911929?v=4"
   square_avatar: false
 - name: Strandinator
   url: "https://github.com/Strandinator"
@@ -1174,6 +1238,10 @@
 - name: sekun
   url: "https://github.com/sekunho"
   avatar: "https://avatars.githubusercontent.com/u/20364796?u=5cade410236443af83ef153029eb7b379ab15205&v=4"
+  square_avatar: false
+- name: star-szr
+  url: "https://github.com/star-szr"
+  avatar: "https://avatars.githubusercontent.com/u/327943?v=4"
   square_avatar: false
 - name: syhner
   url: "https://github.com/syhner"
