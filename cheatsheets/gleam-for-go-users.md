@@ -197,14 +197,14 @@ keyword is required if the function has a return value, and optional otherwise.
 
 ```Go
 func hello(name string) string {
-  if name == 'Joe' {
-    return 'Welcome back, Joe!'
-  }
-  return "Hello $name"
+	if name == "Joe" {
+		return "Welcome back, Joe!"
+	}
+	return fmt.Sprintf("Hello %s", name)
 }
 
 func noop() {
-  // No return value
+	// No return value
 }
 ```
 
@@ -256,17 +256,17 @@ In Go, functions are exported if their name is capitalized, and private to the p
 
 ```Go
 func PublicHello(name string) string {  // Exported
-  if name == 'Joe' {
-    return 'Welcome back, Joe!'
-  }
-  return "Hello $name"
+	if name == "Joe" {
+		return "Welcome back, Joe!"
+	}
+	return fmt.Sprintf("Hello %s", name)
 }
 
 func privateHello(name string) string { // Package private
-  if name == 'Joe' {
-    return 'Welcome back, Joe!'
-  }
-  return "Hello $name"
+	if name == "Joe" {
+		return "Welcome back, Joe!"
+	}
+	return fmt.Sprintf("Hello %s", name)
 }
 ```
 
@@ -313,11 +313,11 @@ Again, multiple consecutive arugments of the same type can share an annotation.
 
 ```Go
 func sum(x, y int) int {
-    return x + y
+		return x + y
 }
 
 func mul(x, y int) bool {
-    return x * y // This will be a compile-time error
+		return x * y // This will be a compile-time error
 }
 ```
 
