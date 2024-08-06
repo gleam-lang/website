@@ -59,7 +59,7 @@ for deployment.
 Add a file named `Dockerfile` with these contents:
 
 ```dockerfile
-FROM ghcr.io/gleam-lang/gleam:v1.2.1-erlang-alpine
+FROM ghcr.io/gleam-lang/gleam:v1.4.1-erlang-alpine
 
 # Add project code
 COPY . /build/
