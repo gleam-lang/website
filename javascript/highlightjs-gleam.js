@@ -1,11 +1,19 @@
 hljs.registerLanguage("gleam", function (hljs) {
-  const KEYWORDS =
-    "as assert case const external fn if import let " +
-    "opaque pub todo try type";
+  const KEYWORDS = {
+    className: "keyword",
+    beginKeywords:
+      "as assert auto case const delegate derive echo else fn if " +
+      "implement import let macro opaque panic pub test todo type use",
+  };
   const STRING = {
     className: "string",
     variants: [{ begin: /"/, end: /"/ }],
     contains: [hljs.BACKSLASH_ESCAPE],
+    relevance: 0,
+  };
+  const NAME = {
+    className: "variable",
+    begin: "\\b[a-z][a-z0-9_]*\\b",
     relevance: 0,
   };
   const DISCARD_NAME = {
@@ -43,19 +51,20 @@ hljs.registerLanguage("gleam", function (hljs) {
       hljs.C_LINE_COMMENT_MODE,
       STRING,
       {
-        // bit string
+        // bit array
         begin: "<<",
         end: ">>",
         contains: [
           {
             className: "keyword",
             beginKeywords:
-              "binary bytes int float bit_string bits utf8 utf16 utf32 " +
-              "utf8_codepoint utf16_codepoint utf32_codepoint signed unsigned " +
-              "big little native unit size",
+              "binary bits bytes int float bit_string bit_array bits utf8 utf16 " +
+              "utf32 utf8_codepoint utf16_codepoint utf32_codepoint signed " +
+              "unsigned big little native unit size",
           },
           KEYWORDS,
           STRING,
+          NAME,
           DISCARD_NAME,
           NUMBER,
         ],
@@ -75,9 +84,12 @@ hljs.registerLanguage("gleam", function (hljs) {
         ],
       },
       {
-        className: "keyword",
-        beginKeywords: KEYWORDS,
+        className: "attribute",
+        begin: "@",
+        end: "\\(",
+        excludeEnd: true,
       },
+      KEYWORDS,
       {
         // Type names and constructors
         className: "title",
@@ -89,6 +101,7 @@ hljs.registerLanguage("gleam", function (hljs) {
         begin: "[+\\-*/%!=<>&|.]+",
         relevance: 0,
       },
+      NAME,
       DISCARD_NAME,
       NUMBER,
     ],

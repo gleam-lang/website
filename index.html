@@ -1,196 +1,245 @@
 ---
-layout: top
-list_sponsors: true
+layout: layout
+preload:
+  # Preload hover image
+  - href: /images/lucy/lucyhappy.svg
+    as: image
 ---
-<section class="hero hero-xl">
-  <div class="hero-homepage-content content">
-    <img class="hero-logo" src="/images/lucy-charcoal-2.svg" alt="Lucy the star, Gleam's mascot">
-    <div class="hero-blerb">
-      <h2>
-        Gleam is a friendly language for building type-safe, scalable systems! ✨
-      </h2>
-      <a href="/getting-started" class="button-light">Get Started</a>
+
+{% capture header_content %}
+<div>
+  <b>Gleam</b> is a <b>friendly</b> language for building
+  <b>type-safe</b> systems that <b>scale</b>!
+</div>
+<a class="button" href="https://tour.gleam.run/">Try Gleam</a>
+{% endcapture %} {% include page-header.html image="/images/lucy/lucy.svg"
+alt="Lucy the star, Gleam's mascot" content=header_content %}
+
+<main role="main">
+  <section class="content home-pair intro">
+    <div>
+      <p>
+        The power of a type system, the expressiveness of functional
+        programming, and the reliability of the highly concurrent, fault
+        tolerant Erlang runtime, with a familiar and modern syntax.
+      </p>
     </div>
-  </div>
-</section>
+    <pre><code><span class="code-keyword">import</span> <span class="code-module">gleam/io</span>
 
-<section class="content">
-  <center>
-  <h5>Kindly supported by</h5>
-  </center>
-  <ul class="top-sponsors">
-    <li>
-      <a href="https://fly.io" rel="noopener" target="_blank">
-        <img class="sponsor-fly" src="/images/sponsors/fly.svg" alt="Fly">
+<span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
+  <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"hello, friend!"</span>)
+}</code></pre>
+  </section>
+
+  <section class="home-top-sponsors">
+    <div class="content">
+      <h2>Kindly supported by sponsors like you!</h2>
+      <a
+        class="sponsor-level0"
+        href="https://github.com/sponsors/lpil"
+        rel="noopener"
+        target="_blank"
+      >
+        <img src="/images/community/github.svg" alt="GitHub Sponsors" />
       </a>
-    <li>
-      <a href="https://alembic.com.au" rel="noopener" target="_blank">
-        <img class="sponsor-alembic" src="/images/sponsors/alembic.svg" alt="Alembic">
-      </a>
-  </ul>
-</section>
+    </div>
+  </section>
 
-<section class="content">
-  <h2>Why Gleam?</h2>
-
-  <h3 data-before-icon="☔">Safe</h3>
-  <p>
-    Gleam's powerful static type system helps find and prevent bugs at
-    compile time, long before it reaches your users. It also serves as a
-    productive refactoring tool, enabling programmers to confidently make
-    large changes to unfamiliar code, quickly and with low risk.
-  </p>
-  <p>
-    For problems the type system can't solve (such as your server being hit
-    by a bolt of lightning) the Erlang virtual machine provides well tested
-    mechanisms for gracefully handling failure.
-  </p>
-
-  <h3 data-before-icon="💜">Friendly</h3>
-  <p>
-    Hunting down bugs can be stressful so Gleam's compiler provides clear
-    and helpful feedback about any problems. We want to spend more time
-    developing features and less time looking for bugs or deciphering
-    cryptic error messages.
-  </p>
-  <p>
-    As a community we want to be friendly too. People of all backgrounds,
-    genders, and experience levels are welcome and must receive equal
-    respect. See our <a href="https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md">community code of conduct</a>
-    for more.
-  </p>
-
-  <h3 data-before-icon="🧵">Performant</h3>
-  <p>
-    Gleam builds on top of the Erlang virtual machine, a best-in-class
-    runtime that has enabled companies such as
-    <a href="https://discord.com/">Discord</a>,
-    <a href="https://www.ericsson.com/en">Ericsson</a>,
-    <a href="https://www.heroku.com">Heroku</a>, and
-    <a href="https://www.whatsapp.com/">WhatsApp</a> to provide low-latency
-    services at a global scale. Gleam takes full advantage of the Erlang
-    runtime and adds no overhead of its own, so all Gleam programs are as
-    fast and as efficiently multi-threaded as their Erlang counterpart.
-  </p>
-
-  <h3 data-before-icon="🧩">Erlang compatible</h3>
-  <p>
-    Gleam makes it easy to use code written in other BEAM languages such as
-    Erlang, Elixir and LFE, so there's a rich ecosystem of
-    <a href="https://hex.pm/">thousands of open source libraries </a>
-    for Gleam users to make use of.
-  </p>
-  <p>
-    In return Gleam code can be easily used by programmers of other BEAM
-    languages, either by transparently making use of libraries written in
-    Gleam, or by adding Gleam modules to their existing project with minimal
-    fuss.
-  </p>
-</section>
-
-<section class="content">
-  <h2>Features</h2>
-  <ul>
-    <li>Actor based multi-core concurrency
-    <li>Algebraic data types
-    <li>Erlang style fault tolerance
-    <li>Fast compilation
-    <li>Full type inference
-    <li>Generics
-    <li>Helpful error messages
-    <li>Immutable data structures
-    <li>No exceptions by default
-    <li>No null
-    <li>No undefined behaviour
-    <li>Reliable package management
-    <li>Small and consistent language design
-    <li>Zero cost interop with Erlang, Elixir, etc
-  </ul>
-</section>
-
-<section class="content">
-  <h2>Examples</h2>
-
-  <details class="openable-example" open>
-    <summary>Hello, world!</summary>
-
-    The classic example program that prints "Hello, world!" to the console.
-
-  <pre><code class="language-gleam">import gleam/io
-
-pub fn main() {
-  io.println("Hello, world!")
-}
-</code></pre>
-  </details>
-
-  <details class="openable-example">
-    <summary>A basic web server</summary>
-
-    This little web server responds with the text "Hello, world!" to any
-    HTTP request made to it.
-
-  <pre><code class="language-gleam">import gleam/io
-import gleam/bit_builder
-import gleam/http/elli
-import gleam/http/response
-
-pub fn my_service(_req) {
-  let body = bit_builder.from_string("Hello, world!")
-
-  response.new(200)
-  |> response.set_body(body)
-}
-
-pub fn main() {
-  elli.become(my_service, on_port: 3000)
-}
-</code></pre>
-
-    The web server created by this code is fully asynchronous and
-    multi-threaded, seamlessly making use of all the cores of your computer
-    without tricky locks, callbacks, or promises.
-  </details>
-
-  <details class="openable-example">
-    <summary>Multi-threaded hello world</summary>
-
-    Thanks to the powerful Erlang virtual machine Gleam programs can spin up
-    hundreds of thousands of threads (called processes) without any trouble.
-    Here's "Hello, World!" being printed by a thousand processes
-    concurrently.
-
-    <pre><code class="language-gleam">import gleam/io
-import gleam/int
-import gleam/list
-import gleam/string
-import gleam/otp/process
-
-pub fn main() {
-  list.range(0, 1000)
-  |> list.map(start_process)
-  |> list.map(process.monitor_process)
-  |> list.each(process.receive(_, 3)) // Wait for them to finish
-}
-
-fn start_process(i) {
-  process.start(fn() {
-    let message = string.append("Hello world: ", int.to_string(i))
-    io.println(message)
+  <section class="content home-pair">
+    <div>
+      <h2>Reliable and scalable</h2>
+      <p>
+        Running on the battle-tested Erlang virtual machine that powers
+        planet-scale systems such as WhatsApp and Ericsson, Gleam is ready for
+        workloads of any size.
+      </p>
+      <p>
+        Thanks to a multi-core actor based concurrency system that can run
+        millions of concurrent tasks, fast immutable data structures, and a
+        concurrent garbage collector that never stops the world, your service
+        can scale and stay lightning fast with ease.
+      </p>
+    </div>
+    <pre><code><span class="code-keyword">fn</span> <span class="code-fn">spawn_task</span>(i) {
+  <span class="code-module">task.</span><span class="code-fn">async</span>(<span class="code-keyword">fn</span>() {
+    <span class="code-keyword">let</span> n = <span class="code-module">int.</span><span class="code-fn">to_string</span>(i)
+    <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Hello from "</span> <span class="code-operator">&lt;&gt;</span> n)
   })
 }
+
+<span class="code-keyword">pub fn</span> <span class="code-fn">main</span>() {
+  <span class="code-comment">// Run loads of threads, no problem</span>
+  <span class="code-module">list.</span><span class="code-fn">range</span>(<span class="code-number">0</span>, <span class="code-number">200_000</span>)
+  <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">map</span>(<span class="code-fn">spawn_task</span>)
+  <span class="code-operator">|></span> <span class="code-module">list.</span><span class="code-fn">each</span>(<span class="code-module">task.</span><span class="code-fn">await_forever</span>)
+}
 </code></pre>
+  </section>
 
-    In addition to this low-level process abstraction Gleam has helpful
-    libraries full of building blocks for writing type safe and fault
-    tolerant multi-core programs as quickly as possible.
-  </details>
-</section>
+  <section class="content home-pair">
+    <div>
+      <h2>Ready when you are</h2>
+      <p>
+        Gleam comes with compiler, build tool, formatter, editor integrations,
+        and package manager all built in, so creating a Gleam project is just
+        running <code>gleam new</code>.
+      </p>
+      <p>
+        As part of the wider BEAM ecosystem, Gleam programs can use thousands of
+        published packages, whether they are written in Gleam, Erlang, or
+        Elixir.
+      </p>
+    </div>
+    <pre><code><span class="code-prompt">➜ (main)</span> gleam add gleam_json
+<span class="code-operator">  Resolving</span> versions
+<span class="code-operator">Downloading</span> packages
+<span class="code-operator"> Downloaded</span> 2 packages in 0.01s
+<span class="code-operator">      Added</span> gleam_json v0.5.0
+<span class="code-prompt">➜ (main)</span> gleam test
+<span class="code-operator"> Compiling</span> thoas
+<span class="code-operator"> Compiling</span> gleam_json
+<span class="code-operator"> Compiling</span> app
+<span class="code-operator">  Compiled</span> in 1.67s
+<span class="code-operator">   Running</span> app_test.main
+<span class="code-success">.
+1 tests, 0 failures</span>
+</code></pre>
+  </section>
 
-<section class="content">
-  <h2>Let's go</h2>
-  <p>
-    Still interested? Try out getting started guide:
-  </p>
-  <a href="/getting-started" class="button">Get Started</a>
-</section>
+  <section class="content home-pair">
+    <div>
+      <h2>Here to help</h2>
+      <p>
+        No null values, no exceptions, clear error messages, and a practical
+        type system. Whether you're writing new code or maintaining old code,
+        Gleam is designed to make your job as fun and stress-free as possible.
+      </p>
+    </div>
+    <pre><code><span class="code-error">error:</span> Unknown record field
+
+  ┌─ ./src/app.gleam:8:16
+  │
+8 │ user.alias
+  │ <span class="code-error">    ^^^^^^ Did you mean `name`?</span>
+
+The value being accessed has this type:
+    User
+
+It has these fields:
+    .name
+</code></pre>
+  </section>
+
+  <section class="content home-pair">
+    <div>
+      <h2>Multilingual</h2>
+      <p>
+        Gleam makes it easy to use code written in other BEAM languages such as
+        Erlang and Elixir, so there's a rich ecosystem of thousands of open
+        source libraries for Gleam users to make use of.
+      </p>
+      <p>
+        Gleam can additionally compile to JavaScript, enabling you to use your
+        code in the browser, or anywhere else JavaScript can run. It also
+        generates TypeScript definitions, so you can interact with your Gleam
+        code confidently, even from the outside.
+      </p>
+    </div>
+    <pre><code>
+      
+
+<span class="code-keyword">@external</span>(erlang, <span class="code-string">"Elixir.HPAX", "new"</span>)
+<span class="code-keyword">pub fn</span> <span class="code-fn">new</span>(size: <span class="code-type">Int</span>) -> <span class="code-type">Table</span>
+  
+
+
+<span class="code-keyword">pub fn</span> <span class="code-fn">register_event_handler</span>() {
+  <span class="code-keyword">let</span> el = <span class="code-module">document.</span><span class="code-fn">query_selector</span>(<span class="code-string">"a"</span>)
+  <span class="code-module">element.</span><span class="code-fn">add_event_listener</span>(el, <span class="code-keyword">fn</span>() {
+    <span class="code-module">io.</span><span class="code-fn">println</span>(<span class="code-string">"Clicked!"</span>)
+  })
+}</code></pre>
+  </section>
+
+  <section class="home-friendly">
+    <!-- TODO: add triangles here -->
+    <div class="content">
+      <h2>Friendly 💜</h2>
+      <p>
+        As a community, we want to be friendly too. People from around the
+        world, of all backgrounds, genders, and experience levels are welcome
+        and respected equally. See our community code of conduct for more.
+      </p>
+      <p>
+        <!-- Hello! If you make a PR changing this I will ban you. -->
+        Black lives matter. Trans rights are human rights. No nazi bullsh*t.
+      </p>
+    </div>
+    <!-- TODO: add Lucy here -->
+    <img
+      class="home-waves"
+      src="/images/waves.svg"
+      alt="a soft wavey boundary between two sections of the website"
+    />
+  </section>
+
+  <section class="home-sponsors">
+    <div class="content">
+      <h2>Lovely people</h2>
+      <p>
+        If you enjoy Gleam consider
+        <a href="https://github.com/sponsors/lpil">becoming a sponsor</a>
+        (or tell your boss to)
+      </p>
+    </div>
+    <div class="home-sponsors-list">
+      <ul data-randomise-order>
+        {% assign sponsors_count = site.data.sponsors | size %} {% assign
+        sponsors = site.data.sponsors | sample: sponsors_count %} {% for sponsor
+        in sponsors %}
+        <li>
+          <a href="{{ sponsor.url }}" rel="noopener" target="_blank">
+            <img
+              loading="lazy"
+              src="{{ sponsor.avatar }}"
+              class="{% unless sponsor.square_avatar %}round{% endunless %}"
+              alt="{{ sponsor.name }}"
+            />
+          </a>
+          {% endfor %}
+        </li>
+      </ul>
+      <a data-expand-sponsors></a>
+    </div>
+  </section>
+
+  <section class="home-still-here">
+    <div class="content">
+      <h2>You're still here?</h2>
+      <p class="go-read">
+        Well, that&apos;s all this page has to say. Maybe you should go read the
+        language tour!
+      </p>
+      <a class="button" href="https://tour.gleam.run/">Let's go!</a>
+
+      <hr />
+
+      <h3>Wanna keep in touch?</h3>
+      <p>Subscribe to the Gleam newsletter</p>
+      <script
+        async
+        src="https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js"
+        data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"
+      ></script>
+      <p>
+        We send emails at most a few times a year, and we'll never share your
+        email with anyone else.
+      </p>
+      <p class="recaptcha-blerb">
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+      </p>
+    </div>
+  </section>
+</main>

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Gleam for Erlang users
+subtitle: Hello Erlangers and their many 9s!
 ---
 
 - [Comments](#comments)
@@ -24,7 +25,7 @@ title: Gleam for Erlang users
   - [Tuples](#tuples)
   - [Lists](#lists)
   - [Atoms](#atoms)
-  - [Maps](#maps)
+  - [Dicts](#dicts)
 - [Patterns](#patterns) TODO
 - [Flow control](#flow-control) TODO
   - [Case](#case) TODO
@@ -77,12 +78,12 @@ used to assert that a given term has a specific shape.
 
 #### Gleam
 
-In Gleam the `assert` keyword is used to make assertions using partial
+In Gleam, the `let assert` keyword is used to make assertions using partial
 patterns.
 
 ```gleam
 let [element] = some_list // Compile error! Partial pattern
-assert [element] = some_list
+let assert [element] = some_list
 ```
 
 ### Variables type annotations
@@ -264,7 +265,7 @@ replace(#{inside => String, each => Pattern, with => Replacement}) ->
 ```
 
 ```erlang
-replace(#{each => <<",">>, with => <<" ">>, inside => <<"A,B,C">>).
+replace(#{each => <<",">>, with => <<" ">>, inside => <<"A,B,C">>}).
 ```
 
 Because the arguments are stored in a map there is a small runtime
@@ -334,8 +335,8 @@ const answer: Int = 42
 | Greater or equal | `>=`      | `>=.` | In Gleam both values must be floats
 | Less than        | `<`       | `<`   | In Gleam both values must be ints
 | Less than        | `<`       | `<.`  | In Gleam both values must be floats
-| Less or equal    | `=<`      | `>=`  | In Gleam both values must be ints
-| Less or equal    | `=<`      | `>=.` | In Gleam both values must be floats
+| Less or equal    | `=<`      | `<=`  | In Gleam both values must be ints
+| Less or equal    | `=<`      | `<=.` | In Gleam both values must be floats
 | Boolean and      | `andalso` | `&&`  | In Gleam both values must be bools
 | Boolean and      | `and`     |       |
 | Boolean or       | `orelse`  | `⎮⎮`  | In Gleam both values must be bools
@@ -347,7 +348,8 @@ const answer: Int = 42
 | Multiply         | `*`       | `*`   | In Gleam both values must be ints
 | Multiply         | `*`       | `*.`  | In Gleam both values must be floats
 | Divide           | `div`     | `/`   | In Gleam both values must be ints
-| Modulo           | `rem`     | `%`   | In Gleam both values must be ints
+| Remainder        | `rem`     | `%`   | In Gleam both values must be ints
+| Concatenate      |           | `<>`  | In Gleam both values must be strings
 | Pipe             |           | `⎮>`  | See [the pipe section](#pipe) for details
 
 ### Pipe
@@ -358,7 +360,7 @@ read from top to bottom.
 #### Erlang
 ```erlang
 X1 = trim(Input),
-X2 = csv:parse(X1, <<",">>)
+X2 = csv:parse(X1, <<",">>),
 ledger:from_list(X2).
 ```
 
@@ -419,7 +421,7 @@ main() ->
     print(1),
     2
   end,
-  Y = X * (X + 10).
+  Y = X * (X + 10),
   Y.
 ```
 
@@ -478,7 +480,7 @@ let #(_, password, _) = my_tuple
 ### Lists
 
 Lists in Erlang are allowed to be of mixed types, but not in Gleam. They retain all of the same
-performance sematics.
+performance semantics.
 
 The `cons` operator works the same way both for pattern matching and for appending elements to the
 head of a list, but it uses a different syntax.
@@ -510,7 +512,7 @@ arguments is an atom in Erlang.
 There are some exceptions to that rule for atoms that are commonly used and have types built-in to
 Gleam that incorporate them, such as `ok`, `error` and booleans.
 
-In general, atoms are not used much in Gleam, and are mostly used for boolens, `ok` and `error`
+In general, atoms are not used much in Gleam, and are mostly used for booleans, `ok` and `error`
 result types, and defining custom types.
 
 #### Erlang
@@ -536,13 +538,11 @@ Ok(True)
 Error(False)
 ```
 
-### Maps
+### Dicts
 
-In Erlang, maps can have keys and values of any type, and they can be mixed in a given map. In
-Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given
-map and all values must be of the same type in a given map.
+In Erlang, maps can have keys and values of any type, and they can be mixed in a given map. In Gleam, maps are called Dict (Dictionary) and provided by the standard library. Dicts can have keys and values of any type, but all keys must be of the same type in a given dict and all values must be of the same type in a given dict.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally
+There is no dict literal syntax in Gleam, and you cannot pattern match on a dict. Dicts are generally
 not used much in Gleam, custom types are more common.
 
 #### Erlang
@@ -555,11 +555,11 @@ not used much in Gleam, custom types are more common.
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 
@@ -611,7 +611,7 @@ number of named fields, and the values in those fields can be of differing types
                  name :: binary()}).
 ```
 ```erlang
-Person = #person{name="name", age=35}.
+Person = #person{name = <<"name">>, age = 35}.
 Name = Person#person.name.
 ```
 
@@ -632,7 +632,7 @@ let name = person.name
 In Erlang a function can take or receive values of multiple different types.
 For example it could return an int some times, and float other times.
 
-In Gleam functions must always take an receive one type. To have a union of
+In Gleam functions must always take and receive one type. To have a union of
 two different types they must be wrapped in a new custom type.
 
 #### Erlang
@@ -653,8 +653,8 @@ type IntOrFloat {
   AFloat(Float)
 }
 
-fn int_or_float(X) {
-  case X {
+fn int_or_float(x) {
+  case x {
     True -> AnInt(1)
     False -> AFloat(1.0)
   }

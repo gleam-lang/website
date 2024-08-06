@@ -1,18 +1,32 @@
 ---
-title: Community
+title: The Gleam Community
+subtitle: Welcome, friend! It's good to have you
 layout: page
 ---
-
-Welcome to the Gleam community! You are very welcome and we are happy to have
-you.
 
 You can talk to and get help from other Gleam community members in the
 following forums:
 
-- [Gleam's web chat on Discord][2].
-- [Gleam discussions on Github][3].
-- [Gleam's threads on the Erlang Forums][4]
+<ul class="community-socials">
+    <li>
+        <a target="_blank" href="https://discord.gg/Fm8Pwmy">
+            <span class="community-socials__logo">
+                <img src="/images/community/discord.svg" alt="Discord Icon" />
+            </span>
+            <span>Gleam’s web chat on Discord</span>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" href="https://github.com/gleam-lang/gleam/discussions">
+            <span class="community-socials__logo">
+                <img src="/images/community/github.svg" alt="GitHub Icon" />
+            </span>
+            <span>Gleam discussions on Github</span>
+        </a>
+    </li>
+</ul>
 
+You can also subscribe to updates from community newsletter [Gleam Weekly](https://gleamweekly.com/).
 
 ## Code of Conduct
 
@@ -24,11 +38,9 @@ please send a message to us via one of the channels below. We will ensure the
 issue is resolved and your identity will be kept private.
 
 - Messaging the `@moderators` group on the [Gleam Discord chat][2].
-- Messaging the [@gleamlang][5] account on Twitter.
-- Emailing gleam at lpil dot uk.
+- Messaging the [@gleamlang][3] account on Twitter.
+- Emailing [hello@gleam.run](mailto:hello@gleam.run).
 
 [1]: https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md
 [2]: https://discord.gg/Fm8Pwmy
-[3]: https://github.com/gleam-lang/gleam/discussions
-[4]: https://erlangforums.com/gleam
-[5]: https://twitter.com/gleamlang
+[3]: https://twitter.com/gleamlang

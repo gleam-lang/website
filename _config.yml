@@ -8,7 +8,6 @@ permalink: "/news/:title/"
 title: Gleam
 description: Gleam is a fast, friendly, and functional language for building type-safe, scalable systems!
 
-
 plugins:
   - jekyll-redirect-from
   - jekyll-feed
@@ -21,6 +20,9 @@ exclude:
   - README
   - Makefile
   - book-src
+
+include:
+  - .well-known
 
 defaults:
   -

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Gleam for Elixir users
+subtitle: Hello Elixir Alchemists!
 ---
 
 - [Comments](#comments)
@@ -24,11 +25,12 @@ title: Gleam for Elixir users
   - [Tuples](#tuples)
   - [Lists](#lists)
   - [Atoms](#atoms)
-  - [Maps](#maps)
 - [Patterns](#patterns) 
 - [Dicts](#dicts)
 - [Patterns](#patterns)
 - [Flow control](#flow-control) IN-PROGRESS
+- [Patterns](#patterns)
+- [Flow control](#flow-control) TODO
   - [Case](#case) TODO
   - [Try](#try) TODO
 - [Type aliases](#type-aliases) TODO
@@ -96,7 +98,7 @@ let size = 1
 #### Elixir
 
 ```elixir
-[x, y] = [1, 2] # assert that the value is a list of length 2 and assign the first element to x and the second to y
+[x, y] = [1, 2] # assert that the list has 2 elements
 2 = y # assert that y is 2
 2 = x # runtime error because x's value is 1
 [y] = "Hello" # runtime error
@@ -104,13 +106,13 @@ let size = 1
 
 #### Gleam
 
-In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
+In Gleam, `let` and `=` can be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `let assert` keyword is preferred.
 
 ```gleam
-assert [x, y] = [1, 2]
-assert 2 = y // assert that y is 2
-assert 2 = x // runtime error
-assert [y] = "Hello" // compile error, type mismatch
+let assert [x, y] = [1, 2]
+let assert 2 = y // assert that y is 2
+let assert 2 = x // runtime error
+let assert [y] = "Hello" // compile error, type mismatch
 ```
 
 ### Variables type annotations
@@ -242,8 +244,8 @@ Gleam functions can have only one function head. Use a case expression to patter
 ```gleam
 pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
   case x {
-    0 -> true
-    _ -> false
+    0 -> True
+    _ -> False
   }
 }
 ```
@@ -301,7 +303,7 @@ mod_function(3, 4)
 #### Gleam
 
 ```gleam
-let my_function = fn(x, y) { x + y }
+let anon_function = fn(x, y) { x + y }
 anon_function(1, 2)
 mod_function(3, 4)
 ```
@@ -372,9 +374,9 @@ are fully type checked.
 | Less than         | `<`    | `<.`  | In Gleam both values must be **floats**        |
 | Less or equal     | `<=`   | `<=`  | In Gleam both values must be **ints**          |
 | Less or equal     | `<=`   | `<=.` | In Gleam both values must be **floats**        |
-| Boolean and       | `and`  | `&&`  | Both values must be **bools**                  |
+| Boolean and       | `and`  | `&&`  | In Gleam both values must be **bools**         |
 | Logical and       | `&&`   |       | Not available in Gleam                         |
-| Boolean or        | `or`   | `||`  | Both values must be **bools**                  |
+| Boolean or        | `or`   | `||`  | In Gleam both values must be **bools**         |
 | Logical or        | `||`   |       | Not available in Gleam                         |
 | Add               | `+`    | `+`   | In Gleam both values must be **ints**          |
 | Add               | `+`    | `+.`  | In Gleam both values must be **floats**        |
@@ -382,9 +384,10 @@ are fully type checked.
 | Subtract          | `-`    | `-.`  | In Gleam both values must be **floats**        |
 | Multiply          | `*`    | `*`   | In Gleam both values must be **ints**          |
 | Multiply          | `*`    | `*.`  | In Gleam both values must be **floats**        |
-| Divide            | `div`  | `/`   | Both values must be **ints**                   |
+| Divide            | `div`  | `/`   | In Gleam both values must be **ints**          |
 | Divide            | `/`    | `/.`  | In Gleam both values must be **floats**        |
-| Modulo            | `rem`  | `%`   | Both values must be **ints**                   |
+| Remainder         | `rem`  | `%`   | In Gleam both values must be **ints**          |
+| Concatenate       | `<>`   | `<>`  | In Gleam both values must be **strings**       |
 | Pipe              | `|>`   | `|>`  | Gleam's pipe can pipe into anonymous functions |
 
 
@@ -428,7 +431,6 @@ fn main() {
 }
 ```
 
-
 ## Blocks
 
 #### Elixir
@@ -436,7 +438,7 @@ fn main() {
 In Elixir expressions can be grouped using `do` and `end`.
 
 ```elixir
-defmodule Foo do
+defmodule Wibble do
   def main() do
     x = do
       print(1)
@@ -458,7 +460,8 @@ pub fn main() {
     print(1)
     2
   }
-  let y = x * {x + 10} // braces are used to change arithmetic operations order
+  // Braces are used to change arithmetic operations order
+  let y = x * { x + 10 }
   y
 }
 ```
@@ -502,7 +505,7 @@ let #(_, password, _) = my_tuple
 
 ### Lists
 
-Lists in Elixir are allowed to be of mixed types, but not in Gleam. They retain all of the same performance sematics.
+Lists in Elixir are allowed to be of mixed types, but not in Gleam. They retain all of the same performance semantics.
 
 The `cons` operator works the same way both for pattern matching and for appending elements to the head of a list, but it uses a different syntax.
 
@@ -555,11 +558,11 @@ Ok(True)
 Error(False)
 ```
 
-### Maps
+### Dicts
 
-In Elixir, maps can have keys and values of any type, and they can be mixed in a given map. In Gleam, maps can have keys and values of any type, but all keys must be of the same type in a given map and all values must be of the same type in a given map.
+In Elixir, maps can have keys and values of any type, and they can be mixed in a given map. In Gleam, maps are called Dict (Dictionary) and provided by the standard library. Dicts can have keys and values of any type, but all keys must be of the same type in a given dict and all values must be of the same type in a given dict.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map. Maps are generally not used much in Gleam, custom types are more common.
+There is no dictionary literal syntax in Gleam, and you cannot pattern match on a dict. Dicts are generally not used much in Gleam, custom types are more common.
 
 #### Elixir
 
@@ -571,15 +574,17 @@ There is no map literal syntax in Gleam, and you cannot pattern match on a map. 
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ## Custom types
 
 Custom type allows you to define a collection data type with a fixed number of named fields, and the values in those fields can be of differing types.
+
+### Records
 
 #### Elixir
 
@@ -626,15 +631,15 @@ let name = person.name
 In Elixir, the `defmodule` keyword allows to create a module. Multiple modules can be defined in a single file.
 
 ```elixir
-defmodule Foo do
+defmodule Wibble do
   def identity(x) do
     x
   end
 end
 
-defmodule Bar do
+defmodule Wobble do
   def main(x) do
-    Foo.identity(1)
+    Wibble.identity(1)
   end
 end
 ```
@@ -644,7 +649,7 @@ end
 Gleam's file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.
 
 ```gleam
-// in file foo.gleam
+// in file Wibble.gleam
 pub fn identity(x) {
   x
 }
@@ -652,9 +657,9 @@ pub fn identity(x) {
 
 ```gleam
 // in file main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import Wibble // if Wibble was in a folder called `lib` the import would be `lib/Wibble`
 pub fn main() {
-  foo.identity(1)
+  Wibble.identity(1)
 }
 ```
 

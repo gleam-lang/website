@@ -1,7 +1,9 @@
 ---
 layout: page
 ---
-</div>
 <div class="post">
+  <p class="post-published">
+    Published {{ page.date | date: "%d %b, %Y" }} by {{ page.author }}
+  </p>
 {{ content }}
 </div>

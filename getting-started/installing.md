@@ -21,7 +21,6 @@ for your editor.
 - [Installing Erlang](#installing-erlang)
 - [Installing Rebar3](#installing-rebar3)
 - [Editor Plugins](#editor-plugins)
-- [GitPod online Gleam development environment](#gitpod-online-gleam-development-environment)
 
 
 ## Installing Gleam
@@ -32,7 +31,7 @@ The easiest way to install Gleam on Linux, Windows, and Apple macOS is to downlo
 prebuilt version of the compiler from the [GitHub release
 page](https://github.com/gleam-lang/gleam/releases).
 
-### Mac OS X
+### macOS
 
 #### Using Homebrew
 
@@ -51,41 +50,48 @@ With [MacPorts](https://www.macports.org/) installed run the following:
 sudo port install gleam
 ```
 
-### Windows
+### Linux
 
-#### Using Chocolatey
+#### Using Homebrew
 
-With [Chocolatey](https://chocolatey.org/) installed on your computer run the
-following:
-
-```
-choco install gleam
-```
-
-This will also install Erlang.
-
-### Using the Nix package manager
-
-There is a [gleam-nix](https://github.com/vic/gleam-nix) flake you can use to get
-any version of Gleam.
+With [Homebrew](https://brew.sh) installed run the following:
 
 ```sh
-nix shell github:vic/gleam-nix --override-input gleam github:gleam-lang/gleam/main -c gleam --help
+brew update
+brew install gleam
 ```
 
-
-### asdf version manager
+#### asdf version manager
 
 [asdf](https://github.com/asdf-vm/asdf) is a tool for installing and managing
 multiple version of programming languages at the same time. Install the
 [asdf-gleam plugin](https://github.com/vic/asdf-gleam) to manage Gleam with
 asdf.
 
-### Arch Linux
+#### Alpine Linux
+
+Gleam is available in the Community repository of Alpine Linux as a package `gleam`. Install it with:
+
+```
+apk add gleam
+```
+
+#### Arch Linux
 
 Gleam is available through the [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
 as package `gleam`. You can use your prefered [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
-to install it or clone it for manual build from [https://aur.archlinux.org/gleam.git](https://aur.archlinux.org/gleam.git).
+to install it or clone it for manual build from [https://aur.archlinux.org/packages/gleam-git](https://aur.archlinux.org/packages/gleam-git).
+```sh
+yay -S gleam
+```
+
+#### Void Linux
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```
+sudo xbps-install gleam
+```
 
 ### FreeBSD
 
@@ -99,6 +105,45 @@ $ pkg install -r FreeBSD lang/gleam lang/erlang-runtime23
 $ export PATH=/usr/local/lib/erlang23/bin:$PATH
 ```
 
+### OpenBSD
+
+Gleam is available as a binary package. You can install it with:
+
+```
+$ doas pkg_add gleam
+```
+
+### openSUSE
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```
+# zypper install gleam
+```
+
+There are also nightlies available at this [home project](https://build.opensuse.org/project/show/home:Pi-Cla:gleam-nightly)
+
+### Android
+
+#### Termux
+
+Gleam is available as part of the official packages repository. Install it with:
+
+```sh
+pkg install gleam
+```
+
+### Windows
+
+#### Using Scoop
+
+With [Scoop](https://scoop.sh/) installed on your computer run the following:
+
+```
+scoop install gleam
+```
+
+
 ### Build from source
 
 The compiler is written in the Rust programming language and so if you wish to
@@ -108,7 +153,7 @@ compiler](https://www.rust-lang.org/tools/install).
 ```sh
 # Download the Gleam source code git repository
 cd /tmp
-git clone https://github.com/gleam-lang/gleam.git --branch v0.21.0
+git clone https://github.com/gleam-lang/gleam.git --branch $THE_LATEST_VERSION
 cd gleam
 
 # Build the Gleam compiler. This will take some time!
@@ -122,7 +167,8 @@ gleam --version
 ## Installing Erlang
 
 Gleam compiles to Erlang code, so Erlang needs to be installed to run Gleam
-code.
+code. Some of the above package managers (e.g. Homebrew) will install Erlang
+alongside Gleam automatically.
 
 Precompiled builds for many popular operating systems can be downloaded from
 the [Erlang solutions website](https://www.erlang-solutions.com/resources/download.html).
@@ -136,7 +182,17 @@ erl -version
 Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 12.1.5
 ```
 
-#### Linux
+### Linux
+
+#### Using Homebrew
+
+[Homebrew](https://brew.sh) will install Erlang alongside Gleam automatically,
+though it can be manually installed by running the following:
+
+```sh
+brew update
+brew install erlang
+```
 
 #### Alpine Linux (Community repository)
 
@@ -156,7 +212,7 @@ pacman -S erlang
 dnf install elixir erlang
 ```
 
-##### Debian, Ubuntu, Raspberry Pi OS
+#### Debian, Ubuntu, Raspberry Pi OS
 
 ```shell
 wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
@@ -165,12 +221,12 @@ sudo apt-get update
 sudo apt-get install esl-erlang
 ```
 
+### macOS
 
-#### Mac OS X
+#### Using Homebrew
 
-##### Using Homebrew
-
-With [Homebrew](https://brew.sh) installed run the following:
+[Homebrew](https://brew.sh) will install Erlang alongside Gleam automatically,
+though it can be manually installed by running the following:
 
 ```sh
 brew update
@@ -185,9 +241,9 @@ With [MacPorts](https://www.macports.org/) installed run the following:
 sudo port install erlang
 ```
 
-#### Windows
+### Windows
 
-##### Using Chocolatey
+#### Using Chocolatey
 
 With [Chocolatey](https://chocolatey.org/) installed on your computer run the
 following:
@@ -196,9 +252,17 @@ following:
 choco install erlang
 ```
 
-#### Using version managers
+#### Using Scoop
 
-##### asdf
+With [Scoop](https://scoop.sh/) installed on your computer run the following:
+
+```
+scoop install erlang
+```
+
+### Using version managers
+
+#### asdf
 
 The asdf version manager has a plugin for installing Erlang. Installation and
 usage instructions can be found here:
@@ -213,7 +277,7 @@ the rebar3 Erlang build tool may need to be installed.
 Install rebar3 by following the [official rebar3 installation
 instructions][rebar3-install].
 
-[rebar3-install]: https://rebar3.readme.io/docs/getting-started
+[rebar3-install]: https://rebar3.org/docs/getting-started/
 
 ## Editor Plugins
 
@@ -224,13 +288,10 @@ niceties.
 - **Vim** - [https://github.com/gleam-lang/gleam.vim](https://github.com/gleam-lang/gleam.vim)
 - **Emacs** - [https://github.com/gleam-lang/gleam-mode](https://github.com/gleam-lang/gleam-mode)
 - **Visual Studio Code** - [https://github.com/gleam-lang/vscode-gleam](https://github.com/gleam-lang/vscode-gleam)
-- **Sublime Text 3** - [https://github.com/molnarmark/sublime-gleam](https://github.com/molnarmark/sublime-gleam)
+- **Sublime Text** - [https://github.com/digitalcora/sublime-text-gleam](https://github.com/digitalcora/sublime-text-gleam)
 - **Atom** - [https://github.com/itsgreggreg/language-gleam](https://github.com/itsgreggreg/language-gleam)
 - **Gedit** - [https://github.com/DannyLettuce/gleam_gedit](https://github.com/DannyLettuce/gleam_gedit)
 
-## GitPod online Gleam development environment
-
-Gleam can be tested on [Gitpod](https://gitpod.io/#https://github.com/codec-abc/gitpod-gleam). The environment comes with Erlang and Elixir. The port 3000 is also exposed if you want to run a web server.
 
 ## What next?
 

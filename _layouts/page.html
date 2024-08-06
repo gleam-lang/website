@@ -1,14 +1,14 @@
 ---
-layout: top
+layout: layout
 ---
-<section class="hero">
-  <div class="content">
-    <h1>{{ page.title }}</h1>
-    {% if page.date %}
-    <time class="post-date" datetime="{{ page.date }}">{{ page.date | date_to_long_string: "ordinal" }}</time>
-    {% endif %}
-</section>
+{% include hljs.html %}
 
-<article class="content">
+{% capture header_content %}
+<h1>{{ page.title }}</h1>
+<p class="hero-subtitle">{{ page.subtitle }}</p>
+{% endcapture %}
+{% include page-header.html image=page.header_image content=header_content %}
+
+<main class="page content">
   {{ content }}
-</article>
+</main>

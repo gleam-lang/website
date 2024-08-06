@@ -1,0 +1,45 @@
+<div class="page-header">
+  <nav class="navbar">
+    <div class="content">
+      <div>
+        <a class="logo" href="/">
+          <img
+            src="/images/lucy/lucy.svg"
+            alt="Lucy the star, Gleam's mascot"
+          />
+          Gleam
+        </a>
+      </div>
+      <div>
+        <a href="/news">News</a>
+        <a href="/community">Community</a>
+        <a href="https://github.com/sponsors/lpil">Sponsor</a>
+      </div>
+      <div>
+        <a href="https://packages.gleam.run">Packages</a>
+        <a href="/documentation">Docs</a>
+        <a href="https://github.com/gleam-lang">Code</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="content">
+      {% if include.image %}
+      <div class="hero-lucy-container wide-only" data-show-pride>
+        <img
+          class="hero-lucy"
+          src="{{ include.image }}"
+          alt="{{ include.alt }}"
+        />
+      </div>
+      {% endif %}
+      <div class="text">{{ include.content }}</div>
+    </div>
+    <img
+      class="home-waves"
+      src="/images/waves.svg"
+      alt="a soft wavey boundary between two sections of the website"
+    />
+  </div>
+</div>

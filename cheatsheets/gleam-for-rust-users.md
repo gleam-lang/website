@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Gleam for Rust users
+subtitle: Hello fast and safe Rustaceans 🦀
 ---
 
 - [Comments](#comments)
@@ -47,7 +48,7 @@ In Rust comments are written with a `//` prefix.
 // Hello, Joe!
 ```
 
-Comments starting with `///` are used to document the following statement. Comments starting with `//! are used to document the current module.
+Comments starting with `///` are used to document the following statement. Comments starting with `//!` are used to document the current module.
 
 ```rust
 //! This module is very important.
@@ -109,12 +110,12 @@ let [y] = "Hello"; // compile error, type mismatch
 
 #### Gleam
 
-In Gleam, `let` and `=` can also be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `assert` keyword is preferred.
+In Gleam, `let` and `=` can also be used for pattern matching, but you'll get compile errors if there's a type mismatch, and a runtime error if there's a value mismatch. For assertions, the equivalent `let assert` keyword is preferred.
 
 ```gleam
 let [x] = [1]
-assert 2 = x // runtime error
-assert [y] = "Hello" // compile error, type mismatch
+let assert 2 = x // runtime error
+let assert [y] = "Hello" // compile error, type mismatch
 ```
 
 ### Variables type annotations
@@ -296,17 +297,18 @@ There is no equivalent feature in Rust.
 | Less than        | `<`   | `<.`  | In Gleam both values must be **floats**        |
 | Less or equal    | `<=`  | `<=`  | In Gleam both values must be **ints**          |
 | Less or equal    | `<=`  | `<=.` | In Gleam both values must be **floats**        |
-| Boolean and      | `&&`  | `&&`  | Both values must be **bools**                  |
-| Boolean or       | `||`  | `||`  | Both values must be **bools**                  |
+| Boolean and      | `&&`  | `&&`  | In Gleam both values must be **bools**         |
+| Boolean or       | `||`  | `||`  | In Gleam both values must be **bools**         |
 | Add              | `+`   | `+`   | In Gleam both values must be **ints**          |
 | Add              | `+`   | `+.`  | In Gleam both values must be **floats**        |
 | Subtract         | `-`   | `-`   | In Gleam both values must be **ints**          |
 | Subtract         | `-`   | `-.`  | In Gleam both values must be **floats**        |
 | Multiply         | `*`   | `*`   | In Gleam both values must be **ints**          |
 | Multiply         | `*`   | `*.`  | In Gleam both values must be **floats**        |
-| Divide           | `/`   | `/`   | Both values must be **ints**                   |
+| Divide           | `/`   | `/`   | In Gleam both values must be **ints**          |
 | Divide           | `/`   | `/.`  | In Gleam both values must be **floats**        |
-| Modulo           | `%`   | `%`   | Both values must be **ints**                   |
+| Remainder        | `%`   | `%`   | In Gleam both values must be **ints**          |
+| Concatenate      |       | `<>`  | In Gleam both values must be **strings**       |
 | Pipe             |       | `⎮>`  | Gleam's pipe can pipe into anonymous functions |
 
 ## Constants
@@ -582,17 +584,17 @@ In Rust, the `mod` keyword allows to create a module. Multiple modules can be de
 Rust uses the `use` keyword to import modules, and the `::` operator to access properties and functions inside.
 
 ```rust
-mod foo {
+mod wibble {
     pub fn identity(x: u64) -> u64 {
         x
     }
 }
 
-mod bar {
-    use super::foo;
+mod wobble {
+    use super::wibble;
 
     fn main() {
-        foo::identity(1);
+        wibble::identity(1);
     }
 }
 ```
@@ -604,7 +606,7 @@ In Gleam, each file is a module, named by the file name (and its directory path)
 Gleam uses the `import` keyword to import modules, and the dot `.` operator to access properties and functions inside.
 
 ```gleam
-//// In module foo.gleam
+//// In module wibble.gleam
 pub fn identity(x) {
   x
 }
@@ -612,8 +614,8 @@ pub fn identity(x) {
 
 ```gleam
 // in module main.gleam
-import foo // if foo was in a folder called `lib` the import would be `lib/foo`
+import wibble // if wibble was in a folder called `lib` the import would be `lib/wibble`
 pub fn main() {
-  foo.identity(1)
+  wibble.identity(1)
 }
 ```
