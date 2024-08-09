@@ -23,9 +23,14 @@ This document details the current state of the language server and its features.
   - [Hover](#hover)
   - [Go-to definition](#go-to-definition)
   - [Code completion](#code-completion)
+  - [Document symbols](#document-symbols)
+  - [Document symbols](#document-symbols)
   - [Code Actions](#code-actions)
+    - [Case correction](#case-correction)
+    - [Fill labels](#fill-labels)
     - [Remove unused imports](#remove-unused-imports)
     - [Remove redundant tuples](#remove-redundant-tuples)
+    - [Use label shorthand syntax](#use-label-shorthand-syntax)
 - [Security](#security)
 - [Use outside Gleam projects](#use-outside-gleam-projects)
 
@@ -128,6 +133,7 @@ hovering on:
 - Import statements, including unqualified values and types.
 - Module functions.
 - Patterns.
+- Record fields.
 - The `..` used to ignore additional fields in record pattern.
 - Type annotations.
 - Values.
@@ -154,13 +160,59 @@ The language server support completion of:
 - Functions and constants defined in other modules, automatically adding import
   statements if the module has not yet been imported.
 
+## Document symbols
+
+The language server supports listing document symbols, such as functions and
+constants, for the current Gleam file.
+
+## Signature help
+
+The language server can show the type of each argument when calling a function,
+along with the labels of the arguments that have them.
+
 ## Code Actions
+
+### Case correction
+
+This code action can correct names written with the wrong case.
+
+```gleam
+pub main() {
+  let myNumber = 100
+}
+```
+
+If your cursor is within the name written with the wrong case then code action
+will be suggested, and if run the code will be updated to this:
+
+```gleam
+pub main() {
+  let my_number = 100
+}
+```
+
+### Fill labels
+
+This code action can add any expected labels to a call.
+
+```gleam
+pub fn main() {
+  Date()
+}
+```
+
+If your cursor is within the `Date()` import the code action will be suggested,
+and if run the code will be updated to this:
+
+```gleam
+pub fn main() {
+  Date(year: todo, month: todo, day: todo)
+}
+```
 
 ### Remove unused imports
 
 This code action can be used to delete unused import statements from a module.
-
-Given this code:
 
 ```gleam
 import gleam/io
@@ -187,8 +239,6 @@ pub fn main() {
 This code action removes redundant tuples from case expression subjects and
 patterns.
 
-Given this code:
-
 ```gleam
 case #(a, b) {
   #(1, 2) -> todo
@@ -206,6 +256,24 @@ case a, b {
 }
 ```
 
+### Use label shorthand syntax
+
+This code action updates calls and patterns to use the label shorthand syntax.
+
+```gleam
+case date {
+  Day(day: day, month: month, year: year) -> todo
+}
+```
+
+If your cursor is within the call that could use the shorthand syntax the code
+action will be suggested, and if run the module will be updated to this:
+
+```gleam
+case date {
+  Day(day:, month:, year:) -> todo
+}
+```
 
 # Security
 
