@@ -347,6 +347,26 @@ main.content {
   margin: 0;
 }
 
+.home-top-sponsors ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: var(--gap-2);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.home-top-sponsors li {
+  list-style: none;
+}
+
+.home-top-sponsors img {
+  max-width: 100%;
+}
+
 .home-top-sponsors a {
   color: var(--color-black);
 }
@@ -379,7 +399,7 @@ main.content {
 }
 
 .sponsor-level1 img {
-  height: 110px;
+  height: 100px;
 }
 
 .sponsor-level2 img {
