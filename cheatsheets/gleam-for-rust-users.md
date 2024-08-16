@@ -446,7 +446,7 @@ The `cons` operator works the same way both for pattern matching and for appendi
 ```gleam
 let list = [1, 2, 3]
 let list = [0, ..list]
-let [0, second_element, ..] = list
+let assert [0, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ```
 
