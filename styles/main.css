@@ -347,6 +347,10 @@ main.content {
   margin: 0;
 }
 
+.home-top-sponsors a {
+  color: var(--color-black);
+}
+
 .home-top-sponsors .content {
   display: flex;
   flex-direction: column;
