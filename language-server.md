@@ -24,7 +24,7 @@ This document details the current state of the language server and its features.
   - [Go-to definition](#go-to-definition)
   - [Code completion](#code-completion)
   - [Document symbols](#document-symbols)
-  - [Document symbols](#document-symbols)
+  - [Signature help](#signature-help)
   - [Code Actions](#code-actions)
     - [Case correction](#case-correction)
     - [Fill labels](#fill-labels)
