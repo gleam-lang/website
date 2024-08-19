@@ -300,9 +300,6 @@ file, which will be written to `./vars`.
 # Compile the program to an escript
 gleam run -m gleescript
 
-# Make the escript executable
-chmod +x ./vars
-
 # Run the program
 ./vars get USER
 escript ./vars get USER # On Windows
