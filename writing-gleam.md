@@ -227,7 +227,7 @@ import argv
 import envoy
 import gleam/io
 import gleam/result
-import vars/internal
+import internal
 
 pub fn main() {
   // Omitted for brevity
@@ -250,7 +250,7 @@ Open up the `test/vars_test.gleam` file and write a test for the `format_pair`.
 // in test/vars_test.gleam
 import gleeunit
 import gleeunit/should
-import vars/internal
+import internal
 
 pub fn main() {
   gleeunit.main()
