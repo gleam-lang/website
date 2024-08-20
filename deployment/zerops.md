@@ -1,11 +1,10 @@
 ---
 title: Deploying on Zerops
-subtitle: Run Gleam with Ease. Zero Ops required. 
+subtitle: Run Gleam with Ease. Zero Ops required.
 layout: page
 redirect_from:
   - "/deploying-gleam-on-zerops/index.html"
 ---
-
 
 [Zerops](https://zerops.io) is a dev-first cloud platform and easy to use and economically viable deployment platform with [free $15 credits](https://zerops.io/#pricing) no credit card required. You can get $50 more after adding $10 into your zerops account.
 
@@ -52,7 +51,8 @@ Now we have a web application that listens on port 8080 and can be started with
 `gleam run`.
 
 ## Gleam x Zerops Quickrun
-Want to test Gleam on Zerops without installing or setting up anything? Use our gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or [Deploy with a Single Click](https://app.zerops.io/recipe/gleam).
+
+Want to test Gleam on Zerops without installing or setting up anything? Use the Zerops Gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or [Deploy with a Single Click](https://app.zerops.io/recipe/gleam).
 
 ```sh
 project:
@@ -64,8 +64,8 @@ services:
     buildFromGit: https://github.com/zeropsio/recipe-nuxt-static
 ```
 
-
 ## Manual Project Creation
+
 Projects and services can be added either through a [Project add](https://app.zerops.io/dashboard/project-add) wizard or imported using a yaml structure:
 
 ```sh
@@ -80,12 +80,11 @@ services:
 
 This will create a project called `recipe-gleam` with a Zerops Static service called `app`.
 
-
 ## Add Zerops.yml
 
 ```yml
 zerops:
-  - setup: app 
+  - setup: app
     build:
       base: rust@1
       prepareCommands:
@@ -105,7 +104,6 @@ zerops:
           httpSupport: true
       start: ./gleam-prod/entrypoint.sh run
 ```
-
 
 ## Set up the Zerops CLI
 
@@ -132,7 +130,7 @@ npm i -g @zerops/zcli
 
 Once installed use the CLI to connect to your Zerops Account:
 
-------
+---
 
 ## Authentication & Deploying
 
@@ -149,7 +147,6 @@ zcli login <token>
 ```sh
 zcli push
 ```
-
 
 This will deploy the package to Zerops service and after it successfully deploys you can test it with the subdomain url.
 
