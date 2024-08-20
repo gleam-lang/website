@@ -54,7 +54,7 @@ Now we have a web application that listens on port 8080 and can be started with
 
 Want to test Gleam on Zerops without installing or setting up anything? Use the Zerops Gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or [Deploy with a Single Click](https://app.zerops.io/recipe/gleam).
 
-```sh
+```yaml
 project:
   name: recipe-gleam
 services:
