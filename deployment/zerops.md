@@ -52,7 +52,7 @@ Now we have a web application that listens on port 8080 and can be started with
 `gleam run`.
 
 ## Gleam x Zerops Quickrun
-Want to test Gleam on Zerops without installing or setting up anything? Use our gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or Deploy with a Single Click.
+Want to test Gleam on Zerops without installing or setting up anything? Use our gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or [Deploy with a Single Click](https://app.zerops.io/recipe/gleam).
 
 ```sh
 project:
