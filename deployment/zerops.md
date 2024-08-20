@@ -65,7 +65,7 @@ services:
 ```
 
 
-## Project Creation
+## Manual Project Creation
 Projects and services can be added either through a [Project add](https://app.zerops.io/dashboard/project-add) wizard or imported using a yaml structure:
 
 ```sh
@@ -129,11 +129,12 @@ curl -L https://zerops.io/zcli/install.sh | sh
 ```
 npm i -g @zerops/zcli
 ```
+
+Once installed use the CLI to connect to your Zerops Account:
+
 ------
 
 ## Authentication & Deploying
-
-Once installed use the CLI to connect to your Zerops Account:
 
 - Open [Settings > Access Token Management](https://app.zerops.io/settings/token-management) in the Zerops app and generate a new access token.
 
@@ -143,17 +144,13 @@ Once installed use the CLI to connect to your Zerops Account:
 zcli login <token>
 ```
 
-- Navigate to the root of your app in terminal (where zerops.yml is located) and run the following command to trigger the deploy:
+- Navigate to the root of your app in terminal (where zerops.yml is located) and run the following command to trigger the deploy (The CLI will ask you to choose the project & service):
 
 ```sh
 zcli push
 ```
 
-The CLI will ask you a series of questions:
 
-- Choosing the Project.
-- Choosing the Service.
+This will deploy the package to Zerops service and after it successfully deploys you can test it with the subdomain url.
 
-Once you're done with everything, this will deploy the package to Zerops service and after it successfully deploys you can test it with the subdomain url.
-
-Also you can setup git based deployments by connecting the app service with your GitHub / GitLab repository from inside the service detail.
+You can also setup git based deployments by connecting the app service with your GitHub / GitLab repository from inside the service detail.
