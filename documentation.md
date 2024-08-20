@@ -56,6 +56,7 @@ layout: page
 ## Deployment
 
 - [Deploying on Fly.io](/deployment/fly)
+- [Deploying on Zerops](/deployment/zerops)
 
 ### Community deployment guides
 
