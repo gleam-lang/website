@@ -68,7 +68,7 @@ services:
 
 Projects and services can be added either through a [Project add](https://app.zerops.io/dashboard/project-add) wizard or imported using a yaml structure:
 
-```sh
+```yaml
 # see https://docs.zerops.io/references/import for full reference
 project:
   name: recipe-gleam
