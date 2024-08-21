@@ -59,9 +59,9 @@ project:
   name: recipe-gleam
 services:
   - hostname: app
-    type: rust@1
+    type: gleam@1
     enableSubdomainAccess: true
-    buildFromGit: https://github.com/zeropsio/recipe-nuxt-static
+    buildFromGit: https://github.com/zeropsio/recipe-gleam
 ```
 
 ## Manual Project Creation
@@ -74,7 +74,7 @@ project:
   name: recipe-gleam
 services:
   - hostname: app
-    type: rust@1
+    type: gleam@1
     enableSubdomainAccess: true
 ```
 
@@ -86,19 +86,12 @@ This will create a project called `recipe-gleam` with a Zerops Static service ca
 zerops:
   - setup: app
     build:
-      base: rust@1
-      prepareCommands:
-        - apk update
-        - apk add gleam --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
-        - apk add rebar3
+      base: gleam@1
       buildCommands:
         - gleam export gleam-prod
       deployFiles: /
     run:
-      base: rust@1
-      prepareCommands:
-        - apk update
-        - apk add erlang
+      base: gleam@1
       ports:
         - port: 8080
           httpSupport: true
