@@ -60,12 +60,16 @@
   avatar: "https://avatars.githubusercontent.com/u/4753634?u=2bfc852e0e6328c4295dfe20cef6abd580907a4d&v=4"
   square_avatar: false
 - name: "Alexander Stensrud"
-  url: "https://github.com/spektroskop"
+  url: "https://github.com/muonoum"
   avatar: "https://avatars.githubusercontent.com/u/3189?v=4"
   square_avatar: false
 - name: "Alexandre Del Vecchio"
   url: "https://github.com/defgenx"
   avatar: "https://avatars.githubusercontent.com/u/10920570?u=6d4102ac3faa113a1311f9cd815ee5d7786317f5&v=4"
+  square_avatar: false
+- name: "Aliaksiej Maroz"
+  url: "https://github.com/ricountzero"
+  avatar: "https://avatars.githubusercontent.com/u/162420651?u=f3e4f11b5935eaba6504014636dc33326f9667eb&v=4"
   square_avatar: false
 - name: "Ameen Radwan"
   url: "https://github.com/Acepie"
@@ -338,10 +342,6 @@
 - name: "Eileen Noonan"
   url: "https://github.com/enoonan"
   avatar: "https://avatars.githubusercontent.com/u/6106851?u=b65944d2f22e4525e7d2b6d22a3a59f709b33db5&v=4"
-  square_avatar: false
-- name: "Elliott Pogue"
-  url: "https://github.com/epogue"
-  avatar: "https://avatars.githubusercontent.com/u/89570?u=2c0679f52953eb82369c16797a0fa6cb28b0361a&v=4"
   square_avatar: false
 - name: Emma
   url: "https://github.com/Emma-Fuller"
@@ -987,10 +987,6 @@
   url: "https://github.com/R0DR160HM"
   avatar: "https://avatars.githubusercontent.com/u/50843703?u=7e4a40dbe62f979bf60bee638fad17d0c97c5e4b&v=4"
   square_avatar: false
-- name: "Ross Bratton"
-  url: "https://github.com/brattonross"
-  avatar: "https://avatars.githubusercontent.com/u/26525065?u=5365c1ecda1aafece8d1e6ef9d46baea3e58eff5&v=4"
-  square_avatar: false
 - name: "Rupus Reinefjord"
   url: "https://github.com/reinefjord"
   avatar: "https://avatars.githubusercontent.com/u/1427359?u=a821ffa44fbf30ae04798401bae682f32693ea17&v=4"
@@ -1311,9 +1307,9 @@
   url: "https://github.com/tommaisey"
   avatar: "https://avatars.githubusercontent.com/u/2369921?u=49a3c8c923d3ba5e4dbf0b1a876c9ec7fa7df555&v=4"
   square_avatar: false
-- name: xhh
-  url: "https://github.com/xhh"
-  avatar: "https://avatars.githubusercontent.com/u/159740?u=cc0335c586e95e7f3eb893afa9c582f811645e4b&v=4"
+- name: upsidedowncake
+  url: "https://github.com/upsidedownsweetfood"
+  avatar: "https://avatars.githubusercontent.com/u/152233509?u=02a3e51780be8c54062f48b56defdc9d225c7606&v=4"
   square_avatar: false
 - name: "yoshi~ "
   url: "https://github.com/joshi-monster"
