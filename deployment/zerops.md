@@ -88,14 +88,14 @@ zerops:
     build:
       base: gleam@1
       buildCommands:
-        - gleam export gleam-prod
-      deployFiles: /
+        - gleam export erlang-shipment
+      deployFiles: build/~erlang-shipment
     run:
       base: gleam@1
       ports:
         - port: 8080
           httpSupport: true
-      start: ./gleam-prod/entrypoint.sh run
+      start: ./erlang-shipment/entrypoint.sh run
 ```
 
 ## Set up the Zerops CLI
