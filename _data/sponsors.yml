@@ -79,6 +79,10 @@
   url: "https://github.com/AndreHogberg"
   avatar: "https://avatars.githubusercontent.com/u/70792178?u=58b3749f6434bcd2163fa78bcde664a209bab188&v=4"
   square_avatar: false
+- name: "Andrew Brown"
+  url: "https://github.com/andrew-werdna"
+  avatar: "https://avatars.githubusercontent.com/u/8261769?u=ef025d7679533700957db0df9f74bd5d7d8c4a2a&v=4"
+  square_avatar: false
 - name: NineFX
   url: "http://www.ninefx.com"
   avatar: "https://gleam.run/images/sponsors/nine-fx.png"
@@ -303,10 +307,6 @@
   url: "https://github.com/davesnx"
   avatar: "https://avatars.githubusercontent.com/u/3763599?u=9642d3d5effd7b98774ed5b13438b411dc21a1dd&v=4"
   square_avatar: false
-- name: Denis
-  url: "https://github.com/myFavShrimp"
-  avatar: "https://avatars.githubusercontent.com/u/42263661?u=9589bb7d581a9f37375dd24a1e514e3385d85384&v=4"
-  square_avatar: false
 - name: "Dennis Dang"
   url: "https://github.com/dangdennis"
   avatar: "https://avatars.githubusercontent.com/u/22418429?u=0ce534ffcdff7e81d87c22b2ea693f32c5fe0864&v=4"
@@ -329,7 +329,7 @@
   square_avatar: false
 - name: "Dylan Carlson"
   url: "https://github.com/gdcrisp"
-  avatar: "https://avatars.githubusercontent.com/u/171501478?v=4"
+  avatar: "https://avatars.githubusercontent.com/u/171501478?u=a880a62a5cc8a8a26e6fcc79255698660c4c78f0&v=4"
   square_avatar: false
 - name: "EMR Technical Solutions"
   url: "https://github.com/EMRTS"
@@ -539,9 +539,9 @@
   url: "https://github.com/dukeofcool199"
   avatar: "https://avatars.githubusercontent.com/u/11435199?u=4833df8afb3e7cecee2b27a25d10d7715eaa44ea&v=4"
   square_avatar: false
-- name: "Jeremy Jacob"
-  url: "https://github.com/jeremyjacob"
-  avatar: "https://avatars.githubusercontent.com/u/44799944?u=c49316300b17473204a0efab63cf792c5c986630&v=4"
+- name: "Jesse Tham"
+  url: "https://github.com/jessetham"
+  avatar: "https://avatars.githubusercontent.com/u/9289224?u=fc7e39513c50c8de4b2c06a7e2ab70c5a2f6039d&v=4"
   square_avatar: false
 - name: "Jimpjorps™"
   url: "https://github.com/hunkyjimpjorps"
@@ -614,10 +614,6 @@
 - name: "Kevin Schweikert"
   url: "https://github.com/kevinschweikert"
   avatar: "https://avatars.githubusercontent.com/u/54439512?u=fdd6d8eaaeb85d4aa35d76195be89848a3f3c6db&v=4"
-  square_avatar: false
-- name: "Kieran Gill"
-  url: "https://github.com/kierangilliam"
-  avatar: "https://avatars.githubusercontent.com/u/18583882?v=4"
   square_avatar: false
 - name: "Kramer Hampton"
   url: "https://github.com/hamptokr"
@@ -710,10 +706,6 @@
 - name: "Mark Markaryan"
   url: "https://github.com/markmark206"
   avatar: "https://avatars.githubusercontent.com/u/218696?u=06ddfe39562f21d97e7278b8fa687e494e40fa79&v=4"
-  square_avatar: false
-- name: "Mark Spink"
-  url: "https://github.com/codebay"
-  avatar: "https://avatars.githubusercontent.com/u/44681773?u=4d287e67b079d02a636baeb518576ce35d929443&v=4"
   square_avatar: false
 - name: "Markéta Lisová"
   url: "https://github.com/datayja"
@@ -874,10 +866,6 @@
 - name: "Patrick Wheeler"
   url: "https://github.com/Davorak"
   avatar: "https://avatars.githubusercontent.com/u/810921?u=e14ad505f9953cf50c700a6414e168edd993ca10&v=4"
-  square_avatar: false
-- name: "Patrik Kühl"
-  url: "https://github.com/patrik-kuehl"
-  avatar: "https://avatars.githubusercontent.com/u/170252644?u=fab1eabbf3854e512ba6a99e163a196d07221b77&v=4"
   square_avatar: false
 - name: "Paul Gideon Dann"
   url: "https://github.com/giddie"
@@ -1118,6 +1106,10 @@
 - name: "Tristan de Cacqueray"
   url: "https://github.com/TristanCacqueray"
   avatar: "https://avatars.githubusercontent.com/u/154392?u=e2455759892678ce94360af4620793f79a91a0e9&v=4"
+  square_avatar: false
+- name: "Union Test Prep"
+  url: "https://github.com/unionmedia"
+  avatar: "https://avatars.githubusercontent.com/u/6345779?v=4"
   square_avatar: false
 - name: "Vassiliy Kuzenkov"
   url: "https://github.com/bondiano"
