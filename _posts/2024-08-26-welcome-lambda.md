@@ -21,17 +21,17 @@ Today we welcome and thank [Lambda](https://lambdaclass.com/), Gleam's new prima
 
 Lambda operates in a wide array of fields, from machine learning, to distributed
 systems, crypto infrastructure, video games, animation, and more. They
-often use other BEAM languages such as Elixir and Erlang, as well as well-typed
-languages such as Rust, and now they are expanding their technology stack to
-include Gleam.
+often use other BEAM languages such as Elixir and Erlang, as well as
+strongly-typed languages such as Rust, and now they are expanding their
+technology stack to include Gleam.
 
 Lambda has a broad portfolio of impactful open-source projects, such as
 [lambdaworks](https://github.com/lambdaclass/lambdaworks), a collection of
 efficient cryptographic primitives for proving systems;
 [Cairo-VM](https://github.com/lambdaclass/cairo-vm), the Rust-based virtual
 machine for the Cairo language; and
-[Erlings](https://github.com/lambdaclass/erlings), a resourceful guide for
-mastering Erlang from the basics to advanced topics.
+[Erlings](https://github.com/lambdaclass/erlings), a comprehensive set of
+exercises for mastering Erlang's fundamentals and advanced topics.
 
 <video autoplay muted loop controls>
   <source src="/images/news/welcome-lambda/champions.mp4" type="video/mp4">
