@@ -119,10 +119,6 @@
   url: "https://github.com/aweagel"
   avatar: "https://avatars.githubusercontent.com/u/5428607?v=4"
   square_avatar: false
-- name: "Austin Daily"
-  url: "https://github.com/austinDaily"
-  avatar: "https://avatars.githubusercontent.com/u/135095754?u=ea529390925bf0db45edd4037f77f64e7ecf475c&v=4"
-  square_avatar: false
 - name: "Azure Flash"
   url: "https://github.com/azureflash"
   avatar: "https://avatars.githubusercontent.com/u/140976898?u=f13cd969c39317d68f252d8a4c72bff3f08ecefb&v=4"
@@ -189,7 +185,7 @@
   square_avatar: false
 - name: "Charlie Govea"
   url: "https://github.com/charlie-n01r"
-  avatar: "https://avatars.githubusercontent.com/u/67932262?u=cea7aaed31e47e442e397cd433ea4c968389d192&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/67932262?u=41a2fdc3ad7e4c564fcf5705263f8105639bd898&v=4"
   square_avatar: false
 - name: "Chaz Watkins"
   url: "https://github.com/chazwatkins"
@@ -278,6 +274,10 @@
 - name: Daniel
   url: "https://github.com/danielelli"
   avatar: "https://avatars.githubusercontent.com/u/90986300?u=2c729ad7c54233e12a1139878bf8c28f9c4a82c6&v=4"
+  square_avatar: false
+- name: "Danielle Maywood"
+  url: "https://github.com/DanielleMaywood"
+  avatar: "https://avatars.githubusercontent.com/u/40153966?u=7e8e266d391727da20564f18359c227682b7319a&v=4"
   square_avatar: false
 - name: "Danny Arnold"
   url: "https://github.com/pinnet"
@@ -653,7 +653,7 @@
   square_avatar: false
 - name: "Lucas Pellegrinelli"
   url: "https://github.com/lucaspellegrinelli"
-  avatar: "https://avatars.githubusercontent.com/u/19651296?u=93e6bfdf1e2e04689a555422b53821ba1c4b50d3&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/19651296?u=8243937d62b608293d64a8f297b572962dd46d51&v=4"
   square_avatar: false
 - name: "Lucian Petic"
   url: "https://github.com/lpetic"
@@ -907,10 +907,6 @@
   url: "https://github.com/sz-piotr"
   avatar: "https://avatars.githubusercontent.com/u/17070569?u=64c048512302497145462e2243b551f6cf416d5b&v=4"
   square_avatar: false
-- name: "Praveen Perera"
-  url: "https://github.com/praveenperera"
-  avatar: "https://avatars.githubusercontent.com/u/1775346?u=833a731602445ffb4aea9e36a7eee166cd477e22&v=4"
-  square_avatar: false
 - name: "Pushpendra Jaiswal"
   url: "https://github.com/sanjutoyou"
   avatar: "https://avatars.githubusercontent.com/u/4963625?u=75485e14fd1acf897fa0282dd07a26a445aff48e&v=4"
@@ -1110,6 +1106,10 @@
 - name: "Union Test Prep"
   url: "https://github.com/unionmedia"
   avatar: "https://avatars.githubusercontent.com/u/6345779?v=4"
+  square_avatar: false
+- name: "Valerio Viperino"
+  url: "https://github.com/vvzen"
+  avatar: "https://avatars.githubusercontent.com/u/10340139?u=6385427dad9d1b7f3981ec12c4c8716423cb72fc&v=4"
   square_avatar: false
 - name: "Vassiliy Kuzenkov"
   url: "https://github.com/bondiano"
