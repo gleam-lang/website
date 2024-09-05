@@ -85,6 +85,15 @@ to install it or clone it for manual build from [https://aur.archlinux.org/packa
 yay -S gleam
 ```
 
+#### Gentoo Linux
+
+Gleam is available in the official package manager, but may need to be unmasked. Install it with:
+
+```sh
+sudo echo "dev-lang/gleam ~amd64" >> /etc/portage/package.accept_keywords
+emerge --ask dev-lang/gleam
+```
+
 #### Void Linux
 
 Gleam is available as part of the official packages repository. Install it with:
@@ -204,6 +213,12 @@ apk add erlang
 
 ```shell
 pacman -S erlang
+```
+
+#### Gentoo Linux (already installed after installing gleam through emerge)
+
+```shell
+emerge --ask dev-lang/erlang
 ```
 
 #### Fedora
