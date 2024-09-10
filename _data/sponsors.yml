@@ -459,6 +459,10 @@
   url: "https://github.com/henrysdev"
   avatar: "https://avatars.githubusercontent.com/u/14046865?u=8a051bed74cc5f9d516a57bf7de4c91a50f48f8b&v=4"
   square_avatar: false
+- name: "Heyang Zhou"
+  url: "https://github.com/losfair"
+  avatar: "https://avatars.githubusercontent.com/u/6104981?u=6463c569f9f38a409ce1923b2c2c7240fc304661&v=4"
+  square_avatar: false
 - name: "Humberto Piaia"
   url: "https://github.com/hpiaia"
   avatar: "https://avatars.githubusercontent.com/u/4452287?u=99dcac91a1a52ea46823ff787b0cc9b698e956bd&v=4"
@@ -485,7 +489,7 @@
   square_avatar: false
 - name: "Igor Rumiha"
   url: "https://github.com/irumiha"
-  avatar: "https://avatars.githubusercontent.com/u/100465?u=e4c27a1264d5ab005de1a613a1ccaf381b143262&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/100465?u=231980e201d7c601e7b2430fc1e31464e441e65f&v=4"
   square_avatar: false
 - name: Isaac
   url: "https://github.com/graphiteisaac"
@@ -494,6 +498,10 @@
 - name: "Isaac Harris-Holt"
   url: "https://github.com/isaacharrisholt"
   avatar: "https://avatars.githubusercontent.com/u/47423046?u=2f967bd888efd962f41319abb72cc4c9a347a147&v=4"
+  square_avatar: false
+- name: "Isaac McQueen"
+  url: "https://github.com/imcquee"
+  avatar: "https://avatars.githubusercontent.com/u/18041916?u=fde49d6f7f5be557dd70e308651ff7789e58c471&v=4"
   square_avatar: false
 - name: "Ismael Abreu"
   url: "https://github.com/ismaelga"
@@ -566,10 +574,6 @@
 - name: "John Pavlick"
   url: "https://github.com/jmpavlick"
   avatar: "https://avatars.githubusercontent.com/u/431497?u=a3a06d79d5c7d5f78dafb5df080551cb292959b4&v=4"
-  square_avatar: false
-- name: "John Thile"
-  url: "https://github.com/jthile"
-  avatar: "https://avatars.githubusercontent.com/u/1424402?u=8ad11454630896e11dd23bab83ee8c59a8208929&v=4"
   square_avatar: false
 - name: "Jon Lambert"
   url: "https://github.com/jonlambert"
@@ -674,10 +678,6 @@
 - name: "Manuel Rubio"
   url: "https://github.com/manuel-rubio"
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
-  square_avatar: false
-- name: "Maor Kadosh"
-  url: "https://github.com/it-is-wednesday"
-  avatar: "https://avatars.githubusercontent.com/u/4103412?u=24e830a65d58fc1ef3d8ea171f22c59fb606911c&v=4"
   square_avatar: false
 - name: "Marcus André"
   url: "https://github.com/marcusandre"
@@ -863,6 +863,10 @@
   url: "https://github.com/daslaf"
   avatar: "https://avatars.githubusercontent.com/u/7907382?u=8b6a69b4e35b06f3b7bf79b01066c2d75f3c6540&v=4"
   square_avatar: false
+- name: PastMoments
+  url: "https://github.com/PastMoments"
+  avatar: "https://avatars.githubusercontent.com/u/3858420?v=4"
+  square_avatar: false
 - name: "Patrick Wheeler"
   url: "https://github.com/Davorak"
   avatar: "https://avatars.githubusercontent.com/u/810921?u=e14ad505f9953cf50c700a6414e168edd993ca10&v=4"
@@ -922,6 +926,10 @@
 - name: "Rahul Butani"
   url: "https://github.com/rrbutani"
   avatar: "https://avatars.githubusercontent.com/u/7833358?v=4"
+  square_avatar: false
+- name: Ray
+  url: "https://github.com/ray-delossantos"
+  avatar: "https://avatars.githubusercontent.com/u/15605488?u=586f9207130c439738b37dba9a5b035279490dec&v=4"
   square_avatar: false
 - name: "Raúl Chouza "
   url: "https://github.com/chouzar"
@@ -1103,10 +1111,6 @@
   url: "https://github.com/TristanCacqueray"
   avatar: "https://avatars.githubusercontent.com/u/154392?u=e2455759892678ce94360af4620793f79a91a0e9&v=4"
   square_avatar: false
-- name: "Union Test Prep"
-  url: "https://github.com/unionmedia"
-  avatar: "https://avatars.githubusercontent.com/u/6345779?v=4"
-  square_avatar: false
 - name: "Valerio Viperino"
   url: "https://github.com/vvzen"
   avatar: "https://avatars.githubusercontent.com/u/10340139?u=6385427dad9d1b7f3981ec12c4c8716423cb72fc&v=4"
@@ -1263,13 +1267,13 @@
   url: "https://github.com/n8nio"
   avatar: "https://avatars.githubusercontent.com/u/52133374?v=4"
   square_avatar: false
-- name: nozomi-core
-  url: "https://github.com/nozomi-core"
-  avatar: "https://avatars.githubusercontent.com/u/63184037?u=009b5602a8169921e7779f7e39d91387fdd64cd2&v=4"
-  square_avatar: false
 - name: optizio
   url: "https://github.com/optizio"
   avatar: "https://avatars.githubusercontent.com/u/65961177?v=4"
+  square_avatar: false
+- name: porkbrain
+  url: "https://github.com/porkbrain"
+  avatar: "https://avatars.githubusercontent.com/u/13656913?u=19fe08b14433ba8e3262aa4ed9f592d0759363a7&v=4"
   square_avatar: false
 - name: qingliangcn
   url: "https://github.com/qingliangcn"
