@@ -681,7 +681,7 @@
   square_avatar: false
 - name: "Marcus André"
   url: "https://github.com/marcusandre"
-  avatar: "https://avatars.githubusercontent.com/u/102828?u=83eb63598c1298cf0d5bb37e566f4873b718db69&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/102828?u=efd387a0e7a123144cc6ee1dea26bea25bd05d10&v=4"
   square_avatar: false
 - name: "Marcøs"
   url: "https://github.com/ideaMarcos"
@@ -1206,6 +1206,10 @@
 - name: ducdetronquito
   url: "https://github.com/ducdetronquito"
   avatar: "https://avatars.githubusercontent.com/u/9960268?u=f51c85dc4b63876e972bf047a00c64e70c7f3333&v=4"
+  square_avatar: false
+- name: eeeli24
+  url: "https://github.com/eeeli24"
+  avatar: "https://avatars.githubusercontent.com/u/11190750?u=375f1380eff2c78880f18e526e78ee2dff322c92&v=4"
   square_avatar: false
 - name: eli
   url: "https://github.com/dropwhile"
