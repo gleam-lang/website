@@ -276,9 +276,7 @@ improvements!
 
 ## Helpful errors for using modules as values
 
-Modules and values occupy two different namespaces in Gleam, so you could have a
-use the same name for a variable and an import and the compiler will pick
-whichever is correct for that context.
+Modules and values occupy two different namespaces in Gleam, so you can use the same name for a variable and an import and the compiler will pick whichever is correct for that context.
 
 Other BEAM languages such as Erlang and Elixir have modules that can be assigned
 to variables and passed around as values, so sometimes folks new to Gleam can be
@@ -307,7 +305,7 @@ Thank you [sobolevn](https://github.com/sobolevn)!
 
 ## Helpful errors for OOP-ish syntax errors
 
-Another common mistake is attempting to write a OOP class in Gleam. Being a
+Another common mistake is attempting to write an OOP class in Gleam. Being a
 functional language Gleam doesn't have classes or methods, only data and
 functions. A helpful error message has been added for when someone attempts to
 define methods within a custom type definition.
