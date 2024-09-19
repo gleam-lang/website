@@ -464,7 +464,7 @@ Thank you to our formatter magician [Giacomo Cavalieri](https://github.com/giaco
 
 ## Result discarding code action
 
-The compiler will warn if a function function returns a `Result` and that result
+The compiler will warn if a function returns a `Result` and that result
 value is not used in any way, meaning that the function could have failed and
 the code doesn't handle that failure.
 
