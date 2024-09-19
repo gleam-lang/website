@@ -3,8 +3,6 @@ author: Louis Pilfold
 author-link: https://github.com/lpil
 title: Welcome Lambda!
 subtitle: Gleam's new corporate sponsor
-tags:
-  - Release
 ---
 
 <a style="float: right; padding-left: var(--gap-4)" class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
