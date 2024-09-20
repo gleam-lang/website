@@ -26,10 +26,13 @@ This document details the current state of the language server and its features.
   - [Document symbols](#document-symbols)
   - [Signature help](#signature-help)
   - [Code Actions](#code-actions)
+    - [Add missing import](#add-missing-import)
+    - [Add missing patterns](#add-missing-labels)
     - [Case correction](#case-correction)
+    - [Discard unused result](#discard-unused-result)
     - [Fill labels](#fill-labels)
-    - [Remove unused imports](#remove-unused-imports)
     - [Remove redundant tuples](#remove-redundant-tuples)
+    - [Remove unused imports](#remove-unused-imports)
     - [Use label shorthand syntax](#use-label-shorthand-syntax)
 - [Security](#security)
 - [Use outside Gleam projects](#use-outside-gleam-projects)
@@ -152,13 +155,14 @@ The language server supports go-to definition for:
 
 The language server support completion of:
 
-- Modules in import statements.
-- Unqualified types and values in import statements.
-- Type constructors in type annotations.
-- Record fields.
+- Function arguments.
+- Functions and constants defined in other modules, automatically adding import statements if the module has not yet been imported.
 - Functions and constants defined in the same module.
-- Functions and constants defined in other modules, automatically adding import
-  statements if the module has not yet been imported.
+- Locally defined variables.
+- Modules in import statements.
+- Record fields.
+- Type constructors in type annotations.
+- Unqualified types and values in import statements.
 
 ## Document symbols
 
@@ -171,6 +175,50 @@ The language server can show the type of each argument when calling a function,
 along with the labels of the arguments that have them.
 
 ## Code Actions
+
+### Add missing imports
+
+This code action can add missing imports.
+
+```gleam
+pub fn main() -> Nil {
+  io.println("Hello, world!")
+}
+```
+
+If your cursor is within the `io.println` and there is an importable module with
+the name `io` and a function named `println` then code action will be suggested,
+and if run the code will be updated to this:
+
+```gleam
+import gleam/io
+
+pub fn main() -> Nil {
+  io.println("Hello, world!")
+}
+```
+
+### Add missing patterns
+
+This code action can add missing patterns to an inexhaustive case expression.
+
+```gleam
+pub fn run(value: Bool) -> Nil {
+  case value {}
+}
+```
+
+If your cursor is within the case expression then code action will be suggested,
+and if run the code will be updated to this:
+
+```gleam
+pub fn run(value: Bool) -> Nil {
+  case value {
+    True -> todo
+    False -> todo
+  }
+}
+```
 
 ### Case correction
 
@@ -188,6 +236,28 @@ will be suggested, and if run the code will be updated to this:
 ```gleam
 pub main() {
   let my_number = 100
+}
+```
+
+### Discard unused result
+
+This code action assigns unused results to `_`, silencing the warning. Typically
+it is better to handle the result than to ignore the possible failure.
+
+```gleam
+pub fn main() {
+  function_which_can_fail()
+  io.println("Done!")
+}
+```
+
+If your cursor is within the result-returning-statement then code action
+will be suggested, and if run the code will be updated to this:
+
+```gleam
+pub fn main() {
+  let _ = function_which_can_fail()
+  io.println("Done!")
 }
 ```
 
