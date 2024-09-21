@@ -685,7 +685,7 @@ for your support, thank you so much.
 - [Igor Rumiha](https://github.com/irumiha)
 - [ILLIA NEGOVORA](https://github.com/nilliax)
 - [inoas](https://github.com/inoas)
-- [Isaac Harris-Holt](https://github.com/isaac)
+- [Isaac Harris-Holt](https://github.com/isaacharrisholt)
 - [Isaac McQueen](https://github.com/imcquee)
 - [Ismael Abreu](https://github.com/ismaelga)
 - [Ivar Vong](https://github.com/ivarvong)
