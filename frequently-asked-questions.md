@@ -53,10 +53,10 @@ not a good fit for Gleam and they are not planned.
 
 ## Will Gleam have metaprogramming?
 
-We are gently interested in some form of metaprogramming in Gleam. We are
-currently in the early research and design phase. If you have some problems 
-that would be solved with metaprogramming, or proposal for a metaprogramming 
-design please do share them with us!
+We are open interested in some form of metaprogramming in Gleam so long as it
+is not detrimental to Gleam's readability and fast compilation. If you have
+proposal for a metaprogramming design please do share them with us via a [GitHub
+discussion](https://github.com/gleam-lang/gleam/discussions).
 
 
 ## Does Gleam have mutable state?
