@@ -60,6 +60,7 @@ layout: page
 ### Community deployment guides
 
 - [Deploying on Clever Cloud](https://github.com/davlgd/gleam-demo)
+- [Deploying on Zerops](/deployment/zerops)
 
 ## About Gleam
 
