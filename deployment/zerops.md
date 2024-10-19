@@ -59,7 +59,7 @@ project:
   name: recipe-gleam
 services:
   - hostname: app
-    type: gleam@1
+    type: gleam@1.5
     enableSubdomainAccess: true
     buildFromGit: https://github.com/zeropsio/recipe-gleam
 ```
@@ -74,7 +74,7 @@ project:
   name: recipe-gleam
 services:
   - hostname: app
-    type: gleam@1
+    type: gleam@1.5
     enableSubdomainAccess: true
 ```
 
@@ -86,12 +86,12 @@ This will create a project called `recipe-gleam` with a Zerops Static service ca
 zerops:
   - setup: app
     build:
-      base: gleam@1
+      base: gleam@1.5
       buildCommands:
         - gleam export erlang-shipment
       deployFiles: build/~erlang-shipment
     run:
-      base: gleam@1
+      base: gleam@1.5
       ports:
         - port: 8080
           httpSupport: true
