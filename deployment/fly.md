@@ -36,6 +36,7 @@ pub fn main() {
   let assert Ok(_) =
     web_service
     |> mist.new
+    |> mist.bind("0.0.0.0")
     |> mist.port(8080)
     |> mist.start_http
   process.sleep_forever()
