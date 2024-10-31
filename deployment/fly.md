@@ -7,7 +7,7 @@ redirect_from:
 ---
 
 [Fly.io](https://fly.io) is a convenient and easy to use deployment platform
-with a generous [free allowance](https://fly.io/docs/about/pricing/). They're
+with a generous [free allowance](https://fly.io/docs/about/pricing/). They were
 also a sponsor of the Gleam project, thank you Fly!
 
 ## Prepare an application
