@@ -57,14 +57,24 @@ Want to test Gleam on Zerops without installing or setting up anything? Use the 
 ```yaml
 project:
   name: recipe-gleam
+  tags:
+    - zerops-recipe
+    
 services:
-  - hostname: app
+  - hostname: api
     type: gleam@1.5
     enableSubdomainAccess: true
     buildFromGit: https://github.com/zeropsio/recipe-gleam
+    
+  - hostname: db
+    type: postgresql@16
+    mode: NON_HA
+    priority: 1
 ```
 
-## Manual Project Creation
+----------
+
+## Manual Basic Project Creation
 
 Projects and services can be added either through a [Project add](https://app.zerops.io/dashboard/project-add) wizard or imported using a yaml structure:
 
