@@ -36,6 +36,7 @@ pub fn main() {
   let assert Ok(_) =
     web_service
     |> mist.new
+    |> mist.bind("0.0.0.0")
     |> mist.port(8080)
     |> mist.start_http
   process.sleep_forever()
@@ -52,7 +53,7 @@ Now we have a web application that listens on port 8080 and can be started with
 
 ## Gleam x Zerops Quickrun
 
-Want to test Gleam on Zerops without installing or setting up anything? Use the Zerops Gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or [Deploy with a Single Click](https://app.zerops.io/recipe/gleam).
+Want to test Gleam with Postgres on Zerops without installing or setting up anything? Use the Zerops Gleam recipe [Zerops x Gleam](https://github.com/zeropsio/recipe-gleam) using the project import yaml mentioned below or [Deploy with a Single Click](https://app.zerops.io/recipe/gleam).
 
 ```yaml
 project:
@@ -99,13 +100,13 @@ zerops:
       base: gleam@1.5
       buildCommands:
         - gleam export erlang-shipment
-      deployFiles: build/~erlang-shipment
+      deployFiles: build/erlang-shipment/~
     run:
       base: gleam@1.5
       ports:
         - port: 8080
           httpSupport: true
-      start: ./erlang-shipment/entrypoint.sh run
+      start: ./entrypoint.sh run
 ```
 
 ## Set up the Zerops CLI
