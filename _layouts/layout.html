@@ -2,7 +2,9 @@
 <html lang="en-GB">
   <head>
     <!-- prettier-ignore -->
-    {%- capture title -%}{% if page.title %}{{ page.title | strip }} – {% endif %}Gleam{%- endcapture -%}
+    {%- capture default_title -%}Gleam Language{%- endcapture -%}
+    <!-- prettier-ignore -->
+    {%- capture title -%}{% if page.title %}{{ page.title | strip }} - Gleam{% else %}{{ default_title }}{% endif %}{%- endcapture -%}
     <!-- prettier-ignore -->
     {%- capture default_description -%}The Gleam programming language{%- endcapture -%}
     <!-- prettier-ignore -->
