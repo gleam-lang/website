@@ -737,7 +737,7 @@ for your support, thank you so much.
 - [Loïc Tosser](https://github.com/wowi42)
 - [Lucas Pellegrinelli](https://github.com/lucaspellegrinelli)
 - [Lucian Petic](https://github.com/lpetic)
-- [Lukas Meihsner](https://github.com/lukasmei
+- [Lukas Meihsner](https://github.com/lukasmeihsner)
 - [Luke Amdor](https://github.com/lamdor)
 - [Luna](https://github.com/2kool4idkwhat)
 - [Manav](https://github.com/chikoYEAT)
