@@ -37,6 +37,9 @@ repository = { type = "github", user = "example", repo = "my_project" }
 # { type = "bitbucket", user = "example", repo = "my_project" }
 # { type = "codeberg",  user = "example", repo = "my_project" }
 # { type = "custom",    url = "https://example.com/my_project" }
+# An optional `path` to this project in the repository can be specified
+# if it is not located at the root:
+# { type = "github", user = "example", repo = "my_project", path = "packages/my_project" }
 
 # Links to any related website (optional)
 # This will be displayed in generated documentation and on Hex.
