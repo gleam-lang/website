@@ -25,13 +25,10 @@
       },
       "licenses": ["spdx:Apache-2.0"],
       "tags": [
+        "developer-tools",
+        "development",
         "programming",
-        "language",
-        "build-tool",
-        "language-server",
-        "formatter",
-        "package-manager",
-        "ecosystem"
+        "software-engineering"
       ]
     }
   ],
