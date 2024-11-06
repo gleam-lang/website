@@ -21,7 +21,7 @@
       },
       "repositoryUrl": {
         "url": "https://github.com/gleam-lang/gleam/",
-        "wellKnown": "https://raw.githubusercontent.com/gleam-lang/website/refs/heads/main/.well-known/funding-manifest-urls"
+        "wellKnown": "https://github.com/gleam-lang/website/blob/main/.well-known/funding-manifest-urls"
       },
       "licenses": ["spdx:Apache-2.0"],
       "tags": [
