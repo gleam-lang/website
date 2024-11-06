@@ -1,0 +1,65 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Louis Pilfold",
+    "email": "louis@gleam.run",
+    "description": "The creator and maintainer of the Gleam programming language",
+    "webpageUrl": {
+      "url": "https://gleam.run"
+    }
+  },
+
+  "projects": [
+    {
+      "guid": "gleam",
+      "name": "The Gleam Programming Language",
+      "description": "Gleam is a friendly language for building type-safe systems that scale!",
+      "webpageUrl": {
+        "url": "https://gleam.run/"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/gleam-lang/gleam/",
+        "wellKnown": "https://raw.githubusercontent.com/gleam-lang/website/refs/heads/main/.well-known/funding-manifest-urls"
+      },
+      "licenses": ["spdx:Apache-2.0"],
+      "tags": [
+        "programming",
+        "language",
+        "build-tool",
+        "language-server",
+        "formatter",
+        "package-manager",
+        "ecosystem"
+      ]
+    }
+  ],
+
+  "funding": {
+    "channels": [
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/lpil"
+      },
+      {
+        "guid": "liberapay",
+        "type": "payment-provider",
+        "address": "https://liberapay.com/gleam"
+      }
+    ],
+
+    "plans": [
+      {
+        "guid": "plan",
+        "status": "active",
+        "name": "Sponsorship",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors", "liberapay"]
+      }
+    ]
+  }
+}
