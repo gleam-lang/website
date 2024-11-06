@@ -459,6 +459,10 @@
   url: "https://github.com/nirev"
   avatar: "https://avatars.githubusercontent.com/u/686510?u=abb24e34725b5f0390f1fded181e4e56f92146cc&v=4"
   square_avatar: false
+- name: "Guillaume Heu"
+  url: "https://github.com/guillheu"
+  avatar: "https://avatars.githubusercontent.com/u/72808144?u=6d453ca5761275459dd29e8b77c39bde4b19018f&v=4"
+  square_avatar: false
 - name: "Guillaume Hivert"
   url: "https://github.com/ghivert"
   avatar: "https://avatars.githubusercontent.com/u/7314118?u=357a18cb8a00b4ba24380636f445c2f0f9604927&v=4"
@@ -1042,6 +1046,10 @@
 - name: "Sammy Isseyegh"
   url: "https://github.com/bkspace"
   avatar: "https://avatars.githubusercontent.com/u/1695350?u=27a9d5486661a7f1ada8ff6fc3ae52d09ca1985f&v=4"
+  square_avatar: false
+- name: "Santi Lertsumran"
+  url: "https://github.com/mrgleam"
+  avatar: "https://avatars.githubusercontent.com/u/11692854?u=12baaf22f39c59c6284b4db9322255a5d827ac9d&v=4"
   square_avatar: false
 - name: Savva
   url: "https://github.com/castletaste"
