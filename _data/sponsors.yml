@@ -83,6 +83,10 @@
   url: "https://github.com/AndreHogberg"
   avatar: "https://avatars.githubusercontent.com/u/70792178?u=58b3749f6434bcd2163fa78bcde664a209bab188&v=4"
   square_avatar: false
+- name: "Andrea Bueide"
+  url: "https://github.com/abueide"
+  avatar: "https://avatars.githubusercontent.com/u/19354425?u=8b1ce557131b9c4bded005b2ce1ddb10357e33b9&v=4"
+  square_avatar: false
 - name: NineFX
   url: "http://www.ninefx.com"
   avatar: "https://gleam.run/images/sponsors/nine-fx.png"
@@ -439,9 +443,17 @@
   url: "https://github.com/gabrielvincent"
   avatar: "https://avatars.githubusercontent.com/u/469519?v=4"
   square_avatar: false
+- name: "Geir Arne Hjelle"
+  url: "https://github.com/gahjelle"
+  avatar: "https://avatars.githubusercontent.com/u/728076?v=4"
+  square_avatar: false
 - name: "Georg H. Ekeberg"
   url: "https://github.com/hagenek"
   avatar: "https://avatars.githubusercontent.com/u/31440138?u=c5fa4cb1bbca403b230cbcaadb8c60ec1869dd48&v=4"
+  square_avatar: false
+- name: George
+  url: "https://github.com/george-grec"
+  avatar: "https://avatars.githubusercontent.com/u/28739561?u=9aff51a58cd5129a1c50992f96c8625ea71804b5&v=4"
   square_avatar: false
 - name: "Giacomo Cavalieri"
   url: "https://github.com/giacomocavalieri"
@@ -662,6 +674,14 @@
 - name: "Justin Lubin"
   url: "https://github.com/justinlubin"
   avatar: "https://avatars.githubusercontent.com/u/1222034?u=29d8c4416eb86ce574d202be43f9ec7ada2320fb&v=4"
+  square_avatar: false
+- name: Karl
+  url: "https://github.com/karlM-BM"
+  avatar: "https://avatars.githubusercontent.com/u/136328835?v=4"
+  square_avatar: false
+- name: "Kemp Brinson"
+  url: "https://github.com/jkbrinso"
+  avatar: "https://avatars.githubusercontent.com/u/12465330?u=9175e8798ec5a4fcee5d46e9ce5cc0a9d8571bfc&v=4"
   square_avatar: false
 - name: "Kero van Gelder"
   url: "https://github.com/keroami"
@@ -931,6 +951,10 @@
   url: "https://github.com/biernacki"
   avatar: "https://avatars.githubusercontent.com/u/230085?u=0567467ff401f114eca8ab3a64e96b2f3acf234a&v=4"
   square_avatar: false
+- name: "Pedro Correa"
+  url: "https://github.com/Tulkdan"
+  avatar: "https://avatars.githubusercontent.com/u/22248651?u=c4b1d04eb416485cf409e678a9374aec67e1f6be&v=4"
+  square_avatar: false
 - name: "Pete Jodo"
   url: "https://github.com/petejodo"
   avatar: "https://avatars.githubusercontent.com/u/1938892?u=5a78046101d2b51614045e214aa1545a9dc792a2&v=4"
@@ -1023,6 +1047,10 @@
   url: "https://github.com/Papipo"
   avatar: "https://avatars.githubusercontent.com/u/22678?u=549da05959fff2b6f3cc387ecdd89f08072b9d29&v=4"
   square_avatar: false
+- name: "Ronan Harris"
+  url: "https://liberapay.com/Karakunai/"
+  avatar: "https://seccdn.libravatar.org/avatar/3faa0acc175d3481e345985aa54301ca?s=160&d=404"
+  square_avatar: false
 - name: "Rupus Reinefjord"
   url: "https://github.com/reinefjord"
   avatar: "https://avatars.githubusercontent.com/u/1427359?u=a821ffa44fbf30ae04798401bae682f32693ea17&v=4"
@@ -1070,6 +1098,10 @@
 - name: "Sean Jensen-Grey"
   url: "https://github.com/seanjensengrey"
   avatar: "https://avatars.githubusercontent.com/u/128454?v=4"
+  square_avatar: false
+- name: "Sean Roberts"
+  url: "https://github.com/SeanRoberts"
+  avatar: "https://avatars.githubusercontent.com/u/25376?u=d0a049653cb9f13363b9ad5b170fa5c3dff264f3&v=4"
   square_avatar: false
 - name: "Sebastian Porto"
   url: "https://github.com/sporto"
