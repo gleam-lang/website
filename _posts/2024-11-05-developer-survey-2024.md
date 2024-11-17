@@ -4,7 +4,6 @@ author-link: https://github.com/lpil
 title: Developer Survey 2024
 subtitle: Who are the Gleamlins anyway?
 tags:
-  - Release
 ---
 
 [survey]: https://developer-survey.gleam.run/

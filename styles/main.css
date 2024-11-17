@@ -691,6 +691,7 @@ main.content {
   color: var(--color-code-green);
 }
 
+.hljs-deletion,
 .code-error {
   color: var(--color-code-red);
 }
@@ -707,6 +708,7 @@ main.content {
   color: var(--color-code-light-pink);
 }
 
+.hljs-addition,
 .hljs-symbol,
 .hljs-string,
 .code-string {
