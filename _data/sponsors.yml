@@ -495,6 +495,10 @@
   url: "https://github.com/hfjallemark"
   avatar: "https://avatars.githubusercontent.com/u/1304571?u=f0ecf2a9e18ce6f254b29539b8c192e04c6dde95&v=4"
   square_avatar: false
+- name: "Hans Raaf"
+  url: "https://github.com/oderwat"
+  avatar: "https://avatars.githubusercontent.com/u/719156?v=4"
+  square_avatar: false
 - name: "Hayes Hundman"
   url: "https://github.com/jhundman"
   avatar: "https://avatars.githubusercontent.com/u/24263908?v=4"
@@ -819,9 +823,9 @@
   url: "https://github.com/mattvanhorn"
   avatar: "https://avatars.githubusercontent.com/u/20461?v=4"
   square_avatar: false
-- name: "Matthias Benkort"
-  url: "https://github.com/KtorZ"
-  avatar: "https://avatars.githubusercontent.com/u/5680256?u=020eb2bc68211d32c1691695b6ab22ad55478501&v=4"
+- name: "Matthew Whitworth"
+  url: "https://github.com/mwhitworth"
+  avatar: "https://avatars.githubusercontent.com/u/3876709?u=4dfb7388b3e132890d3692cd735fbbd37a934a33&v=4"
   square_avatar: false
 - name: "Max McDonnell"
   url: "https://github.com/maxmcd"
@@ -1061,7 +1065,7 @@
   square_avatar: false
 - name: "Ruslan Ustitc"
   url: "https://github.com/ustitc"
-  avatar: "https://avatars.githubusercontent.com/u/7880921?u=b464fbdcde9cf3a900b475f85bf23ceaaab00872&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/7880921?u=e5f2d71f89a012f68047328c0ac18fdf92e1e8ea&v=4"
   square_avatar: false
 - name: "Sam Aaron"
   url: "https://github.com/samaaron"
