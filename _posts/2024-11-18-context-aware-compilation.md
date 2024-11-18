@@ -369,7 +369,7 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 ## Optional dependencies are now optional
 
 Gleam uses Hex, the package managers for the BEAM ecosystem. It has a concept of
-optional packages, allowing a package to have specify a version constraint on
+optional packages, allowing a package to specify a version constraint on
 another package without causing it to be added to the dependency graph. This
 constraint is only used if a third package also depends on that package.
 This isn't very useful in Gleam, but Elixir commonly makes use of via its
