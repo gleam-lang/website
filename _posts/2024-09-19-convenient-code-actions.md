@@ -26,11 +26,6 @@ institution. All funding comes from sponsors, both corporate sponsors such as
 Lambda, and individuals sponsoring a few dollars a month on [GitHub
 Sponsors][sponsor]. Thank you for making Gleam possible.
 
-
-
-
-
-
 ## Context aware exhaustiveness errors and code action
 
 The compile time error messages for inexhaustive pattern matching have been
@@ -714,7 +709,6 @@ for your support, thank you so much.
 - [jooaf](https://github.com/jooaf)
 - [Jorge Martí Marín](https://github.com/jormarma)
 - [Joseph Lozano](https://github.com/joseph-lozano)
-- [Joshua Reusch](https://github.com/joshi-monster)
 - [Joshua Steele](https://github.com/joshocalico)
 - [Juhan](https://github.com/Juhan280)
 - [Julian Lukwata](https://liberapay.com/d2quadra/)
@@ -886,6 +880,7 @@ for your support, thank you so much.
 - [Wilson Silva](https://github.com/wilsonsilva)
 - [Yamen Sader](https://github.com/yamen)
 - [Yasuo Higano](https://github.com/Yasuo-Higano)
+- [yoshi~](https://github.com/joshi-monster)
 - [Zack Sargent](https://github.com/zsarge)
 - [Zhomart Mukhamejanov](https://github.com/Zhomart)
 - [Zsombor Gasparin](https://github.com/gasparinzsombor)
