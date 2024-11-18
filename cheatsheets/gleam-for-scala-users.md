@@ -56,33 +56,6 @@ Multi line comments may be written like so:
  */
 ```
 
-In Scala, above `trait`, `object`, `class`, `def` declarations
-there can be `scaladoc` like so:
-
-```scala
-/**
- * a very special trait.
- */
-trait Foo {}
-
-/**
- * A Bar class
- */
-class Bar {
-
-  /**
-   *
-   * @param s describes the s param
-   */
-  def quux(s: String) = {}
-
-}
-
-```
-
-Documentation blocks (scaladoc) are extracted into generated API
-documentation and use Markdown format.
-
 ### Gleam
 
 In Gleam, comments are written with a `//` prefix.
@@ -101,13 +74,6 @@ document the current module.
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 
-/// A main function
-fn main() {}
-
-/// A Dog type
-type Dog {
-  Dog(name: String, cuteness: Int)
-}
 ```
 
 `//` comments are not used while generating documentation files, while
@@ -124,28 +90,7 @@ variable names can be reassigned in the same scope.
 val size = 50
 val size = size + 100 // compile error
 val size = 1 // compile error
-
-var size2 = 50
-size2 = size2 + 100
-size2 = 1
 ```
-
-Scala uses `val` for immutable bindings and `var` for mutable bindings.
-Lexical scoping can be done with braces or indentation, and values with the same name
-can shadow each other.
-
-```scala
-
-def foo() {
-  val size = 50
-
-  def bar() {
-    val size = 100
-  }
-}
-
-```
-
 
 ### Gleam
 
@@ -167,14 +112,15 @@ Both Scala and Gleam can use the left hand side of an `=` as a pattern.
 val List(a, b) = List(1, 2)
 // a == 1
 // b == 2
+
+val List(c,d) = List(1) // runtime MatchError
 ```
 
 #### Gleam
 
 In Gleam, `let` and `=` can be used for pattern matching, but you'll get
-compile errors if there's a type mismatch, and a runtime error if there's
-a value mismatch. For assertions, the equivalent `let assert` keyword is
-preferred.
+compile errors if there's a type mismatch. For assertions, the equivalent
+`let assert` keyword is used.
 
 ```gleam
 let #(a, _) = #(1, 2)
@@ -197,7 +143,6 @@ and improving compile times for complex inferences.
 
 ```scala
 val someList: List[Int] = List(1, 2, 3)
-val someString: String = "Foo"
 ```
 
 
@@ -207,7 +152,6 @@ In Gleam type annotations can optionally be given when binding variables.
 
 ```gleam
 let some_list: List(Int) = [1, 2, 3]
-let some_string: String = "Foo"
 ```
 
 Gleam will check the type annotation to ensure that it matches the type of the
@@ -230,14 +174,6 @@ def hello(name: String = "Joe"): String = {
     s"Hello $name"
   }
 }
-
-```
-
-For methods with no arguments, you may omit the parenthesis
-
-```scala
-
-def noArgs = "Surprise."
 
 ```
 
@@ -273,10 +209,10 @@ mul(1, 2)
 In Scala, class methods are public by default but can be made private or protected.
 
 ```scala
-object Foo {
+object Math {
   // this is public
   def sum(x: Int, y: Int): Int = x + y
-  
+
   // this is private
   private def mul(x: Int, y: Int): Int = x * y
 }
@@ -307,7 +243,7 @@ Method parameters in Scala require type annotations. The return type is
 usually optional but encouraged for public methods.
 
 ```scala
-object Foo {
+object Math {
   // int return type will be statically inferred
   def sum(x: Int, y: Int) = x + y
 
@@ -366,12 +302,6 @@ toCsvRow(List("a", "b", "c")) // a,b,c
 toCsvRow(List("a", "b", "c"), "\t") // a\tb\tc
 toCsvRow(List("a", "b", "c"), separator = "|") // a|b|c
 ```
-
-Using parameter names in an external library may cause your code to
-break if a newer version of that library changes the name of their
-parameters as it may not be apparent to library authors their parameter
-names are part of the public API if they didn't expect users to
-pass them by name.
 
 #### Gleam
 
@@ -468,7 +398,6 @@ automatically exported.
 
 In Scala, blocks can use either curly braces or indentation.
 
-
 ```scala
 def main() = {
   val x = {
@@ -480,17 +409,6 @@ def main() = {
   val y = x * (x + 10)
   y
 }
-```
-
-or using indentation in Scala 3
-
-```scala
-def main() =
-  val x =
-    someFunction(1)
-    2
-  val y = x * (x + 10)
-  y
 ```
 
 ### Gleam
@@ -559,7 +477,7 @@ but are 0-index instead of 1 indexed when accessing by index.
 #### Scala
 
 ```scala
-val myTuple = ("username", "password", 10) // Type is (String, String, Int) or Tuple3[String, String, Int]
+val myTuple = ("username", "password", 10)
 val (_, pwd, _) = myTuple
 println(pwd) // "password"
 // Direct index access
@@ -586,14 +504,14 @@ Scala's `List` is a linked-list with a cons operator (`::`).
 
 ```scala
 val list = List(2, 3, 4)
-val alsoList = 2 :: 3 :: 4 :: Nil // equivalent
 val list2 = 1 :: list // list of 1,2,3,4
-val 1 :: secondElement :: tail = list2 // secondElement = 2
+val 1 :: secondElement :: _ = list2 // secondElement = 2
+1.0 :: list // compiles, but casts to List[AnyVal]
 ```
 
 #### Gleam
 
-Gleam has a `cons` operator that works for lists destructuring and
+Gleam has a `..` prepend operator that works for lists destructuring and
 pattern matching. In Gleam lists are immutable so adding and removing elements
 from the start of a list is highly efficient.
 
@@ -610,29 +528,27 @@ Scala's Map is an immutable hashmap; there is no literal syntax for it but
 there is some sugar to use `->` as a 2-tuple which can be used to define
 keys and values.
 
-In Gleam, maps can have keys and values of any type, but all keys must be of
+In Gleam, dicts can have keys and values of any type, but all keys must be of
 the same type in a given map and all values must be of the same type in a
-given map. The type of key and value can differ from each other.
+given dict. The type of key and value can differ from each other.
 
-There is no map literal syntax in Gleam, and you cannot pattern match on a map.
-Maps are generally not used much in Gleam, custom types are more common.
+There is no dict literal syntax in Gleam, and you cannot pattern match on a Dict.
+Dicts are generally not used much in Gleam, custom types are more common.
 
 #### Scala
 
 ```scala
 Map("key1" -> "value1", "key2" -> "value2")
-Map("key1" -> "1", "key2" -> 2) // compiles, but infers an unexpected type
-val myMap: Map[String, String] = Map("key1" -> "1", "key2" -> 2) // type error
 ```
 
 
 #### Gleam
 
 ```gleam
-import gleam/map
+import gleam/dict
 
-map.from_list([#("key1", "value1"), #("key2", "value2")])
-map.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
+dict.from_list([#("key1", "value1"), #("key2", "value2")])
+dict.from_list([#("key1", "value1"), #("key2", 2)]) // Type error!
 ```
 
 ### Numbers
@@ -661,7 +577,7 @@ math operations between them.
 1.5 + 10 // Compile time error
 ```
 
-You can use the gleam standard library's `int` and `float` modules to convert
+You can use the gleam standard library's `gleam/int` and `gleam/float` modules to convert
 between floats and integers in various ways including `rounding`, `floor`,
 `ceiling` and many more.
 
@@ -669,35 +585,20 @@ between floats and integers in various ways including `rounding`, `floor`,
 
 ### Case
 
-Case is one of the most used control flow in Gleam. It can be seen as a switch
-statement on steroids. It provides a terse way to match a value type to an
-expression. It is also used to replace `if`/`else` statements.
-
-Scala and Gleam both support guards, destructuring and disjoint union matching.
+Case is one of the most used control flow in Gleam, and it is very similar to the
+`match` operator in Scala. Scala and Gleam both support guards, destructuring,
+exhaustiveness checking and disjoint union matching.
 
 #### Scala
 
-Scala has both `if`/`else` and `match` expressions.
-
 ```scala
-def httpErrorImpl1(status: Int) = {
-  if (status == 400) {
-      "Bad request"
-  } else if (status == 404) {
-      "Not found"
-  } else if (status == 418) {
-      "I'm a teapot"
-  } else {
-    "Internal Server Error"
-  }
-}
 
-def httpErrorImpl2(status: Int): String = {
+def nameNumber(status: Int): String = {
   status match { 
-    case 400 => "Bad request"
-    case 404 => "Not found"
-    case 418 => "I'm a teapot"
-    case _ => "Internal Server Error"
+    case 0 => "Zero"
+    case 1 => "One"
+    case 2 => "Two"
+    case _ => "Some other number"
   }
 }
 ```
@@ -724,10 +625,10 @@ number match {
 
 #### Gleam
 
-The case operator is a top level construct in Gleam:
+Gleam's syntax is a little shorter:
 
 ```gleam
-case some_number {
+case name_number {
   0 -> "Zero"
   1 -> "One"
   2 -> "Two"
@@ -735,49 +636,16 @@ case some_number {
 }
 ```
 
-As all expressions the case expression will return the matched value.
+Exhaustiveness checking at compile time will make certain that you must check for
+all possible values. A lazy and common way is to check of expected values and have a
+catchall clause with a single underscore `_`:
 
 ```gleam
-let is_status_within_4xx = status / 100 == 4
 case status {
   400 -> "Bad Request"
   404 -> "Not Found"
-  _ if is_status_within_4xx -> "4xx" // This works as of now
-  // status if status / 100 == 4 -> "4xx" // This will work in future versions of Gleam
+  status if status / 100 == 4 -> "4xx" // This will work in future versions of Gleam
   _ -> "I'm not sure"
-}
-```
-
-if/else example:
-
-```gleam
-case is_admin {
-  True -> "allow access"
-  False -> "disallow access"
-}
-```
-
-if/elseif/else example:
-
-```gleam
-case True {
-  _ if is_admin == True -> "allow access"
-  _ if is_confirmed_by_mail == True -> "allow access"
-  _ -> "deny access"
-}
-```
-
-Exhaustiveness checking at compile time, which is in the works, will make
-certain that you must check for all possible values. A lazy and common way is
-to check of expected values and have a catchall clause with a single underscore
-`_`:
-
-```gleam
-case scale {
-  0 -> "none"
-  1 -> "one"
-  2 -> "pair"
-  _ -> "many"
 }
 ```
 
@@ -853,32 +721,6 @@ Error management is approached differently in Scala and Gleam.
 Scala uses the notion of exceptions to interrupt the current code flow and
 pop up the error to the caller.
 
-An exception is raised using the keyword `throw`.
-
-```scala
-def aFunctionThatFails() = {
-  throw new RuntimeException("an error")
-}
-```
-
-The callee block will be able to capture any exception raised in the block
-using a `try/except` set of blocks:
-
-```scala
-// callee block
-try {
-    println("this line will be executed and thus printed")
-    aFunctionThatFails()
-    println("this line will not be executed and thus not printed")
-} catch {
-  case (e: Throwable) => println(e)
-}
-```
-
-However, this is not considered idiomatic Scala in most cases. Many libraries
-provide more functional approaches to error-handling. The standard library
-also includes such a structure which can wrap code that throws exceptions
-and return the success or exception as a value.
 
 ```scala
 import scala.util.{Try,Success,Failure}
@@ -1040,14 +882,6 @@ enum IntOrFloat {
 
 ```
 
-or in Scala 2:
-
-```scala
-sealed trait IntOrFloat
-case class AnInt(i: Int) extends IntOrFloat
-case class AFloat(f: Float) extends IntOrFloat
-```
-
 Although for this particular example, we could just use a union type (in Scala 3)
 
 ```scala
@@ -1175,7 +1009,7 @@ In Scala we can use traits or objects to group types aliases, methods,
 and constants into a namespace.
 
 ```scala
-package foo.bar.baz // this package could be defined in any file
+package one // this package could be defined in any file
 
 object MyModule {
   def identity[T](t: T) = t
@@ -1186,7 +1020,7 @@ object MyModule {
 ```scala
 package another.packge
 
-import foo.bar.baz.MyModule
+import one.MyModule
 
 def main() = MyModule.identity(1) // 1
 
@@ -1205,24 +1039,24 @@ Since there is no special syntax to create a module, there can be only one
 module in a file and since there is no way name the module the filename
 always matches the module name which keeps things simple and transparent.
 
-In `/src/foo/bar.gleam`:
+In `one.gleam`:
 
 ```gleam
 // Creation of module function identity
-// in module bar
+// in module one
 pub fn identity(x) {
   x
 }
 ```
 
-Importing the `bar` module and calling a module function:
+Importing the `one` module and calling a module function:
 
 ```gleam
 // In src/main.gleam
-import foo/bar // if foo was in a directory called `lib` the import would be `lib/foo/bar`.
+import one // if `one` was in a directory called `lib` the import would be `lib/one`.
 
 pub fn main() {
-  bar.identity(1) // 1
+  one.identity(1) // 1
 }
 ```
 
