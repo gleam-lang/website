@@ -28,7 +28,7 @@ Right. Now on to the release changes.
 ## Context aware errors
 
 A big part of what makes Gleam productive is the way its powerful static
-analysis can immediately provide you feedback as you type, enabling you to
+analysis can immediately provide you with feedback as you type, enabling you to
 confidently make changes within large or unfamiliar codebases. Much of this
 feedback will come in the form of error messages, so it is vital that they are
 as clear and as understandable as possible.
@@ -368,11 +368,11 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Optional dependencies are now optional
 
-Gleam uses Hex, the package managers for the BEAM ecosystem. It has a concept of
+Gleam uses Hex, the package manager for the BEAM ecosystem. It has a concept of
 optional packages, allowing a package to specify a version constraint on
 another package without causing it to be added to the dependency graph. This
 constraint is only used if a third package also depends on that package.
-This isn't very useful in Gleam, but Elixir commonly makes use of via its
+This isn't very useful in Gleam, but Elixir commonly makes use of it via its
 compile time metaprogramming system.
 
 Until now the Gleam build tool would treat these optional dependencies as
@@ -426,7 +426,7 @@ Thank you again [Richard Viney](https://github.com/richard-viney)!
 
 ## (un)qualification code actions
 
-When using types and value from other Gleam modules the programmer has the
+When using types and values from other Gleam modules the programmer has the
 choice as to whether to use them in a qualified or an unqualified fashion.
 
 ```gleam
@@ -456,7 +456,7 @@ Thank you [Jiangda Wang](https://github.com/Frank-III) for this code action!
 Gleam can compile to JavaScript as well as to Erlang. If you know your project
 is going to target JavaScript primarily you can now use `gleam new myapp
 --template javascript` to create a new project that is already configured for
-JavaScript, saving you adding the `target = "javascript"` to your `gleam.toml`.
+JavaScript, saving you from adding the `target = "javascript"` to your `gleam.toml`.
 
 Thank you [Mohammed Khouni](https://github.com/Tar-Tarus) for this!
 
