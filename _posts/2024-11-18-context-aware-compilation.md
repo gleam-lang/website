@@ -642,7 +642,7 @@ for your support, thank you so much.
 - [Georg H. Ekeberg](https://github.com/hagenek)
 - [George](https://github.com/george-grec)
 - [ggobbe](https://github.com/ggobbe)
-- [Giacomo Cavalieri](https://github.com/giacomocaval
+- [Giacomo Cavalieri](https://github.com/giacomocavalieri)
 - [Giovanni Kock Bonetti](https://github.com/giovannibonetti)
 - [Graeme Coupar](https://github.com/obmarg)
 - [grotto](https://github.com/grottohub)
@@ -729,7 +729,7 @@ for your support, thank you so much.
 - [LighghtEeloo](https://github.com/LighghtEeloo)
 - [Lily Rose](https://github.com/LilyRose2798)
 - [Loïc Tosser](https://github.com/wowi42)
-- [Lucas Pellegrinelli](https://github.com/lucaspelle
+- [Lucas Pellegrinelli](https://github.com/lucaspellegrinelli)
 - [Lukas Bjarre](https://github.com/lbjarre)
 - [Lukas Meihsner](https://github.com/lukasmeihsner)
 - [Luke Amdor](https://github.com/lamdor)
