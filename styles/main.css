@@ -385,6 +385,10 @@ main.content {
   border-radius: 100px;
 }
 
+.pulse-animation {
+  animation: pulse-animation 2.2s infinite;
+}
+
 .sponsor-level0 img:hover {
   transform: rotate(-10deg) scale(1.2);
 }
