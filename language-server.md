@@ -32,6 +32,7 @@ This document details the current state of the language server and its features.
   - [Case correction](#case-correction)
   - [Discard unused result](#discard-unused-result)
   - [Fill labels](#fill-labels)
+  - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
   - [Remove unused imports](#remove-unused-imports)
   - [Use label shorthand syntax](#use-label-shorthand-syntax)
@@ -302,6 +303,37 @@ pub fn main() {
   Date(year: todo, month: todo, day: todo)
 }
 ```
+
+## Qualify and unqualify
+
+These code actions can be used to add or remove module qualifiers for types and
+values.
+
+```gleam
+import gleam/option.{Some}
+
+pub fn main() {
+  [Some(1), Some(2)]
+}
+```
+
+If your cursor is within one of the `Some`s then the "qualify" code action will
+be suggested, and if run the code will be updated to this:
+
+```gleam
+import gleam/option.{}
+
+pub fn main() {
+  [option.Some(1), option.Some(2)]
+}
+```
+Note that the import statement has been updated as needed, and all instances of
+the `Some` constructor in the module have been qualified.
+
+The "unqualify" action behaves the same, except it removes module qualifiers.
+
+The "unqualify" action is available for types and custom type variants
+constructors. The "qualify" action is available for all types and values.
 
 ## Remove unused imports
 
