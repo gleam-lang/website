@@ -25,15 +25,16 @@ This document details the current state of the language server and its features.
   - [Code completion](#code-completion)
   - [Document symbols](#document-symbols)
   - [Signature help](#signature-help)
-  - [Code Actions](#code-actions)
-    - [Add missing import](#add-missing-import)
-    - [Add missing patterns](#add-missing-labels)
-    - [Case correction](#case-correction)
-    - [Discard unused result](#discard-unused-result)
-    - [Fill labels](#fill-labels)
-    - [Remove redundant tuples](#remove-redundant-tuples)
-    - [Remove unused imports](#remove-unused-imports)
-    - [Use label shorthand syntax](#use-label-shorthand-syntax)
+- [Code actions](#code-actions)
+  - [Add annotations](#add-annotations)
+  - [Add missing import](#add-missing-import)
+  - [Add missing patterns](#add-missing-labels)
+  - [Case correction](#case-correction)
+  - [Discard unused result](#discard-unused-result)
+  - [Fill labels](#fill-labels)
+  - [Remove redundant tuples](#remove-redundant-tuples)
+  - [Remove unused imports](#remove-unused-imports)
+  - [Use label shorthand syntax](#use-label-shorthand-syntax)
 - [Security](#security)
 - [Use outside Gleam projects](#use-outside-gleam-projects)
 
@@ -174,9 +175,31 @@ constants, for the current Gleam file.
 The language server can show the type of each argument when calling a function,
 along with the labels of the arguments that have them.
 
-## Code Actions
+# Code actions
 
-### Add missing imports
+## Add annotations
+
+This code action can add type annotations to assignments and functions.
+
+```gleam
+pub fn increment(x) {
+  x + 1
+}
+```
+
+If your cursor is within a function that does not have the all of the argument
+types and the return type annotated then code action will be suggested, and if
+run the code will be updated to include them:
+
+```gleam
+pub fn increment(x: Int) -> Int {
+  x + 1
+}
+```
+
+It can also be triggered on `let` and `use` assignments.
+
+## Add missing imports
 
 This code action can add missing imports.
 
@@ -198,7 +221,7 @@ pub fn main() -> Nil {
 }
 ```
 
-### Add missing patterns
+## Add missing patterns
 
 This code action can add missing patterns to an inexhaustive case expression.
 
@@ -220,7 +243,7 @@ pub fn run(value: Bool) -> Nil {
 }
 ```
 
-### Case correction
+## Case correction
 
 This code action can correct names written with the wrong case.
 
@@ -239,7 +262,7 @@ pub main() {
 }
 ```
 
-### Discard unused result
+## Discard unused result
 
 This code action assigns unused results to `_`, silencing the warning. Typically
 it is better to handle the result than to ignore the possible failure.
@@ -261,7 +284,7 @@ pub fn main() {
 }
 ```
 
-### Fill labels
+## Fill labels
 
 This code action can add any expected labels to a call.
 
@@ -280,7 +303,7 @@ pub fn main() {
 }
 ```
 
-### Remove unused imports
+## Remove unused imports
 
 This code action can be used to delete unused import statements from a module.
 
@@ -304,7 +327,7 @@ pub fn main() {
 }
 ```
 
-### Remove redundant tuples
+## Remove redundant tuples
 
 This code action removes redundant tuples from case expression subjects and
 patterns.
@@ -326,7 +349,7 @@ case a, b {
 }
 ```
 
-### Use label shorthand syntax
+## Use label shorthand syntax
 
 This code action updates calls and patterns to use the label shorthand syntax.
 
