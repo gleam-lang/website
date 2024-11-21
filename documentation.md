@@ -8,7 +8,7 @@ layout: page
 
 - [Language tour](https://tour.gleam.run)
 
-  An in-browser interactive introduction the teaches the whole language. If you prefer to read everything on one page, click [here](https://tour.gleam.run/everything/).
+  An in-browser interactive introduction the teaches the whole language.
 
 - [Writing Gleam](/writing-gleam)
   
@@ -39,6 +39,7 @@ layout: page
 - [The Command line reference](/writing-gleam/command-line-reference)
 - [The Gleam Language Server reference](/language-server)
 - [The gleam.toml config file reference](/writing-gleam/gleam-toml)
+- [The Gleam Language full reference](https://gleam.run/everything/)
 - [The Gleam Package Index](https://packages.gleam.run)
 - [The standard library documentation](https://hexdocs.pm/gleam_stdlib/)
 - [The "Awesome Gleam" resource list](https://github.com/gleam-lang/awesome-gleam)
