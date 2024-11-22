@@ -298,6 +298,7 @@ file, which will be written to `./vars`.
 
 ```sh
 # Compile the program to an escript
+gleam build
 gleam run -m gleescript
 
 # Run the program
