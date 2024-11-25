@@ -35,10 +35,10 @@ layout: page
   Gleam development_.
 
 ## Gleam references
+- [The Gleam Language overview](https://tour.gleam.run/everything/)
 - [The Command line reference](/writing-gleam/command-line-reference)
 - [The Gleam Language Server reference](/language-server)
 - [The gleam.toml config file reference](/writing-gleam/gleam-toml)
-- [The Gleam Language full reference](https://tour.gleam.run/everything/)
 - [The Gleam Package Index](https://packages.gleam.run)
 - [The standard library documentation](https://hexdocs.pm/gleam_stdlib/)
 - [The "Awesome Gleam" resource list](https://github.com/gleam-lang/awesome-gleam)
