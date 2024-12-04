@@ -227,13 +227,22 @@ emerge --ask dev-lang/erlang
 dnf install elixir erlang
 ```
 
-#### Debian, Ubuntu, Raspberry Pi OS
+#### Debian, Ubuntu
 
 ```shell
-wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
-sudo dpkg -i erlang-solutions_2.0_all.deb
-sudo apt-get update
-sudo apt-get install esl-erlang
+# Add to /etc/apt/sources.list
+deb http://binaries2.erlang-solutions.com/ubuntu/ jammy-esl-erlang-25 contrib
+# Possible other lines depending on your `lsb_release -c`
+# deb http://binaries2.erlang-solutions.com/debian/ bullseye-elixir-1.15 contrib
+# deb http://binaries2.erlang-solutions.com/ubuntu/ bionic-mongooseim-6 contrib
+
+# Add Erlang Solutions repo keys:
+wget https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc
+sudo apt-key add GPG-KEY-pmanager.asc
+
+# Update apt and install esl-erlang
+sudo apt update
+sudo apt install esl-erlang
 ```
 
 ### macOS
