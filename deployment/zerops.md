@@ -86,10 +86,9 @@ project:
 services:
   - hostname: app
     type: gleam@1.5
-    enableSubdomainAccess: true
 ```
 
-This will create a project called `recipe-gleam` with a Zerops Static service called `app`.
+This will create a project called `recipe-gleam` with a Zerops Gleam service called `app`.
 
 ## Add Zerops.yml
 
@@ -152,6 +151,6 @@ zcli login <token>
 zcli push
 ```
 
-This will deploy the package to Zerops service and after it successfully deploys you can test it with the subdomain url.
+This will deploy the package to Zerops service and after it successfully deploys you can enable public access through subdomain url with `zcli service enable-subdomain`.
 
 You can also setup git based deployments by connecting the app service with your GitHub / GitLab repository from inside the service detail.
