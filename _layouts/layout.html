@@ -40,7 +40,7 @@
       data-domain="gleam.run"
       src="https://plausible.io/js/plausible.js"
     ></script>
-    <link rel="stylesheet" href="/styles/main.css?v=1" />
+    <link rel="stylesheet" href="/styles/main.css?v=2" />
 
     {% for preload in page.preload %}
     <link rel="preload" href="{{ preload.href }}" as="{{ preload.as }}" />
@@ -73,6 +73,7 @@
           <li><a href="https://github.com/sponsors/lpil">Sponsor</a></li>
           <li><a href="https://packages.gleam.run/">Packages</a></li>
           <li><a href="https://gleamweekly.com/">Gleam Weekly</a></li>
+          <li><a href="/roadmap">Roadmap</a></li>
         </ul>
         <ul class="last">
           <li>&copy; {{ site.time | date: '%Y' }} Louis Pilfold</li>
