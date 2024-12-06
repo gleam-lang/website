@@ -986,3 +986,8 @@ main.content {
   margin: var(--gap-1) 0;
   line-height: var(--gap-3);
 }
+
+.roadmap h2 {
+  border-left: 4px solid var(--color-faff-pink);
+  padding: var(--gap-1) var(--gap-2);
+}

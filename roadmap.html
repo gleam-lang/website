@@ -2,30 +2,26 @@
 title: Gleam's Development Roadmap
 subtitle: What's coming next?
 layout: page
+class: "roadmap"
 ---
 
 <p>
   The highlights of what's been released, what's being worked on, and what's
-  coming in future! To see all the details please see:
+  coming in future! To see all the details please see the
+  <a href="https://github.com/gleam-lang/gleam/tree/main/CHANGELOG.md"
+    >current changelogs</a
+  >, the
+  <a href="https://github.com/gleam-lang/gleam/tree/main/changelog"
+    >historical changelogs</a
+  >, and the
+  <a href="https://github.com/gleam-lang/gleam/issues">issue tracker</a>
 </p>
 
-<ul>
-  <li>
-    <a href="https://github.com/gleam-lang/gleam/tree/main/CHANGELOG.md">
-      The current changelogs</a
-    >
-  </li>
-  <li>
-    <a href="https://github.com/gleam-lang/gleam/tree/main/changelog">
-      The historical changelogs</a
-    >
-  </li>
-  <li>
-    <a href="https://github.com/gleam-lang/gleam/issues"> The issue tracker</a>
-  </li>
-</ul>
-
 <h2>In progress</h2>
+
+<p>
+  Features that are currently being worked on, or complete but not yet released.
+</p>
 
 <ul class="roadmap-list">
   {% for item in site.data.roadmap.in-progress %}
@@ -35,6 +31,8 @@ layout: page
 
 <h2>Planned</h2>
 
+<p>Features that will be implemented, but work has not yet started.</p>
+
 <ul class="roadmap-list">
   {% for item in site.data.roadmap.planned %}
   <li>{{ item }}</li>
@@ -42,6 +40,11 @@ layout: page
 </ul>
 
 <h2>Research</h2>
+
+<p>
+  Features that we likely will be added in future, but we have some outstanding
+  design questions to resolve.
+</p>
 
 <ul class="roadmap-list">
   {% for item in site.data.roadmap.research %}
