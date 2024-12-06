@@ -1,0 +1,65 @@
+---
+title: Gleam's Development Roadmap
+subtitle: What's coming next?
+layout: page
+---
+
+<p>
+  The highlights of what's been released, what's being worked on, and what's
+  coming in future! To see all the details please see:
+</p>
+
+<ul>
+  <li>
+    <a href="https://github.com/gleam-lang/gleam/tree/main/CHANGELOG.md">
+      The current changelogs</a
+    >
+  </li>
+  <li>
+    <a href="https://github.com/gleam-lang/gleam/tree/main/changelog">
+      The historical changelogs</a
+    >
+  </li>
+  <li>
+    <a href="https://github.com/gleam-lang/gleam/issues"> The issue tracker</a>
+  </li>
+</ul>
+
+<h2>In progress</h2>
+
+<ul class="roadmap-list">
+  {% for item in site.data.roadmap.in-progress %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Planned</h2>
+
+<ul class="roadmap-list">
+  {% for item in site.data.roadmap.planned %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Research</h2>
+
+<ul class="roadmap-list">
+  {% for item in site.data.roadmap.research %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Done</h2>
+
+<ol class="roadmap-release-list">
+  {% for release in site.data.roadmap.done %}
+  <li>
+    <h3>{{ release.version }} - {{ release.date | date: "%d %b, %Y" }}</h3>
+    <ul class="roadmap-list">
+      {% for item in release.items %}
+      <li>{{ item | markdownify }}</li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ol>

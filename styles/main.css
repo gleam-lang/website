@@ -972,3 +972,17 @@ main.content {
     flex-direction: row;
   }
 }
+
+.roadmap-release-list {
+  list-style: none;
+  padding: 0;
+}
+
+.roadmap-release-list {
+  padding-left: 0;
+}
+
+.roadmap-list li {
+  margin: var(--gap-1) 0;
+  line-height: var(--gap-3);
+}
