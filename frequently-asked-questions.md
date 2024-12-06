@@ -177,24 +177,26 @@ It is very popular and a great language!
 
 Here's a non-exhaustive list of differences:
 
-- Elixir is dynamically typed, Gleam is statically typed. Elixir is developing a
-  novel, but it has not yet released.
+- Elixir is dynamically typed, Gleam is statically typed. Elixir is integrating a
+  gradual type system into the language, but it has no user facing features yet.
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir's compiler is written in Erlang and Elixir, Gleam's is written in Rust.
-- Elixir uses Ruby style syntax, Gleam has a C family style syntax.
+- Gleam has a more traditional C family style syntax.
 - Elixir has a namespace for module functions and another for variables,
   Gleam has one unified namespace (so there's no special `fun.()` syntax).
 - Gleam standard library is distributed as Hex packages, which makes interoperability
   with other BEAM languages easier.
 - Elixir is a larger language, featuring numerous language features not present
   in Gleam.
-- Elixir has an excellent official test framework, Gleam does not yet.
+- Elixir has a robust test framework with excellent support for concurrency,
+  partitioning, parameterized tests, integrated error reports, and more.
+  Gleam does not yet.
 - Both languages compile to Erlang but Elixir compiles to Erlang abstract
   format, while Gleam compiles to Erlang source. Gleam can also compile to
   JavaScript.
-- Elixir has superior BEAM runtime integration, featuring perfectly accurate
+- Elixir has superior BEAM runtime integration, featuring accurate
   stack traces and full support for tools such as code coverage, profiling, and
-  more. Gleam's support is much weaker due to going via Erlang.
+  more. Gleam's support is much weaker due to going via Erlang source.
 - Elixir has better support for the OTP actor framework. Gleam has its own
   version of OTP which is type safe, but has a smaller feature set.
 - Elixir has superior deployment tooling, including support for OTP releases and
