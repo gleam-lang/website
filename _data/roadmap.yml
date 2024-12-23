@@ -14,19 +14,22 @@ in-progress:
   - Language server convert to/from `use` code action
   - Local Hex API key encryption
   - Unaligned bit array support on JavaScript
+  - Language server extract variable code action
+  - Language server inline variable code action
+  - Language server code action to generate dynamic decoder
 planned:
   - Dead code detection improvements
   - Hex private package support
   - Language server constant expression completion
   - Language server extract const code action
-  - Language server extract variable code action
-  - Language server inline variable code action
   - Language server label completion
   - Language server renaming
   - Mutual tail call optimisation on JavaScript
   - OTP named process support
   - Test keyword `assert`
   - API key generation when Hex rate limits reached
+  - Fault tolerant parsing of `case` expressions
+  - Optimisations in code generation on the JavaScript target
 research:
   - OTP release building
   - Erlang stack trace line numbers
