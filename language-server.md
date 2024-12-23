@@ -200,7 +200,7 @@ pub fn increment(x: Int) -> Int {
 
 It can also be triggered on `let` and `use` assignments.
 
-## Add missing imports
+## Add missing import
 
 This code action can add missing imports.
 
