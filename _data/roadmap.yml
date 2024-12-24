@@ -15,13 +15,13 @@ in-progress:
   - Local Hex API key encryption
   - Unaligned bit array support on JavaScript
   - Language server extract variable code action
-  - Language server inline variable code action
   - Language server code action to generate dynamic decoder
 planned:
   - Dead code detection improvements
   - Hex private package support
   - Language server constant expression completion
   - Language server extract const code action
+  - Language server inline variable code action
   - Language server label completion
   - Language server renaming
   - Mutual tail call optimisation on JavaScript
@@ -29,7 +29,9 @@ planned:
   - Test keyword `assert`
   - API key generation when Hex rate limits reached
   - Fault tolerant parsing of `case` expressions
-  - Optimisations in code generation on the JavaScript target
+  - Removing Instantly Invoked Function Expressions from generated JavaScript code
+  - Generating `case` expressions using a decision tree on JavaScript
+  - Lifting constant expressions into global scope on JavaScript
 research:
   - OTP release building
   - Erlang stack trace line numbers
