@@ -227,10 +227,6 @@
   url: "https://github.com/ceedon"
   avatar: "https://avatars.githubusercontent.com/u/2904426?u=ce03755dfbcb8621134535e1b3d72ec5f61e5db3&v=4"
   square_avatar: false
-- name: "Chris Haynes"
-  url: "https://github.com/chaynes3"
-  avatar: "https://avatars.githubusercontent.com/u/79410171?u=1d9e06146c6dce06326d442db7dceaeb5f0ebc50&v=4"
-  square_avatar: false
 - name: "Chris King"
   url: "https://github.com/Morzaram"
   avatar: "https://avatars.githubusercontent.com/u/70202379?u=11e527351e5edd08e8f30b10a2b648760eef179b&v=4"
@@ -362,6 +358,10 @@
 - name: "Dmitry Poroh"
   url: "https://github.com/poroh"
   avatar: "https://avatars.githubusercontent.com/u/2820076?v=4"
+  square_avatar: false
+- name: DoctorCobweb
+  url: "https://github.com/DoctorCobweb"
+  avatar: "https://avatars.githubusercontent.com/u/1377953?u=fe7ea884c1cee06a586b491cc59264b4f389a757&v=4"
   square_avatar: false
 - name: "Donnie Flood"
   url: "https://github.com/floodfx"
