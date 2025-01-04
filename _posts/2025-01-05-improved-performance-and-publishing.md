@@ -73,7 +73,7 @@ the outside world into data of known types requires some additional code which
 would not be required in unsound systems. This decoder code can be unfamiliar
 and confusing to those new to Gleam, and in simple cases it can seem a chore.
 
-To aid with this the Gleam language server now includes code action to to
+To aid with this the Gleam language server now includes code action to
 generate a dynamic decoder for a custom type. For example, if you have this code:
 
 ```gleam
@@ -82,8 +82,8 @@ pub type Person {
 }
 ```
 
-If you place your cursor on the type header and and select the code action
-in your, then it'll be updated to this:
+If you place your cursor on the type header and select the code action in your,
+then it'll be updated to this:
 
 ```gleam
 import gleam/dynamic/decode
@@ -113,7 +113,7 @@ sitting behind you, watching your fingers on the keyboard.
 
 Gleam now only asks for your Hex credentials once, and uses that to create a
 long-lived API token, which will be stored on your filesystem and encrypted
-using a local password of your chosing. For all future interactions with Hex
+using a local password of your choosing. For all future interactions with Hex
 Gleam will ask for the local password, use that to decrypt the API key, and
 then use it to authenticate with the Hex APIs.
 
@@ -125,7 +125,7 @@ computer and the encrypted file stored on it.
 
 The Erlang virtual machine has a single namespace for modules. It does not have
 isolation of modules between different packages, so if two packages define
-modules with the same name name they can collise and cause a build failure or
+modules with the same name they can collide and cause a build failure or
 other undesired behaviour.
 
 To avoid this packages place their modules within their own namespace. For
@@ -134,7 +134,7 @@ within the `src/pumpkin/` directory.
 
 Sometimes people from other ecosystems with per-package isolation may not
 understand this convention and place all their code in the top-level namespace,
-using generic names, which results problems for any users of their package. To
+using generic names, which results in problems for any users of their package. To
 avoid this the `gleam publish` command will now check for top-level namespace
 pollution, explaining the problem and asking for confirmation if it is present.
 
@@ -163,7 +163,7 @@ use by others, publishing them as version 0.\*. Other people publish code that
 is good to use, but shy away from semantic versioning and publish them as
 v0.\*. In both of these cases the users of these packages have an inferior
 experience, unable to take advantage of the benefits that semantic versioning
-is designed to bring, sometimes resulting in irritating build errors.
+is designed to bring, which can lead to irritating build errors.
 
 Gleam will now ask for confirmation if a package is published with a v0.\*
 version, as it does not respect semantic versioning. The fewer zero-version
@@ -173,8 +173,9 @@ have.
 ## Variant deprecation
 
 In Gleam one can deprecate functions and types using the `@deprecated`
-attribute, causing the compiler to emit a warning if they are used. With this
-release it is also possible to deprecate individual custom type variants too!
+attribute, which causes the compiler to emit a warning if they are used. With
+this release it is also possible to deprecate individual custom type variants
+too!
 
 ```gleam
 pub type HashAlgorithm {
@@ -259,7 +260,7 @@ compile warning but permit you to compile the rest of your code.
 ```gleam
 pub fn wibble() {
   let x = {
-     // warning: unincomplete block
+     // warning: incomplete block
   }
   io.println(x)
 }
@@ -421,7 +422,7 @@ pub fn main() {
 }
 ```
 
-Triggering the code action result in the function capture being expanded to the
+Triggering the code action result in the function-capture being expanded to the
 full anonymous function syntax:
 
 ```gleam
