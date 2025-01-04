@@ -64,6 +64,17 @@ choco install gleam
 
 This will also install Erlang.
 
+#### Using Windows Package Manager
+
+```
+winget install --id=Gleam.Gleam  -e
+```
+Then you have to install Erlang 
+```
+winget install --id=Erlang.ErlangOTP  -e
+```
+make sure to add the bin folder to your path do the same with the folder that contains gleam.exe 
+
 ### Using the Nix package manager
 
 There is a [gleam-nix](https://github.com/vic/gleam-nix) flake you can use to get
