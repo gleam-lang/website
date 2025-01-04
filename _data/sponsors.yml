@@ -35,10 +35,6 @@
   url: "https://github.com/amouat"
   avatar: "https://avatars.githubusercontent.com/u/246775?u=78d611a7d7698d84e44b93399578a19185b03b39&v=4"
   square_avatar: false
-- name: "Agustinus Kristiadi"
-  url: "https://github.com/wiseodd"
-  avatar: "https://avatars.githubusercontent.com/u/2296722?u=dd9f63061d326c0e8d9244dd53dd555b9464223f&v=4"
-  square_avatar: false
 - name: "Ajit Krishna"
   url: "https://github.com/JitPackJoyride"
   avatar: "https://avatars.githubusercontent.com/u/40203625?u=5f013f039bf9367bcbe43d833ae482854118d224&v=4"
@@ -783,7 +779,7 @@
   url: "https://github.com/manuel-rubio"
   avatar: "https://avatars.githubusercontent.com/u/2188638?u=846b8f6bde5511898e384d5d9ceab0cfaac505fd&v=4"
   square_avatar: false
-- name: "Marcøs"
+- name: Marcos
   url: "https://github.com/ideaMarcos"
   avatar: "https://avatars.githubusercontent.com/u/571086?u=783a2cecfb87b7161b8a6b1a9cf6969b8443eab6&v=4"
   square_avatar: false
@@ -863,6 +859,10 @@
   url: "https://github.com/monocursive"
   avatar: "https://avatars.githubusercontent.com/u/2698317?u=5f4e314f8b7b93520c318a338d2c1dae642fee82&v=4"
   square_avatar: false
+- name: "Michał Łępicki"
+  url: "https://github.com/michallepicki"
+  avatar: "https://avatars.githubusercontent.com/u/4972756?u=3f1cbc61ce58ecb99528de5e23702c97155afbc9&v=4"
+  square_avatar: false
 - name: "Mikael Karlsson"
   url: "https://github.com/karlsson"
   avatar: "https://avatars.githubusercontent.com/u/305638?u=6c1d565b849a0ea69ebfc55f1809246e3ef299df&v=4"
@@ -932,7 +932,7 @@
   avatar: "https://avatars.githubusercontent.com/u/2016308?u=4e7d3322e9c77a1e705317b773985ac3798fc32d&v=4"
   square_avatar: false
 - name: Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  url: "https://github.com/l1f"
+  url: "https://github.com/ninanomenon"
   avatar: "https://avatars.githubusercontent.com/u/38247461?u=e6eba332364fbccc81ef0a2fdb79a3fb6c0d5d15&v=4"
   square_avatar: false
 - name: Nomio
@@ -1033,7 +1033,7 @@
   square_avatar: false
 - name: "Reilly Tucker Siemens"
   url: "https://github.com/reillysiemens"
-  avatar: "https://avatars.githubusercontent.com/u/3084059?u=9f31ce0bca6b3a84b0431c0a1c9eb9a79290b8d5&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/3084059?u=6674b1fc0435cadb369931c1ab82aebeb520fd58&v=4"
   square_avatar: false
 - name: "Renato Massaro"
   url: "https://github.com/renatomassaro"
@@ -1425,7 +1425,7 @@
   square_avatar: false
 - name: "yoshi~ "
   url: "https://github.com/joshi-monster"
-  avatar: "https://avatars.githubusercontent.com/u/84042103?u=7c3596c44c4701fc5c741d976faf775c36b54b20&v=4"
+  avatar: "https://avatars.githubusercontent.com/u/84042103?u=3ab7279f1efc2658488d79cdccc07617674d93f2&v=4"
   square_avatar: false
 - name: "~1814730"
   url: "https://liberapay.com/~1814730/"
