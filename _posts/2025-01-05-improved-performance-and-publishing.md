@@ -451,7 +451,7 @@ And thank you to the bug fixers and error message improvers
 For full details of the many fixes and improvements they've implemented see [the
 changelog][changelog].
 
-[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.6.md
+[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.7.md
 
 
 # It's my birthday 🎁
