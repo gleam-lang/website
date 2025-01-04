@@ -5,6 +5,8 @@ markdown: kramdown
 
 permalink: "/news/:title/"
 
+future: true
+
 title: Gleam
 description: Gleam is a fast, friendly, and functional language for building type-safe, scalable systems!
 
