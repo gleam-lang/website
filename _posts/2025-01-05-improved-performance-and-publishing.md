@@ -422,7 +422,7 @@ pub fn main() {
 }
 ```
 
-Triggering the code action result in the function-capture being expanded to the
+Triggering the code action results in the function-capture being expanded to the
 full anonymous function syntax:
 
 ```gleam
