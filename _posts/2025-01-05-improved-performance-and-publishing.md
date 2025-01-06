@@ -82,8 +82,8 @@ pub type Person {
 }
 ```
 
-If you place your cursor on the type header and select the code action in your,
-then it'll be updated to this:
+If you place your cursor on the type header and select the code action in your
+editor, then it'll be updated to this:
 
 ```gleam
 import gleam/dynamic/decode
