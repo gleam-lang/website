@@ -34,6 +34,7 @@ This document details the current state of the language server and its features.
   - [Discard unused result](#discard-unused-result)
   - [Fill labels](#fill-labels)
   - [Generate decoder](#generate-decoder)
+  - [Inexhaustive let to case](#inexhaustive-let-to-case)
   - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
   - [Remove unused imports](#remove-unused-imports)
@@ -356,6 +357,30 @@ fn person_decoder() -> decode.Decoder(Person) {
   use name <- decode.field("name", decode.string)
   use age <- decode.field("age", decode.int)
   decode.success(Person(name:, age:))
+}
+```
+
+## Inexhaustive let to case
+
+This code action can convert from `let` to `case` when the pattern is not exhaustive.
+
+```gleam
+pub fn unwrap_result(result: Result(a, b)) -> a {
+  let Ok(inner) = result // error: inexhaustive
+  inner
+}
+```
+
+If your cursor is within the `let` assignemnt then the code action will be
+suggested, and if run the code will be updated to this:
+
+```gleam
+pub fn unwrap_result(result: Result(a, b)) -> a {
+  let inner = case result {
+    Ok(inner) -> inner
+    Error(_) -> todo
+  }
+  inner
 }
 ```
 
