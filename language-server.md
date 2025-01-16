@@ -30,6 +30,7 @@ This document details the current state of the language server and its features.
   - [Add missing import](#add-missing-import)
   - [Add missing patterns](#add-missing-labels)
   - [Case correction](#case-correction)
+  - [Convert to and from use](#convert-to-and-from-use)
   - [Discard unused result](#discard-unused-result)
   - [Fill labels](#fill-labels)
   - [Generate decoder](#generate-decoder)
@@ -263,6 +264,31 @@ pub main() {
   let my_number = 100
 }
 ```
+
+## Qualify and unqualify
+
+These code actions can be used to convert between the `use` syntax and the
+regular function call syntax.
+
+```gleam
+pub fn main() {
+  use profile <- result.try(fetch_profile(user))
+  render_welcome(user, profile)
+}
+```
+
+If your cursor is within one of the `use` expression then the code action will
+be suggested, and if run the code will be updated to this:
+
+```gleam
+pub fn main() {
+  result.try(fetch_profile(user), fn(profile) {
+    render_welcome(user, profile)
+  })
+}
+```
+
+The running the code action again will reverse this change.
 
 ## Discard unused result
 
