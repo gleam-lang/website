@@ -32,6 +32,8 @@ This document details the current state of the language server and its features.
   - [Case correction](#case-correction)
   - [Convert to and from use](#convert-to-and-from-use)
   - [Discard unused result](#discard-unused-result)
+  - [Expand function capture](#expand-function-capture)
+  - [Extract variable](#extract-variablee)
   - [Fill labels](#fill-labels)
   - [Generate decoder](#generate-decoder)
   - [Inexhaustive let to case](#inexhaustive-let-to-case)
@@ -310,6 +312,46 @@ will be suggested, and if run the code will be updated to this:
 pub fn main() {
   let _ = function_which_can_fail()
   io.println("Done!")
+}
+```
+
+## Expand function capture
+
+This code action converts from the function capture syntax to an anonymous function.
+
+```gleam
+pub fn main() {
+  let add_eleven = int.add(_, 11)
+  list.map([1, 2, 3], add_eleven)
+}
+```
+
+If your cursor is within the function capture then code action will be
+suggested, and if run the code will be updated to this:
+
+```gleam
+pub fn main() {
+  list.map([1, 2, 3], fn(value) { int.add(value, 11) })
+}
+```
+
+## Extract variable
+
+This code action assigns assigns an expression to a variable.
+
+```gleam
+pub fn main() {
+  list.each(["Hello, Mike!", "Hello, Joe!"], io.println)
+}
+```
+
+If your cursor is within the list then code action will be suggested, and if
+run the code will be updated to this:
+
+```gleam
+pub fn main() {
+  let value = ["Hello, Mike!", "Hello, Joe!"]
+  list.each(value, io.println)
 }
 ```
 
