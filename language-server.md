@@ -32,6 +32,7 @@ This document details the current state of the language server and its features.
   - [Case correction](#case-correction)
   - [Discard unused result](#discard-unused-result)
   - [Fill labels](#fill-labels)
+  - [Generate decoder](#generate-decoder)
   - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
   - [Remove unused imports](#remove-unused-imports)
@@ -301,6 +302,34 @@ and if run the code will be updated to this:
 ```gleam
 pub fn main() {
   Date(year: todo, month: todo, day: todo)
+}
+```
+
+## Generate decoder
+
+This code action can generate a dynamic decoder function from a custom type
+definition.
+
+```gleam
+pub type Person {
+  Person(name: String, age: Int)
+}
+```
+
+If your cursor is within the `Person` then the code action will be suggested,
+and if run the code will be updated to this:
+
+```gleam
+import gleam/dynamic/decode
+
+pub type Person {
+  Person(name: String, age: Int)
+}
+
+fn person_decoder() -> decode.Decoder(Person) {
+  use name <- decode.field("name", decode.string)
+  use age <- decode.field("age", decode.int)
+  decode.success(Person(name:, age:))
 }
 ```
 
