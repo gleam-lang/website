@@ -8,7 +8,7 @@ layout: page
 
 - [Language tour](https://tour.gleam.run)
 
-  An in-browser interactive introduction the teaches the whole language.
+  An in-browser interactive introduction that teaches the whole language.
 
 - [Writing Gleam](/writing-gleam)
   
