@@ -413,7 +413,7 @@ pub fn unwrap_result(result: Result(a, b)) -> a {
 }
 ```
 
-If your cursor is within the `let` assignemnt then the code action will be
+If your cursor is within the `let` assignment then the code action will be
 suggested, and if run the code will be updated to this:
 
 ```gleam

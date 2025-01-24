@@ -64,7 +64,7 @@ brew install gleam
 #### asdf version manager
 
 [asdf](https://github.com/asdf-vm/asdf) is a tool for installing and managing
-multiple version of programming languages at the same time. Install the
+multiple versions of programming languages at the same time. Install the
 [asdf-gleam plugin](https://github.com/vic/asdf-gleam) to manage Gleam with
 asdf.
 
@@ -79,7 +79,7 @@ apk add gleam
 #### Arch Linux
 
 Gleam is available through the [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
-as package `gleam`. You can use your prefered [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
+as package `gleam`. You can use your preferred [helper](https://wiki.archlinux.org/index.php/AUR_helpers)
 to install it or clone it for manual build from [https://aur.archlinux.org/packages/gleam-git](https://aur.archlinux.org/packages/gleam-git).
 ```sh
 yay -S gleam

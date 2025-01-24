@@ -107,7 +107,7 @@ flyctl launch
 
 The CLI will ask you a series of questions:
 
-- What should the application should be named.
+- What the application should be named.
 - What Fly organisation should the application belong to.
 - What region the application should be deployed to.
 - Whether you would like a PostgreSQL database to go with the application.
