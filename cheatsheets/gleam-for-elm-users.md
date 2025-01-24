@@ -14,7 +14,7 @@ Another area in which Elm and Gleam differ is around talking to other languages.
 Elm does not provide user-defined foreign function interfaces for interacting
 with JavaScript code and libraries. All communication between Elm and JavaScript
 has to go through the Elm ports. In contrast to this, Gleam makes it easy to
-define inferfaces for using Erlang or JavaScript code and libraries directly and
+define interfaces for using Erlang or JavaScript code and libraries directly and
 has no concept of ports.
 
 ## Contents
@@ -749,7 +749,7 @@ pub type Result(value, reason) {
 
 The standard library provides the [gleam/result](https://hexdocs.pm/gleam_stdlib/gleam/result.html) module for interacting with `Result` values.
 
-Similar to the Elm function `Result.andThen`, the Gleam standard library includes a [result.try](https://hexdocs.pm/gleam_stdlib/gleam/result.html#try) function that allows for chaining together functions that return `Result` values. This can be used in conjuntion with the `use` keyword to allow for early returns from a function. A `use` expression will take the value from the passed in `Result` and treat the rest of the function body as the function that should be called if the `Result` is `Ok`. If the passed in `Result` is an `Error`, the rest of the function body will not get called and the `Error` will be immediately returned.
+Similar to the Elm function `Result.andThen`, the Gleam standard library includes a [result.try](https://hexdocs.pm/gleam_stdlib/gleam/result.html#try) function that allows for chaining together functions that return `Result` values. This can be used in conjunction with the `use` keyword to allow for early returns from a function. A `use` expression will take the value from the passed in `Result` and treat the rest of the function body as the function that should be called if the `Result` is `Ok`. If the passed in `Result` is an `Error`, the rest of the function body will not get called and the `Error` will be immediately returned.
 
 ```gleam
 let a_number = "1"
