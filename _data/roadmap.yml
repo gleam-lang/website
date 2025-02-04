@@ -1,34 +1,29 @@
 ---
 in-progress:
   - Custom CA certificate support
-  - Custom message syntax for `let assert`
-  - Custom type construction codegen monomorphisation
-  - Custom type constructor deprecation
-  - Custom type update type re-specialisation
   - Debug keyword `echo`
-  - External file subdirectory support
   - Hex search integration
   - Improved dependency versions conflict error messages
   - JavaScript sourcemaps
-  - Language server `let` to `case` code action
-  - Language server convert to/from `use` code action
-  - Local Hex API key encryption
   - Unaligned bit array support on JavaScript
-  - Language server extract variable code action
-  - Language server code action to generate dynamic decoder
+  - Language server label completion
+  - Fault tolerant parsing of `case` expressions
+  - Fault tolerant analysis of pipelines
+  - Support OTP27 doc comments
+  - Langauge server generate function code action
+  - Langauge server pattern match on value code action
+  - Language server rename variable code action
 planned:
   - Dead code detection improvements
   - Hex private package support
   - Language server constant expression completion
   - Language server extract const code action
   - Language server inline variable code action
-  - Language server label completion
   - Language server renaming
   - Mutual tail call optimisation on JavaScript
   - OTP named process support
   - Test keyword `assert`
   - API key generation when Hex rate limits reached
-  - Fault tolerant parsing of `case` expressions
   - Removing Instantly Invoked Function Expressions from generated JavaScript code
   - Generating `case` expressions using a decision tree on JavaScript
   - Lifting constant expressions into global scope on JavaScript
@@ -39,6 +34,19 @@ research:
   - Test discovery functionality
   - Build tool watch mode
 done:
+  - version: v1.7
+    date: 2025-01-05
+    items:
+      - Custom message syntax for `let assert`
+      - Custom type construction codegen monomorphisation
+      - Custom type constructor deprecation
+      - Custom type update type re-specialisation
+      - External file subdirectory support
+      - Language server `let` to `case` code action
+      - Language server convert to/from `use` code action
+      - Language server extract variable code action
+      - Language server code action to generate dynamic decoder
+      - Local Hex API key encryption
   - version: v1.6
     date: 2024-11-19
     items:
