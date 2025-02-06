@@ -1,10 +1,8 @@
 <li>
-  <label>
-    {{ include.label }}
-    <div class="bar" style="
-width: max(1em, calc(({{ include.amount }} / {{ include.max }}) * 100%));
-">
-      {{ include.amount }}
-    </div>
-  </label>
+  <span class="label">{{ include.label }}</span>
+  <div
+    class="bar"
+    style="flex-basis: max(calc(({{ include.amount }} / {{ include.max }}) * 70%), 1px);"
+  ></div>
+  {{ include.amount }}
 </li>

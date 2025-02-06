@@ -903,9 +903,37 @@ main.content {
 
 .bar-chart .bar {
   background-color: var(--color-faff-pink);
-  text-align: right;
-  padding: 0 4px;
-  color: var(--color-charcoal);
+  display: inline-block;
+  height: 1em;
+  flex-grow: 0;
+  margin-right: var(--gap-1);
+}
+
+.bar-chart li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bar-chart li > * {
+  flex: 1;
+}
+.bar-chart li {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.bar-chart .label {
+  flex-grow: 0;
+  flex-basis: 100%;
+  margin-right: var(--gap-1);
+}
+
+@media (min-width: 960px) {
+  .bar-chart .label {
+    flex-basis: 200px;
+    text-align: right;
+  }
 }
 
 .community-socials {
