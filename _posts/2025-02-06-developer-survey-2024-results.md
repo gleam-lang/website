@@ -354,15 +354,15 @@ source.
 ## Do you sponsor Gleam?
 
 <ol class="bar-chart">
-  {% include chartbar.html amount=655 max=655 label="false" %}
-  {% include chartbar.html amount=146 max=655 label="true" %}
+  {% include chartbar.html amount=655 max=655 label="No" %}
+  {% include chartbar.html amount=146 max=655 label="Yes" %}
 </ol>
 
 ### Just production Gleam users
 
 <ol class="bar-chart">
-  {% include chartbar.html amount=39 max=39 label="false" %}
-  {% include chartbar.html amount=11 max=39 label="true" %}
+  {% include chartbar.html amount=39 max=39 label="No" %}
+  {% include chartbar.html amount=11 max=39 label="Yes" %}
 </ol>
 
 It's great to see so many people sponsoring Gleam! All the funding for the
