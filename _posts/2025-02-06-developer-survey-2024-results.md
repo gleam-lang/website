@@ -138,7 +138,7 @@ hope the trend continues.
 We have had much less success getting sponsorship from corporate users. This is
 disappointing as everyone benefits from dependencies being well maintained and
 sufficiently funded. The silver lining is that our lack of success here implies
-that there is more money on the table, and if we find other other method that
+that there is more money on the table, and if we find some other method that
 works better for corporate users then we may be able to substantially increase
 project funding.
 
