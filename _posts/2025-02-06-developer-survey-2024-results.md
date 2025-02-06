@@ -119,8 +119,8 @@ is a great indicator of adoption in the language's first year.
 ## Are you using Gleam in production?
 
 <ol class="bar-chart">
-  {% include chartbar.html amount=572 max=572 label="Yes" %}
-  {% include chartbar.html amount=52 max=572 label="Not yet" %}
+  {% include chartbar.html amount=572 max=572 label="Not yet" %}
+  {% include chartbar.html amount=52 max=572 label="Yes" %}
 </ol>
 
 Around 8% of people of respondents have got Gleam into production, despite the
@@ -286,9 +286,6 @@ this runtime in the Gleam toolchain.
   {% include chartbar.html amount=3 max=48 label="Bun" %}
 </ol>
 
-Some people put platforms such as "AWS Lambda" or "Kubernetes" as their
-operating system here. I've largely put these within the "Linux" category.
-
 ## What operating system do you use in development?
 
 <ol class="bar-chart">
@@ -327,6 +324,9 @@ that huge portion of potential users behind and limit Gleam's growth.
 The BSDs showing quite strongly here too! It would be great for the Gleam
 project to be able to run the tests on and provide binaries for FreeBSD and
 OpenBSD, but unfortunately our CI system, GitHub Actions, does not support them.
+
+Some people put platforms such as "AWS Lambda" or "Kubernetes" as their
+operating system here. I've largely put these within the "Linux" category.
 
 ## What sort of projects do you make with Gleam?
 
