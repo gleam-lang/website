@@ -6,13 +6,6 @@ in-progress:
   - Improved dependency versions conflict error messages
   - JavaScript sourcemaps
   - Unaligned bit array support on JavaScript
-  - Language server label completion
-  - Fault tolerant parsing of `case` expressions
-  - Fault tolerant analysis of pipelines
-  - Support OTP27 doc comments
-  - Langauge server generate function code action
-  - Langauge server pattern match on value code action
-  - Language server rename variable code action
 planned:
   - Dead code detection improvements
   - Hex private package support
@@ -34,6 +27,16 @@ research:
   - Test discovery functionality
   - Build tool watch mode
 done:
+  - version: v1.8
+    date: 2025-02-07
+    items:
+      - Language server label completion
+      - Fault tolerant parsing of `case` expressions
+      - Fault tolerant analysis of pipelines
+      - Support OTP27 doc comments
+      - Langauge server generate function code action
+      - Langauge server pattern match on value code action
+      - Language server rename variable code action
   - version: v1.7
     date: 2025-01-05
     items:
