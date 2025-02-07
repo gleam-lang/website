@@ -1,7 +1,7 @@
 ---
 author: Louis Pilfold
 author-link: https://github.com/lpil
-title: Gleam gets "rename variable"
+title: Gleam gets ‟rename variable”
 subtitle: Gleam v1.8.0 released
 tags:
   - Release
