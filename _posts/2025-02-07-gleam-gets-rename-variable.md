@@ -1,7 +1,7 @@
 ---
 author: Louis Pilfold
 author-link: https://github.com/lpil
-title: Gleam gets ‟rename variable”
+title: Gleam gets “rename variable”
 subtitle: Gleam v1.8.0 released
 tags:
   - Release
@@ -50,7 +50,7 @@ feature!
 Erlang OTP27 added the `-doc` attribute, a new standard for adding documentation
 to Erlang based code. The documentation for functions with this attribute can be
 programmatically accessed, for example using the documentation helper in the
-Erlang and Elixir REPLs. 
+Erlang and Elixir REPLs.
 
 ```txt
 Eshell V15.1.3 (press Ctrl+G to abort, type help(). for help)
@@ -156,6 +156,7 @@ pub fn greet_logged_user() {
   "Hello!"
 }
 ```
+
 ```txt
 error: Type mismatch
   ┌─ /main.gleam:7:3
@@ -171,6 +172,7 @@ Found type:
 
     String
 ```
+
 Thank you Jak!
 
 ## `gleam deps tree`
@@ -283,7 +285,6 @@ For full details of the many fixes and improvements they've implemented see [the
 changelog][changelog].
 
 [changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.8.md
-
 
 ## A call for support
 
