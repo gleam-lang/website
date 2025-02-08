@@ -33,7 +33,7 @@ done:
       - Language server label completion
       - Fault tolerant parsing of `case` expressions
       - Fault tolerant analysis of pipelines
-      - Support OTP27 doc comments
+      - Support OTP27 doc attributes
       - Langauge server generate function code action
       - Langauge server pattern match on value code action
       - Language server rename variable code action
