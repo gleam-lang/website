@@ -179,6 +179,16 @@ ufw enable
 
 `ufw` may prompt for confirmation when enabling it. Accept by entering `y`.
 
+## Enable automatic Ubuntu security updates
+
+```
+apt install --yes unattended-upgrades
+systemctl start unattended-upgrades
+```
+
+If you are not using Ubuntu Linux there may be some other way to do this for
+your distribution.
+
 ## Install Caddy and Podman
 
 Caddy is the reverse proxy that we will use to provision TLS certificates and
