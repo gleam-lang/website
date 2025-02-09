@@ -55,6 +55,7 @@ layout: page
 
 ## Deployment
 
+- [Deploying to a Linux server](/deployment/linux-server)
 - [Deploying on Fly.io](/deployment/fly)
 
 ### Community deployment guides
