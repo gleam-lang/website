@@ -36,8 +36,8 @@ provider.
 If your server has a public IPv6 address add an AAAA record for the same domain
 to that address.
 
-We will be used the domain `example.gleam.run` for the rest of this tutorial. Be
-sure to replace this with your domain.
+We will be using the domain `example.gleam.run` for the rest of this tutorial.
+Be sure to replace this with your domain.
 
 ## Prepare your application
 
@@ -70,7 +70,7 @@ RUN cd /app && gleam export erlang-shipment
 FROM erlang:27.1.1.0-alpine
 RUN \
   addgroup --system webapp && \
-  adduser --system webapp -g webapp   
+  adduser --system webapp -g webapp
 COPY --from=build /app/build/erlang-shipment /app
 WORKDIR /app
 ENTRYPOINT ["/app/entrypoint.sh"]
@@ -84,13 +84,14 @@ If your application normally needs additional arguments to `gleam run` to start
 then edit the `CMD ["run"]` line to include them.
 
 If you have other requirements (for example, if you are using NIFs and need a C
-compiler) you will may need to edit this file further to install the required
+compiler) you will need to edit this file further to install the required
 packages.
 
 ## Build your container on CI
 
 We will be using GitHub actions to build and publish the container image to the
-GitHub container registry using docker each time a git tag is pushed to the repo.
+GitHub container registry using docker each time a git tag is pushed to the
+repo.
 
 Create a file at `.github/workflows/build-container.yml` with these contents:
 
