@@ -102,6 +102,15 @@ Gleam is available as part of the official packages repository. Install it with:
 sudo xbps-install gleam
 ```
 
+#### Fedora
+
+You can install Gleam on Fedora using the DNF package manager. Run the following command:
+
+```sh
+sudo dnf copr enable frostyx/gleam
+sudo dnf install gleam
+```
+
 ### FreeBSD
 
 Gleam is available in ports, and also in binary packages. You may need
