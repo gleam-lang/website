@@ -23,6 +23,7 @@ This document details the current state of the language server and its features.
   - [Hover](#hover)
   - [Go-to definition](#go-to-definition)
   - [Code completion](#code-completion)
+  - [Rename](#rename)
   - [Document symbols](#document-symbols)
   - [Signature help](#signature-help)
 - [Code actions](#code-actions)
@@ -170,6 +171,13 @@ The language server support completion of:
 - Record fields.
 - Type constructors in type annotations.
 - Unqualified types and values in import statements.
+
+## Code completion
+
+The langauge server is able to rename:
+
+- Function arguments.
+- Local variables.
 
 ## Document symbols
 
