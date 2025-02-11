@@ -39,6 +39,7 @@ This document details the current state of the language server and its features.
   - [Generate decoder](#generate-decoder)
   - [Generate function](#generate-function)
   - [Inexhaustive let to case](#inexhaustive-let-to-case)
+  - [Pattern match](#pattern-match)
   - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
   - [Remove unused imports](#remove-unused-imports)
@@ -460,6 +461,33 @@ pub fn unwrap_result(result: Result(a, b)) -> a {
     Error(_) -> todo
   }
   inner
+}
+```
+
+## Pattern match
+
+This code action can generate an exhaustive case expression for variable or argument.
+
+```gleam
+import gleam/list
+
+pub fn run(items: List(Int)) -> Nil {
+  let result = list.first(items)
+}
+```
+
+If your cursor is within the `result` assignment then the code action will be
+suggested, and if run the code will be updated to this:
+
+```gleam
+import gleam/list
+
+pub fn run(items: List(Int)) -> Nil {
+  let result = list.first(items)
+  case result {
+    Ok(value) -> todo
+    Error(value) -> todo
+  }
 }
 ```
 
