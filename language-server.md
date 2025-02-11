@@ -37,6 +37,7 @@ This document details the current state of the language server and its features.
   - [Extract variable](#extract-variablee)
   - [Fill labels](#fill-labels)
   - [Generate decoder](#generate-decoder)
+  - [Generate function](#generate-function)
   - [Inexhaustive let to case](#inexhaustive-let-to-case)
   - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
@@ -407,6 +408,34 @@ fn person_decoder() -> decode.Decoder(Person) {
   use name <- decode.field("name", decode.string)
   use age <- decode.field("age", decode.int)
   decode.success(Person(name:, age:))
+}
+```
+
+## Generate function
+
+This code action can generate the definition of a local function that is being
+used but does not yet exist.
+
+```gleam
+pub fn main() {
+  let items = [1, 2, 3]
+  io.println(describe(items))
+}
+```
+
+If your cursor is within `describe` then the code action will be suggested,
+and if run the code will be updated to this:
+
+```gleam
+import gleam/io
+
+pub fn main() {
+  let items = [1, 2, 3]
+  io.println(describe(items))
+}
+
+fn describe(list: List(Int) -> String {
+  todo
 }
 ```
 
