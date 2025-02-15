@@ -139,8 +139,6 @@ Gleam is available as part of the official packages repository. Install it with:
 # zypper install gleam
 ```
 
-There are also nightlies available at this [home project](https://build.opensuse.org/project/show/home:Pi-Cla:gleam-nightly)
-
 ### Android
 
 #### Termux
