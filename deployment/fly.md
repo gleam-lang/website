@@ -37,6 +37,7 @@ pub fn main() {
     web_service
     |> mist.new
     |> mist.port(8080)
+    |> mist.bind("0.0.0.0")
     |> mist.start_http
   process.sleep_forever()
 }
@@ -47,9 +48,8 @@ fn web_service(_request) {
 }
 ```
 
-Now we have a web application that listens on port 8080 and can be started with
+Now we have a web application that listens on 0.0.0.0 with port 8080 and can be started with
 `gleam run`.
-
 
 ## Add a Dockerfile
 
