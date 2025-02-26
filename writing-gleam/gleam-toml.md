@@ -76,6 +76,9 @@ gleam_erlang = ">= 0.2.0 and < 2.0.0"
 gleam_http = ">= 2.1.0 and < 3.0.0"
 # Local dependencies can be specified with a path
 my_other_project = { path = "../my_other_project" }
+# Git dependencies can also be used
+my_git_library = { git = "git@github.com/my-project/my-library", ref = "a8b3c5d82" }
+latest_stdlib = { git = "git@github.com/gleam-lang/stdlib", ref = "main" }
 
 # The Hex packages the project needs for the tests (optional)
 # These will not be included if the package is published to Hex.
