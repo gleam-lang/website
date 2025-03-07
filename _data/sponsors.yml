@@ -619,6 +619,10 @@
   url: "https://github.com/monzool"
   avatar: "https://avatars.githubusercontent.com/u/2856927?u=0b997b23cf44fbddd231cc911515da593d9dccd1&v=4"
   square_avatar: false
+- name: "Jean-Adrien Ducastaing"
+  url: "https://github.com/MightyGoldenOctopus"
+  avatar: "https://avatars.githubusercontent.com/u/25876592?u=cbbe59f82b8fa74e99d859efb2831e8781b494fc&v=4"
+  square_avatar: false
 - name: "Jean-Luc Geering"
   url: "https://github.com/jlgeering"
   avatar: "https://avatars.githubusercontent.com/u/388658?u=f3b1f85d7c3ac2b29944b7a762d7cca64336d256&v=4"
@@ -907,10 +911,6 @@
   url: "https://github.com/Kuuuuuuuu"
   avatar: "https://avatars.githubusercontent.com/u/69802296?u=9ff7d0083a2223d9683fc9780ff445fdd46cb04c&v=4"
   square_avatar: false
-- name: "Nicholas Moen"
-  url: "https://github.com/arcanemachine"
-  avatar: "https://avatars.githubusercontent.com/u/3351767?u=d365f807d63b0f3cb1365f21c17b48a15299c51a&v=4"
-  square_avatar: false
 - name: "Nick Chapman"
   url: "https://github.com/nchapman"
   avatar: "https://avatars.githubusercontent.com/u/3095?u=1c0038e3305d41b5911a005d818f8f4f10c2af4e&v=4"
@@ -962,10 +962,6 @@
 - name: "Oliver Tosky"
   url: "https://github.com/otosky"
   avatar: "https://avatars.githubusercontent.com/u/42260747?u=69d089387c743d89427aa4ad8740cfb34045a9e0&v=4"
-  square_avatar: false
-- name: "Osman Cea"
-  url: "https://github.com/daslaf"
-  avatar: "https://avatars.githubusercontent.com/u/7907382?u=8b6a69b4e35b06f3b7bf79b01066c2d75f3c6540&v=4"
   square_avatar: false
 - name: "Patrick Wheeler"
   url: "https://github.com/Davorak"
@@ -1234,6 +1230,10 @@
 - name: "Tristan de Cacqueray"
   url: "https://github.com/TristanCacqueray"
   avatar: "https://avatars.githubusercontent.com/u/154392?u=e2455759892678ce94360af4620793f79a91a0e9&v=4"
+  square_avatar: false
+- name: "Tudor Luca"
+  url: "https://github.com/lucamtudor"
+  avatar: "https://avatars.githubusercontent.com/u/3036785?u=0564946f5f1483a15f357bfe1da8aaba413d7f84&v=4"
   square_avatar: false
 - name: "Valerio Viperino"
   url: "https://github.com/vvzen"
