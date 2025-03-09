@@ -114,12 +114,12 @@ jobs:
         run: docker build . --file Dockerfile --tag webapp
 
       - name: Log in to registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "{% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}" | docker login ghcr.io -u {% raw %}${{ github.actor }}{% endraw %} --password-stdin
 
       - name: Push image
         run: |
           IMAGE_ID=ghcr.io/gleam-run/example
-          IMAGE_ID="$IMAGE_ID":$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          IMAGE_ID="$IMAGE_ID":$(echo "{% raw %}${{ github.ref }}{% endraw %}" | sed -e 's,.*/\(.*\),\1,')
           docker tag webapp $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 ```
