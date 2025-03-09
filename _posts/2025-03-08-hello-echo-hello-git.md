@@ -149,7 +149,7 @@ path to CA certificates for Gleam to use when interacting with the Hex package
 manager servers, making Gleam usable in these enterprise environments.
 Thank you [winstxnhdw](https://github.com/winstxnhdw)!
 
-### Convert to and from pipeline code actions
+## Convert to and from pipeline code actions
 
 Gleam's much-loved pipe syntax gives programmers another way to write nested
 function calls so that they read top-to-botton and left-to-right.
