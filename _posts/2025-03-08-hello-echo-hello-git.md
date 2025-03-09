@@ -48,6 +48,13 @@ pub fn main() {
 }
 ```
 
+The output of this program will look like this:
+
+```txt
+src/main.gleam:2
+[1, 2, 3]
+```
+
 It can also be used in pipelines. Here the list returned by the first `list.map`
 call will be printed.
 
