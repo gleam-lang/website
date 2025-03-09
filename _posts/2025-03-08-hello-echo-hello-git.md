@@ -16,11 +16,11 @@ take a look!
 
 ## Echo debug printing
 
-There are debuggers you can use with with Gleam, however the most popular ways
+There are debuggers you can use with Gleam, however the most popular ways
 to understand the runtime behaviour of a Gleam program is through writing tests
 and through print debugging.
 
-The standard library function `io.debug` is mostly commonly used for print
+The standard library function `io.debug` is most commonly used for print
 debugging. It takes a value of any type, uses target specific runtime
 reflection to turn it into a string of Gleam syntax, and then prints it to
 standard-error. This works well, but there are some ways in which this function
@@ -39,8 +39,8 @@ is not optimal:
 
 To improve on this the `echo` keyword has been introduced. Prefix an expression
 with it and the value will be printed to standard-error, along with the path to
-the file and line containing the echo expression, so you can click jump to it in
-your editor.
+the file and line containing the echo expression, so you can click to jump to it
+in your editor.
 
 ```gleam
 pub fn main() {
@@ -68,7 +68,7 @@ output, but in future it'll be enhanced to make use of the compiler's static
 analysis.
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)! We had all
-manner of annoying CI related problems when implementing the integration tests
+manner of annoying CI-related problems when implementing the integration tests
 for this feature, Jak's a very patient and determined programmer indeed!
 
 ## Git dependencies
@@ -136,7 +136,7 @@ documentation generator to implement the search index interface so Gleam
 packages are included in the search. Thank you Diemo!
 
 Another option for searching within Gleam packages is [Gloogle](https://gloogle.run/search?q=fn(Int,%20Int)%20-%3E%20Order),
-a Gleam community project which can even search by function type signature.
+a Gleam community project, which can even search by function type signature.
 
 ## Custom CA certificates support
 
@@ -144,19 +144,19 @@ Some enterprise networks may perform TLS interception for security reasons. In
 these environments custom CA certificates must be used as otherwise requests
 will get TLS errors due to the unknown authority of the injected certificates.
 
-The new `GLEAM_CACERTS_PATH` environment variable can be used specify a
+The new `GLEAM_CACERTS_PATH` environment variable can be used to specify a
 path to CA certificates for Gleam to use when interacting with the Hex package
 manager servers, making Gleam usable in these enterprise environments.
 Thank you [winstxnhdw](https://github.com/winstxnhdw)!
 
 ### Convert to and from pipeline code actions
 
-Gleam's much loved pipe syntax gives programmers another way to write nested
+Gleam's much-loved pipe syntax gives programmers another way to write nested
 function calls so that they read top-to-botton and left-to-right.
 
 Two new language server code actions have been added to help you refactor
-between the pipe and regular function call syntaxes. Triggering them on these
-two code examples will edit your code to match the other.
+between the pipe syntax and regular function call syntax. Triggering them on
+these two code examples will edit your code to match the other.
 
 ```gleam
 import gleam/list
@@ -173,7 +173,7 @@ pub fn main() {
 }
 ```
 
-You can also chose to pipe arguments other than the first by selecting them in
+You can also choose to pipe arguments other than the first by selecting them in
 your editor before triggering the code action. Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Generate JSON encoder code action
@@ -236,7 +236,7 @@ Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 ## Generate multi-variant decoder code action
 
 Gleam's `Dynamic` type represents data of unknown shape that comes from outside
-of the Gleam program, for example data send to a HTTP server as JSON. To convert
+of the Gleam program, for example data sent to a HTTP server as JSON. To convert
 data from dynamic into known Gleam types the decoder API is used.
 
 A previous release added convenient a code action which would generate a dynamic
@@ -278,8 +278,8 @@ Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 
 ## String interpolate code action
 
-The language server now offers a convenient code action to easily interpolate a
-value into a string. If the cursor is inside a literal string the language
+The language server now offers a convenient code action to interpolate a value
+into a string easily. If the cursor is inside a literal string the language
 server will offer to split it:
 
 ```gleam
@@ -289,7 +289,7 @@ server will offer to split it:
 "wibble " <> todo <> " wobble"
 ```
 
-And if the cursor is selecting a valid gleam name, the language server will
+And if the cursor is selecting a valid Gleam name, the language server will
 offer to interpolate it as a variable:
 
 ```gleam
@@ -317,7 +317,7 @@ let double = fn(number) { int.double(number, 2) }
 let double = int.double(_, 2)
 ```
 
-If the function capture syntax is used without any additional arguments then it
+If the function capture syntax is used without any additional arguments, then it
 is redundant and does nothing that referring the function directly wouldn't do.
 
 ```gleam
