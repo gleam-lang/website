@@ -127,10 +127,10 @@ allow_hrtime = false
 allow_env = ["DATABASE_URL"]
 
 # A bool or a list of IP addresses or hostnames (optionally with ports) 
-allow_net = ["example.com:443"],
+allow_net = ["example.com:443"]
 
 # A bool or a list of paths
-allow_run = ["./bin/migrate.sh"],
-allow_read = ["./database.sqlite"],
-allow_write = ["./database.sqlite"],
+allow_run = ["./bin/migrate.sh"]
+allow_read = ["./database.sqlite"]
+allow_write = ["./database.sqlite"]
 ```
