@@ -299,8 +299,8 @@ pub fn main() {
 }
 ```
 
-If your cursor is within list argument then the code action will be suggested,
-and if run the code will be updated to this:
+If your cursor is within the list argument then the code action will be
+suggested, and if run the code will be updated to this:
 
 ```gleam
 import gleam/list
