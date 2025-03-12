@@ -42,6 +42,7 @@ This document details the current state of the language server and its features.
   - [Generate function](#generate-function)
   - [Generate JSON encoder](#generate-json-encoder)
   - [Inexhaustive let to case](#inexhaustive-let-to-case)
+  - [Inline variable](#inline-variable)
   - [Pattern match](#pattern-match)
   - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
@@ -529,6 +530,26 @@ pub fn unwrap_result(result: Result(a, b)) -> a {
     Error(_) -> todo
   }
   inner
+}
+```
+
+## Inline variable
+
+This code action can inline a variable that is used only once.
+
+```gleam
+pub fn main() {
+  let greeting = "Hello!"
+  echo greeting
+}
+```
+
+If your cursor is within the `greeting` variable then the code action will be
+suggested, and if run the code will be updated to this:
+
+```gleam
+pub fn main() {
+  echo "Hello!"
 }
 ```
 
