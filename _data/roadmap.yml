@@ -1,24 +1,18 @@
 ---
 in-progress:
-  - Custom CA certificate support
-  - Debug keyword `echo`
-  - Hex search integration
-  - Improved dependency versions conflict error messages
   - JavaScript sourcemaps
-  - Unaligned bit array support on JavaScript
+  - OTP named process support
+  - Generating `case` expressions using a decision tree on JavaScript
+  - Language server extract const code action
+  - Removing Instantly Invoked Function Expressions from generated JavaScript code
 planned:
   - Dead code detection improvements
   - Hex private package support
   - Language server constant expression completion
-  - Language server extract const code action
-  - Language server inline variable code action
   - Language server renaming
   - Mutual tail call optimisation on JavaScript
-  - OTP named process support
   - Test keyword `assert`
   - API key generation when Hex rate limits reached
-  - Removing Instantly Invoked Function Expressions from generated JavaScript code
-  - Generating `case` expressions using a decision tree on JavaScript
   - Lifting constant expressions into global scope on JavaScript
 research:
   - OTP release building
@@ -27,6 +21,20 @@ research:
   - Test discovery functionality
   - Build tool watch mode
 done:
+  - version: v1.9
+    date: 2025-03-08
+    items:
+      - Custom CA certificate support
+      - Debug keyword `echo`
+      - Hex search integration
+      - Improved dependency versions conflict error messages
+      - Unaligned bit array support on JavaScript
+      - Langauge server jump to type definition
+      - Langauge server convert call to pipeline code action
+      - Langauge server convert pipeline to call code action
+      - Langauge server generate JSON encoder code action
+      - Langauge server inline variable code action
+      - Langauge server interpolate string code action
   - version: v1.8
     date: 2025-02-07
     items:
