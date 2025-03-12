@@ -90,8 +90,8 @@ packages.
 ## Build your container on CI
 
 We will be using GitHub actions to build and publish the container image to the
-GitHub container registry using docker each time a git tag is pushed to the
-repo.
+GitHub container registry using docker each time a git tag starting with `v` is
+pushed to the repo. For example, `v1.0.0`.
 
 Create a file at `.github/workflows/build-container.yml` with these contents:
 
@@ -100,6 +100,7 @@ name: Build container image
 on:
   push:
     tags:
+      - v*
 
 jobs:
   push:
@@ -119,9 +120,9 @@ jobs:
       - name: Push image
         run: |
           IMAGE_ID=ghcr.io/gleam-run/example
-          IMAGE_ID="$IMAGE_ID":$(echo "{% raw %}${{ github.ref }}{% endraw %}" | sed -e 's,.*/\(.*\),\1,')
-          docker tag webapp $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+          TAG="$IMAGE_ID":$(echo "{% raw %}${{ github.ref }}{% endraw %}" | sed -e 's,.*/\(.*\),\1,')
+          docker tag webapp "$TAG"
+          docker push "$TAG"
 ```
 
 Edit `IMAGE_ID=ghcr.io/gleam-run/example` with the name of your GitHub
@@ -247,7 +248,7 @@ the correct port.
 Environment variables can be added using the `Environment=KEY=value` syntax.
 
 Directories on the server can be made accessible to the application inside the
-container using the ` Volume=/path/on/serevr:/path/in/container:rw,z` syntax.
+container using the `Volume=/path/on/server:/path/in/container:rw,z` syntax.
 
 See the [Podman systemd](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html)
 documentation for more detail.
