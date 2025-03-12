@@ -50,7 +50,7 @@ pub fn main() {
 
 The output of this program will look like this:
 
-<pre><code><span class="code-comment">src/main.gleam:2</span>
+<pre><code class="no-highlight"><span class="code-prompt">src/main.gleam:2</span>
 [1, 2, 3]</code></pre>
 
 It can also be used in pipelines. Here the list returned by the first `list.map`
