@@ -165,9 +165,8 @@ The language server supports go-to definition for:
 ## Go-to type definition
 
 The language server supports go-to type definition. When triggered on an
-expression and trigger the feature and the language server will identify the
-types of all the values used in the expression and present their definitions for
-you to view and to jump to.
+expression the language server will identify the types of all the values used in
+the expression and present their definitions for you to view and to jump to.
 
 ## Code completion
 
