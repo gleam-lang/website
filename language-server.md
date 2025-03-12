@@ -43,6 +43,7 @@ This document details the current state of the language server and its features.
   - [Generate JSON encoder](#generate-json-encoder)
   - [Inexhaustive let to case](#inexhaustive-let-to-case)
   - [Inline variable](#inline-variable)
+  - [Interpolate string](#interpolate-string)
   - [Pattern match](#pattern-match)
   - [Qualify and unqualify](#qualify-and-unqualify)
   - [Remove redundant tuples](#remove-redundant-tuples)
@@ -550,6 +551,41 @@ suggested, and if run the code will be updated to this:
 ```gleam
 pub fn main() {
   echo "Hello!"
+}
+```
+## Interpolate string
+
+This code action can split a string in order to interpolate a value.
+
+```gleam
+pub fn greet(name: String) -> String {
+  "Hello, !"
+}
+```
+
+If your cursor is before the `!` character in the string then the code action
+will be suggested, and if run the code will be updated to this:
+
+```gleam
+pub fn greet(name: String) -> String {
+  "Hello, " <> todo <> "!"
+}
+```
+
+
+If the cursor is selecting a valid Gleam name then that will be used as a
+variable name in the interpolation.
+
+
+```gleam
+pub fn greet(name: String) -> String {
+  "Hello, name!"
+  //      ^^^^ This is selected
+}
+```
+```gleam
+pub fn greet(name: String) -> String {
+  "Hello, " <> name <> "!"
 }
 ```
 
