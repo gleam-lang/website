@@ -22,6 +22,7 @@ This document details the current state of the language server and its features.
   - [Code formatting](#code-formatting)
   - [Hover](#hover)
   - [Go-to definition](#go-to-definition)
+  - [Go-to type definition](#go-to-type-definition)
   - [Code completion](#code-completion)
   - [Rename](#rename)
   - [Document symbols](#document-symbols)
@@ -160,6 +161,13 @@ The language server supports go-to definition for:
 - Import statements, including unqualified values and types.
 - Type annotations.
 - Variables.
+
+## Go-to type definition
+
+The language server supports go-to type definition. When triggered on an
+expression and trigger the feature and the language server will identify the
+types of all the values used in the expression and present their definitions for
+you to view and to jump to.
 
 ## Code completion
 
