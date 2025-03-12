@@ -40,6 +40,7 @@ This document details the current state of the language server and its features.
   - [Fill labels](#fill-labels)
   - [Generate decoder](#generate-decoder)
   - [Generate function](#generate-function)
+  - [Generate JSON encoder](#generate-json-encoder)
   - [Inexhaustive let to case](#inexhaustive-let-to-case)
   - [Pattern match](#pattern-match)
   - [Qualify and unqualify](#qualify-and-unqualify)
@@ -475,6 +476,35 @@ pub fn main() {
 
 fn describe(list: List(Int) -> String {
   todo
+}
+```
+
+## Generate JSON encoder
+
+This code action can generate a function that turns a custom type value into
+JSON using the `gleam_json` library.
+
+```gleam
+pub type Person {
+  Person(name: String, age: Int)
+}
+```
+
+If your cursor is within `Person` definition then the code action will be
+suggested, and if run the code will be updated to this:
+
+```gleam
+import gleam/json
+
+pub type Person {
+  Person(name: String, age: Int)
+}
+
+fn encode_person(person: Person) -> json.Json {
+  json.object([
+    #("name", json.string(person.name)),
+    #("age", json.int(person.age)),
+  ])
 }
 ```
 
