@@ -32,6 +32,7 @@ This document details the current state of the language server and its features.
   - [Add missing import](#add-missing-import)
   - [Add missing patterns](#add-missing-labels)
   - [Case correction](#case-correction)
+  - [Convert to and from pipe](#convert-to-and-from-pipe)
   - [Convert to and from use](#convert-to-and-from-use)
   - [Discard unused result](#discard-unused-result)
   - [Expand function capture](#expand-function-capture)
@@ -285,7 +286,37 @@ pub main() {
 }
 ```
 
-## Qualify and unqualify
+## Convert to and from pipe
+
+These code actions can be used to convert between the `|>` pipe syntax and the
+regular function call syntax.
+
+```gleam
+import gleam/list
+
+pub fn main() {
+  list.map([1, 2, 3], double)
+}
+```
+
+If your cursor is within list argument then the code action will be suggested,
+and if run the code will be updated to this:
+
+```gleam
+import gleam/list
+
+pub fn main() {
+  [1, 2, 3] |> list.map(double)
+}
+```
+
+The running the code action again will reverse this change.
+
+You can also choose to pipe arguments other than the first by selecting them in
+your editor before triggering the code action. 
+
+
+## Convert to and from use
 
 These code actions can be used to convert between the `use` syntax and the
 regular function call syntax.
