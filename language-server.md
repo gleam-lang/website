@@ -150,6 +150,7 @@ hovering on:
 - Constants.
 - Import statements, including unqualified values and types.
 - Module functions.
+- Module qualifiers.
 - Patterns.
 - Record fields.
 - The `..` used to ignore additional fields in record pattern.
