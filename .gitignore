@@ -1,1 +1,6 @@
+*.beam
+*.ez
+/build
 _site
+dist
+erl_crash.dump
