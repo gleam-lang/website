@@ -19,7 +19,512 @@ type Page {
 }
 
 pub fn home(ctx: site.Context) -> fs.File {
-  let content = html.h1([], [html.text("Hello!")])
+  let content =
+    html.main([attr.role("main")], [
+      html.section([attr.class("content home-pair intro")], [
+        html.div([], [
+          html.p([], [
+            html.text(
+              "The power of a type system, the expressiveness of functional
+              programming, and the reliability of the highly concurrent, fault
+              tolerant Erlang runtime, with a familiar and modern syntax.",
+            ),
+          ]),
+        ]),
+        html.pre([], [
+          html.code([], [
+            html.span([attr.class("code-keyword")], [html.text("import")]),
+            html.text(" "),
+            html.span([attr.class("code-module")], [html.text("gleam/io\n\n")]),
+            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
+            html.text(" "),
+            html.span([attr.class("code-fn")], [html.text("main")]),
+            html.text(
+              "() {
+  ",
+            ),
+            html.span([attr.class("code-module")], [html.text("io.")]),
+            html.span([attr.class("code-fn")], [html.text("println")]),
+            html.text("("),
+            html.span([attr.class("code-string")], [
+              html.text("\"hello, friend!\""),
+            ]),
+            html.text(
+              ")
+}",
+            ),
+          ]),
+        ]),
+      ]),
+      html.section([attr.class("home-top-sponsors")], [
+        html.div([attr.class("content")], [
+          html.h2([], [html.text("Kindly supported by")]),
+          html.ul([], [
+            html.li([], [
+              html.a(
+                [
+                  attr.target("_blank"),
+                  attr.rel("noopener"),
+                  attr.href("https://lambdaclass.com/"),
+                  attr.class("sponsor-level1"),
+                ],
+                [
+                  html.img([
+                    attr.alt("Lambda Class"),
+                    attr.src("/images/sponsors/lambda-class-black.png"),
+                  ]),
+                ],
+              ),
+            ]),
+          ]),
+          html.a(
+            [
+              attr.target("_blank"),
+              attr.rel("noopener"),
+              attr.href("https://github.com/sponsors/lpil"),
+              attr.class("sponsor-level0"),
+            ],
+            [html.text("and sponsors like you!")],
+          ),
+        ]),
+      ]),
+      html.section([attr.class("content home-pair")], [
+        html.div([], [
+          html.h2([], [html.text("Reliable and scalable")]),
+          html.p([], [
+            html.text(
+              "Running on the battle-tested Erlang virtual machine that powers
+              planet-scale systems such as WhatsApp and Ericsson, Gleam is ready for
+              workloads of any size.",
+            ),
+          ]),
+          html.p([], [
+            html.text(
+              "Thanks to a multi-core actor based concurrency system that can run
+              millions of concurrent tasks, fast immutable data structures, and a
+              concurrent garbage collector that never stops the world, your service
+              can scale and stay lightning fast with ease.",
+            ),
+          ]),
+        ]),
+        html.pre([], [
+          html.code([], [
+            html.span([attr.class("code-keyword")], [html.text("fn")]),
+            html.text(" "),
+            html.span([attr.class("code-fn")], [html.text("spawn_task")]),
+            html.text(
+              "(i) {
+  ",
+            ),
+            html.span([attr.class("code-module")], [html.text("task.")]),
+            html.span([attr.class("code-fn")], [html.text("async")]),
+            html.text("("),
+            html.span([attr.class("code-keyword")], [html.text("fn")]),
+            html.text(
+              "() {
+    ",
+            ),
+            html.span([attr.class("code-keyword")], [html.text("let")]),
+            html.text(" n = "),
+            html.span([attr.class("code-module")], [html.text("int.")]),
+            html.span([attr.class("code-fn")], [html.text("to_string")]),
+            html.text(
+              "(i)
+    ",
+            ),
+            html.span([attr.class("code-module")], [html.text("io.")]),
+            html.span([attr.class("code-fn")], [html.text("println")]),
+            html.text("("),
+            html.span([attr.class("code-string")], [
+              html.text("\"Hello from \""),
+            ]),
+            html.text(" "),
+            html.span([attr.class("code-operator")], [html.text("<>")]),
+            html.text(
+              " n)
+  })
+}
+
+",
+            ),
+            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
+            html.text(" "),
+            html.span([attr.class("code-fn")], [html.text("main")]),
+            html.text(
+              "() {
+  ",
+            ),
+            html.span([attr.class("code-comment")], [
+              html.text("// Run loads of threads, no problem"),
+            ]),
+            html.text(
+              "
+  ",
+            ),
+            html.span([attr.class("code-module")], [html.text("list.")]),
+            html.span([attr.class("code-fn")], [html.text("range")]),
+            html.text("("),
+            html.span([attr.class("code-number")], [html.text("0")]),
+            html.text(", "),
+            html.span([attr.class("code-number")], [html.text("200_000")]),
+            html.text(
+              ")
+  ",
+            ),
+            html.span([attr.class("code-operator")], [html.text("|>")]),
+            html.text(" "),
+            html.span([attr.class("code-module")], [html.text("list.")]),
+            html.span([attr.class("code-fn")], [html.text("map")]),
+            html.text("("),
+            html.span([attr.class("code-fn")], [html.text("spawn_task")]),
+            html.text(
+              ")
+  ",
+            ),
+            html.span([attr.class("code-operator")], [html.text("|>")]),
+            html.text(" "),
+            html.span([attr.class("code-module")], [html.text("list.")]),
+            html.span([attr.class("code-fn")], [html.text("each")]),
+            html.text("("),
+            html.span([attr.class("code-module")], [html.text("task.")]),
+            html.span([attr.class("code-fn")], [html.text("await_forever")]),
+            html.text(
+              ")
+}
+",
+            ),
+          ]),
+        ]),
+      ]),
+      html.section([attr.class("content home-pair")], [
+        html.div([], [
+          html.h2([], [html.text("Ready when you are")]),
+          html.p([], [
+            html.text(
+              "Gleam comes with compiler, build tool, formatter, editor integrations,
+              and package manager all built in, so creating a Gleam project is just
+              running ",
+            ),
+            html.code([], [html.text("gleam new")]),
+          ]),
+          html.p([], [
+            html.text(
+              "As part of the wider BEAM ecosystem, Gleam programs can use thousands of
+              published packages, whether they are written in Gleam, Erlang, or
+              Elixir.",
+            ),
+          ]),
+        ]),
+        html.pre([], [
+          html.code([], [
+            html.span([attr.class("code-prompt")], [html.text("➜ (main)")]),
+            html.text(
+              " gleam add gleam_json
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text("  Resolving")]),
+            html.text(
+              " versions
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text("Downloading")]),
+            html.text(
+              " packages
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text(" Downloaded")]),
+            html.text(
+              " 2 packages in 0.01s
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text("      Added")]),
+            html.text(
+              " gleam_json v0.5.0
+",
+            ),
+            html.span([attr.class("code-prompt")], [html.text("➜ (main)")]),
+            html.text(
+              " gleam test
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text(" Compiling")]),
+            html.text(
+              " thoas
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text(" Compiling")]),
+            html.text(
+              " gleam_json
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text(" Compiling")]),
+            html.text(
+              " app
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text("  Compiled")]),
+            html.text(
+              " in 1.67s
+",
+            ),
+            html.span([attr.class("code-operator")], [html.text("   Running")]),
+            html.text(
+              " app_test.main
+",
+            ),
+            html.span([attr.class("code-success")], [
+              html.text(
+                ".
+1 tests, 0 failures",
+              ),
+            ]),
+            html.text(
+              "
+",
+            ),
+          ]),
+        ]),
+      ]),
+      html.section([attr.class("content home-pair")], [
+        html.div([], [
+          html.h2([], [html.text("Here to help")]),
+          html.p([], [
+            html.text(
+              "No null values, no exceptions, clear error messages, and a practical
+              type system. Whether you're writing new code or maintaining old code,
+              Gleam is designed to make your job as fun and stress-free as possible.",
+            ),
+          ]),
+        ]),
+        html.pre([], [
+          html.code([], [
+            html.span([attr.class("code-error")], [html.text("error:")]),
+            html.text(
+              " Unknown record field
+
+  ┌─ ./src/app.gleam:8:16
+  │
+8 │ user.alias
+  │ ",
+            ),
+            html.span([attr.class("code-error")], [
+              html.text("    ^^^^^^ Did you mean `name`?"),
+            ]),
+            html.text(
+              "
+
+The value being accessed has this type:
+    User
+
+It has these fields:
+    .name
+",
+            ),
+          ]),
+        ]),
+      ]),
+      html.section([attr.class("content home-pair")], [
+        html.div([], [
+          html.h2([], [html.text("Multilingual")]),
+          html.p([], [
+            html.text(
+              "Gleam makes it easy to use code written in other BEAM languages such as
+              Erlang and Elixir, so there's a rich ecosystem of thousands of open
+              source libraries for Gleam users to make use of.",
+            ),
+          ]),
+          html.p([], [
+            html.text(
+              "Gleam can additionally compile to JavaScript, enabling you to use your
+              code in the browser, or anywhere else JavaScript can run. It also
+              generates TypeScript definitions, so you can interact with your Gleam
+              code confidently, even from the outside.",
+            ),
+          ]),
+        ]),
+        html.pre([], [
+          html.code([], [
+            html.text(
+              "
+      
+
+",
+            ),
+            html.span([attr.class("code-keyword")], [html.text("@external")]),
+            html.text("(erlang, "),
+            html.span([attr.class("code-string")], [
+              html.text("\"Elixir.HPAX\", \"new\""),
+            ]),
+            html.text(
+              ")
+",
+            ),
+            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
+            html.text(" "),
+            html.span([attr.class("code-fn")], [html.text("new")]),
+            html.text("(size: "),
+            html.span([attr.class("code-type")], [html.text("Int")]),
+            html.text(") -> "),
+            html.span([attr.class("code-type")], [html.text("Table")]),
+            html.text(
+              "
+  
+
+
+",
+            ),
+            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
+            html.text(" "),
+            html.span([attr.class("code-fn")], [
+              html.text("register_event_handler"),
+            ]),
+            html.text(
+              "() {
+  ",
+            ),
+            html.span([attr.class("code-keyword")], [html.text("let")]),
+            html.text(" el = "),
+            html.span([attr.class("code-module")], [html.text("document.")]),
+            html.span([attr.class("code-fn")], [html.text("query_selector")]),
+            html.text("("),
+            html.span([attr.class("code-string")], [html.text("\"a\"")]),
+            html.text(
+              ")
+  ",
+            ),
+            html.span([attr.class("code-module")], [html.text("element.")]),
+            html.span([attr.class("code-fn")], [html.text("add_event_listener")]),
+            html.text("(el, "),
+            html.span([attr.class("code-keyword")], [html.text("fn")]),
+            html.text(
+              "() {
+    ",
+            ),
+            html.span([attr.class("code-module")], [html.text("io.")]),
+            html.span([attr.class("code-fn")], [html.text("println")]),
+            html.text("("),
+            html.span([attr.class("code-string")], [html.text("\"Clicked!\"")]),
+            html.text(
+              ")
+  })
+}",
+            ),
+          ]),
+        ]),
+      ]),
+      html.section([attr.class("home-friendly")], [
+        html.div([attr.class("content")], [
+          html.h2([], [html.text("Friendly 💜")]),
+          html.p([], [
+            html.text(
+              "As a community, we want to be friendly too. People from around the
+              world, of all backgrounds, genders, and experience levels are welcome
+              and respected equally. See our community code of conduct for more.",
+            ),
+          ]),
+          html.p([], [
+            html.text(
+              "Black lives matter. Trans rights are human rights. No nazi bullsh*t.",
+            ),
+          ]),
+        ]),
+        html.img([
+          attr.alt("a soft wavey boundary between two sections of the website"),
+          attr.src("/images/waves.svg"),
+          attr.class("home-waves"),
+        ]),
+      ]),
+      html.section([attr.class("home-sponsors")], [
+        html.div([attr.class("content")], [
+          html.h2([], [html.text("Lovely people")]),
+          html.p([], [
+            html.text("If you enjoy Gleam consider "),
+            html.a([attr.href("https://github.com/sponsors/lpil")], [
+              html.text("becoming a sponsor"),
+            ]),
+            html.text(" (or tell your boss to)"),
+          ]),
+        ]),
+        html.div([attr.class("home-sponsors-list")], [
+          html.ul([attr("data-randomise-order", "")], [
+            html.text(
+              "{% assign sponsors_count = site.data.sponsors | size %} {% assign
+        sponsors = site.data.sponsors | sample: sponsors_count %} {% for sponsor
+        in sponsors %}
+        ",
+            ),
+            html.li([], [
+              html.a(
+                [
+                  attr.target("_blank"),
+                  attr.rel("noopener"),
+                  attr.href("{{ sponsor.url }}"),
+                ],
+                [
+                  html.img([
+                    attr.alt("{{ sponsor.name }}"),
+                    attr.class(
+                      "{% unless sponsor.square_avatar %}round{% endunless %}",
+                    ),
+                    attr.src("{{ sponsor.avatar }}"),
+                    attr("loading", "lazy"),
+                  ]),
+                ],
+              ),
+              html.text(
+                "{% endfor %}
+        ",
+              ),
+            ]),
+          ]),
+          html.a([attr("data-expand-sponsors", "")], []),
+        ]),
+      ]),
+      html.section([attr.class("home-still-here")], [
+        html.div([attr.class("content")], [
+          html.h2([], [html.text("You're still here?")]),
+          html.p([attr.class("go-read")], [
+            html.text(
+              "Well, that's all this page has to say. Maybe you should go read the language tour!",
+            ),
+          ]),
+          html.a([attr.href("https://tour.gleam.run/"), attr.class("button")], [
+            html.text("Let's go!"),
+          ]),
+          html.hr([]),
+          html.h3([], [html.text("Wanna keep in touch?")]),
+          html.p([], [html.text("Subscribe to the Gleam newsletter")]),
+          html.script(
+            [
+              attr("data-form", "ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"),
+              attr.src(
+                "https://eocampaign1.com/form/ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a.js",
+              ),
+              attr("async", ""),
+            ],
+            "",
+          ),
+          html.p([], [
+            html.text(
+              "We send emails at most a few times a year, and we'll never share your
+              email with anyone else.",
+            ),
+          ]),
+          html.p([attr.class("recaptcha-blerb")], [
+            html.text("This site is protected by reCAPTCHA and the Google "),
+            html.a([attr.href("https://policies.google.com/privacy")], [
+              html.text("Privacy Policy"),
+            ]),
+            html.text(" and "),
+            html.a([attr.href("https://policies.google.com/terms")], [
+              html.text("Terms of Service"),
+            ]),
+            html.text("apply."),
+          ]),
+        ]),
+      ]),
+    ])
+
   Page(
     path: "index.html",
     title: "Gleam language",
@@ -122,7 +627,7 @@ fn footer(ctx: site.Context) -> element.Element(a) {
       html.ul(
         [class("middle")],
         list.map(footer_links, fn(pair) {
-          html.a([attr.href(pair.1)], [html.text(pair.0)])
+          html.li([], [html.a([attr.href(pair.1)], [html.text(pair.0)])])
         }),
       ),
       html.ul([class("last")], [
