@@ -24,10 +24,11 @@ fn build_site() -> snag.Result(Nil) {
     )
 
   let files = [
-    fs.Directory("img"),
+    fs.Directory("fonts"),
     fs.Directory("images"),
-    fs.Directory("styles"),
+    fs.Directory("img"),
     fs.Directory("javascript"),
+    fs.Directory("styles"),
     page.home(ctx),
   ]
 
