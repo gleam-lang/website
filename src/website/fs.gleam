@@ -11,7 +11,7 @@ import snag
 
 pub type File {
   /// A file with some content
-  File(path: String, content: BitArray)
+  HtmlPage(path: String, content: String)
   /// A directory copied into the output
   Directory(path: String)
 }
@@ -29,8 +29,14 @@ pub fn delete_dist() -> snag.Result(Nil) {
 
 pub fn create(file: File) -> snag.Result(Nil) {
   case file {
-    File(path:, content:) -> write_file(path, content)
-    Directory(path:) -> copy_directory(path)
+    HtmlPage(path:, content:) -> {
+      path
+      |> filepath.join("index.html")
+      |> write_file(<<content:utf8>>)
+    }
+    Directory(path:) -> {
+      copy_directory(path)
+    }
   }
 }
 

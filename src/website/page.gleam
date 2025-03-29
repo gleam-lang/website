@@ -1,6 +1,7 @@
 import contour
 import gleam/int
 import gleam/list
+import gleam/option
 import gleam/time/calendar
 import gleam/time/timestamp
 import lustre/attribute.{attribute as attr, class} as attr
@@ -10,23 +11,41 @@ import website/fs
 import website/site
 import website/sponsor
 
-type Page {
-  Page(
+type PageMeta {
+  PageMeta(
     path: String,
     title: String,
     description: String,
     preload_images: List(String),
-    content: Element(Nil),
   )
 }
 
-pub fn highlighted_pre_code(code: String) -> Element(a) {
-  let html = contour.to_html(code)
-  html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
-}
-
 pub fn home(ctx: site.Context) -> fs.File {
-  let content =
+  let meta =
+    PageMeta(
+      path: "",
+      title: "Gleam language",
+      description: "The Gleam programming language",
+      preload_images: ["/images/lucy/lucyhappy.svg"],
+    )
+
+  let content = [
+    header(
+      hero_image: option.Some(#(
+        "/images/lucy/lucy.svg",
+        "Lucy the star, Gleam's mascot",
+      )),
+      content: html.div([], [
+        html.b([], [html.text("Gleam")]),
+        html.text(" is a "),
+        html.b([], [html.text("friendly")]),
+        html.text(" language for building "),
+        html.b([], [html.text("type-safe")]),
+        html.text(" systems that "),
+        html.b([], [html.text("scale")]),
+        html.text("!"),
+      ]),
+    ),
     html.main([attr.role("main")], [
       html.section([attr.class("content home-pair intro")], [
         html.div([], [
@@ -269,7 +288,7 @@ pub fn register_event_handler() {
             html.text(" (or tell your boss to)"),
           ]),
         ]),
-        sponsors_section(),
+        wall_of_sponsors(),
       ]),
       html.section([attr.class("home-still-here")], [
         html.div([attr.class("content")], [
@@ -314,30 +333,90 @@ pub fn register_event_handler() {
           ]),
         ]),
       ]),
-    ])
+    ]),
+  ]
 
-  Page(
-    path: "index.html",
-    title: "Gleam language",
-    description: "The Gleam programming language",
-    preload_images: ["/images/lucy/lucyhappy.svg"],
-    content:,
-  )
-  |> to_file(ctx)
+  content
+  |> top_layout(meta, ctx)
+  |> to_file(meta)
 }
 
-fn to_file(page: Page, ctx: site.Context) -> fs.File {
-  let html =
-    element.to_document_string(
-      html.html([], [
-        html.head([], head_elements(page, ctx)),
-        html.body([], [page.content, footer(ctx)]),
+fn header(
+  hero_image hero_image: option.Option(#(String, String)),
+  content content: Element(a),
+) -> Element(a) {
+  let hero_content = html.div([attr.class("text")], [content])
+  let hero_content = case hero_image {
+    option.Some(#(src, alt)) -> [
+      html.div(
+        [attr("data-show-pride", ""), class("hero-lucy-container wide-only")],
+        [html.img([attr.alt(alt), attr.src(src), attr.class("hero-lucy")])],
+      ),
+      hero_content,
+    ]
+    option.None -> [hero_content]
+  }
+
+  html.div([attr.class("page-header")], [
+    html.nav([attr.class("navbar")], [
+      html.div([attr.class("content")], [
+        html.div([], [
+          html.a([attr.href("/"), attr.class("logo")], [
+            html.img([
+              attr.alt("Lucy the star, Gleam's mascot"),
+              attr.src("/images/lucy/lucy.svg"),
+            ]),
+            html.text("Gleam"),
+          ]),
+        ]),
+        html.div([], [
+          html.a([attr.href("/news")], [html.text("News")]),
+          html.a([attr.href("/community")], [html.text("Community")]),
+          html.a([attr.href("https://github.com/sponsors/lpil")], [
+            html.text("Sponsor"),
+          ]),
+        ]),
+        html.div([], [
+          html.a([attr.href("https://packages.gleam.run")], [
+            html.text("Packages"),
+          ]),
+          html.a([attr.href("/documentation")], [html.text("Docs")]),
+          html.a([attr.href("https://github.com/gleam-lang")], [
+            html.text("Code"),
+          ]),
+        ]),
       ]),
-    )
-  fs.File(path: page.path, content: <<html:utf8>>)
+    ]),
+    html.div([attr.class("hero")], [
+      html.div([attr.class("content")], hero_content),
+      html.img([
+        attr.alt("a soft wavey boundary between two sections of the website"),
+        attr.src("/images/waves.svg"),
+        attr.class("home-waves"),
+      ]),
+    ]),
+  ])
 }
 
-fn head_elements(page: Page, ctx: site.Context) -> List(element.Element(a)) {
+fn to_file(page_content: Element(a), meta: PageMeta) -> fs.File {
+  fs.HtmlPage(
+    path: meta.path,
+    content: element.to_document_string(page_content),
+  )
+}
+
+fn top_layout(
+  page_content: List(Element(a)),
+  page: PageMeta,
+  ctx: site.Context,
+) -> Element(a) {
+  html.html([], [
+    html.head([], head_elements(page, ctx)),
+    html.body([], list.flatten([page_content, [footer(ctx)]])),
+  ])
+}
+
+fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) {
   let metatag = fn(property, content) {
     html.meta([attr("property", property), attr("content", content)])
   }
@@ -433,7 +512,7 @@ fn footer(ctx: site.Context) -> element.Element(a) {
   ])
 }
 
-fn sponsors_section() -> Element(a) {
+fn wall_of_sponsors() -> Element(a) {
   let sponsors = list.shuffle(sponsor.sponsors)
 
   let sponsors_html =
@@ -462,4 +541,9 @@ fn sponsors_section() -> Element(a) {
       ]),
     ),
   ])
+}
+
+fn highlighted_pre_code(code: String) -> Element(a) {
+  let html = contour.to_html(code)
+  html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
 }
