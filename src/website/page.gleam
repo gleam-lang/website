@@ -8,6 +8,7 @@ import lustre/element.{type Element}
 import lustre/element/html
 import website/fs
 import website/site
+import website/sponsor
 
 type Page {
   Page(
@@ -268,40 +269,7 @@ pub fn register_event_handler() {
             html.text(" (or tell your boss to)"),
           ]),
         ]),
-        html.div([attr.class("home-sponsors-list")], [
-          html.ul([attr("data-randomise-order", "")], [
-            html.text(
-              "{% assign sponsors_count = site.data.sponsors | size %} {% assign
-        sponsors = site.data.sponsors | sample: sponsors_count %} {% for sponsor
-        in sponsors %}
-        ",
-            ),
-            html.li([], [
-              html.a(
-                [
-                  attr.target("_blank"),
-                  attr.rel("noopener"),
-                  attr.href("{{ sponsor.url }}"),
-                ],
-                [
-                  html.img([
-                    attr.alt("{{ sponsor.name }}"),
-                    attr.class(
-                      "{% unless sponsor.square_avatar %}round{% endunless %}",
-                    ),
-                    attr.src("{{ sponsor.avatar }}"),
-                    attr("loading", "lazy"),
-                  ]),
-                ],
-              ),
-              html.text(
-                "{% endfor %}
-        ",
-              ),
-            ]),
-          ]),
-          html.a([attr("data-expand-sponsors", "")], []),
-        ]),
+        sponsors_section(),
       ]),
       html.section([attr.class("home-still-here")], [
         html.div([attr.class("content")], [
@@ -462,5 +430,36 @@ fn footer(ctx: site.Context) -> element.Element(a) {
         ]),
       ]),
     ]),
+  ])
+}
+
+fn sponsors_section() -> Element(a) {
+  let sponsors = list.shuffle(sponsor.sponsors)
+
+  let sponsors_html =
+    list.map(sponsors, fn(sponsor) {
+      html.li([], [
+        html.a(
+          [attr.target("_blank"), attr.rel("noopener"), attr.href(sponsor.url)],
+          [
+            html.img([
+              attr.alt(sponsor.name),
+              attr.src(sponsor.avatar),
+              attr.class("round"),
+              attr("loading", "lazy"),
+            ]),
+          ],
+        ),
+      ])
+    })
+
+  html.div([attr.class("home-sponsors-list")], [
+    html.ul(
+      [attr("data-randomise-order", "")],
+      list.flatten([
+        sponsors_html,
+        [html.a([attr("data-expand-sponsors", "")], [])],
+      ]),
+    ),
   ])
 }
