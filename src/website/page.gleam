@@ -1,3 +1,4 @@
+import contour
 import gleam/int
 import gleam/list
 import gleam/time/calendar
@@ -18,6 +19,11 @@ type Page {
   )
 }
 
+pub fn highlighted_pre_code(code: String) -> Element(a) {
+  let html = contour.to_html(code)
+  html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
+}
+
 pub fn home(ctx: site.Context) -> fs.File {
   let content =
     html.main([attr.role("main")], [
@@ -31,30 +37,13 @@ pub fn home(ctx: site.Context) -> fs.File {
             ),
           ]),
         ]),
-        html.pre([], [
-          html.code([], [
-            html.span([attr.class("code-keyword")], [html.text("import")]),
-            html.text(" "),
-            html.span([attr.class("code-module")], [html.text("gleam/io\n\n")]),
-            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
-            html.text(" "),
-            html.span([attr.class("code-fn")], [html.text("main")]),
-            html.text(
-              "() {
-  ",
-            ),
-            html.span([attr.class("code-module")], [html.text("io.")]),
-            html.span([attr.class("code-fn")], [html.text("println")]),
-            html.text("("),
-            html.span([attr.class("code-string")], [
-              html.text("\"hello, friend!\""),
-            ]),
-            html.text(
-              ")
+        highlighted_pre_code(
+          "import gleam/io
+
+pub fn main() {
+  io.println(\"hello, friend!\")
 }",
-            ),
-          ]),
-        ]),
+        ),
       ]),
       html.section([attr.class("home-top-sponsors")], [
         html.div([attr.class("content")], [
@@ -107,94 +96,21 @@ pub fn home(ctx: site.Context) -> fs.File {
             ),
           ]),
         ]),
-        html.pre([], [
-          html.code([], [
-            html.span([attr.class("code-keyword")], [html.text("fn")]),
-            html.text(" "),
-            html.span([attr.class("code-fn")], [html.text("spawn_task")]),
-            html.text(
-              "(i) {
-  ",
-            ),
-            html.span([attr.class("code-module")], [html.text("task.")]),
-            html.span([attr.class("code-fn")], [html.text("async")]),
-            html.text("("),
-            html.span([attr.class("code-keyword")], [html.text("fn")]),
-            html.text(
-              "() {
-    ",
-            ),
-            html.span([attr.class("code-keyword")], [html.text("let")]),
-            html.text(" n = "),
-            html.span([attr.class("code-module")], [html.text("int.")]),
-            html.span([attr.class("code-fn")], [html.text("to_string")]),
-            html.text(
-              "(i)
-    ",
-            ),
-            html.span([attr.class("code-module")], [html.text("io.")]),
-            html.span([attr.class("code-fn")], [html.text("println")]),
-            html.text("("),
-            html.span([attr.class("code-string")], [
-              html.text("\"Hello from \""),
-            ]),
-            html.text(" "),
-            html.span([attr.class("code-operator")], [html.text("<>")]),
-            html.text(
-              " n)
+        highlighted_pre_code(
+          "fn spawn_task(i) {
+  task.async(fn() {
+    let n = int.to_string(i)
+    io.println(\"Hello from \" <> n)
   })
 }
 
-",
-            ),
-            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
-            html.text(" "),
-            html.span([attr.class("code-fn")], [html.text("main")]),
-            html.text(
-              "() {
-  ",
-            ),
-            html.span([attr.class("code-comment")], [
-              html.text("// Run loads of threads, no problem"),
-            ]),
-            html.text(
-              "
-  ",
-            ),
-            html.span([attr.class("code-module")], [html.text("list.")]),
-            html.span([attr.class("code-fn")], [html.text("range")]),
-            html.text("("),
-            html.span([attr.class("code-number")], [html.text("0")]),
-            html.text(", "),
-            html.span([attr.class("code-number")], [html.text("200_000")]),
-            html.text(
-              ")
-  ",
-            ),
-            html.span([attr.class("code-operator")], [html.text("|>")]),
-            html.text(" "),
-            html.span([attr.class("code-module")], [html.text("list.")]),
-            html.span([attr.class("code-fn")], [html.text("map")]),
-            html.text("("),
-            html.span([attr.class("code-fn")], [html.text("spawn_task")]),
-            html.text(
-              ")
-  ",
-            ),
-            html.span([attr.class("code-operator")], [html.text("|>")]),
-            html.text(" "),
-            html.span([attr.class("code-module")], [html.text("list.")]),
-            html.span([attr.class("code-fn")], [html.text("each")]),
-            html.text("("),
-            html.span([attr.class("code-module")], [html.text("task.")]),
-            html.span([attr.class("code-fn")], [html.text("await_forever")]),
-            html.text(
-              ")
-}
-",
-            ),
-          ]),
-        ]),
+pub fn main() {
+  // Run loads of threads, no problem
+  list.range(0, 200_000)
+  |> list.map(spawn_task)
+  |> list.each(task.await_forever)
+}",
+        ),
       ]),
       html.section([attr.class("content home-pair")], [
         html.div([], [
@@ -218,70 +134,33 @@ pub fn home(ctx: site.Context) -> fs.File {
         html.pre([], [
           html.code([], [
             html.span([attr.class("code-prompt")], [html.text("➜ (main)")]),
-            html.text(
-              " gleam add gleam_json
-",
-            ),
+            html.text(" gleam add gleam_json\n"),
             html.span([attr.class("code-operator")], [html.text("  Resolving")]),
-            html.text(
-              " versions
-",
-            ),
+            html.text(" versions\n"),
             html.span([attr.class("code-operator")], [html.text("Downloading")]),
             html.text(
               " packages
 ",
             ),
             html.span([attr.class("code-operator")], [html.text(" Downloaded")]),
-            html.text(
-              " 2 packages in 0.01s
-",
-            ),
+            html.text(" 2 packages in 0.01s\n"),
             html.span([attr.class("code-operator")], [html.text("      Added")]),
-            html.text(
-              " gleam_json v0.5.0
-",
-            ),
+            html.text(" gleam_json v0.5.0\n"),
             html.span([attr.class("code-prompt")], [html.text("➜ (main)")]),
-            html.text(
-              " gleam test
-",
-            ),
+            html.text(" gleam test\n"),
             html.span([attr.class("code-operator")], [html.text(" Compiling")]),
-            html.text(
-              " thoas
-",
-            ),
+            html.text(" thoas\n"),
             html.span([attr.class("code-operator")], [html.text(" Compiling")]),
-            html.text(
-              " gleam_json
-",
-            ),
+            html.text(" gleam_json\n"),
             html.span([attr.class("code-operator")], [html.text(" Compiling")]),
-            html.text(
-              " app
-",
-            ),
+            html.text(" app\n"),
             html.span([attr.class("code-operator")], [html.text("  Compiled")]),
-            html.text(
-              " in 1.67s
-",
-            ),
+            html.text(" in 1.67s\n"),
             html.span([attr.class("code-operator")], [html.text("   Running")]),
-            html.text(
-              " app_test.main
-",
-            ),
+            html.text(" app_test.main\n"),
             html.span([attr.class("code-success")], [
-              html.text(
-                ".
-1 tests, 0 failures",
-              ),
+              html.text(".\n1 tests, 0 failures"),
             ]),
-            html.text(
-              "
-",
-            ),
           ]),
         ]),
       ]),
@@ -342,75 +221,19 @@ It has these fields:
             ),
           ]),
         ]),
-        html.pre([], [
-          html.code([], [
-            html.text(
-              "
-      
-
-",
-            ),
-            html.span([attr.class("code-keyword")], [html.text("@external")]),
-            html.text("(erlang, "),
-            html.span([attr.class("code-string")], [
-              html.text("\"Elixir.HPAX\", \"new\""),
-            ]),
-            html.text(
-              ")
-",
-            ),
-            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
-            html.text(" "),
-            html.span([attr.class("code-fn")], [html.text("new")]),
-            html.text("(size: "),
-            html.span([attr.class("code-type")], [html.text("Int")]),
-            html.text(") -> "),
-            html.span([attr.class("code-type")], [html.text("Table")]),
-            html.text(
-              "
+        highlighted_pre_code(
+          "@external(erlang, \"Elixir.HPAX\", \"new\")
+pub fn new(size: Int) -> Table
   
 
 
-",
-            ),
-            html.span([attr.class("code-keyword")], [html.text("pub fn")]),
-            html.text(" "),
-            html.span([attr.class("code-fn")], [
-              html.text("register_event_handler"),
-            ]),
-            html.text(
-              "() {
-  ",
-            ),
-            html.span([attr.class("code-keyword")], [html.text("let")]),
-            html.text(" el = "),
-            html.span([attr.class("code-module")], [html.text("document.")]),
-            html.span([attr.class("code-fn")], [html.text("query_selector")]),
-            html.text("("),
-            html.span([attr.class("code-string")], [html.text("\"a\"")]),
-            html.text(
-              ")
-  ",
-            ),
-            html.span([attr.class("code-module")], [html.text("element.")]),
-            html.span([attr.class("code-fn")], [html.text("add_event_listener")]),
-            html.text("(el, "),
-            html.span([attr.class("code-keyword")], [html.text("fn")]),
-            html.text(
-              "() {
-    ",
-            ),
-            html.span([attr.class("code-module")], [html.text("io.")]),
-            html.span([attr.class("code-fn")], [html.text("println")]),
-            html.text("("),
-            html.span([attr.class("code-string")], [html.text("\"Clicked!\"")]),
-            html.text(
-              ")
+pub fn register_event_handler() {
+  let el = document.query_selector(\"a\")
+  element.add_event_listener(el, fn() {
+    io.println(\"Clicked!\")
   })
 }",
-            ),
-          ]),
-        ]),
+        ),
       ]),
       html.section([attr.class("home-friendly")], [
         html.div([attr.class("content")], [

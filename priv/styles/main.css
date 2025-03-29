@@ -686,6 +686,7 @@ main.content {
   visibility: hidden;
 }
 
+.hl-keyword,
 .hljs-keyword,
 .code-keyword {
   color: var(--color-code-orange);
@@ -700,11 +701,14 @@ main.content {
   color: var(--color-code-red);
 }
 
+.hl-operator,
 .hljs-operator,
 .code-operator {
   color: var(--color-code-pink);
 }
 
+.hl-module,
+.hl-variant,
 .hljs-attribute,
 .hljs-title,
 .code-type,
@@ -712,6 +716,7 @@ main.content {
   color: var(--color-code-light-pink);
 }
 
+.hl-string,
 .hljs-addition,
 .hljs-symbol,
 .hljs-string,
@@ -719,15 +724,19 @@ main.content {
   color: var(--color-code-green);
 }
 
+.hl-number,
 .hljs-number,
 .code-number {
   color: var(--color-code-yellow);
 }
 
+.hl-function,
+.hl-fn,
 .code-fn {
   color: var(--color-code-blue);
 }
 
+.hl-comment,
 .hljs-comment,
 .code-comment {
   color: var(--color-code-grey);
