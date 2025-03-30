@@ -47,6 +47,13 @@ pub fn asset_hash(path: String) -> snag.Result(String) {
   |> snag.context("Failed to read " <> path)
   |> result.map(crypto.hash(crypto.Sha256, _))
   |> result.map(bit_array.base64_url_encode(_, False))
+  |> snag.context("Failed determine asset hash for " <> path)
+}
+
+pub fn read(path: String) -> snag.Result(String) {
+  simplifile.read(path)
+  |> snag.map_error(simplifile.describe_error)
+  |> snag.context("Failed to read " <> path)
 }
 
 fn copy_directory(path: String) -> snag.Result(Nil) {

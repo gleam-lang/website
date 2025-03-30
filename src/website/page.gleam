@@ -2,12 +2,14 @@ import contour
 import gleam/int
 import gleam/list
 import gleam/option
+import gleam/string
 import gleam/time/calendar
 import gleam/time/timestamp
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
 import website/fs
+import website/news
 import website/site
 import website/sponsor
 
@@ -18,6 +20,64 @@ type PageMeta {
     description: String,
     preload_images: List(String),
   )
+}
+
+pub fn news(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "news",
+      title: "News",
+      description: "What's happening in the Gleam world?",
+      preload_images: [],
+    )
+
+  let list_items =
+    list.map(posts, fn(post) {
+      html.li([], [
+        html.a([attr.href("/news/" <> post.path)], [
+          html.h2([attr.class("links")], [html.text(post.title)]),
+        ]),
+        html.p([], [html.text(post.subtitle)]),
+        html.span([], [
+          html.text("Published " <> short_human_date(post.published) <> " by "),
+          html.a(
+            [
+              attr.href(post.author.url),
+              attr.target("_blank"),
+              attr.class("links author"),
+            ],
+            [html.text(post.author.name)],
+          ),
+        ]),
+      ])
+    })
+
+  [html.ul([class("news-posts")], list_items)]
+  |> page_layout(meta, ctx)
+  |> to_file(meta)
+}
+
+fn short_human_date(date: calendar.Date) -> String {
+  string.pad_start(int.to_string(date.day), 2, "0")
+  <> " "
+  <> calendar.month_to_string(date.month)
+  <> ", "
+  <> int.to_string(date.year)
+}
+
+fn page_layout(
+  content: List(Element(a)),
+  meta: PageMeta,
+  ctx: site.Context,
+) -> Element(a) {
+  [
+    header(hero_image: option.None, content: [
+      html.h1([], [html.text(meta.title)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
+    ]),
+    html.main([attr.class("page content")], content),
+  ]
+  |> top_layout(meta, ctx)
 }
 
 pub fn home(ctx: site.Context) -> fs.File {
@@ -35,16 +95,21 @@ pub fn home(ctx: site.Context) -> fs.File {
         "/images/lucy/lucy.svg",
         "Lucy the star, Gleam's mascot",
       )),
-      content: html.div([], [
-        html.b([], [html.text("Gleam")]),
-        html.text(" is a "),
-        html.b([], [html.text("friendly")]),
-        html.text(" language for building "),
-        html.b([], [html.text("type-safe")]),
-        html.text(" systems that "),
-        html.b([], [html.text("scale")]),
-        html.text("!"),
-      ]),
+      content: [
+        html.div([], [
+          html.b([], [html.text("Gleam")]),
+          html.text(" is a "),
+          html.b([], [html.text("friendly")]),
+          html.text(" language for building "),
+          html.b([], [html.text("type-safe")]),
+          html.text(" systems that "),
+          html.b([], [html.text("scale")]),
+          html.text("!"),
+        ]),
+        html.a([attr.href("https://tour.gleam.run/"), attr.class("button")], [
+          html.text("Try Gleam"),
+        ]),
+      ],
     ),
     html.main([attr.role("main")], [
       html.section([attr.class("content home-pair intro")], [
@@ -158,10 +223,7 @@ pub fn main() {
             html.span([attr.class("code-operator")], [html.text("  Resolving")]),
             html.text(" versions\n"),
             html.span([attr.class("code-operator")], [html.text("Downloading")]),
-            html.text(
-              " packages
-",
-            ),
+            html.text(" packages\n"),
             html.span([attr.class("code-operator")], [html.text(" Downloaded")]),
             html.text(" 2 packages in 0.01s\n"),
             html.span([attr.class("code-operator")], [html.text("      Added")]),
@@ -329,7 +391,7 @@ pub fn register_event_handler() {
             html.a([attr.href("https://policies.google.com/terms")], [
               html.text("Terms of Service"),
             ]),
-            html.text("apply."),
+            html.text(" apply."),
           ]),
         ]),
       ]),
@@ -343,9 +405,9 @@ pub fn register_event_handler() {
 
 fn header(
   hero_image hero_image: option.Option(#(String, String)),
-  content content: Element(a),
+  content content: List(Element(a)),
 ) -> Element(a) {
-  let hero_content = html.div([attr.class("text")], [content])
+  let hero_content = html.div([attr.class("text")], content)
   let hero_content = case hero_image {
     option.Some(#(src, alt)) -> [
       html.div(

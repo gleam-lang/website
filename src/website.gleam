@@ -1,20 +1,29 @@
 // TODO: https://gleam.run/feed.xml
 //
+import gleam/io
 import gleam/list
 import gleam/result
 import gleam/time/timestamp
+import gleave
 import snag
 import website/fs
+import website/news
 import website/page
 import website/site
 
 pub fn main() -> Nil {
-  let assert Ok(_) = build_site()
-  Nil
+  case build_site() {
+    Ok(_) -> Nil
+    Error(error) -> {
+      io.println_error(snag.pretty_print(error))
+      gleave.exit(127)
+    }
+  }
 }
 
 fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
+  use news_posts <- result.try(news.all())
 
   let ctx =
     site.Context(
@@ -30,6 +39,7 @@ fn build_site() -> snag.Result(Nil) {
     fs.Directory("javascript"),
     fs.Directory("styles"),
     page.home(ctx),
+    page.news(news_posts, ctx),
   ]
 
   list.try_each(files, fs.create)
