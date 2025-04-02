@@ -260,6 +260,7 @@ Gleam is made possible by the support of all the kind people and companies who h
 very generously [**sponsored**](https://github.com/sponsors/lpil) or
 contributed to the project. Thank you all!
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
@@ -272,6 +273,7 @@ contributed to the project. Thank you all!
     </a>
   </li>
 </ul>
+```
 
 - [Aaron Gunderson](https://github.com/agundy)
 - [Adam Brodzinski](https://github.com/AdamBrodzinski)

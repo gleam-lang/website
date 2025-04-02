@@ -15,9 +15,11 @@ take a look.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.5.0
 
+``` =html
 <a style="float: right; padding-left: var(--gap-4)" class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
   <img src="/images/sponsors/lambda-class-white.png" alt="Lambda Class">
 </a>
+```
 
 Before we start I just want to give extra thanks to [Lambda](https://lambdaclass.com/),
 Gleam's new primary sponsor. Gleam is an entirely open-source community driven
@@ -95,6 +97,7 @@ action is a real favourite of mine! I have been using it constantly.
 When you run a command like `gleam run` or `gleam test` it prints some progress
 information.
 
+``` =html
 <pre><code class="nohighlight"><span class="code-prompt">$</span> gleam run
 <span class="code-operator"> Compiling</span> thoas
 <span class="code-operator"> Compiling</span> gleam_json
@@ -103,14 +106,17 @@ information.
 <span class="code-operator">   Running</span> app_test.main
 Hello, world!
 </code></pre>
+```
 
 This is generally nice, but sometimes you only want to see the output from your
 tests or your program, so a `--no-print-progress` flag has been added to silence
 this additional output.
 
+``` =html
 <pre><code class="nohighlight"><span class="code-prompt">$</span> gleam run --no-print-progress
 Hello, world!
 </code></pre>
+```
 
 Additionally, this information is now printed to standard error rather than
 standard out, making it possible to redirect it elsewhere in your command line shell.
@@ -153,6 +159,7 @@ understandable as possible, but when a runtime error crashes a program we've
 used the virtual machine's default exception printing functionality, which
 wasn't as clear as it could have been.
 
+``` =html
 <pre><code class="nohighlight"><span class="code-error">runtime error: </span>let assert
 
 Pattern match failed, no pattern matched the value.
@@ -165,6 +172,7 @@ stacktrace:
   gleam/list.do_map <span class="code-prompt">/root/my_app/build/packages/gleam_stdlib/src/gleam/list.gleam:380</span>
   my_app.-main/0-fun-1- <span class="code-prompt">/root/my_app/src/my_app.gleam:11</span>
 </code></pre>
+```
 
 The virtual machine doesn't have a source-maps feature, so the line numbers may
 not be perfectly accurate, but the generated code now includes per-function
@@ -513,12 +521,15 @@ If you appreciate Gleam, please [support the project on GitHub
 Sponsors][sponsor] with any amount you comfortably can. I am endlessly grateful
 for your support, thank you so much.
 
+``` =html
 <a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
   <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
 </a>
+```
 
 [sponsor]: https://github.com/sponsors/lpil
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
@@ -526,6 +537,7 @@ for your support, thank you so much.
     </a>
   </li>
 </ul>
+```
 
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -888,6 +900,8 @@ for your support, thank you so much.
 
 Thanks for reading, I hope you have fun with Gleam! 💜
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

@@ -41,8 +41,10 @@ pub fn main() {
 
 The output of this program will look like this:
 
+``` =html
 <pre><code class="no-highlight"><span class="code-prompt">src/main.gleam:2</span>
 [1, 2, 3]</code></pre>
+```
 
 It can also be used in pipelines. Here the list returned by the first `list.map`
 call will be printed.
@@ -359,14 +361,17 @@ supporting [the project][sponsor] or core team members
 [Surya Rose](https://github.com/sponsors/GearsDatapacks) 
 on GitHub Sponsors.
 
+``` =html
 <a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
   <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
 </a>
+```
 
 [sponsor]: https://github.com/sponsors/lpil
 
 Thank you to all our sponsors! And especially our top sponsor: Lambda.
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
@@ -374,6 +379,7 @@ Thank you to all our sponsors! And especially our top sponsor: Lambda.
     </a>
   </li>
 </ul>
+```
 
 - [Aaron Gunderson](https://github.com/agundy)
 - [Abdulrhman Alkhodiry](https://github.com/zeroows)
@@ -737,6 +743,8 @@ Thank you to all our sponsors! And especially our top sponsor: Lambda.
 - [~1847917](https://liberapay.com/~1847917/)
 - [~1867501](https://liberapay.com/~1867501/)
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

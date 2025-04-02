@@ -297,14 +297,17 @@ the core team members, but we still have further to go. Please consider
 supporting [the project][sponsor] or [Giacomo Cavalieri](https://github.com/sponsors/giacomocavalieri)
 specifically on GitHub Sponsors.
 
+``` =html
 <a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
   <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
 </a>
+```
 
 [sponsor]: https://github.com/sponsors/lpil
 
 Thank you to all our sponsors! And especially our top sponsor: Lambda.
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
@@ -312,6 +315,7 @@ Thank you to all our sponsors! And especially our top sponsor: Lambda.
     </a>
   </li>
 </ul>
+```
 
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -676,9 +680,11 @@ Thank you to all our sponsors! And especially our top sponsor: Lambda.
 - [~1847917](https://liberapay.com/~1847917/)
 - [~1867501](https://liberapay.com/~1867501/)
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```
 
 This release is dedicated to the memory of my grandfather, Len Pilfold, who
 passed away in January.

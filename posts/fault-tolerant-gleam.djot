@@ -500,6 +500,7 @@ Alternatively consider using our [referral link for CodeCrafters](https://app.co
 who have recently launched a course on implementing Redis in Gleam. Use your
 training budget to learn and to support Gleam too!
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
@@ -507,6 +508,7 @@ training budget to learn and to support Gleam too!
     </a>
   </li>
 </ul>
+``` =html
 
 - [Aaron](https://github.com/apstone)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -826,6 +828,8 @@ training budget to learn and to support Gleam too!
 
 Thanks for reading, I hope you have fun with Gleam! 💜
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

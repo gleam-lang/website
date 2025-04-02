@@ -298,10 +298,12 @@ Alternatively consider using our [referral link for CodeCrafters](https://app.co
 who have courses on implementing Redis, SQLite, and grep in Gleam. Use your
 training budget to learn and to support Gleam too!
 
+``` =html
 <ul class="top-sponsors">
   <li>
   </li>
 </ul>
+```
 
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -637,6 +639,8 @@ training budget to learn and to support Gleam too!
 
 Thanks for reading, I hope you have fun with Gleam! 💜
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

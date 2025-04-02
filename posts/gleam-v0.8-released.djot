@@ -51,11 +51,12 @@ If you're interested in learning more about formatters or how they work, a
 few years back I gave a talk on the subject. It is in the context of the
 Elixir language, but it all holds true to Gleam as well.
 
+``` =html
 <iframe width="560" height="315"
 src="https://www.youtube-nocookie.com/embed/g4HXeP_CZbc" frameborder="0"
 allow="accelerometer; autoplay; encrypted-media; gyroscope;
 picture-in-picture" allowfullscreen></iframe>
-
+```
 
 ## Fancy pipes
 

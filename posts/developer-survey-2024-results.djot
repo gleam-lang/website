@@ -7,6 +7,7 @@ tags:
   - developer-survey
 ---
 
+``` =html
 <style>
   hr {
     margin: var(--gap-6) 0;
@@ -16,6 +17,7 @@ tags:
     margin-bottom: 0;
   }
 </style>
+```
 
 The results are in for the first ever Gleam Developer Survey! It ran for a
 couple months at the end of 2024 and received 841 responses! Thank you to
@@ -36,7 +38,8 @@ trends in the free-text answers.
 
 ## What's your job role?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=448 max=448 label="Engineer" %}
   {% include chartbar.html amount=81 max=448 label="Student" %}
   {% include chartbar.html amount=36 max=448 label="CTO" %}
@@ -57,10 +60,12 @@ trends in the free-text answers.
   {% include chartbar.html amount=2 max=448 label="QA" %}
   {% include chartbar.html amount=1 max=448 label="Data Scientist" %}
 </ol>
+``` 
 
 ## What country are you from?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=191 max=191 label="USA" %}
   {% include chartbar.html amount=77 max=191 label="Germany" %}
   {% include chartbar.html amount=56 max=191 label="The United Kingdom" %}
@@ -100,6 +105,7 @@ trends in the free-text answers.
   {% include chartbar.html amount=4 max=191 label="Singapore" %}
   {% include chartbar.html amount=55 max=191 label="Other" %}
 </ol>
+``` 
 
 Gleam folks are all around the world! London and Paris have active Gleam
 meet-ups, hopefully other top countries such as Germany and USA will start
@@ -107,10 +113,12 @@ similar community groups in the near future.
 
 ## Are you a Gleam user?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=632 max=632 label="Yes" %}
   {% include chartbar.html amount=173 max=632 label="Not currently" %}
 </ol>
+``` 
 
 The survey was open to everyone with any interest in Gleam, rather than just
 experienced users. Around three quarters of respondents are using Gleam, which
@@ -118,10 +126,12 @@ is a great indicator of adoption in the language's first year.
 
 ## Are you using Gleam in production?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=572 max=572 label="Not yet" %}
   {% include chartbar.html amount=52 max=572 label="Yes" %}
 </ol>
+``` 
 
 Around 8% of people of respondents have got Gleam into production, despite the
 language being less than a year old! Encouraging and enabling production use is
@@ -130,10 +140,12 @@ hope the trend continues.
 
 ## Does your organisation sponsor Gleam? (just production users)
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=37 max=37 label="No" %}
   {% include chartbar.html amount=1 max=37 label="Yes" %}
 </ol>
+``` 
 
 We have had much less success getting sponsorship from corporate users. This is
 disappointing as everyone benefits from dependencies being well maintained and
@@ -144,7 +156,8 @@ project funding.
 
 ## How large is your organisation
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=124 max=143 label="No organisation" %}
   {% include chartbar.html amount=143 max=143 label="1 to 10" %}
   {% include chartbar.html amount=129 max=143 label="11 to 50" %}
@@ -153,10 +166,12 @@ project funding.
   {% include chartbar.html amount=90 max=143 label="501 to 2000" %}
   {% include chartbar.html amount=108 max=143 label="More than 2001" %}
 </ol>
+``` 
 
 ### Just production Gleam users
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=10 max=15 label="No organisation" %}
   {% include chartbar.html amount=15 max=15 label="1 to 10" %}
   {% include chartbar.html amount=6 max=15 label="11 to 50" %}
@@ -165,6 +180,7 @@ project funding.
   {% include chartbar.html amount=4 max=15 label="501 to 2000" %}
   {% include chartbar.html amount=3 max=15 label="More than 2001" %}
 </ol>
+``` 
 
 Production users of Gleam are more likely to be in smaller organisations. This
 likely is due to larger organisations being more risk-averse than smaller ones,
@@ -173,7 +189,8 @@ foundation for a technology project.
 
 ## Where do you get your Gleam news from?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=238 max=238 label="The Gleam Discord" %}
   {% include chartbar.html amount=197 max=238 label="gleam.run" %}
   {% include chartbar.html amount=193 max=238 label="Gleam Weekly" %}
@@ -196,6 +213,7 @@ foundation for a technology project.
   {% include chartbar.html amount=1 max=238 label="Podcasts" %}
   {% include chartbar.html amount=1 max=238 label="Twitch" %}
 </ol>
+``` 
 
 [The Gleam Discord server](https://discord.gg/Fm8Pwmy) continues to be the
 place-to-be in the Gleam community. [Gleam Weekly](https://gleamweekly.com/) and
@@ -205,7 +223,8 @@ participate in a busy chat server.
 
 ## How much professional programming experience do you have?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=253 max=253 label="0 to 4 years" %}
   {% include chartbar.html amount=242 max=253 label="5 to 9 years" %}
   {% include chartbar.html amount=136 max=253 label="10 to 14 years" %}
@@ -217,10 +236,12 @@ participate in a busy chat server.
   {% include chartbar.html amount=2 max=253 label="40 to 44 years" %}
   {% include chartbar.html amount=2 max=253 label="45 to 50 years" %}
 </ol>
+``` 
 
 ## How much Gleam experience do you have?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=290 max=293 label="Less than 1 year" %}
   {% include chartbar.html amount=293 max=293 label="1 year" %}
   {% include chartbar.html amount=32 max=293 label="2 years" %}
@@ -229,17 +250,20 @@ participate in a busy chat server.
   {% include chartbar.html amount=1 max=293 label="5 years" %}
   {% include chartbar.html amount=3 max=293 label="6 years" %}
 </ol>
+``` 
 
 Some folks have been using Gleam since way before v1.0.0! Thank you for staying
 with Gleam for so long! I think I can guess who these people are. 😁
 
 ## What Gleam compilation targets do you use?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=571 max=571 label="Erlang" %}
   {% include chartbar.html amount=297 max=571 label="JavaScript" %}
   {% include chartbar.html amount=29 max=571 label="Unsure" %}
 </ol>
+``` 
 
 Sometimes people think that Gleam's JavaScript target is an afterthought or
 somehow less important, but it is used a lot. It is also interesting to see how
@@ -250,10 +274,12 @@ education in some fashion here.
 
 ### Just production Gleam users
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=48 max=48 label="Erlang" %}
   {% include chartbar.html amount=35 max=48 label="JavaScript" %}
 </ol>
+``` 
 
 Among production uses Gleam's JavaScript target is even more widely used, likely
 for web frontends. Note that these are not distinct groups, many respondents
@@ -261,7 +287,8 @@ will have picked both.
 
 ## What runtimes do you use to run your Gleam code?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=545 max=545 label="BEAM" %}
   {% include chartbar.html amount=228 max=545 label="Web browsers" %}
   {% include chartbar.html amount=134 max=545 label="NodeJS" %}
@@ -270,6 +297,7 @@ will have picked both.
   {% include chartbar.html amount=31 max=545 label="Unsure" %}
   {% include chartbar.html amount=7 max=545 label="AtomVM" %}
 </ol>
+``` 
 
 Predictably the Erlang VM (the BEAM) is the most widely used runtime, but we've
 also got a few folks using AtomVM, an alternative Erlang runtime optimised for
@@ -278,17 +306,20 @@ this runtime in the Gleam toolchain.
 
 ### Just production Gleam users
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=48 max=48 label="BEAM" %}
   {% include chartbar.html amount=32 max=48 label="Web browsers" %}
   {% include chartbar.html amount=14 max=48 label="NodeJS" %}
   {% include chartbar.html amount=8 max=48 label="Deno" %}
   {% include chartbar.html amount=3 max=48 label="Bun" %}
 </ol>
+``` 
 
 ## What operating system do you use in development?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=559 max=559 label="Linux" %}
   {% include chartbar.html amount=458 max=559 label="macOS" %}
   {% include chartbar.html amount=213 max=559 label="Windows" %}
@@ -300,6 +331,7 @@ this runtime in the Gleam toolchain.
   {% include chartbar.html amount=1 max=559 label="Embedded" %}
   {% include chartbar.html amount=1 max=559 label="Illumos" %}
 </ol>
+``` 
 
 A strong showing from the usual suspects, and good to see some more uncommon
 operating systems in there too. Windows being so common is a good reminder of
@@ -308,7 +340,8 @@ that huge portion of potential users behind and limit Gleam's growth.
 
 ## What operating system do you use in production?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=731 max=731 label="Linux" %}
   {% include chartbar.html amount=134 max=731 label="Windows" %}
   {% include chartbar.html amount=68 max=731 label="macOS" %}
@@ -320,6 +353,7 @@ that huge portion of potential users behind and limit Gleam's growth.
   {% include chartbar.html amount=1 max=731 label="Illumos" %}
   {% include chartbar.html amount=1 max=731 label="QNX" %}
 </ol>
+``` 
 
 The BSDs showing quite strongly here too! It would be great for the Gleam
 project to be able to run the tests on and provide binaries for FreeBSD and
@@ -330,10 +364,12 @@ operating system here. I've largely put these within the "Linux" category.
 
 ## What sort of projects do you make with Gleam?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=574 max=574 label="Applications" %}
   {% include chartbar.html amount=200 max=574 label="Libraries" %}
 </ol>
+``` 
 
 It's wonderful to see so many people making applications! People tend to share
 or publicise libraries more than applications, so we don't get to see as many of
@@ -342,10 +378,12 @@ to share applications, there's a lot we can learn from studying them.
 
 ## Do you use Gleam for open source development?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=311 max=311 label="No" %}
   {% include chartbar.html amount=309 max=311 label="Yes" %}
 </ol>
+``` 
 
 It's great to see so many people using Gleam for open-source. Gleam is a
 community project, so we greatly benefit from people making and sharing via open
@@ -353,17 +391,21 @@ source.
 
 ## Do you sponsor Gleam?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=655 max=655 label="No" %}
   {% include chartbar.html amount=146 max=655 label="Yes" %}
 </ol>
+``` 
 
 ### Just production Gleam users
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=39 max=39 label="No" %}
   {% include chartbar.html amount=11 max=39 label="Yes" %}
 </ol>
+``` 
 
 It's great to see so many people sponsoring Gleam! All the funding for the
 project comes from [sponsorship](https://github.com/sponsors/lpil) rather than a
@@ -375,7 +417,8 @@ core team can be paid appropriately.
 
 ## What other languages do you use?
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=385 max=385 label="TypeScript" %}
   {% include chartbar.html amount=338 max=385 label="JavaScript" %}
   {% include chartbar.html amount=314 max=385 label="Python" %}
@@ -457,6 +500,7 @@ core team can be paid appropriately.
   {% include chartbar.html amount=1 max=385 label="Typst" %}
   {% include chartbar.html amount=1 max=385 label="Visual Basic" %}
 </ol>
+``` 
 
 Wow, what a lot of different languages! A common misconception is that Gleam in
 some way competes with Erlang and Elixir, and draws programmers from those
@@ -464,10 +508,12 @@ communities. This is not the case! People who enjoy the dynamic and expressive
 styles of those languages tend not to gel quite as well as the much stricter and
 type-directed style of Gleam.
 
-<ol class="bar-chart">
+``` =html
+<ol  class="bar-chart">
   {% include chartbar.html amount=2639 max=2639 label="Other" %}
   {% include chartbar.html amount=190 max=2639 label="Erlang and Elixir" %}
 </ol>
+``` 
 
 With the answers broken down into Erlang and Elixir vs others this can be seen
 more easily. Gleam folk overwhelmingly come from other ecosystems, often

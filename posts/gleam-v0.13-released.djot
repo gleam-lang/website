@@ -6,6 +6,7 @@ tags:
   - Release
 ---
 
+``` =html
 <style>
 details h3 {
   margin-top: 16px;
@@ -14,6 +15,7 @@ details code {
   font-size: 16px;
 }
 </style>
+```
 
 It's a new year and there's a new [Gleam release][release]! Let's take a look
 at what this one brings.
@@ -39,10 +41,12 @@ performance improvements in future.
 Greg's parser rewrite wasn't just about performance, it also greatly improved
 the error messages caused by syntax errors. Here are some examples to click through:
 
+``` =html
 <details open>
 <summary>
 Operator with a naked right side
 </summary>
+```
 
 <h3>Before</h3>
 {% highlight text %}
@@ -403,9 +407,12 @@ Since our creation of the Gleam Discord server the community has been more
 active than ever. It has been great to have so many members of the community
 there, building a helpful and friendly atmosphere. If you'd like to join
 click on the button below.
+
+``` =html
 <center>
   <a href="https://discord.gg/Fm8Pwmy"><img src="https://img.shields.io/discord/768594524158427167?color=blue" alt="Discord chat"></a>
 </center>
+```
 
 ## Try it out
 

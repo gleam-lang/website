@@ -152,7 +152,9 @@ GitHub now recognises Gleam!
 Gleam source code will now be syntax highlighted on GitHub and Gleam will show
 in the list of languages for a given repo.
 
+``` =html
 <img class="no-shadow" style="border-bottom: 1px solid lightgrey" src="/images/news/gleam-v0.20-released/github-syntax-highlighting.png" alt="Some Gleam source code on GitHub with syntax highlighting">
+```
 
 This isn't technically a Gleam feature, but it's an exciting change that we've
 been looking forward to for several years so it's worth including.
@@ -205,6 +207,7 @@ If you would like to support me in making Gleam please consider [sponsoring
 Gleam][sponsor] or asking your employer to sponsor Gleam. Every donation makes a
 difference, no matter how small, so thank you for your help.
 
+``` =html
 <center>
   <iframe src="https://github.com/sponsors/lpil/button" title="Sponsor Gleam" height="35" width="116" style="border: 0; margin: 6px"></iframe>
 
@@ -212,6 +215,7 @@ difference, no matter how small, so thank you for your help.
     ⭐ Or alternatively give us a star on <a href="https://github.com/gleam-lang/gleam">GitHub</a>! ⭐
   </div>
 </center>
+```
 
 [gleam-gh]: https://github.com/gleam-lang/gleam
 [sponsor]: https://github.com/sponsors/lpil

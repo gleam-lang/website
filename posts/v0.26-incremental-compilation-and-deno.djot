@@ -127,6 +127,7 @@ compiler super speedy.
 
 ## Running on Deno
 
+``` =html
 <style>
   .deno {
     height: 200px;
@@ -140,6 +141,7 @@ compiler super speedy.
 </style>
 
 <img src="/images/news/gleam-v0.26-released/deno_hr_circle.svg" class="deno" alt="The Deno logo, a cute cartoon dinosaur">
+```
 
 Gleam can run on JavaScript as well as the Erlang virtual machine. Until now
 when you run `gleam run` or `gleam test` with a Gleam project targeting
@@ -174,6 +176,7 @@ If you like Gleam consider sponsoring or asking your employer to
 [sponsor Gleam development](https://github.com/sponsors/lpil). I work full time
 on Gleam and your kind sponsorship is how I pay my bills!
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
@@ -181,6 +184,7 @@ on Gleam and your kind sponsorship is how I pay my bills!
     </a>
   </li>
 </ul>
+```
 
  - [Aaron Gunderson](https://github.com/agundy)
  - [Adam Brodzinski](https://github.com/AdamBrodzinski)

@@ -91,7 +91,9 @@ correct one per-file.
 
 ## More on-hover information
 
+``` =html
 <img class="no-shadow" src="/images/news/gleam-v0.28-released/docs-hover.png" alt="A VS Code editor window showing a documentation popup for Gleam code">
+```
 
 Access to good documentation is vital, so the language server will now show
 documentation when you hover over Gleam code in your editor.
@@ -216,6 +218,7 @@ If you like Gleam consider sponsoring or asking your employer to
 [sponsor Gleam development](https://github.com/sponsors/lpil). I work full time
 on Gleam and your kind sponsorship is how I pay my bills!
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
@@ -223,6 +226,7 @@ on Gleam and your kind sponsorship is how I pay my bills!
     </a>
   </li>
 </ul>
+```
 
  - [Aaron Gunderson](https://github.com/agundy)
  - [Adam Brodzinski](https://github.com/AdamBrodzinski)

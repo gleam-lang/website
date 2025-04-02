@@ -23,8 +23,10 @@ can have have an equally fantastic 2025.
 You don't need to be an active Gleam user to fill in the survey. If you're not
 yet found the time to try Gleam we still want to hear from you!
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://developer-survey.gleam.run/">
     The Gleam Developer Survey
   </a>
 </div>
+```
