@@ -22,7 +22,29 @@ type PageMeta {
   )
 }
 
-pub fn news(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
+pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "news/" <> post.path,
+      title: post.title,
+      description: post.subtitle,
+      preload_images: [],
+    )
+
+  [
+    html.div([class("post")], [
+      html.p([class("post-published")], [
+        html.text("Published " <> short_human_date(post.published) <> " by "),
+        html.a([attr.href(post.author.url)], [html.text(post.author.name)]),
+      ]),
+      html.div([attr("dangerous-unescaped-html", post.content)], []),
+    ]),
+  ]
+  |> page_layout(meta, ctx)
+  |> to_file(meta)
+}
+
+pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "news",

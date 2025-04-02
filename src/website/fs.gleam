@@ -1,7 +1,6 @@
 import filepath
 import gleam/bit_array
 import gleam/crypto
-import gleam/function
 import gleam/io
 import gleam/list
 import gleam/result
@@ -36,6 +35,17 @@ pub fn create(file: File) -> snag.Result(Nil) {
     }
     Directory(path:) -> {
       copy_directory(path)
+    }
+  }
+  |> ok_dot
+}
+
+fn ok_dot(result: Result(a, e)) -> Result(a, e) {
+  case result {
+    Error(_) -> result
+    Ok(_) -> {
+      io.print(".")
+      result
     }
   }
 }
@@ -77,16 +87,11 @@ fn write_file(path: String, content: BitArray) -> snag.Result(Nil) {
 fn ensure_directory_exists(path: String) -> Result(Nil, snag.Snag) {
   case simplifile.is_directory(path) {
     Ok(True) -> Ok(Nil)
-    Ok(False) ->
-      path
-      |> simplifile.create_directory_all
-      |> handle_error("Create " <> path <> "/")
-    Error(error) ->
-      error
-      |> simplifile.describe_error
-      |> snag.error
-      |> snag.context("Failed to create" <> path <> "/")
+    Ok(False) -> simplifile.create_directory_all(path) |> ok_dot
+    Error(error) -> Error(error)
   }
+  |> snag.map_error(simplifile.describe_error)
+  |> snag.context("Failed to create" <> path <> "/")
 }
 
 fn handle_error(
@@ -96,5 +101,4 @@ fn handle_error(
   result
   |> snag.map_error(simplifile.describe_error)
   |> snag.context("Failed to " <> string.lowercase(detail))
-  |> function.tap(fn(_) { io.println(detail) })
 }
