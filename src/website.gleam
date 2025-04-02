@@ -39,8 +39,12 @@ fn build_site() -> snag.Result(Nil) {
     fs.Directory("javascript"),
     fs.Directory("styles"),
     page.home(ctx),
-    page.news(news_posts, ctx),
+    page.news_index(news_posts, ctx),
+    ..list.map(news_posts, page.news_post(_, ctx))
   ]
 
-  list.try_each(files, fs.create)
+  io.print("Writing to disc: ")
+  let result = list.try_each(files, fs.create)
+  io.print("\n")
+  result
 }
