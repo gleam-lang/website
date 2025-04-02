@@ -37,7 +37,9 @@ called the [Language Server Protocol (LSP)][lsp]. This protocol has been widely
 adopted, so now a language only needs to implement the API once in order to
 reach most users.
 
+``` =html
 <img class="no-shadow" src="/images/news/gleam-v0.21-released/lsp-languages-editors.png" alt="A graph showing N*M integrations between editors and language without LSP, and N+M integrations with LSP">
+```
 
 With this latest release Gleam now implements the language server protocol.
 Let's see what it can do!
@@ -50,10 +52,12 @@ The language server will compile your Gleam projects every time you hit save.
 Any errors or warnings emitted during compilation will be shown inline and can
 be jumped to with your editor.
 
+``` =html
 <video autoplay loop muted playsinline>
   <source src="/images/news/gleam-v0.21-released/compile.webm" type="video/webm">
   <source src="/images/news/gleam-v0.21-released/compile.mp4" type="video/mp4">
 </video>
+```
 
 ### Formatting
 
@@ -61,29 +65,35 @@ Manually formatting and maintaining a consistent style in your codebase is a
 drag, so the language server integrates the Gleam source code formatter. Every
 time you hit save it will format your code for you in the official Gleam style.
 
+``` =html
 <video autoplay loop muted playsinline>
   <source src="/images/news/gleam-v0.21-released/formatting.webm" type="video/webm">
   <source src="/images/news/gleam-v0.21-released/formatting.mp4" type="video/mp4">
 </video>
+```
 
 ### Hover
 
 Hovering over an expression in your Gleam code will show the type of the
 resulting value.
 
+``` =html
 <video autoplay loop muted playsinline>
   <source src="/images/news/gleam-v0.21-released/hover.webm" type="video/webm">
   <source src="/images/news/gleam-v0.21-released/hover.mp4" type="video/mp4">
 </video>
+```
 
 ### Go-to definition
 
 And lastly, you can jump to or peek the definition of any Gleam expression.
 
+``` =html
 <video autoplay loop muted playsinline>
   <source src="/images/news/gleam-v0.21-released/goto-definition.webm" type="video/webm">
   <source src="/images/news/gleam-v0.21-released/goto-definition.mp4" type="video/mp4">
 </video>
+```
 
 ## What's next?
 
@@ -223,6 +233,7 @@ If you would like to support me in making Gleam please consider
 [sponsoring Gleam][sponsor] or asking your employer to sponsor Gleam. Every
 contribution makes a difference, no matter how small, so thank you for your help.
 
+``` =html
 <center>
   <iframe src="https://github.com/sponsors/lpil/button" title="Sponsor Gleam" height="35" width="116" style="border: 0; margin: 6px"></iframe>
 
@@ -230,6 +241,7 @@ contribution makes a difference, no matter how small, so thank you for your help
     ⭐ Or alternatively give us a star on <a href="https://github.com/gleam-lang/gleam">GitHub</a>! ⭐
   </div>
 </center>
+```
 
 [gleam-gh]: https://github.com/gleam-lang/gleam
 [sponsor]: https://github.com/sponsors/lpil
@@ -241,12 +253,14 @@ Gleam is made possible by the support of all the people who have
 [sponsored](https://github.com/sponsors/lpil) and contributed to the project.
 Thank you all!
 
+``` =html
 <center>
   <a href="https://fly.io">
     <img width="200" alt="Fly" src="https://avatars.githubusercontent.com/u/22525303?v=4">
     Fly.io
   </a>
 </center>
+```
 
  - [Adam Bowen](https://github.com/adamnbowen)
  - [Adam Brodzinski](https://github.com/AdamBrodzinski)

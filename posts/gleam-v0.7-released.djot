@@ -17,7 +17,9 @@ is the type error, so we want it to be as clear and as friendly as possible.
 
 Here's what it looks like with Gleam v0.7:
 
+``` =html
 <img src="/images/news/gleam-v0.7-released/type-error.png" alt="A terminal showing a type error message">
+```
 
 This is a big improvement over previous versions which would struggle with
 highlighting multi-line code sections, and would state the problem as being
@@ -25,11 +27,15 @@ highlighting multi-line code sections, and would state the problem as being
 
 Other improved error messages include the import cycle error message:
 
+``` =html
 <img src="/images/news/gleam-v0.7-released/import-cycle.png" alt="A terminal showing an import cycle error message">
+```
 
 Error messages for invalid patterns in case expressions:
 
+``` =html
 <img src="/images/news/gleam-v0.7-released/incorrect-number-of-patterns.png" alt="A terminal showing a pattern matching error message">
+```
 
 And a slew of error messages relating to errors when trying to read or write
 files in a Gleam project.

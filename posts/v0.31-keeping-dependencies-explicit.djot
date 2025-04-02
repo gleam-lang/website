@@ -208,6 +208,7 @@ If you like Gleam consider sponsoring or asking your employer to
 [sponsor Gleam development](https://github.com/sponsors/lpil). I work full time
 on Gleam and your kind sponsorship is how I pay my bills!
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
@@ -215,6 +216,7 @@ on Gleam and your kind sponsorship is how I pay my bills!
     </a>
   </li>
 </ul>
+```
 
 - [Aaron Gunderson](https://github.com/agundy)
 - [Adam Brodzinski](https://github.com/AdamBrodzinski)

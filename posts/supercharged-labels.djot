@@ -123,9 +123,11 @@ function as well as highlight which argument you need to supply next.
 A picture is worth a thousand words, so presumably a video is a small book.
 Here's a demonstration:
 
+``` =html
 <video autoplay loop muted playsinline style="width: 720px; max-width: 100%">
   <source src="/images/news/gleam-v1.4-released/help.mp4" type="video/mp4">
 </video>
+```
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for this!
 
@@ -317,16 +319,20 @@ If you appreciate Gleam, please [support the project on GitHub
 Sponsors][sponsor] with any amount you comfortably can.
 
 
+``` =html
 <a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
   <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
 </a>
+```
 
 [sponsor]: https://github.com/sponsors/lpil
 
+``` =html
 <ul class="top-sponsors">
   <li>
   </li>
 </ul>
+```
 
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -660,6 +666,8 @@ Sponsors][sponsor] with any amount you comfortably can.
 
 Thanks for reading, I hope you have fun with Gleam! 💜
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

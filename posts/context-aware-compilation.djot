@@ -19,9 +19,11 @@ friends! Any level of Gleam experience is OK (or even none yet at all), so
 please fill it in so we can use your feedback to decide what to focus on in the
 coming year.
 
+``` =html
 <div style="text-align: center">
   <a class="button pulse-animation" href="https://developer-survey.gleam.run/">Gleam Developer Survey</a>
 </div>
+```
 
 Right. Now on to the release changes.
 
@@ -491,12 +493,15 @@ If you appreciate Gleam, please [support the project on GitHub
 Sponsors][sponsor] with any amount you comfortably can. I am endlessly grateful
 for your support, thank you so much.
 
+``` =html
 <a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
   <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
 </a>
+```
 
 [sponsor]: https://github.com/sponsors/lpil
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
@@ -504,6 +509,7 @@ for your support, thank you so much.
     </a>
   </li>
 </ul>
+```
 
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -894,6 +900,8 @@ for your support, thank you so much.
 
 Thanks for reading, I hope you have fun with Gleam! 💜
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

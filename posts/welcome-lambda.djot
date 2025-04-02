@@ -5,9 +5,11 @@ title: Welcome Lambda!
 subtitle: Gleam's new corporate sponsor
 ---
 
+``` =html
 <a style="float: right; padding-left: var(--gap-4)" class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
   <img src="/images/sponsors/lambda-class-white.png" alt="Lambda Class">
 </a>
+```
 
 Gleam is a type safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Unlike most programming languages, Gleam does not come from
@@ -31,10 +33,12 @@ machine for the Cairo language; and
 [Erlings](https://github.com/lambdaclass/erlings), a comprehensive set of
 exercises for mastering Erlang's fundamentals and advanced topics.
 
+``` =html
 <video autoplay muted loop controls>
   <source src="/images/news/welcome-lambda/champions.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+```
 
 One of their latest exciting projects is the upcoming mobile game Champions of
 Mirra, a fast-paced multiplayer mobile game launching soon in Argentina.
@@ -54,7 +58,9 @@ types.
 Lambda's work isn't limited to only software development! They are also working
 on the groundbreaking cyberpunk anime _Electro Andes_, set to release next year.
 
+``` =html
 <iframe width="920" height="518" src="https://www.youtube.com/embed/m-d4lgIQWGc?si=q7CL2b2iFSh5smwl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
 
 Lambda's investment in Gleam, both financially and in making it part of their
 technology stack, is a testament to the Gleam ecosystem and a real milestone for

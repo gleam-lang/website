@@ -28,7 +28,9 @@ supports the protocol. The internals have had a full-rewrite and the compiler
 continues to be re-structured to enable more features to be added to the
 language server.
 
+``` =html
 <img class="no-shadow" src="/images/news/gleam-v0.29-released/autocompletion.png" alt="A VS Code editor window showing a string function being suggested as a completion, along with its documentation and type signature">
+```
 
 This release brings the first version of a much awaited feature to the language
 server: autocompletion!
@@ -143,6 +145,7 @@ If you like Gleam consider sponsoring or asking your employer to
 [sponsor Gleam development](https://github.com/sponsors/lpil). I work full time
 on Gleam and your kind sponsorship is how I pay my bills!
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a href="https://fly.io" rel="noopener" target="_blank">
@@ -150,6 +153,7 @@ on Gleam and your kind sponsorship is how I pay my bills!
     </a>
   </li>
 </ul>
+```
 
 - [Aaron Gunderson](https://github.com/agundy)
 - [Adam Brodzinski](https://github.com/AdamBrodzinski)

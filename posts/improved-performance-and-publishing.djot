@@ -467,14 +467,17 @@ is my sole source of income.
 deserving of your support. He has been doing amazing work on Gleam without any
 pay for nearly two years, but now he has GitHub sponsors, so show him some love!
 
+``` =html
 <a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
   <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)"/>
 </a>
+```
 
 [sponsor]: https://github.com/sponsors/lpil
 
 Thank you to all our sponsors, especially our top sponsor: Lambda.
 
+``` =html
 <ul class="top-sponsors">
   <li>
     <a class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
@@ -482,6 +485,7 @@ Thank you to all our sponsors, especially our top sponsor: Lambda.
     </a>
   </li>
 </ul>
+```
 
 - [00bpa](https://github.com/00bpa)
 - [Aaron Gunderson](https://github.com/agundy)
@@ -847,6 +851,8 @@ Thank you to all our sponsors, especially our top sponsor: Lambda.
 
 Thanks for reading, I hope you have fun with Gleam! 💜
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
 </div>
+```

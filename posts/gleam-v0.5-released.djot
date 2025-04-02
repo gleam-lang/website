@@ -244,9 +244,11 @@ Gleam? Check out [the suggestions tracker][suggestions].
 Last month I got to speak about Gleam at my favourite conference [Code Mesh](https://codesync.global/conferences/code-mesh-ldn/)!
 A recording of the talk can found on their YouTube channel:
 
+``` =html
 <center>
   <iframe style="max-width: 95%" width="560" height="315" src="https://www.youtube-nocookie.com/embed/HaKR2kt-DXI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
+```
 
 ## Thanks
 

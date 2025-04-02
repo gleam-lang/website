@@ -23,8 +23,10 @@ Gleam development roadmap. It lists the most impactful features, past,
 present, and future, and I'll update it with each new Gleam release. I hope you
 find it useful!
 
+``` =html
 <div style="text-align: center">
   <a class="button" href="/roadmap">View the roadmap</a>
 </div>
+```
 
 Thanks for reading, happy hacking! 💜
