@@ -11,8 +11,10 @@ import snag
 pub type File {
   /// A file with some content
   HtmlPage(path: String, content: String)
+  /// A file with some content
+  File(path: String, content: String)
   /// A directory copied into the output
-  Directory(path: String)
+  Copy(path: String)
 }
 
 const dist = "dist/"
@@ -33,8 +35,12 @@ pub fn create(file: File) -> snag.Result(Nil) {
       |> filepath.join("index.html")
       |> write_file(<<content:utf8>>)
     }
-    Directory(path:) -> {
-      copy_directory(path)
+    File(path:, content:) -> {
+      path
+      |> write_file(<<content:utf8>>)
+    }
+    Copy(path:) -> {
+      copy(path)
     }
   }
   |> ok_dot
@@ -66,11 +72,11 @@ pub fn read(path: String) -> snag.Result(String) {
   |> snag.context("Failed to read " <> path)
 }
 
-fn copy_directory(path: String) -> snag.Result(Nil) {
+fn copy(path: String) -> snag.Result(Nil) {
   let from = filepath.join(priv, path)
   let to = filepath.join(dist, path)
-  simplifile.copy_directory(from, to)
-  |> handle_error("Copy " <> path <> "/")
+  simplifile.copy(from, to)
+  |> handle_error("Copy " <> path)
 }
 
 fn write_file(path: String, content: BitArray) -> snag.Result(Nil) {
