@@ -32,19 +32,84 @@ fn build_site() -> snag.Result(Nil) {
       styles_hash:,
     )
 
+  let page_files = [page.home(ctx), page.news_index(news_posts, ctx)]
+
   let files = [
-    fs.Directory("fonts"),
-    fs.Directory("images"),
-    fs.Directory("img"),
-    fs.Directory("javascript"),
-    fs.Directory("styles"),
-    page.home(ctx),
-    page.news_index(news_posts, ctx),
-    ..list.map(news_posts, page.news_post(_, ctx))
+    static_files(),
+    page_files,
+    list.map(news_posts, page.news_post(_, ctx)),
+    redirect_files(),
   ]
 
   io.print("Writing to disc: ")
-  let result = list.try_each(files, fs.create)
+  let result =
+    files
+    |> list.flatten
+    |> list.try_each(fs.create)
   io.print("\n")
   result
+}
+
+fn static_files() -> List(fs.File) {
+  [
+    fs.Copy("fonts"),
+    fs.Copy("images"),
+    fs.Copy("img"),
+    fs.Copy("javascript"),
+    fs.Copy("styles"),
+    fs.Copy("funding.json"),
+  ]
+}
+
+fn redirect_files() -> List(fs.File) {
+  [
+    page.redirect_to_tour("book/index.html", ""),
+    page.redirect_to_tour("book/print.html", ""),
+    page.redirect_to_tour("book/tour/index.html", ""),
+    page.redirect_to_tour("book/tour/use.html", "advanced-features/use/"),
+    page.redirect_to_tour("book/tour/functions.html", "functions/functions"),
+    page.redirect_to_tour("book/tour/expression-blocks.html", "basics/blocks/"),
+    page.redirect_to_tour("book/tour/constants.html", "basics/constants/"),
+    page.redirect_to_tour("book/tour/custom-types.html", "basics/custom-types/"),
+    page.redirect_to_tour("book/tour/bools.html", "basics/bools/"),
+    page.redirect_to_tour("book/tour/bit-strings.html", "data-types/bit-arrays"),
+    page.redirect_to_tour("book/tour/bit-arrays.html", "data-types/bit-arrays"),
+    page.redirect_to_tour("book/tour/strings.html", "data-types/strings/"),
+    page.redirect_to_tour("book/tour/result.html", "data-types/results/"),
+    page.redirect_to_tour("book/tour/modules.html", "basics/hello-world/"),
+    page.redirect_to_tour("book/tour/lists.html", "basics/lists/"),
+    page.redirect_to_tour("book/tour/let-bindings.html", "basics/assignments/"),
+    page.redirect_to_tour("book/tour/ints-and-floats.html", "basics/ints/"),
+    page.redirect_to_tour("book/tour/type-aliases.html", "basics/type-aliases/"),
+    page.redirect_to_tour("book/tour/tuples.html", "data-types/tuples/"),
+    page.redirect_to_tour("book/tour/todo.html", "advanced-features/todo/"),
+    page.redirect_to_tour(
+      "book/tour/assert.html",
+      "advanced-features/let-assert/",
+    ),
+    page.redirect_to_tour(
+      "book/tour/type-annotations.html",
+      "basics/assignments/",
+    ),
+    page.redirect_to_tour(
+      "book/tour/todo-and-panic.html",
+      "advanced-features/todo/",
+    ),
+    page.redirect_to_tour(
+      "book/tour/external-functions.html",
+      "advanced-features/externals/",
+    ),
+    page.redirect_to_tour(
+      "book/tour/external-types.html",
+      "advanced-features/externals/",
+    ),
+    page.redirect_to_tour(
+      "book/tour/comments.html",
+      "functions/documentation-comments/",
+    ),
+    page.redirect_to_tour(
+      "book/tour/case-expressions.html",
+      "flow-control/case-expressions/",
+    ),
+  ]
 }
