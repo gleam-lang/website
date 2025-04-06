@@ -13,7 +13,7 @@ import website/news
 import website/site
 import website/sponsor
 
-type PageMeta {
+pub type PageMeta {
   PageMeta(
     path: String,
     title: String,
@@ -52,8 +52,8 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
       html.div([attr("dangerous-unescaped-html", post.content)], []),
     ]),
   ]
-  |> page_layout(meta, ctx)
-  |> to_file(meta)
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
 }
 
 pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
@@ -87,11 +87,11 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
     })
 
   [html.ul([class("news-posts")], list_items)]
-  |> page_layout(meta, ctx)
-  |> to_file(meta)
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
 }
 
-fn short_human_date(date: calendar.Date) -> String {
+pub fn short_human_date(date: calendar.Date) -> String {
   string.pad_start(int.to_string(date.day), 2, "0")
   <> " "
   <> calendar.month_to_string(date.month)
@@ -99,8 +99,9 @@ fn short_human_date(date: calendar.Date) -> String {
   <> int.to_string(date.year)
 }
 
-fn page_layout(
+pub fn page_layout(
   content: List(Element(a)),
+  class: String,
   meta: PageMeta,
   ctx: site.Context,
 ) -> Element(a) {
@@ -109,7 +110,7 @@ fn page_layout(
       html.h1([], [html.text(meta.title)]),
       html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
     ]),
-    html.main([attr.class("page content")], content),
+    html.main([attr.class("page content " <> class)], content),
   ]
   |> top_layout(meta, ctx)
 }
@@ -434,7 +435,7 @@ pub fn register_event_handler() {
 
   content
   |> top_layout(meta, ctx)
-  |> to_file(meta)
+  |> to_html_file(meta)
 }
 
 fn header(
@@ -494,7 +495,7 @@ fn header(
   ])
 }
 
-fn to_file(page_content: Element(a), meta: PageMeta) -> fs.File {
+pub fn to_html_file(page_content: Element(a), meta: PageMeta) -> fs.File {
   fs.HtmlPage(
     path: meta.path,
     content: element.to_document_string(page_content),

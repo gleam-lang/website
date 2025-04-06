@@ -1,5 +1,3 @@
-// TODO: https://gleam.run/feed.xml
-//
 import gleam/io
 import gleam/list
 import gleam/result
@@ -10,6 +8,7 @@ import website/atom_feed
 import website/fs
 import website/news
 import website/page
+import website/roadmap
 import website/site
 
 pub fn main() -> Nil {
@@ -33,7 +32,11 @@ fn build_site() -> snag.Result(Nil) {
       styles_hash:,
     )
 
-  let page_files = [page.home(ctx), page.news_index(news_posts, ctx)]
+  let page_files = [
+    page.home(ctx),
+    page.news_index(news_posts, ctx),
+    roadmap.page(ctx),
+  ]
 
   let files = [
     static_files(),
