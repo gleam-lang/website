@@ -22,6 +22,7 @@ pub fn main() -> Nil {
 }
 
 fn build_site() -> snag.Result(Nil) {
+  use _ <- result.try(fs.delete_dist())
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
   use news_posts <- result.try(news.all())
 
@@ -34,6 +35,7 @@ fn build_site() -> snag.Result(Nil) {
 
   let page_files = [
     page.home(ctx),
+    page.branding(ctx),
     page.news_index(news_posts, ctx),
     roadmap.page(ctx),
   ]

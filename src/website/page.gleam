@@ -91,6 +91,358 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn branding(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "branding",
+      title: "Gleam's branding",
+      description: "All pretty and pink 💖",
+      preload_images: [""],
+    )
+
+  let content = [
+    html.h2([], [html.text("Gleam's favourite colours")]),
+    html.ul([attr.class("colours flat-list")], [
+      html.li([], [
+        html.span([attr("style", "background-color: #ffaff3")], []),
+        html.code([], [html.text("#ffaff3")]),
+        html.text("Faff Pink"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #fefefc")], []),
+        html.code([], [html.text("#fefefc")]),
+        html.text("White"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #a6f0fc")], []),
+        html.code([], [html.text("#a6f0fc")]),
+        html.text("Unnamed Blue"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #fffbe8")], []),
+        html.code([], [html.text("#fffbe8")]),
+        html.text("Aged Plastic Yellow"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #584355")], []),
+        html.code([], [html.text("#584355")]),
+        html.text("Unexpected Aubergine"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #292d3e")], []),
+        html.code([], [html.text("#292d3e")]),
+        html.text("Underwater Blue"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #2f2f2f")], []),
+        html.code([], [html.text("#2f2f2f")]),
+        html.text("Charcoal"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #1e1e1e")], []),
+        html.code([], [html.text("#1e1e1e")]),
+        html.text("Black"),
+      ]),
+      html.li([], [
+        html.span([attr("style", "background-color: #151515")], []),
+        html.code([], [html.text("#151515")]),
+        html.text("Blacker"),
+      ]),
+    ]),
+    html.h2([], [html.text("Lucy, Gleam's starfish mascot")]),
+    html.p([], [
+      html.text(
+        "Lucy is a pink starfish that can glow underwater. She's kind and nice, though
+        a bit clumsy sometimes. Strawberry is her favourite ice cream flavour. Lucy
+        has a seahorse plushie.",
+      ),
+    ]),
+    html.p([], [
+      html.text("✨ Favourite kind of programming language? Functional ones."),
+    ]),
+    html.p([], [html.text("✨ Favourite colour? all shades of pink.")]),
+    html.ul([attr.class("lucys")], [
+      html.li([], [
+        html.img([
+          attr.alt("A five pointed pink cartoon starfish with a simple smile"),
+          attr("title", "Lucy"),
+          attr.src("/images/lucy/lucy.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy but smiling so much her eyes are scrunched up"),
+          attr("title", "Lucy happy"),
+          attr.src("/images/lucy/lucyhappy.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy staring at a laptop with a blank expression on her face",
+          ),
+          attr("title", "Lucy debug fail"),
+          attr.src("/images/lucy/lucydebugfail.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy but glowing brightly"),
+          attr("title", "Lucy glow"),
+          attr.src("/images/lucy/lucyglow.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy holding out an envelope"),
+          attr("title", "Lucy mail"),
+          attr.src("/images/lucy/lucymail.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but faded out with a dotted outline, as if she's vanishing",
+          ),
+          attr("title", "Lucy null"),
+          attr.src("/images/lucy/lucynull.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy with her eyes closed"),
+          attr("title", "Lucy sleep"),
+          attr.src("/images/lucy/lucysleep.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Superlucy, showing off her shimmer power"),
+          attr("title", "Superlucy"),
+          attr.src("/images/lucy/superlucy.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the rainbow colours of the pride flag instead of pink",
+          ),
+          attr("title", "Lucy pride"),
+          attr.src("/images/lucy/lucypride.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the trans pride flag instead of pink",
+          ),
+          attr("title", "Lucy trans"),
+          attr.src("/images/lucy/lucytrans.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the lesbian pride flag instead of pink",
+          ),
+          attr("title", "Lucy lesbian"),
+          attr.src("/images/lucy/lucylesbian.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the sapphic pride flag instead of pink",
+          ),
+          attr("title", "Lucy sapphic by @hqnna"),
+          attr.src("/images/lucy/lucysapphic.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the men-loving-men pride flag instead of pink",
+          ),
+          attr("title", "Lucy gay"),
+          attr.src("/images/lucy/lucygay.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the asexual pride flag instead of pink",
+          ),
+          attr("title", "Lucy ace"),
+          attr.src("/images/lucy/lucyace.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the bisexual pride flag instead of pink",
+          ),
+          attr("title", "Lucy bi"),
+          attr.src("/images/lucy/lucybi.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy but the colours of the pansexual pride flag instead of pink",
+          ),
+          attr("title", "Lucy pan"),
+          attr.src("/images/lucy/lucypan.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy wearing little blue trousers with a 'WASM' on them in the style of the WASM logo",
+          ),
+          attr("title", "Lucy Wasm by Danielle Maywood"),
+          attr.src("/images/lucy/lucywasm.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "Lucy wearing little yellow trousers with a 'JS' on them in the style of the JS logo",
+          ),
+          attr("title", "Lucy JS by Danielle Maywood"),
+          attr.src("/images/lucy/lucyjs.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt(
+            "The Erlang logo, but a pink G rather than a red E, the text 'Gleam', Lucy's cute little face on it",
+          ),
+          attr("title", "Lucy Erlang by Danielle Maywood"),
+          attr.src("/images/lucy/lucyerl.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy in the shape of the Nix snowflake-y logo"),
+          attr("title", "Lucy Nix by Danielle Maywood"),
+          attr.src("/images/lucy/lucynix.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy in the shape of the Nix Flake snowflake-y logo"),
+          attr("title", "Lucy Flake by Danielle Maywood and Isaac Harris-Holt"),
+          attr.src("/images/lucy/lucyflake.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy in the shape of the robot-y Godot logo"),
+          attr("title", "Lucy Godot by Danielle Maywood"),
+          attr.src("/images/lucy/lucygodot.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy in the shape of the Elixir drop logo"),
+          attr("title", "Lucy Elixir by Jen Stehlik"),
+          attr.src("/images/lucy/lucyelixir.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy in the shape of the Rust Ferris logo"),
+          attr("title", "Lucy Rust by Jon Charter"),
+          attr.src("/images/lucy/lucyrust.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy on a pink background"),
+          attr("title", "Lucy social pink by Kayla Washburn"),
+          attr.src("/images/lucy/lucypinkbg.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr.alt("Lucy on a rainbow background"),
+          attr("title", "Lucy social pride by Kayla Washburn"),
+          attr.src("/images/lucy/lucypridebg.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr("style", "height: 16px"),
+          attr.alt("tiny Lucy optimized for 16x16px size"),
+          attr("title", "Lucy optimized for 16x16px size by Jen Stehlik"),
+          attr.src("/images/lucy/lucytiny.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
+          attr("style", "height: 16px"),
+          attr.alt("tiny black and white Lucy optimized for 16x16px size"),
+          attr(
+            "title",
+            "black and white Lucy optimized for 16x16px size by Jen Stehlik",
+          ),
+          attr.src("/images/lucy/lucytiny-plain.svg"),
+        ]),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "The original Nix logo of which the Lucy Nix images are modifications of is
+        available under under a CC-BY license and is designed by Tim Cuthbertson
+        (@timbertson).",
+      ),
+    ]),
+    html.style(
+      [],
+      "
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.colours li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.colours span {
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+}
+
+.lucys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: space-between;
+}
+
+.lucys li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+
+.lucys img {
+  height: 135px;
+}
+",
+    ),
+  ]
+
+  content
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn short_human_date(date: calendar.Date) -> String {
   string.pad_start(int.to_string(date.day), 2, "0")
   <> " "

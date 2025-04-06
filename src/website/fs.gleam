@@ -2,7 +2,6 @@ import filepath
 import gleam/bit_array
 import gleam/crypto
 import gleam/io
-import gleam/list
 import gleam/result
 import gleam/string
 import simplifile
@@ -22,8 +21,11 @@ const dist = "dist/"
 const priv = "priv/"
 
 pub fn delete_dist() -> snag.Result(Nil) {
-  dist
-  |> list.wrap
+  use files <- result.try(
+    simplifile.read_directory(dist)
+    |> handle_error("List"),
+  )
+  files
   |> simplifile.delete_all
   |> handle_error("Reset")
 }
