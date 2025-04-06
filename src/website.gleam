@@ -6,6 +6,7 @@ import gleam/result
 import gleam/time/timestamp
 import gleave
 import snag
+import website/atom_feed
 import website/fs
 import website/news
 import website/page
@@ -37,7 +38,7 @@ fn build_site() -> snag.Result(Nil) {
   let files = [
     static_files(),
     page_files,
-    list.map(news_posts, page.news_post(_, ctx)),
+    news_files(news_posts, ctx),
     redirect_files(),
   ]
 
@@ -48,6 +49,13 @@ fn build_site() -> snag.Result(Nil) {
     |> list.try_each(fs.create)
   io.print("\n")
   result
+}
+
+fn news_files(
+  news_posts: List(news.NewsPost),
+  ctx: site.Context,
+) -> List(fs.File) {
+  [atom_feed.file(news_posts), ..list.map(news_posts, page.news_post(_, ctx))]
 }
 
 fn static_files() -> List(fs.File) {
