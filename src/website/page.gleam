@@ -56,6 +56,212 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn documentation(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "documentation",
+      title: "Documentation",
+      description: "Learn all about programming in Gleam!",
+      preload_images: [],
+    )
+
+  [
+    html.h2([attr.id("learning-gleam")], [html.text("Learning Gleam")]),
+    html.ul([], [
+      html.li([], [
+        html.p([], [
+          html.a([attr.href("https://tour.gleam.run")], [
+            html.text("Language tour"),
+          ]),
+        ]),
+        html.p([], [
+          html.text(
+            "An in-browser interactive introduction that teaches the whole language.",
+          ),
+        ]),
+      ]),
+      html.li([], [
+        html.p([], [
+          html.a([attr.href("/writing-gleam")], [html.text("Writing Gleam")]),
+        ]),
+        html.p([], [
+          html.text("A guide on creating and developing projects in Gleam."),
+        ]),
+      ]),
+      html.li([], [
+        html.p([], [
+          html.a([attr.href("/getting-started/installing")], [
+            html.text("Installing Gleam"),
+          ]),
+        ]),
+        html.p([], [html.text("How to get Gleam on your computer.")]),
+      ]),
+    ]),
+    html.h3([attr.id("unofficial-courses")], [html.text("Unofficial courses")]),
+    html.ul([], [
+      html.li([], [
+        html.p([], [
+          html.a([attr.href("https://exercism.org/tracks/gleam")], [
+            html.text("Exercism’s Gleam track"),
+          ]),
+        ]),
+        html.p([], [
+          html.text(
+            "Develop skills in Gleam and 70+ other languages with a unique
+            blend of learning, practicing, and mentoring from skilled
+            programmers. An educational non-profit and free forever.",
+          ),
+        ]),
+      ]),
+      html.li([], [
+        html.p([], [
+          html.a([attr.href("https://app.codecrafters.io/join?via=lpil")], [
+            html.text("CodeCrafters"),
+          ]),
+        ]),
+        html.p([], [
+          html.text(
+            "Practice writing complex software in Gleam and 20 other languages by
+            implementing real-world systems such as Redis from scratch.",
+          ),
+        ]),
+        html.p([], [
+          html.em([], [
+            html.text(
+              "This is a referral link and a portion of any money paid will go
+              to supporting Gleam development",
+            ),
+          ]),
+          html.text("."),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("gleam-references")], [html.text("Gleam references")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("https://tour.gleam.run/everything/")], [
+          html.text("The Gleam Language overview"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/writing-gleam/command-line-reference")], [
+          html.text("The Command line reference"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/language-server")], [
+          html.text("The Gleam language server reference"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/writing-gleam/gleam-toml")], [
+          html.text("The gleam.toml config file reference"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("https://packages.gleam.run")], [
+          html.text("The Gleam package index"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("https://hexdocs.pm/gleam_stdlib/")], [
+          html.text("The standard library documentation"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("https://github.com/gleam-lang/awesome-gleam")], [
+          html.text("The “Awesome Gleam” resource list"),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("cheatsheets")], [html.text("Cheatsheets")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-elixir-users")], [
+          html.text("Gleam for Elixir users"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-elm-users")], [
+          html.text("Gleam for Elm users"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-erlang-users")], [
+          html.text("Gleam for Erlang users"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-php-users")], [
+          html.text("Gleam for PHP users"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-python-users")], [
+          html.text("Gleam for Python users"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-rust-users")], [
+          html.text("Gleam for Rust users"),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("deployment")], [html.text("Deployment")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("/deployment/linux-server")], [
+          html.text("Deploying to a Linux server"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/deployment/fly")], [
+          html.text("Deploying on Fly.io"),
+        ]),
+      ]),
+    ]),
+    html.h3([attr.id("community-deployment-guides")], [
+      html.text("Community deployment guides"),
+    ]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("https://github.com/davlgd/gleam-demo")], [
+          html.text("Deploying on Clever Cloud"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/deployment/zerops")], [
+          html.text("Deploying on Zerops"),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("about-gleam")], [html.text("About Gleam")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("/frequently-asked-questions")], [
+          html.text("Frequently asked questions"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/branding")], [html.text("Gleam’s Branding")]),
+      ]),
+    ]),
+    html.h2([attr.id("community-resources")], [html.text("Community Resources")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("https://exercism.org/tracks/gleam")], [
+          html.text("Exercism’s Gleam track"),
+        ]),
+        html.text(
+          ". Learn Gleam by solving problems and getting feedback from mentors.",
+        ),
+      ]),
+    ]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -91,13 +297,274 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn gleam_toml(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "writing-gleam/gleam-toml",
+      title: "gleam.toml",
+      description: "Configure your Gleam project",
+      preload_images: [],
+    )
+
+  let code =
+    "# The name of your project (required)
+name = \"my_project\"
+
+# The version of your project (required)
+version = \"1.0.0\"
+
+# The licences which this project uses, in SPDX format (optional)
+licences = [\"Apache-2.0\", \"MIT\"]
+
+# A short description of your project (optional)
+# This will be displayed on the package page if the project is published to
+# the Hex package repository.
+description = \"Gleam bindings to...\"
+
+# The target to default to when compiling or running Gleam code
+# Accepted values are \"erlang\" and \"javascript\". Defaults to \"erlang\".
+target = \"erlang\"
+
+# The source code repository location (optional)
+# This will be used in generated documentation and displayed on Hex.
+repository = { type = \"github\", user = \"example\", repo = \"my_project\" }
+# `repository` can also be one of these formats
+# { type = \"forgejo\",   host = \"example.com\", user = \"example\", repo = \"my_project\" }
+# { type = \"gitea\",     host = \"example.com\", user = \"example\", repo = \"my_project\" }
+# { type = \"gitlab\",    user = \"example\", repo = \"my_project\" }
+# { type = \"sourcehut\", user = \"example\", repo = \"my_project\" }
+# { type = \"bitbucket\", user = \"example\", repo = \"my_project\" }
+# { type = \"codeberg\",  user = \"example\", repo = \"my_project\" }
+# { type = \"custom\",    url = \"https://example.com/my_project\" }
+# An optional `path` to this project in the repository can be specified
+# if it is not located at the root:
+# { type = \"github\", user = \"example\", repo = \"my_project\", path = \"packages/my_project\" }
+
+# Links to any related website (optional)
+# This will be displayed in generated documentation and on Hex.
+links = [
+  { title = \"Home page\", href = \"https://example.com\" },
+  { title = \"Other site\", href = \"https://another.example.com\" },
+]
+
+# Modules that should be considered \"internal\" and will not be included in
+# generated documentation. Note this currently only affects documentation;
+# public types and functions defined in these modules are still public.
+#
+# Items in this list are \"globs\" that are matched against module names. See:
+# https://docs.rs/glob/latest/glob/struct.Pattern.html
+#
+# The default value is as below, with the `name` of your project substituted in
+# place of \"my_app\".
+internal_modules = [
+  \"my_app/internal\",
+  \"my_app/internal/*\",
+]
+
+# The version of the Gleam compiler that the package requires (optional)
+# An error is raised if the version of the compiler used to compile the package
+# does not match this requirement.
+gleam = \">= 0.30.0\"
+
+# The Hex packages the project needs to compile and run (optional)
+# Uses the Hex version requirement format
+# https://hexdocs.pm/elixir/Version.html#module-requirements
+[dependencies]
+gleam_stdlib = \">= 0.18.0 and < 2.0.0\"
+gleam_erlang = \">= 0.2.0 and < 2.0.0\"
+gleam_http = \">= 2.1.0 and < 3.0.0\"
+# Local dependencies can be specified with a path
+my_other_project = { path = \"../my_other_project\" }
+# Git dependencies can also be used
+my_git_library = { git = \"git@github.com/my-project/my-library\", ref = \"a8b3c5d82\" }
+latest_stdlib = { git = \"git@github.com/gleam-lang/stdlib\", ref = \"main\" }
+
+# The Hex packages the project needs for the tests (optional)
+# These will not be included if the package is published to Hex.
+# This table cannot include any packages that are already found in the
+# `dependencies` table.
+[dev-dependencies]
+gleeunit = \">= 1.0.0 and < 2.0.0\"
+
+# Documentation specific configuration (optional)
+[documentation]
+# Additional markdown pages to be included in generated HTML docs (optional)
+pages = [
+  { title = \"My Page\", path = \"my-page.html\", source = \"./path/to/my-page.md\" },
+]
+
+# Erlang specific configuration (optional)
+[erlang]
+# The name of the OTP application module, if the project has one (optional)
+# Typically Gleam projects do not use the Erlang/OTP implicit application boot
+# system and so typically do not define this.
+# If specified the module must implement the OTP application behaviour.
+# https://www.erlang.org/doc/man/application.html
+application_start_module = \"my_app/application\"
+
+# The names of any OTP applications that need to be started in addition to the
+# ones from the project dependencies (optional)
+extra_applications = [\"inets\", \"ssl\"]
+
+# JavaScript specific configuration (optional)
+[javascript]
+# Generate TypeScript .d.ts files
+typescript_declarations = true
+
+# Which JavaScript runtime to use with `gleam run`, `gleam test` etc.
+runtime = \"node\" # or \"deno\" or \"bun\"
+
+# Configuration specific to the Deno runtime (optional)
+# https://deno.land/manual@v1.30.0/basics/permissions#permissions
+[javascript.deno]
+allow_all = false
+allow_sys = false
+allow_ffi = false
+allow_hrtime = false
+
+# A bool or list of environment variables
+allow_env = [\"DATABASE_URL\"]
+
+# A bool or a list of IP addresses or hostnames (optionally with ports) 
+allow_net = [\"example.com:443\"]
+
+# A bool or a list of paths
+allow_run = [\"./bin/migrate.sh\"]
+allow_read = [\"./database.sqlite\"]
+allow_write = [\"./database.sqlite\"]"
+    |> string.split("\n")
+    |> list.map(fn(line) {
+      // TODO: real syntax highlighting
+      let t = html.text(line <> "\n")
+      case line {
+        "#" <> _ -> html.span([attr.class("hl-comment")], [t])
+        "[" <> _ -> html.span([attr.class("hl-module")], [t])
+        _ -> t
+      }
+    })
+
+  let content = [
+    html.p([], [
+      html.text(
+        "All Gleam projects require a `gleam.toml` configuration file. The `toml` configuration format is documented at ",
+      ),
+      html.a([attr.href("https://toml.io/")], [html.text("toml.io")]),
+      html.text("."),
+      html.pre([], [html.code([], code)]),
+    ]),
+  ]
+
+  content
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
+pub fn community(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "community",
+      title: "The Gleam Community",
+      description: "Welcome, friend! It's good to have you",
+      preload_images: [],
+    )
+
+  let code_of_conduct =
+    "https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md"
+  let content = [
+    html.p([], [
+      html.text(
+        "You can talk to and get help from other Gleam community members in the
+        following forums:",
+      ),
+    ]),
+    html.ul([attr.class("community-socials")], [
+      html.li([], [
+        html.a(
+          [attr.href("https://discord.gg/Fm8Pwmy"), attr.target("_blank")],
+          [
+            html.span([attr.class("community-socials__logo")], [
+              html.img([
+                attr.alt("Discord Icon"),
+                attr.src("/images/community/discord.svg"),
+              ]),
+            ]),
+            html.span([], [html.text("Gleam’s web chat on Discord")]),
+          ],
+        ),
+      ]),
+      html.li([], [
+        html.a(
+          [
+            attr.href("https://github.com/gleam-lang/gleam/discussions"),
+            attr.target("_blank"),
+          ],
+          [
+            html.span([attr.class("community-socials__logo")], [
+              html.img([
+                attr.alt("GitHub Icon"),
+                attr.src("/images/community/github.svg"),
+              ]),
+            ]),
+            html.span([], [html.text("Gleam discussions on Github")]),
+          ],
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("You can also subscribe to updates from community newsletter "),
+      html.a([attr.href("https://gleamweekly.com/")], [
+        html.text("Gleam Weekly"),
+      ]),
+      html.text("."),
+    ]),
+    html.h2([], [html.text("Code of Conduct")]),
+    html.p([], [
+      html.text(
+        "The Gleam community is a space where we treat each other kindly and
+        with respect. Please read and adhere to our community ",
+      ),
+      html.a([attr.href(code_of_conduct)], [html.text("code of conduct")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "If you need help or have encountered anyone violating our code of conduct
+        please send a message to us via one of the channels below. We will ensure the
+        issue is resolved and your identity will be kept private.",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [
+        html.text("Messaging the "),
+        html.code([], [html.text("@moderators")]),
+        html.text("group on the "),
+        html.a([attr.href("https://discord.gg/Fm8Pwmy")], [
+          html.text("Gleam Discord chat"),
+        ]),
+        html.text("."),
+      ]),
+      html.li([], [
+        html.text("Emailing "),
+        html.a([attr.href("mailto:hello@gleam.run")], [
+          html.text("hello@gleam.run"),
+        ]),
+        html.text("."),
+      ]),
+    ]),
+  ]
+
+  content
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn branding(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "branding",
       title: "Gleam's branding",
       description: "All pretty and pink 💖",
-      preload_images: [""],
+      preload_images: [],
     )
 
   let content = [
