@@ -130,8 +130,10 @@ cd vars
 ",
     ),
     html.p([], [html.text("You’ll now have a project with this structure:")]),
-    highlighted_shell_pre_code(
-      ".
+    html.pre([], [
+      html.code([], [
+        html.text(
+          ".
 ├── .github/workflows/test.yml
 ├── .gitignore
 ├── README.md
@@ -139,7 +141,9 @@ cd vars
 ├── src/vars.gleam
 └── test/vars_test.gleam
 ",
-    ),
+        ),
+      ]),
+    ]),
     html.ul([], [
       html.li([], [
         html.code([], [html.text("README.md")]),
@@ -1129,8 +1133,7 @@ HKTs, type classes, and more.",
       ]),
       html.li([], [
         html.text(
-          "PureScript has an ML family style syntax, Gleam has a C family style
-syntax.",
+          "PureScript has an ML family style syntax, Gleam has a C family style syntax.",
         ),
       ]),
       html.li([], [
@@ -1652,6 +1655,604 @@ allow_write = [\"./database.sqlite\"]"
   ]
 
   content
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
+pub fn deployment_linux(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "deployment/linux-server",
+      title: "Deploy to a Linux server",
+      description: "Run Gleam on a server from any provider",
+      preload_images: [],
+    )
+
+  [
+    html.p([], [
+      html.text(
+        "This guide will take you through the process of deploying a Gleam backend web
+application to a single Linux server. The application will be run by systemd in
+a Linux container, and ",
+      ),
+      html.a([attr.href("https://caddyserver.com/")], [html.text("Caddy")]),
+      html.text(
+        "will be used to handle
+HTTPS.",
+      ),
+    ]),
+    html.h2([attr.id("provision-your-server")], [
+      html.text("Provision your server"),
+    ]),
+    html.p([], [
+      html.text(
+        "We will be using the most recent LTS version of Ubuntu in this tutorial. You can
+use other Linux distributions but there may be slight differences in commands or
+additional steps you need to undertake to deploy your application.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "If you do not have a server already there are a number of companies who can
+provide you one for a small monthly fee. You can use ",
+      ),
+      html.a([attr.href("https://www.vultr.com/?ref=9694426")], [
+        html.text(
+          "Gleam’s referral link for
+Vultr",
+        ),
+      ]),
+      html.text(
+        "if you do not already have a
+preferred server provider.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "We will be using an amd64 server with 1 shared virtual CPU and 1 GB of memory.
+You can use a smaller server if you wish, but at least 250MB of memory is
+recommended. If your application is to receive a lot of traffic or perform
+expensive computation then you may wish to upgrade to a more powerful server.
+Be sure to add your SSH public key to the server when creating it. SSH should
+never be used with passwords, it is insecure.",
+      ),
+    ]),
+    html.h2([attr.id("configure-your-dns")], [html.text("Configure your DNS")]),
+    html.p([], [
+      html.text(
+        "Once you have your server add an A record pointing to the public IPv4 address of
+your server, which can likely be found in the web console of your server
+provider.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "If your server has a public IPv6 address add an AAAA record for the same domain
+to that address.",
+      ),
+    ]),
+    html.p([], [
+      html.text("We will be using the domain "),
+      html.code([], [html.text("example.gleam.run")]),
+      html.text(
+        "for the rest of this tutorial.
+Be sure to replace this with your domain.",
+      ),
+    ]),
+    html.h2([attr.id("prepare-your-application")], [
+      html.text("Prepare your application"),
+    ]),
+    html.p([], [
+      html.text("Ensure you application is listening on "),
+      html.code([], [html.text("0.0.0.0")]),
+      html.text(
+        ". If you’re using Mist or Wisp
+you can do this with the ",
+      ),
+      html.code([], [html.text("mist.bind")]),
+      html.text("function, as shown here."),
+    ]),
+    highlighted_gleam_pre_code(
+      "  let assert Ok(_) =
+    wisp_mist.handler(handle_request, secret_key_base)
+    |> mist.new
+    |> mist.bind(\"0.0.0.0\") // <- add this line
+    |> mist.port(8000)
+    |> mist.start_http
+",
+    ),
+    html.p([], [
+      html.text(
+        "Take note of what port your application is starting on. We will be using port
+8000 for the rest of this guide.",
+      ),
+    ]),
+    html.h2([attr.id("add-a-dockerfile")], [html.text("Add a Dockerfile")]),
+    html.p([], [
+      html.text("Add a file to the base of your repository called "),
+      html.code([], [html.text("Dockerfile")]),
+      html.text(
+        "with these
+contents:",
+      ),
+    ]),
+    highlighted_dockerfile_pre_code(
+      "FROM erlang:27.1.1.0-alpine AS build
+COPY --from=ghcr.io/gleam-lang/gleam:v1.8.0-erlang-alpine /bin/gleam /bin/gleam
+COPY . /app/
+RUN cd /app && gleam export erlang-shipment
+
+FROM erlang:27.1.1.0-alpine
+RUN \\
+  addgroup --system webapp && \\
+  adduser --system webapp -g webapp
+COPY --from=build /app/build/erlang-shipment /app
+WORKDIR /app
+ENTRYPOINT [\"/app/entrypoint.sh\"]
+CMD [\"run\"]
+",
+    ),
+    html.p([], [
+      html.text("Edit the Erlang and Gleam versions on the 2 "),
+      html.code([], [html.text("FROM")]),
+      html.text("lines and the first "),
+      html.code([], [html.text("COPY")]),
+      html.text("lines to be the ones you want to use."),
+    ]),
+    html.p([], [
+      html.text("If your application normally needs additional arguments to "),
+      html.code([], [html.text("gleam run")]),
+      html.text(
+        "to start
+then edit the ",
+      ),
+      html.code([], [html.text("CMD [\"run\"]")]),
+      html.text("line to include them."),
+    ]),
+    html.p([], [
+      html.text(
+        "If you have other requirements (for example, if you are using NIFs and need a C
+compiler) you will need to edit this file further to install the required
+packages.",
+      ),
+    ]),
+    html.h2([attr.id("build-your-container-on-ci")], [
+      html.text("Build your container on CI"),
+    ]),
+    html.p([], [
+      html.text(
+        "We will be using GitHub actions to build and publish the container image to the
+GitHub container registry using docker each time a git tag starting with ",
+      ),
+      html.code([], [html.text("v")]),
+      html.text(
+        "is
+pushed to the repo. For example, ",
+      ),
+      html.code([], [html.text("v1.0.0")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text("Create a file at "),
+      html.code([], [html.text(".github/workflows/build-container.yml")]),
+      html.text("with these contents:"),
+    ]),
+    highlighted_yaml_pre_code(
+      "name: Build container image
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag webapp
+
+      - name: Log in to registry
+        run: echo \"${{ secrets.GITHUB_TOKEN }}\" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: |
+          IMAGE_ID=ghcr.io/gleam-run/example
+          TAG=\"$IMAGE_ID\":$(echo \"${{ github.ref }}\" | sed -e 's,.*/\\(.*\\),\\1,')
+          docker tag webapp \"$TAG\"
+          docker push \"$TAG\"
+",
+    ),
+    html.p([], [
+      html.text("Edit "),
+      html.code([], [html.text("IMAGE_ID=ghcr.io/gleam-run/example")]),
+      html.text(
+        "with the name of your GitHub
+repository. If you repository is at ",
+      ),
+      html.code([], [html.text("https://github.com/wibble/wob")]),
+      html.text(
+        "it should be
+",
+      ),
+      html.code([], [html.text("IMAGE_ID=ghcr.io/wibble/wob")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "After you have pushed these changes push a new git tag to GitHub. This will
+trigger the workflow, which you can see in your GitHub repo’s “Actions” tab.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "git tag production
+git push --tags
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("We’re using the tag "),
+      html.code([], [html.text("production")]),
+      html.text(", but you can use any tag name you want."),
+    ]),
+    html.h2([attr.id("secure-the-ssh-service")], [
+      html.text("Secure the SSH service"),
+    ]),
+    html.p([], [
+      html.text(
+        "SSH into your server using the domain name you configured earlier.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "ssh root@example.gleam.run
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "If you are unable to SSH in check you have the correct username and the domain,
+and are using the same SSH key you added to the server when creating it.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "Permitting SSH login with a password is a security risk, so ensure it is
+disabled. Open ",
+      ),
+      html.code([], [html.text("/etc/ssh/sshd_config")]),
+      html.text("in a text editor."),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "nano /etc/ssh/sshd_config
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("Search for the line "),
+      html.code([], [html.text("#PasswordAuthentication yes")]),
+      html.text(
+        "and edit it to be
+",
+      ),
+      html.code([], [html.text("PasswordAuthentication no")]),
+      html.text(". Notice that it does not have a "),
+      html.code([], [html.text("#")]),
+      html.text(
+        "at the start,
+while before it may have had one.",
+      ),
+    ]),
+    html.p([], [html.text("Restart the SSH service.")]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "systemctl restart ssh
+",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("secure-the-network-with-a-firewall")], [
+      html.text("Secure the network with a firewall"),
+    ]),
+    html.p([], [
+      html.text(
+        "The server should only be accessible over HTTP, HTTPS, and SSH, so we will
+configure the server to block anything else.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "ufw allow ssh
+ufw allow http
+ufw allow https
+ufw enable
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.code([], [html.text("ufw")]),
+      html.text(
+        "may prompt for confirmation when enabling it. Accept by entering ",
+      ),
+      html.code([], [html.text("y")]),
+      html.text("."),
+    ]),
+    html.h2([attr.id("enable-automatic-ubuntu-security-updates")], [
+      html.text("Enable automatic Ubuntu security updates"),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "apt install --yes unattended-upgrades
+systemctl start unattended-upgrades
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "If you are not using Ubuntu Linux there may be some other way to do this for
+your distribution.",
+      ),
+    ]),
+    html.h2([attr.id("install-caddy-and-podman")], [
+      html.text("Install Caddy and Podman"),
+    ]),
+    html.p([], [
+      html.text(
+        "Caddy is the reverse proxy that we will use to provision TLS certificates and
+handle HTTPS traffic. Podman is the container engine we will use to run the
+application container.",
+      ),
+    ]),
+    html.p([], [
+      html.text("Install them both using "),
+      html.code([], [html.text("apt")]),
+      html.text(
+        "(or the equivalent if you decided not to use
+Ubuntu Linux).",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "apt install --yes podman caddy
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "After this finishes if you visit your domain in a web browser you should see the
+default Caddy home page.",
+      ),
+    ]),
+    html.h2([attr.id("define-your-podman-container")], [
+      html.text("Define your Podman container"),
+    ]),
+    html.p([], [
+      html.text(
+        "If you are using a private GitHub repository you will need create a GitHub
+personal access token with ",
+      ),
+      html.code([], [html.text("read:packages")]),
+      html.text(
+        "permissions in the GitHub security
+settings, and then use it to log in on the server.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "echo \"YOUR_GITHUB_PAT\" | podman login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+",
+        ),
+      ]),
+    ]),
+    html.p([], [html.text("Create a Podman systemd container file.")]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "nano /etc/containers/systemd/webapp.container
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("Add these contents, changing "),
+      html.code([], [html.text("Image=ghcr.io/gleam-lang/example:production")]),
+      html.text("for the name of your GitHub repository."),
+    ]),
+    highlighted_toml_pre_code(
+      "[Unit]
+Description=My Gleam web application
+After=local-fs.target
+
+[Container]
+Image=ghcr.io/gleam-lang/example:production
+PublishPort=8000:8000
+
+[Install]
+WantedBy=multi-user.target default.target
+",
+    ),
+    html.p([], [
+      html.text("You may want to edit the "),
+      html.code([], [html.text("[Container]")]),
+      html.text(
+        "section to further configure your
+container.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "If your application is listening on a different port then edit the ",
+      ),
+      html.code([], [html.text("8000")]),
+      html.text(
+        "s to
+the correct port.",
+      ),
+    ]),
+    html.p([], [
+      html.text("Environment variables can be added using the "),
+      html.code([], [html.text("Environment=KEY=value")]),
+      html.text(" syntax."),
+    ]),
+    html.p([], [
+      html.text(
+        "Directories on the server can be made accessible to the application inside the
+container using the ",
+      ),
+      html.code([], [
+        html.text("Volume=/path/on/server:/path/in/container:rw,z"),
+      ]),
+      html.text(" syntax."),
+    ]),
+    html.p([], [
+      html.text("See the "),
+      html.a(
+        [
+          attr.href(
+            "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html",
+          ),
+        ],
+        [html.text("Podman systemd")],
+      ),
+      html.text(" documentation for more detail."),
+    ]),
+    html.h2([attr.id("start-the-container")], [html.text("Start the container")]),
+    html.p([], [
+      html.text("The "),
+      html.code([], [html.text(".container")]),
+      html.text(" file creates a systemd service, so "),
+      html.code([], [html.text("systemctl")]),
+      html.text(" can be used to manage the application container."),
+    ]),
+    html.p([], [
+      html.text(
+        "Reload the systemd daemon to load the latest version of the file, and then start
+the service.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "systemctl daemon-reload
+systemctl start webapp
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("The status of the systemd service can be viewed with "),
+      html.code([], [html.text("systemctl status webapp")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "Check that service is handling HTTP requests by making a request to ",
+      ),
+      html.code([], [html.text("localhost")]),
+      html.text("on the port that your application is listening on."),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "curl -I localhost:8000
+",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("configure-caddy-to-send-traffic-to-the-application")], [
+      html.text("Configure Caddy to send traffic to the application"),
+    ]),
+    html.p([], [
+      html.text("Replace the contents of "),
+      html.code([], [html.text("/etc/caddy/Caddyfile")]),
+      html.text(
+        "with this, making sure to replace
+the domain and port with the ones you are using. Keep ",
+      ),
+      html.code([], [html.text("localhost")]),
+      html.text("the same."),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "example.gleam.run {
+        reverse_proxy localhost:8000
+}
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("Restart the Caddy service to pick up these changes."),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "systemctl restart caddy
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "Open your domain in your web browser. You should see your web site, complete
+with HTTPS!",
+      ),
+    ]),
+    html.h2([attr.id("future-deployments-and-maintenance")], [
+      html.text("Future deployments and maintenance"),
+    ]),
+    html.p([], [
+      html.text(
+        "Pushing a new tag to the GitHub repository will cause a new container image to
+be built. You can force-push a tag to a new location to create a new container
+with the same name.",
+      ),
+    ]),
+    html.p([], [
+      html.text("If you have changed the "),
+      html.code([], [html.text(".container")]),
+      html.text(
+        "file you can reload the daemon to pick up
+the changes and then restart the service to replace the container with one using
+the new configuration.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "systemctl daemon-reload
+systemctl restart webapp
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("The logs can be viewed with "),
+      html.code([], [html.text("journalctl -xeu webapp")]),
+      html.text("."),
+    ]),
+  ]
   |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
@@ -2682,14 +3283,69 @@ fn highlighted_toml_pre_code(code: String) -> Element(c) {
     code
     |> string.split("\n")
     |> list.map(fn(line) {
-      let t = html.text(line)
       // TODO: real syntax highlighting
       case line {
-        "#" <> _ -> html.span([attr.class("hl-comment")], [t])
-        "[" <> _ -> html.span([attr.class("hl-module")], [t])
-        _ -> t
+        "#" <> _ -> [html.span([attr.class("hl-comment")], [html.text(line)])]
+        "[" <> _ -> [html.span([attr.class("hl-module")], [html.text(line)])]
+        _ ->
+          case string.split_once(line, "=") {
+            Ok(#(before, after)) -> [
+              html.span([attr.class("hl-function")], [html.text(before)]),
+              html.text("=" <> after),
+            ]
+            _ -> [html.text(line)]
+          }
       }
     })
-    |> list.intersperse(html.text("\n"))
+    |> list.intersperse([html.text("\n")])
+    |> list.flatten
+  html.pre([], [html.code([], html)])
+}
+
+fn highlighted_dockerfile_pre_code(code: String) -> Element(b) {
+  // TODO: real syntax highlighting
+  let html =
+    code
+    |> string.split("\n")
+    |> list.map(fn(line) {
+      case line {
+        "RUN" as command <> rest
+        | "FROM" as command <> rest
+        | "COPY" as command <> rest
+        | "FROM" as command <> rest
+        | "WORKDIR" as command <> rest
+        | "ENTRYPOINT" as command <> rest
+        | "CMD" as command <> rest -> [
+          html.span([attr.class("hl-function")], [html.text(command)]),
+          html.text(rest),
+        ]
+        _ -> [html.text(line)]
+      }
+    })
+    |> list.intersperse([html.text("\n")])
+    |> list.flatten
+  html.pre([], [html.code([], html)])
+}
+
+fn highlighted_yaml_pre_code(code: String) -> Element(d) {
+  // TODO: real syntax highlighting
+  let html =
+    code
+    |> string.split("\n")
+    |> list.map(fn(line) {
+      case string.split_once(line, ": ") {
+        Ok(#(before, after)) -> [
+          html.span([attr.class("hl-function")], [html.text(before)]),
+          html.text(": " <> after),
+        ]
+        Error(_) ->
+          case string.ends_with(line, ":") {
+            True -> [html.span([attr.class("hl-function")], [html.text(line)])]
+            False -> [html.text(line)]
+          }
+      }
+    })
+    |> list.intersperse([html.text("\n")])
+    |> list.flatten
   html.pre([], [html.code([], html)])
 }
