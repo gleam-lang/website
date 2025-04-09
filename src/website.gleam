@@ -40,6 +40,7 @@ fn build_site() -> snag.Result(Nil) {
     page.community(ctx),
     page.gleam_toml(ctx),
     page.documentation(ctx),
+    page.frequently_asked_questions(ctx),
     page.news_index(news_posts, ctx),
     language_server.page(ctx),
     roadmap.page(ctx),
