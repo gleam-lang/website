@@ -39,6 +39,7 @@ fn build_site() -> snag.Result(Nil) {
     page.branding(ctx),
     page.community(ctx),
     page.gleam_toml(ctx),
+    page.writing_gleam(ctx),
     page.documentation(ctx),
     page.frequently_asked_questions(ctx),
     page.news_index(news_posts, ctx),

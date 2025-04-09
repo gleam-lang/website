@@ -56,6 +56,547 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn writing_gleam(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "writing-gleam",
+      title: "Writing Gleam",
+      description: "Learn to work with Gleam projects",
+      preload_images: [],
+    )
+
+  [
+    html.p([], [
+      html.text(
+        "This guide shows you how to create and develop a Gleam project.",
+      ),
+    ]),
+    html.p([], [
+      html.text("It does not teach the Gleam language itself, so read through "),
+      html.a([attr.href("https://tour.gleam.run/")], [
+        html.text("the language tour"),
+      ]),
+      html.text(
+        "first if you have not already. You are assumed to already have Gleam and Erlang
+installed, so head over to ",
+      ),
+      html.a([attr.href("/getting-started/installing/")], [
+        html.text("the install guide"),
+      ]),
+      html.text("if you need to do that."),
+    ]),
+    html.p([], [html.text("Ready? Let’s go!")]),
+    html.h2([attr.id("the-project")], [html.text("The project")]),
+    html.p([], [
+      html.text(
+        "In this guide we’re going to make a small command line program for printing
+environment variables.",
+      ),
+    ]),
+    html.p([], [html.text("In use it’ll look like this:")]),
+    highlighted_shell_pre_code(
+      "gleam run get USER
+# USER=lucy
+",
+    ),
+    html.h2([attr.id("creating-a-project")], [html.text("Creating a project")]),
+    html.p([], [
+      html.text("Gleam’s build tool is built into the "),
+      html.code([], [html.text("gleam")]),
+      html.text(
+        "program you installed earlier. It
+supports creating new projects, building, testing, and running them, along with
+managing dependencies from the ",
+      ),
+      html.a([attr.href("https://hex.pm/")], [html.text("Hex package manager")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text("First create a new Gleam project by running the "),
+      html.code([], [html.text("gleam new")]),
+      html.text(
+        "command in a
+terminal. I’m going to call mine ",
+      ),
+      html.code([], [html.text("vars")]),
+      html.text("."),
+    ]),
+    highlighted_shell_pre_code(
+      "# Create the project
+gleam new vars
+
+# Navigate into the project directory
+cd vars
+",
+    ),
+    html.p([], [html.text("You’ll now have a project with this structure:")]),
+    highlighted_shell_pre_code(
+      ".
+├── .github/workflows/test.yml
+├── .gitignore
+├── README.md
+├── gleam.toml
+├── src/vars.gleam
+└── test/vars_test.gleam
+",
+    ),
+    html.ul([], [
+      html.li([], [
+        html.code([], [html.text("README.md")]),
+        html.text(
+          "file is where you’d write introductory documentation for your
+project in markdown format.",
+        ),
+      ]),
+      html.li([], [
+        html.code([], [html.text("gleam.toml")]),
+        html.text("file contains the configuration for the project."),
+      ]),
+      html.li([], [
+        html.code([], [html.text("src/")]),
+        html.text("contains the program source."),
+      ]),
+      html.li([], [
+        html.code([], [html.text("test/")]),
+        html.text("contains additional code for testing the project."),
+      ]),
+      html.li([], [
+        html.code([], [html.text(".gitignore")]),
+        html.text("contains configuration for the "),
+        html.code([], [html.text("git")]),
+        html.text("version control system."),
+      ]),
+      html.li([], [
+        html.code([], [html.text(".github/workflows/test.yml")]),
+        html.text("defines a "),
+        html.a([attr.href("https://github.com/features/actions")], [
+          html.text("GitHub Actions"),
+        ]),
+        html.text(
+          "workflow that
+will run the project’s tests if you push it to a GitHub repository.",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "Altogether this is called a Gleam package, regardless of whether it’s a library
+or a program that is run directly.",
+      ),
+    ]),
+    html.h2([attr.id("running-the-project")], [html.text("Running the project")]),
+    html.p([], [
+      html.text("The entrypoint for the program is the function called "),
+      html.code([], [html.text("main")]),
+      html.text(
+        "in the module with
+the same name as the package itself. ",
+      ),
+      html.code([], [html.text("gleam new")]),
+      html.text(
+        "will have generated one for you
+that looks like this:",
+      ),
+    ]),
+    highlighted_gleam_pre_code(
+      "// In src/vars.gleam
+import gleam/io
+
+pub fn main() {
+  io.println(\"Hello from vars!\")
+}
+",
+    ),
+    html.p([], [
+      html.text("In the terminal run this command to run the project."),
+    ]),
+    highlighted_shell_pre_code(
+      "gleam run
+",
+    ),
+    html.p([], [
+      html.text(
+        "The Gleam build tool will then download the dependencies (here the standard
+library and a test runner), compile all the code, and then run the ",
+      ),
+      html.code([], [html.text("main")]),
+      html.text("function to print “Hello from vars!” to the terminal."),
+    ]),
+    html.p([], [
+      html.text(
+        "If you wanted to run a different module in your package, or a module from a
+dependency, you could run ",
+      ),
+      html.code([], [html.text("gleam run -m modulename")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text("You can run "),
+      html.code([], [html.text("gleam run --target javascript")]),
+      html.text(
+        "to run the project on a JavaScript
+runtime instead of Erlang, though for the rest of this guide we’ll continue with
+Erlang.",
+      ),
+    ]),
+    html.h2([attr.id("adding-dependencies")], [html.text("Adding dependencies")]),
+    html.p([], [
+      html.text(
+        "Gleam can run in constrained environments like embedded systems or browsers, so
+some functionality is not included in the standard library, such as reading
+command line inputs and environment variables. For our program to do these we’ll
+need to add some dependencies that provide this functionality.",
+      ),
+    ]),
+    html.p([], [
+      html.text("The "),
+      html.a([attr.href("https://packages.gleam.run/")], [
+        html.text("Gleam Package Index"),
+      ]),
+      html.text(
+        "can be used to find packages. In this case we
+want to use ",
+      ),
+      html.a([attr.href("https://hexdocs.pm/envoy/")], [html.text("envoy")]),
+      html.text("for environment variables and "),
+      html.a([attr.href("https://hexdocs.pm/argv/")], [html.text("argv")]),
+      html.text(
+        "for
+reading command line input. Add them to your package with this command:",
+      ),
+    ]),
+    highlighted_shell_pre_code(
+      "gleam add envoy argv
+",
+    ),
+    html.p([], [
+      html.text("If you look at the "),
+      html.code([], [html.text("gleam.toml")]),
+      html.text(
+        "file you’ll see that the dependencies have been
+added to the ",
+      ),
+      html.code([], [html.text("[dependencies]")]),
+      html.text("section."),
+    ]),
+    highlighted_toml_pre_code(
+      "name = \"vars\"
+version = \"1.0.0\"
+
+[dependencies]
+gleam_stdlib = \">= 0.34.0 and < 2.0.0\"
+envoy = \">= 1.0.1 and < 2.0.0\"
+argv = \">= 1.0.2 and < 2.0.0\"
+
+[dev-dependencies]
+gleeunit = \">= 1.0.0 and < 2.0.0\"
+",
+    ),
+    html.p([], [
+      html.text("The "),
+      html.code([], [html.text(">= 1.0.1 and < 2.0.0")]),
+      html.text(
+        " version constraint means that the project wants any version 
+greater than or equal to 1.0.1, but less than 2.0.0, which will maximise compatibility while
+avoiding breaking changes as Hex packages adhere to ",
+      ),
+      html.a([attr.href("https://semver.org/")], [
+        html.text("semantic versioning"),
+      ]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text("There is now also a "),
+      html.code([], [html.text("manifest.toml")]),
+      html.text(
+        " file which locks all the dependency packages
+to specific versions. It’s recommended to check this file into your version
+control system to ensure that anyone who downloads and runs your project will
+get the same versions of the dependencies. This manifest file isn’t uploaded to
+Hex so it is not used when other projects depend on your project.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "If you wish to update the dependencies to the latest versions that are
+compatible with your version constraints you can run ",
+      ),
+      html.code([], [html.text("gleam update")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "You can also use path dependencies to depend on packages on your computer rather
+than from Hex.",
+      ),
+    ]),
+    highlighted_toml_pre_code(
+      "[dependencies]
+my_other_package = { path = \"../my_other_package\" }
+",
+    ),
+    html.h2([attr.id("using-dependencies")], [html.text("Using dependencies")]),
+    html.p([], [
+      html.text("The "),
+      html.code([], [html.text("argv")]),
+      html.text(
+        " module from the package of the same name exports a function called ",
+      ),
+      html.code([], [html.text("load")]),
+      html.text(
+        " that can be used to read the command line arguments. Update the code in ",
+      ),
+      html.code([], [html.text("src/vars.gleam")]),
+      html.text(" to use this function."),
+    ]),
+    highlighted_gleam_pre_code(
+      "import argv
+import envoy
+import gleam/io
+import gleam/result
+
+pub fn main() {
+  case argv.load().arguments {
+    [\"get\", name] -> get(name)
+    _ -> io.println(\"Usage: vars get <name>\")
+  }
+}
+
+fn get(name: String) -> Nil {
+  let value = envoy.get(name) |> result.unwrap(\"\")
+  io.println(format_pair(name, value))
+}
+
+fn format_pair(name: String, value: String) -> String {
+  name <> \"=\" <> value
+}
+",
+    ),
+    html.p([], [
+      html.text("Pattern matching is being used to call the "),
+      html.code([], [html.text("get")]),
+      html.text(
+        " function or print a help message based on the command line arguments.",
+      ),
+    ]),
+    html.p([], [
+      html.text("The "),
+      html.code([], [html.text("get")]),
+      html.text("function uses the "),
+      html.code([], [html.text("envoy")]),
+      html.text(
+        " module from the package of the same name to
+read the environment variable and print it or a message if it doesn’t exist. A
+helper function ",
+      ),
+      html.code([], [html.text("format_pair")]),
+      html.text(" is used to format the output."),
+    ]),
+    html.p([], [
+      html.text("Give it a try! Run "),
+      html.code([], [html.text("gleam run get TERM")]),
+      html.text(" in the terminal to recompile and run the program."),
+    ]),
+    html.h2([attr.id("testing-your-code")], [html.text("Testing your code")]),
+    html.p([], [
+      html.text(
+        "This program is so small that you likely don’t need to write any tests for it,
+but for the sake of demonstration let’s write some for the ",
+      ),
+      html.code([], [html.text("format_pair")]),
+      html.text(" function."),
+    ]),
+    html.p([], [
+      html.text("To call the "),
+      html.code([], [html.text("format_pair")]),
+      html.text(" function from a module in the "),
+      html.code([], [html.text("test/")]),
+      html.text(
+        " directory we will need to make it public. We don’t want it to be part of the public API of the package, so we’ll move it to an ",
+      ),
+      html.em([], [html.text("internal module")]),
+      html.text(
+        ", which by default are modules
+named ",
+      ),
+      html.code([], [html.text("packagename/internal")]),
+      html.text(" and "),
+      html.code([], [html.text("packagename/internal/*")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "Public functions in these modules can be imported by other modules, but they’re
+considered to be part of the package’s internal implementation and as such are
+not documented or expected to give the same stability guarantees as functions in
+the public API.",
+      ),
+    ]),
+    highlighted_gleam_pre_code(
+      "// in src/vars.gleam
+import argv
+import envoy
+import gleam/io
+import gleam/result
+import vars/internal
+
+pub fn main() {
+  // Omitted for brevity
+}
+
+fn get(name: String) -> Nil {
+  let value = envoy.get(name) |> result.unwrap(\"\")
+  io.println(internal.format_pair(name, value))
+}
+",
+    ),
+    highlighted_gleam_pre_code(
+      "// in src/vars/internal.gleam
+pub fn format_pair(name: String, value: String) -> String {
+  name <> \"=\" <> value
+}
+",
+    ),
+    html.p([], [
+      html.text("Open up the "),
+      html.code([], [html.text("test/vars_test.gleam")]),
+      html.text(" file and write a test for the "),
+      html.code([], [html.text("format_pair")]),
+      html.text("."),
+    ]),
+    highlighted_gleam_pre_code(
+      "// in test/vars_test.gleam
+import gleeunit
+import gleeunit/should
+import vars/internal
+
+pub fn main() {
+  gleeunit.main()
+}
+
+pub fn format_pair_test() {
+  internal.format_pair(\"hello\", \"world\")
+  |> should.equal(\"hello=world\")
+}
+",
+    ),
+    html.p([], [
+      html.text("Running "),
+      html.code([], [html.text("gleam test")]),
+      html.text("will call the "),
+      html.code([], [html.text("main")]),
+      html.text("function in "),
+      html.code([], [html.text("vars_test")]),
+      html.text(
+        ", which will in
+turn run the tests.",
+      ),
+    ]),
+    html.p([], [
+      html.text("Your test "),
+      html.code([], [html.text("main")]),
+      html.text(
+        "function can do anything you like, but by default Gleam
+projects are generated using ",
+      ),
+      html.a([attr.href("https://hexdocs.pm/gleeunit/")], [
+        html.code([], [html.text("gleeunit")]),
+      ]),
+      html.text(
+        ", a simple test runner. With
+it any public function in the ",
+      ),
+      html.code([], [html.text("test/")]),
+      html.text(" directory with a name ending in "),
+      html.code([], [html.text("_test")]),
+      html.text("will be run as a test."),
+    ]),
+    html.h2([attr.id("sharing-your-program")], [
+      html.text("Sharing your program"),
+    ]),
+    html.p([], [
+      html.text(
+        "If your program is a web application that runs on a server you may now wish to
+view the ",
+      ),
+      html.a([attr.href("/documentation/#deployment")], [
+        html.text("deployment section"),
+      ]),
+      html.text(
+        " of Gleam’s documentation. The program
+we’ve just made is a command line program, so instead we’ll want to bundle it up
+into a single file that can be easily shared with others.",
+      ),
+    ]),
+    html.p([], [
+      html.text("As we’re using the Erlang target we can do this using "),
+      html.em([], [html.text("escript")]),
+      html.text(
+        ", which is part
+of the Erlang runtime. Add the ",
+      ),
+      html.code([], [html.text("gleescript")]),
+      html.text(" package as a dependency."),
+    ]),
+    highlighted_shell_pre_code(
+      "gleam add --dev gleescript
+",
+    ),
+    html.p([], [
+      html.text("The "),
+      html.code([], [html.text("--dev")]),
+      html.text(
+        " flag is used to indicate that this package is only used for building,
+developing, and testing the project, and should not be included in the final
+production builds. The build tool will then add ",
+      ),
+      html.code([], [html.text("gleescript")]),
+      html.text(" to the "),
+      html.code([], [html.text("[dev-dependencies]")]),
+      html.text(" section rather than the regular "),
+      html.code([], [html.text("[dependencies]")]),
+      html.text(" section."),
+    ]),
+    html.p([], [
+      html.text("Once added run "),
+      html.code([], [html.text("gleam run -m gleescript")]),
+      html.text(
+        " to compile your package into an escript file, which will be written to ",
+      ),
+      html.code([], [html.text("./vars")]),
+      html.text("."),
+    ]),
+    highlighted_shell_pre_code(
+      "# Compile the program to an escript
+gleam build
+gleam run -m gleescript
+
+# Run the program
+./vars get USER
+escript ./vars get USER # On Windows
+",
+    ),
+    html.p([], [
+      html.text("This "),
+      html.code([], [html.text("vars")]),
+      html.text(
+        " file can be run on any computer that has a compatible version of
+Erlang installed. Typically this will be within a few major versions of the
+version of Erlang on the computer used to compile the escript.",
+      ),
+    ]),
+    html.p([], [
+      html.text("And that’s it! Get hacking! And do drop by "),
+      html.a([attr.href("https://discord.gg/Fm8Pwmy")], [
+        html.text("the Gleam Discord server"),
+      ]),
+      html.text(" to get help or share what you’re working on."),
+    ]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -1098,16 +1639,6 @@ allow_net = [\"example.com:443\"]
 allow_run = [\"./bin/migrate.sh\"]
 allow_read = [\"./database.sqlite\"]
 allow_write = [\"./database.sqlite\"]"
-    |> string.split("\n")
-    |> list.map(fn(line) {
-      // TODO: real syntax highlighting
-      let t = html.text(line <> "\n")
-      case line {
-        "#" <> _ -> html.span([attr.class("hl-comment")], [t])
-        "[" <> _ -> html.span([attr.class("hl-module")], [t])
-        _ -> t
-      }
-    })
 
   let content = [
     html.p([], [
@@ -1116,7 +1647,7 @@ allow_write = [\"./database.sqlite\"]"
       ),
       html.a([attr.href("https://toml.io/")], [html.text("toml.io")]),
       html.text("."),
-      html.pre([], [html.code([], code)]),
+      highlighted_toml_pre_code(code),
     ]),
   ]
 
@@ -2128,4 +2659,37 @@ fn wall_of_sponsors() -> Element(a) {
 pub fn highlighted_gleam_pre_code(code: String) -> Element(a) {
   let html = contour.to_html(code)
   html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
+}
+
+fn highlighted_shell_pre_code(code: String) -> Element(c) {
+  let html =
+    code
+    |> string.split("\n")
+    |> list.map(fn(line) {
+      let t = html.text(line)
+      // TODO: real syntax highlighting
+      case line {
+        "#" <> _ -> html.span([attr.class("hl-comment")], [t])
+        _ -> t
+      }
+    })
+    |> list.intersperse(html.text("\n"))
+  html.pre([], [html.code([], html)])
+}
+
+fn highlighted_toml_pre_code(code: String) -> Element(c) {
+  let html =
+    code
+    |> string.split("\n")
+    |> list.map(fn(line) {
+      let t = html.text(line)
+      // TODO: real syntax highlighting
+      case line {
+        "#" <> _ -> html.span([attr.class("hl-comment")], [t])
+        "[" <> _ -> html.span([attr.class("hl-module")], [t])
+        _ -> t
+      }
+    })
+    |> list.intersperse(html.text("\n"))
+  html.pre([], [html.code([], html)])
 }
