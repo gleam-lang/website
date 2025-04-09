@@ -160,32 +160,24 @@ fn use_label_shorthand_syntax_html() -> List(Element(Nil)) {
         "This code action updates calls and patterns to use the label shorthand syntax.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case date {
+    page.highlighted_gleam_pre_code(
+      "case date {
   Day(day: day, month: month, year: year) -> todo
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the call that could use the shorthand syntax the code
 action will be suggested, and if run the module will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case date {
+    page.highlighted_gleam_pre_code(
+      "case date {
   Day(day:, month:, year:) -> todo
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -197,34 +189,26 @@ fn remove_redundant_tuples_html() -> List(Element(Nil)) {
 patterns.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case #(a, b) {
+    page.highlighted_gleam_pre_code(
+      "case #(a, b) {
   #(1, 2) -> todo
   _ -> todo
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the case expression the code action will be suggested,
 and if run the module will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case a, b {
+    page.highlighted_gleam_pre_code(
+      "case a, b {
   1, 2 -> todo
   _, _ -> todo
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -235,19 +219,15 @@ fn remove_unused_imports_html() -> List(Element(Nil)) {
         "This code action can be used to delete unused import statements from a module.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/io
+    page.highlighted_gleam_pre_code(
+      "import gleam/io
 import gleam/list
 
 pub fn main() {
   io.println(\"Hello, Joe!\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the unused "),
       html.code([], [html.text("import gleam/list")]),
@@ -256,18 +236,14 @@ pub fn main() {
 will be suggested, and if run the module will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/io
+    page.highlighted_gleam_pre_code(
+      "import gleam/io
 
 pub fn main() {
   io.println(\"Hello, Joe!\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -279,18 +255,14 @@ fn qualify_and_unqualify_html() -> List(Element(Nil)) {
 values.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/option.{Some}
+    page.highlighted_gleam_pre_code(
+      "import gleam/option.{Some}
 
 pub fn main() {
   [Some(1), Some(2)]
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within one of the "),
       html.code([], [html.text("Some")]),
@@ -299,18 +271,14 @@ pub fn main() {
 be suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/option.{}
+    page.highlighted_gleam_pre_code(
+      "import gleam/option.{}
 
 pub fn main() {
   [option.Some(1), option.Some(2)]
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Note that the import statement has been updated as needed, and all instances of
@@ -340,18 +308,14 @@ fn pattern_match_html() -> List(Element(Nil)) {
         "This code action can generate an exhaustive case expression for variable or argument.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/list
+    page.highlighted_gleam_pre_code(
+      "import gleam/list
 
 pub fn run(items: List(Int)) -> Nil {
   let result = list.first(items)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the "),
       html.code([], [html.text("result")]),
@@ -360,10 +324,8 @@ pub fn run(items: List(Int)) -> Nil {
 suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/list
+    page.highlighted_gleam_pre_code(
+      "import gleam/list
 
 pub fn run(items: List(Int)) -> Nil {
   let result = list.first(items)
@@ -373,9 +335,7 @@ pub fn run(items: List(Int)) -> Nil {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -386,16 +346,12 @@ fn interpolate_string_html() -> List(Element(Nil)) {
         "This code action can split a string in order to interpolate a value.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn greet(name: String) -> String {
+    page.highlighted_gleam_pre_code(
+      "pub fn greet(name: String) -> String {
   \"Hello, !\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is before the "),
       html.code([], [html.text("!")]),
@@ -404,43 +360,31 @@ fn interpolate_string_html() -> List(Element(Nil)) {
 will be suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn greet(name: String) -> String {
+    page.highlighted_gleam_pre_code(
+      "pub fn greet(name: String) -> String {
   \"Hello, \" <> todo <> \"!\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If the cursor is selecting a valid Gleam name then that will be used as a
 variable name in the interpolation.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn greet(name: String) -> String {
+    page.highlighted_gleam_pre_code(
+      "pub fn greet(name: String) -> String {
   \"Hello, name!\"
   //      ^^^^ This is selected
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn greet(name: String) -> String {
+    ),
+    page.highlighted_gleam_pre_code(
+      "pub fn greet(name: String) -> String {
   \"Hello, \" <> name <> \"!\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -451,17 +395,13 @@ fn inline_variable_html() -> List(Element(Nil)) {
         "This code action can inline a variable that is used only once.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   let greeting = \"Hello!\"
   echo greeting
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the "),
       html.code([], [html.text("greeting")]),
@@ -470,16 +410,12 @@ fn inline_variable_html() -> List(Element(Nil)) {
 suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   echo \"Hello!\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -492,17 +428,13 @@ fn inexhaustive_let_to_case_html() -> List(Element(Nil)) {
       html.code([], [html.text("case")]),
       html.text("when the pattern is not exhaustive."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn unwrap_result(result: Result(a, b)) -> a {
+    page.highlighted_gleam_pre_code(
+      "pub fn unwrap_result(result: Result(a, b)) -> a {
   let Ok(inner) = result // error: inexhaustive
   inner
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the "),
       html.code([], [html.text("let")]),
@@ -511,10 +443,8 @@ fn inexhaustive_let_to_case_html() -> List(Element(Nil)) {
 suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn unwrap_result(result: Result(a, b)) -> a {
+    page.highlighted_gleam_pre_code(
+      "pub fn unwrap_result(result: Result(a, b)) -> a {
   let inner = case result {
     Ok(inner) -> inner
     Error(_) -> todo
@@ -522,9 +452,7 @@ suggested, and if run the code will be updated to this:",
   inner
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -538,16 +466,12 @@ JSON using the ",
       html.code([], [html.text("gleam_json")]),
       html.text("library."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Person {
+    page.highlighted_gleam_pre_code(
+      "pub type Person {
   Person(name: String, age: Int)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within "),
       html.code([], [html.text("Person")]),
@@ -556,10 +480,8 @@ JSON using the ",
 suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/json
+    page.highlighted_gleam_pre_code(
+      "import gleam/json
 
 pub type Person {
   Person(name: String, age: Int)
@@ -572,9 +494,7 @@ fn encode_person(person: Person) -> json.Json {
   ])
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -586,17 +506,13 @@ fn generate_function_html() -> List(Element(Nil)) {
 used but does not yet exist.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   let items = [1, 2, 3]
   io.println(describe(items))
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within "),
       html.code([], [html.text("describe")]),
@@ -605,10 +521,8 @@ used but does not yet exist.",
 and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/io
+    page.highlighted_gleam_pre_code(
+      "import gleam/io
 
 pub fn main() {
   let items = [1, 2, 3]
@@ -619,9 +533,7 @@ fn describe(list: List(Int) -> String {
   todo
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -633,16 +545,12 @@ fn generate_decoder_html() -> List(Element(Nil)) {
 definition.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Person {
+    page.highlighted_gleam_pre_code(
+      "pub type Person {
   Person(name: String, age: Int)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the "),
       html.code([], [html.text("Person")]),
@@ -651,10 +559,8 @@ definition.",
 and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/dynamic/decode
+    page.highlighted_gleam_pre_code(
+      "import gleam/dynamic/decode
 
 pub type Person {
   Person(name: String, age: Int)
@@ -666,9 +572,7 @@ fn person_decoder() -> decode.Decoder(Person) {
   decode.success(Person(name:, age:))
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -677,16 +581,12 @@ fn fill_labels_html() -> List(Element(Nil)) {
     html.p([], [
       html.text("This code action can add any expected labels to a call."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   Date()
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the "),
       html.code([], [html.text("Date()")]),
@@ -695,16 +595,12 @@ fn fill_labels_html() -> List(Element(Nil)) {
 and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   Date(year: todo, month: todo, day: todo)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -713,33 +609,25 @@ fn extract_variable_html() -> List(Element(Nil)) {
     html.p([], [
       html.text("This code action assigns assigns an expression to a variable."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   list.each([\"Hello, Mike!\", \"Hello, Joe!\"], io.println)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the list then code action will be suggested, and if
 run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   let value = [\"Hello, Mike!\", \"Hello, Joe!\"]
   list.each(value, io.println)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -750,33 +638,25 @@ fn expand_function_capture_html() -> List(Element(Nil)) {
         "This code action converts from the function capture syntax to an anonymous function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   let add_eleven = int.add(_, 11)
   list.map([1, 2, 3], add_eleven)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the function capture then code action will be
 suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   list.map([1, 2, 3], fn(value) { int.add(value, 11) })
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -790,34 +670,26 @@ fn discard_unused_result_html() -> List(Element(Nil)) {
 it is better to handle the result than to ignore the possible failure.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   function_which_can_fail()
   io.println(\"Done!\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the result-returning-statement then code action
 will be suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   let _ = function_which_can_fail()
   io.println(\"Done!\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -831,17 +703,13 @@ fn convert_use_html() -> List(Element(Nil)) {
 regular function call syntax.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   use profile <- result.try(fetch_profile(user))
   render_welcome(user, profile)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within one of the "),
       html.code([], [html.text("use")]),
@@ -850,18 +718,14 @@ regular function call syntax.",
 be suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
   result.try(fetch_profile(user), fn(profile) {
     render_welcome(user, profile)
   })
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("The running the code action again will reverse this change."),
     ]),
@@ -878,36 +742,28 @@ fn convert_pipes_html() -> List(Element(Nil)) {
 regular function call syntax.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/list
+    page.highlighted_gleam_pre_code(
+      "import gleam/list
 
 pub fn main() {
   list.map([1, 2, 3], double)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the list argument then the code action will be
 suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/list
+    page.highlighted_gleam_pre_code(
+      "import gleam/list
 
 pub fn main() {
   [1, 2, 3] |> list.map(double)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("The running the code action again will reverse this change."),
     ]),
@@ -927,32 +783,24 @@ fn case_correction_html() -> List(Element(Nil)) {
         "This code action can correct names written with the wrong case.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub main() {
+    page.highlighted_gleam_pre_code(
+      "pub main() {
   let myNumber = 100
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the name written with the wrong case then code action
 will be suggested, and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub main() {
+    page.highlighted_gleam_pre_code(
+      "pub main() {
   let my_number = 100
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -974,51 +822,39 @@ fn add_missing_patterns_html() -> List(Element(Nil)) {
         "This code action can add missing patterns to an inexhaustive case expression.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn run(value: Bool) -> Nil {
+    page.highlighted_gleam_pre_code(
+      "pub fn run(value: Bool) -> Nil {
   case value {}
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within the case expression then code action will be suggested,
 and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn run(value: Bool) -> Nil {
+    page.highlighted_gleam_pre_code(
+      "pub fn run(value: Bool) -> Nil {
   case value {
     True -> todo
     False -> todo
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
 fn add_missing_import_html() -> List(Element(Nil)) {
   [
     html.p([], [html.text("This code action can add missing imports.")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() -> Nil {
+    page.highlighted_gleam_pre_code(
+      "pub fn main() -> Nil {
   io.println(\"Hello, world!\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("If your cursor is within the "),
       html.code([], [html.text("io.println")]),
@@ -1034,18 +870,14 @@ the name ",
 and if run the code will be updated to this:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/io
+    page.highlighted_gleam_pre_code(
+      "import gleam/io
 
 pub fn main() -> Nil {
   io.println(\"Hello, world!\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
 }
 
@@ -1056,16 +888,12 @@ fn add_annotations_html() -> List(Element(Nil)) {
         "This code action can add type annotations to assignments and functions.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn increment(x) {
+    page.highlighted_gleam_pre_code(
+      "pub fn increment(x) {
   x + 1
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "If your cursor is within a function that does not have the all of the argument
@@ -1073,16 +901,12 @@ types and the return type annotated then code action will be suggested, and if
 run the code will be updated to include them:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn increment(x: Int) -> Int {
+    page.highlighted_gleam_pre_code(
+      "pub fn increment(x: Int) -> Int {
   x + 1
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("It can also be triggered on "),
       html.code([], [html.text("let")]),
@@ -1319,9 +1143,7 @@ fn neovim_installation_html() -> List(Element(Nil)) {
       html.code([], [html.text("init.lua")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([], [html.text("require('lspconfig').gleam.setup({})")]),
-    ]),
+    html.code([], [html.text("require('lspconfig').gleam.setup({})")]),
     html.p([], [
       html.text(
         "The language server will then be automatically started when you open a Gleam file.",

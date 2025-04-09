@@ -976,7 +976,7 @@ pub fn home(ctx: site.Context) -> fs.File {
             ),
           ]),
         ]),
-        highlighted_pre_code(
+        highlighted_gleam_pre_code(
           "import gleam/io
 
 pub fn main() {
@@ -1035,7 +1035,7 @@ pub fn main() {
             ),
           ]),
         ]),
-        highlighted_pre_code(
+        highlighted_gleam_pre_code(
           "fn spawn_task(i) {
   task.async(fn() {
     let n = int.to_string(i)
@@ -1157,7 +1157,7 @@ It has these fields:
             ),
           ]),
         ]),
-        highlighted_pre_code(
+        highlighted_gleam_pre_code(
           "@external(erlang, \"Elixir.HPAX\", \"new\")
 pub fn new(size: Int) -> Table
   
@@ -1459,7 +1459,7 @@ fn wall_of_sponsors() -> Element(a) {
   ])
 }
 
-fn highlighted_pre_code(code: String) -> Element(a) {
+pub fn highlighted_gleam_pre_code(code: String) -> Element(a) {
   let html = contour.to_html(code)
   html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
 }
