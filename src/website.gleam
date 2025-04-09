@@ -6,6 +6,7 @@ import gleave
 import snag
 import website/atom_feed
 import website/fs
+import website/language_server
 import website/news
 import website/page
 import website/roadmap
@@ -36,7 +37,11 @@ fn build_site() -> snag.Result(Nil) {
   let page_files = [
     page.home(ctx),
     page.branding(ctx),
+    page.community(ctx),
+    page.gleam_toml(ctx),
+    page.documentation(ctx),
     page.news_index(news_posts, ctx),
+    language_server.page(ctx),
     roadmap.page(ctx),
   ]
 
