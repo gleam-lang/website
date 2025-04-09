@@ -160,7 +160,7 @@ type Release {
 pub fn page(ctx: site.Context) -> fs.File {
   let meta =
     page.PageMeta(
-      path: "roadmap/",
+      path: "roadmap",
       title: "Gleam's Development Roadmap",
       description: "What's coming next?",
       preload_images: [],
