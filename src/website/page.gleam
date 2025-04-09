@@ -56,6 +56,595 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn installing(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "getting-started/installing",
+      title: "Installing Gleam",
+      description: "Get ready to start making things",
+      preload_images: [],
+    )
+
+  [
+    html.p([], [
+      html.text(
+        "To prepare your computer for Gleam development you’ll need to install Gleam,
+Erlang, and optionally install any Gleam plugins
+for your editor.",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("#installing-gleam")], [html.text("Installing Gleam")]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#installing-erlang")], [
+          html.text("Installing Erlang"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#installing-rebar3")], [
+          html.text("Installing Rebar3"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#editor-plugins")], [html.text("Editor Plugins")]),
+      ]),
+    ]),
+    html.h2([attr.id("installing-gleam")], [html.text("Installing Gleam")]),
+    html.h3([attr.id("precompiled-for-amd64-linux-windows-and-macos")], [
+      html.text("Precompiled for amd64 Linux, Windows, and macOS"),
+    ]),
+    html.p([], [
+      html.text(
+        "The easiest way to install Gleam on Linux, Windows, and Apple macOS is to download a
+prebuilt version of the compiler from the ",
+      ),
+      html.a([attr.href("https://github.com/gleam-lang/gleam/releases")], [
+        html.text(
+          "GitHub release
+page",
+        ),
+      ]),
+      html.text("."),
+    ]),
+    html.h3([attr.id("macos")], [html.text("macOS")]),
+    html.h4([attr.id("using-homebrew")], [html.text("Using Homebrew")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://brew.sh")], [html.text("Homebrew")]),
+      html.text(" installed run the following:"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "brew update
+brew install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("using-macports")], [html.text("Using MacPorts")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://www.macports.org/")], [html.text("MacPorts")]),
+      html.text(" installed run the following:"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "sudo port install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("linux")], [html.text("Linux")]),
+    html.h4([attr.id("using-homebrew-1")], [html.text("Using Homebrew")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://brew.sh")], [html.text("Homebrew")]),
+      html.text(" installed run the following:"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "brew update
+brew install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("asdf-version-manager")], [
+      html.text("asdf version manager"),
+    ]),
+    html.p([], [
+      html.a([attr.href("https://github.com/asdf-vm/asdf")], [html.text("asdf")]),
+      html.text(
+        "is a tool for installing and managing
+multiple versions of programming languages at the same time. Install the
+",
+      ),
+      html.a([attr.href("https://github.com/vic/asdf-gleam")], [
+        html.text("asdf-gleam plugin"),
+      ]),
+      html.text(
+        "to manage Gleam with
+asdf.",
+      ),
+    ]),
+    html.h4([attr.id("alpine-linux")], [html.text("Alpine Linux")]),
+    html.p([], [
+      html.text(
+        "Gleam is available in the Community repository of Alpine Linux as a package ",
+      ),
+      html.code([], [html.text("gleam")]),
+      html.text(". Install it with:"),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "apk add gleam
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("arch-linux")], [html.text("Arch Linux")]),
+    html.p([], [
+      html.text("Gleam is available through the "),
+      html.a(
+        [attr.href("https://wiki.archlinux.org/index.php/Arch_User_Repository")],
+        [html.text("Arch User Repository")],
+      ),
+      html.text(" as package "),
+      html.code([], [html.text("gleam")]),
+      html.text(". You can use your preferred "),
+      html.a([attr.href("https://wiki.archlinux.org/index.php/AUR_helpers")], [
+        html.text("helper"),
+      ]),
+      html.text(" to install it or clone it for manual build from "),
+      html.a([attr.href("https://aur.archlinux.org/packages/gleam-git")], [
+        html.text("https://aur.archlinux.org/packages/gleam-git"),
+      ]),
+      html.text("."),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "yay -S gleam
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("gentoo-linux")], [html.text("Gentoo Linux")]),
+    html.p([], [
+      html.text(
+        "Gleam is available in the official package manager, but may need to be unmasked. Install it with:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "sudo echo \"dev-lang/gleam ~amd64\" >> /etc/portage/package.accept_keywords
+emerge --ask dev-lang/gleam
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("void-linux")], [html.text("Void Linux")]),
+    html.p([], [
+      html.text(
+        "Gleam is available as part of the official packages repository. Install it with:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "sudo xbps-install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("fedora")], [html.text("Fedora")]),
+    html.p([], [
+      html.text(
+        "You can install Gleam on Fedora using the DNF package manager. Run the following command:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "sudo dnf copr enable frostyx/gleam
+sudo dnf install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("freebsd")], [html.text("FreeBSD")]),
+    html.p([], [
+      html.text(
+        "Gleam is available in ports, and also in binary packages. You may need
+to use the ",
+      ),
+      html.code([], [html.text("latest")]),
+      html.text(" package repo, amend per instructions in "),
+      html.code([], [html.text("/etc/pkg/FreeBSD.conf")]),
+      html.text(
+        ". See below for adjusting your PATH to use latest
+Erlang/OTP runtime and not just the standard OTP21:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "$ pkg install -r FreeBSD lang/gleam lang/erlang-runtime23
+$ export PATH=/usr/local/lib/erlang23/bin:$PATH
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("openbsd")], [html.text("OpenBSD")]),
+    html.p([], [
+      html.text(
+        "Gleam is available as a binary package. You can install it with:",
+      ),
+    ]),
+    html.pre([], [html.code([], [html.text("doas pkg_add gleam")])]),
+    html.h3([attr.id("opensuse")], [html.text("openSUSE")]),
+    html.p([], [
+      html.text(
+        "Gleam is available as part of the official packages repository. Install it with:",
+      ),
+    ]),
+    html.pre([], [html.code([], [html.text("zypper install gleam")])]),
+    html.h3([attr.id("android")], [html.text("Android")]),
+    html.h4([attr.id("termux")], [html.text("Termux")]),
+    html.p([], [
+      html.text(
+        "Gleam is available as part of the official packages repository. Install it with:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "pkg install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("windows")], [html.text("Windows")]),
+    html.h4([attr.id("using-scoop")], [html.text("Using Scoop")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://scoop.sh/")], [html.text("Scoop")]),
+      html.text(" installed on your computer run the following:"),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "scoop install gleam
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("build-from-source")], [html.text("Build from source")]),
+    html.p([], [
+      html.text(
+        "The compiler is written in the Rust programming language and so if you wish to
+build Gleam from source you will need to ",
+      ),
+      html.a([attr.href("https://www.rust-lang.org/tools/install")], [
+        html.text(
+          "install the Rust
+compiler",
+        ),
+      ]),
+      html.text("."),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "# Download the Gleam source code git repository
+cd /tmp
+git clone https://github.com/gleam-lang/gleam.git --branch $THE_LATEST_VERSION
+cd gleam
+
+# Build the Gleam compiler. This will take some time!
+make install
+
+# Verify the compiler is installed
+# Prints \"gleam $VERSION\"
+gleam --version
+",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("installing-erlang")], [html.text("Installing Erlang")]),
+    html.p([], [
+      html.text(
+        "Gleam compiles to Erlang code, so Erlang needs to be installed to run Gleam
+code. Some of the above package managers (e.g. Homebrew) will install Erlang
+alongside Gleam automatically.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "Precompiled builds for many popular operating systems can be downloaded from
+the ",
+      ),
+      html.a(
+        [attr.href("https://www.erlang-solutions.com/resources/download.html")],
+        [html.text("Erlang solutions website")],
+      ),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "Once Erlang has been installed you can check it is working by typing ",
+      ),
+      html.code([], [
+        html.text(
+          "erl
+-version",
+        ),
+      ]),
+      html.text(
+        " in your computer’s terminal. You will see version information like this if all is well:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-shell")], [
+        html.text(
+          "erl -version
+Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 12.1.5",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("linux-1")], [html.text("Linux")]),
+    html.h4([attr.id("using-homebrew-2")], [html.text("Using Homebrew")]),
+    html.p([], [
+      html.a([attr.href("https://brew.sh")], [html.text("Homebrew")]),
+      html.text(
+        " will install Erlang alongside Gleam automatically, though it can be manually installed by running the following:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "brew update
+brew install erlang",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("alpine-linux-community-repository")], [
+      html.text("Alpine Linux (Community repository)"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-shell")], [
+        html.text(
+          "apk add erlang
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("arch-linux-community-repository")], [
+      html.text("Arch Linux (Community repository)"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-shell")], [
+        html.text(
+          "pacman -S erlang
+",
+        ),
+      ]),
+    ]),
+    html.h4(
+      [
+        attr.id(
+          "gentoo-linux-already-installed-after-installing-gleam-through-emerge",
+        ),
+      ],
+      [
+        html.text(
+          "Gentoo Linux (already installed after installing gleam through emerge)",
+        ),
+      ],
+    ),
+    html.pre([], [
+      html.code([attr.class("language-shell")], [
+        html.text(
+          "emerge --ask dev-lang/erlang
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("fedora-1")], [html.text("Fedora")]),
+    html.pre([], [
+      html.code([attr.class("language-shell")], [
+        html.text(
+          "dnf install elixir erlang
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("debian-ubuntu")], [html.text("Debian, Ubuntu")]),
+    highlighted_shell_pre_code(
+      "# Add to /etc/apt/sources.list
+deb http://binaries2.erlang-solutions.com/ubuntu/ jammy-esl-erlang-25 contrib
+# Possible other lines depending on your `lsb_release -c`
+# deb http://binaries2.erlang-solutions.com/debian/ bullseye-elixir-1.15 contrib
+# deb http://binaries2.erlang-solutions.com/ubuntu/ bionic-mongooseim-6 contrib
+
+# Add Erlang Solutions repo keys:
+wget https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc
+sudo apt-key add GPG-KEY-pmanager.asc
+
+# Update apt and install esl-erlang
+sudo apt update
+sudo apt install esl-erlang
+",
+    ),
+    html.h3([attr.id("macos-1")], [html.text("macOS")]),
+    html.h4([attr.id("using-homebrew-3")], [html.text("Using Homebrew")]),
+    html.p([], [
+      html.a([attr.href("https://brew.sh")], [html.text("Homebrew")]),
+      html.text(
+        " will install Erlang alongside Gleam automatically,
+though it can be manually installed by running the following:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "brew update
+brew install erlang
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("using-macports-1")], [html.text("Using MacPorts")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://www.macports.org/")], [html.text("MacPorts")]),
+      html.text(" installed run the following:"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "sudo port install erlang
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("windows-1")], [html.text("Windows")]),
+    html.h4([attr.id("using-chocolatey")], [html.text("Using Chocolatey")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://chocolatey.org/")], [html.text("Chocolatey")]),
+      html.text(" installed on your computer run the following:"),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "choco install erlang
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("using-scoop-1")], [html.text("Using Scoop")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://scoop.sh/")], [html.text("Scoop")]),
+      html.text(" installed on your computer run the following:"),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "scoop install erlang
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("using-version-managers")], [
+      html.text("Using version managers"),
+    ]),
+    html.h4([attr.id("asdf")], [html.text("asdf")]),
+    html.p([], [
+      html.text(
+        "The asdf version manager has a plugin for installing Erlang. Installation and
+usage instructions can be found here:",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("https://github.com/asdf-vm/asdf")], [
+          html.text("https://github.com/asdf-vm/asdf"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("https://github.com/asdf-vm/asdf-erlang")], [
+          html.text("https://github.com/asdf-vm/asdf-erlang"),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("installing-rebar3")], [html.text("Installing rebar3")]),
+    html.p([], [
+      html.text(
+        "When using Erlang based dependencies (such as their web servers and HTTP clients)
+the rebar3 Erlang build tool may need to be installed.
+Install rebar3 by following the ",
+      ),
+      html.a([attr.href("https://rebar3.org/docs/getting-started/")], [
+        html.text(
+          "official rebar3 installation
+instructions",
+        ),
+      ]),
+      html.text("."),
+    ]),
+    html.h2([attr.id("editor-plugins")], [html.text("Editor Plugins")]),
+    html.p([], [
+      html.text(
+        "Gleam plugins are available for several popular editors. If one exists for
+your editor of choice consider installing it for syntax highlighting and other
+niceties.",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [
+        html.strong([], [html.text("Vim")]),
+        html.text("- "),
+        html.a([attr.href("https://github.com/gleam-lang/gleam.vim")], [
+          html.text("https://github.com/gleam-lang/gleam.vim"),
+        ]),
+      ]),
+      html.li([], [
+        html.strong([], [html.text("Emacs")]),
+        html.text("- "),
+        html.a([attr.href("https://github.com/gleam-lang/gleam-mode")], [
+          html.text("https://github.com/gleam-lang/gleam-mode"),
+        ]),
+      ]),
+      html.li([], [
+        html.strong([], [html.text("Visual Studio Code")]),
+        html.text("- "),
+        html.a([attr.href("https://github.com/gleam-lang/vscode-gleam")], [
+          html.text("https://github.com/gleam-lang/vscode-gleam"),
+        ]),
+      ]),
+      html.li([], [
+        html.strong([], [html.text("Sublime Text")]),
+        html.text("- "),
+        html.a(
+          [attr.href("https://github.com/digitalcora/sublime-text-gleam")],
+          [html.text("https://github.com/digitalcora/sublime-text-gleam")],
+        ),
+      ]),
+      html.li([], [
+        html.strong([], [html.text("Atom")]),
+        html.text("- "),
+        html.a([attr.href("https://github.com/itsgreggreg/language-gleam")], [
+          html.text("https://github.com/itsgreggreg/language-gleam"),
+        ]),
+      ]),
+      html.li([], [
+        html.strong([], [html.text("Gedit")]),
+        html.text("- "),
+        html.a([attr.href("https://github.com/DannyLettuce/gleam_gedit")], [
+          html.text("https://github.com/DannyLettuce/gleam_gedit"),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("what-next")], [html.text("What next?")]),
+    html.p([], [
+      html.text("Now you have installed Gleam check out the "),
+      html.a([attr.href("/book/tour")], [html.text("Language Tour")]),
+      html.text(" for an overview of the Gleam language."),
+    ]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn deployment_flyio(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -151,8 +740,7 @@ CMD [\"run\"]
     ]),
     html.p([], [
       html.text(
-        "Once installed use the CLI to sign up (or log in if you already have a Fly.io
-account).",
+        "Once installed use the CLI to sign up (or log in if you already have a Fly.io account).",
       ),
     ]),
     highlighted_shell_pre_code(
