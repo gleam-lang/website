@@ -56,6 +56,168 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn deployment_flyio(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "deployment/fly",
+      title: "Deploying on Fly.io",
+      description: "Run Gleam all over the world. No ops required.",
+      preload_images: [],
+    )
+
+  [
+    html.p([], [
+      html.a([attr.href("https://fly.io")], [html.text("Fly.io")]),
+      html.text(
+        "is a convenient and easy to use deployment platform
+with a generous ",
+      ),
+      html.a([attr.href("https://fly.io/docs/about/pricing/")], [
+        html.text("free allowance"),
+      ]),
+      html.text(
+        ". They were
+also a sponsor of the Gleam project, thank you Fly!",
+      ),
+    ]),
+    html.h2([attr.id("prepare-your-application")], [
+      html.text("Prepare your application"),
+    ]),
+    html.p([], [
+      html.text("Ensure your application is listening on "),
+      html.code([], [html.text("0.0.0.0")]),
+      html.text(
+        ". If you’re using Mist or Wisp
+you can do this with the ",
+      ),
+      html.code([], [html.text("mist.bind")]),
+      html.text("function, as shown here."),
+    ]),
+    highlighted_gleam_pre_code(
+      "  let assert Ok(_) =
+    wisp_mist.handler(handle_request, secret_key_base)
+    |> mist.new
+    |> mist.bind(\"0.0.0.0\") // <- add this line
+    |> mist.port(8000)
+    |> mist.start_http
+",
+    ),
+    html.p([], [
+      html.text(
+        "Take note of what port your application is starting on. We will be using port
+8000 for the rest of this guide.",
+      ),
+    ]),
+    html.h2([attr.id("add-a-dockerfile")], [html.text("Add a Dockerfile")]),
+    html.p([], [
+      html.text(
+        "We can use Fly’s support for containers to build the application and prepare it
+for deployment.",
+      ),
+    ]),
+    html.p([], [
+      html.text("Add a file named "),
+      html.code([], [html.text("Dockerfile")]),
+      html.text("with these contents:"),
+    ]),
+    highlighted_dockerfile_pre_code(
+      "FROM erlang:27.1.1.0-alpine AS build
+COPY --from=ghcr.io/gleam-lang/gleam:v1.8.0-erlang-alpine /bin/gleam /bin/gleam
+COPY . /app/
+RUN cd /app && gleam export erlang-shipment
+
+FROM erlang:27.1.1.0-alpine
+RUN \\
+  addgroup --system webapp && \\
+  adduser --system webapp -g webapp
+COPY --from=build /app/build/erlang-shipment /app
+WORKDIR /app
+ENTRYPOINT [\"/app/entrypoint.sh\"]
+CMD [\"run\"]
+",
+    ),
+    html.h2([attr.id("set-up-the-flyio-cli")], [
+      html.text("Set up the Fly.io CLI"),
+    ]),
+    html.p([], [
+      html.text("Follow the instructions "),
+      html.a(
+        [attr.href("https://fly.io/docs/getting-started/installing-flyctl/")],
+        [html.text("here")],
+      ),
+      html.text(
+        " to install Flyctl, the command-line interface for the Fly.io platform.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "Once installed use the CLI to sign up (or log in if you already have a Fly.io
+account).",
+      ),
+    ]),
+    highlighted_shell_pre_code(
+      "fly auth signup
+# OR
+fly auth login
+",
+    ),
+    html.p([], [
+      html.text(
+        "Fly’s free allowance is enough to run the Gleam application but new accounts
+need a payment card to be added, to prevent people from abusing Fly’s free
+service.",
+      ),
+    ]),
+    html.h2([attr.id("deploy-the-application")], [
+      html.text("Deploy the application"),
+    ]),
+    html.p([], [
+      html.text(
+        "From within the project use the Fly CLI to create and run your application on
+their platform.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "flyctl launch
+",
+        ),
+      ]),
+    ]),
+    html.p([], [html.text("The CLI will ask you a series of questions:")]),
+    html.ul([], [
+      html.li([], [html.text("What the application should be named.")]),
+      html.li([], [
+        html.text("What Fly organisation should the application belong to."),
+      ]),
+      html.li([], [
+        html.text("What region the application should be deployed to."),
+      ]),
+      html.li([], [
+        html.text(
+          "Whether you would like a PostgreSQL database to go with the application.",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "Once you have answered these it will build the application using the docker
+file. Once deployed you can open it in a web browser by running ",
+      ),
+      html.code([], [html.text("flyctl open")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text("To deploy future versions of the application run "),
+      html.code([], [html.text("flyctl deploy")]),
+      html.text(" after saving any changes to the source code."),
+    ]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn writing_gleam(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -1439,11 +1601,6 @@ pub fn documentation(ctx: site.Context) -> fs.File {
           html.text("Deploying on Clever Cloud"),
         ]),
       ]),
-      html.li([], [
-        html.a([attr.href("/deployment/zerops")], [
-          html.text("Deploying on Zerops"),
-        ]),
-      ]),
     ]),
     html.h2([attr.id("about-gleam")], [html.text("About Gleam")]),
     html.ul([], [
@@ -1743,7 +1900,7 @@ Be sure to replace this with your domain.",
       html.text("Prepare your application"),
     ]),
     html.p([], [
-      html.text("Ensure you application is listening on "),
+      html.text("Ensure your application is listening on "),
       html.code([], [html.text("0.0.0.0")]),
       html.text(
         ". If you’re using Mist or Wisp
