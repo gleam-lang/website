@@ -56,6 +56,672 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "frequently-asked-questions",
+      title: "Frequently asked questions",
+      description: "What? Why? Where? When? How?",
+      preload_images: [],
+    )
+
+  [
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("#why-is-it-called-gleam")], [
+          html.text("Why is it called Gleam?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#what-does-gleam-compile-to")], [
+          html.text("What does Gleam compile to?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#does-gleam-have-mutable-state")], [
+          html.text("Does Gleam have mutable state?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#does-gleam-have-side-effects")], [
+          html.text("Does Gleam have side effects?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#will-gleam-have-type-classes")], [
+          html.text("Will Gleam have type classes?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#will-gleam-have-metaprogramming")], [
+          html.text("Will Gleam have metaprogramming?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#how-is-message-passing-typed")], [
+          html.text("How is message passing typed?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#can-gleam-use-erlangs-hot-code-reloading")], [
+          html.text("Can Gleam use Erlang’s hot code reloading?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#why-does-division-by-zero-return-zero")], [
+          html.text("Why does division by zero return zero?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#how-does-gleam-compare-to")], [
+          html.text("How does Gleam compare to…"),
+        ]),
+        html.ul([], [
+          html.li([], [
+            html.a([attr.href("#how-does-gleam-compare-to-alpaca")], [
+              html.text("Alpaca?"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#how-does-gleam-compare-to-caramel")], [
+              html.text("Caramel?"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#how-does-gleam-compare-to-elixir")], [
+              html.text("Elixir?"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#how-does-gleam-compare-to-purerl")], [
+              html.text("Purerl?"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#how-does-gleam-compare-to-rust")], [
+              html.text("Rust?"),
+            ]),
+          ]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#can-i-use-elixir-code-with-gleam")], [
+          html.text("Can I use Elixir code with Gleam?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#why-is-the-compiler-written-in-rust")], [
+          html.text("Why is the compiler written in Rust?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#should-i-put-gleam-in-production")], [
+          html.text("Should I put Gleam in production?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#what-are-gleam-programmers-called")], [
+          html.text("What are Gleam programmers called?"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#is-it-good")], [html.text("Is it good?")]),
+      ]),
+    ]),
+    html.h2([attr.id("why-is-it-called-gleam")], [
+      html.text("Why is it called Gleam?"),
+    ]),
+    html.p([], [
+      html.text(
+        "Gleam rhymes with and is a synonym of “beam”, which is the name of the Erlang
+virtual machine.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "It’s also a short and cute word that’s hopefully easy to spell and pronounce
+for most people.",
+      ),
+    ]),
+    html.h2([attr.id("what-does-gleam-compile-to")], [
+      html.text("What does Gleam compile to?"),
+    ]),
+    html.p([], [html.text("Gleam compiles to Erlang or JavaScript.")]),
+    html.h2([attr.id("will-gleam-have-type-classes")], [
+      html.text("Will Gleam have type classes?"),
+    ]),
+    html.p([], [
+      html.text(
+        "Type classes are fun and enable creation of very nice, concise APIs, but they can
+make it easy to make challenging to understand code, tend to have confusing
+error messages, make consuming the code from other languages much harder, have a
+high compile time cost, and have a runtime cost unless the compiler performs
+full-program compilation and expensive monomorphization. This is unfortunately
+not a good fit for Gleam and they are not planned.",
+      ),
+    ]),
+    html.h2([attr.id("will-gleam-have-metaprogramming")], [
+      html.text("Will Gleam have metaprogramming?"),
+    ]),
+    html.p([], [
+      html.text(
+        "We are open interested in some form of metaprogramming in Gleam so long as it
+is not detrimental to Gleam’s readability and fast compilation. If you have
+proposal for a metaprogramming design please do share them with us via a ",
+      ),
+      html.a([attr.href("https://github.com/gleam-lang/gleam/discussions")], [
+        html.text(
+          "GitHub
+discussion",
+        ),
+      ]),
+      html.text("."),
+    ]),
+    html.h2([attr.id("does-gleam-have-mutable-state")], [
+      html.text("Does Gleam have mutable state?"),
+    ]),
+    html.p([], [
+      html.text(
+        "All data structures in Gleam are immutable and are implemented using
+structural sharing so they can be efficiently updated.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "If your application needs to hold on to some mutable state then it can be held
+by an actor (which immutably wraps mutable state using recursion) or you can
+use ETS, the Erlang in-memory key-value database.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "If you are compiling Gleam to JavaScript the
+",
+      ),
+      html.a(
+        [
+          attr.href(
+            "https://hexdocs.pm/javascript_mutable_reference/index.html",
+          ),
+        ],
+        [html.code([], [html.text("javascript_mutable_reference")])],
+      ),
+      html.text("library offers mutable references."),
+    ]),
+    html.h2([attr.id("does-gleam-have-side-effects")], [
+      html.text("Does Gleam have side effects?"),
+    ]),
+    html.p([], [
+      html.text(
+        "Yes, Gleam is an impure functional language like OCaml or Erlang. Impure
+actions like writing to files and printing to the console are possible without
+special handling.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "We may later introduce an effects system for identifying and tracking any
+impure code in a Gleam application, though this is still an area of research.",
+      ),
+    ]),
+    html.h2([attr.id("how-is-message-passing-typed")], [
+      html.text("How is message passing typed?"),
+    ]),
+    html.p([], [
+      html.text(
+        "Type safe message passing is implemented in Gleam as a set of libraries,
+rather than being part of the core language itself. This allows us to write safe
+concurrent programs that make use of Erlang’s OTP framework while not locking
+us in to one specific approach to typing message passing. This lack of lock-in
+is important as typing message passing is an area of active research, we may
+discover an even better approach at a later date!",
+      ),
+    ]),
+    html.p([], [
+      html.text("If you’d like to see more consider checking out "),
+      html.a([attr.href("https://github.com/gleam-lang/otp")], [
+        html.text(
+          "Gleam’s OTP
+library",
+        ),
+      ]),
+      html.text("."),
+    ]),
+    html.h2([attr.id("can-gleam-use-erlangs-hot-code-reloading")], [
+      html.text("Can Gleam use Erlang’s hot code reloading?"),
+    ]),
+    html.p([], [
+      html.text(
+        "All the usual Erlang code reloading features work, but it is not possible to
+type check the upgrades themselves as we have no way knowing the types of the
+already running code. This means you would have the usual Erlang amount of
+safety rather than what you might have with Gleam otherwise.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "Generally the OTP libraries for Gleam are optimised for type safety rather than
+upgrades, and use records rather than atom modules so the state upgrade
+callbacks may be more complex to write.",
+      ),
+    ]),
+    html.h2([attr.id("why-does-division-by-zero-return-zero")], [
+      html.text("Why does division by zero return zero?"),
+    ]),
+    html.p([], [
+      html.text(
+        "There are three common approaches to handling division by zero in programming
+languages:",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [html.text("Throw an exception and crash the program.")]),
+      html.li([], [
+        html.text("Return a special "),
+        html.code([], [html.text("Infinity")]),
+        html.text("value."),
+      ]),
+      html.li([], [
+        html.text("Return "),
+        html.code([], [html.text("0")]),
+        html.text("."),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "Gleam does not implicitly throw exceptions, so throwing an exception is not
+an option. The BEAM VM does not have a ",
+      ),
+      html.code([], [html.text("Infinity")]),
+      html.text(
+        "value, so that is not an
+option. Therefore Gleam returns ",
+      ),
+      html.code([], [html.text("0")]),
+      html.text("when dividing by zero."),
+    ]),
+    html.p([], [
+      html.text("The standard library provides functions which return a "),
+      html.code([], [html.text("Result")]),
+      html.text(
+        "type for
+division by zero which you can use if that is more suitable for your program.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "For more information on division by zero from a mathematical perspective, see
+",
+      ),
+      html.a([attr.href("https://www.hillelwayne.com/post/divide-by-zero/")], [
+        html.text("this article by Hillel Wayne"),
+      ]),
+      html.text("."),
+    ]),
+    html.h2([attr.id("how-does-gleam-compare-to-alpaca")], [
+      html.text("How does Gleam compare to Alpaca?"),
+    ]),
+    html.p([], [
+      html.a([attr.href("https://github.com/alpaca-lang/alpaca")], [
+        html.text("Alpaca"),
+      ]),
+      html.text(
+        "is similar to Gleam in that it is a statically typed language
+for the Erlang VM that is inspired by the ML family of languages. It’s a
+wonderful project and it was an early inspiration for Gleam!",
+      ),
+    ]),
+    html.p([], [html.text("Here’s a non-exhaustive list of differences:")]),
+    html.ul([], [
+      html.li([], [
+        html.text("Alpaca’s functions are auto-curried, Gleam’s are not."),
+      ]),
+      html.li([], [
+        html.text(
+          "Alpaca’s unions can be untagged, with Gleam all variants in a custom type
+need a name.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Alpaca’s compiler is written in Erlang, Gleam’s is written in Rust.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Alpaca’s syntax is closer to ML family languages, Gleam’s is closer to C 
+family languages.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang and
+optionally JavaScript.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Alpaca uses the Erlang build tool, Gleam has its own build tool.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Gleam is more actively developed than Alpaca (at time of writing).",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("how-does-gleam-compare-to-caramel")], [
+      html.text("How does Gleam compare to Caramel?"),
+    ]),
+    html.p([], [
+      html.a([attr.href("https://github.com/AbstractMachinesLab/caramel")], [
+        html.text("Caramel"),
+      ]),
+      html.text(
+        "is similar to Gleam in that it is a statically typed language
+for the Erlang VM. It is very cool, especially because of its OCaml heritage!",
+      ),
+    ]),
+    html.p([], [html.text("Here’s a non-exhaustive list of differences:")]),
+    html.ul([], [
+      html.li([], [
+        html.text(
+          "Caramel is based off of OCaml and forks the OCaml compiler, Gleam is an
+entirely new language, syntax, and compiler.",
+        ),
+      ]),
+      html.li([], [
+        html.text("Caramel’s functions are auto-curried, Gleam’s are not."),
+      ]),
+      html.li([], [
+        html.text(
+          "Caramel’s compiler is written in OCaml, Gleam’s is written in Rust.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Caramel uses OCaml syntax, Gleam has its own syntax that is closer to C
+family languages.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Gleam is more actively developed than Caramel (at time of writing).",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("how-does-gleam-compare-to-elixir")], [
+      html.text("How does Gleam compare to Elixir?"),
+    ]),
+    html.p([], [
+      html.a([attr.href("https://github.com/elixir-lang/elixir")], [
+        html.text("Elixir"),
+      ]),
+      html.text(
+        "is another language that runs on the Erlang virtual machine.
+It is very popular and a great language!",
+      ),
+    ]),
+    html.p([], [html.text("Here’s a non-exhaustive list of differences:")]),
+    html.ul([], [
+      html.li([], [
+        html.text(
+          "Elixir is dynamically typed, Gleam is statically typed. Elixir is integrating a
+gradual type system into the language, but it has no user facing features yet.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir has a powerful macro system, Gleam has no metaprogramming features.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir’s compiler is written in Erlang and Elixir, Gleam’s is written in Rust.",
+        ),
+      ]),
+      html.li([], [
+        html.text("Gleam has a more traditional C family style syntax."),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir has a namespace for module functions and another for variables,
+Gleam has one unified namespace (so there’s no special ",
+        ),
+        html.code([], [html.text("fun.()")]),
+        html.text("syntax)."),
+      ]),
+      html.li([], [
+        html.text(
+          "Gleam standard library is distributed as Hex packages, which makes interoperability
+with other BEAM languages easier.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir is a larger language, featuring numerous language features not present
+in Gleam.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir has a robust test framework with excellent support for concurrency,
+partitioning, parameterized tests, integrated error reports, and more.
+Gleam does not yet.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Both languages compile to Erlang but Elixir compiles to Erlang abstract
+format, while Gleam compiles to Erlang source. Gleam can also compile to
+JavaScript.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir has superior BEAM runtime integration, featuring accurate
+stack traces and full support for tools such as code coverage, profiling, and
+more. Gleam’s support is much weaker due to going via Erlang source.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir has better support for the OTP actor framework. Gleam has its own
+version of OTP which is type safe, but has a smaller feature set.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir has superior deployment tooling, including support for OTP releases and
+OTP umbrella applications.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Gleam’s editor tooling is superior due to having a more mature official
+language server, but Elixir has recently announced an official language server
+project which is in active development.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Elixir is more mature than Gleam and has a much larger ecosystem.",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text(
+        "Most importantly both are BEAM languages! I advise using whichever has the
+programming style you personally find most enjoyable and productive.",
+      ),
+    ]),
+    html.h2([attr.id("how-does-gleam-compare-to-purerl")], [
+      html.text("How does Gleam compare to Purerl?"),
+    ]),
+    html.p([], [
+      html.a([attr.href("https://github.com/purerl/purerl")], [
+        html.text("Purerl"),
+      ]),
+      html.text(
+        "is a backend for the PureScript compiler that outputs Erlang.
+Both PureScript and Purerl are fantastic!",
+      ),
+    ]),
+    html.p([], [html.text("Here’s a non-exhaustive list of differences:")]),
+    html.ul([], [
+      html.li([], [
+        html.text(
+          "Purerl is a backend for the PureScript compiler, Gleam is its own language and
+compiler.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "PureScript has a more sophisticated type system than Gleam, featuring rows,
+HKTs, type classes, and more.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Purerl’s compiler is written in Haskell, Gleam’s is written in Rust.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "PureScript has an ML family style syntax, Gleam has a C family style
+syntax.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Purerl code can be difficult to use from other BEAM languages, Gleam code is
+designed to be usable from all BEAM languages.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "PureScript is more mature than Gleam and has a much larger ecosystem,
+though not all of it can be used with the Purerl compiler backend.",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("how-does-gleam-compare-to-rust")], [
+      html.text("How does Gleam compare to Rust?"),
+    ]),
+    html.p([], [
+      html.a([attr.href("https://github.com/rust-lang/rust")], [
+        html.text("Rust"),
+      ]),
+      html.text(
+        "is a language that compiles to native code and gives you full
+control of memory use in your program, much like C or C++. Gleam’s compiler is
+written in Rust! We’re big fans of the language.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "Despite having some syntactic similarities, Gleam and Rust are extremely
+different language.",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [
+        html.text(
+          "Rust is a low level programming language, Gleam is a very high level language.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Rust is a hybrid functional and imperative language that makes heavy use of
+mutable state. Gleam is a functional language where everything is immutable.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Rust compiles to native code. Gleam runs on the Erlang VM and JavaScript
+runtimes.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Rust is a very large language which can be challenging to learn. Gleam is a
+small language and is designed to be easy to learn.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Rust uses futures with async/await, Gleam uses the actor model on Erlang.",
+        ),
+      ]),
+      html.li([], [
+        html.text(
+          "Rust features traits and multiple macro systems, Gleam does not.",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("can-i-use-elixir-code-with-gleam")], [
+      html.text("Can I use Elixir code with Gleam?"),
+    ]),
+    html.p([], [
+      html.text(
+        "Yes! The Gleam build tool has support for Elixir and can compile both Elixir
+dependencies and Elixir source files in your Gleam project. Elixir has to be
+installed on your computer for this to work.",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "Elixir macros cannot be called from outside of Elixir, so some Elixir APIs
+cannot be used directly from Gleam. To use one of these you can write an Elixir
+module that uses the macros, and then use that module in your Gleam code.",
+      ),
+    ]),
+    html.h2([attr.id("why-is-the-compiler-written-in-rust")], [
+      html.text("Why is the compiler written in Rust?"),
+    ]),
+    html.p([], [
+      html.text(
+        "Prototype versions of the Gleam compiler were written in Erlang, but a switch was
+made to Rust as the lack of static types was making refactoring a slow and
+error prone process. A full Rust rewrite of the prototype resulted in the
+removal of a lot of tech debt and bugs, and the performance boost is nice too!",
+      ),
+    ]),
+    html.p([], [
+      html.text(
+        "The community may one day implement a Gleam compiler written in Gleam, but the
+core team are focused on developing other areas of the ecosystem such as
+libraries, tooling, and documentation, as this will provide more value overall.",
+      ),
+    ]),
+    html.h2([attr.id("should-i-put-gleam-in-production")], [
+      html.text("Should I put Gleam in production?"),
+    ]),
+    html.p([], [html.text("Yes!")]),
+    html.p([], [
+      html.text(
+        "Gleam is a production-ready programming language and the Erlang and JavaScript runtimes it runs
+on are extremely mature and battle-tested. Gleam is ready for mission critical
+workloads.",
+      ),
+    ]),
+    html.h2([attr.id("what-are-gleam-programmers-called")], [
+      html.text("What are Gleam programmers called?"),
+    ]),
+    html.p([], [
+      html.text("Gleamlins, according to "),
+      html.a([attr.href("https://discord.gg/Fm8Pwmy")], [
+        html.text("the Gleam Discord server"),
+      ]),
+      html.text("."),
+    ]),
+    html.h2([attr.id("is-it-good")], [html.text("Is it good?")]),
+    html.p([], [html.text("Yes, I think so. :)")]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn documentation(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
