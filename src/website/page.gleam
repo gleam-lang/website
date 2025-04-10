@@ -93,18 +93,14 @@ for your editor.",
     ]),
     html.h2([attr.id("installing-gleam")], [html.text("Installing Gleam")]),
     html.h3([attr.id("precompiled-for-amd64-linux-windows-and-macos")], [
-      html.text("Precompiled for amd64 Linux, Windows, and macOS"),
+      html.text("Precompiled for Linux, Windows, and macOS"),
     ]),
     html.p([], [
       html.text(
-        "The easiest way to install Gleam on Linux, Windows, and Apple macOS is to download a
-prebuilt version of the compiler from the ",
+        "The easiest way to install Gleam on Linux, Windows, and Apple macOS is to download a prebuilt version of the compiler from the ",
       ),
       html.a([attr.href("https://github.com/gleam-lang/gleam/releases")], [
-        html.text(
-          "GitHub release
-page",
-        ),
+        html.text("GitHub release page"),
       ]),
       html.text("."),
     ]),
