@@ -687,7 +687,6 @@ main.content {
 }
 
 .hl-keyword,
-.hljs-keyword,
 .code-keyword {
   color: var(--color-code-orange);
 }
@@ -696,36 +695,30 @@ main.content {
   color: var(--color-code-green);
 }
 
-.hljs-deletion,
+.hl-deletion,
 .code-error {
   color: var(--color-code-red);
 }
 
 .hl-operator,
-.hljs-operator,
 .code-operator {
   color: var(--color-code-pink);
 }
 
 .hl-module,
 .hl-variant,
-.hljs-attribute,
-.hljs-title,
 .code-type,
 .code-module {
   color: var(--color-code-light-pink);
 }
 
 .hl-string,
-.hljs-addition,
-.hljs-symbol,
-.hljs-string,
+.hl-addition,
 .code-string {
   color: var(--color-code-green);
 }
 
 .hl-number,
-.hljs-number,
 .code-number {
   color: var(--color-code-yellow);
 }
@@ -737,7 +730,6 @@ main.content {
 }
 
 .hl-comment,
-.hljs-comment,
 .code-comment {
   color: var(--color-code-grey);
 }
@@ -746,7 +738,7 @@ main.content {
   color: var(--color-code-dark-grey);
 }
 
-.hljs {
+pre code {
   white-space: pre-wrap;
 }
 
