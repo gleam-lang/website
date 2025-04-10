@@ -411,6 +411,19 @@ fn djot_to_html(string: String) -> String {
           let content = contour.to_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
+        jot.Codeblock(language: option.Some("diff"), content:, ..) -> {
+          let content =
+            string.split(content, "\n")
+            |> list.map(fn(line) {
+              case line {
+                "+" <> _ -> "<span class=hl-addition>" <> line <> "</span>"
+                "-" <> _ -> "<span class=hl-deletion>" <> line <> "</span>"
+                _ -> line
+              }
+            })
+            |> string.join("\n")
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
         _ -> container
       }
     })
