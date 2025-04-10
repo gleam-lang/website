@@ -24,6 +24,10 @@ pub type PageMeta {
 
 pub fn redirect_to_tour(from: String, to: String) -> fs.File {
   let to = "https://tour.gleam.run/" <> to
+  redirect(from, to)
+}
+
+pub fn redirect(from: String, to: String) -> fs.File {
   let content =
     html.body([], [
       html.text("You are being redirected to "),

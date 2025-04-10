@@ -6,6 +6,7 @@ import gleave
 import snag
 import website/atom_feed
 import website/cheatsheet
+import website/command_line_reference
 import website/fs
 import website/language_server
 import website/news
@@ -48,6 +49,7 @@ fn build_site() -> snag.Result(Nil) {
     page.frequently_asked_questions(ctx),
     page.news_index(news_posts, ctx),
     roadmap.page(ctx),
+    command_line_reference.page(ctx),
     language_server.page(ctx),
     cheatsheet.erlang(ctx),
     cheatsheet.elixir(ctx),
@@ -93,6 +95,10 @@ fn static_files() -> List(fs.File) {
 
 fn redirect_files() -> List(fs.File) {
   [
+    page.redirect(
+      "writing-gleam/command-line-reference",
+      "/command-line-reference",
+    ),
     page.redirect_to_tour("book/index.html", ""),
     page.redirect_to_tour("book/print.html", ""),
     page.redirect_to_tour("book/tour/index.html", ""),

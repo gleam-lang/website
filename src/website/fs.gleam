@@ -2,6 +2,7 @@ import filepath
 import gleam/bit_array
 import gleam/crypto
 import gleam/io
+import gleam/list
 import gleam/result
 import gleam/string
 import simplifile
@@ -26,6 +27,7 @@ pub fn delete_dist() -> snag.Result(Nil) {
     |> handle_error("List"),
   )
   files
+  |> list.map(filepath.join(dist, _))
   |> simplifile.delete_all
   |> handle_error("Reset")
 }
