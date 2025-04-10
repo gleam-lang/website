@@ -1,11 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: v0.16 - Gleam compiles to JavaScript!
-tags:
-  - Release
----
-
 ``` =html
 <style>
 hr {
@@ -33,33 +25,98 @@ In real Gleam programs we would expect these JavaScript bindings to live within
 shared libraries, but these examples should be enough to give you a taste of
 what Gleam can do with JavaScript.
 
-<hr>
+---
 
+``` =html
 <center>
   <div style="font-size: 3rem">Hello, <span data-hello-display>world</span>!</div>
   <input data-hello-input value="world">
 </center>
+```
 
+``` =html
 <script type="module">
-{% include_relative v0.16.0/out/hello.js %}
+"use strict"
+
+export function main() {
+  let input = query_selector("[data-hello-input]");
+  let display = query_selector("[data-hello-display]");
+  let sync = () => {
+    let text = get(input, "value");
+    return set(display, "innerText", text);
+  };
+  return set(input, "oninput", sync);
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
 main();
 </script>
 <details>
 <summary>Display Gleam source</summary>
-{% highlight gleam %}
-{% include_relative v0.16.0/src/hello.gleam %}
-{% endhighlight %}
+<pre><code>pub fn main() {
+  let input = query_selector("[data-hello-input]")
+  let display = query_selector("[data-hello-display]")
+  let sync = fn() {
+    let text = get(from: input, property: "value")
+    set("innerText", on: display, to: text)
+  }
+  set("oninput", on: input, to: sync)
+}
+
+external type Element
+
+external fn query_selector(String) -> Element =
+  "" "document.querySelector"
+
+external fn get(from: Element, property: String) -> String =
+  "" "Reflect.get"
+
+external fn set(on: Element, property: String, to: anything) -> Bool =
+  "" "Reflect.set"
+</code></pre>
 </details>
 <details>
 <summary>Display compiled JavaScript</summary>
-{% highlight javascript %}
-{% include_relative v0.16.0/out/hello.js %}
-{% endhighlight %}
+<pre><code>"use strict";
+
+export function main() {
+  let input = query_selector("[data-hello-input]");
+  let display = query_selector("[data-hello-display]");
+  let sync = () => {
+    let text = get(input, "value");
+    return set(display, "innerText", text);
+  };
+  return set(input, "oninput", sync);
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+</code></pre>
 </details>
+```
 
+---
 
-<hr>
-
+``` =html
 <center>
   <div style="font-size: 3rem" data-counter-display>0</div>
   <button data-counter-increment>Increment</button>
@@ -67,48 +124,278 @@ main();
 </center>
 
 <script type="module">
-{% include_relative v0.16.0/out/counter.js %}
+"use strict";
+
+export function main() {
+  let increment = query_selector("[data-counter-increment]");
+  let decrement = query_selector("[data-counter-decrement]");
+  let display = query_selector("[data-counter-display]");
+  let add = (diff) => {
+    return set(display, "innerText", get_value(display) + diff);
+  };
+  set(increment, "onclick", () => { return add(1); });
+  return set(decrement, "onclick", () => { return add(-1); });
+}
+
+function get_value(element) {
+  return parse_int(get(element, "innerText"));
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function parse_int(arg0) {
+  return parseInt(arg0)
+}
 main();
 </script>
 <details>
 <summary>Display Gleam source</summary>
-{% highlight gleam %}
-{% include_relative v0.16.0/src/counter.gleam %}
-{% endhighlight %}
+<pre><code>pub fn main() {
+  let increment = query_selector("[data-counter-increment]")
+  let decrement = query_selector("[data-counter-decrement]")
+  let display = query_selector("[data-counter-display]")
+  let add = fn(diff) {
+    set("innerText", on: display, to: get_value(display) + diff)
+  }
+  set("onclick", on: increment, to: fn() { add(1) })
+  set("onclick", on: decrement, to: fn() { add(-1) })
+}
+
+fn get_value(element) {
+  element
+  |> get(property: "innerText")
+  |> parse_int
+}
+
+external type Element
+
+external fn query_selector(String) -> Element =
+  "" "document.querySelector"
+
+external fn get(from: Element, property: String) -> String =
+  "" "Reflect.get"
+
+external fn set(on: Element, property: String, to: anything) -> Bool =
+  "" "Reflect.set"
+
+external fn parse_int(String) -> Int =
+  "" "parseInt"
+</code></pre>
 </details>
 <details>
 <summary>Display compiled JavaScript</summary>
-{% highlight javascript %}
-{% include_relative v0.16.0/out/counter.js %}
-{% endhighlight %}
+<pre><code>"use strict";
+
+export function main() {
+  let increment = query_selector("[data-counter-increment]");
+  let decrement = query_selector("[data-counter-decrement]");
+  let display = query_selector("[data-counter-display]");
+  let add = (diff) => {
+    return set(display, "innerText", get_value(display) + diff);
+  };
+  set(increment, "onclick", () => { return add(1); });
+  return set(decrement, "onclick", () => { return add(-1); });
+}
+
+function get_value(element) {
+  return parse_int(get(element, "innerText"));
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function parse_int(arg0) {
+  return parseInt(arg0)
+}
+</code></pre>
 </details>
+```
 
-<hr>
+---
 
+``` =html
 <center>
   <img style="max-height: 350px; margin-bottom: 12px" alt="A dog" data-dogs-img>
   <button data-dogs-button>Fetch me another dog</button>
 </center>
 
 <script type="module">
-{% include_relative v0.16.0/out/dogs.js %}
+"use strict";
+
+const url = "https://dog.ceo/api/breeds/image/random";
+
+export function main() {
+  let button = query_selector("[data-dogs-button]");
+  let img = query_selector("[data-dogs-img]");
+  new_dog(img);
+  return set(button, "onclick", () => { return new_dog(img); });
+}
+
+function new_dog(img) {
+  return then(
+    then(fetch(url), get_json_body),
+    (json) => {
+      set(img, "src", get(json, "message"));
+      return resolve_promise(undefined);
+    },
+  );
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function fetch(arg0) {
+  return globalThis.fetch(arg0)
+}
+
+function get_json_body(arg0) {
+  return Response.prototype.json.call(arg0)
+}
+
+function then(arg0, arg1) {
+  return Promise.prototype.then.call(arg0, arg1)
+}
+
+function resolve_promise(arg0) {
+  return Promise.resolve(arg0)
+}
 main();
 </script>
 <details>
 <summary>Display Gleam source</summary>
-{% highlight gleam %}
-{% include_relative v0.16.0/src/dogs.gleam %}
-{% endhighlight %}
+<pre><code>const url = "https://dog.ceo/api/breeds/image/random"
+
+pub fn main() {
+  let button = query_selector("[data-dogs-button]")
+  let img = query_selector("[data-dogs-img]")
+  new_dog(img)
+  set(on: button, property: "onclick", to: fn() { new_dog(img) })
+}
+
+fn new_dog(img) {
+  fetch(url)
+  |> then(get_json_body)
+  |> then(fn(json) {
+    set(on: img, property: "src", to: get(json, "message"))
+    resolve_promise(Nil)
+  })
+}
+
+external type Element
+
+external type Response
+
+external type Json
+
+external type Promise(value)
+
+external fn query_selector(String) -> Element =
+  "" "document.querySelector"
+
+external fn get(from: Json, property: String) -> Json =
+  "" "Reflect.get"
+
+external fn set(on: Element, property: String, to: anything) -> Bool =
+  "" "Reflect.set"
+
+external fn fetch(String) -> Promise(Response) =
+  "" "fetch"
+
+external fn get_json_body(Response) -> Promise(Json) =
+  "" "Response.prototype.json.call"
+
+external fn then(Promise(a), fn(a) -> Promise(b)) -> Promise(b) =
+  "" "Promise.prototype.then.call"
+
+external fn resolve_promise(value) -> Promise(value) =
+  "" "Promise.resolve"
+</code></pre>
 </details>
 <details>
 <summary>Display compiled JavaScript</summary>
-{% highlight javascript %}
-{% include_relative v0.16.0/out/dogs.js %}
-{% endhighlight %}
-</details>
-Thank you to [dog.ceo for their Dog API](https://dog.ceo/dog-api/)
+<pre><code>"use strict";
 
-<hr>
+const url = "https://dog.ceo/api/breeds/image/random";
+
+export function main() {
+  let button = query_selector("[data-dogs-button]");
+  let img = query_selector("[data-dogs-img]");
+  new_dog(img);
+  return set(button, "onclick", () => { return new_dog(img); });
+}
+
+function new_dog(img) {
+  return then(
+    then(fetch(url), get_json_body),
+    (json) => {
+      set(img, "src", get(json, "message"));
+      return resolve_promise(undefined);
+    },
+  );
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function fetch(arg0) {
+  return globalThis.fetch(arg0)
+}
+
+function get_json_body(arg0) {
+  return Response.prototype.json.call(arg0)
+}
+
+function then(arg0, arg1) {
+  return Promise.prototype.then.call(arg0, arg1)
+}
+
+function resolve_promise(arg0) {
+  return Promise.resolve(arg0)
+}
+</code></pre>
+</details>
+```
+
+Thank you to [dog.ceo for their Dog API](https://dog.ceo/dog-api/).
+
+---
 
 ## Why JavaScript?
 
@@ -242,6 +529,7 @@ me in making Gleam please consider [sponsoring Gleam][sponsor] or asking your
 employer to sponsor Gleam. Every donation makes a difference, no matter how
 small, so thank you for your help.
 
+``` =html
 <center>
   <iframe src="https://github.com/sponsors/lpil/button" title="Sponsor Gleam" height="35" width="116" style="border: 0; margin: 6px"></iframe>
 
@@ -249,6 +537,7 @@ small, so thank you for your help.
     ⭐ Or alternatively give us a star on <a href="https://github.com/gleam-lang/gleam">GitHub</a>! ⭐
   </div>
 </center>
+```
 
 
 [gleam-gh]: https://github.com/gleam-lang/gleam

@@ -260,7 +260,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
     ),
     read(
       title: "Gleam compiles to JavaScript!",
-      subtitle: "Gleam v0.16 releasd",
+      subtitle: "Gleam v0.16 released",
       published: calendar.Date(2021, calendar.June, 17),
       author: louis,
       path: "v0.16-gleam-compiles-to-javascript",
