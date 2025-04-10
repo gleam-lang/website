@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Developer Survey 2024 Results
-subtitle: A look at the Gleam community after version one
-tags:
-  - developer-survey
----
-
 ``` =html
 <style>
   hr {
@@ -39,26 +30,26 @@ trends in the free-text answers.
 ## What's your job role?
 
 ``` =html
-<ol  class="bar-chart">
-  {% include chartbar.html amount=448 max=448 label="Engineer" %}
-  {% include chartbar.html amount=81 max=448 label="Student" %}
-  {% include chartbar.html amount=36 max=448 label="CTO" %}
-  {% include chartbar.html amount=36 max=448 label="Other non-technical" %}
-  {% include chartbar.html amount=31 max=448 label="Tech Lead" %}
-  {% include chartbar.html amount=25 max=448 label="Staff Engineer" %}
-  {% include chartbar.html amount=23 max=448 label="Principal Engineer" %}
-  {% include chartbar.html amount=21 max=448 label="Software Architect" %}
-  {% include chartbar.html amount=18 max=448 label="Head of Engineering" %}
-  {% include chartbar.html amount=17 max=448 label="Other C-level executive" %}
-  {% include chartbar.html amount=8 max=448 label="System administrator" %}
-  {% include chartbar.html amount=7 max=448 label="Hardware Engineer" %}
-  {% include chartbar.html amount=7 max=448 label="Researcher" %}
-  {% include chartbar.html amount=6 max=448 label="Educator" %}
-  {% include chartbar.html amount=4 max=448 label="Engineering Manager" %}
-  {% include chartbar.html amount=3 max=448 label="Designer" %}
-  {% include chartbar.html amount=2 max=448 label="ML Engineer" %}
-  {% include chartbar.html amount=2 max=448 label="QA" %}
-  {% include chartbar.html amount=1 max=448 label="Data Scientist" %}
+<ol class="bar-chart">
+  <li> <span class="label">Engineer</span> <div class="bar" style="flex-basis: max(calc((448 / 448) * 70%), 1px);" ></div> 448 </li>
+  <li> <span class="label">Student</span> <div class="bar" style="flex-basis: max(calc((81 / 448) * 70%), 1px);" ></div> 81 </li>
+  <li> <span class="label">CTO</span> <div class="bar" style="flex-basis: max(calc((36 / 448) * 70%), 1px);" ></div> 36 </li>
+  <li> <span class="label">Other non-technical</span> <div class="bar" style="flex-basis: max(calc((36 / 448) * 70%), 1px);" ></div> 36 </li>
+  <li> <span class="label">Tech Lead</span> <div class="bar" style="flex-basis: max(calc((31 / 448) * 70%), 1px);" ></div> 31 </li>
+  <li> <span class="label">Staff Engineer</span> <div class="bar" style="flex-basis: max(calc((25 / 448) * 70%), 1px);" ></div> 25 </li>
+  <li> <span class="label">Principal Engineer</span> <div class="bar" style="flex-basis: max(calc((23 / 448) * 70%), 1px);" ></div> 23 </li>
+  <li> <span class="label">Software Architect</span> <div class="bar" style="flex-basis: max(calc((21 / 448) * 70%), 1px);" ></div> 21 </li>
+  <li> <span class="label">Head of Engineering</span> <div class="bar" style="flex-basis: max(calc((18 / 448) * 70%), 1px);" ></div> 18 </li>
+  <li> <span class="label">Other C-level executive</span> <div class="bar" style="flex-basis: max(calc((17 / 448) * 70%), 1px);" ></div> 17 </li>
+  <li> <span class="label">System administrator</span> <div class="bar" style="flex-basis: max(calc((8 / 448) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Hardware Engineer</span> <div class="bar" style="flex-basis: max(calc((7 / 448) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Researcher</span> <div class="bar" style="flex-basis: max(calc((7 / 448) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Educator</span> <div class="bar" style="flex-basis: max(calc((6 / 448) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Engineering Manager</span> <div class="bar" style="flex-basis: max(calc((4 / 448) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Designer</span> <div class="bar" style="flex-basis: max(calc((3 / 448) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">ML Engineer</span> <div class="bar" style="flex-basis: max(calc((2 / 448) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">QA</span> <div class="bar" style="flex-basis: max(calc((2 / 448) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Data Scientist</span> <div class="bar" style="flex-basis: max(calc((1 / 448) * 70%), 1px);" ></div> 1 </li>
 </ol>
 ``` 
 
@@ -66,44 +57,44 @@ trends in the free-text answers.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=191 max=191 label="USA" %}
-  {% include chartbar.html amount=77 max=191 label="Germany" %}
-  {% include chartbar.html amount=56 max=191 label="The United Kingdom" %}
-  {% include chartbar.html amount=37 max=191 label="Canada" %}
-  {% include chartbar.html amount=36 max=191 label="France" %}
-  {% include chartbar.html amount=28 max=191 label="Brazil" %}
-  {% include chartbar.html amount=26 max=191 label="Sweden" %}
-  {% include chartbar.html amount=23 max=191 label="Spain" %}
-  {% include chartbar.html amount=22 max=191 label="Australia" %}
-  {% include chartbar.html amount=19 max=191 label="Denmark" %}
-  {% include chartbar.html amount=18 max=191 label="India" %}
-  {% include chartbar.html amount=15 max=191 label="Japan" %}
-  {% include chartbar.html amount=15 max=191 label="The Netherlands" %}
-  {% include chartbar.html amount=14 max=191 label="Norway" %}
-  {% include chartbar.html amount=14 max=191 label="Poland" %}
-  {% include chartbar.html amount=12 max=191 label="The Russian Federation" %}
-  {% include chartbar.html amount=11 max=191 label="Belgium" %}
-  {% include chartbar.html amount=10 max=191 label="Italy" %}
-  {% include chartbar.html amount=10 max=191 label="New Zealand" %}
-  {% include chartbar.html amount=9 max=191 label="Mexico" %}
-  {% include chartbar.html amount=8 max=191 label="Austria" %}
-  {% include chartbar.html amount=8 max=191 label="China" %}
-  {% include chartbar.html amount=7 max=191 label="Argentina" %}
-  {% include chartbar.html amount=7 max=191 label="Portugal" %}
-  {% include chartbar.html amount=7 max=191 label="South Africa" %}
-  {% include chartbar.html amount=7 max=191 label="Switzerland" %}
-  {% include chartbar.html amount=7 max=191 label="Ukraine" %}
-  {% include chartbar.html amount=6 max=191 label="Greece" %}
-  {% include chartbar.html amount=6 max=191 label="Indonesia" %}
-  {% include chartbar.html amount=5 max=191 label="Czechia" %}
-  {% include chartbar.html amount=5 max=191 label="Estonia" %}
-  {% include chartbar.html amount=5 max=191 label="Finland" %}
-  {% include chartbar.html amount=5 max=191 label="Ireland" %}
-  {% include chartbar.html amount=5 max=191 label="The Republic of Korea" %}
-  {% include chartbar.html amount=4 max=191 label="Bangladesh" %}
-  {% include chartbar.html amount=4 max=191 label="Kenya" %}
-  {% include chartbar.html amount=4 max=191 label="Singapore" %}
-  {% include chartbar.html amount=55 max=191 label="Other" %}
+  <li> <span class="label">USA</span> <div class="bar" style="flex-basis: max(calc((191 / 191) * 70%), 1px);" ></div> 191 </li>
+  <li> <span class="label">Germany</span> <div class="bar" style="flex-basis: max(calc((77 / 191) * 70%), 1px);" ></div> 77 </li>
+  <li> <span class="label">The United Kingdom</span> <div class="bar" style="flex-basis: max(calc((56 / 191) * 70%), 1px);" ></div> 56 </li>
+  <li> <span class="label">Canada</span> <div class="bar" style="flex-basis: max(calc((37 / 191) * 70%), 1px);" ></div> 37 </li>
+  <li> <span class="label">France</span> <div class="bar" style="flex-basis: max(calc((36 / 191) * 70%), 1px);" ></div> 36 </li>
+  <li> <span class="label">Brazil</span> <div class="bar" style="flex-basis: max(calc((28 / 191) * 70%), 1px);" ></div> 28 </li>
+  <li> <span class="label">Sweden</span> <div class="bar" style="flex-basis: max(calc((26 / 191) * 70%), 1px);" ></div> 26 </li>
+  <li> <span class="label">Spain</span> <div class="bar" style="flex-basis: max(calc((23 / 191) * 70%), 1px);" ></div> 23 </li>
+  <li> <span class="label">Australia</span> <div class="bar" style="flex-basis: max(calc((22 / 191) * 70%), 1px);" ></div> 22 </li>
+  <li> <span class="label">Denmark</span> <div class="bar" style="flex-basis: max(calc((19 / 191) * 70%), 1px);" ></div> 19 </li>
+  <li> <span class="label">India</span> <div class="bar" style="flex-basis: max(calc((18 / 191) * 70%), 1px);" ></div> 18 </li>
+  <li> <span class="label">Japan</span> <div class="bar" style="flex-basis: max(calc((15 / 191) * 70%), 1px);" ></div> 15 </li>
+  <li> <span class="label">The Netherlands</span> <div class="bar" style="flex-basis: max(calc((15 / 191) * 70%), 1px);" ></div> 15 </li>
+  <li> <span class="label">Norway</span> <div class="bar" style="flex-basis: max(calc((14 / 191) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">Poland</span> <div class="bar" style="flex-basis: max(calc((14 / 191) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">The Russian Federation</span> <div class="bar" style="flex-basis: max(calc((12 / 191) * 70%), 1px);" ></div> 12 </li>
+  <li> <span class="label">Belgium</span> <div class="bar" style="flex-basis: max(calc((11 / 191) * 70%), 1px);" ></div> 11 </li>
+  <li> <span class="label">Italy</span> <div class="bar" style="flex-basis: max(calc((10 / 191) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">New Zealand</span> <div class="bar" style="flex-basis: max(calc((10 / 191) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">Mexico</span> <div class="bar" style="flex-basis: max(calc((9 / 191) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">Austria</span> <div class="bar" style="flex-basis: max(calc((8 / 191) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">China</span> <div class="bar" style="flex-basis: max(calc((8 / 191) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Argentina</span> <div class="bar" style="flex-basis: max(calc((7 / 191) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Portugal</span> <div class="bar" style="flex-basis: max(calc((7 / 191) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">South Africa</span> <div class="bar" style="flex-basis: max(calc((7 / 191) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Switzerland</span> <div class="bar" style="flex-basis: max(calc((7 / 191) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Ukraine</span> <div class="bar" style="flex-basis: max(calc((7 / 191) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Greece</span> <div class="bar" style="flex-basis: max(calc((6 / 191) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Indonesia</span> <div class="bar" style="flex-basis: max(calc((6 / 191) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Czechia</span> <div class="bar" style="flex-basis: max(calc((5 / 191) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Estonia</span> <div class="bar" style="flex-basis: max(calc((5 / 191) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Finland</span> <div class="bar" style="flex-basis: max(calc((5 / 191) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Ireland</span> <div class="bar" style="flex-basis: max(calc((5 / 191) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">The Republic of Korea</span> <div class="bar" style="flex-basis: max(calc((5 / 191) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Bangladesh</span> <div class="bar" style="flex-basis: max(calc((4 / 191) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Kenya</span> <div class="bar" style="flex-basis: max(calc((4 / 191) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Singapore</span> <div class="bar" style="flex-basis: max(calc((4 / 191) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Other</span> <div class="bar" style="flex-basis: max(calc((55 / 191) * 70%), 1px);" ></div> 55 </li>
 </ol>
 ``` 
 
@@ -115,8 +106,8 @@ similar community groups in the near future.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=632 max=632 label="Yes" %}
-  {% include chartbar.html amount=173 max=632 label="Not currently" %}
+  <li> <span class="label">Yes</span> <div class="bar" style="flex-basis: max(calc((632 / 632) * 70%), 1px);" ></div> 632 </li>
+  <li> <span class="label">Not currently</span> <div class="bar" style="flex-basis: max(calc((173 / 632) * 70%), 1px);" ></div> 173 </li>
 </ol>
 ``` 
 
@@ -128,8 +119,8 @@ is a great indicator of adoption in the language's first year.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=572 max=572 label="Not yet" %}
-  {% include chartbar.html amount=52 max=572 label="Yes" %}
+  <li> <span class="label">Not yet</span> <div class="bar" style="flex-basis: max(calc((572 / 572) * 70%), 1px);" ></div> 572 </li>
+  <li> <span class="label">Yes</span> <div class="bar" style="flex-basis: max(calc((52 / 572) * 70%), 1px);" ></div> 52 </li>
 </ol>
 ``` 
 
@@ -142,8 +133,8 @@ hope the trend continues.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=37 max=37 label="No" %}
-  {% include chartbar.html amount=1 max=37 label="Yes" %}
+  <li> <span class="label">No</span> <div class="bar" style="flex-basis: max(calc((37 / 37) * 70%), 1px);" ></div> 37 </li>
+  <li> <span class="label">Yes</span> <div class="bar" style="flex-basis: max(calc((1 / 37) * 70%), 1px);" ></div> 1 </li>
 </ol>
 ``` 
 
@@ -158,13 +149,13 @@ project funding.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=124 max=143 label="No organisation" %}
-  {% include chartbar.html amount=143 max=143 label="1 to 10" %}
-  {% include chartbar.html amount=129 max=143 label="11 to 50" %}
-  {% include chartbar.html amount=88 max=143 label="51 to 100" %}
-  {% include chartbar.html amount=96 max=143 label="101 to 500" %}
-  {% include chartbar.html amount=90 max=143 label="501 to 2000" %}
-  {% include chartbar.html amount=108 max=143 label="More than 2001" %}
+  <li> <span class="label">No organisation</span> <div class="bar" style="flex-basis: max(calc((124 / 143) * 70%), 1px);" ></div> 124 </li>
+  <li> <span class="label">1 to 10</span> <div class="bar" style="flex-basis: max(calc((143 / 143) * 70%), 1px);" ></div> 143 </li>
+  <li> <span class="label">11 to 50</span> <div class="bar" style="flex-basis: max(calc((129 / 143) * 70%), 1px);" ></div> 129 </li>
+  <li> <span class="label">51 to 100</span> <div class="bar" style="flex-basis: max(calc((88 / 143) * 70%), 1px);" ></div> 88 </li>
+  <li> <span class="label">101 to 500</span> <div class="bar" style="flex-basis: max(calc((96 / 143) * 70%), 1px);" ></div> 96 </li>
+  <li> <span class="label">501 to 2000</span> <div class="bar" style="flex-basis: max(calc((90 / 143) * 70%), 1px);" ></div> 90 </li>
+  <li> <span class="label">More than 2001</span> <div class="bar" style="flex-basis: max(calc((108 / 143) * 70%), 1px);" ></div> 108 </li>
 </ol>
 ``` 
 
@@ -172,13 +163,13 @@ project funding.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=10 max=15 label="No organisation" %}
-  {% include chartbar.html amount=15 max=15 label="1 to 10" %}
-  {% include chartbar.html amount=6 max=15 label="11 to 50" %}
-  {% include chartbar.html amount=7 max=15 label="51 to 100" %}
-  {% include chartbar.html amount=4 max=15 label="101 to 500" %}
-  {% include chartbar.html amount=4 max=15 label="501 to 2000" %}
-  {% include chartbar.html amount=3 max=15 label="More than 2001" %}
+  <li> <span class="label">No organisation</span> <div class="bar" style="flex-basis: max(calc((10 / 15) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">1 to 10</span> <div class="bar" style="flex-basis: max(calc((15 / 15) * 70%), 1px);" ></div> 15 </li>
+  <li> <span class="label">11 to 50</span> <div class="bar" style="flex-basis: max(calc((6 / 15) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">51 to 100</span> <div class="bar" style="flex-basis: max(calc((7 / 15) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">101 to 500</span> <div class="bar" style="flex-basis: max(calc((4 / 15) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">501 to 2000</span> <div class="bar" style="flex-basis: max(calc((4 / 15) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">More than 2001</span> <div class="bar" style="flex-basis: max(calc((3 / 15) * 70%), 1px);" ></div> 3 </li>
 </ol>
 ``` 
 
@@ -191,27 +182,27 @@ foundation for a technology project.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=238 max=238 label="The Gleam Discord" %}
-  {% include chartbar.html amount=197 max=238 label="gleam.run" %}
-  {% include chartbar.html amount=193 max=238 label="Gleam Weekly" %}
-  {% include chartbar.html amount=147 max=238 label="reddit" %}
-  {% include chartbar.html amount=124 max=238 label="Twitter" %}
-  {% include chartbar.html amount=82 max=238 label="lobste.rs" %}
-  {% include chartbar.html amount=77 max=238 label="GitHub" %}
-  {% include chartbar.html amount=74 max=238 label="Bluesky" %}
-  {% include chartbar.html amount=58 max=238 label="YouTube" %}
-  {% include chartbar.html amount=57 max=238 label="Hacker News" %}
-  {% include chartbar.html amount=34 max=238 label="Discord" %}
-  {% include chartbar.html amount=24 max=238 label="The Fediverse" %}
-  {% include chartbar.html amount=16 max=238 label="Elixir Forum" %}
-  {% include chartbar.html amount=6 max=238 label="LinkedIn" %}
-  {% include chartbar.html amount=6 max=238 label="daily.dev" %}
-  {% include chartbar.html amount=5 max=238 label="Other websites" %}
-  {% include chartbar.html amount=5 max=238 label="Word of mouth" %}
-  {% include chartbar.html amount=3 max=238 label="Kirakira" %}
-  {% include chartbar.html amount=1 max=238 label="Conferences" %}
-  {% include chartbar.html amount=1 max=238 label="Podcasts" %}
-  {% include chartbar.html amount=1 max=238 label="Twitch" %}
+  <li> <span class="label">The Gleam Discord</span> <div class="bar" style="flex-basis: max(calc((238 / 238) * 70%), 1px);" ></div> 238 </li>
+  <li> <span class="label">gleam.run</span> <div class="bar" style="flex-basis: max(calc((197 / 238) * 70%), 1px);" ></div> 197 </li>
+  <li> <span class="label">Gleam Weekly</span> <div class="bar" style="flex-basis: max(calc((193 / 238) * 70%), 1px);" ></div> 193 </li>
+  <li> <span class="label">reddit</span> <div class="bar" style="flex-basis: max(calc((147 / 238) * 70%), 1px);" ></div> 147 </li>
+  <li> <span class="label">Twitter</span> <div class="bar" style="flex-basis: max(calc((124 / 238) * 70%), 1px);" ></div> 124 </li>
+  <li> <span class="label">lobste.rs</span> <div class="bar" style="flex-basis: max(calc((82 / 238) * 70%), 1px);" ></div> 82 </li>
+  <li> <span class="label">GitHub</span> <div class="bar" style="flex-basis: max(calc((77 / 238) * 70%), 1px);" ></div> 77 </li>
+  <li> <span class="label">Bluesky</span> <div class="bar" style="flex-basis: max(calc((74 / 238) * 70%), 1px);" ></div> 74 </li>
+  <li> <span class="label">YouTube</span> <div class="bar" style="flex-basis: max(calc((58 / 238) * 70%), 1px);" ></div> 58 </li>
+  <li> <span class="label">Hacker News</span> <div class="bar" style="flex-basis: max(calc((57 / 238) * 70%), 1px);" ></div> 57 </li>
+  <li> <span class="label">Discord</span> <div class="bar" style="flex-basis: max(calc((34 / 238) * 70%), 1px);" ></div> 34 </li>
+  <li> <span class="label">The Fediverse</span> <div class="bar" style="flex-basis: max(calc((24 / 238) * 70%), 1px);" ></div> 24 </li>
+  <li> <span class="label">Elixir Forum</span> <div class="bar" style="flex-basis: max(calc((16 / 238) * 70%), 1px);" ></div> 16 </li>
+  <li> <span class="label">LinkedIn</span> <div class="bar" style="flex-basis: max(calc((6 / 238) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">daily.dev</span> <div class="bar" style="flex-basis: max(calc((6 / 238) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Other websites</span> <div class="bar" style="flex-basis: max(calc((5 / 238) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Word of mouth</span> <div class="bar" style="flex-basis: max(calc((5 / 238) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Kirakira</span> <div class="bar" style="flex-basis: max(calc((3 / 238) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Conferences</span> <div class="bar" style="flex-basis: max(calc((1 / 238) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Podcasts</span> <div class="bar" style="flex-basis: max(calc((1 / 238) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Twitch</span> <div class="bar" style="flex-basis: max(calc((1 / 238) * 70%), 1px);" ></div> 1 </li>
 </ol>
 ``` 
 
@@ -225,16 +216,16 @@ participate in a busy chat server.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=253 max=253 label="0 to 4 years" %}
-  {% include chartbar.html amount=242 max=253 label="5 to 9 years" %}
-  {% include chartbar.html amount=136 max=253 label="10 to 14 years" %}
-  {% include chartbar.html amount=75 max=253 label="15 to 19 years" %}
-  {% include chartbar.html amount=74 max=253 label="20 to 24 years" %}
-  {% include chartbar.html amount=26 max=253 label="25 to 29 years" %}
-  {% include chartbar.html amount=13 max=253 label="30 to 34 years" %}
-  {% include chartbar.html amount=6 max=253 label="35 to 39 years" %}
-  {% include chartbar.html amount=2 max=253 label="40 to 44 years" %}
-  {% include chartbar.html amount=2 max=253 label="45 to 50 years" %}
+  <li> <span class="label">0 to 4 years</span> <div class="bar" style="flex-basis: max(calc((253 / 253) * 70%), 1px);" ></div> 253 </li>
+  <li> <span class="label">5 to 9 years</span> <div class="bar" style="flex-basis: max(calc((242 / 253) * 70%), 1px);" ></div> 242 </li>
+  <li> <span class="label">10 to 14 years</span> <div class="bar" style="flex-basis: max(calc((136 / 253) * 70%), 1px);" ></div> 136 </li>
+  <li> <span class="label">15 to 19 years</span> <div class="bar" style="flex-basis: max(calc((75 / 253) * 70%), 1px);" ></div> 75 </li>
+  <li> <span class="label">20 to 24 years</span> <div class="bar" style="flex-basis: max(calc((74 / 253) * 70%), 1px);" ></div> 74 </li>
+  <li> <span class="label">25 to 29 years</span> <div class="bar" style="flex-basis: max(calc((26 / 253) * 70%), 1px);" ></div> 26 </li>
+  <li> <span class="label">30 to 34 years</span> <div class="bar" style="flex-basis: max(calc((13 / 253) * 70%), 1px);" ></div> 13 </li>
+  <li> <span class="label">35 to 39 years</span> <div class="bar" style="flex-basis: max(calc((6 / 253) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">40 to 44 years</span> <div class="bar" style="flex-basis: max(calc((2 / 253) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">45 to 50 years</span> <div class="bar" style="flex-basis: max(calc((2 / 253) * 70%), 1px);" ></div> 2 </li>
 </ol>
 ``` 
 
@@ -242,13 +233,13 @@ participate in a busy chat server.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=290 max=293 label="Less than 1 year" %}
-  {% include chartbar.html amount=293 max=293 label="1 year" %}
-  {% include chartbar.html amount=32 max=293 label="2 years" %}
-  {% include chartbar.html amount=10 max=293 label="3 years" %}
-  {% include chartbar.html amount=6 max=293 label="4 years" %}
-  {% include chartbar.html amount=1 max=293 label="5 years" %}
-  {% include chartbar.html amount=3 max=293 label="6 years" %}
+  <li> <span class="label">Less than 1 year</span> <div class="bar" style="flex-basis: max(calc((290 / 293) * 70%), 1px);" ></div> 290 </li>
+  <li> <span class="label">1 year</span> <div class="bar" style="flex-basis: max(calc((293 / 293) * 70%), 1px);" ></div> 293 </li>
+  <li> <span class="label">2 years</span> <div class="bar" style="flex-basis: max(calc((32 / 293) * 70%), 1px);" ></div> 32 </li>
+  <li> <span class="label">3 years</span> <div class="bar" style="flex-basis: max(calc((10 / 293) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">4 years</span> <div class="bar" style="flex-basis: max(calc((6 / 293) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">5 years</span> <div class="bar" style="flex-basis: max(calc((1 / 293) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">6 years</span> <div class="bar" style="flex-basis: max(calc((3 / 293) * 70%), 1px);" ></div> 3 </li>
 </ol>
 ``` 
 
@@ -259,9 +250,9 @@ with Gleam for so long! I think I can guess who these people are. 😁
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=571 max=571 label="Erlang" %}
-  {% include chartbar.html amount=297 max=571 label="JavaScript" %}
-  {% include chartbar.html amount=29 max=571 label="Unsure" %}
+  <li> <span class="label">Erlang</span> <div class="bar" style="flex-basis: max(calc((571 / 571) * 70%), 1px);" ></div> 571 </li>
+  <li> <span class="label">JavaScript</span> <div class="bar" style="flex-basis: max(calc((297 / 571) * 70%), 1px);" ></div> 297 </li>
+  <li> <span class="label">Unsure</span> <div class="bar" style="flex-basis: max(calc((29 / 571) * 70%), 1px);" ></div> 29 </li>
 </ol>
 ``` 
 
@@ -276,8 +267,8 @@ education in some fashion here.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=48 max=48 label="Erlang" %}
-  {% include chartbar.html amount=35 max=48 label="JavaScript" %}
+  <li> <span class="label">Erlang</span> <div class="bar" style="flex-basis: max(calc((48 / 48) * 70%), 1px);" ></div> 48 </li>
+  <li> <span class="label">JavaScript</span> <div class="bar" style="flex-basis: max(calc((35 / 48) * 70%), 1px);" ></div> 35 </li>
 </ol>
 ``` 
 
@@ -289,13 +280,13 @@ will have picked both.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=545 max=545 label="BEAM" %}
-  {% include chartbar.html amount=228 max=545 label="Web browsers" %}
-  {% include chartbar.html amount=134 max=545 label="NodeJS" %}
-  {% include chartbar.html amount=69 max=545 label="Deno" %}
-  {% include chartbar.html amount=47 max=545 label="Bun" %}
-  {% include chartbar.html amount=31 max=545 label="Unsure" %}
-  {% include chartbar.html amount=7 max=545 label="AtomVM" %}
+  <li> <span class="label">BEAM</span> <div class="bar" style="flex-basis: max(calc((545 / 545) * 70%), 1px);" ></div> 545 </li>
+  <li> <span class="label">Web browsers</span> <div class="bar" style="flex-basis: max(calc((228 / 545) * 70%), 1px);" ></div> 228 </li>
+  <li> <span class="label">NodeJS</span> <div class="bar" style="flex-basis: max(calc((134 / 545) * 70%), 1px);" ></div> 134 </li>
+  <li> <span class="label">Deno</span> <div class="bar" style="flex-basis: max(calc((69 / 545) * 70%), 1px);" ></div> 69 </li>
+  <li> <span class="label">Bun</span> <div class="bar" style="flex-basis: max(calc((47 / 545) * 70%), 1px);" ></div> 47 </li>
+  <li> <span class="label">Unsure</span> <div class="bar" style="flex-basis: max(calc((31 / 545) * 70%), 1px);" ></div> 31 </li>
+  <li> <span class="label">AtomVM</span> <div class="bar" style="flex-basis: max(calc((7 / 545) * 70%), 1px);" ></div> 7 </li>
 </ol>
 ``` 
 
@@ -308,11 +299,11 @@ this runtime in the Gleam toolchain.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=48 max=48 label="BEAM" %}
-  {% include chartbar.html amount=32 max=48 label="Web browsers" %}
-  {% include chartbar.html amount=14 max=48 label="NodeJS" %}
-  {% include chartbar.html amount=8 max=48 label="Deno" %}
-  {% include chartbar.html amount=3 max=48 label="Bun" %}
+  <li> <span class="label">BEAM</span> <div class="bar" style="flex-basis: max(calc((48 / 48) * 70%), 1px);" ></div> 48 </li>
+  <li> <span class="label">Web browsers</span> <div class="bar" style="flex-basis: max(calc((32 / 48) * 70%), 1px);" ></div> 32 </li>
+  <li> <span class="label">NodeJS</span> <div class="bar" style="flex-basis: max(calc((14 / 48) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">Deno</span> <div class="bar" style="flex-basis: max(calc((8 / 48) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Bun</span> <div class="bar" style="flex-basis: max(calc((3 / 48) * 70%), 1px);" ></div> 3 </li>
 </ol>
 ``` 
 
@@ -320,16 +311,16 @@ this runtime in the Gleam toolchain.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=559 max=559 label="Linux" %}
-  {% include chartbar.html amount=458 max=559 label="macOS" %}
-  {% include chartbar.html amount=213 max=559 label="Windows" %}
-  {% include chartbar.html amount=43 max=559 label="Android" %}
-  {% include chartbar.html amount=42 max=559 label="iOS" %}
-  {% include chartbar.html amount=17 max=559 label="FreeBSD" %}
-  {% include chartbar.html amount=9 max=559 label="OpenBSD" %}
-  {% include chartbar.html amount=1 max=559 label="ChromeOS" %}
-  {% include chartbar.html amount=1 max=559 label="Embedded" %}
-  {% include chartbar.html amount=1 max=559 label="Illumos" %}
+  <li> <span class="label">Linux</span> <div class="bar" style="flex-basis: max(calc((559 / 559) * 70%), 1px);" ></div> 559 </li>
+  <li> <span class="label">macOS</span> <div class="bar" style="flex-basis: max(calc((458 / 559) * 70%), 1px);" ></div> 458 </li>
+  <li> <span class="label">Windows</span> <div class="bar" style="flex-basis: max(calc((213 / 559) * 70%), 1px);" ></div> 213 </li>
+  <li> <span class="label">Android</span> <div class="bar" style="flex-basis: max(calc((43 / 559) * 70%), 1px);" ></div> 43 </li>
+  <li> <span class="label">iOS</span> <div class="bar" style="flex-basis: max(calc((42 / 559) * 70%), 1px);" ></div> 42 </li>
+  <li> <span class="label">FreeBSD</span> <div class="bar" style="flex-basis: max(calc((17 / 559) * 70%), 1px);" ></div> 17 </li>
+  <li> <span class="label">OpenBSD</span> <div class="bar" style="flex-basis: max(calc((9 / 559) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">ChromeOS</span> <div class="bar" style="flex-basis: max(calc((1 / 559) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Embedded</span> <div class="bar" style="flex-basis: max(calc((1 / 559) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Illumos</span> <div class="bar" style="flex-basis: max(calc((1 / 559) * 70%), 1px);" ></div> 1 </li>
 </ol>
 ``` 
 
@@ -342,16 +333,16 @@ that huge portion of potential users behind and limit Gleam's growth.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=731 max=731 label="Linux" %}
-  {% include chartbar.html amount=134 max=731 label="Windows" %}
-  {% include chartbar.html amount=68 max=731 label="macOS" %}
-  {% include chartbar.html amount=57 max=731 label="Android" %}
-  {% include chartbar.html amount=49 max=731 label="iOS" %}
-  {% include chartbar.html amount=21 max=731 label="FreeBSD" %}
-  {% include chartbar.html amount=10 max=731 label="OpenBSD" %}
-  {% include chartbar.html amount=1 max=731 label="ChromeOS" %}
-  {% include chartbar.html amount=1 max=731 label="Illumos" %}
-  {% include chartbar.html amount=1 max=731 label="QNX" %}
+  <li> <span class="label">Linux</span> <div class="bar" style="flex-basis: max(calc((731 / 731) * 70%), 1px);" ></div> 731 </li>
+  <li> <span class="label">Windows</span> <div class="bar" style="flex-basis: max(calc((134 / 731) * 70%), 1px);" ></div> 134 </li>
+  <li> <span class="label">macOS</span> <div class="bar" style="flex-basis: max(calc((68 / 731) * 70%), 1px);" ></div> 68 </li>
+  <li> <span class="label">Android</span> <div class="bar" style="flex-basis: max(calc((57 / 731) * 70%), 1px);" ></div> 57 </li>
+  <li> <span class="label">iOS</span> <div class="bar" style="flex-basis: max(calc((49 / 731) * 70%), 1px);" ></div> 49 </li>
+  <li> <span class="label">FreeBSD</span> <div class="bar" style="flex-basis: max(calc((21 / 731) * 70%), 1px);" ></div> 21 </li>
+  <li> <span class="label">OpenBSD</span> <div class="bar" style="flex-basis: max(calc((10 / 731) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">ChromeOS</span> <div class="bar" style="flex-basis: max(calc((1 / 731) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Illumos</span> <div class="bar" style="flex-basis: max(calc((1 / 731) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">QNX</span> <div class="bar" style="flex-basis: max(calc((1 / 731) * 70%), 1px);" ></div> 1 </li>
 </ol>
 ``` 
 
@@ -366,8 +357,8 @@ operating system here. I've largely put these within the "Linux" category.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=574 max=574 label="Applications" %}
-  {% include chartbar.html amount=200 max=574 label="Libraries" %}
+  <li> <span class="label">Applications</span> <div class="bar" style="flex-basis: max(calc((574 / 574) * 70%), 1px);" ></div> 574 </li>
+  <li> <span class="label">Libraries</span> <div class="bar" style="flex-basis: max(calc((200 / 574) * 70%), 1px);" ></div> 200 </li>
 </ol>
 ``` 
 
@@ -380,8 +371,8 @@ to share applications, there's a lot we can learn from studying them.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=311 max=311 label="No" %}
-  {% include chartbar.html amount=309 max=311 label="Yes" %}
+  <li> <span class="label">No</span> <div class="bar" style="flex-basis: max(calc((311 / 311) * 70%), 1px);" ></div> 311 </li>
+  <li> <span class="label">Yes</span> <div class="bar" style="flex-basis: max(calc((309 / 311) * 70%), 1px);" ></div> 309 </li>
 </ol>
 ``` 
 
@@ -393,8 +384,8 @@ source.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=655 max=655 label="No" %}
-  {% include chartbar.html amount=146 max=655 label="Yes" %}
+  <li> <span class="label">No</span> <div class="bar" style="flex-basis: max(calc((655 / 655) * 70%), 1px);" ></div> 655 </li>
+  <li> <span class="label">Yes</span> <div class="bar" style="flex-basis: max(calc((146 / 655) * 70%), 1px);" ></div> 146 </li>
 </ol>
 ``` 
 
@@ -402,8 +393,8 @@ source.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=39 max=39 label="No" %}
-  {% include chartbar.html amount=11 max=39 label="Yes" %}
+  <li> <span class="label">No</span> <div class="bar" style="flex-basis: max(calc((39 / 39) * 70%), 1px);" ></div> 39 </li>
+  <li> <span class="label">Yes</span> <div class="bar" style="flex-basis: max(calc((11 / 39) * 70%), 1px);" ></div> 11 </li>
 </ol>
 ``` 
 
@@ -419,86 +410,86 @@ core team can be paid appropriately.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=385 max=385 label="TypeScript" %}
-  {% include chartbar.html amount=338 max=385 label="JavaScript" %}
-  {% include chartbar.html amount=314 max=385 label="Python" %}
-  {% include chartbar.html amount=243 max=385 label="Rust" %}
-  {% include chartbar.html amount=230 max=385 label="Go" %}
-  {% include chartbar.html amount=158 max=385 label="Elixir" %}
-  {% include chartbar.html amount=129 max=385 label="Java" %}
-  {% include chartbar.html amount=100 max=385 label="C#" %}
-  {% include chartbar.html amount=81 max=385 label="PHP" %}
-  {% include chartbar.html amount=80 max=385 label="Bash" %}
-  {% include chartbar.html amount=77 max=385 label="Ruby" %}
-  {% include chartbar.html amount=58 max=385 label="C" %}
-  {% include chartbar.html amount=53 max=385 label="Kotlin" %}
-  {% include chartbar.html amount=49 max=385 label="Elm" %}
-  {% include chartbar.html amount=41 max=385 label="C++" %}
-  {% include chartbar.html amount=40 max=385 label="Haskell" %}
-  {% include chartbar.html amount=40 max=385 label="Lua" %}
-  {% include chartbar.html amount=34 max=385 label="OCaml" %}
-  {% include chartbar.html amount=34 max=385 label="Zig" %}
-  {% include chartbar.html amount=32 max=385 label="Erlang" %}
-  {% include chartbar.html amount=29 max=385 label="POSIX Shell" %}
-  {% include chartbar.html amount=27 max=385 label="Swift" %}
-  {% include chartbar.html amount=26 max=385 label="Dart" %}
-  {% include chartbar.html amount=23 max=385 label="Scala" %}
-  {% include chartbar.html amount=22 max=385 label="F#" %}
-  {% include chartbar.html amount=21 max=385 label="Clojure" %}
-  {% include chartbar.html amount=20 max=385 label="SQL" %}
-  {% include chartbar.html amount=12 max=385 label="ReScript" %}
-  {% include chartbar.html amount=10 max=385 label="R" %}
-  {% include chartbar.html amount=9 max=385 label="Crystal" %}
-  {% include chartbar.html amount=9 max=385 label="GDScript" %}
-  {% include chartbar.html amount=9 max=385 label="Julia" %}
-  {% include chartbar.html amount=8 max=385 label="Nix" %}
-  {% include chartbar.html amount=8 max=385 label="Racket" %}
-  {% include chartbar.html amount=6 max=385 label="Lisp" %}
-  {% include chartbar.html amount=6 max=385 label="Odin" %}
-  {% include chartbar.html amount=6 max=385 label="Prolog" %}
-  {% include chartbar.html amount=5 max=385 label="Nim" %}
-  {% include chartbar.html amount=5 max=385 label="PowerShell" %}
-  {% include chartbar.html amount=5 max=385 label="PureScript" %}
-  {% include chartbar.html amount=4 max=385 label="Assembly" %}
-  {% include chartbar.html amount=4 max=385 label="Nushell" %}
-  {% include chartbar.html amount=3 max=385 label="AWK" %}
-  {% include chartbar.html amount=3 max=385 label="Groovy" %}
-  {% include chartbar.html amount=3 max=385 label="Idris" %}
-  {% include chartbar.html amount=3 max=385 label="Lean" %}
-  {% include chartbar.html amount=3 max=385 label="MATLAB" %}
-  {% include chartbar.html amount=3 max=385 label="Perl" %}
-  {% include chartbar.html amount=3 max=385 label="Tcl" %}
-  {% include chartbar.html amount=2 max=385 label="Common Lisp" %}
-  {% include chartbar.html amount=2 max=385 label="Fennel" %}
-  {% include chartbar.html amount=2 max=385 label="Mercury" %}
-  {% include chartbar.html amount=2 max=385 label="Mumps" %}
-  {% include chartbar.html amount=2 max=385 label="Pony" %}
-  {% include chartbar.html amount=2 max=385 label="Unison" %}
-  {% include chartbar.html amount=2 max=385 label="V" %}
-  {% include chartbar.html amount=1 max=385 label="ABAP" %}
-  {% include chartbar.html amount=1 max=385 label="Agda" %}
-  {% include chartbar.html amount=1 max=385 label="AssemblyScript" %}
-  {% include chartbar.html amount=1 max=385 label="BASIC" %}
-  {% include chartbar.html amount=1 max=385 label="BQN" %}
-  {% include chartbar.html amount=1 max=385 label="CUDA" %}
-  {% include chartbar.html amount=1 max=385 label="Coq" %}
-  {% include chartbar.html amount=1 max=385 label="D" %}
-  {% include chartbar.html amount=1 max=385 label="Delphi" %}
-  {% include chartbar.html amount=1 max=385 label="EYG" %}
-  {% include chartbar.html amount=1 max=385 label="Fish" %}
-  {% include chartbar.html amount=1 max=385 label="Flix" %}
-  {% include chartbar.html amount=1 max=385 label="Janet" %}
-  {% include chartbar.html amount=1 max=385 label="Mint" %}
-  {% include chartbar.html amount=1 max=385 label="Objective-C" %}
-  {% include chartbar.html amount=1 max=385 label="PSL" %}
-  {% include chartbar.html amount=1 max=385 label="Roc" %}
-  {% include chartbar.html amount=1 max=385 label="SAS" %}
-  {% include chartbar.html amount=1 max=385 label="Scheme" %}
-  {% include chartbar.html amount=1 max=385 label="StandardML" %}
-  {% include chartbar.html amount=1 max=385 label="SystemVerilog" %}
-  {% include chartbar.html amount=1 max=385 label="Terraform" %}
-  {% include chartbar.html amount=1 max=385 label="Typst" %}
-  {% include chartbar.html amount=1 max=385 label="Visual Basic" %}
+  <li> <span class="label">TypeScript</span> <div class="bar" style="flex-basis: max(calc((385 / 385) * 70%), 1px);" ></div> 385 </li>
+  <li> <span class="label">JavaScript</span> <div class="bar" style="flex-basis: max(calc((338 / 385) * 70%), 1px);" ></div> 338 </li>
+  <li> <span class="label">Python</span> <div class="bar" style="flex-basis: max(calc((314 / 385) * 70%), 1px);" ></div> 314 </li>
+  <li> <span class="label">Rust</span> <div class="bar" style="flex-basis: max(calc((243 / 385) * 70%), 1px);" ></div> 243 </li>
+  <li> <span class="label">Go</span> <div class="bar" style="flex-basis: max(calc((230 / 385) * 70%), 1px);" ></div> 230 </li>
+  <li> <span class="label">Elixir</span> <div class="bar" style="flex-basis: max(calc((158 / 385) * 70%), 1px);" ></div> 158 </li>
+  <li> <span class="label">Java</span> <div class="bar" style="flex-basis: max(calc((129 / 385) * 70%), 1px);" ></div> 129 </li>
+  <li> <span class="label">C#</span> <div class="bar" style="flex-basis: max(calc((100 / 385) * 70%), 1px);" ></div> 100 </li>
+  <li> <span class="label">PHP</span> <div class="bar" style="flex-basis: max(calc((81 / 385) * 70%), 1px);" ></div> 81 </li>
+  <li> <span class="label">Bash</span> <div class="bar" style="flex-basis: max(calc((80 / 385) * 70%), 1px);" ></div> 80 </li>
+  <li> <span class="label">Ruby</span> <div class="bar" style="flex-basis: max(calc((77 / 385) * 70%), 1px);" ></div> 77 </li>
+  <li> <span class="label">C</span> <div class="bar" style="flex-basis: max(calc((58 / 385) * 70%), 1px);" ></div> 58 </li>
+  <li> <span class="label">Kotlin</span> <div class="bar" style="flex-basis: max(calc((53 / 385) * 70%), 1px);" ></div> 53 </li>
+  <li> <span class="label">Elm</span> <div class="bar" style="flex-basis: max(calc((49 / 385) * 70%), 1px);" ></div> 49 </li>
+  <li> <span class="label">C++</span> <div class="bar" style="flex-basis: max(calc((41 / 385) * 70%), 1px);" ></div> 41 </li>
+  <li> <span class="label">Haskell</span> <div class="bar" style="flex-basis: max(calc((40 / 385) * 70%), 1px);" ></div> 40 </li>
+  <li> <span class="label">Lua</span> <div class="bar" style="flex-basis: max(calc((40 / 385) * 70%), 1px);" ></div> 40 </li>
+  <li> <span class="label">OCaml</span> <div class="bar" style="flex-basis: max(calc((34 / 385) * 70%), 1px);" ></div> 34 </li>
+  <li> <span class="label">Zig</span> <div class="bar" style="flex-basis: max(calc((34 / 385) * 70%), 1px);" ></div> 34 </li>
+  <li> <span class="label">Erlang</span> <div class="bar" style="flex-basis: max(calc((32 / 385) * 70%), 1px);" ></div> 32 </li>
+  <li> <span class="label">POSIX Shell</span> <div class="bar" style="flex-basis: max(calc((29 / 385) * 70%), 1px);" ></div> 29 </li>
+  <li> <span class="label">Swift</span> <div class="bar" style="flex-basis: max(calc((27 / 385) * 70%), 1px);" ></div> 27 </li>
+  <li> <span class="label">Dart</span> <div class="bar" style="flex-basis: max(calc((26 / 385) * 70%), 1px);" ></div> 26 </li>
+  <li> <span class="label">Scala</span> <div class="bar" style="flex-basis: max(calc((23 / 385) * 70%), 1px);" ></div> 23 </li>
+  <li> <span class="label">F#</span> <div class="bar" style="flex-basis: max(calc((22 / 385) * 70%), 1px);" ></div> 22 </li>
+  <li> <span class="label">Clojure</span> <div class="bar" style="flex-basis: max(calc((21 / 385) * 70%), 1px);" ></div> 21 </li>
+  <li> <span class="label">SQL</span> <div class="bar" style="flex-basis: max(calc((20 / 385) * 70%), 1px);" ></div> 20 </li>
+  <li> <span class="label">ReScript</span> <div class="bar" style="flex-basis: max(calc((12 / 385) * 70%), 1px);" ></div> 12 </li>
+  <li> <span class="label">R</span> <div class="bar" style="flex-basis: max(calc((10 / 385) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">Crystal</span> <div class="bar" style="flex-basis: max(calc((9 / 385) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">GDScript</span> <div class="bar" style="flex-basis: max(calc((9 / 385) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">Julia</span> <div class="bar" style="flex-basis: max(calc((9 / 385) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">Nix</span> <div class="bar" style="flex-basis: max(calc((8 / 385) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Racket</span> <div class="bar" style="flex-basis: max(calc((8 / 385) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Lisp</span> <div class="bar" style="flex-basis: max(calc((6 / 385) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Odin</span> <div class="bar" style="flex-basis: max(calc((6 / 385) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Prolog</span> <div class="bar" style="flex-basis: max(calc((6 / 385) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Nim</span> <div class="bar" style="flex-basis: max(calc((5 / 385) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">PowerShell</span> <div class="bar" style="flex-basis: max(calc((5 / 385) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">PureScript</span> <div class="bar" style="flex-basis: max(calc((5 / 385) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Assembly</span> <div class="bar" style="flex-basis: max(calc((4 / 385) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Nushell</span> <div class="bar" style="flex-basis: max(calc((4 / 385) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">AWK</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Groovy</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Idris</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Lean</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">MATLAB</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Perl</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Tcl</span> <div class="bar" style="flex-basis: max(calc((3 / 385) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Common Lisp</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Fennel</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Mercury</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Mumps</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Pony</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Unison</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">V</span> <div class="bar" style="flex-basis: max(calc((2 / 385) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">ABAP</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Agda</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">AssemblyScript</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">BASIC</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">BQN</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">CUDA</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Coq</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">D</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Delphi</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">EYG</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Fish</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Flix</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Janet</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Mint</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Objective-C</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">PSL</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Roc</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">SAS</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Scheme</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">StandardML</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">SystemVerilog</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Terraform</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Typst</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Visual Basic</span> <div class="bar" style="flex-basis: max(calc((1 / 385) * 70%), 1px);" ></div> 1 </li>
 </ol>
 ``` 
 
@@ -510,8 +501,8 @@ type-directed style of Gleam.
 
 ``` =html
 <ol  class="bar-chart">
-  {% include chartbar.html amount=2639 max=2639 label="Other" %}
-  {% include chartbar.html amount=190 max=2639 label="Erlang and Elixir" %}
+  <li> <span class="label">Other</span> <div class="bar" style="flex-basis: max(calc((2639 / 2639) * 70%), 1px);" ></div> 2639 </li>
+  <li> <span class="label">Erlang and Elixir</span> <div class="bar" style="flex-basis: max(calc((190 / 2639) * 70%), 1px);" ></div> 190 </li>
 </ol>
 ``` 
 
