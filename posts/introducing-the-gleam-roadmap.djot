@@ -1,0 +1,23 @@
+Often people ask "Hey Louis! What's coming next in Gleam?"
+
+It's a tricky question to answer. Gleam is a community project rather than a
+corporate one, so often many things are happening at once. As the project leader
+I have my own priorities, but it's up to individual contributors to decide what
+they find valuable and fun enough to work on. Often the most useful way to
+respond is to give an overview of the upcoming features that I think are most
+exciting or impactful, and directing them to the changelog and the issue tracker
+if they want to learn more.
+
+To help with this, and to give folks a quicker way to access this information
+than waiting for me to reply on the Gleam discord server, I've created the
+Gleam development roadmap. It lists the most impactful features, past,
+present, and future, and I'll update it with each new Gleam release. I hope you
+find it useful!
+
+``` =html
+<div style="text-align: center">
+  <a class="button" href="/roadmap">View the roadmap</a>
+</div>
+```
+
+Thanks for reading, happy hacking! 💜

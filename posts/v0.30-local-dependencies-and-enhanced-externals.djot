@@ -1,0 +1,327 @@
+Gleam is a type safe and scalable language for the Erlang virtual machine and
+JavaScript runtimes. Today Gleam [v0.30.0][release] has been released, let's
+take a look at what's new.
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v0.30.0
+
+## Local dependencies
+
+Gleam's build tool has always had support for Hex, the package repository for the
+Erlang ecosystem. It now additionally supports local dependencies, allowing you
+to depend on other Gleam projects without pushing them to the repository.
+
+```toml
+# gleam.toml
+name = "my_project"
+
+[dependencies]
+gleam_stdlib = "~> 0.30"
+my_other_project = { path = "../my_other_project" }
+```
+
+You may want to use local dependencies when testing your project before
+publishing, when working on multiple related packages, or to enforce a certain
+dependency structure between parts of your codebase, such as ensuring a domain
+layer does not depend on a web framework.
+
+One way I will be using this feature is to have a package of shared types and
+functions that I can use in both the Gleam Erlang backend and the Gleam
+JavaScript frontend of my web applications.
+
+Thank you [Miles Silberling-Cook](https://github.com/NthTensor) for this
+feature!
+
+
+## Enhanced externals
+
+Gleam can without any overhead import and call functions written in other
+languages on the runtime, such as Erlang, Elixir, JavaScript, and TypeScript.
+
+If I wanted to define a public function that used FFI (foreign function interface)
+to halt the runtime I could do it like this:
+
+```gleam
+/// Halt the runtime with the given exit code.
+pub fn halt(code: Int) -> Nil {
+  native_halt(code)
+}
+
+if erlang {
+  external fn native_halt(Int) -> Nil =
+    "erlang" "halt"
+}
+
+if javascript {
+  external fn native_halt(Int) -> Nil =
+    "./my_javascript_module.mjs" "halt"
+}
+```
+
+Here a public function with a documentation comment calls a private function,
+and conditional compilation is used to define the private function differently
+depending on the target runtime.
+
+I think you'll agree that it is quite verbose and repetitive; of the 14 lines of
+code in this example only 4 are meaningful.
+
+Conditional compilation gives the programmer little in the way of guidance on
+how to structure their code, so other approaches can be found today in published
+Gleam packages:
+
+Some packages only support a single target runtime, as such they may omit the
+conditional compilation entirely, documenting the supported target in their
+README. These packages will not work on other runtimes, and may fail to compile
+with a cryptic message.
+
+Other packages omit the non-conditional facade function entirely, instead making
+the two conditional functions public. This approach is more concise but without
+any link between the two different implementations there can be drift, with
+types and functions either intentionally or unintentionally differing.
+
+With Gleam v0.30.0 the FFI has been redesigned to address all these issues. The
+above example is now written like this:
+
+```gleam
+/// Halt the runtime with the given exit code.
+@external(erlang, "erlang", "halt")
+@external(javascript, "./my_javascript_module.mjs", "halt")
+pub fn halt(code: Int) -> Nil
+```
+
+This is much more concise, and the single function header ensures the various
+targets are kept in sync.
+
+What's more the compiler can now always infer what targets a function is
+implemented for, which in future we can use for dead code elimination and to
+show supported targets for packages on [the Gleam package index website](https://packages.gleam.run/).
+
+## Panic! Todo!
+
+Gleam has `todo` and `panic` keywords that can be used to crash the program when
+code is reached that is either unfinished or should never be reached. If you
+wanted to give a custom message to that crash for `todo` you would have written
+it like this:
+
+```gleam
+pub fn main() {
+  todo("I really need to finish this...")
+}
+```
+
+This syntax resulted in some confusion where people would think that these
+keywords are functions, and try to assign them to values. To make it clearer the
+syntax for providing a custom message has been changed to this:
+
+```gleam
+pub fn main() {
+  todo as "I really need to finish this..."
+}
+```
+
+This syntax may be extended in future for assertions and other error messages.
+
+## Any order aliases
+
+Previously type aliases could only refer to aliases defined earlier in the same
+module. This restriction has been lifted, so this mundane looking code will now
+compile.
+
+```gleam
+pub type Bill = List(#(String, Euro))
+
+pub type Euro = Int
+```
+
+## Build tool improvements
+
+Gleam packages can now specify the minimum version of Gleam required to build them.
+
+```toml
+# gleam.toml
+name = "my_project"
+gleam = ">= 0.30.0"
+```
+
+If a user attempts to build a package with a version that doesn't meet the
+specified version constraint an error will be emitted.
+
+And lastly, the `gleam remove` command has been added to remove dependencies
+from a package, to complement the existing `gleam add` command.
+
+Thank you [Miles Silberling-Cook](https://github.com/NthTensor) and 
+[Mateusz Bil](https://github.com/rubytree) for these features!
+
+
+## Thanks
+
+Gleam is made possible by the support of all the kind people and companies who have
+very generously [**sponsored**](https://github.com/sponsors/lpil) or
+contributed to the project. Thank you all!
+
+If you like Gleam consider sponsoring or asking your employer to
+[sponsor Gleam development](https://github.com/sponsors/lpil). I work full time
+on Gleam and your kind sponsorship is how I pay my bills!
+
+``` =html
+<ul class="top-sponsors">
+  <li>
+    <a href="https://fly.io" rel="noopener" target="_blank">
+      <img class="sponsor-fly no-shadow" src="/images/sponsors/fly-invert.svg" alt="Fly">
+    </a>
+  </li>
+</ul>
+```
+
+- [Aaron Gunderson](https://github.com/agundy)
+- [Adam Brodzinski](https://github.com/AdamBrodzinski)
+- [Adam Mokan](https://github.com/amokan)
+- [Adi Iyengar](https://github.com/thebugcatcher)
+- [Alembic](https://alembic.com.au)
+- [Alex Manning](https://github.com/rawhat)
+- [Alexander Koutmos](https://github.com/akoutmos)
+- [Alexander Stensrud](https://github.com/spektroskop)
+- [Alexandre Del Vecchio](https://github.com/defgenx)
+- [Ali Farhadi](https://github.com/farhadi)
+- [Andrea Tupini](https://github.com/tupini07)
+- [Anthony Khong](https://github.com/anthony-khong)
+- [Anthony Scotti](https://github.com/amscotti)
+- [Arnaud Berthomier](https://github.com/oz)
+- [Barry Moore](https://github.com/chiroptical)
+- [Ben Marx](https://github.com/bgmarx)
+- [Ben Myles](https://github.com/benmyles)
+- [Benjamin Peinhardt](https://github.com/bcpeinhardt)
+- [brettkolodny](https://github.com/brettkolodny)
+- [Brian Glusman](https://github.com/bglusman)
+- [Bruno Michel](https://github.com/nono)
+- [Cade DuPont](https://github.com/cadedupont)
+- [Carlo Gilmar](https://github.com/carlogilmar)
+- [Carlos Saltos](https://github.com/csaltos)
+- [Chew Choon Keat](https://github.com/choonkeat)
+- [Chris Lloyd](https://github.com/chrislloyd)
+- [Chris Ohk](https://github.com/utilForever)
+- [Christopher Keele](https://github.com/christhekeele)
+- [clangley](https://github.com/clangley)
+- [Clay](https://github.com/connorlay)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Colin](https://github.com/insanitybit)
+- [Cosmo Shin (신의하)](https://github.com/XiNiHa)
+- [Cristine Guadelupe](https://github.com/cristineguadelupe)
+- [Damir Vandic](https://github.com/dvic)
+- [Dan Dresselhaus](https://github.com/ddresselhaus)
+- [Danielle Maywood](https://github.com/DanielleMaywood)
+- [Danny Martini](https://github.com/despairblue)
+- [Dave Lucia](https://github.com/davydog187)
+- [David Armstrong Lewis](https://github.com/davidarmstronglewis)
+- [David Bernheisel](https://github.com/dbernheisel)
+- [David Flanagan](https://github.com/rawkode)
+- [David Sancho](https://github.com/davesnx)
+- [Dennis Dang](https://github.com/dangdennis)
+- [Edon Gashi](https://github.com/edongashi)
+- [Elliott Pogue](https://github.com/epogue)
+- [Erik Terpstra](https://github.com/eterps)
+- [Ernesto Malave](https://github.com/oberernst)
+- [etopiei](https://github.com/etopiei)
+- [Fernando Farias](https://github.com/nandofarias)
+- [Filip Figiel](https://github.com/megapctr)
+- [Florian Kraft](https://github.com/floriank)
+- [fly.io](https://github.com/superfly)
+- [Giacomo Cavalieri](https://github.com/giacomocavalieri)
+- [Graeme Coupar](https://github.com/obmarg)
+- [Guilherme de Maio](https://github.com/nirev)
+- [Gustavo Villa](https://github.com/gfvcastro)
+- [Harry Bairstow](https://github.com/HarryET)
+- [Hayleigh Thompson](https://github.com/hayleigh-dot-dev)
+- [Henry Warren](https://github.com/henrysdev)
+- [Hex](https://github.com/hexpm)
+- [Ian González](https://github.com/Ian-GL)
+- [Ingmar Gagen](https://github.com/igagen)
+- [inoas](https://github.com/inoas)
+- [Ivar Vong](https://github.com/ivarvong)
+- [j](https://github.com/jake-87)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jan Skriver Sørensen](https://github.com/monzool)
+- [Jechol Lee](https://github.com/jechol)
+- [Jen Stehlik](https://github.com/okkdev)
+- [jiangplus](https://github.com/jiangplus)
+- [John Björk](https://github.com/JohnBjrk)
+- [John Gallagher](https://github.com/johngallagher)
+- [John Palgut](https://github.com/Jwsonic)
+- [Jonas Hedman Engström](https://github.com/JonasHedEng)
+- [Kayla Washburn](https://github.com/aslilac)
+- [Kieran Gill](https://github.com/kierangilliam)
+- [Kris Jenkins](https://github.com/krisajenkins)
+- [Lars Wikman](https://github.com/lawik)
+- [Leon Qadirie](https://github.com/leonqadirie)
+- [lidashuang](https://github.com/defp)
+- [Manuel Rubio](https://github.com/manuel-rubio)
+- [Marius Kalvø](https://github.com/mariuskalvo)
+- [Mark Holmes](https://github.com/markholmes)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Markus](https://github.com/markusfeyh)
+- Markus Pettersson
+- [Marshall Bowers](https://github.com/maxdeviant)
+- [Martin Janiczek](https://github.com/Janiczek)
+- [Mathias Jean Johansen](https://github.com/majjoha)
+- [Matt Van Horn](https://github.com/mattvanhorn)
+- [Matthias Benkort](https://github.com/KtorZ)
+- [max-tern](https://github.com/max-tern)
+- [Michael Chris Lopez](https://github.com/mcchrish)
+- [Michael Duffy](https://github.com/stunthamster)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michael Kumm](https://github.com/mkumm)
+- [Mike Roach](https://github.com/mroach)
+- [Mikko Ahlroth](https://github.com/Nicd)
+- [Miles Silberling-Cook](https://github.com/NthTensor)
+- [Natanael Sirqueira](https://github.com/natanaelsirqueira)
+- [Nathaniel Knight](https://github.com/nathanielknight)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [Nicklas Sindlev Andersen](https://github.com/NicklasXYZ)
+- [NineFX](http://www.ninefx.com)
+- [Noah Betzen](https://github.com/Nezteb)
+- [OldhamMade](https://github.com/OldhamMade)
+- [Ole Michaelis](https://github.com/OleMchls)
+- [ontofractal](https://github.com/ontofractal)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Paul Gideon Dann](https://github.com/giddie)
+- [Pete Jodo](https://github.com/petejodo)
+- [Praveen Perera](https://github.com/praveenperera)
+- [qingliangcn](https://github.com/qingliangcn)
+- [Raúl Chouza ](https://github.com/chouzar)
+- [Redmar Kerkhoff](https://github.com/redmar)
+- [Rico Leuthold](https://github.com/rico)
+- [Robert Attard](https://github.com/TanklesXL)
+- [Robert Ellen](https://github.com/rellen)
+- [rubytree](https://github.com/rubytree)
+- [Ryan Winchester](https://github.com/ryanwinchester)
+- [Sam Aaron](https://github.com/samaaron)
+- [Sammy Isseyegh](https://github.com/bkspace)
+- [Sascha Wolf](https://github.com/sascha-wolf)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian Porto](https://github.com/sporto)
+- [Sebastien Lacoste](https://github.com/graphman65)
+- [SEKUN](https://github.com/sekunho)
+- [Seve Salazar](https://github.com/tehprofessor)
+- [Shuqian Hon](https://github.com/honsq90)
+- [Signal Insights](https://github.com/signalinsights)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [Stefan Luptak](https://github.com/stefanluptak)
+- [Steven Joseph](https://github.com/jagguli)
+- [Strand Communications](https://github.com/strandcom)
+- [Szymon Wygnański](https://github.com/finalclass)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Theo Harris](https://github.com/Theosaurus-Rex)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [Tristan de Cacqueray](https://github.com/TristanCacqueray)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Victor Borja](https://github.com/vic)
+- [Weizheng Liu](https://github.com/weizhliu)
+- [Willyboar](https://github.com/Willyboar)
+- [Wilson Silva](https://github.com/wilsonsilva)
+- [Wojtek Mach](https://github.com/wojtekmach)
+- [Yasuo Higano](https://github.com/Yasuo-Higano)
+- [Yu Matsuzawa](https://github.com/ymtszw)
+- [Zsombor Gasparin](https://github.com/gasparinzsombor)
+
+Thanks for reading! Happy hacking! 💜

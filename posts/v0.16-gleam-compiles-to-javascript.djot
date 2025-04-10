@@ -1,0 +1,681 @@
+``` =html
+<style>
+hr {
+  margin: 3em 0;
+}
+</style>
+```
+
+Gleam is a type safe and scalable language for the Erlang virtual machine, and
+as of today's [v0.16.0][release] release Gleam compiles to JavaScript as well!
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v0.16.0
+
+## Show me!
+
+What's the introduction of a new way to write front end web code without some
+cliché examples? 
+
+Here's a collection of interactive widgets you've probably seen countless times
+before, along with their Gleam source code and the JavaScript it compiles into.
+
+In the interest of brevity we skip error handling in these examples and use
+rather quick-and-dirty type definitions of the JavaScript functions they import.
+In real Gleam programs we would expect these JavaScript bindings to live within
+shared libraries, but these examples should be enough to give you a taste of
+what Gleam can do with JavaScript.
+
+---
+
+``` =html
+<center>
+  <div style="font-size: 3rem">Hello, <span data-hello-display>world</span>!</div>
+  <input data-hello-input value="world">
+</center>
+```
+
+``` =html
+<script type="module">
+"use strict"
+
+export function main() {
+  let input = query_selector("[data-hello-input]");
+  let display = query_selector("[data-hello-display]");
+  let sync = () => {
+    let text = get(input, "value");
+    return set(display, "innerText", text);
+  };
+  return set(input, "oninput", sync);
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+main();
+</script>
+<details>
+<summary>Display Gleam source</summary>
+<pre><code>pub fn main() {
+  let input = query_selector("[data-hello-input]")
+  let display = query_selector("[data-hello-display]")
+  let sync = fn() {
+    let text = get(from: input, property: "value")
+    set("innerText", on: display, to: text)
+  }
+  set("oninput", on: input, to: sync)
+}
+
+external type Element
+
+external fn query_selector(String) -> Element =
+  "" "document.querySelector"
+
+external fn get(from: Element, property: String) -> String =
+  "" "Reflect.get"
+
+external fn set(on: Element, property: String, to: anything) -> Bool =
+  "" "Reflect.set"
+</code></pre>
+</details>
+<details>
+<summary>Display compiled JavaScript</summary>
+<pre><code>"use strict";
+
+export function main() {
+  let input = query_selector("[data-hello-input]");
+  let display = query_selector("[data-hello-display]");
+  let sync = () => {
+    let text = get(input, "value");
+    return set(display, "innerText", text);
+  };
+  return set(input, "oninput", sync);
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+</code></pre>
+</details>
+```
+
+---
+
+``` =html
+<center>
+  <div style="font-size: 3rem" data-counter-display>0</div>
+  <button data-counter-increment>Increment</button>
+  <button data-counter-decrement>Decrement</button>
+</center>
+
+<script type="module">
+"use strict";
+
+export function main() {
+  let increment = query_selector("[data-counter-increment]");
+  let decrement = query_selector("[data-counter-decrement]");
+  let display = query_selector("[data-counter-display]");
+  let add = (diff) => {
+    return set(display, "innerText", get_value(display) + diff);
+  };
+  set(increment, "onclick", () => { return add(1); });
+  return set(decrement, "onclick", () => { return add(-1); });
+}
+
+function get_value(element) {
+  return parse_int(get(element, "innerText"));
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function parse_int(arg0) {
+  return parseInt(arg0)
+}
+main();
+</script>
+<details>
+<summary>Display Gleam source</summary>
+<pre><code>pub fn main() {
+  let increment = query_selector("[data-counter-increment]")
+  let decrement = query_selector("[data-counter-decrement]")
+  let display = query_selector("[data-counter-display]")
+  let add = fn(diff) {
+    set("innerText", on: display, to: get_value(display) + diff)
+  }
+  set("onclick", on: increment, to: fn() { add(1) })
+  set("onclick", on: decrement, to: fn() { add(-1) })
+}
+
+fn get_value(element) {
+  element
+  |> get(property: "innerText")
+  |> parse_int
+}
+
+external type Element
+
+external fn query_selector(String) -> Element =
+  "" "document.querySelector"
+
+external fn get(from: Element, property: String) -> String =
+  "" "Reflect.get"
+
+external fn set(on: Element, property: String, to: anything) -> Bool =
+  "" "Reflect.set"
+
+external fn parse_int(String) -> Int =
+  "" "parseInt"
+</code></pre>
+</details>
+<details>
+<summary>Display compiled JavaScript</summary>
+<pre><code>"use strict";
+
+export function main() {
+  let increment = query_selector("[data-counter-increment]");
+  let decrement = query_selector("[data-counter-decrement]");
+  let display = query_selector("[data-counter-display]");
+  let add = (diff) => {
+    return set(display, "innerText", get_value(display) + diff);
+  };
+  set(increment, "onclick", () => { return add(1); });
+  return set(decrement, "onclick", () => { return add(-1); });
+}
+
+function get_value(element) {
+  return parse_int(get(element, "innerText"));
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function parse_int(arg0) {
+  return parseInt(arg0)
+}
+</code></pre>
+</details>
+```
+
+---
+
+``` =html
+<center>
+  <img style="max-height: 350px; margin-bottom: 12px" alt="A dog" data-dogs-img>
+  <button data-dogs-button>Fetch me another dog</button>
+</center>
+
+<script type="module">
+"use strict";
+
+const url = "https://dog.ceo/api/breeds/image/random";
+
+export function main() {
+  let button = query_selector("[data-dogs-button]");
+  let img = query_selector("[data-dogs-img]");
+  new_dog(img);
+  return set(button, "onclick", () => { return new_dog(img); });
+}
+
+function new_dog(img) {
+  return then(
+    then(fetch(url), get_json_body),
+    (json) => {
+      set(img, "src", get(json, "message"));
+      return resolve_promise(undefined);
+    },
+  );
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function fetch(arg0) {
+  return globalThis.fetch(arg0)
+}
+
+function get_json_body(arg0) {
+  return Response.prototype.json.call(arg0)
+}
+
+function then(arg0, arg1) {
+  return Promise.prototype.then.call(arg0, arg1)
+}
+
+function resolve_promise(arg0) {
+  return Promise.resolve(arg0)
+}
+main();
+</script>
+<details>
+<summary>Display Gleam source</summary>
+<pre><code>const url = "https://dog.ceo/api/breeds/image/random"
+
+pub fn main() {
+  let button = query_selector("[data-dogs-button]")
+  let img = query_selector("[data-dogs-img]")
+  new_dog(img)
+  set(on: button, property: "onclick", to: fn() { new_dog(img) })
+}
+
+fn new_dog(img) {
+  fetch(url)
+  |> then(get_json_body)
+  |> then(fn(json) {
+    set(on: img, property: "src", to: get(json, "message"))
+    resolve_promise(Nil)
+  })
+}
+
+external type Element
+
+external type Response
+
+external type Json
+
+external type Promise(value)
+
+external fn query_selector(String) -> Element =
+  "" "document.querySelector"
+
+external fn get(from: Json, property: String) -> Json =
+  "" "Reflect.get"
+
+external fn set(on: Element, property: String, to: anything) -> Bool =
+  "" "Reflect.set"
+
+external fn fetch(String) -> Promise(Response) =
+  "" "fetch"
+
+external fn get_json_body(Response) -> Promise(Json) =
+  "" "Response.prototype.json.call"
+
+external fn then(Promise(a), fn(a) -> Promise(b)) -> Promise(b) =
+  "" "Promise.prototype.then.call"
+
+external fn resolve_promise(value) -> Promise(value) =
+  "" "Promise.resolve"
+</code></pre>
+</details>
+<details>
+<summary>Display compiled JavaScript</summary>
+<pre><code>"use strict";
+
+const url = "https://dog.ceo/api/breeds/image/random";
+
+export function main() {
+  let button = query_selector("[data-dogs-button]");
+  let img = query_selector("[data-dogs-img]");
+  new_dog(img);
+  return set(button, "onclick", () => { return new_dog(img); });
+}
+
+function new_dog(img) {
+  return then(
+    then(fetch(url), get_json_body),
+    (json) => {
+      set(img, "src", get(json, "message"));
+      return resolve_promise(undefined);
+    },
+  );
+}
+
+function query_selector(arg0) {
+  return document.querySelector(arg0)
+}
+
+function get(from, property) {
+  return Reflect.get(from, property)
+}
+
+function set(on, property, to) {
+  return Reflect.set(on, property, to)
+}
+
+function fetch(arg0) {
+  return globalThis.fetch(arg0)
+}
+
+function get_json_body(arg0) {
+  return Response.prototype.json.call(arg0)
+}
+
+function then(arg0, arg1) {
+  return Promise.prototype.then.call(arg0, arg1)
+}
+
+function resolve_promise(arg0) {
+  return Promise.resolve(arg0)
+}
+</code></pre>
+</details>
+```
+
+Thank you to [dog.ceo for their Dog API](https://dog.ceo/dog-api/).
+
+---
+
+## Why JavaScript?
+
+The Erlang virtual machine is second-to-none for long-running services that run
+on servers, but outside of this space it may not always be the best tool
+for the job. It is not supported on all platforms, and factors such as compiled
+application size, boot time, and ease of installation may be an issue.
+
+JavaScript is one of the most widely used and widely supported languages in the
+world. It can be used for website front ends, desktop applications, command line
+applications, mobile phones app, on IoT devices, on cloud serverless platforms,
+and more.
+
+While JavaScript lacks the multi-core and distribute computing capabilities of
+the Erlang virtual machine it does have robust concurrency features and
+respectable single threaded performance thanks to highly optimised runtimes such
+Google's V8 engine, which is used in NodeJS and the Chrome web browser.
+
+By compiling to JavaScript as well as Erlang Gleam can be used for a much wider
+range of problem spaces and domains, and be accessible to a wider range of
+people. A team writing a backend web API in Gleam can now choose to also write
+their website frontend in Gleam, sharing code between both platforms and enjoying
+the friendly and productive type-based programming style of Gleam throughout
+their application stack.
+
+Personally I'm excited to run Gleam code using serverless function platforms,
+and to make [fun little Processing style sketches](https://lpil.uk/elm-hearts/)
+that run in the browser.
+
+## How does it work?
+
+Much like the Erlang compiler backend this new JavaScript backend outputs human
+readable and pretty printed source code. It is now included with the compiler
+and does not require any extra components to be installed to use it.
+
+Rather than attempting to replicate a subset of Erlang's actor model Gleam uses
+the standard promise based concurrency model when targeting JavaScript. While
+this may be disappointing for some, it means that there is no additional runtime
+code added. This keeps bundle size small and makes it so code written in Gleam
+can be called like normal from languages such as JavaScript and TypeScript.
+
+## What's next?
+
+### Full language support
+
+The JavaScript backend supports almost all of the Gleam language, but there's a
+few features still to be implemented, most notably the bit string syntax.
+Support for the remaining features will be added in following releases.
+
+### Tooling
+
+When compiling to Erlang we typically use Erlang's rebar3 build tool or Elixir's
+mix build tool. With JavaScript we do not yet any build tool integration and
+instead have to use the lower level `gleam compile-package --target=javascript`
+command line API. This API could be called by an npm preprocess script, a
+makefile, or by more sophisticated integrations with tools such as Parcel or
+Webpack.
+
+Currently a Gleam build tool is being worked on, one that will be suitable for
+use with Erlang and JavaScript, and handle the resolution and compilation of
+dependancies from the Hex package manager. 
+
+### Concurrency exploration
+
+In JavaScript code yield points have to be manually inserted using
+`Promise.prototype.then`, or with the `await` keyword, while in languages like
+Erlang and Go this is handled automatically by the compiler.
+
+The pervasive `Promise` type and the split between synchronous and asynchronous
+functions in JavaScript can be more difficult to learn and use than languages
+such as Erlang and Go that make no such distinction.  While there are no firm
+plans at present I would like to explore using the Gleam compiler's static
+analysis to automatically insert `await` statements into the generated
+JavaScript code.
+
+If this proves to be successful and useful we could swap promise based Gleam
+code that looks like this:
+
+```gleam
+pub fn main() -> Promise(Int) {
+  async_function()
+  |> promise.then(fn(x) {
+    let y = sync_function()
+    async_function()
+    |> promise.then(fn(z) {
+      promise.resolve(x + y + z)
+    })
+  })
+}
+```
+
+For automatically yielding Gleam code that looks like this:
+
+```gleam
+pub fn main() -> Int {
+  let x = async_function()
+  let y = sync_function()
+  let z = async_function()
+  x + y + z
+}
+```
+
+Both of these examples would have the same runtime behaviour and performance
+characteristics.
+
+This would also solve the problem of JavaScript's promise type automatically
+flattening `Promise(Promise(value))` into `Promise(value)`, which makes it not
+possible to soundly type without adding a special case to Gleam's type system.
+
+## How can I try it?
+
+Instructions on how to install the latest version of Gleam can be found on the
+[getting started page][getting-started] of the website. 
+
+Once installed [this Gleam JavaScript template][js-template] can be used for
+writing and running Gleam code on JavaScript.
+
+For all the details of this release check out the changelog files:
+
+- [Gleam's changelog](https://github.com/gleam-lang/gleam/blob/main/CHANGELOG.md)
+- [Gleam stdlib's changelog](https://github.com/gleam-lang/stdlib/blob/main/CHANGELOG.md)
+
+[getting-started]: https://gleam.run/getting-started/
+[js-template]: https://github.com/gleam-lang/template-gleam-javascript
+
+
+## Supporting Gleam
+
+Gleam sponsorship is my primary source of income. If you would like to support
+me in making Gleam please consider [sponsoring Gleam][sponsor] or asking your
+employer to sponsor Gleam. Every donation makes a difference, no matter how
+small, so thank you for your help.
+
+``` =html
+<center>
+  <iframe src="https://github.com/sponsors/lpil/button" title="Sponsor Gleam" height="35" width="116" style="border: 0; margin: 6px"></iframe>
+
+  <div>
+    ⭐ Or alternatively give us a star on <a href="https://github.com/gleam-lang/gleam">GitHub</a>! ⭐
+  </div>
+</center>
+```
+
+
+[gleam-gh]: https://github.com/gleam-lang/gleam
+[sponsor]: https://github.com/sponsors/lpil
+
+
+
+## Thank you
+
+The JavaScript backend for the Gleam compiler was initially created by 
+[Peter Saxton](https://github.com/CrowdHailer), so a big thank you to him. I
+also want to thank [Hayleigh Thompson](https://github.com/pd-andy), her knowledge of
+other functional languages that compile to JavaScript has been invaluable in
+getting to this first release.
+
+Gleam is made possible by the support of all the people who have
+[sponsored](https://github.com/sponsors/lpil) and contributed to the project.
+Thank you all!
+
+- [Adam Bowen](https://github.com/adamnbowen)
+- [Adam Brodzinski](https://github.com/AdamBrodzinski)
+- [Adam Mokan](https://github.com/amokan)
+- [Adi Iyengar](https://github.com/thebugcatcher)
+- [alexander](https://github.com/piedoom)
+- [Ali Farhadi](https://github.com/farhadi)
+- [Andy Thompson](https://github.com/pd-andy)
+- [Arian Daneshvar](https://github.com/bees)
+- [Arno Dirlam](https://github.com/arnodirlam)
+- [Arto Bendiken](https://github.com/artob)
+- [Ben Marx](https://github.com/bgmarx)
+- [Ben Myles](https://github.com/benmyles)
+- [Bruno Michel](https://github.com/nono)
+- [Chew Choon Keat](https://github.com/choonkeat)
+- [Chris Lloyd](https://github.com/chrislloyd)
+- [Chris Young](https://github.com/worldofchris)
+- [Christian Meunier](https://github.com/tlvenn)
+- [ChristianEspinoza](https://github.com/chespinoza)
+- [clangley](https://github.com/clangley)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Colin](https://github.com/insanitybit)
+- [Connor Lay (Clay)](https://github.com/connorlay)
+- [Cristine Guadelupe](https://github.com/cristineguadelupe)
+- [Dan Mueller](https://github.com/unthought)
+- [Dave Lucia](https://github.com/davydog187)
+- [David Bernheisel](https://github.com/dbernheisel)
+- [David Lewis](https://github.com/davidarmstronglewis)
+- [David McKay](https://github.com/rawkode)
+- [David Pedersen](https://github.com/davidpdrsn)
+- [Dennis Dang](https://github.com/dangdennis)
+- [Edgar Gomes](https://github.com/lostbean)
+- [Eric Meadows-Jönsson](https://github.com/ericmj)
+- [Erik Terpstra](https://github.com/eterps)
+- [Florian Kraft](https://github.com/floriank)
+- [Gitpod](https://github.com/gitpod-io)
+- [Guilherme de Maio](https://github.com/nirev)
+- [Guilherme Pasqualino](https://github.com/ggpasqualino)
+- [Herdy Handoko](https://github.com/hhandoko)
+- [human154](https://github.com/human154)
+- [Ian González](https://github.com/Ian-GL)
+- [Ingmar Gagen](https://github.com/igagen)
+- [inoas](https://github.com/inoas)
+- [Ivar Vong](https://github.com/ivarvong)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- jcc333
+- [Jechol Lee](https://github.com/trevorite)
+- [Jeff Kreeftmeijer](https://github.com/jeffkreeftmeijer)
+- [Jeroen Engels](https://github.com/jfmengels)
+- [jiangplus](https://github.com/jiangplus)
+- [Joe Corkerton](https://github.com/joecorkerton)
+- [John Palgut](https://github.com/Jwsonic)
+- [JohnDoneth](https://github.com/JohnDoneth)
+- [josh rotenberg](https://github.com/joshrotenberg)
+- [José Valim](https://github.com/josevalim)
+- [João Veiga](https://github.com/jveiga)
+- [Jussi Norlund](https://github.com/jmn)
+- [Kapp Technology](https://github.com/kapp-technology)
+- [Lars Lillo Ulvestad](https://github.com/kodeFant)
+- [Lars Wikman](https://github.com/lawik)
+- [Leandro Cesquini Pereira](https://github.com/leandrocp)
+- [Marcel Lanz](https://github.com/marcellanz)
+- [Marcin Puc](https://github.com/tranzystorek-io)
+- [Mario Vellandi](https://github.com/mvellandi)
+- [Marius Kalvø](https://github.com/mariuskalvo)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Markus](https://github.com/markusfeyh)
+- [Matheus Consoli](https://github.com/matheus-consoli)
+- [Matt A](https://github.com/matt-allan)
+- [Matthew Cheely](https://github.com/MattCheely)
+- [Memo](https://sendmemo.app)
+- [Michael Chris Lopez](https://github.com/mcchrish)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michał Kowieski](https://github.com/utevo)
+- [Michele Riva](https://github.com/micheleriva)
+- [Mike Lapping](https://github.com/mlapping)
+- [Mike Roach](https://github.com/mroach)
+- [Milad](https://github.com/slashmili)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [Nicklas Sindlev Andersen](https://github.com/NicklasXYZ)
+- [nico piderman](https://github.com/sneako)
+- [NineFX](http://www.ninefx.com)
+- [OldhamMade](https://github.com/OldhamMade)
+- [Ole Michaelis](https://github.com/OleMchls)
+- [Oliver Evans](https://github.com/OliverEvans96)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Patrick Ryan](https://github.com/phiat)
+- [Pete Jodo](https://github.com/PeteJodo)
+- [Peter](https://github.com/CrowdHailer)
+- [Praveen Perera](https://github.com/praveenperera)
+- [qingliangcn](https://github.com/qingliangcn)
+- [Raphael Megzari](https://github.com/happysalada)
+- [Raúl Chouza ](https://github.com/chouzar)
+- [Redmar Kerkhoff](https://github.com/redmar)
+- [Reio](https://github.com/hypno2000)
+- [René Klačan](https://github.com/reneklacan)
+- Robert Attard
+- [Robin Mattheussen](https://github.com/romatthe)
+- [sabiwara](https://github.com/sabiwara)
+- [Sam Aaron](https://github.com/samaaron)
+- [Sascha Wolf [he/him]](https://github.com/sascha-wolf)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian Porto](https://github.com/sporto)
+- [Shane Sveller](https://github.com/shanesveller)
+- [Shunji Lin](https://github.com/shunjilin)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [SkunkWerks GmbH](https://skunkwerks.at/)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Tim Buchwaldt](https://github.com/timbuchwaldt)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [Tomochika Hara](https://github.com/thara)
+- [Topher Hunt](https://github.com/topherhunt)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Tyler Wilcock](https://github.com/twilco)
+- [Vladimir Kuznetsov](https://github.com/vkuznetsov)
+- [Wilson Silva](https://github.com/wilsonsilva)
+- [Wojtek Mach](https://github.com/wojtekmach)
+- [YourMother-really](https://github.com/YourMother-really)
+- [Yu Matsuzawa](https://github.com/ymtszw)
+
+Thanks for reading! Have fun! 💜

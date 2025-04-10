@@ -1,0 +1,348 @@
+Hot on the heels of Gleam v0.13 comes another release, [Gleam v0.14][release]!
+As always, let's take a look at some of the highlights.
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v0.14.0
+
+## Dialyzer & Erlang typespecs
+
+Many dynamically typed BEAM languages support Erlang's typespecs, type
+annotations that can be analysed with the [Dialyzer][dialyzer] tool. While
+not as powerful or reliable as Gleam's type system it can be a useful tool
+for finding problems with your Erlang or Elixir code. Dialyzer doesn't
+require typespecs but it can work better if they are added to the code.
+
+[dialyzer]: https://erlang.org/doc/man/dialyzer.html
+
+Starting with this release Gleam will generate typespecs for all functions
+and Erlang type definitions for all declared types within a Gleam program,
+giving you one extra tool to help you write robust and reliable code when
+using Gleam alongside Elixir or Erlang.
+
+For a quick example, here's some code in Gleam:
+
+```gleam
+pub type LinkedList(element) {
+  Empty
+  Node(element, LinkedList(element))
+}
+
+pub fn is_empty(list) {
+  list == Empty
+}
+
+pub fn map(list, fun) {
+  case list {
+    Empty -> Empty
+    Node(i, list) -> Node(fun(i), map(list, fun))
+  }
+}
+```
+
+And here's the Erlang code and typespecs it compiles to:
+ 
+```erlang
+-module(linked_list).
+-compile(no_auto_import).
+
+-export([is_empty/1, map/2]).
+-export_type([linked_list/1]).
+
+-type linked_list(H) :: empty | {node, H, linked_list(H)}.
+
+-spec is_empty(linked_list(any())) -> boolean().
+is_empty(List) ->
+    List =:= empty.
+
+-spec map(linked_list(R), fun((R) -> U)) -> linked_list(U).
+map(List, Fun) ->
+    case List of
+        empty ->
+            empty;
+
+        {node, I, List@1} ->
+            {node, Fun(I), map(List@1, Fun)}
+    end.
+```
+ 
+No annotations are required at all in your Gleam code to get full typespec
+coverage, Gleam's compiler reuses the type information from its powerful type
+inference algorithm to determine the correct typespecs.
+
+Thank you [Greg](https://gitlab.com/greggreg) for this brilliant new feature!
+
+## Erlang escripts
+
+Erlang projects are unusual in that typically instead of having a `main`
+function as the entrypoint of your application you define a tree of actors to
+come online and process items of work while your program is running.
+
+This can be a powerful way to write long-lived services that make use of the
+runtime's fault tolerance features, but it does not lend itself well to
+short-lived programs such as command line scripts. It can be confusing to
+newcomers from other languages too.
+
+For these short lived programs Erlang [escripts][escript] are typically used.
+These are lightweight Erlang programs that have a `main` function as an entrypoint.
+
+[escript]: https://erlang.org/doc/man/escript.html
+
+To make it easier to use these from Gleam the `gleam new` command now has an
+escript template that can be used to create an escript project without any
+further configuration required.
+
+```shell
+gleam new my_script --template escript
+```
+
+A world class developer experience is a key goal of the Gleam project.
+Further tooling improvements are right around the corner!
+
+## Night mode
+
+Gleam has the ability to render [HTML documentation](https://hexdocs.pm/gleam_stdlib/) 
+for your code, ready to upload to Hexdocs.
+
+Thanks to [Tynan Beatty](https://github.com/tynanbe) the documentation is
+looking better than ever! There's too many improvements to list but the big
+one is they now have a night mode! If you're a night owl like me I'm sure you
+will enjoy the lower contrast dark tones when doing some late evening coding.
+
+![A screenshot of Gleam's rendered docs showing a beautiful dark theme](/images/news/gleam-v0.14-released/night-mode.png)
+
+
+## Better errors, again
+
+At the risk of sounding like a broken record Gleam's error messages have been
+improved yet again. Here's an example of one of the improvements:
+
+Before:
+
+```
+error: Syntax error
+    ┌─ /src/thing.gleam:115:18
+    │
+115 │ pub fn overlappedBy(compare, a, b) -> Bool {
+    │                  ^^ I was not expecting this.
+
+Expected one of: "("
+```
+
+Now:
+
+```
+error: Syntax error
+    ┌─ /src/thing.gleam:115:18
+    │
+115 │ pub fn overlappedBy(compare, a, b) -> Bool {
+    │                  ^^ This is not a valid name.
+
+Hint: Names start with a lowercase letter and contain a-z, 0-9, or _.
+Try: overlapped_by
+```
+
+Thank you to [Samuel Mercier](https://github.com/samontea) and [Andy
+Thompson](https://github.com/pd-andy) for these.
+
+## Static bit string validation
+
+Bit string syntax is a feature that Gleam inherits from Erlang. It provides a
+way to declartively and concisely construct and manipulate raw bits of data
+through literals and pattern matching.
+
+With this Gleam release we apply further static analysis to bit string
+literals and patterns used in Gleam programs to catch invalid or incorrect
+code.
+
+Here's an example of one of the errors that may be reported:
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/a.gleam:2:20
+  │
+2 │   <<1:size(1)-unit(0)>>
+  │                    ^ This is not a valid BitString unit value.
+
+Hint: unit must be an integer literal >= 1 and <= 256
+See: https://gleam.run/book/tour/bit-strings
+```
+
+Thank you [Greg](https://gitlab.com/greggreg) for this bit string safety net.
+
+## Docker images
+
+Up until now [Peter Saxton](https://github.com/CrowdHailer) has been very kindly
+building Gleam docker images for use in [Memo](https://sendmemo.app/) and the
+wider community.
+
+With this release he has ported his build automation over to the Gleam repo
+so we have automation creation of OCI/Docker images built and published
+automatically with each release.
+
+We are building these variants:
+
+- `gleam-erlang`: Gleam and the Erlang tooling on Ubuntu Linux
+- `gleam-erlang-slim`: Gleam and the Erlang tooling on slim Debian Linux
+- `gleam-erlang-alpine`: Gleam and the Erlang tooling on Alpine Linux
+- `gleam-elixir`: Gleam and the Elixir tooling on Ubuntu Linux
+- `gleam-elixir-slim`: Gleam and the Elixir tooling on slim Debian Linux
+- `gleam-elixir-alpine`: Gleam and the Elixir tooling on Alpine Linux
+
+For all the images see the [Gleam image registry][registry]. Thanks Peter!
+
+[registry]: https://github.com/orgs/gleam-lang/packages/container/package/gleam
+
+## Other stuff
+
+These are just some of the highlights, but there's plenty more improvements
+made to the compiler and the standard library since the last release. For all
+the details check out the changelog files:
+
+- [Gleam's changelog](https://github.com/gleam-lang/gleam/blob/main/CHANGELOG.md)
+- [Gleam stdlib's changelog](https://github.com/gleam-lang/stdlib/blob/main/CHANGELOG.md)
+
+## Discord chat
+
+It's time to plug the Gleam Discord server again! The community continues to
+grow and it would be great to have you there too, so please click on the
+button below.
+
+``` =html
+<center>
+  <a href="https://discord.gg/Fm8Pwmy"><img src="https://img.shields.io/discord/768594524158427167?color=blue" alt="Discord chat"></a>
+</center>
+```
+
+## Try it out
+
+If you want to try out the new version of Gleam head over to the [getting started
+page][getting-started]. I'd love to hear how you find it and get your feedback so
+Gleam can continue to improve.
+
+Want to view some existing Gleam projects? Head on over to the
+[awesome-gleam][awesome-gleam] list. Looking for something to build in
+Gleam? Check out [the suggestions tracker][suggestions].
+
+[awesome-gleam]: https://github.com/gleam-lang/awesome-gleam
+[suggestions]: https://github.com/gleam-lang/suggestions/issues
+[getting-started]: https://gleam.run/getting-started/
+
+
+## Supporting Gleam
+
+If you would like to help make strongly typed programming on the Erlang
+virtual machine a production-ready reality please consider **[sponsoring
+Gleam][sponsor]** via the GitHub Sponsors program. 
+
+⭐ Or alternatively give us a star on [GitHub][gleam-gh]! ⭐
+
+[gleam-gh]: https://github.com/gleam-lang/gleam
+[sponsor]: https://github.com/sponsors/lpil
+
+This release would not have been possible without the support of all the
+people who have [sponsored](https://github.com/sponsors/lpil) and contributed
+to it, so a huge thank you to them.
+
+- [Adam Bowen](https://github.com/adamnbowen)
+- [Adam Mokan](https://github.com/amokan)
+- [Adi Iyengar](https://github.com/aditya7iyengar)
+- [Al Dee](https://github.com/scripttease)
+- [Alexander Babin](https://github.com/mudriyjo)
+- [Ali Farhadi](https://github.com/farhadi)
+- [Andy Thompson](https://github.com/pd-andy)
+- [Arian Daneshvar](https://github.com/bees)
+- [Arno Dirlam](https://github.com/arnodirlam)
+- [Ben Myles](https://github.com/benmyles)
+- [Bruno Michel](https://github.com/nono)
+- [Caden Haustein](https://github.com/brightly-salty)
+- [Chew Choon Keat](https://github.com/choonkeat)
+- [Chris Lloyd](https://github.com/chrislloyd)
+- [Chris Young](https://github.com/worldofchris)
+- [Christian Meunier](https://github.com/tlvenn)
+- [clangley](https://github.com/clangley)
+- [Clever Bunny LTD](https://github.com/cleverbunny)
+- [codec-abc](https://github.com/codec-abc)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Connor Lay (Clay)](https://github.com/connorlay)
+- [Connor Schembor](https://github.com/cschembor3)
+- [Dan Mueller](https://github.com/unthought)
+- [Dave Lucia](https://github.com/davydog187)
+- [David McKay](https://github.com/rawkode)
+- [David Pedersen](https://github.com/davidpdrsn)
+- [Dennis Dang](https://github.com/dangdennis)
+- [Edgar Gomes](https://github.com/lostbean)
+- [Eric Meadows-Jönsson](https://github.com/ericmj)
+- [Erik Terpstra](https://github.com/eterps)
+- [Florian Kraft](https://github.com/floriank)
+- [greggreg](https://github.com/itsgreggreg)
+- [Guilherme Pasqualino](https://github.com/ggpasqualino)
+- [Hendrik Richter](https://github.com/hendi)
+- [Herdy Handoko](https://github.com/hhandoko)
+- [human154](https://github.com/human154)
+- [Ian González](https://github.com/Ian-GL)
+- [Ingmar Gagen](https://github.com/igagen)
+- [Ivar Vong](https://github.com/ivarvong)
+- [Jakub Hampl](https://github.com/gampleman)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jan Pieper](https://github.com/janpieper)
+- [Jechol Lee](https://github.com/jechol)
+- [Jeff Kreeftmeijer](https://github.com/jeffkreeftmeijer)
+- [jiangplus](https://github.com/jiangplus)
+- [Joe Corkerton](https://github.com/joecorkerton)
+- [John Palgut](https://github.com/Jwsonic)
+- [José Valim](https://github.com/josevalim)
+- [João Veiga](https://github.com/jveiga)
+- [Jussi Norlund](https://github.com/jmn)
+- [Kapp Technology](https://github.com/kapp-technology)
+- [Lars Lillo Ulvestad](https://github.com/kodeFant)
+- [Lars Wikman](https://github.com/lawik)
+- [Leandro Cesquini Pereira](https://github.com/leandrocp)
+- [Malcolm Seyd](https://github.com/malcolmseyd)
+- [mario](https://github.com/mario-mazo)
+- [Mario Vellandi](https://github.com/mvellandi)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Markus](https://github.com/markusfeyh)
+- [Markus Hechenberger](https://github.com/derhechi)
+- [Matthew Cheely](https://github.com/MattCheely)
+- [Michael Bausano](https://github.com/bausano)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michał Łępicki](https://github.com/michallepicki)
+- [Mike Roach](https://github.com/mroach)
+- [Milad](https://github.com/slashmili)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [NineFX](http://www.ninefx.com)
+- [Oddmund Strømme](https://github.com/jraregris)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Patrick Ryan](https://github.com/phiat)
+- [Pete Jodo](https://github.com/PeteJodo)
+- [Peter Saxton](https://github.com/CrowdHailer)
+- [Praveen Perera](https://github.com/praveenperera)
+- [qingliangcn](https://github.com/qingliangcn)
+- [Raphael Megzari](https://github.com/happysalada)
+- [Raúl  Humberto Chouza Delgado](https://github.com/chouzar)
+- [Redmar Kerkhoff](https://github.com/redmar)
+- [René Klačan](https://github.com/reneklacan)
+- [Robin Mattheussen](https://github.com/romatthe)
+- [rvcas](https://github.com/rvcas)
+- [Sam Aaron](https://github.com/samaaron)
+- [samontea](https://github.com/samontea)
+- [Santi](https://github.com/mrgleam)
+- [Sascha Wolf](https://github.com/sascha-wolf)
+- [Saša Jurićç](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian](https://github.com/sporto)
+- [Shane Sveller](https://github.com/shanesveller)
+- [Shritesh Bhattarai](https://github.com/shritesh)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [Syukron Rifail M](https://github.com/syukronrm)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Tim Buchwaldt](https://github.com/timbuchwaldt)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [Tomochika Hara](https://github.com/thara)
+- [Topher Hunt](https://github.com/topherhunt)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Tyler Wilcock](https://github.com/twilco)
+- [tynanbe](https://github.com/tynanbe)
+- [Wojtek Mach](https://github.com/wojtekmach)
+
+Thanks for reading! Have fun! 💜
