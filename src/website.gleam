@@ -5,6 +5,7 @@ import gleam/time/timestamp
 import gleave
 import snag
 import website/atom_feed
+import website/cheatsheet
 import website/fs
 import website/language_server
 import website/news
@@ -46,8 +47,14 @@ fn build_site() -> snag.Result(Nil) {
     page.deployment_flyio(ctx),
     page.frequently_asked_questions(ctx),
     page.news_index(news_posts, ctx),
-    language_server.page(ctx),
     roadmap.page(ctx),
+    language_server.page(ctx),
+    cheatsheet.erlang(ctx),
+    cheatsheet.elixir(ctx),
+    cheatsheet.python(ctx),
+    cheatsheet.php(ctx),
+    cheatsheet.elm(ctx),
+    cheatsheet.rust(ctx),
   ]
 
   let files = [
