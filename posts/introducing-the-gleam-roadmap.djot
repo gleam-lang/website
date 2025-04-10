@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Introducing the Gleam roadmap!
-subtitle: A bird's eye view of what's happening in Gleam
-tags:
-  - Release
----
-
 Often people ask "Hey Louis! What's coming next in Gleam?"
 
 It's a tricky question to answer. Gleam is a community project rather than a

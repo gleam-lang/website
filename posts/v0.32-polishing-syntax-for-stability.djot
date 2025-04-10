@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Polishing syntax for stability
-subtitle: Gleam v0.32 released
-tags:
-  - Release
----
-
 Gleam is a type safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Today Gleam [v0.32.0][release] has been published, a
 release that focuses on getting Gleam ready for a v1.0 release by making some

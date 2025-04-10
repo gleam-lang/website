@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Local dependencies and enhanced externals
-subtitle: Gleam v0.30 released
-tags:
-  - Release
----
-
 Gleam is a type safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Today Gleam [v0.30.0][release] has been released, let's
 take a look at what's new.

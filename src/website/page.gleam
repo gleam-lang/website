@@ -680,7 +680,7 @@ also a sponsor of the Gleam project, thank you Fly!",
 you can do this with the ",
       ),
       html.code([], [html.text("mist.bind")]),
-      html.text("function, as shown here."),
+      html.text(" function, as shown here."),
     ]),
     highlighted_gleam_pre_code(
       "  let assert Ok(_) =
@@ -707,7 +707,7 @@ for deployment.",
     html.p([], [
       html.text("Add a file named "),
       html.code([], [html.text("Dockerfile")]),
-      html.text("with these contents:"),
+      html.text(" with these contents:"),
     ]),
     highlighted_dockerfile_pre_code(
       "FROM erlang:27.1.1.0-alpine AS build
@@ -827,13 +827,13 @@ pub fn writing_gleam(ctx: site.Context) -> fs.File {
         html.text("the language tour"),
       ]),
       html.text(
-        "first if you have not already. You are assumed to already have Gleam and Erlang
+        " first if you have not already. You are assumed to already have Gleam and Erlang
 installed, so head over to ",
       ),
       html.a([attr.href("/getting-started/installing/")], [
         html.text("the install guide"),
       ]),
-      html.text("if you need to do that."),
+      html.text(" if you do not have Gleam installed."),
     ]),
     html.p([], [html.text("Ready? Let’s go!")]),
     html.h2([attr.id("the-project")], [html.text("The project")]),
@@ -854,7 +854,7 @@ environment variables.",
       html.text("Gleam’s build tool is built into the "),
       html.code([], [html.text("gleam")]),
       html.text(
-        "program you installed earlier. It
+        " program you installed earlier. It
 supports creating new projects, building, testing, and running them, along with
 managing dependencies from the ",
       ),
@@ -864,10 +864,7 @@ managing dependencies from the ",
     html.p([], [
       html.text("First create a new Gleam project by running the "),
       html.code([], [html.text("gleam new")]),
-      html.text(
-        "command in a
-terminal. I’m going to call mine ",
-      ),
+      html.text(" command in a terminal. I’m going to call mine "),
       html.code([], [html.text("vars")]),
       html.text("."),
     ]),
@@ -898,37 +895,35 @@ cd vars
       html.li([], [
         html.code([], [html.text("README.md")]),
         html.text(
-          "file is where you’d write introductory documentation for your
-project in markdown format.",
+          " file is where you’d write introductory documentation for your project in markdown format.",
         ),
       ]),
       html.li([], [
         html.code([], [html.text("gleam.toml")]),
-        html.text("file contains the configuration for the project."),
+        html.text(" file contains the configuration for the project."),
       ]),
       html.li([], [
         html.code([], [html.text("src/")]),
-        html.text("contains the program source."),
+        html.text(" contains the program source."),
       ]),
       html.li([], [
         html.code([], [html.text("test/")]),
-        html.text("contains additional code for testing the project."),
+        html.text(" contains additional code for testing the project."),
       ]),
       html.li([], [
         html.code([], [html.text(".gitignore")]),
-        html.text("contains configuration for the "),
+        html.text(" contains configuration for the "),
         html.code([], [html.text("git")]),
-        html.text("version control system."),
+        html.text(" version control system."),
       ]),
       html.li([], [
         html.code([], [html.text(".github/workflows/test.yml")]),
-        html.text("defines a "),
+        html.text(" defines a "),
         html.a([attr.href("https://github.com/features/actions")], [
           html.text("GitHub Actions"),
         ]),
         html.text(
-          "workflow that
-will run the project’s tests if you push it to a GitHub repository.",
+          " workflow that will run the project’s tests if you push it to a GitHub repository.",
         ),
       ]),
     ]),
@@ -942,15 +937,9 @@ or a program that is run directly.",
     html.p([], [
       html.text("The entrypoint for the program is the function called "),
       html.code([], [html.text("main")]),
-      html.text(
-        "in the module with
-the same name as the package itself. ",
-      ),
+      html.text(" in the module with the same name as the package itself. "),
       html.code([], [html.text("gleam new")]),
-      html.text(
-        "will have generated one for you
-that looks like this:",
-      ),
+      html.text(" will have generated one for you that looks like this:"),
     ]),
     highlighted_gleam_pre_code(
       "// In src/vars.gleam
@@ -974,7 +963,7 @@ pub fn main() {
 library and a test runner), compile all the code, and then run the ",
       ),
       html.code([], [html.text("main")]),
-      html.text("function to print “Hello from vars!” to the terminal."),
+      html.text(" function to print “Hello from vars!” to the terminal."),
     ]),
     html.p([], [
       html.text(
@@ -988,9 +977,7 @@ dependency, you could run ",
       html.text("You can run "),
       html.code([], [html.text("gleam run --target javascript")]),
       html.text(
-        "to run the project on a JavaScript
-runtime instead of Erlang, though for the rest of this guide we’ll continue with
-Erlang.",
+        " to run the project on a JavaScript runtime instead of Erlang, though for the rest of this guide we’ll continue with Erlang.",
       ),
     ]),
     html.h2([attr.id("adding-dependencies")], [html.text("Adding dependencies")]),
@@ -1007,16 +994,12 @@ need to add some dependencies that provide this functionality.",
       html.a([attr.href("https://packages.gleam.run/")], [
         html.text("Gleam Package Index"),
       ]),
-      html.text(
-        "can be used to find packages. In this case we
-want to use ",
-      ),
+      html.text(" can be used to find packages. In this case we want to use "),
       html.a([attr.href("https://hexdocs.pm/envoy/")], [html.text("envoy")]),
-      html.text("for environment variables and "),
+      html.text(" for environment variables and "),
       html.a([attr.href("https://hexdocs.pm/argv/")], [html.text("argv")]),
       html.text(
-        "for
-reading command line input. Add them to your package with this command:",
+        " for reading command line input. Add them to your package with this command:",
       ),
     ]),
     highlighted_shell_pre_code(
@@ -1027,11 +1010,10 @@ reading command line input. Add them to your package with this command:",
       html.text("If you look at the "),
       html.code([], [html.text("gleam.toml")]),
       html.text(
-        "file you’ll see that the dependencies have been
-added to the ",
+        " file you’ll see that the dependencies have been added to the ",
       ),
       html.code([], [html.text("[dependencies]")]),
-      html.text("section."),
+      html.text(" section."),
     ]),
     highlighted_toml_pre_code(
       "name = \"vars\"
@@ -1237,9 +1219,9 @@ pub fn format_pair_test() {
     html.p([], [
       html.text("Running "),
       html.code([], [html.text("gleam test")]),
-      html.text("will call the "),
+      html.text(" will call the "),
       html.code([], [html.text("main")]),
-      html.text("function in "),
+      html.text(" function in "),
       html.code([], [html.text("vars_test")]),
       html.text(
         ", which will in
@@ -1250,16 +1232,12 @@ turn run the tests.",
       html.text("Your test "),
       html.code([], [html.text("main")]),
       html.text(
-        "function can do anything you like, but by default Gleam
-projects are generated using ",
+        " function can do anything you like, but by default Gleam projects are generated using ",
       ),
       html.a([attr.href("https://hexdocs.pm/gleeunit/")], [
         html.code([], [html.text("gleeunit")]),
       ]),
-      html.text(
-        ", a simple test runner. With
-it any public function in the ",
-      ),
+      html.text(", a simple test runner. With it any public function in the "),
       html.code([], [html.text("test/")]),
       html.text(" directory with a name ending in "),
       html.code([], [html.text("_test")]),
@@ -2442,15 +2420,9 @@ additional steps you need to undertake to deploy your application.",
 provide you one for a small monthly fee. You can use ",
       ),
       html.a([attr.href("https://www.vultr.com/?ref=9694426")], [
-        html.text(
-          "Gleam’s referral link for
-Vultr",
-        ),
+        html.text("Gleam’s referral link for Vultr"),
       ]),
-      html.text(
-        "if you do not already have a
-preferred server provider.",
-      ),
+      html.text(" if you do not already have a preferred server provider."),
     ]),
     html.p([], [
       html.text(
@@ -2495,7 +2467,7 @@ Be sure to replace this with your domain.",
 you can do this with the ",
       ),
       html.code([], [html.text("mist.bind")]),
-      html.text("function, as shown here."),
+      html.text(" function, as shown here."),
     ]),
     highlighted_gleam_pre_code(
       "  let assert Ok(_) =
@@ -2516,10 +2488,7 @@ you can do this with the ",
     html.p([], [
       html.text("Add a file to the base of your repository called "),
       html.code([], [html.text("Dockerfile")]),
-      html.text(
-        "with these
-contents:",
-      ),
+      html.text(" with these contents:"),
     ]),
     highlighted_dockerfile_pre_code(
       "FROM erlang:27.1.1.0-alpine AS build
@@ -2547,12 +2516,9 @@ CMD [\"run\"]
     html.p([], [
       html.text("If your application normally needs additional arguments to "),
       html.code([], [html.text("gleam run")]),
-      html.text(
-        "to start
-then edit the ",
-      ),
+      html.text(" to start then edit the "),
       html.code([], [html.text("CMD [\"run\"]")]),
-      html.text("line to include them."),
+      html.text(" line to include them."),
     ]),
     html.p([], [
       html.text(
@@ -2580,7 +2546,7 @@ pushed to the repo. For example, ",
     html.p([], [
       html.text("Create a file at "),
       html.code([], [html.text(".github/workflows/build-container.yml")]),
-      html.text("with these contents:"),
+      html.text(" with these contents:"),
     ]),
     highlighted_yaml_pre_code(
       "name: Build container image
@@ -2620,10 +2586,7 @@ jobs:
 repository. If you repository is at ",
       ),
       html.code([], [html.text("https://github.com/wibble/wob")]),
-      html.text(
-        "it should be
-",
-      ),
+      html.text(" it should be "),
       html.code([], [html.text("IMAGE_ID=ghcr.io/wibble/wob")]),
       html.text("."),
     ]),
@@ -2675,23 +2638,13 @@ and are using the same SSH key you added to the server when creating it.",
 disabled. Open ",
       ),
       html.code([], [html.text("/etc/ssh/sshd_config")]),
-      html.text("in a text editor."),
+      html.text(" in a text editor."),
     ]),
-    html.pre([], [
-      html.code([], [
-        html.text(
-          "nano /etc/ssh/sshd_config
-",
-        ),
-      ]),
-    ]),
+    html.pre([], [html.code([], [html.text("nano /etc/ssh/sshd_config")])]),
     html.p([], [
       html.text("Search for the line "),
       html.code([], [html.text("#PasswordAuthentication yes")]),
-      html.text(
-        "and edit it to be
-",
-      ),
+      html.text(" and edit it to be "),
       html.code([], [html.text("PasswordAuthentication no")]),
       html.text(". Notice that it does not have a "),
       html.code([], [html.text("#")]),
@@ -2768,10 +2721,7 @@ application container.",
     html.p([], [
       html.text("Install them both using "),
       html.code([], [html.text("apt")]),
-      html.text(
-        "(or the equivalent if you decided not to use
-Ubuntu Linux).",
-      ),
+      html.text(" (or the equivalent if you decided not to use Ubuntu Linux)."),
     ]),
     html.pre([], [
       html.code([], [
@@ -2821,7 +2771,7 @@ settings, and then use it to log in on the server.",
     html.p([], [
       html.text("Add these contents, changing "),
       html.code([], [html.text("Image=ghcr.io/gleam-lang/example:production")]),
-      html.text("for the name of your GitHub repository."),
+      html.text(" for the name of your GitHub repository."),
     ]),
     highlighted_toml_pre_code(
       "[Unit]
@@ -2839,10 +2789,7 @@ WantedBy=multi-user.target default.target
     html.p([], [
       html.text("You may want to edit the "),
       html.code([], [html.text("[Container]")]),
-      html.text(
-        "section to further configure your
-container.",
-      ),
+      html.text(" section to further configure your container."),
     ]),
     html.p([], [
       html.text(
@@ -2914,16 +2861,9 @@ systemctl start webapp
         "Check that service is handling HTTP requests by making a request to ",
       ),
       html.code([], [html.text("localhost")]),
-      html.text("on the port that your application is listening on."),
+      html.text(" on the port that your application is listening on."),
     ]),
-    html.pre([], [
-      html.code([], [
-        html.text(
-          "curl -I localhost:8000
-",
-        ),
-      ]),
-    ]),
+    html.pre([], [html.code([], [html.text("curl -I localhost:8000")])]),
     html.h2([attr.id("configure-caddy-to-send-traffic-to-the-application")], [
       html.text("Configure Caddy to send traffic to the application"),
     ]),
@@ -2935,7 +2875,7 @@ systemctl start webapp
 the domain and port with the ones you are using. Keep ",
       ),
       html.code([], [html.text("localhost")]),
-      html.text("the same."),
+      html.text(" the same."),
     ]),
     html.pre([], [
       html.code([], [
@@ -2950,14 +2890,7 @@ the domain and port with the ones you are using. Keep ",
     html.p([], [
       html.text("Restart the Caddy service to pick up these changes."),
     ]),
-    html.pre([], [
-      html.code([], [
-        html.text(
-          "systemctl restart caddy
-",
-        ),
-      ]),
-    ]),
+    html.pre([], [html.code([], [html.text("systemctl restart caddy")])]),
     html.p([], [
       html.text(
         "Open your domain in your web browser. You should see your web site, complete
@@ -2978,7 +2911,7 @@ with the same name.",
       html.text("If you have changed the "),
       html.code([], [html.text(".container")]),
       html.text(
-        "file you can reload the daemon to pick up
+        " file you can reload the daemon to pick up
 the changes and then restart the service to replace the container with one using
 the new configuration.",
       ),
