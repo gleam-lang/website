@@ -96,7 +96,7 @@ fn static_files() -> List(fs.File) {
 fn redirect_files() -> List(fs.File) {
   [
     page.redirect(
-      "writing-gleam/command-line-reference",
+      "writing-gleam/command-line-reference/index.html",
       "/command-line-reference",
     ),
     page.redirect_to_tour("book/index.html", ""),
