@@ -1,14 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Gleam v0.8 released!
-description: >
-  Version v0.8 of the Gleam programming language has been released!
-  Let's take a look at what's new.
-tags:
-  - Release
----
-
 It's been a really good couple months for Gleam. The community has been
 growing, we've been getting new features and improvements, and now it's time
 for another release. Let's take a look!

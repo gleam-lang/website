@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Introducing the Gleam package index
-subtitle: Find packages for your Gleam projects
-tags:
-  - Release
----
-
 Gleam is a member of the BEAM family of languages, alongside Erlang, Elixir, and
 others. As such Gleam packages are distributed on [Hex.pm][hex], the
 package manager for the BEAM ecosystem. Hex provides an excellent experience,

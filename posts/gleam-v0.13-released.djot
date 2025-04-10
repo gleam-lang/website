@@ -1,11 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Gleam v0.13 released!
-tags:
-  - Release
----
-
 ``` =html
 <style>
 details h3 {
@@ -48,8 +40,9 @@ Operator with a naked right side
 </summary>
 ```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:17:1
    │
@@ -57,10 +50,11 @@ error: Syntax error
    │ ^ Unexpected token
 
 Expected one of "<<", "[", "[]", "case", "fn(", "todo", "todo(", "tuple", "{", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:16:17
    │
@@ -68,16 +62,19 @@ error: Syntax error
    │                 ^ This operator has no value on its right side.
 
 Hint: Remove it or put a value after it.
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Using ( ) as expression grouping
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:29:17
    │
@@ -85,10 +82,11 @@ error: Syntax error
    │                 ^ Unexpected token
 
 Expected one of "<<", "[", "[]", "case", "fn(", "todo", "todo(", "tuple", "{", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax errorr
    ┌─ /Users/a/parser_test/src/parser_test.gleam:29:17
    │
@@ -96,16 +94,19 @@ error: Syntax errorr
    │                 ^ This paren cannot be understood here.
 
 Hint: To group expressions in gleam use "{" and "}"
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Trying to import a reserved word
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/one.gleam:1:8
   │
@@ -113,10 +114,11 @@ error: Syntax error
   │        ^^^^ Unexpected token
 
 Expected one of r#"[a-z][0-9a-z_]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/one.gleam:1:8
   │
@@ -125,16 +127,19 @@ error: Syntax error
 
 Hint: I was expecting to see a name here.
 See: https://gleam.run/book/tour/reserved-words
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Using a type name in place of a module
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/parser_test.gleam:1:8
   │
@@ -142,10 +147,11 @@ error: Syntax error
   │        ^^^^^ Unexpected token
 
 Expected one of r#"[a-z][0-9a-z_]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3> 
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/parser_test.gleam:1:8
   │
@@ -153,15 +159,19 @@ error: Syntax error
   │        ^^^^^ I'm expecting a lowercase name here.
 
 Hint: Variable and module names start with a lowercase letter, and can contain a-z, 0-9, or _.
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Extra separator anywhere
 </summary>
-<h3>Before</h3>
-{% highlight text %}
+```
+
+### Before
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/parser_test.gleam:1:23
   │
@@ -169,10 +179,11 @@ error: Syntax error
   │                       ^ Unexpected token
 
 Expected one of ")", "fn(", "tuple", r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#, r#"_([a-z][0-9a-z_]*)?"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:13:38
    │
@@ -180,18 +191,22 @@ error: Syntax error
    │                                      ^ This is an extra delimiter.
 
 Hint: Try removing it?
-{% endhighlight %}
+```
+
 etc.
 
 
+``` =html
 </details>
 <details>
 <summary>
 Function in module constant type
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:10:49
    │
@@ -199,10 +214,11 @@ error: Syntax error
    │                           ^^^ Unexpected token
 
 Expected one of ")", "<<", "[", "]", "tuple", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/parser_test.gleam:1:9
   │
@@ -210,16 +226,19 @@ error: Syntax error
   │           ^^ Functions are not allowed in module constants.
 
 See: https://gleam.run/book/tour/constants
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Custom type with no constructors
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/parser_test.gleam:6:13
   │
@@ -227,10 +246,11 @@ error: Syntax error
   │             ^ Unexpected token
 
 Expected one of r#"[A-Z][0-9A-Za-z]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/parser_test.gleam:6:10
   │
@@ -238,16 +258,19 @@ error: Syntax error
   │          ^ Custom types must have at least 1 constructor.
 
 See: https://gleam.run/book/tour/custom-types
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Unterminated strings
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:16:11
    │
@@ -255,25 +278,29 @@ error: Syntax error
    │           ^ Unknown token
 
 I don't know what this character means. Is it a typo?
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:16:11
    │
 16 │   let a = "hello
    │           ^ The string starting here was left open.
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Empty block
 </summary>
+```
 
-<h3>Before</h3>
-{% highlight text %}
+### Before
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:29:14
    │
@@ -281,10 +308,11 @@ error: Syntax error
    │              ^ Unexpected token
 
 Expected one of "<<", "[", "[]", "assert", "case", "fn(", "let", "todo", "todo(", "try", "tuple", "{", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
    ┌─ /Users/a/parser_test/src/parser_test.gleam:29:13
    │
@@ -292,15 +320,19 @@ error: Syntax error
    │             ^^ There must be an expression in here.
 
 Hint: Put an expression in there or remove the brackets.
-{% endhighlight %}
+```
 
+``` =html
 </details>
 <details>
 <summary>
 Opaque type alias
 </summary>
-<h3>Before</h3>
-{% highlight text %}
+```
+
+### Before
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/one.gleam:1:19
   │
@@ -308,10 +340,11 @@ error: Syntax error
   │                   ^ Unexpected token
 
 Expected one of "{"
-{% endhighlight %}
+```
 
-<h3>Now</h3>
-{% highlight text %}
+### Now
+
+```
 error: Syntax error
   ┌─ /Users/a/parser_test/src/one.gleam:1:1
   │
@@ -319,8 +352,11 @@ error: Syntax error
   │ ^^^^^^^^^^^^^^^^^ Type Aliases cannot be opaque
 
 See: https://gleam.run/book/tour/type-aliases
-{% endhighlight %}
+```
+
+``` =html
 </details>
+```
 
 ## Type safe division
 
@@ -443,107 +479,107 @@ This release would not have been possible without the support of all the
 people who have [sponsored](https://github.com/sponsors/lpil) and contributed
 to it, so a huge thank you to them.
 
- - [Adam Bowen](https://github.com/adamnbowen)
- - [Adam Mokan](https://github.com/amokan)
- - [Al Dee](https://github.com/scripttease)
- - [Ali Farhadi](https://github.com/farhadi)
- - [Arian Daneshvar](https://github.com/bees)
- - [Arno Dirlam](https://github.com/arnodirlam)
- - [Ben Myles](https://github.com/benmyles)
- - [Bernardo Amorim](https://github.com/bamorim)
- - [bossek](https://github.com/bossek)
- - [Bruno Michel](https://github.com/nono)
- - [Bryan Naegele](https://github.com/bryannaegele)
- - [Chris Young](https://github.com/worldofchris)
- - [Christian Meunier](https://github.com/tlvenn)
- - [clangley](https://github.com/clangley)
- - [Clever Bunny LTD](https://github.com/cleverbunny)
- - [Cole Lawrence](https://github.com/colelawrence)
- - [Connor Schembor](https://github.com/cschembor3)
- - [Dan Mueller](https://github.com/unthought)
- - [Dave Lage](https://github.com/rockerBOO)
- - [Dave Lucia](https://github.com/davydog187)
- - [David McKay](https://github.com/rawkode)
- - [David Pedersen](https://github.com/davidpdrsn)
- - [Dennis Dang](https://github.com/dangdennis)
- - [drew](https://github.com/drewolson)
- - [Drew Varner](https://github.com/varnerac)
- - [Edman Anjos](https://github.com/edman)
- - [Eric Meadows-Jönsson](https://github.com/ericmj)
- - [Erik Terpstra](https://github.com/eterps)
- - [Florian Kraft](https://github.com/floriank)
- - [Galaxy-Coding](https://github.com/Galaxy-Coding)
- - [Greg Baraghimian](https://github.com/itsgreggreg)
- - [Guilherme Pasqualino](https://github.com/ggpasqualino)
- - [Hendrik Richter](https://github.com/hendi)
- - [Herdy Handoko](https://github.com/hhandoko)
- - [human154](https://github.com/human154)
- - [Ian González](https://github.com/Ian-GL)
- - [Ingmar Gagen](https://github.com/igagen)
- - [Istvan](https://github.com/l1x)
- - [Ivar Vong](https://github.com/ivarvong)
- - [James MacAulay](https://github.com/jamesmacaulay)
- - [Jechol Lee](https://github.com/jechol)
- - [Jérémy Pagé](https://github.com/jpagex)
- - [jiangplus](https://github.com/jiangplus)
- - [Joe Corkerton](https://github.com/joecorkerton)
- - [John Palgut](https://github.com/Jwsonic)
- - [José Valim](https://github.com/josevalim)
- - [Jussi Norlund](https://github.com/jmn)
- - [Lars Lillo Ulvestad](https://github.com/kodeFant)
- - [Lars Wikman](https://github.com/lawik)
- - [Leandro Cesquini Pereira](https://github.com/leandrocp)
- - [Lucas Rosa](https://github.com/rvcas)
- - [Luna](https://github.com/lun-4)
- - [mario](https://github.com/mario-mazo)
- - [Mario Vellandi](https://github.com/mvellandi)
- - [Mark Markaryan](https://github.com/markmark206)
- - [Markus](https://github.com/markusfeyh)
- - [Markus Hechenberger](https://github.com/derhechi)
- - [Matthew Cheely](https://github.com/MattCheely)
- - Matthew Cheely
- - [Max Nordlund](https://github.com/maxnordlund)
- - [Merlin Webster](https://github.com/mjftw)
- - [Michael Bausano](https://github.com/bausano)
- - [Michael Jones](https://github.com/michaeljones)
- - [Michał Łępicki](https://github.com/michallepicki)
- - [Mike Lapping](https://github.com/mlapping)
- - [Mike Roach](https://github.com/mroach)
- - [Milad](https://github.com/slashmili)
- - [Neil Lyons](https://github.com/nwjlyons)
- - [Nick Cernis](https://github.com/nickcernis)
- - [Nick Reynolds](https://github.com/ndreynolds)
- - [Parker Selbert](https://github.com/sorentwo)
- - [Patrick Ryan](https://github.com/phiat)
- - [Pete Jodo](https://github.com/PeteJodo)
- - [Peter Saxton](https://github.com/CrowdHailer)
- - [qingliangcn](https://github.com/qingliangcn)
- - [Quinn Wilton](https://github.com/QuinnWilton)
- - [Raphael Megzari](https://github.com/happysalada)
- - [René Klačan](https://github.com/reneklacan)
- - [rinsuki](https://github.com/rinsuki)
- - [Robin Mattheussen](https://github.com/romatthe)
- - [Ryan Haskell-Glatz](https://github.com/ryannhg)
- - [Sam Aaron](https://github.com/samaaron)
- - [Sasan Hezarkhani](https://github.com/gootik)
- - [Sascha Wolf](https://github.com/sascha-wolf)
- - [Saša Jurić](https://github.com/sasa1977)
- - [Scott Wey](https://github.com/scottwey)
- - [Sean Jensen-Grey](https://github.com/seanjensengrey)
- - [Sebastian Porto](https://github.com/sporto)
- - [SEKUN](https://github.com/imsekun)
- - [Shane Sveller](https://github.com/shanesveller)
- - [Shritesh Bhattarai](https://github.com/shritesh)
- - [Simone Vittori](https://github.com/simonewebdesign)
- - [sjqtentacles](https://github.com/sjqtentacles)
- - [Terje Bakken](https://github.com/terkiterje)
- - [Tim Buchwaldt](https://github.com/timbuchwaldt)
- - [Tomasz Kowal](https://github.com/tomekowal)
- - [Tomochika Hara](https://github.com/thara)
- - [Topher Hunt](https://github.com/topherhunt)
- - [Tristan Sloughter](https://github.com/tsloughter)
- - [Tyler Wilcock](https://github.com/twilco)
- - [Wilson Silva](https://github.com/wilsonsilva)
- - [Wojtek Mach](https://github.com/wojtekmach)
+- [Adam Bowen](https://github.com/adamnbowen)
+- [Adam Mokan](https://github.com/amokan)
+- [Al Dee](https://github.com/scripttease)
+- [Ali Farhadi](https://github.com/farhadi)
+- [Arian Daneshvar](https://github.com/bees)
+- [Arno Dirlam](https://github.com/arnodirlam)
+- [Ben Myles](https://github.com/benmyles)
+- [Bernardo Amorim](https://github.com/bamorim)
+- [bossek](https://github.com/bossek)
+- [Bruno Michel](https://github.com/nono)
+- [Bryan Naegele](https://github.com/bryannaegele)
+- [Chris Young](https://github.com/worldofchris)
+- [Christian Meunier](https://github.com/tlvenn)
+- [clangley](https://github.com/clangley)
+- [Clever Bunny LTD](https://github.com/cleverbunny)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Connor Schembor](https://github.com/cschembor3)
+- [Dan Mueller](https://github.com/unthought)
+- [Dave Lage](https://github.com/rockerBOO)
+- [Dave Lucia](https://github.com/davydog187)
+- [David McKay](https://github.com/rawkode)
+- [David Pedersen](https://github.com/davidpdrsn)
+- [Dennis Dang](https://github.com/dangdennis)
+- [drew](https://github.com/drewolson)
+- [Drew Varner](https://github.com/varnerac)
+- [Edman Anjos](https://github.com/edman)
+- [Eric Meadows-Jönsson](https://github.com/ericmj)
+- [Erik Terpstra](https://github.com/eterps)
+- [Florian Kraft](https://github.com/floriank)
+- [Galaxy-Coding](https://github.com/Galaxy-Coding)
+- [Greg Baraghimian](https://github.com/itsgreggreg)
+- [Guilherme Pasqualino](https://github.com/ggpasqualino)
+- [Hendrik Richter](https://github.com/hendi)
+- [Herdy Handoko](https://github.com/hhandoko)
+- [human154](https://github.com/human154)
+- [Ian González](https://github.com/Ian-GL)
+- [Ingmar Gagen](https://github.com/igagen)
+- [Istvan](https://github.com/l1x)
+- [Ivar Vong](https://github.com/ivarvong)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jechol Lee](https://github.com/jechol)
+- [Jérémy Pagé](https://github.com/jpagex)
+- [jiangplus](https://github.com/jiangplus)
+- [Joe Corkerton](https://github.com/joecorkerton)
+- [John Palgut](https://github.com/Jwsonic)
+- [José Valim](https://github.com/josevalim)
+- [Jussi Norlund](https://github.com/jmn)
+- [Lars Lillo Ulvestad](https://github.com/kodeFant)
+- [Lars Wikman](https://github.com/lawik)
+- [Leandro Cesquini Pereira](https://github.com/leandrocp)
+- [Lucas Rosa](https://github.com/rvcas)
+- [Luna](https://github.com/lun-4)
+- [mario](https://github.com/mario-mazo)
+- [Mario Vellandi](https://github.com/mvellandi)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Markus](https://github.com/markusfeyh)
+- [Markus Hechenberger](https://github.com/derhechi)
+- [Matthew Cheely](https://github.com/MattCheely)
+- Matthew Cheely
+- [Max Nordlund](https://github.com/maxnordlund)
+- [Merlin Webster](https://github.com/mjftw)
+- [Michael Bausano](https://github.com/bausano)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michał Łępicki](https://github.com/michallepicki)
+- [Mike Lapping](https://github.com/mlapping)
+- [Mike Roach](https://github.com/mroach)
+- [Milad](https://github.com/slashmili)
+- [Neil Lyons](https://github.com/nwjlyons)
+- [Nick Cernis](https://github.com/nickcernis)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Patrick Ryan](https://github.com/phiat)
+- [Pete Jodo](https://github.com/PeteJodo)
+- [Peter Saxton](https://github.com/CrowdHailer)
+- [qingliangcn](https://github.com/qingliangcn)
+- [Quinn Wilton](https://github.com/QuinnWilton)
+- [Raphael Megzari](https://github.com/happysalada)
+- [René Klačan](https://github.com/reneklacan)
+- [rinsuki](https://github.com/rinsuki)
+- [Robin Mattheussen](https://github.com/romatthe)
+- [Ryan Haskell-Glatz](https://github.com/ryannhg)
+- [Sam Aaron](https://github.com/samaaron)
+- [Sasan Hezarkhani](https://github.com/gootik)
+- [Sascha Wolf](https://github.com/sascha-wolf)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian Porto](https://github.com/sporto)
+- [SEKUN](https://github.com/imsekun)
+- [Shane Sveller](https://github.com/shanesveller)
+- [Shritesh Bhattarai](https://github.com/shritesh)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [sjqtentacles](https://github.com/sjqtentacles)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Tim Buchwaldt](https://github.com/timbuchwaldt)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [Tomochika Hara](https://github.com/thara)
+- [Topher Hunt](https://github.com/topherhunt)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Tyler Wilcock](https://github.com/twilco)
+- [Wilson Silva](https://github.com/wilsonsilva)
+- [Wojtek Mach](https://github.com/wojtekmach)
 
 Thanks for reading! Have fun! 💜

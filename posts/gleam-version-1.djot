@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Gleam version 1
-subtitle: It's finally here! 🎉
-tags:
-  - Release
----
-
 Today Gleam v1.0.0 has been released! This is the first "stable" release of the
 language (more on what that means later) and a big milestone for the ecosystem.
 
@@ -44,6 +35,7 @@ Gleam can also run on JavaScript runtimes, making it possible to run Gleam code
 in the browser, on mobile devices, or anywhere else.
 
 Gleam looks like this:
+
 ```gleam
 import gleam/json
 import gleam/result.{try}

@@ -1,12 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Fault tolerant Gleam
-subtitle: Gleam v1.2.0 released
-tags:
-  - Release
----
-
 Gleam is a type safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Today Gleam [v1.2.0][release] has been published, a release
 that focuses on improving the language server and developer experience. It's a
@@ -14,7 +5,6 @@ big one both in terms of size and impact, so let's take a look as what it
 includes.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.2.0
-
 
 ## Fault tolerant compilation
 
@@ -53,6 +43,7 @@ Thanks to [Ameen Radwan](https://github.com/Acepie) and myself for this feature!
 ## Language server imports improvements
 
 This is a Gleam import statement:
+
 ```gleam
 import gleam/option.{type Option, Some, None}
 //     ^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,12 +66,14 @@ function into the input of another, not dissimilar to `|` pipes in bash, etc.
 Gleam's code formatter would always put each function of a sequence of pipes on
 individual lines, but now you can opt to put them all on one line, so long as
 altogether they are short enough to fit.
+
 ```gleam
 [1, 2, 3] |> list.map(int.to_string) |> string.join(with: "\n")
 ```
 
 In addition you can also force the formatter to break a pipe on multiple lines
 by adding a line break. This:
+
 ```gleam
 [1, 2, 3] |> list.map(int.to_string)
 // By putting a newline here I'm telling the formatter to split the pipeline
@@ -88,6 +81,7 @@ by adding a line break. This:
 ```
 
 Will turn into this:
+
 ```gleam
 [1, 2, 3]
 |> list.map(int.to_string)
@@ -112,6 +106,7 @@ the language and debugging their code. Here's some specific examples:
 
 This error message is used when the right-hand-side of `<-` in a `use`
 expression is not a function:
+
 ```txt
 error: Type mismatch
   ┌─ /src/one/two.gleam:2:8
@@ -129,6 +124,7 @@ See: https://tour.gleam.run/advanced-features/use/
 
 This error message is used when the right-hand-side of `<-` is a function,
 but it takes no arguments:
+
 ```txt
 error: Incorrect arity
   ┌─ /src/one/two.gleam:3:8
@@ -144,7 +140,8 @@ See: https://tour.gleam.run/advanced-features/use/
 
 And this one is used when it takes arguments, but not the correct number of
 arguments:
-  ```txt
+
+```txt
 error: Incorrect arity
   ┌─ /src/one/two.gleam:3:8
   │
@@ -167,6 +164,7 @@ for these big improvements!
 One common mistake is to try and import a type as a value, or a value as a type.
 When an imported item is found not to exist the compiler will now check to see
 if there is a matching type or value and explain the mix-up.
+
 ```text
 error: Unknown module field
   ┌─ /src/one/two.gleam:1:19
@@ -176,6 +174,7 @@ error: Unknown module field
 
 `One` is only a type, it cannot be imported as a value.
 ```
+
 ```text
 error: Unknown module type
   ┌─ /src/one/two.gleam:1:19
@@ -197,6 +196,7 @@ not.
 
 The compiler now performs exhaustiveness checking on these assertions to find
 patterns that are total and warn that the `assert` is redundant as a result.
+
 ```text
 warning: Redundant assertion
   ┌─ /home/lucy/src/app/src/app.gleam:4:7
@@ -215,12 +215,14 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for this feat
 Gleam has `todo` and `panic` expressions, both of which crash the program due to
 it being incomplete or in an invalid state respectively. The syntax looks like
 this:
+
 ```gleam
 panic as "The session is no longer valid, this should never happen!"
 ```
 
 A common mistake is to try and give the message string using the function call
 syntax like so:
+
 ```gleam
 panic("The session is no longer valid, this should never happen!")
 ```
@@ -228,6 +230,7 @@ panic("The session is no longer valid, this should never happen!")
 This is valid Gleam code, but it is not using that string as a message for the
 panic. The string is unreachable as the program panics before it is evaluated. A
 compiler warning is now emitted when code like this is found.
+
 ```text
 warning: Todo used as a function
   ┌─ /src/warning/wrn.gleam:2:16
@@ -252,6 +255,7 @@ Gleam's constants are limited to a subset of the language that be evaluated at
 compile time, and as such arbitrary functions cannot be called within them.
 Previously if you tried to call a function you would get a somewhat confusing
 parse error, but with this version it'll emit a much more helpful error message.
+
 ```text
 error: Syntax error
   ┌─ /src/parse/error.gleam:3:18
@@ -277,6 +281,7 @@ pub fn main() {
   my_app.run()
 }
 ```
+
 ```text
 warning: Unreachable code
   ┌─ /src/warning/wrn.gleam:3:11
@@ -301,6 +306,7 @@ After 24 hours Hex package releases become immutable and cannot be removed.
 
 Additionally the error message that is emitted when you attempt to publish a
 package that has already been published has been improved:
+
 ```text
 error: Version already published
 
@@ -326,6 +332,7 @@ and crash.
 The Gleam build tool would return an error and refuse to compile Gleam modules
 that would overwrite each other, but with this version it will also emit an
 error if a Gleam module would overwrite a built-in Erlang/OTP module.
+
 ```text
 error: Erlang module name collision
 
@@ -342,6 +349,7 @@ Hint: Rename this module and try again.
 
 A helpful error message is now shown if the `manifest.toml` file has become
 invalid, perhaps due to a git rebase or accidental edit.
+
 ```text
 error: Corrupt manifest.toml
 
@@ -355,6 +363,7 @@ requirements, a very cryptic message would printed that detailed all the
 constraints from all the versions that were incompatible. This was overwhelming
 and practically impossible to read, so it has been replaced with a much simpler
 message.
+
 ```text
 error: Dependency resolution failed
 
@@ -379,6 +388,7 @@ Gleam's case expressons support pattern matching on multiple values at the same
 time. This is uncommon so people used to other languages may habitually wrap
 multiple values in a tuple or a list to match on them. The compiler will now
 warn when this is done:
+
 ```text
 warning: Redundant list
   ┌─ /src/warning/wrn.gleam:2:14
@@ -406,13 +416,16 @@ And further still, if you are using the Gleam language server then a code action
 is offered to automatically fix redundant tuple wrappers. Place your cursor on
 the tuple and select this language action and the language server will remove
 the tuple from the values as well as from all patterns in the case expression.
+
 ```gleam
 case #(x, y) {
   #(1, 2) -> 0
   #(_, _) -> 1
 }
 ```
+
 Is rewritten to:
+
 ```gleam
 case x, y {
   1, 2 -> 0
@@ -427,6 +440,7 @@ for laying the foundation for other code actions like this in future!
 
 JavaScript programmers sometimes type `===` by mistake in their Gleam code. We
 have an error message for that too now:
+
 ```text
 error: Syntax error
   ┌─ /src/parse/error.gleam:4:37
@@ -440,46 +454,6 @@ See: https://tour.gleam.run/basics/equality
 
 Thank you [Rabin Gaire](https://github.com/rabingaire) for this feature!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## And the rest
 
 If you'd like to see all the changes for this release, including all the bug
@@ -489,7 +463,7 @@ in the git repository.
 ## Thanks
 
 Gleam is made possible by the support of all the kind people and companies who have
-very generously [**sponsored**](https://github.com/sponsors/lpil) or
+very generously [*sponsored*](https://github.com/sponsors/lpil) or
 contributed to the project. Thank you all!
 
 If you like Gleam consider sponsoring or asking your employer to
@@ -508,7 +482,7 @@ training budget to learn and to support Gleam too!
     </a>
   </li>
 </ul>
-``` =html
+```
 
 - [Aaron](https://github.com/apstone)
 - [Aaron Gunderson](https://github.com/agundy)

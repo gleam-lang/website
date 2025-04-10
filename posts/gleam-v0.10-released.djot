@@ -1,14 +1,3 @@
----
-author: Louis Pilfold
-author-link: https://github.com/lpil
-title: Gleam v0.10 released!
-description: >
-  Version v0.10 of the Gleam programming language has been released!
-  Let's take a look at what's new.
-tags:
-  - Release
----
-
 1 month and 10,910 lines of code later it is time for another Gleam
 release! Let's see what's new this time.
 
