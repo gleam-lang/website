@@ -236,16 +236,24 @@ dnf install elixir erlang
 
 #### Debian, Ubuntu
 
-```shell
-# Add to /etc/apt/sources.list
-deb http://binaries2.erlang-solutions.com/ubuntu/ jammy-esl-erlang-25 contrib
-# Possible other lines depending on your `lsb_release -c`
-# deb http://binaries2.erlang-solutions.com/debian/ bullseye-elixir-1.15 contrib
-# deb http://binaries2.erlang-solutions.com/ubuntu/ bionic-mongooseim-6 contrib
+Add Erlang Solutions repo keys:
 
-# Add Erlang Solutions repo keys:
-wget https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc
-sudo apt-key add GPG-KEY-pmanager.asc
+```shell
+wget -qO- https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc | sudo tee /etc/apt/keyrings/erlang.asc
+```
+
+We are about to add APT source line in form of:
+
+```
+deb [signed-by=/etc/apt/keyrings/erlang.asc] http://binaries2.erlang-solutions.com/ubuntu/ $DIST contrib
+```
+
+You need to determine `$DIST` first, based on your distro codename (found via `lsb_release -c`). Go to [binaries2.erlang-solutions.com](http://binaries2.erlang-solutions.com/), then click to "debian" or "ubuntu", then "dist".
+You will see directories like "stretch-esl-erlang-27", "noble-esl-erlang-27". Pick one corresponding to your Debian/Ubuntu version and replace `$DIST` with it.
+
+```shell
+# Add as APT source
+echo 'deb [signed-by=/etc/apt/keyrings/erlang.asc] http://binaries2.erlang-solutions.com/ubuntu/ $DIST contrib' | sudo tee /etc/apt/sources.list.d/erlang.list
 
 # Update apt and install esl-erlang
 sudo apt update
