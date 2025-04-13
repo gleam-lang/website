@@ -3,12 +3,11 @@ name: test
 on:
   push:
     branches:
-      - master
       - main
   pull_request:
 
 jobs:
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +16,22 @@ jobs:
           otp-version: "27.1.2"
           gleam-version: "1.9.1"
           rebar3-version: "3"
-          # elixir-version: "1"
       - run: gleam deps download
       - run: gleam test
+      - run: gleam run
       - run: gleam format --check src test
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+        if: github.ref == 'refs/heads/main'
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
