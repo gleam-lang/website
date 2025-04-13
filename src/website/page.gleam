@@ -658,15 +658,13 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
     html.p([], [
       html.a([attr.href("https://fly.io")], [html.text("Fly.io")]),
       html.text(
-        "is a convenient and easy to use deployment platform
-with a generous ",
+        " is a convenient and easy to use deployment platform with a generous ",
       ),
       html.a([attr.href("https://fly.io/docs/about/pricing/")], [
         html.text("free allowance"),
       ]),
       html.text(
-        ". They were
-also a sponsor of the Gleam project, thank you Fly!",
+        ". They were also a sponsor of the Gleam project, thank you Fly!",
       ),
     ]),
     html.h2([attr.id("prepare-your-application")], [
@@ -675,10 +673,7 @@ also a sponsor of the Gleam project, thank you Fly!",
     html.p([], [
       html.text("Ensure your application is listening on "),
       html.code([], [html.text("0.0.0.0")]),
-      html.text(
-        ". If you’re using Mist or Wisp
-you can do this with the ",
-      ),
+      html.text(". If you’re using Mist or Wisp you can do this with the "),
       html.code([], [html.text("mist.bind")]),
       html.text(" function, as shown here."),
     ]),
