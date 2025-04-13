@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     if: github.ref == 'refs/heads/main'
-    needs: test
+    needs: build-and-test
     runs-on: ubuntu-latest
     environment:
       name: github-pages
