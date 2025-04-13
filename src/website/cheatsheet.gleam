@@ -7075,13 +7075,10 @@ pub fn rust(ctx: site.Context) -> fs.File {
           html.li([], [html.a([attr.href("#lists")], [html.text("Lists")])]),
         ]),
       ]),
-      html.li([], [html.text("[Patterns] TODO")]),
+      html.li([], [html.a([attr.href("#patterns")], [html.text("Patterns")])]),
       html.li([], [
         html.a([attr.href("#flow-control")], [html.text("Flow control")]),
-        html.text(
-          "TODO
-    ",
-        ),
+        html.text("TODO"),
         html.ul([], [
           html.li([], [
             html.a([attr.href("#case")], [html.text("Case")]),
