@@ -133,7 +133,7 @@ functionality to search for types and functions with in packages themselves, and
 documentation generator to implement the search index interface so Gleam
 packages are included in the search. Thank you Diemo!
 
-Another option for searching within Gleam packages is [Gloogle](https://gloogle.run/search?q=fn(Int,%20Int)%20-%3E%20Order),
+Another option for searching within Gleam packages is [Gloogle](https://gloogle.run/search?q=fn%28Int,%20Int%29%20-%3E%20Order),
 a Gleam community project, which can even search by function type signature.
 
 ## Custom CA certificates support
