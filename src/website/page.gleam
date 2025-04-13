@@ -3799,7 +3799,13 @@ fn top_layout(
 ) -> Element(a) {
   html.html([], [
     html.head([], head_elements(page, ctx)),
-    html.body([], list.flatten([page_content, [footer(ctx)]])),
+    html.body(
+      [],
+      list.append(page_content, [
+        footer(ctx),
+        html.script([attr.src("/javascript/main.js"), attr("async", "")], ""),
+      ]),
+    ),
   ])
 }
 
