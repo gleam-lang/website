@@ -22,6 +22,7 @@ const dist = "dist/"
 const priv = "priv/"
 
 pub fn delete_dist() -> snag.Result(Nil) {
+  use _ <- result.try(ensure_directory_exists(dist))
   use files <- result.try(
     simplifile.read_directory(dist)
     |> handle_error("List"),
