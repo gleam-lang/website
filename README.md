@@ -2,14 +2,7 @@
 
 https://gleam.run
 
-
-## Run the website locally
-
-Install `github-pages` (requires Ruby)
-
 ```sh
-gem install github-pages
-gem install webrick # For Ruby3.x
+# Build the website to the `dist` directory
+gleam run
 ```
-
-and run `make serve` in root directory.
