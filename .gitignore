@@ -4,3 +4,5 @@
 _site
 dist
 erl_crash.dump
+secrets.env
+.envrc

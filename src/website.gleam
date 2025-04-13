@@ -1,3 +1,4 @@
+import argv
 import gleam/io
 import gleam/list
 import gleam/result
@@ -13,9 +14,15 @@ import website/news
 import website/page
 import website/roadmap
 import website/site
+import website/sponsor
 
 pub fn main() -> Nil {
-  case build_site() {
+  let result = case argv.load().arguments {
+    ["update-sponsors"] -> sponsor.update_list()
+    _ -> build_site()
+  }
+
+  case result {
     Ok(_) -> Nil
     Error(error) -> {
       io.println_error(snag.pretty_print(error))
