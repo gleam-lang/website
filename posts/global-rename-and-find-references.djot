@@ -34,7 +34,7 @@ since the previous release studying the academic literature on the complex
 subject of exhaustiveness checking to bring a variety of improvements to our
 implementation. The first of these changes has made it into this release:
 string pattern analysis. Previously only rudamentary analysis was performed on
-strings, and unreachable string patterns could not berdetected.
+strings, and unreachable string patterns could not be detected.
 
 ```gleam
 case a_string {
