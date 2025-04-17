@@ -33,6 +33,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       Entry("Hover", hover_html()),
       Entry("Go-to definition", goto_definition_html()),
       Entry("Go-to type definition", goto_type_definition_html()),
+      Entry("Find references", find_references_html()),
       Entry("Code completion", code_completion_html()),
       Entry("Rename", rename_html()),
       Entry("Document symbols", document_symbols_html()),
@@ -47,19 +48,23 @@ pub fn page(ctx: site.Context) -> fs.File {
       Entry("Convert to and from use", convert_use_html()),
       Entry("Discard unused result", discard_unused_result_html()),
       Entry("Expand function capture", expand_function_capture_html()),
+      Entry("Extract constant", extract_constant_html()),
       Entry("Extract variable", extract_variable_html()),
       Entry("Fill labels", fill_labels_html()),
+      Entry("Fill unused fields", fill_unused_fields_html()),
       Entry("Generate decoder", generate_decoder_html()),
       Entry("Generate function", generate_function_html()),
-      Entry("Generate JSON encoder", generate_json_encoder_html()),
+      Entry("Generate to-JSON function", generate_to_json_function_html()),
       Entry("Inexhaustive let to case", inexhaustive_let_to_case_html()),
       Entry("Inline variable", inline_variable_html()),
       Entry("Interpolate string", interpolate_string_html()),
       Entry("Pattern match", pattern_match_html()),
       Entry("Qualify and unqualify", qualify_and_unqualify_html()),
-      Entry("Remove unused imports", remove_unused_imports_html()),
+      Entry("Remove echo", remove_echo_html()),
       Entry("Remove redundant tuples", remove_redundant_tuples_html()),
+      Entry("Remove unused imports", remove_unused_imports_html()),
       Entry("Use label shorthand syntax", use_label_shorthand_syntax_html()),
+      Entry("Wrap in block", wrap_in_block_html()),
     ]),
     Section("Security", security_html(), []),
     Section("Use outside Gleam projects", use_outside_gleam_projects_html(), []),
@@ -127,6 +132,128 @@ pub fn page(ctx: site.Context) -> fs.File {
   ]
   |> page.page_layout("", meta, ctx)
   |> page.to_html_file(meta)
+}
+
+fn wrap_in_block_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "This code action wraps an assignment value or case expression clause
+        value in a block, making it easy to add additional expressions.",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "
+pub fn f(pokemon_type: PokemonType) {
+  case pokemon_type {
+    Water -> soak()
+    Fire -> burn()
+  }
+}",
+    ),
+    html.p([], [
+      html.text("If your cursor is within the "),
+      html.code([], [html.text("soak")]),
+      html.text(
+        " call the code action will be suggested, and if run the module will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn f(pokemon_type: PokemonType) {
+  case pokemon_type {
+    Water -> {
+      soak()
+    }
+    Fire -> burn()
+  }
+}",
+    ),
+  ]
+}
+
+fn remove_echo_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text("This code action removes "),
+      html.code([], [html.text("echo")]),
+      html.text("expressions, useful for once you have finished debugging."),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
+  echo 1 + 2
+}",
+    ),
+    html.p([], [
+      html.text("If your cursor is within the "),
+      html.code([], [html.text("echo")]),
+      html.text(
+        " the code action will be suggested, and if run the module will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
+  1 + 2
+}",
+    ),
+    html.text("If your module has multiple "),
+    html.code([], [html.text("echo")]),
+    html.text(" expressions within it they will all be removed."),
+  ]
+}
+
+fn fill_unused_fields_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "This code action can add any fields that were not matched on in a pattern.",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub type Pokemon {
+  Pokemon(id: Int, name: String, moves: List(String))
+}
+
+pub fn main() {
+  let Pokemon(..) = todo
+}
+",
+    ),
+    html.p([], [
+      html.text("If your cursor is within the "),
+      html.code([], [html.text("..")]),
+      html.text(
+        "import the code action will be suggested, and if run the code will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub type Pokemon {
+  Pokemon(id: Int, name: String, moves: List(String))
+}
+
+pub fn main() {
+  let Pokemon(id:, name:, moves:) = todo
+}
+",
+    ),
+  ]
+}
+
+fn find_references_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "The language server supports find references for these entities:",
+      ),
+    ]),
+    html.ul([], [
+      html.li([], [html.text("Functions.")]),
+      html.li([], [html.text("Function arguments.")]),
+      html.li([], [html.text("Constants.")]),
+      html.li([], [html.text("Types")]),
+      html.li([], [html.text("Custom type variants")]),
+      html.li([], [html.text("Variables.")]),
+    ]),
+  ]
 }
 
 fn use_outside_gleam_projects_html() -> List(Element(Nil)) {
@@ -456,12 +583,11 @@ suggested, and if run the code will be updated to this:",
   ]
 }
 
-fn generate_json_encoder_html() -> List(Element(Nil)) {
+fn generate_to_json_function_html() -> List(Element(Nil)) {
   [
     html.p([], [
       html.text(
-        "This code action can generate a function that turns a custom type value into
-JSON using the ",
+        "This code action can generate a function that turns a custom type value into JSON using the ",
       ),
       html.code([], [html.text("gleam_json")]),
       html.text("library."),
@@ -474,10 +600,9 @@ JSON using the ",
     ),
     html.p([], [
       html.text("If your cursor is within "),
-      html.code([], [html.text("Person")]),
+      html.code([], [html.text("pub type Person {")]),
       html.text(
-        "definition then the code action will be
-suggested, and if run the code will be updated to this:",
+        "definition then the code action will be suggested, and if run the code will be updated to this:",
       ),
     ]),
     page.highlighted_gleam_pre_code(
@@ -487,7 +612,8 @@ pub type Person {
   Person(name: String, age: Int)
 }
 
-fn encode_person(person: Person) -> json.Json {
+fn person_to_json(person: Person) -> json.Json {
+  let Person(name:, age:) = person
   json.object([
     #(\"name\", json.string(person.name)),
     #(\"age\", json.int(person.age)),
@@ -625,6 +751,38 @@ run the code will be updated to this:",
       "pub fn main() {
   let value = [\"Hello, Mike!\", \"Hello, Joe!\"]
   list.each(value, io.println)
+}
+",
+    ),
+  ]
+}
+
+fn extract_constant_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text("This code action assigns assigns an expression to a constant."),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "const first = \"Hello, Mike!\"
+
+pub fn main() {
+  list.each([first, \"Hello, Joe!\"], io.println)
+}
+",
+    ),
+    html.p([], [
+      html.text(
+        "If your cursor is within the list then code action will be suggested, and if
+run the code will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "const first = \"Hello, Mike!\"
+
+const values = [first, \"Hello, Joe!\"]
+
+pub fn main() {
+  list.each(values, io.println)
 }
 ",
     ),
@@ -932,8 +1090,12 @@ fn rename_html() -> List(Element(Nil)) {
   [
     html.p([], [html.text("The langauge server is able to rename:")]),
     html.ul([], [
+      html.li([], [html.text("Functions.")]),
       html.li([], [html.text("Function arguments.")]),
-      html.li([], [html.text("Local variables.")]),
+      html.li([], [html.text("Constants.")]),
+      html.li([], [html.text("Types")]),
+      html.li([], [html.text("Custom type variants")]),
+      html.li([], [html.text("Variables.")]),
     ]),
   ]
 }
