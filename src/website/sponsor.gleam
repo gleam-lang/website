@@ -40,8 +40,6 @@ pub fn update_list() -> snag.Result(Nil) {
     <> render_sponsors_code(sponsors)
     <> "\n"
 
-  io.println(src)
-
   simplifile.write("src/website/sponsor.gleam", src)
   |> snag.map_error(simplifile.describe_error)
   |> snag.context("Could not write src/website/sponsor.gleam")
@@ -596,6 +594,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/64713032?s=50&u=cd0a8b39bbb2e0c996c18bd4f73e35c0d9860c02&v=4",
   ),
   Sponsor(
+    name: "Brett Cannon",
+    url: "https://github.com/brettcannon",
+    avatar: "https://avatars.githubusercontent.com/u/54418?s=50&u=d802d54e21af0befea878eacff303c384b2a1871&v=4",
+  ),
+  Sponsor(
     name: "brettkolodny",
     url: "https://github.com/brettkolodny",
     avatar: "https://avatars.githubusercontent.com/u/22826580?s=50&u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4",
@@ -741,11 +744,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/255936?s=50&u=a4c3a79e72a5d36c8fe859a0b5778f15cc1443bf&v=4",
   ),
   Sponsor(
-    name: "David Sancho",
-    url: "https://github.com/davesnx",
-    avatar: "https://avatars.githubusercontent.com/u/3763599?s=50&u=9642d3d5effd7b98774ed5b13438b411dc21a1dd&v=4",
-  ),
-  Sponsor(
     name: "David Cornu",
     url: "https://github.com/davidcornu",
     avatar: "https://avatars.githubusercontent.com/u/325821?s=50&u=72749098165273a5b166f126b4ca8861487a1ef2&v=4",
@@ -758,7 +756,7 @@ pub const sponsors = [
   Sponsor(
     name: "Dylan Anthony",
     url: "https://github.com/dbanty",
-    avatar: "https://avatars.githubusercontent.com/u/43723790?s=50&u=9bcce836bbce55835291c5b2ac93a4e311f4b3c3&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/43723790?s=50&u=9d726785d08e50b1e1cd96505800c8ea8405bce2&v=4",
   ),
   Sponsor(
     name: "David Bernheisel",
@@ -1553,7 +1551,7 @@ pub const sponsors = [
   Sponsor(
     name: "Race Williams",
     url: "https://github.com/raquentin",
-    avatar: "https://avatars.githubusercontent.com/u/63271957?s=50&u=a689a76c57e1321c372296c103f9f70183c006d0&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/63271957?s=50&u=b88c6c61afd3eab849afdb1224111c6304aec822&v=4",
   ),
   Sponsor(
     name: "Alex Manning",
@@ -1564,6 +1562,11 @@ pub const sponsors = [
     name: "Ray",
     url: "https://github.com/ray-delossantos",
     avatar: "https://avatars.githubusercontent.com/u/15605488?s=50&u=dd0320a4f3d098356557fe311b9ad8f77bb09ce3&v=4",
+  ),
+  Sponsor(
+    name: "Lennon Day-Reynolds",
+    url: "https://github.com/rcoder",
+    avatar: "https://avatars.githubusercontent.com/u/15941?s=50&u=5eae6fb18c631516fd508b915afa1a3ac5e396af&v=4",
   ),
   Sponsor(
     name: "Martin Rechsteiner ",
@@ -1716,11 +1719,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/210173?s=50&v=4",
   ),
   Sponsor(
-    name: "Scott Weber",
-    url: "https://github.com/smweber",
-    avatar: "https://avatars.githubusercontent.com/u/3381956?s=50&u=e97262fb64b16a711ceb1346af078f69134805dd&v=4",
-  ),
-  Sponsor(
     name: "sambit",
     url: "https://github.com/soulsam480",
     avatar: "https://avatars.githubusercontent.com/u/35460828?s=50&u=60890a553d1e207ef3901f18a4ac19ab7dff58b5&v=4",
@@ -1869,6 +1867,11 @@ pub const sponsors = [
     name: "Wilson Silva",
     url: "https://github.com/wilsonsilva",
     avatar: "https://avatars.githubusercontent.com/u/645203?s=50&v=4",
+  ),
+  Sponsor(
+    name: "Karan Rajeshbhai Mungara",
+    url: "https://github.com/withkarann",
+    avatar: "https://avatars.githubusercontent.com/u/31102185?s=50&u=504a0920c5d6778c67bf8600ac04b1f3218eef4e&v=4",
   ),
   Sponsor(
     name: "Loïc Tosser",
