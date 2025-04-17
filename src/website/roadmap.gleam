@@ -10,14 +10,13 @@ import website/site
 const in_progress = [
   "JavaScript sourcemaps", "OTP named process support",
   "Generating `case` expressions using a decision tree on JavaScript",
-  "Language server extract const code action",
-  "Removing Instantly Invoked Function Expressions from generated JavaScript code",
+  "Test keyword `assert`", "Language server constant expression completion",
+  "\"gleam dev\" command",
 ]
 
 const planned = [
-  "Dead code detection improvements", "Hex private package support",
-  "Language server constant expression completion", "Language server renaming",
-  "Mutual tail call optimisation on JavaScript", "Test keyword `assert`",
+  "JavaScript record performance improvements", "Hex private package support",
+  "Mutual tail call optimisation on JavaScript",
   "API key generation when Hex rate limits reached",
   "Lifting constant expressions into global scope on JavaScript",
 ]
@@ -29,6 +28,26 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "v1.10",
+    date: calendar.Date(2025, calendar.April, 14),
+    items: [
+      "Bit array exhaustiveness analysis",
+      "Dead code detection, including reference loops",
+      "Fault tolerant analysis of binary operators",
+      "JavaScript performance improvement via immediately invoked function expression removal",
+      "Software Bill of Materials (SBoM) and Supply-chain Levels for Software Artifacts (SLSA) Provenance information in container images",
+      "`gleam export package-information` command",
+      "Langauge server find references", "Langauge server rename constant",
+      "Langauge server rename custom type variant",
+      "Langauge server rename function", "Langauge server rename type",
+      "Langauge server \"extract constant\" code action",
+      "Langauge server \"fill unused fields\" code action",
+      "Langauge server \"remove echo\" code action",
+      "Langauge server \"wrap in block\" code action",
+      "Optional float annotations for float literals in bit arrays",
+    ],
+  ),
   Release(
     version: "v1.9",
     date: calendar.Date(2025, calendar.March, 08),
