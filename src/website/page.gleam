@@ -467,16 +467,37 @@ brew install erlang",
       ]),
     ]),
     html.h4([attr.id("debian-ubuntu")], [html.text("Debian, Ubuntu")]),
+    html.div([], [html.text("Add Erlang Solutions repo key:")]),
     highlighted_shell_pre_code(
-      "# Add to /etc/apt/sources.list
-deb http://binaries2.erlang-solutions.com/ubuntu/ jammy-esl-erlang-25 contrib
-# Possible other lines depending on your `lsb_release -c`
-# deb http://binaries2.erlang-solutions.com/debian/ bullseye-elixir-1.15 contrib
-# deb http://binaries2.erlang-solutions.com/ubuntu/ bionic-mongooseim-6 contrib
-
-# Add Erlang Solutions repo keys:
-wget https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc
-sudo apt-key add GPG-KEY-pmanager.asc
+      "wget -qO- https://binaries2.erlang-solutions.com/GPG-KEY-pmanager.asc | sudo tee /etc/apt/keyrings/erlang.asc",
+    ),
+    html.div([], [html.text("We are about to add APT source line in form of:")]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "deb [signed-by=/etc/apt/keyrings/erlang.asc] http://binaries2.erlang-solutions.com/ubuntu/ $DIST contrib",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("We need to determine "),
+      html.code([], [html.text("$DIST")]),
+      html.text(" first, based on our distro codename (found via "),
+      html.code([], [html.text("lsb_release -c")]),
+      html.text(" ). Go to "),
+      html.a([attr.href("https://binaries2.erlang-solutions.com/")], [
+        html.text("binaries2.erlang-solutions.com"),
+      ]),
+      html.text(", then click to \"debian\" or \"ubuntu\", then \"dist\". "),
+      html.text(
+        "We will see directories like \"stretch-esl-erlang-27\", \"noble-esl-erlang-27\". Pick one corresponding to our Debian/Ubuntu version and replace ",
+      ),
+      html.code([], [html.text("$DIST")]),
+      html.text(" with it."),
+    ]),
+    highlighted_shell_pre_code(
+      "# Add as APT source
+echo 'deb [signed-by=/etc/apt/keyrings/erlang.asc] http://binaries2.erlang-solutions.com/ubuntu/ $DIST contrib' | sudo tee /etc/apt/sources.list.d/erlang.list
 
 # Update apt and install esl-erlang
 sudo apt update
