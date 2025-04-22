@@ -1,0 +1,412 @@
+Gleam is a type safe and scalable language for the Erlang virtual machine and
+JavaScript runtimes. Today Gleam [v0.33.0][release] has been published, a
+release that contains some features we in the community have been looking
+forward to for a long time! Let's take a look.
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v0.33.0
+
+
+## Exhaustive exhaustiveness checking
+
+Gleam is designed to make writing and running production software less
+stressful. One way it does this is by preventing runtime errors that would have
+you scrambling to fix bugs in the middle of the night. If you don't use
+assertions then Gleam code will never throw an exception, outside of hardware
+problems such as memory exhaustion.
+
+Or that was the idea. There was one place where Gleam was not living up to this
+promise: pattern matching.
+
+Pattern matching with a case expression is how flow control is done in Gleam. A
+series of clauses are written, and the first clause with a pattern that matches
+the input gets run. It's similar to a switch statement in other languages, but
+with some extra functionality.
+
+```gleam
+pub fn describe(list: List(t)) -> String {
+  case list {
+    [] -> "Empty list"
+    [_] -> "Singleton list"
+    [_, _] -> "Two element list"
+    _ -> "Long list"
+  }
+}
+```
+
+If no pattern matches the input then a runtime error is thrown. This is not what
+we want! To prevent this the Gleam compiler implements _exhaustiveness
+checking_. If there are missing patterns then it will emit an error at compile
+time, prompting the programmer to fix the code.
+
+Unfortunately the implementation of exhaustiveness checking was, perhaps
+amusingly, inexhaustive. It did not work for more complex patterns.
+
+With this release Gleam implements the algorithm described in the paper
+[How to compile pattern matching][1] by Jules Jacobs, with help from Yorick
+Peterse and his [Pattern matching in Rust][2] project, and as such it will now
+catch all missing patterns. Thank you Jules and Yorick!
+
+[1]: https://julesjacobs.com/notes/patternmatching/patternmatching.pdf
+[2]: https://github.com/yorickpeterse/pattern-matching-in-rust
+
+
+## Prettier printing
+
+Gleam has a code formatter that will reformat your code to the canonical Gleam
+style, saving the keypresses you'd spend formatting your code, and freeing you
+from debates about exactly where to put those curly braces.
+
+The formatter implements the algorithm described in the paper
+[Strictly Pretty][3] by Christian Lindig. We've been very happy with it, but
+there was a few places in which the format we supported was not exactly what we
+wanted.
+
+[3]: https://www.researchgate.net/publication/2629249_Strictly_Pretty
+
+```gleam
+let discounts =
+  list.map(
+    checkout_line_items,
+    fn(item) { calculate_discount(item, discount_codes) },
+  )
+```
+
+With this release the formatter has gained the "next break fits" extension found
+in [Elixir's pretty printer][4], which we now use to format the above code like so:
+
+```gleam
+let discounts =
+  list.map(checkout_line_items, fn(item) {
+    calculate_discount(item, discount_codes)
+  })
+```
+
+[4]: https://github.com/elixir-lang/elixir/blob/aad341b5c25a37e74327b1e4454e74fcc18716de/lib/elixir/lib/inspect/algebra.ex#L704
+
+This new format is especially impactful for code with sophisticated DSLs, such
+as the web application framework [Lustre][5].
+
+[5]: https://github.com/lustre-labs/lustre
+
+```gleam
+//
+// Before
+//
+html.div(
+  [],
+  [
+    stack.of(
+      html.nav, 
+      [stack.tight()],
+      [
+        html.h3([], [text("Guides")]),
+        html.a(
+          [href("/guides/wisp")],
+          [text("Integrating Lustre with Wisp framework")],
+        ),
+      ]
+    ),
+  ],
+)
+
+//
+// After
+//
+html.div([], [
+  stack.of(html.nav, [stack.tight()], [
+    html.h3([], [text("Guides")]),
+    html.a([href("/guides/wisp")], [
+      text("Integrating Lustre with Wisp"),
+    ]),
+  ]),
+])
+```
+
+Thank you to [Giacomo Cavalieri](https://github.com/giacomocavalieri) for this feature!
+
+Additionally, the `gleam format` command will ignore build directories even
+outside of git repositories. Thank you [Alessandro Scandone](https://github.com/ascandone).
+
+
+## Encouraging semantic versioning
+
+Gleam's package manager uses semantic versioning and the [Pubgrub][6] algorithm
+to pick versions of each package that are compatible with each other. This helps
+avoid dependency headaches, but it only works if package authors follow semantic
+versioning.
+
+[6]: https://nex3.medium.com/pubgrub-2fb6470504f
+
+Developers often have a habit of using `0.x.x` versions instead of following
+semantic versioning, undermining the work the package manager does to avoid
+unexpected breakages. If you're publishing a package then it's worth taking
+versioning seriously to give your users the best experience, even if you intend
+to do more work on the package in future.
+
+To encourage moving past version zero Gleam now creates new projects at `1.0.0`,
+and asks for confirmation when publishing a version zero package. It will also
+ask for confirmation if you try to publish a package with the name prefix
+`gleam_`, which implies the package is maintained by the Gleam core team.
+
+In future Gleam may have additional publishing features, such as analysing the
+difference between the last published version and the current version to suggest
+an appropriate new semantic version number, as the Elm package manager does.
+
+
+## Web Assembly API revamp
+
+The Gleam compiler can be compiled to WASM, allowing it to be used in the
+browser or anywhere else WASM can be used. The JavaScript bindings to this API
+have been improved, given support for multiple projects, and now expose warnings
+as well as errors.
+
+```javascript
+const compiler = await import("/compiler/gleam_wasm.js");
+await compiler.default();
+compiler.initialise_panic_hook();
+
+compiler.write_module(0, "mod", "pub fn add(a, b) { a + b }");
+compiler.compile_package(0, "javascript")
+compiler.read_compiled_javascript(0, "mod")
+// This returns:
+// "export function add(a, b) {\n  return a + b;\n }\n"
+```
+
+This new API is still a little low-level. In future we may have a more
+sophisticated one, if that would be useful to folks. Currently this API is being
+used to create a new in-browser interactive playground and tutorial for Gleam,
+which we hope to release in January.
+
+
+## Language additions
+
+The `\u{...}` syntax can now be used in strings to specify unicode codepoints by
+their hexadecimal number. Thank you [F. Schwalbe](https://github.com/fschwalbe)
+and [Adi Salimgereev](https://github.com/abs0luty).
+
+The `panic as "..."` and `todo as "..."` syntaxes now accept any expression that
+evaluates to a string, rather than just a string literal. Thank you
+[Om Prakaash](https://github.com/omprakaash).
+
+The words `auto`, `delegate`, `derive`, `else`, `implement`, `macro`, and `test`
+are now reserved for future use. This is done as we soon to hope to release a
+version `1.0.0` of Gleam, after which point we will be committed to not breaking
+backwards compatibility. Reserving these words now will allow us to use them for
+new language features in the future.
+
+The bool negation `!` operator can now be used in clause guard expressions.
+
+The deprecated bit string, ambiguous type import, and JavaScript prelude inspect
+features have been removed.
+
+
+## Build tool additions
+
+The `gleam export erlang-shipment` command, used to create an artefact suitable
+for deployment on a server, now supports Windows. Thank you
+[bun](https://github.com/bunopnu).
+
+It is possible for Elixir and Erlang packages to have a different name according
+to the virtual machine than to the package manager. These packages are now
+supported by the build tool and can be added as dependencies to Gleam projects.
+
+The search bar in generated HTML documentation has been improved, making better
+suggestions for partial matches. Thank you [F. Schwalbe](https://github.com/fschwalbe).
+
+The `gleam run` and `gleam test` commands gain the -t flag, which is an alias of
+the --target flag. Thank you [shayan javani](https://github.com/massivefermion).
+
+The short forms of `js` and `erl` can now be used as values for the `--target`
+flag on all commands that accept it. Thank you
+[Mani Sundararajan](https://github.com/itsrainingmani).
+
+
+## Thanks
+
+Gleam is made possible by the support of all the kind people and companies who have
+very generously [**sponsored**](https://github.com/sponsors/lpil) or
+contributed to the project. Thank you all!
+
+If you like Gleam consider sponsoring or asking your employer to
+[sponsor Gleam development](https://github.com/sponsors/lpil). I work full time
+on Gleam and your kind sponsorship is how I pay my bills!
+
+``` =html
+<ul class="top-sponsors">
+  <li>
+    <a href="https://fly.io" rel="noopener" target="_blank">
+      <img class="sponsor-fly no-shadow" src="/images/sponsors/fly-invert.svg" alt="Fly">
+    </a>
+  </li>
+</ul>
+```
+
+- [Aaron Gunderson](https://github.com/agundy)
+- [Adam Brodzinski](https://github.com/AdamBrodzinski)
+- [Adam Mokan](https://github.com/amokan)
+- [Adi Iyengar](https://github.com/thebugcatcher)
+- [Adi Salimgereev](https://github.com/abs0luty)
+- [Akiomi Kamakura](https://github.com/akiomik)
+- [Alembic](https://alembic.com.au)
+- [Alessandro Scandone](https://github.com/ascandone)
+- [Alex Manning](https://github.com/rawhat)
+- [Alex Rothuis](https://github.com/arothuis)
+- [Alexander Koutmos](https://github.com/akoutmos)
+- [Alexander Stensrud](https://github.com/spektroskop)
+- [Alexandre Del Vecchio](https://github.com/defgenx)
+- [Andy Aylward](https://github.com/aaylward)
+- [Anthony Khong](https://github.com/anthony-khong)
+- [Anthony Scotti](https://github.com/amscotti)
+- [Arnaud Berthomier](https://github.com/oz)
+- [Barry Moore](https://github.com/chiroptical)
+- [Bartek Iwańczuk](https://github.com/bartlomieju)
+- [Ben Marx](https://github.com/bgmarx)
+- [Ben Myles](https://github.com/benmyles)
+- [Benjamin Peinhardt](https://github.com/bcpeinhardt)
+- [brettkolodny](https://github.com/brettkolodny)
+- [Brian Glusman](https://github.com/bglusman)
+- [Bruno Michel](https://github.com/nono)
+- [bun](https://github.com/bunopnu)
+- [Carlo Gilmar](https://github.com/carlogilmar)
+- [Carlos Saltos](https://github.com/csaltos)
+- [Chew Choon Keat](https://github.com/choonkeat)
+- [Chris Lloyd](https://github.com/chrislloyd)
+- [Chris Ohk](https://github.com/utilForever)
+- [Chris Rybicki](https://github.com/Chriscbr)
+- [Christian Wesselhoeft](https://github.com/xtian)
+- [Christopher Keele](https://github.com/christhekeele)
+- [clangley](https://github.com/clangley)
+- [Clay](https://github.com/connorlay)
+- [Coder](https://github.com/coder)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Colin](https://github.com/insanitybit)
+- [Cristine Guadelupe](https://github.com/cristineguadelupe)
+- [Damir Vandic](https://github.com/dvic)
+- [Dan Dresselhaus](https://github.com/ddresselhaus)
+- [Daniel Sherlock](https://github.com/DanielSherlock)
+- [Danielle Maywood](https://github.com/DanielleMaywood)
+- [Danny Martini](https://github.com/despairblue)
+- [Dave Lucia](https://github.com/davydog187)
+- [David Bernheisel](https://github.com/dbernheisel)
+- [David Flanagan](https://github.com/rawkode)
+- [David Sancho](https://github.com/davesnx)
+- [Dmitry Poroh](https://github.com/poroh)
+- [Edon Gashi](https://github.com/edongashi)
+- [Elliott Pogue](https://github.com/epogue)
+- [Emma](https://github.com/Emma-Fuller)
+- [Erik Terpstra](https://github.com/eterps)
+- [Erika Rowland](https://github.com/erikareads)
+- [Ernesto Malave](https://github.com/oberernst)
+- [Fernando Farias](https://github.com/nandofarias)
+- [Filip Figiel](https://github.com/megapctr)
+- [Florian Kraft](https://github.com/floriank)
+- [fly.io](https://github.com/superfly)
+- [fortunewang](https://github.com/fortunewang)
+- [Frederick Schwalbe](https://github.com/fschwalbe)
+- [Giacomo Cavalieri](https://github.com/giacomocavalieri)
+- [Graeme Coupar](https://github.com/obmarg)
+- [Guilherme de Maio](https://github.com/nirev)
+- [Gustavo Villa](https://github.com/gfvcastro)
+- [Harry Bairstow](https://github.com/HarryET)
+- [Hayleigh Thompson](https://github.com/hayleigh-dot-dev)
+- [Hazel Bachrach](https://github.com/hibachrach)
+- [Henry Warren](https://github.com/henrysdev)
+- [Hex](https://github.com/hexpm)
+- [human154](https://github.com/human154)
+- [Ian González](https://github.com/Ian-GL)
+- [inoas](https://github.com/inoas)
+- [Ivar Vong](https://github.com/ivarvong)
+- [James Birtles](https://github.com/jamesbirtles)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jan Skriver Sørensen](https://github.com/monzool)
+- [Jari Aarniala](https://github.com/codeflows)
+- [Jen Stehlik](https://github.com/okkdev)
+- [jiangplus](https://github.com/jiangplus)
+- [Jimpjorps™](https://github.com/hunkyjimpjorps)
+- [Joey Kilpatrick](https://github.com/joeykilpatrick)
+- [John Björk](https://github.com/JohnBjrk)
+- [John Gallagher](https://github.com/johngallagher)
+- [John Palgut](https://github.com/Jwsonic)
+- [Jonas Hedman Engström](https://github.com/JonasHedEng)
+- [Josef Richter](https://github.com/josefrichter)
+- [Julian Schurhammer](https://github.com/schurhammer)
+- [Kayla Washburn](https://github.com/aslilac)
+- [Kieran Gill](https://github.com/kierangilliam)
+- [Krzysztof Zbudniewek](https://github.com/neonowy)
+- [Kunal Kundu](https://github.com/tinfoil-knight)
+- [Lars Wikman](https://github.com/lawik)
+- [Leon Qadirie](https://github.com/leonqadirie)
+- [lidashuang](https://github.com/defp)
+- [Mani Sundararajan](https://github.com/itsrainingmani)
+- [Manuel Rubio](https://github.com/manuel-rubio)
+- [Marius Kalvø](https://github.com/mariuskalvo)
+- [Mark Holmes](https://github.com/markholmes)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Markus](https://github.com/markusfeyh)
+- [Markus Pettersson](https://github.com/MarkusPettersson98)
+- [Martin Janiczek](https://github.com/Janiczek)
+- Matt Savoia
+- [Matt Van Horn](https://github.com/mattvanhorn)
+- [matt-savvy](https://github.com/matt-savvy)
+- [Matthias Benkort](https://github.com/KtorZ)
+- [max-tern](https://github.com/max-tern)
+- [Michael Clayton](https://github.com/mwcz)
+- [Michael Davis](https://github.com/the-mikedavis)
+- [Michael Duffy](https://github.com/stunthamster)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michał Łępicki](https://github.com/michallepicki)
+- [Mike Roach](https://github.com/mroach)
+- [Natanael Sirqueira](https://github.com/natanaelsirqueira)
+- [Nathaniel Knight](https://github.com/nathanielknight)
+- [NFIBrokerage](https://github.com/NFIBrokerage)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [Nicklas Sindlev Andersen](https://github.com/NicklasXYZ)
+- [NineFX](http://www.ninefx.com)
+- [Noah Betzen](https://github.com/Nezteb)
+- [Ocean Armstrong Lewis](https://github.com/oceanlewis)
+- [OldhamMade](https://github.com/OldhamMade)
+- [Ole Michaelis](https://github.com/OleMchls)
+- [Om Prakaash](https://github.com/omprakaash)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Paul Gideon Dann](https://github.com/giddie)
+- [Pete Jodo](https://github.com/petejodo)
+- [Philip Giuliani](https://github.com/philipgiuliani)
+- [Prashant Singh Pawar](https://github.com/prashantpawar)
+- [Praveen Perera](https://github.com/praveenperera)
+- [qingliangcn](https://github.com/qingliangcn)
+- [Raúl Chouza ](https://github.com/chouzar)
+- [Redmar Kerkhoff](https://github.com/redmar)
+- [Rico Leuthold](https://github.com/rico)
+- [Robert Attard](https://github.com/TanklesXL)
+- [Robert Ellen](https://github.com/rellen)
+- [Sam Aaron](https://github.com/samaaron)
+- [Sammy Isseyegh](https://github.com/bkspace)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian Porto](https://github.com/sporto)
+- [SEKUN](https://github.com/sekunho)
+- [Seve Salazar](https://github.com/tehprofessor)
+- [shayan javani](https://github.com/massivefermion)
+- [Shuqian Hon](https://github.com/honsq90)
+- [Signal Insights](https://github.com/signalinsights)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [Szymon Wygnański](https://github.com/finalclass)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Theo Harris](https://github.com/Theosaurus-Rex)
+- [Timo Sulg](https://github.com/timgluz)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [Tristan de Cacqueray](https://github.com/TristanCacqueray)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [tynanbe](https://github.com/tynanbe)
+- [Weizheng Liu](https://github.com/weizhliu)
+- [Willyboar](https://github.com/Willyboar)
+- [Wilson Silva](https://github.com/wilsonsilva)
+- [Wojtek Mach](https://github.com/wojtekmach)
+- [Xetera](https://github.com/Xetera)
+- [Yasuo Higano](https://github.com/Yasuo-Higano)
+- [Yu Matsuzawa](https://github.com/ymtszw)
+- [Zsombor Gasparin](https://github.com/gasparinzsombor)
+- [Šárka Slavětínská](https://github.com/sarkasl)
+
+Thanks for reading! Happy hacking! 💜

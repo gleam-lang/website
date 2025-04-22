@@ -1,0 +1,452 @@
+``` =html
+<style>
+  hr {
+    margin: var(--gap-6) 0;
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+</style>
+```
+
+The results are in for the first ever Gleam Developer Survey! Over the
+month-and-a-bit the survey was open we had a total of 211 entries! Thank you to
+everyone who took part! 💖
+
+The survey was a [Gleam web application][src] with both the frontend and the
+backend written in Gleam. It was deployed to [Fly.io](https://fly.io) and wrote
+data to the local filesystem rather than using any particular database.
+
+All the questions in the survey were optional, and several of the questions had
+a free-text field for people to give their answers. For these free-text answers
+I've manually categorised them so that we can see some trends, and the raw data
+is not shared in order to protect the privacy of the participants.
+
+Let's take a look at the results now.
+
+## The Gleam folks
+
+These questions are about the participants themselves. Community is one of
+the most important aspects of Gleam and it is vital that everyone feels welcome
+regardless of who they are, so these questions are intended to give a feel for
+the makeup of the community, and if there is anything we can do to improve.
+
+---
+
+### Where do you live?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">United States of America</span> <div class="bar" style="flex-basis: max(calc((50 / 50) * 70%), 1px);" ></div> 50 </li>
+  <li> <span class="label">Germany</span> <div class="bar" style="flex-basis: max(calc((16 / 50) * 70%), 1px);" ></div> 16 </li>
+  <li> <span class="label">United Kingdom</span> <div class="bar" style="flex-basis: max(calc((14 / 50) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">Australia</span> <div class="bar" style="flex-basis: max(calc((11 / 50) * 70%), 1px);" ></div> 11 </li>
+  <li> <span class="label">Canada</span> <div class="bar" style="flex-basis: max(calc((11 / 50) * 70%), 1px);" ></div> 11 </li>
+  <li> <span class="label">Brazil</span> <div class="bar" style="flex-basis: max(calc((10 / 50) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">Netherlands</span> <div class="bar" style="flex-basis: max(calc((8 / 50) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Sweden</span> <div class="bar" style="flex-basis: max(calc((7 / 50) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Poland</span> <div class="bar" style="flex-basis: max(calc((7 / 50) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Spain</span> <div class="bar" style="flex-basis: max(calc((5 / 50) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Denmark</span> <div class="bar" style="flex-basis: max(calc((5 / 50) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Other</span> <div class="bar" style="flex-basis: max(calc((29 / 50) * 70%), 1px);" ></div> 29 </li>
+</ol>
+```
+
+China, France, India, Italy, Mexico, New Zealand, Portugal, and Switzerland each
+got 3 responses. Argentina, Austria, Czechia, Nepal, Norway, and Romania each
+got 2 responses. Colombia, Croatia, Finland, Greece, Iceland, Iran, Ireland,
+Japan, Kenya, Nicaragua, North Macedonia, Russia, Saudi Arabia, Serbia Taiwan,
+Turkey, and the United Arab Emirates each got 1 response.
+
+---
+
+### What's your age?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">less than 18 years old</span> <div class="bar" style="flex-basis: max(calc((2 / 92) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">19 to 24 years old</span> <div class="bar" style="flex-basis: max(calc((20 / 92) * 70%), 1px);" ></div> 20 </li>
+  <li> <span class="label">25 to 34 years old</span> <div class="bar" style="flex-basis: max(calc((92 / 92) * 70%), 1px);" ></div> 92 </li>
+  <li> <span class="label">35 to 44 years old</span> <div class="bar" style="flex-basis: max(calc((58 / 92) * 70%), 1px);" ></div> 58 </li>
+  <li> <span class="label">45 to 54 years old</span> <div class="bar" style="flex-basis: max(calc((22 / 92) * 70%), 1px);" ></div> 22 </li>
+  <li> <span class="label">55 to 64 years old</span> <div class="bar" style="flex-basis: max(calc((4 / 92) * 70%), 1px);" ></div> 4 </li>
+</ol>
+```
+
+---
+
+### What's your gender?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Male</span> <div class="bar" style="flex-basis: max(calc((170 / 170) * 70%), 1px);" ></div> 170 </li>
+  <li> <span class="label">Non-binary</span> <div class="bar" style="flex-basis: max(calc((9 / 170) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">Female</span> <div class="bar" style="flex-basis: max(calc((6 / 170) * 70%), 1px);" ></div> 6 </li>
+</ol>
+```
+
+---
+
+### Are you transgender or cisgender?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Cisgender</span> <div class="bar" style="flex-basis: max(calc((166 / 166) * 70%), 1px);" ></div> 166 </li>
+  <li> <span class="label">Transgender</span> <div class="bar" style="flex-basis: max(calc((12 / 166) * 70%), 1px);" ></div> 12 </li>
+</ol>
+```
+
+---
+
+### What's your sexual orientation?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Straight</span> <div class="bar" style="flex-basis: max(calc((137 / 137) * 70%), 1px);" ></div> 137 </li>
+  <li> <span class="label">Not straight</span> <div class="bar" style="flex-basis: max(calc((29 / 137) * 70%), 1px);" ></div> 29 </li>
+</ol>
+```
+
+---
+
+Overall the Gleam community are a wonderful bunch, and I'm glad we've got an
+array of different people from different places participating. It is
+disappointing that there are so few responses from women. This certainly is an
+area to improve on in future.
+
+---
+
+
+## Gleamers as programmers
+
+These questions are about programming without being specific to Gleam, so we can
+get an understanding of where Gleamers are coming from. If we know what
+ecosystems people are familiar with, we can better understand how to help them
+get started with Gleam and if there are any integrations we ought to build.
+
+---
+
+### How much programming experience do you have?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">1 to 2 years</span> <div class="bar" style="flex-basis: max(calc((2 / 130) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">2 to 5 years</span> <div class="bar" style="flex-basis: max(calc((12 / 130) * 70%), 1px);" ></div> 12 </li>
+  <li> <span class="label">5 to 10 years</span> <div class="bar" style="flex-basis: max(calc((63 / 130) * 70%), 1px);" ></div> 63 </li>
+  <li> <span class="label">More than 10 years</span> <div class="bar" style="flex-basis: max(calc((130 / 130) * 70%), 1px);" ></div> 130 </li>
+</ol>
+```
+
+---
+
+### How much professional programming experience do you have?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">N/A</span> <div class="bar" style="flex-basis: max(calc((10 / 89) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">Less than 1 year</span> <div class="bar" style="flex-basis: max(calc((4 / 89) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">1 to 2 years</span> <div class="bar" style="flex-basis: max(calc((7 / 89) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">2 to 5 years</span> <div class="bar" style="flex-basis: max(calc((36 / 89) * 70%), 1px);" ></div> 36 </li>
+  <li> <span class="label">5 to 10 years</span> <div class="bar" style="flex-basis: max(calc((60 / 89) * 70%), 1px);" ></div> 60 </li>
+  <li> <span class="label">More than 10 years</span> <div class="bar" style="flex-basis: max(calc((89 / 89) * 70%), 1px);" ></div> 89 </li>
+</ol>
+```
+
+I was really surprised to see such a high level of experience in the Gleam
+community! To me this suggests that we may be doing a good job of communicating
+how Gleam helps with real-world professional development problems such as
+refactoring and keeping codebases maintainable, though we may need to do more to
+communicate value to people who are new to programming.
+
+We should probably also not lump everyone with more than 10 years of experience
+into one group!
+
+---
+
+### How large is your company?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">1 to 10 employees</span> <div class="bar" style="flex-basis: max(calc((39 / 82) * 70%), 1px);" ></div> 39 </li>
+  <li> <span class="label">11 to 50 employees</span> <div class="bar" style="flex-basis: max(calc((47 / 82) * 70%), 1px);" ></div> 47 </li>
+  <li> <span class="label">50 to 100 employees</span> <div class="bar" style="flex-basis: max(calc((21 / 82) * 70%), 1px);" ></div> 21 </li>
+  <li> <span class="label">More than 100 employees</span> <div class="bar" style="flex-basis: max(calc((82 / 82) * 70%), 1px);" ></div> 82 </li>
+</ol>
+```
+
+---
+
+### What is your job role?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Software Engineer</span> <div class="bar" style="flex-basis: max(calc((77 / 77) * 70%), 1px);" ></div> 77 </li>
+  <li> <span class="label">Senior Software Engineer</span> <div class="bar" style="flex-basis: max(calc((29 / 77) * 70%), 1px);" ></div> 29 </li>
+  <li> <span class="label">Tech Lead</span> <div class="bar" style="flex-basis: max(calc((18 / 77) * 70%), 1px);" ></div> 18 </li>
+  <li> <span class="label">Principal Engineer</span> <div class="bar" style="flex-basis: max(calc((10 / 77) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">CEO</span> <div class="bar" style="flex-basis: max(calc((9 / 77) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">CTO</span> <div class="bar" style="flex-basis: max(calc((9 / 77) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">Software Architect</span> <div class="bar" style="flex-basis: max(calc((6 / 77) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Consultant</span> <div class="bar" style="flex-basis: max(calc((5 / 77) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Start-up founder</span> <div class="bar" style="flex-basis: max(calc((5 / 77) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Engineering Manager</span> <div class="bar" style="flex-basis: max(calc((4 / 77) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Staff Engineer</span> <div class="bar" style="flex-basis: max(calc((4 / 77) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Other</span> <div class="bar" style="flex-basis: max(calc((17 / 77) * 70%), 1px);" ></div> 17 </li>
+</ol>
+```
+
+Director of Engineering, Head of Engineering, Maker, Infrastructure engineer,
+Student each got 2 responses.  Security engineer, Intern, Data engineer,
+Lecturer, Teaching Assistant, Security Manager, and Agile Coach each got 1
+response.
+
+Lots of experience and seniority on show here again!
+
+---
+
+### Which programming languages do you use?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">JavaScript</span> <div class="bar" style="flex-basis: max(calc((140 / 140) * 70%), 1px);" ></div> 140 </li>
+  <li> <span class="label">Elixir</span> <div class="bar" style="flex-basis: max(calc((123 / 140) * 70%), 1px);" ></div> 123 </li>
+  <li> <span class="label">TypeScript</span> <div class="bar" style="flex-basis: max(calc((120 / 140) * 70%), 1px);" ></div> 120 </li>
+  <li> <span class="label">Rust</span> <div class="bar" style="flex-basis: max(calc((93 / 140) * 70%), 1px);" ></div> 93 </li>
+  <li> <span class="label">Python</span> <div class="bar" style="flex-basis: max(calc((83 / 140) * 70%), 1px);" ></div> 83 </li>
+  <li> <span class="label">Go</span> <div class="bar" style="flex-basis: max(calc((54 / 140) * 70%), 1px);" ></div> 54 </li>
+  <li> <span class="label">Erlang</span> <div class="bar" style="flex-basis: max(calc((48 / 140) * 70%), 1px);" ></div> 48 </li>
+  <li> <span class="label">Ruby</span> <div class="bar" style="flex-basis: max(calc((47 / 140) * 70%), 1px);" ></div> 47 </li>
+  <li> <span class="label">Elm</span> <div class="bar" style="flex-basis: max(calc((39 / 140) * 70%), 1px);" ></div> 39 </li>
+  <li> <span class="label">Java</span> <div class="bar" style="flex-basis: max(calc((37 / 140) * 70%), 1px);" ></div> 37 </li>
+  <li> <span class="label">C</span> <div class="bar" style="flex-basis: max(calc((36 / 140) * 70%), 1px);" ></div> 36 </li>
+  <li> <span class="label">Haskell</span> <div class="bar" style="flex-basis: max(calc((30 / 140) * 70%), 1px);" ></div> 30 </li>
+  <li> <span class="label">Kotlin</span> <div class="bar" style="flex-basis: max(calc((23 / 140) * 70%), 1px);" ></div> 23 </li>
+  <li> <span class="label">Lisp</span> <div class="bar" style="flex-basis: max(calc((22 / 140) * 70%), 1px);" ></div> 22 </li>
+  <li> <span class="label">C++</span> <div class="bar" style="flex-basis: max(calc((20 / 140) * 70%), 1px);" ></div> 20 </li>
+  <li> <span class="label">C#</span> <div class="bar" style="flex-basis: max(calc((17 / 140) * 70%), 1px);" ></div> 17 </li>
+  <li> <span class="label">PHP</span> <div class="bar" style="flex-basis: max(calc((17 / 140) * 70%), 1px);" ></div> 17 </li>
+  <li> <span class="label">OCaml</span> <div class="bar" style="flex-basis: max(calc((14 / 140) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">Scala</span> <div class="bar" style="flex-basis: max(calc((12 / 140) * 70%), 1px);" ></div> 12 </li>
+  <li> <span class="label">Other</span> <div class="bar" style="flex-basis: max(calc((55 / 140) * 70%), 1px);" ></div> 55 </li>
+</ol>
+```
+
+F# got 8 responses, Julia got 7 responses, Clojure got 4 responses, and Nix got
+3 responses. Crystal, Prolog, Zig, Ada, Dart, GDScript, and PureScript got 2
+responses, and BQN, CSS, HTML, Jakt, Lean, Mercury, Nushell, Perl,
+Racket, Ren, SML, and SQL got 1 response.
+
+No surprise with Elixir making a very strong showing here! Though I was
+not expecting to see more Rustaceans and Gophers than Erlangers.
+
+---
+
+### What operating systems do you use for development?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Linux</span> <div class="bar" style="flex-basis: max(calc((149 / 149) * 70%), 1px);" ></div> 149 </li>
+  <li> <span class="label">macOS</span> <div class="bar" style="flex-basis: max(calc((118 / 149) * 70%), 1px);" ></div> 118 </li>
+  <li> <span class="label">Windows</span> <div class="bar" style="flex-basis: max(calc((45 / 149) * 70%), 1px);" ></div> 45 </li>
+  <li> <span class="label">OpenBSD</span> <div class="bar" style="flex-basis: max(calc((3 / 149) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Illumos</span> <div class="bar" style="flex-basis: max(calc((1 / 149) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">FreeBSD</span> <div class="bar" style="flex-basis: max(calc((1 / 149) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Embedded RTOS</span> <div class="bar" style="flex-basis: max(calc((1 / 149) * 70%), 1px);" ></div> 1 </li>
+</ol>
+```
+
+I think sometimes it can be easy for projects to assume that developers will be
+on macOS, so this is a good reminder that all platforms must have an excellent
+development experience.
+
+---
+
+### What operating systems do you use in production?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Linux</span> <div class="bar" style="flex-basis: max(calc((193 / 193) * 70%), 1px);" ></div> 193 </li>
+  <li> <span class="label">Windows</span> <div class="bar" style="flex-basis: max(calc((10 / 193) * 70%), 1px);" ></div> 10 </li>
+  <li> <span class="label">macOS</span> <div class="bar" style="flex-basis: max(calc((7 / 193) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">OpenBSD</span> <div class="bar" style="flex-basis: max(calc((4 / 193) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">FreeBSD</span> <div class="bar" style="flex-basis: max(calc((2 / 193) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">Embedded RTOS</span> <div class="bar" style="flex-basis: max(calc((2 / 193) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">iOS</span> <div class="bar" style="flex-basis: max(calc((1 / 193) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Illumos</span> <div class="bar" style="flex-basis: max(calc((1 / 193) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Android</span> <div class="bar" style="flex-basis: max(calc((1 / 193) * 70%), 1px);" ></div> 1 </li>
+</ol>
+```
+
+Good to see a range of operating systems in production too. I'd love to have
+have the Gleam test suite also run on OpenBSD and FreeBSD, but unfortunately
+GitHub Actions doesn't support these platforms.
+
+---
+
+## Using Gleam
+
+This set of questions is about the participants' experience using Gleam and
+participating in the community.
+
+---
+
+### When did you first hear about Gleam?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Less than 1 month ago</span> <div class="bar" style="flex-basis: max(calc((6 / 128) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">1 to 6 months ago</span> <div class="bar" style="flex-basis: max(calc((27 / 128) * 70%), 1px);" ></div> 27 </li>
+  <li> <span class="label">6 months to 1 year ago</span> <div class="bar" style="flex-basis: max(calc((45 / 128) * 70%), 1px);" ></div> 45 </li>
+  <li> <span class="label">More than 1 year ago</span> <div class="bar" style="flex-basis: max(calc((128 / 128) * 70%), 1px);" ></div> 128 </li>
+</ol>
+```
+
+Another question where we probably should have given more options! We
+underestimated how long people have been following the project.
+
+---
+
+### When did you start using Gleam?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Haven't started yet</span> <div class="bar" style="flex-basis: max(calc((114 / 114) * 70%), 1px);" ></div> 114 </li>
+  <li> <span class="label">Less than 1 month</span> <div class="bar" style="flex-basis: max(calc((22 / 114) * 70%), 1px);" ></div> 22 </li>
+  <li> <span class="label">1 to 6 months</span> <div class="bar" style="flex-basis: max(calc((30 / 114) * 70%), 1px);" ></div> 30 </li>
+  <li> <span class="label">6 months to 1 year</span> <div class="bar" style="flex-basis: max(calc((18 / 114) * 70%), 1px);" ></div> 18 </li>
+  <li> <span class="label">1 year to 2 years</span> <div class="bar" style="flex-basis: max(calc((9 / 114) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">More than 2 years</span> <div class="bar" style="flex-basis: max(calc((12 / 114) * 70%), 1px);" ></div> 12 </li>
+</ol>
+```
+
+56% of respondents haven't started using Gleam yet. Gleam is a young language so
+this is to be expected, hopefully we'll have much more users next year.
+
+---
+
+### What Gleam compiler targets do you use?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Erlang only</span> <div class="bar" style="flex-basis: max(calc((66 / 66) * 70%), 1px);" ></div> 66 </li>
+  <li> <span class="label">Erlang & JavaScript</span> <div class="bar" style="flex-basis: max(calc((18 / 66) * 70%), 1px);" ></div> 18 </li>
+  <li> <span class="label">JavaScript only</span> <div class="bar" style="flex-basis: max(calc((3 / 66) * 70%), 1px);" ></div> 3 </li>
+</ol>
+```
+
+When the JavaScript target was first created it was seen as a value-add to the
+"default" Erlang target, so it is cool to see people using it by itself.
+
+---
+
+### Why do you like Gleam?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">Types</span> <div class="bar" style="flex-basis: max(calc((143 / 143) * 70%), 1px);" ></div> 143 </li>
+  <li> <span class="label">BEAM / OTP</span> <div class="bar" style="flex-basis: max(calc((92 / 143) * 70%), 1px);" ></div> 92 </li>
+  <li> <span class="label">Syntax</span> <div class="bar" style="flex-basis: max(calc((37 / 143) * 70%), 1px);" ></div> 37 </li>
+  <li> <span class="label">Simplicity</span> <div class="bar" style="flex-basis: max(calc((28 / 143) * 70%), 1px);" ></div> 28 </li>
+  <li> <span class="label">Interoperability</span> <div class="bar" style="flex-basis: max(calc((20 / 143) * 70%), 1px);" ></div> 20 </li>
+  <li> <span class="label">Friendliness</span> <div class="bar" style="flex-basis: max(calc((18 / 143) * 70%), 1px);" ></div> 18 </li>
+  <li> <span class="label">Tooling</span> <div class="bar" style="flex-basis: max(calc((15 / 143) * 70%), 1px);" ></div> 15 </li>
+  <li> <span class="label">Community</span> <div class="bar" style="flex-basis: max(calc((14 / 143) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">ML influence</span> <div class="bar" style="flex-basis: max(calc((13 / 143) * 70%), 1px);" ></div> 13 </li>
+  <li> <span class="label">Rust influence</span> <div class="bar" style="flex-basis: max(calc((13 / 143) * 70%), 1px);" ></div> 13 </li>
+  <li> <span class="label">Functional programming</span> <div class="bar" style="flex-basis: max(calc((12 / 143) * 70%), 1px);" ></div> 12 </li>
+  <li> <span class="label">JavaScript target</span> <div class="bar" style="flex-basis: max(calc((11 / 143) * 70%), 1px);" ></div> 11 </li>
+  <li> <span class="label">Language design</span> <div class="bar" style="flex-basis: max(calc((9 / 143) * 70%), 1px);" ></div> 9 </li>
+  <li> <span class="label">Louis, Gleam's creator</span> <div class="bar" style="flex-basis: max(calc((8 / 143) * 70%), 1px);" ></div> 8 </li>
+  <li> <span class="label">Elm influence</span> <div class="bar" style="flex-basis: max(calc((7 / 143) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Elixir influence</span> <div class="bar" style="flex-basis: max(calc((6 / 143) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Developer experience</span> <div class="bar" style="flex-basis: max(calc((5 / 143) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Pattern matching</span> <div class="bar" style="flex-basis: max(calc((5 / 143) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Pragmatism</span> <div class="bar" style="flex-basis: max(calc((5 / 143) * 70%), 1px);" ></div> 5 </li>
+  <li> <span class="label">Immutability</span> <div class="bar" style="flex-basis: max(calc((4 / 143) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Branding</span> <div class="bar" style="flex-basis: max(calc((3 / 143) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Documentation</span> <div class="bar" style="flex-basis: max(calc((3 / 143) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Everything!</span> <div class="bar" style="flex-basis: max(calc((1 / 143) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">It's gay</span> <div class="bar" style="flex-basis: max(calc((1 / 143) * 70%), 1px);" ></div> 1 </li>
+</ol>
+```
+
+Thank you everyone for the kind words! I'm glad you like Gleam.
+
+Predictably the static type system and the Erlang VM are the most popular
+characteristics of Gleam, and I'm pleased that all the work we've put into
+making Gleam as simple and consistent as possible is resonating with people.
+
+When I started Gleam I had the opinion that syntax largely did not matter much,
+and we had an ML language style syntax. After a good amount of feedback I
+relented and put a lot of work into making a new syntax that would hopefully
+feel approachable to anyone familiar with a mainstream language. Judging by the
+results here that work has paid off! The syntax is now one of the most popular
+characteristics of Gleam.
+
+<sup>
+Also, thank you to the peeps who said I'm one of the things they like about Gleam :)
+</sup>
+
+---
+
+### What Gleam merchandise would you be interested in?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">T-shirts</span> <div class="bar" style="flex-basis: max(calc((78 / 78) * 70%), 1px);" ></div> 78 </li>
+  <li> <span class="label">Stickers</span> <div class="bar" style="flex-basis: max(calc((65 / 78) * 70%), 1px);" ></div> 65 </li>
+  <li> <span class="label">Hoodies</span> <div class="bar" style="flex-basis: max(calc((52 / 78) * 70%), 1px);" ></div> 52 </li>
+  <li> <span class="label">Mugs</span> <div class="bar" style="flex-basis: max(calc((38 / 78) * 70%), 1px);" ></div> 38 </li>
+  <li> <span class="label">Enamel pins</span> <div class="bar" style="flex-basis: max(calc((19 / 78) * 70%), 1px);" ></div> 19 </li>
+  <li> <span class="label">Earings</span> <div class="bar" style="flex-basis: max(calc((16 / 78) * 70%), 1px);" ></div> 16 </li>
+  <li> <span class="label">Notepads</span> <div class="bar" style="flex-basis: max(calc((14 / 78) * 70%), 1px);" ></div> 14 </li>
+  <li> <span class="label">Leggings</span> <div class="bar" style="flex-basis: max(calc((7 / 78) * 70%), 1px);" ></div> 7 </li>
+  <li> <span class="label">Socks</span> <div class="bar" style="flex-basis: max(calc((3 / 78) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">Butt plugs</span> <div class="bar" style="flex-basis: max(calc((1 / 78) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Hats</span> <div class="bar" style="flex-basis: max(calc((1 / 78) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Plushies</span> <div class="bar" style="flex-basis: max(calc((1 / 78) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Sweat pants</span> <div class="bar" style="flex-basis: max(calc((1 / 78) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Temporary tattoos</span> <div class="bar" style="flex-basis: max(calc((1 / 78) * 70%), 1px);" ></div> 1 </li>
+</ol>
+```
+
+People have been asking for Gleam merchandise for a while now, so this helps us
+understand what sort of things people would be interested in.
+
+I don't know if I can make butt plugs, but I'll try my best.
+
+---
+
+
+### Where do you get your Gleam news?
+
+``` =html
+<ol class="bar-chart">
+  <li> <span class="label">The Gleam Discord Server</span> <div class="bar" style="flex-basis: max(calc((87 / 87) * 70%), 1px);" ></div> 87 </li>
+  <li> <span class="label">@gleamlang on Twitter</span> <div class="bar" style="flex-basis: max(calc((80 / 87) * 70%), 1px);" ></div> 80 </li>
+  <li> <span class="label">@louispilfold on Twitter</span> <div class="bar" style="flex-basis: max(calc((69 / 87) * 70%), 1px);" ></div> 69 </li>
+  <li> <span class="label">reddit.com/r/gleamlang</span> <div class="bar" style="flex-basis: max(calc((51 / 87) * 70%), 1px);" ></div> 51 </li>
+  <li> <span class="label">GitHub</span> <div class="bar" style="flex-basis: max(calc((41 / 87) * 70%), 1px);" ></div> 41 </li>
+  <li> <span class="label">Erlang Forums</span> <div class="bar" style="flex-basis: max(calc((19 / 87) * 70%), 1px);" ></div> 19 </li>
+  <li> <span class="label">lobste.rs</span> <div class="bar" style="flex-basis: max(calc((11 / 87) * 70%), 1px);" ></div> 11 </li>
+  <li> <span class="label">gleam.run</span> <div class="bar" style="flex-basis: max(calc((6 / 87) * 70%), 1px);" ></div> 6 </li>
+  <li> <span class="label">Hacker News</span> <div class="bar" style="flex-basis: max(calc((4 / 87) * 70%), 1px);" ></div> 4 </li>
+  <li> <span class="label">Elixir Forum</span> <div class="bar" style="flex-basis: max(calc((3 / 87) * 70%), 1px);" ></div> 3 </li>
+  <li> <span class="label">reddit.com/r/programming</span> <div class="bar" style="flex-basis: max(calc((2 / 87) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">reddit.com/r/elixir</span> <div class="bar" style="flex-basis: max(calc((2 / 87) * 70%), 1px);" ></div> 2 </li>
+  <li> <span class="label">The Fediverse</span> <div class="bar" style="flex-basis: max(calc((1 / 87) * 70%), 1px);" ></div> 1 </li>
+  <li> <span class="label">Elm Slack</span> <div class="bar" style="flex-basis: max(calc((1 / 87) * 70%), 1px);" ></div> 1 </li>
+</ol>
+```
+
+The [Gleam Discord Server](https://discord.gg/Fm8Pwmy) continues to be an
+excellent place for Gleamers to hang out ✨
+
+---
+
+
+And that's all! Once again thank you to everyone who took the time to fill out
+the survey, it has been a great help. See you next year!
+
+[src]: https://github.com/gleam-lang/developer-survey/

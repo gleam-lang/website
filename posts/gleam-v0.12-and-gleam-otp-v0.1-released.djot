@@ -1,0 +1,404 @@
+It's halloween and time for another Gleam release! This time it's an extra
+special release as it also includes the first version of [Gleam's type safe
+actor system][gleam-otp], compatible with Erlang's OTP.
+
+[gleam-otp]: https://github.com/gleam-lang/otp
+
+## Mutual recursion
+
+Historically functions in Gleam had to be defined in a module prior to being used.
+
+```gleam
+pub fn main() {
+  helper() // Compile error! Function `helper` not found
+}
+
+fn helper() {
+  0
+}
+```
+
+This has proven to be an annoyance as even though our code _should_ compile
+(all the required functions have been defined in the module) the compiler
+won't succeed unless we carefully maintain a specific order of functions in
+the module.
+
+This limitation also forced the programmer to write any helper functions at
+the top of the file, before the functions that make use of them. Many people
+like to write their code in the opposite order with their entry-point at the
+top (such as a `main` function), and then helper functions below. That way
+the module reads top-to-bottom, introducing new functions in the order they
+are used.
+
+Lastly it also meant that two functions could not call each other, making
+useful techniques such as mutual recursion impossible.
+
+With this release statements in a module can be written in any order, and
+they still don't require any type annotations to be fully type checked.
+
+```gleam
+pub fn barry() {
+  io.println("To you!")
+  paul()
+}
+
+pub fn paul() {
+  io.println("To me!")
+  barry()
+}
+```
+
+That's the only major change to the language this time. For a full list of
+changes see the [compiler changelog][compiler-changelog].
+
+[compiler-changelog]: https://github.com/gleam-lang/gleam/blob/main/CHANGELOG.md#v0120-rc4---2020-10-31.
+
+Next up, Gleam's new type safe actor system!
+
+## Gleam OTP
+
+Gleam's actor system is built with a few primary goals:
+
+- Full type safety of actors and messages.
+- Be compatible with Erlang's OTP actor framework.
+- Provide fault tolerance and self-healing through supervisors.
+- Have equivalent performance to Erlang's OTP.
+
+Two notable non-goals are that we are not explicitly supporting the BEAM's
+hot code upgrades, and we do not provide type safety for distributed
+computing where two BEAM nodes on different computers send messages to each
+other.
+
+The core concepts of Gleam OTP are processes, channels, actors, and
+supervisors. Let's take a look at each of them.
+
+### Processes
+
+The core concurrency primitive in Gleam OTP is the process, which is a
+lightweight green thread implemented by the BEAM virtual machine. These
+processes are extremely cheap to create and run, and a single BEAM instance
+can happily run millions of processes at the same time. It's highly
+sophisticated preemptive scheduler will ensure they make full use of all the
+cores of the CPU, and no malicious or buggy process can block others from
+running.
+
+There's a wealth of information online about the BEAM's processes so we won't
+cover it all here, but know that Gleam's actor system performs well thanks to
+decades of excellent work by the Erlang community.
+
+Use processes in Gleam we import the [`gleam/otp/process`][docs-process] module which
+provides functions for creating and working with them.
+
+[docs-process]: https://hexdocs.pm/gleam_otp/0.1.1/gleam/otp/process/
+
+```gleam
+import gleam/io
+import gleam/otp/process
+
+pub fn main() {
+  process.start(fn() {
+    io.println("Hello from the new process!")
+  })
+
+  io.println("Hello from the parent process!")
+}
+```
+
+In this code snippet we create a new process using the
+[`process.start`][docs-process-start] function, before printing a message to
+the console.
+
+[docs-process-start]: https://hexdocs.pm/gleam_otp/0.1.1/gleam/otp/process/#start
+
+The newly created process also prints a message, but because the two
+processes run asynchronously (and likely run on different CPU cores) we don't
+know which will be printed first. It could be the new one first, or it could
+be the parent, and it could be different each time the program runs.
+
+One important thing to note is that there's no need for an `async/await`
+syntax or callbacks. Asynchronous code in Gleam looks exactly the same to
+regular synchronous code and doesn't require any special types such as
+futures or promises.
+
+This should hopefully feel familiar to people familiar with concurrent
+programming in languages such as Erlang, Elixir, and Go.
+
+### Channels
+
+It's not good enough to merely be able to create processes, we need processes
+to be able to communicate and cooperate. Erlang and Gleam don't have mutable
+state so locks and shared mutable state is not an option- instead Gleam uses
+channels.
+
+Channels allow one process to send a message to another in a type safe
+fashion, and they may be familiar to Go and Rust programmers.
+
+A channel is made of a [`Sender`][docs-sender], which messages as sent into,
+and a [`Receiver`][docs-receiver], which messages are pulled out of by the
+channel owner process.
+
+[docs-sender]: https://hexdocs.pm/gleam_otp/0.1.1/gleam/otp/process/#Sender
+[docs-receiver]: https://hexdocs.pm/gleam_otp/0.1.1/gleam/otp/process/#Receiver
+
+```gleam
+import gleam/io
+import gleam/otp/process
+
+pub fn main() {
+  // Create a new channel owned by the current process
+  let tuple(sender, receiver) = process.new_channel()
+
+  process.start(fn() {
+    io.println("Hello from the new process!")
+    // Send a message to the parent process
+    process.send(sender, "Done")
+  })
+
+  // Receive a message from the child, waiting up to 100ms
+  process.receive(receiver, 100) // This returns Ok("Done")
+  io.println("Hello from the parent process!")
+}
+```
+
+Here the code has been updated to use a channel to coordinate the processes.
+The parent process creates a channel and waits for the child to send a
+message over the channel before printing. Because of this we know that the
+child process will now always print to the console before the parent does.
+
+Here we're just using a simple string message to synchronize processes but
+any type we want can be sent over channel, enabling sharing of data in
+concurrent programs.
+
+The Gleam compiler can full type check channels. Because the message sent
+with the sender is a `String` the compiler knows messages pulled from the
+receiver must also be strings and will print a helpful error with any program
+that doesn't use these messages correctly.
+
+### Actors
+
+In programs written in Erlang using OTP we tend to not use raw processes
+frequently, instead we use a higher level abstraction called `gen_server`
+that builds upon a process to provide additional features making it more
+suited to being used in a long-lived Erlang application. Gleam is similar,
+though our higher level abstraction is called [`actor`][docs-actor] and
+differs in design to `gen_server` in order to provide type safety.
+
+[docs-actor]: https://hexdocs.pm/gleam_otp/0.1.1/gleam/otp/actor/
+
+```gleam
+import gleam/io
+import gleam/otp/actor
+import gleam/otp/process.{Sender}
+
+pub type Message {
+  Request(reply_channel: Sender(String))
+}
+
+pub fn main() {
+  let actor = actor.start(0, handle_message)
+
+  // Send a message to the child and wait for a response
+  process.call(actor, Request, 100) // This returns Ok("Done")
+  io.println("Hello from the parent process!")
+}
+
+fn handle_message(msg: Message, state) {
+  io.println("The actor got a message")
+  process.send(msg.reply_channel, "Done")
+  actor.Continue(state)
+}
+```
+
+Here the code has been adapted to use an actor rather than a low-level
+process, and instead of explicitly creating a new channel we use the
+[`call`][docs-call] function. This function is similar to Erlang's
+`gen_server:call` in that it provides a way to send a message to a process
+and then wait until a reply is received.
+
+[docs-call]: https://hexdocs.pm/gleam_otp/0.1.1/gleam/otp/process/#call
+
+Since an actor is being used here rather than a raw process it doesn't shut
+down after running the function once, instead the handler function is called
+once per message received and the actor continues to run until either it is
+requested to shut down or it returns `actor.Stop` from its handler function.
+
+Any of OTP's debug or system messages sent to the actor are automatically
+handled by the actor implementation, while they would need to be manually
+handled when using a raw process.
+
+### Supervisors
+
+Supervisors are special actors that start other actors and then monitor them
+to ensure they are healthy. If one of the children crashes the supervisor
+restarts it along with any younger children, restoring the program to a
+healthy state now that any transient problems have ended.
+
+If the problem is not transient and the child continues to crash then the
+supervisor will shut down and then the supervisor's supervisor can attempt a
+restart now that more possibly invalid or corrupt state has been reset.
+
+By using this supervision functionality OTP applications can achieve high
+reliability by shedding state in an incremental fashion until the program
+self-heals. This is kind-of similar to how Kubernetes and other container
+orchestrators handle failure in microservices, though faster and more precise
+thanks to it being integrated at all levels of the program.
+
+```gleam
+import gleam/otp/supervisor.{add, returning, worker}
+import my_app/monitoring
+import my_app/database
+import my_app/web
+
+pub fn main() {
+  supervisor.start(fn(children) {
+    children
+    |> add(worker(database.start))
+    |> add(worker(monitoring.start))
+    |> add(worker(web.start))
+  })
+}
+```
+
+Here we have a supervisor for a pretend Gleam web application. It has 3
+children of the type `worker`, a database connection, an actor responsible
+for monitoring, and a HTTP handling actor. If we were adding a supervisor
+child we could use the `supervisor` function instead of `worker`.
+
+### Going forward
+
+Gleam OTP v0.1 is the result of approaching 2 years of research and
+implementation, mostly focusing on how to strike a good balance between type
+safety and compatibility with existing Erlang OTP patterns.
+
+Rather than build on top of Erlang's `supervisor` and `gen_server` Gleam OTP
+has a small core written in Erlang which implements the `Receiver` half of
+channels, and the rest is implemented in Gleam. Thanks to this we can have
+greater confidence in the viability of the core abstractions as they have
+been sufficient to implement the rest of Gleam OTP in a type safe fashion.
+
+These APIs (particularly supervisor) are experimental and open to breaking
+changes as we discover new ways to improve them, but we've reach a point
+where we can start writing programs using it.
+
+If you write something using Gleam OTP please do get in touch and let us know
+how you find it!
+
+## Discord chat
+
+Lastly, we've got a new home for the community! The Gleam IRC channel has
+been replaced by the Gleam Discord chat server to great success. Since
+opening we've seen a big increase in activity and lots of new exciting Gleam
+projects. If you'd like to join [click here!](https://discord.gg/Fm8Pwmy).
+
+## Try it out
+
+If you want to try out the new version of Gleam head over to the [installation
+page][installation]. I'd love to hear how you find it and get your feedback so
+Gleam can continue to improve.
+
+Want to view some existing Gleam projects? Head on over to the
+[awesome-gleam][awesome-gleam] list. Looking for something to build in
+Gleam? Check out [the suggestions tracker][suggestions].
+
+[awesome-gleam]: https://github.com/gleam-lang/awesome-gleam
+[suggestions]: https://github.com/gleam-lang/suggestions/issues
+[installation]: https://gleam.run/getting-started/
+
+
+## Supporting Gleam
+
+If you would like to help make strongly typed programming on the Erlang
+virtual machine a production-ready reality please consider **[sponsoring
+Gleam][sponsor]** via the GitHub Sponsors program.
+
+[sponsor]: https://github.com/sponsors/lpil
+
+This release would not have been possible without the support of all the
+people who have [sponsored](https://github.com/sponsors/lpil) and contributed
+to it, so a huge thank you to them.
+
+Lastly, a huge thank you to the contributors to and sponsors of Gleam since
+last release!
+
+- [Adam Bowen](https://github.com/adamnbowen)
+- [Adam Mokan](https://github.com/amokan)
+- [Al Dee](https://github.com/scripttease)
+- [Arian Daneshvar](https://github.com/bees)
+- [Arno Dirlam](https://github.com/arnodirlam)
+- [Bangash](https://github.com/DevotionGeo)
+- [Ben Myles](https://github.com/benmyles)
+- [Bernardo Amorim](https://github.com/bamorim)
+- [Bruno Dusausoy](https://github.com/bdusauso)
+- [Bruno Michel](https://github.com/nono)
+- [Chris Young](https://github.com/worldofchris)
+- [Christian Meunier](https://github.com/tlvenn)
+- [Christian Wesselhoeft](https://github.com/xtian)
+- [clangley](https://github.com/clangley)
+- [Clever Bunny LTD](https://github.com/cleverbunny)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Connor Schembor](https://github.com/cschembor3)
+- [Dan Mueller](https://github.com/unthought)
+- [Dave Lucia](https://github.com/davydog187)
+- [David McKay](https://github.com/rawkode)
+- [eeeli24](https://github.com/eeeli24)
+- [Eric Meadows-Jönsson](https://github.com/ericmj)
+- [Erik Terpstra](https://github.com/eterps)
+- [Florian Kraft](https://github.com/floriank)
+- [Guilherme Pasqualino](https://github.com/ggpasqualino)
+- [Hendrik Richter](https://github.com/hendi)
+- [Herdy Handoko](https://github.com/hhandoko)
+- [human154](https://github.com/human154)
+- Ian González
+- [Ingmar Gagen](https://github.com/igagen)
+- [Isac Sund](https://github.com/isacsund)
+- [Ivar Vong](https://github.com/ivarvong)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jechol Lee](https://github.com/jechol)
+- [John Palgut](https://github.com/Jwsonic)
+- [José Valim](https://github.com/josevalim)
+- [Lars Lillo Ulvestad](https://github.com/kodeFant)
+- [Lars Wikman](https://github.com/lawik)
+- [Leandro Cesquini Pereira](https://github.com/leandrocp)
+- [mario](https://github.com/mario-mazo)
+- [Mario Vellandi](https://github.com/mvellandi)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Mark Molnar](https://github.com/molnarmark)
+- [Mark Spink](https://github.com/codebay)
+- [Markus](https://github.com/markusfeyh)
+- [Markus Hechenberger](https://github.com/derhechi)
+- [Matthew Cheely](https://github.com/MattCheely)
+- [Michael Bausano](https://github.com/bausano)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michał Łępicki](https://github.com/michallepicki)
+- [Mike Janger](https://github.com/inchingforward)
+- [Mike Roach](https://github.com/mroach)
+- [Milad](https://github.com/slashmili)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Pete Jodo](https://github.com/PeteJodo)
+- [Peter](https://github.com/CrowdHailer)
+- [Raphael Megzari](https://github.com/happysalada)
+- [René Klačan](https://github.com/reneklacan)
+- [RJ Dellecese](https://github.com/rjdellecese)
+- [Robin Mattheussen](https://github.com/romatthe)
+- [Sam Aaron](https://github.com/samaaron)
+- [Santi Lertsumran](https://github.com/mrgleam)
+- [Sasan Hezarkhani](https://github.com/gootik)
+- [Sascha Wolf](https://github.com/sascha-wolf)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian Porto](https://github.com/sporto)
+- [Shane Sveller](https://github.com/shanesveller)
+- [sharno](https://github.com/sharno)
+- [Shritesh Bhattarai](https://github.com/shritesh)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [Sven Marquardt](https://github.com/MaSven)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Tim Buchwaldt](https://github.com/timbuchwaldt)
+- [Tom Whatmore](https://github.com/tomwhatmore)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Tyler Wilcock](https://github.com/twilco)
+- [Wojtek Mach](https://github.com/wojtekmach)
+
+Thanks for reading! Have fun! 💜

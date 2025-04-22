@@ -1,0 +1,283 @@
+Thanks to all our new contributors Gleam's development is faster than ever and
+it's time for another release! Let's take a look.
+
+
+## Improved error handling
+
+The main way that errors are represented and handled in Gleam is through the
+Result type. It's baked into the language itself, but if you were to implement
+it in a library it would be implemented like so:
+
+```gleam
+pub type Result(success_value, failure_detail) {
+  Ok(success_value)
+  Error(failure_detail)
+}
+```
+
+If a function can fail then it returns a Result, wrapping a successful return
+value in an Ok record, or returning detail on the failure in an Error record
+if it's not successful.
+
+```gleam
+// parse_int(String) -> Result(Int, String)
+
+parse_int("123") // -> Ok(123)
+parse_int("erl") // -> Error("expected a number, got `erl`")
+```
+
+When a function returns a Result we can pattern match on it to handle success
+and failure:
+
+```gleam
+case parse_int("123") {
+  Error(e) -> io.println("That wasn't an Int")
+  Ok(i) -> io.println("We parsed the Int")
+}
+```
+
+This works but if you need to handle multiple Result values in the same
+function then it becomes verbose, and the error handling obscures the business
+logic.
+
+```gleam
+case parse_int(a) {
+  Error(e) -> Error(e)
+  Ok(int_a) -> case parse_int(b) {
+    Error(e) -> Error(e)
+    Ok(int_b) -> Ok(int_a) -> case parse_int(c) {
+      Error(e) -> Error(e)
+      Ok(int_c) -> Ok(int_a + int_b + int_c)
+    }
+  }
+}
+```
+
+With this release Gleam now has the `try` keyword which makes error handling
+easier and more concise. Rewritten using `try` the previous example looks like
+this:
+
+```gleam
+try int_a = parse_int(a)
+try int_b = parse_int(b)
+try int_c = parse_int(c)
+Ok(int_a + int_b + int_c)
+```
+
+When a variable is declared using `try` Gleam checks to see whether the value
+is an Error or an Ok record. If it's an Ok then the inner value is assigned to
+the variable:
+
+```gleam
+try x = Ok(1)
+Ok(x + 1)
+// -> Ok(2)
+```
+If it's an Error then the Error is returned immediately:
+
+```gleam
+try x = Error("failure")
+Ok(x + 1)
+// -> Error("failure")
+```
+
+We've been testing `try` in our applications for a while and we're very happy
+with how it cleans up error handling. Why not give it a try? 😜
+
+
+## Opaque types
+
+Gleam's new opaque type feature allows a library writer to export a custom
+type without exporting the internal details of the type.
+
+```gleam
+// in src/box.gleam
+pub opaque type Box {
+  Box(inner_value: Int)
+}
+
+pub fn new(x: Int) -> Box {
+  Box(inner_value: x)
+}
+```
+
+If another module imports this custom type they will be able to create a `Box`
+using the `new` function, but they cannot call the `Box` constructor, use the
+`.inner_value` accessor, or pattern match on a Box to get the inner value.
+
+```gleam
+import box
+
+let one = box.new(1) // This is permitted
+one.inner_value      // Compile error!
+let box.Box(i) = one // Compile error!
+box.Box(1)           // Compile error!
+```
+
+This feature is great for creating a carefully controlled API for your data
+types, hiding any private implementation details to ensure that they are used
+correctly, which brings us to the next features:
+
+
+## Standard library additions
+
+The standard library has gained a wealth of new modules, types, and functions.
+Here's some of the highlights, some of which were made possible with the new
+opaque type feature.
+
+### Iterator
+
+The new Iterator type is a lazily evaluated sequence of elements, similar to
+the Stream type in Elixir.
+
+Iterators are useful when working with collections that are too large to fit
+in memory (or those that are infinite in size) as they only require the
+elements currently being processed to be in memory.
+
+Here we can see the Iterator type used to create an infinitely long sequence
+of Ints, which is then mapped over, and the first 5 elements are evaluated.
+
+```gleam
+import gleam/iterator
+
+let double = fn(x) { x * 2 }
+
+[1, 2, 3]
+|> iterator.from_list   // Create a 3 element iterator
+|> iterator.cycle       // Repeat the iterator forever
+|> iterator.map(double) // Double each element
+|> iterator.take(5)     // Evaluate the first 5 elements
+// -> [2, 4, 6, 2, 4]
+```
+
+Because Iterators are lazy even though this Iterator has infinite size the
+`double` function is only called 5 times.
+
+For more information see the [iterator
+documentation](https://hexdocs.pm/gleam_stdlib/gleam/iterator/).
+
+
+### Set
+
+A Set is a collection value. Unlike a List, it is unordered, cannot contain
+duplicate values, and finding a value in a Set is very fast.
+
+```gleam
+import gleam/set
+
+let pop_band = set.new(["Iris", "Karl", "Priya"])
+
+set.contains(pop_band, "Iris")
+// -> True
+
+set.contains(pop_band, "Martin")
+// -> False
+```
+
+For more information see the [set
+documentation](https://hexdocs.pm/gleam_stdlib/gleam/set/).
+
+
+### Queue
+
+A Queue is an ordered collection of elements. It's similar to a List, however
+it's fast to add and remove from both ends of a queue, while a list can only
+be quickly accessed from the front.
+
+```gleam
+import gleam/queue
+
+queue.new()
+|> queue.push_front(1)
+|> queue.push_front(2)
+|> queue.push_back(3)
+|> queue.push_back(4)
+|> queue.to_list
+// -> [2, 1, 3, 4]
+```
+
+For more information see the [queue
+documentation](https://hexdocs.pm/gleam_stdlib/gleam/queue/).
+
+
+### Option
+
+Option is a type used to represent values which may be present or absent,
+making it similar to nullable values in other languages. It's defined like so:
+
+```gleam
+pub type Option(a) {
+  Some(a)
+  None
+}
+```
+
+If an optional Int "`some_int`" is present it's represented as
+`Some(the_int)`, while if it's absent it's `None`.
+
+For more information see the [option
+documentation](https://hexdocs.pm/gleam_stdlib/gleam/option/).
+
+
+## The rest
+
+Other additions to the standard library include an `io` module, additions to
+the `result`, `dynamic`, `list`, and `string` modules, and some changes to
+labels to make them more consistent. For full details see [the
+changelog](https://github.com/gleam-lang/stdlib/blob/master/CHANGELOG.md#090---2020-05-26).
+
+Other additions to the compiler include improvements to the formatter style,
+the ability to include additional markdown pages in generated code
+documentation, initial support for Elixir's `mix` build tool, type annotations
+on `let` + `assert` + `try`, custom type support in case clause guards, and
+several bug fixes. For more info see [the changelog](https://github.com/gleam-lang/gleam/blob/master/CHANGELOG.md#v090---2020-06-01)
+
+
+## Thanks
+
+It would not have been possible to have a release this big without the support
+of all [Gleam's sponsors](https://github.com/sponsors/lpil) and contributors,
+so a huge thank you to them:
+
+- [Al Dee](https://github.com/scripttease)
+- [Arian Daneshvar](https://github.com/bees)
+- [Arno Dirlam](https://github.com/arnodirlam)
+- [Bruno Dusausoy](https://github.com/bdusauso)
+- [Bruno Michel](https://github.com/nono)
+- [Bryan Paxton](https://github.com/starbelly)
+- [BSKY](https://github.com/imbsky)
+- [Chris Young](https://github.com/worldofchris)
+- [Christian Wesselhoeft](https://github.com/xtian)
+- [Clever Bunny LTD](https://github.com/cleverbunny)
+- [David cao](https://github.com/davecaos)
+- [Erik Terpstra](https://github.com/eterps)
+- [Fernando Briano](https://github.com/picandocodigo)
+- [Hasan YILDIZ](https://github.com/hsnyildiz)
+- [Hécate](https://github.com/Kleidukos)
+- [John Palgut](https://github.com/Jwsonic)
+- [José Valim](https://github.com/josevalim)
+- [Kasim Tuman](https://github.com/oneness)
+- [kyle-sammons](https://github.com/kyle-sammons)
+- [Lars Wikman](https://github.com/lawik)
+- [Michael Borohovski](https://github.com/borski)
+- [ontofractal](https://github.com/ontofractal)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Peter Saxton](https://github.com/CrowdHailer)
+- [Quinn Wilton](https://github.com/QuinnWilton)
+- [Regan Heath](https://github.com/reganheath)
+- [Sasan Hezarkhani](https://github.com/gootik)
+- [Sascha Wolf](https://github.com/sascha-wolf)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Sebastian Porto](https://github.com/sporto)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [Sylvan Morris](https://github.com/skrapi)
+- [Tom Whatmore](https://github.com/tomwhatmore)
+- [Tyler Wilcock](https://github.com/twilco)
+
+If you would like to help make strongly typed programming on the Erlang
+virtual machine a production-ready reality please consider **[sponsoring
+Gleam][sponsor]** via the GitHub Sponsors program.
+
+Thanks for reading! Have fun! 💜
+
+[sponsor]: https://github.com/sponsors/lpil

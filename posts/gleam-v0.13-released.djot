@@ -1,0 +1,585 @@
+``` =html
+<style>
+details h3 {
+  margin-top: 16px;
+}
+details code {
+  font-size: 16px;
+}
+</style>
+```
+
+It's a new year and there's a new [Gleam release][release]! Let's take a look
+at what this one brings.
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v0.13.0
+
+## Gotta go fast
+
+The compiler was no slouch but with this new version it's faster than ever
+thanks to improvements to the Gleam and Erlang code generators, as well as a
+full rewrite of the parser by [Greg](https://gitlab.com/greggreg).
+
+With these changes compiling Gleam code is 1.8 times faster, and formatting
+Gleam code is a super nimble 4.6 times faster! On my machine Gleam compiling
+the standard library now takes ~170ms, and formatting all the files takes ~70ms.
+
+This is only the start. Gleam compilation is currently single threaded and
+doesn't make use of any caching, so there's lots of opportunities to make big
+performance improvements in future.
+
+## Even better errors
+
+Greg's parser rewrite wasn't just about performance, it also greatly improved
+the error messages caused by syntax errors. Here are some examples to click through:
+
+``` =html
+<details open>
+<summary>
+Operator with a naked right side
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:17:1
+   │
+17 │ }
+   │ ^ Unexpected token
+
+Expected one of "<<", "[", "[]", "case", "fn(", "todo", "todo(", "tuple", "{", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
+```
+
+### Now
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:16:17
+   │
+16 │     1 + 10 / 20 *
+   │                 ^ This operator has no value on its right side.
+
+Hint: Remove it or put a value after it.
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Using ( ) as expression grouping
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:29:17
+   │
+29 │     let b = 1 + (4 / 2)
+   │                 ^ Unexpected token
+
+Expected one of "<<", "[", "[]", "case", "fn(", "todo", "todo(", "tuple", "{", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
+```
+
+### Now
+
+```
+error: Syntax errorr
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:29:17
+   │
+29 │     let b = 1 + (4 / 2)
+   │                 ^ This paren cannot be understood here.
+
+Hint: To group expressions in gleam use "{" and "}"
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Trying to import a reserved word
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/one.gleam:1:8
+  │
+1 │ import todo/mod
+  │        ^^^^ Unexpected token
+
+Expected one of r#"[a-z][0-9a-z_]*"#
+```
+
+### Now
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/one.gleam:1:8
+  │
+1 │ import todo/mod
+  │        ^^^^ This is a reserved word.
+
+Hint: I was expecting to see a name here.
+See: https://gleam.run/book/tour/reserved-words
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Using a type name in place of a module
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/parser_test.gleam:1:8
+  │
+1 │ import Other
+  │        ^^^^^ Unexpected token
+
+Expected one of r#"[a-z][0-9a-z_]*"#
+```
+
+### Now
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/parser_test.gleam:1:8
+  │
+1 │ import Other
+  │        ^^^^^ I'm expecting a lowercase name here.
+
+Hint: Variable and module names start with a lowercase letter, and can contain a-z, 0-9, or _.
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Extra separator anywhere
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/parser_test.gleam:1:23
+  │
+1 │ const cc: tuple(a, b, ,) = 1
+  │                       ^ Unexpected token
+
+Expected one of ")", "fn(", "tuple", r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#, r#"_([a-z][0-9a-z_]*)?"#
+```
+
+### Now
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:13:38
+   │
+13 │ pub external fn a(name: String, Int, ,) -> Bool =
+   │                                      ^ This is an extra delimiter.
+
+Hint: Try removing it?
+```
+
+etc.
+
+
+``` =html
+</details>
+<details>
+<summary>
+Function in module constant type
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:10:49
+   │
+10 │ const c: fn() -> String = fn(){ "hi" }
+   │                           ^^^ Unexpected token
+
+Expected one of ")", "<<", "[", "]", "tuple", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
+```
+
+### Now
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/parser_test.gleam:1:9
+  │
+1 │ const c = fn(){ "Hi" }
+  │           ^^ Functions are not allowed in module constants.
+
+See: https://gleam.run/book/tour/constants
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Custom type with no constructors
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/parser_test.gleam:6:13
+  │
+6 │ pub type A {}
+  │             ^ Unexpected token
+
+Expected one of r#"[A-Z][0-9A-Za-z]*"#
+```
+
+### Now
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/parser_test.gleam:6:10
+  │
+6 │ pub type A {}
+  │          ^ Custom types must have at least 1 constructor.
+
+See: https://gleam.run/book/tour/custom-types
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Unterminated strings
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:16:11
+   │
+16 │   let a = "hello
+   │           ^ Unknown token
+
+I don't know what this character means. Is it a typo?
+```
+
+### Now
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:16:11
+   │
+16 │   let a = "hello
+   │           ^ The string starting here was left open.
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Empty block
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:29:14
+   │
+29 │     let b = {}
+   │              ^ Unexpected token
+
+Expected one of "<<", "[", "[]", "assert", "case", "fn(", "let", "todo", "todo(", "try", "tuple", "{", r#"\"(([^\\\\\"]|\\\\.)*)\""#, r#"-?[0-9](_*[0-9])*\\.[0-9]*"#, r#"-[0-9](_*[0-9])*"#, r#"0b[0-1](_*[0-1])*"#, r#"0o[0-7](_*[0-7])*"#, r#"0x[0-9A-Fa-f](_*[0-9A-Fa-f])*"#, r#"[0-9](_*[0-9])*"#, r#"[A-Z][0-9A-Za-z]*"#, r#"[a-z][0-9a-z_]*"#
+```
+
+### Now
+
+```
+error: Syntax error
+   ┌─ /Users/a/parser_test/src/parser_test.gleam:29:13
+   │
+29 │     let b = {}
+   │             ^^ There must be an expression in here.
+
+Hint: Put an expression in there or remove the brackets.
+```
+
+``` =html
+</details>
+<details>
+<summary>
+Opaque type alias
+</summary>
+```
+
+### Before
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/one.gleam:1:19
+  │
+1 │ pub opaque type A = String
+  │                   ^ Unexpected token
+
+Expected one of "{"
+```
+
+### Now
+
+```
+error: Syntax error
+  ┌─ /Users/a/parser_test/src/one.gleam:1:1
+  │
+1 │ pub opaque type A = String
+  │ ^^^^^^^^^^^^^^^^^ Type Aliases cannot be opaque
+
+See: https://gleam.run/book/tour/type-aliases
+```
+
+``` =html
+</details>
+```
+
+## Type safe division
+
+Division is a tricky problem thanks to the number zero. In mathematics the
+result of dividing any non-zero number by zero is undefined, making it is a
+question with no answer.
+
+Sadly as programmers we can't leave it undefined, have to do something. At
+some point some code will be written that divides by zero, so what should the
+language do when that happens? There are largely three options:
+
+1. Throw an exception
+2. Return `Infinity`
+3. Return zero
+
+Throwing an exception is the approach taken by Erlang and other BEAM
+languages, and historically this is the approach taken by Gleam. However,
+there is a problem.
+
+Gleam aims to be an exception free language, and the `assert` keyword is
+intended as being the only way to crash a process. Errors should be
+represented by the type system, so it is not in keeping with the design and
+goals of the language for division to sometimes crash when dividing numbers.
+
+Languages such as JavaScript that follow IEEE 754 return an `Infinity` value
+when dividing by zero, which may be positive or negative. This is a familiar
+solution to many programmers, and it fits well with Gleam's "never implicitly
+crash" goal.
+
+Unfortunately there is no `Infinity` value on the Erlang virtual so Gleam
+would have to implement this. While possible this would cause problems with
+Erlang and Elixir interop- we could no longer safely pass Gleam numbers to
+Erlang functions as they may be this special `Infinity` value, which would
+likely cause a crash. The same problem would occur when calling Gleam code
+from Erlang or Elixir, resulting in adding Gleam libraries to your Erlang or
+Elixir application being less appealling.
+
+The last option is to follow in the footsteps of languages such as Pony,
+Isabelle, Lean and Coq and return zero. This might seem strange at first, but
+it is type safe, allows us to maintain good interop with other BEAM
+languages, and is representable on any other platform we might target in
+future.
+
+In Gleam dividing by zero returns zero!
+
+```gleam
+1337 / 0 // => 0
+```
+
+## Improved documentation
+
+Gleam has the ability to render [HTML
+documentation](https://hexdocs.pm/gleam_stdlib/) for your code, ready to
+upload to Hexdocs.
+
+Thanks to [Michael Jones](https://github.com/michaeljones) documentation for
+functions and types can automatically insert links to GitHub, GitLab, or
+BitBucket so you can quickly see how they are implemented.
+
+![A screenshot of Gleam's rendered docs showing a link to source code](/img/gleam-0-13-docs-link.jpg)
+
+Let us know if you use another source code hosts and would like support added too.
+
+Following up from that [Michał Łępicki](https://github.com/michallepicki)
+added a version selector so that you can quickly find the documentation for
+the version of the library you are using. This dropdown is integrated with
+Hexdocs so it will display all versions of the library, rather than just
+earlier ones.
+
+![A screenshot of Gleam's rendered docs showing a version selector](/img/gleam-0-13-docs-version.jpg)
+
+## Other stuff
+
+These are just some of the highlights, but there's plenty more improvements
+made to the compiler and the standard library since the last release. For all
+the details check out the changelog files:
+
+- [Gleam's changelog](https://github.com/gleam-lang/gleam/blob/main/CHANGELOG.md)
+- [Gleam stdlib's changelog](https://github.com/gleam-lang/stdlib/blob/main/CHANGELOG.md)
+
+## Discord chat
+
+Since our creation of the Gleam Discord server the community has been more
+active than ever. It has been great to have so many members of the community
+there, building a helpful and friendly atmosphere. If you'd like to join
+click on the button below.
+
+``` =html
+<center>
+  <a href="https://discord.gg/Fm8Pwmy"><img src="https://img.shields.io/discord/768594524158427167?color=blue" alt="Discord chat"></a>
+</center>
+```
+
+## Try it out
+
+If you want to try out the new version of Gleam head over to the [getting started
+page][getting-started]. I'd love to hear how you find it and get your feedback so
+Gleam can continue to improve.
+
+Want to view some existing Gleam projects? Head on over to the
+[awesome-gleam][awesome-gleam] list. Looking for something to build in
+Gleam? Check out [the suggestions tracker][suggestions].
+
+And why not [give us a star](https://github.com/gleam-lang/) on GitHub? 😊
+
+[awesome-gleam]: https://github.com/gleam-lang/awesome-gleam
+[suggestions]: https://github.com/gleam-lang/suggestions/issues
+[getting-started]: https://gleam.run/getting-started/
+
+
+## Supporting Gleam
+
+If you would like to help make strongly typed programming on the Erlang
+virtual machine a production-ready reality please consider **[sponsoring
+Gleam][sponsor]** via the GitHub Sponsors program.
+
+[sponsor]: https://github.com/sponsors/lpil
+
+This release would not have been possible without the support of all the
+people who have [sponsored](https://github.com/sponsors/lpil) and contributed
+to it, so a huge thank you to them.
+
+- [Adam Bowen](https://github.com/adamnbowen)
+- [Adam Mokan](https://github.com/amokan)
+- [Al Dee](https://github.com/scripttease)
+- [Ali Farhadi](https://github.com/farhadi)
+- [Arian Daneshvar](https://github.com/bees)
+- [Arno Dirlam](https://github.com/arnodirlam)
+- [Ben Myles](https://github.com/benmyles)
+- [Bernardo Amorim](https://github.com/bamorim)
+- [bossek](https://github.com/bossek)
+- [Bruno Michel](https://github.com/nono)
+- [Bryan Naegele](https://github.com/bryannaegele)
+- [Chris Young](https://github.com/worldofchris)
+- [Christian Meunier](https://github.com/tlvenn)
+- [clangley](https://github.com/clangley)
+- [Clever Bunny LTD](https://github.com/cleverbunny)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Connor Schembor](https://github.com/cschembor3)
+- [Dan Mueller](https://github.com/unthought)
+- [Dave Lage](https://github.com/rockerBOO)
+- [Dave Lucia](https://github.com/davydog187)
+- [David McKay](https://github.com/rawkode)
+- [David Pedersen](https://github.com/davidpdrsn)
+- [Dennis Dang](https://github.com/dangdennis)
+- [drew](https://github.com/drewolson)
+- [Drew Varner](https://github.com/varnerac)
+- [Edman Anjos](https://github.com/edman)
+- [Eric Meadows-Jönsson](https://github.com/ericmj)
+- [Erik Terpstra](https://github.com/eterps)
+- [Florian Kraft](https://github.com/floriank)
+- [Galaxy-Coding](https://github.com/Galaxy-Coding)
+- [Greg Baraghimian](https://github.com/itsgreggreg)
+- [Guilherme Pasqualino](https://github.com/ggpasqualino)
+- [Hendrik Richter](https://github.com/hendi)
+- [Herdy Handoko](https://github.com/hhandoko)
+- [human154](https://github.com/human154)
+- [Ian González](https://github.com/Ian-GL)
+- [Ingmar Gagen](https://github.com/igagen)
+- [Istvan](https://github.com/l1x)
+- [Ivar Vong](https://github.com/ivarvong)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jechol Lee](https://github.com/jechol)
+- [Jérémy Pagé](https://github.com/jpagex)
+- [jiangplus](https://github.com/jiangplus)
+- [Joe Corkerton](https://github.com/joecorkerton)
+- [John Palgut](https://github.com/Jwsonic)
+- [José Valim](https://github.com/josevalim)
+- [Jussi Norlund](https://github.com/jmn)
+- [Lars Lillo Ulvestad](https://github.com/kodeFant)
+- [Lars Wikman](https://github.com/lawik)
+- [Leandro Cesquini Pereira](https://github.com/leandrocp)
+- [Lucas Rosa](https://github.com/rvcas)
+- [Luna](https://github.com/lun-4)
+- [mario](https://github.com/mario-mazo)
+- [Mario Vellandi](https://github.com/mvellandi)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Markus](https://github.com/markusfeyh)
+- [Markus Hechenberger](https://github.com/derhechi)
+- [Matthew Cheely](https://github.com/MattCheely)
+- Matthew Cheely
+- [Max Nordlund](https://github.com/maxnordlund)
+- [Merlin Webster](https://github.com/mjftw)
+- [Michael Bausano](https://github.com/bausano)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michał Łępicki](https://github.com/michallepicki)
+- [Mike Lapping](https://github.com/mlapping)
+- [Mike Roach](https://github.com/mroach)
+- [Milad](https://github.com/slashmili)
+- [Neil Lyons](https://github.com/nwjlyons)
+- [Nick Cernis](https://github.com/nickcernis)
+- [Nick Reynolds](https://github.com/ndreynolds)
+- [Parker Selbert](https://github.com/sorentwo)
+- [Patrick Ryan](https://github.com/phiat)
+- [Pete Jodo](https://github.com/PeteJodo)
+- [Peter Saxton](https://github.com/CrowdHailer)
+- [qingliangcn](https://github.com/qingliangcn)
+- [Quinn Wilton](https://github.com/QuinnWilton)
+- [Raphael Megzari](https://github.com/happysalada)
+- [René Klačan](https://github.com/reneklacan)
+- [rinsuki](https://github.com/rinsuki)
+- [Robin Mattheussen](https://github.com/romatthe)
+- [Ryan Haskell-Glatz](https://github.com/ryannhg)
+- [Sam Aaron](https://github.com/samaaron)
+- [Sasan Hezarkhani](https://github.com/gootik)
+- [Sascha Wolf](https://github.com/sascha-wolf)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Wey](https://github.com/scottwey)
+- [Sean Jensen-Grey](https://github.com/seanjensengrey)
+- [Sebastian Porto](https://github.com/sporto)
+- [SEKUN](https://github.com/imsekun)
+- [Shane Sveller](https://github.com/shanesveller)
+- [Shritesh Bhattarai](https://github.com/shritesh)
+- [Simone Vittori](https://github.com/simonewebdesign)
+- [sjqtentacles](https://github.com/sjqtentacles)
+- [Terje Bakken](https://github.com/terkiterje)
+- [Tim Buchwaldt](https://github.com/timbuchwaldt)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [Tomochika Hara](https://github.com/thara)
+- [Topher Hunt](https://github.com/topherhunt)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Tyler Wilcock](https://github.com/twilco)
+- [Wilson Silva](https://github.com/wilsonsilva)
+- [Wojtek Mach](https://github.com/wojtekmach)
+
+Thanks for reading! Have fun! 💜
