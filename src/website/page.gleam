@@ -160,7 +160,7 @@ brew install gleam
     html.p([], [
       html.a([attr.href("https://github.com/asdf-vm/asdf")], [html.text("asdf")]),
       html.text(
-        "is a tool for installing and managing
+        " is a tool for installing and managing
 multiple versions of programming languages at the same time. Install the
 ",
       ),
@@ -168,7 +168,7 @@ multiple versions of programming languages at the same time. Install the
         html.text("asdf-gleam plugin"),
       ]),
       html.text(
-        "to manage Gleam with
+        " to manage Gleam with
 asdf.",
       ),
     ]),
