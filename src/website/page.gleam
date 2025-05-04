@@ -679,13 +679,8 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
     html.p([], [
       html.a([attr.href("https://fly.io")], [html.text("Fly.io")]),
       html.text(
-        " is a convenient and easy to use deployment platform with a generous ",
-      ),
-      html.a([attr.href("https://fly.io/docs/about/pricing/")], [
-        html.text("free allowance"),
-      ]),
-      html.text(
-        ". They were also a sponsor of the Gleam project, thank you Fly!",
+        " is a convenient and easy to use deployment platform. They were also a
+sponsor of the Gleam project, thank you Fly!",
       ),
     ]),
     html.h2([attr.id("prepare-your-application")], [
@@ -765,13 +760,6 @@ CMD [\"run\"]
 fly auth login
 ",
     ),
-    html.p([], [
-      html.text(
-        "Fly’s free allowance is enough to run the Gleam application but new accounts
-need a payment card to be added, to prevent people from abusing Fly’s free
-service.",
-      ),
-    ]),
     html.h2([attr.id("deploy-the-application")], [
       html.text("Deploy the application"),
     ]),
