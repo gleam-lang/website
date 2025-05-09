@@ -4012,7 +4012,6 @@ fn highlighted_dockerfile_pre_code(code: String) -> Element(b) {
         "RUN" as command <> rest
         | "FROM" as command <> rest
         | "COPY" as command <> rest
-        | "FROM" as command <> rest
         | "WORKDIR" as command <> rest
         | "ENTRYPOINT" as command <> rest
         | "CMD" as command <> rest -> [
