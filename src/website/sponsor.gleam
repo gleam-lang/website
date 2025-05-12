@@ -299,6 +299,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/2291502?s=50&u=367ad7712549b320466e91233f79160515accacd&v=4",
   ),
   Sponsor(
+    name: "KamilaP",
+    url: "https://github.com/Kamila-P",
+    avatar: "https://avatars.githubusercontent.com/u/138579048?s=50&u=07e9db2b6fba7294af969fa513df82f2c1b06ebb&v=4",
+  ),
+  Sponsor(
     name: "Leonardo Donelli",
     url: "https://github.com/LeartS",
     avatar: "https://avatars.githubusercontent.com/u/5588738?s=50&u=ea3058178b90b21f04a327921c947a2b10f1c557&v=4",
@@ -1807,11 +1812,6 @@ pub const sponsors = [
     name: "tymak",
     url: "https://github.com/tymak",
     avatar: "https://avatars.githubusercontent.com/u/26909416?s=50&v=4",
-  ),
-  Sponsor(
-    name: "upsidedowncake",
-    url: "https://github.com/upsidedownsweetfood",
-    avatar: "https://avatars.githubusercontent.com/u/152233509?s=50&u=02a3e51780be8c54062f48b56defdc9d225c7606&v=4",
   ),
   Sponsor(
     name: "Ruslan Ustitc",
