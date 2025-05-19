@@ -3508,7 +3508,7 @@ pub fn main() {
           ]),
           html.p([], [
             html.text(
-              "Thanks to a multi-core actor based concurrency system that can run
+              "Thanks to it's multi-core actor based concurrency system that can run
               millions of concurrent tasks, fast immutable data structures, and a
               concurrent garbage collector that never stops the world, your service
               can scale and stay lightning fast with ease.",
