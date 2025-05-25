@@ -2261,22 +2261,18 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
     )
 
   let list_items =
-    list.map(posts, fn(post) {
+    list.index_map(posts, fn(post, index) {
       html.li([], [
         html.a([attr.href("/news/" <> post.path)], [
           html.h2([attr.class("links")], [html.text(post.title)]),
         ]),
         html.p([], [html.text(post.subtitle)]),
-        html.span([], [
-          html.text("Published " <> short_human_date(post.published) <> " by "),
-          html.a(
-            [
-              attr.href(post.author.url),
-              attr.target("_blank"),
-              attr.class("links author"),
-            ],
-            [html.text(post.author.name)],
-          ),
+        html.ul([class("news-meta")], [
+          html.li([], [
+            news_date_icon(index),
+            html.text(short_human_date(post.published)),
+          ]),
+          html.li([], [news_author_icon(index), html.text(post.author.name)]),
         ]),
       ])
     })
@@ -3003,84 +2999,88 @@ pub fn community(ctx: site.Context) -> fs.File {
   let code_of_conduct =
     "https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md"
   let content = [
-    html.p([], [
-      html.text(
-        "You can talk to and get help from other Gleam community members in the
+    html.article([class("prose")], [
+      html.p([], [
+        html.text(
+          "You can talk to and get help from other Gleam community members in the
         following forums:",
-      ),
-    ]),
-    html.ul([attr.class("community-socials")], [
-      html.li([], [
-        html.a(
-          [attr.href("https://discord.gg/Fm8Pwmy"), attr.target("_blank")],
-          [
-            html.span([attr.class("community-socials__logo")], [
-              html.img([
-                attr.alt("Discord Icon"),
-                attr.src("/images/community/discord.svg"),
-              ]),
-            ]),
-            html.span([], [html.text("Gleam’s web chat on Discord")]),
-          ],
         ),
       ]),
-      html.li([], [
-        html.a(
-          [
-            attr.href("https://github.com/gleam-lang/gleam/discussions"),
-            attr.target("_blank"),
-          ],
-          [
-            html.span([attr.class("community-socials__logo")], [
-              html.img([
-                attr.alt("GitHub Icon"),
-                attr.src("/images/community/github.svg"),
+      html.ul([attr.class("community-socials")], [
+        html.li([], [
+          html.a(
+            [attr.href("https://discord.gg/Fm8Pwmy"), attr.target("_blank")],
+            [
+              html.span([attr.class("community-socials__logo")], [
+                html.img([
+                  attr.alt("Discord Icon"),
+                  attr.src("/images/community/discord.svg"),
+                ]),
               ]),
-            ]),
-            html.span([], [html.text("Gleam discussions on Github")]),
-          ],
+              html.span([], [html.text("Gleam’s web chat on Discord")]),
+            ],
+          ),
+        ]),
+        html.li([], [
+          html.a(
+            [
+              attr.href("https://github.com/gleam-lang/gleam/discussions"),
+              attr.target("_blank"),
+            ],
+            [
+              html.span([attr.class("community-socials__logo")], [
+                html.img([
+                  attr.alt("GitHub Icon"),
+                  attr.src("/images/community/github.svg"),
+                ]),
+              ]),
+              html.span([], [html.text("Gleam discussions on Github")]),
+            ],
+          ),
+        ]),
+      ]),
+      html.p([], [
+        html.text(
+          "You can also subscribe to updates from community newsletter ",
         ),
+        html.a([attr.href("https://gleamweekly.com/")], [
+          html.text("Gleam Weekly"),
+        ]),
+        html.text("."),
       ]),
-    ]),
-    html.p([], [
-      html.text("You can also subscribe to updates from community newsletter "),
-      html.a([attr.href("https://gleamweekly.com/")], [
-        html.text("Gleam Weekly"),
-      ]),
-      html.text("."),
-    ]),
-    html.h2([], [html.text("Code of Conduct")]),
-    html.p([], [
-      html.text(
-        "The Gleam community is a space where we treat each other kindly and
+      html.h2([], [html.text("Code of Conduct")]),
+      html.p([], [
+        html.text(
+          "The Gleam community is a space where we treat each other kindly and
         with respect. Please read and adhere to our community ",
-      ),
-      html.a([attr.href(code_of_conduct)], [html.text("code of conduct")]),
-      html.text("."),
-    ]),
-    html.p([], [
-      html.text(
-        "If you need help or have encountered anyone violating our code of conduct
+        ),
+        html.a([attr.href(code_of_conduct)], [html.text("code of conduct")]),
+        html.text("."),
+      ]),
+      html.p([], [
+        html.text(
+          "If you need help or have encountered anyone violating our code of conduct
         please send a message to us via one of the channels below. We will ensure the
         issue is resolved and your identity will be kept private.",
-      ),
-    ]),
-    html.ul([], [
-      html.li([], [
-        html.text("Messaging the "),
-        html.code([], [html.text("@moderators")]),
-        html.text("group on the "),
-        html.a([attr.href("https://discord.gg/Fm8Pwmy")], [
-          html.text("Gleam Discord chat"),
-        ]),
-        html.text("."),
+        ),
       ]),
-      html.li([], [
-        html.text("Emailing "),
-        html.a([attr.href("mailto:hello@gleam.run")], [
-          html.text("hello@gleam.run"),
+      html.ul([], [
+        html.li([], [
+          html.text("Messaging the "),
+          html.code([], [html.text("@moderators")]),
+          html.text("group on the "),
+          html.a([attr.href("https://discord.gg/Fm8Pwmy")], [
+            html.text("Gleam Discord chat"),
+          ]),
+          html.text("."),
         ]),
-        html.text("."),
+        html.li([], [
+          html.text("Emailing "),
+          html.a([attr.href("mailto:hello@gleam.run")], [
+            html.text("hello@gleam.run"),
+          ]),
+          html.text("."),
+        ]),
       ]),
     ]),
   ]
@@ -4092,4 +4092,60 @@ fn highlighted_yaml_pre_code(code: String) -> Element(d) {
     |> list.intersperse([html.text("\n")])
     |> list.flatten
   html.pre([], [html.code([], html)])
+}
+
+fn news_date_icon(index: Int) {
+  svg.svg(
+    [
+      attr("xmlns", "http://www.w3.org/2000/svg"),
+      attr("viewBox", "0 0 16 17"),
+      attr("height", "17"),
+      attr("width", "16"),
+      attr("fill", "#949AB6"),
+    ],
+    [
+      case index {
+        0 ->
+          svg.path([
+            attr.id("newsDateIcon"),
+            attr(
+              "d",
+              "M3.75 0.5C3.94891 0.5 4.13968 0.579018 4.28033 0.71967C4.42098 0.860322 4.5 1.05109 4.5 1.25V2.5H11.5V1.25C11.5 1.05109 11.579 0.860322 11.7197 0.71967C11.8603 0.579018 12.0511 0.5 12.25 0.5C12.4489 0.5 12.6397 0.579018 12.7803 0.71967C12.921 0.860322 13 1.05109 13 1.25V2.5H13.25C13.9793 2.5 14.6788 2.78973 15.1945 3.30546C15.7103 3.82118 16 4.52065 16 5.25V13.75C16 14.4793 15.7103 15.1788 15.1945 15.6945C14.6788 16.2103 13.9793 16.5 13.25 16.5H2.75C2.02065 16.5 1.32118 16.2103 0.805456 15.6945C0.289731 15.1788 0 14.4793 0 13.75V5.25C0 4.52065 0.289731 3.82118 0.805456 3.30546C1.32118 2.78973 2.02065 2.5 2.75 2.5H3V1.25C3 1.05109 3.07902 0.860322 3.21967 0.71967C3.36032 0.579018 3.55109 0.5 3.75 0.5ZM2.75 6C2.06 6 1.5 6.56 1.5 7.25V13.75C1.5 14.44 2.06 15 2.75 15H13.25C13.94 15 14.5 14.44 14.5 13.75V7.25C14.5 6.56 13.94 6 13.25 6H2.75Z",
+            ),
+            attr("clip-rule", "evenodd"),
+            attr("fill-rule", "evenodd"),
+          ])
+        _ -> svg.use_([attr.href("#newsDateIcon")])
+      },
+    ],
+  )
+}
+
+fn news_author_icon(index: Int) {
+  svg.svg(
+    [
+      attr("xmlns", "http://www.w3.org/2000/svg"),
+      attr("fill", "none"),
+      attr("viewBox", "0 0 20 21"),
+      attr("height", "21"),
+      attr("width", "20"),
+      attr("stroke", "#949AB6"),
+    ],
+    [
+      case index {
+        0 ->
+          svg.path([
+            attr.id("newsAuthorIcon"),
+            attr("stroke-linejoin", "round"),
+            attr("stroke-linecap", "round"),
+            attr("stroke-width", "1.5"),
+            attr(
+              "d",
+              "M13.125 5.5C13.125 6.3288 12.7957 7.12366 12.2097 7.70971C11.6236 8.29576 10.8288 8.625 9.99999 8.625C9.17119 8.625 8.37633 8.29576 7.79028 7.70971C7.20423 7.12366 6.87499 6.3288 6.87499 5.5C6.87499 4.6712 7.20423 3.87634 7.79028 3.29029C8.37633 2.70424 9.17119 2.375 9.99999 2.375C10.8288 2.375 11.6236 2.70424 12.2097 3.29029C12.7957 3.87634 13.125 4.6712 13.125 5.5ZM3.75082 17.265C3.7776 15.6253 4.44777 14.0618 5.6168 12.9117C6.78584 11.7616 8.36006 11.1171 9.99999 11.1171C11.6399 11.1171 13.2141 11.7616 14.3832 12.9117C15.5522 14.0618 16.2224 15.6253 16.2492 17.265C14.2886 18.164 12.1568 18.6279 9.99999 18.625C7.76999 18.625 5.65332 18.1383 3.75082 17.265Z",
+            ),
+          ])
+        _ -> svg.use_([attr.href("#newsAuthorIcon")])
+      },
+    ],
+  )
 }
