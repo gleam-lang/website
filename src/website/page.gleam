@@ -1099,8 +1099,7 @@ compatible with your version constraints you can run ",
     ]),
     html.p([], [
       html.text(
-        "You can also use path dependencies to depend on packages on your computer rather
-than from Hex.",
+        "You can also use path dependencies to depend on packages on your computer rather than from Hex.",
       ),
     ]),
     highlighted_toml_pre_code(
@@ -1108,6 +1107,27 @@ than from Hex.",
 my_other_package = { path = \"../my_other_package\" }
 ",
     ),
+    html.p([], [
+      html.text(
+        "As well as git dependencies.",
+      ),
+    ]),
+    highlighted_toml_pre_code(
+      "[dependencies]
+my_git_library = { git = \"git@github.com:my-project/my-library\", ref = \"a8b3c5d82\" }
+latest_stdlib = { git = \"git@github.com:gleam-lang/stdlib\", ref = \"main\" }
+",
+    ),
+        html.p([],[
+      html.text("See: "),
+      html.a([attr.href("https://gleam.run/writing-gleam/gleam-toml")], [
+        html.text("gleam.toml"),
+      ]),
+      html.text(" definition for more information."),
+        ]),
+
+
+
     html.h2([attr.id("using-dependencies")], [html.text("Using dependencies")]),
     html.p([], [
       html.text("The "),
