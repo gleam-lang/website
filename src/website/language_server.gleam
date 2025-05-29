@@ -1255,9 +1255,7 @@ fn zed_installation_html() -> List(Element(Nil)) {
   [
     html.p([], [
       html.text(
-        "Zed supports the language server out-of-the-box. No additional configuration
-is required and Zed will automatically start the language server when a Gleam
-file is opened.",
+        "When a Gleam file is opened, Zed will suggest to install the Gleam plugin, once installed the language server will automatically be started when you open a Gleam file.",
       ),
     ]),
   ]
