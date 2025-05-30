@@ -7,6 +7,7 @@ import gleam/result
 import gleam/string
 import gleam/time/calendar
 import jot
+import just/highlight as just
 import snag
 import website/fs
 
@@ -14,11 +15,11 @@ pub fn all() -> snag.Result(List(NewsPost)) {
   io.print("Loading news posts: ")
   let posts = [
     read(
-      title: "Gleam gets 30% faster",
+      title: "Gleam JS gets 30% faster",
       subtitle: "Gleam v1.11.0 released",
       published: calendar.Date(2025, calendar.May, 21),
       author: louis,
-      path: "gleam-gets-30-percent-faster",
+      path: "gleam-javascript-gets-30-percent-faster",
     ),
     read(
       title: "Global rename and find references",
@@ -423,6 +424,10 @@ fn djot_to_html(string: String) -> String {
       case container {
         jot.Codeblock(language: option.Some("gleam"), content:, ..) -> {
           let content = contour.to_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("js"), content:, ..) -> {
+          let content = just.html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         jot.Codeblock(language: option.Some("diff"), content:, ..) -> {

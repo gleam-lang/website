@@ -5,6 +5,7 @@ import gleam/option
 import gleam/string
 import gleam/time/calendar
 import gleam/time/timestamp
+import just/highlight as just
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
@@ -3947,6 +3948,11 @@ fn wall_of_sponsors() -> Element(a) {
 
 pub fn highlighted_gleam_pre_code(code: String) -> Element(a) {
   let html = contour.to_html(code)
+  html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
+}
+
+pub fn highlighted_javascript_pre_code(code: String) -> Element(a) {
+  let html = just.html(code)
   html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
 }
 
