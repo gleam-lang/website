@@ -4,9 +4,7 @@ what's new:
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.11.0
 
-
-
-### Compiler
+## Pattern matching improvements
 
 - The compiler can now tell if some branches with bit array patterns are
   unreachable. For example, the following code:
@@ -60,6 +58,11 @@ what's new:
 
   ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
 
+- The compiler will not generate needless code for unused pattern variables.
+  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+
+## Labels in inexhaustive case expression errors
+
 - The compiler will now include labels in the error message when a `case`
   expression is inexhaustive. For example, this code:
 
@@ -98,232 +101,6 @@ what's new:
 
   ([Surya Rose](https://github.com/GearsDatapacks))
 
-- The analysis of lists, tuples, negation operators, `panic`, `echo` and `todo`
-  is now fault tolerant, meaning that the compiler will not stop reporting
-  errors as soon as it finds one.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The error message for types used with the wrong number of arguments has been
-  improved. For example, this piece of code:
-
-  ```gleam
-  type Wibble(a)
-
-  type Wobble {
-    Wobble(Wibble)
-  }
-  ```
-
-  Produces the following error:
-
-  ```txt
-    error: Incorrect arity
-    ┌─ /src/one/two.gleam:5:10
-    │
-  5 │   Wobble(Wibble)
-    │          ^^^^^^ Expected 1 type argument, got 0
-
-  `Wibble` requires 1 type argument but none where provided.
-  ```
-
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- You can now use the `assert` keyword by itself to test a boolean expression.
-  If the expression evaluates to `False` at runtime, the `assert` statement
-  will cause the program to panic, with information about the expression that
-  was asserted.
-
-  For example:
-
-  ```gleam
-  pub fn ok_error_test() {
-    assert result.is_ok(Ok(10))
-    assert result.is_error(Error("Some error"))
-    assert Ok(1) != Error(1)
-    assert result.is_error(Ok(42)) // panic: Assertion failed
-  }
-  ```
-
-  A custom panic message can also be provided in order to add extra information:
-
-  ```gleam
-  pub fn identity_test() {
-    assert function.identity(True) as "Identity of True should never be False"
-  }
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The compiler will now emit a warning when the return value of a call to a
-  function without side effects is unused. For example the following code:
-
-  ```gleam
-  fn add(a, b) { a + b }
-  ```
-
-  Will produce the following warning:
-
-  ```
-  warning: Unused value
-    ┌─ /src/main.gleam:4:3
-    │
-  4 │   add(1, 2)
-    │   ^^^^^^^^^ This value is never used
-
-  This expression computes a value without any side effects, but then the
-  value isn't used at all. You might want to assign it to a variable, or
-  delete the expression entirely if it's not needed.
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The compiler will now generate more efficient code for `let assert` on the
-  Erlang target.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The compiler will now reject bit array segment patterns whose constant size is
-  zero or negative. Previously a zero or negative sized segment would crash the
-  compiler.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The compiler will not generate needless code for unused pattern variables.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- Function parameters are now fault tolerant, meaning that type-checking can
-  continue to occur if a function references invalid type in its signature.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The compiler is now fault tolerant when analysing patterns for custom types,
-  meaning it won't stop at the first error it encounters (for example if a
-  constructor is wrong).
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- On the JavaScript target, bit arrays now support UTf-16 and UTF-32 string
-  segments.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- When an import with unqualified types and values is unused the compiler will
-  now raise a single warning for the entire import rather than warning for each
-  individual item.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-### Build tool
-
-- The build tool now supports placing modules in a directory called `dev`,
-  which like `test`, is only for development code.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- There is now a new CLI command, `gleam dev`, which runs the `$PACKAGE_dev`
-  module, for running development entrypoints.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- Updated the Erlang shipment POSIX entrypoint script to add an exec statement
-  so the Erlang process replaces the shell's process and can receive signals
-  when deployed.
-  ([Christopher De Vries](https://github.com/devries))
-
-- The build tool now provides additional information when printing warnings for
-  deprecated environment variables.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- When generating documentation, the build tool now prints type variable using
-  the same names as were used in the code for function signatures. For example,
-  this code:
-
-  ```gleam
-  pub fn from_list(entries: List(#(key, value))) -> Dict(key, value) {
-    ...
-  }
-  ```
-
-  Previously would have been printed as:
-
-  ```gleam
-  pub fn from_list(entries: List(#(a, b))) -> Dict(a, b)
-  ```
-
-  But now is rendered as the following:
-
-  ```gleam
-  pub fn from_list(entries: List(#(key, value))) -> Dict(key, value)
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- When generating documentation, types from other modules are now rendered with
-  their module qualifiers. Hovering over them shows the full path to their module.
-  For example, this code:
-
-  ```gleam
-  import gleam/dynamic/decode
-
-  pub fn something_decoder() -> decode.Decoder(Something) {
-    ...
-  }
-  ```
-
-  Will now generate the following documentation:
-
-  ```gleam
-  pub fn something_decoder() -> decode.Decoder(Something)
-  ```
-
-  And hovering over the `decode.Decoder` text will show the following:
-
-  ```txt
-  gleam/dynamic/decode.{type Decoder}
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- When generating documentation, types in rendered documentation code will now
-  link to their corresponding documentation pages.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- `gleam add` will now emit an error if you try to add a package as a dependency
-  of itself.
-  ([Louis Pilfold](https://github.com/lpil))
-
-- The build tool will now emit an error when compiling a package if the package
-  has a Gleam and Erlang file which would collide.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-### Language server
-
-- The code action to add missing labels to function now also works in patterns:
-
-  ```gleam
-  pub type Person {
-    Person(name: String, age: Int, job: String)
-  }
-
-  pub fn age(person: Person) {
-    let Person(age:) = person
-    age
-  }
-  ```
-
-  Becomes:
-
-  ```gleam
-  pub type Person {
-    Person(name: String, age: Int, job: String)
-  }
-
-  pub fn age(person: Person) {
-    let Person(age:, name:, job:) = person
-    age
-  }
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The JSON encoding function that the language server code action generates is
-  now named `$TYPENAME_to_json` instead of `encode_$TYPENAME`. This is to remove
-  ambiguity with functions that encode to other formats, and to make the
-  function easier to discover by searching.
-  ([Louis Pilfold](https://github.com/lpil))
-
 - The code action to add missing patterns to a `case` expression now includes
   labels in the generated patterns. For example:
 
@@ -358,31 +135,31 @@ what's new:
 
   ([Surya Rose](https://github.com/GearsDatapacks))
 
-- The language server now provides hover, autocomplete and goto definition
-  for constant definitions.
+
+## `gleam dev`
+
+- The build tool now supports placing modules in a directory called `dev`,
+  which like `test`, is only for development code.
   ([Surya Rose](https://github.com/GearsDatapacks))
 
-- The "generate function" code action can now choose better names based on the
-  labels and variables used. For example if I write the following code:
+- There is now a new CLI command, `gleam dev`, which runs the `$PACKAGE_dev`
+  module, for running development entrypoints.
+  ([Surya Rose](https://github.com/GearsDatapacks))
 
-  ```gleam
-  pub fn main() -> List(Int) {
-    let list = [1, 2, 3]
-    let number = 1
-    remove(each: number, in: list)
-  //^^^^ This function doesn't exist yet!
-  }
-  ```
+## Yet more fault tolerance
 
-  And ask the language server to generate the missing function, the generated
-  code will now look like this:
+- The analysis of lists, tuples, negation operators, `panic`, `echo` and `todo`
+  is now fault tolerant, meaning that the compiler will not stop reporting
+  errors as soon as it finds one.
+  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
 
-  ```gleam
-  fn remove(each number: Int, in list: List(Int)) -> List(Int) {
-    todo
-  }
-  ```
+- Function parameters are now fault tolerant, meaning that type-checking can
+  continue to occur if a function references invalid type in its signature.
+  ([Surya Rose](https://github.com/GearsDatapacks))
 
+- The compiler is now fault tolerant when analysing patterns for custom types,
+  meaning it won't stop at the first error it encounters (for example if a
+  constructor is wrong).
   ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
 
 - The language server now provides autocomplete suggestions for labels after
@@ -403,34 +180,261 @@ what's new:
 
   ([Surya Rose](https://github.com/GearsDatapacks))
 
-- The language server now provides a code action to automatically generate a new
-  variant from incorrect code:
+## Testing with `assert`
+
+- You can now use the `assert` keyword by itself to test a boolean expression.
+  If the expression evaluates to `False` at runtime, the `assert` statement
+  will cause the program to panic, with information about the expression that
+  was asserted.
+
+  For example:
 
   ```gleam
-  pub type Msg {
-    ServerSentResponse(Json)
-  }
-
-  pub fn view() -> Element(Msg) {
-    div([], [
-      button([on_click(UserPressedButton)], [text("Press me!")])
-  //                   ^^^^^^^^^^^^^^^^^ This doesn't exist yet!
-    ])
+  pub fn ok_error_test() {
+    assert result.is_ok(Ok(10))
+    assert result.is_error(Error("Some error"))
+    assert Ok(1) != Error(1)
+    assert result.is_error(Ok(42)) // panic: Assertion failed
   }
   ```
 
-  Triggering the code action on the `UserPressedButton` will add it to the `Msg`
-  type:
+  A custom panic message can also be provided in order to add extra information:
 
   ```gleam
-  pub type Msg {
-    ServerSentResponse(Json)
-    UserPressedButton
+  pub fn identity_test() {
+    assert function.identity(True) as "Identity of True should never be False"
   }
   ```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+  ([Surya Rose](https://github.com/GearsDatapacks))
 
+## Help with understanding immutability
+
+Gleam is an immutable language, which means that values are not updated
+in-place, instead new values are constructed with the desired changes. If you
+are familiar with mutable languages this may seem inefficient, but immutable 
+languages apply some [clever optimisations](https://en.wikipedia.org/wiki/Persistent_data_structure)
+to get excellent performance and memory usage.
+
+It's possible for people new to the immutable style to get confused,
+accidentally discarding the new updated version of some data. For example:
+
+```gleam
+pub fn run(token: String) {
+  let req = sdk.new_api_request()
+  request.set_header(req, "authentication", "Bearer " <> token)
+  http_client.send(req)
+}
+```
+
+Can you spot the bug?
+
+The `set_header` function returns a new request value, but it is not assigned
+to a variable or otherwise used, and the original request value without the
+`authentication` header is sent instead. The bug is fixed by passing the output
+of each function into the next one.
+
+```gleam
+pub fn run(token: String) {
+  sdk.new_api_request()
+  |> request.set_header("authentication", "Bearer " <> token)
+  |> http_client.send
+}
+```
+
+To help avoid this mistake the compiler will now emit a warning when a function
+without any side effects is called but the return value isn't used. For example
+the following code:
+
+```gleam
+fn add(a, b) { a + b }
+```
+
+Will produce the following warning:
+
+```
+warning: Unused value
+  ┌─ /src/main.gleam:4:3
+  │
+4 │   add(1, 2)
+  │   ^^^^^^^^^ This value is never used
+
+This expression computes a value without any side effects, but then the
+value isn't used at all. You might want to assign it to a variable, or
+delete the expression entirely if it's not needed.
+```
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## JavaScript array improvements
+
+Gleam has a powerful literal syntax for constructing and parsing binary data, a
+much loved feature common to BEAM languages. Gleam supports this syntax when
+compiling to Erlang or to JavaScript, but some aspects of the syntax were not
+yet usable. This release adds support for UTF-16 and UTF-32 encoded segments of
+data.
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Playing nicely with POSIX
+
+The Gleam build tool has a `gleam export erlang-shipment` command for compiling
+and preparing a project for deployment to a server or similar. It includes a
+script for starting the Erlang virtual machine and running the program, but
+unfortunately it was written in a way that meant that the program would not
+receive POSIX exit signals.
+
+[Christopher De Vries](https://github.com/devries) has fixed this problem.
+Thank you Christopher!
+
+## Generated documentation improvements
+
+When publishing a package to Hex, the BEAM ecosystem package repository, the
+Gleam build tool will generate and upload HTML documentation for the code.
+
+When generating documentation, the build tool now prints type variable using
+the same names as were used in the code for function signatures, making it
+easier to understand what these type parameters are. For example, previously
+this function would have been rendered like this:
+
+```gleam
+pub fn from_list(entries: List(#(a, b))) -> Dict(a, b)
+```
+
+But now is rendered as the following:
+
+```gleam
+pub fn from_list(entries: List(#(key, value))) -> Dict(key, value)
+```
+
+Another area of the documentation that has been improved is how types imported
+from other modules are displayed. These types are now displayed with their
+module qualifiers, and hovering over them shows the full module name. For
+example, this code:
+
+```gleam
+import gleam/dynamic/decode
+
+pub fn something_decoder() -> decode.Decoder(Something) {
+  ...
+}
+```
+
+Will now generate the following documentation:
+
+```gleam
+pub fn something_decoder() -> decode.Decoder(Something)
+```
+
+And hovering over the `decode.Decoder` text will show the following:
+
+```txt
+gleam/dynamic/decode.{type Decoder}
+```
+
+Clicking on `decode.Decoder` will take you to the documentation for that type.
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Fill labels code action for patterns
+
+The language server has a code action for filling in possible labels for a
+function or record. This can be a convenient time saver when writing code,
+especially if you can't immediately remember what labels the arguments use.
+
+This code action has been upgraded to also work with records in patterns. In
+this code the `Person` record pattern is missing two of its fields, so running
+the code action will add them for you.
+
+```diff
+pub type Person {
+  Person(name: String, age: Int, job: String)
+}
+
+pub fn age(person: Person) {
+- let Person(age:) = person
++ let Person(age:, name:, job:) = person
+  age
+}
+```
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Better language server support for constants
+
+Gleam's language server has historically been missing hover, autocompletion,
+and go-to definition for constants. [Surya Rose](https://github.com/GearsDatapacks)
+has corrected this by implementing these features for constants. Thank you
+Surya!
+
+## Generate function code action improvements
+
+Gleam's language server has a code action for generating the outline of a
+function that is used in the code but does not yet exist.
+
+It has been upgraded to now choose better argument names based on the labels
+and variables used. For example, if the code action is run on the undefined
+function `remove`:
+
+```gleam
+pub fn main() -> List(Int) {
+  let list = [1, 2, 3]
+  let number = 1
+  remove(each: number, in: list)
+//^^^^^^ This function doesn't exist yet!
+}
+```
+
+The language server to generate the outline of the missing function, and the
+generated code will look like this:
+
+```gleam
+fn remove(each number: Int, in list: List(Int)) -> List(Int) {
+  todo
+}
+```
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Generate variant code action
+
+The language server now provides a code action to automatically generate a new
+custom type variant, similar to the generate function code action.
+
+In this example the `UserPressedButton` variant does not exist, but the
+compiler can tell from the way that it is used that if it did exist it would be
+a variant of the `Msg` custom type.
+
+```gleam
+pub type Msg {
+  ServerSentResponse(Json)
+}
+
+pub fn view() -> Element(Msg) {
+  div([], [
+    button([on_click(UserPressedButton)], [text("Press me!")])
+    //               ^^^^^^^^^^^^^^^^^ This doesn't exist yet!
+  ])
+}
+```
+
+Triggering the code action on the `UserPressedButton` will add it to the `Msg`
+type:
+
+```gleam
+pub type Msg {
+  ServerSentResponse(Json)
+  UserPressedButton(String)
+}
+```
+
+The code action understood the code well enough to know that this new variant
+holds a string value, as that is what the `on_click` function does with it in
+this example. If the variant was used with labels then the labels would be
+included in the definition also.
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)! Another
+excellent code action for "top-down" style programmers.
 
 ## Remove unused imports code action improvements
 
