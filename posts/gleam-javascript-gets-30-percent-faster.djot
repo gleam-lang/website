@@ -1,10 +1,124 @@
 Gleam is a type-safe and scalable language for the Erlang virtual machine and
-JavaScript runtimes. Today Gleam [v1.11.0][release] has been published. Here's
-what's new:
+JavaScript runtimes. Today Gleam [v1.11.0][release] has been published.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.11.0
 
-## Pattern matching improvements
+## 30% faster? Really?
+
+The title of this article makes a bold claim: Gleam JavaScript being 30%
+faster! Gleam doesn't add any additional runtime to JavaScript, and the
+generated code is very much like the JavaScript a human would write, so this is
+an accomplishment we're very happy with.
+
+First, a benchmark. [Lustre](https://github.com/lustre-labs/lustre) is a
+frontend web framework for Gleam, is capable of both SPA style and LiveView
+style functionality, and has a virtual DOM implementation with comparable
+performance to established frameworks in other languages, such as React and Elm.
+It is one of the most widely used Gleam packages, and certainly the most widely
+used Gleam web framework.
+
+Lustre's virtual DOM diffing is implemented in Gleam, so improving its
+performance will benefit a great many Gleam users, and it will serve as a good
+benchmark to demonstrate the improvements. These charts show the number of
+operations per second for diffing HTML tables of various sizes (higher is
+better).
+
+``` =html
+<style>
+h4 {
+  margin-bottom: 0;
+}
+.bar-chart {
+  margin-top: var(--gap-1);
+}
+@media (min-width: 960px) {
+  h4 {
+    width: 150px;
+    text-align: right;
+  }
+  .bar-chart .label {
+    flex-basis: 150px;
+  }
+}
+</style>
+
+<h4>10 rows</h4>
+<ol class="bar-chart">
+  <li> <span class="label"><code>v1.10.0</code></span> <div class="bar" style="flex-basis: max(calc((142285  / 208149) * 70%), 1px);" ></div> 142k </li>
+  <li> <span class="label"><code>v1.11.0</code></span> <div class="bar" style="flex-basis: max(calc((208149  / 208149) * 70%), 1px);" ></div> 208k </li>
+</ol>
+
+<h4>100 rows</h4>
+<ol class="bar-chart">
+  <li> <span class="label"><code>v1.10.0</code></span> <div class="bar" style="flex-basis: max(calc((15927  / 21592) * 70%), 1px);" ></div> 15.9k </li>
+  <li> <span class="label"><code>v1.11.0</code></span> <div class="bar" style="flex-basis: max(calc((21592 / 21592) * 70%), 1px);" ></div> 21.5k </li>
+</ol>
+
+<h4>1000 rows</h4>
+<ol class="bar-chart">
+  <li> <span class="label"><code>v1.10.0</code></span> <div class="bar" style="flex-basis: max(calc((1521 / 2126) * 70%), 1px);" ></div> 1.5k </li>
+  <li> <span class="label"><code>v1.11.0</code></span> <div class="bar" style="flex-basis: max(calc((2126 / 2126) * 70%), 1px);" ></div> 2.1k </li>
+</ol>
+``` 
+
+Without any modification to Lustre itself it has got 30% faster! All other
+Gleam projects compiling to JavaScript can expect to similar performance
+improvements, with greater improvements to projects with more complex pattern
+matching.
+
+## OK, how does it work?
+
+Gleam has a single flow control construct, the case expression. It runs
+top-to-bottom checking to see which of the given patterns match the value.
+
+```gleam
+pub fn greet(person: Person) -> String {
+  case person {
+    Teacher(students: [], ..) -> "Hello! No students today?"
+    Student(name: "Daria", ..) -> "Hi Daria"
+    Student(subject: "Physics", ..) -> "Don't be late for Physics"
+    Teacher(name:, ..) | Student(name:, ..) -> "Hello, " <> name <> "!"
+  }
+}
+```
+
+```js
+export function greet(person) {
+  if (isTeacher(person) && person.students.hasLength(0)) {
+    return "Hello! No students today?";
+  } else if (isStudent(person) && person.name === "Daria") {
+    return "Hi Daria";
+  } else if (isStudent(person) && person.subject === "Physics") {
+    return "Don't be late for Physics";
+  } else if (isTeacher(person)) {
+    return "Hello, " + person.name + "!";
+  } else {
+    return "Hello, " + person.name + "!";
+  }
+}
+```
+
+```js
+export function greet(person) {
+  if (isTeacher(person)) {
+    if (isEmpty(person.students)) {
+      return "Hello! No students today?";
+    } else {
+      return "Hello, " + person.name + "!";
+    }
+  } else {
+    if (person.name === "Daria") {
+      return "Hi Daria";
+    } else {
+      if (person.subject === "Physics") {
+        return "Don't be late for Physics";
+      } else {
+        return "Hello, " + person.name + "!";
+      }
+    }
+  }
+}
+```
 
 - The compiler can now tell if some branches with bit array patterns are
   unreachable. For example, the following code:
@@ -61,80 +175,6 @@ what's new:
 - The compiler will not generate needless code for unused pattern variables.
   ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
 
-## Labels in inexhaustive case expression errors
-
-- The compiler will now include labels in the error message when a `case`
-  expression is inexhaustive. For example, this code:
-
-  ```gleam
-  pub type Person {
-    Person(name: String, age: Int)
-  }
-
-  pub fn classify(person: Person) {
-    case person {
-      Person(name: "John", age: 27) -> todo
-      Person(name: _, age: 42) -> todo
-    }
-  }
-  ```
-
-  Will produces this error:
-
-  ```
-  error: Inexhaustive patterns
-    ┌─ /src/main.gleam:6:3
-    │
-  6 │ ╭   case person {
-  7 │ │     Person(name: "John", age: 27) -> todo
-  8 │ │     Person(name: _, age: 42) -> todo
-  9 │ │   }
-    │ ╰───^
-
-  This case expression does not have a pattern for all possible values. If it
-  is run on one of the values without a pattern then it will crash.
-
-  The missing patterns are:
-
-      Person(name:, age:)
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The code action to add missing patterns to a `case` expression now includes
-  labels in the generated patterns. For example:
-
-  ```gleam
-  pub type Person {
-    Person(name: String, age: Int)
-  }
-
-  pub fn classify(person: Person) {
-    case person {
-      Person(name: "John", age: 27) -> todo
-      Person(name: _, age: 42) -> todo
-    }
-  }
-  ```
-
-  Will now become:
-
-  ```gleam
-  pub type Person {
-    Person(name: String, age: Int)
-  }
-
-  pub fn classify(person: Person) {
-    case person {
-      Person(name: "John", age: 27) -> todo
-      Person(name: _, age: 42) -> todo
-      Person(name:, age:) -> todo
-    }
-  }
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
 
 ## `gleam dev`
 
@@ -144,40 +184,6 @@ what's new:
 
 - There is now a new CLI command, `gleam dev`, which runs the `$PACKAGE_dev`
   module, for running development entrypoints.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-## Yet more fault tolerance
-
-- The analysis of lists, tuples, negation operators, `panic`, `echo` and `todo`
-  is now fault tolerant, meaning that the compiler will not stop reporting
-  errors as soon as it finds one.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- Function parameters are now fault tolerant, meaning that type-checking can
-  continue to occur if a function references invalid type in its signature.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- The compiler is now fault tolerant when analysing patterns for custom types,
-  meaning it won't stop at the first error it encounters (for example if a
-  constructor is wrong).
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The language server now provides autocomplete suggestions for labels after
-  part of the label has already been typed. For example, in this code:
-
-  ```gleam
-  pub type Person {
-    Person(name: String, number: Int)
-  }
-
-  pub fn main() {
-    Person(n|)
-  }
-  ```
-
-  The language server will provide `name:` and `number:` as autocomplete
-  suggestions.
-
   ([Surya Rose](https://github.com/GearsDatapacks))
 
 ## Testing with `assert`
@@ -333,6 +339,57 @@ gleam/dynamic/decode.{type Decoder}
 ```
 
 Clicking on `decode.Decoder` will take you to the documentation for that type.
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Yet more fault tolerance
+
+Gleam's compiler implements _fault tolerant analysis_. This means that when
+there is some error in the code that means it is invalid and cannot be compiled,
+the compiler can still continue to analyse the code to the best of its ability,
+ignoring the invalid parts. Because of this Gleam language server can have a
+good understanding of the code and provide IDE feature even when the codebase is
+in an invalid state.
+
+This release makes analysis of lists, tuples, negation operators, `panic`,
+`echo` and `todo`, function parameters, and function labels are now all fault
+tolerant. We're covering all the last remaining little case to make the
+language server information as fresh and accurate as possible!
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) and
+[Surya Rose](https://github.com/GearsDatapacks)!
+
+## Labels in inexhaustive case expression errors
+
+Gleam has exhaustiveness checking. This means that pattern matching flow
+control must handle all the possible values that the type being matched on
+could be. If there any any clauses are missing then the program is incomplete,
+and the compiler will return a helpful error showing the missing patterns.
+
+This error has been improved to include record field labels, as can be seen at
+the bottom of the error message.
+
+```
+error: Inexhaustive patterns
+  ┌─ /src/main.gleam:6:3
+  │
+6 │ ╭   case person {
+8 │ │     Teacher(name:) -> io.println("Good morning!")
+7 │ │     Student(name: "Samara", age: 27) -> io.println("Hello Samara!")
+9 │ │   }
+  │ ╰───^
+
+This case expression does not have a pattern for all possible values. If it
+is run on one of the values without a pattern then it will crash.
+
+The missing patterns are:
+
+    Student(name:, age:)
+```
+
+This improvement has also upgraded the code action to add missing patterns to a
+`case` expression, now when the missing clauses are added to the code they will
+include record labels.
 
 Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 
