@@ -251,7 +251,7 @@ pub const sponsors = [
   Sponsor(
     name: "frankwang",
     url: "https://github.com/Frank-III",
-    avatar: "https://avatars.githubusercontent.com/u/73262844?s=50&u=ba45dd9b5592369624fc08c7ba66b1a258e5c45a&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/73262844?s=50&u=61b3eaeaf6d7b42c65d52437e7f40d17abc17b95&v=4",
   ),
   Sponsor(
     name: "Graham Vasquez",
@@ -352,11 +352,6 @@ pub const sponsors = [
     name: "NicoVIII",
     url: "https://github.com/NicoVIII",
     avatar: "https://avatars.githubusercontent.com/u/3983345?s=50&u=6962fb7c0e56ad3a812551fd9e7ff795d42eaf77&v=4",
-  ),
-  Sponsor(
-    name: "Julian Hirn",
-    url: "https://github.com/Nineluj",
-    avatar: "https://avatars.githubusercontent.com/u/11633602?s=50&u=458d4a9b78fbb15d6c0bd86b8b803e241290c068&v=4",
   ),
   Sponsor(
     name: "OldhamMade",
@@ -549,11 +544,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/29340584?s=50&u=90435e65f327fed2e3abf808f317d132035d3156&v=4",
   ),
   Sponsor(
-    name: "Pawel Biernacki",
-    url: "https://github.com/biernacki",
-    avatar: "https://avatars.githubusercontent.com/u/230085?s=50&u=0567467ff401f114eca8ab3a64e96b2f3acf234a&v=4",
-  ),
-  Sponsor(
     name: "Bjarte Aarmo Lund",
     url: "https://github.com/bjartelund",
     avatar: "https://avatars.githubusercontent.com/u/13436038?s=50&u=784361eb9fcbc6d0b6b4d3c6681a14ea0c6238a0&v=4",
@@ -589,17 +579,12 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/3106990?s=50&v=4",
   ),
   Sponsor(
-    name: "Brendan P. ",
-    url: "https://github.com/brendisurfs",
-    avatar: "https://avatars.githubusercontent.com/u/64713032?s=50&u=cd0a8b39bbb2e0c996c18bd4f73e35c0d9860c02&v=4",
-  ),
-  Sponsor(
     name: "Brett Cannon",
     url: "https://github.com/brettcannon",
     avatar: "https://avatars.githubusercontent.com/u/54418?s=50&u=d802d54e21af0befea878eacff303c384b2a1871&v=4",
   ),
   Sponsor(
-    name: "brettkolodny",
+    name: "Brett Kolodny",
     url: "https://github.com/brettkolodny",
     avatar: "https://avatars.githubusercontent.com/u/22826580?s=50&u=bb86f3ee4fe47c8fdab43c116c0e96d849dad139&v=4",
   ),
@@ -734,6 +719,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/8297?s=50&u=a809b558601fc7bb53a21e5d6d8f7773acfb30a3&v=4",
   ),
   Sponsor(
+    name: "Dan",
+    url: "https://github.com/d2718",
+    avatar: "https://avatars.githubusercontent.com/u/16721230?s=50&u=99f1d59fe658b97ab703115650009a42e6ecb7c3&v=4",
+  ),
+  Sponsor(
     name: "Dennis Dang",
     url: "https://github.com/dangdennis",
     avatar: "https://avatars.githubusercontent.com/u/22418429?s=50&u=0ce534ffcdff7e81d87c22b2ea693f32c5fe0864&v=4",
@@ -829,11 +819,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/12145268?s=50&v=4",
   ),
   Sponsor(
-    name: "Alex",
-    url: "https://github.com/eelmafia",
-    avatar: "https://avatars.githubusercontent.com/u/24531427?s=50&u=42eecd359ec785428196bd6aa51655c173e37e41&v=4",
-  ),
-  Sponsor(
     name: "Eric Koslow",
     url: "https://github.com/ekosz",
     avatar: "https://avatars.githubusercontent.com/u/212829?s=50&u=b74261b7ed7347ae20ccad9d27c62fc788137a19&v=4",
@@ -897,11 +882,6 @@ pub const sponsors = [
     name: "Fede Esteban",
     url: "https://github.com/fmesteban",
     avatar: "https://avatars.githubusercontent.com/u/11654110?s=50&v=4",
-  ),
-  Sponsor(
-    name: "Martijn Gribnau",
-    url: "https://github.com/foresterre",
-    avatar: "https://avatars.githubusercontent.com/u/5955761?s=50&u=79353233d532ae5cb23325afdadb5b32b1a3dd0b&v=4",
   ),
   Sponsor(
     name: "Francis Hamel",
@@ -986,7 +966,7 @@ pub const sponsors = [
   Sponsor(
     name: "Kramer Hampton",
     url: "https://github.com/hamptokr",
-    avatar: "https://avatars.githubusercontent.com/u/22182349?s=50&u=9195fbf5a0dbd6a31add20cf8ab8189eda6f6bb6&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/22182349?s=50&u=d13a117ec7f0b2cbee9567c9135c63ac6899a373&v=4",
   ),
   Sponsor(
     name: "Matt Champagne",
@@ -1244,6 +1224,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/31847966?s=50&u=37c5787bc6dc02a81355bff5df2dcdb9f8dfa8bc&v=4",
   ),
   Sponsor(
+    name: "Leah Ulmschneider",
+    url: "https://github.com/leah-u",
+    avatar: "https://avatars.githubusercontent.com/u/10146019?s=50&u=9b5e507ca0ee91298d4a628d650aea6990971f3f&v=4",
+  ),
+  Sponsor(
     name: "Lee Jarvis",
     url: "https://github.com/leejarvis",
     avatar: "https://avatars.githubusercontent.com/u/197567?s=50&u=0f27bb255b8cafa82c4bcc62b2a3884aa61e7d75&v=4",
@@ -1369,6 +1354,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/5390?s=50&u=7c017ec72f57d09b5b3b43fe52f243d9f2df7765&v=4",
   ),
   Sponsor(
+    name: "Mark Dodwell",
+    url: "https://github.com/mkdynamic",
+    avatar: "https://avatars.githubusercontent.com/u/4312?s=50&u=5c7b2fa6919fa9f624b62cf1a670106a77df1c2e&v=4",
+  ),
+  Sponsor(
     name: "Michael Mazurczak",
     url: "https://github.com/monocursive",
     avatar: "https://avatars.githubusercontent.com/u/2698317?s=50&u=5f4e314f8b7b93520c318a338d2c1dae642fee82&v=4",
@@ -1377,11 +1367,6 @@ pub const sponsors = [
     name: "Jan Skriver Sørensen",
     url: "https://github.com/monzool",
     avatar: "https://avatars.githubusercontent.com/u/2856927?s=50&u=0b997b23cf44fbddd231cc911515da593d9dccd1&v=4",
-  ),
-  Sponsor(
-    name: "Ryan Moore",
-    url: "https://github.com/mooreryan",
-    avatar: "https://avatars.githubusercontent.com/u/3172014?s=50&u=5efa6914e7730fa3b9e743d9030575bc6b48ebee&v=4",
   ),
   Sponsor(
     name: "Michael McClintock",
@@ -1444,6 +1429,16 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/670471?s=50&u=f026d956aac0c35b8077d5ab0fb455eea886d18c&v=4",
   ),
   Sponsor(
+    name: "Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    url: "https://github.com/ninanomenon",
+    avatar: "https://avatars.githubusercontent.com/u/38247461?s=50&u=e6eba332364fbccc81ef0a2fdb79a3fb6c0d5d15&v=4",
+  ),
+  Sponsor(
+    name: "Julian Hirn",
+    url: "https://github.com/nineluj",
+    avatar: "https://avatars.githubusercontent.com/u/11633602?s=50&u=8715cb6c671bc8b105ef76793ce5a0bb526df0ae&v=4",
+  ),
+  Sponsor(
     name: "Guilherme de Maio",
     url: "https://github.com/nirev",
     avatar: "https://avatars.githubusercontent.com/u/686510?s=50&u=abb24e34725b5f0390f1fded181e4e56f92146cc&v=4",
@@ -1482,6 +1477,11 @@ pub const sponsors = [
     name: "Jen Stehlik",
     url: "https://github.com/okkdev",
     avatar: "https://avatars.githubusercontent.com/u/20144629?s=50&u=a7cc738c98e454d194d6c445d423724da9cbedd3&v=4",
+  ),
+  Sponsor(
+    name: "gamachexx",
+    url: "https://github.com/olgam4",
+    avatar: "https://avatars.githubusercontent.com/u/31936427?s=50&u=3f4074bb274fedda9ee23a1f61a2850b13108e28&v=4",
   ),
   Sponsor(
     name: "optizio",
@@ -1842,11 +1842,6 @@ pub const sponsors = [
     name: "Wilson Silva",
     url: "https://github.com/wilsonsilva",
     avatar: "https://avatars.githubusercontent.com/u/645203?s=50&v=4",
-  ),
-  Sponsor(
-    name: "Karan Rajeshbhai Mungara",
-    url: "https://github.com/withkarann",
-    avatar: "https://avatars.githubusercontent.com/u/31102185?s=50&u=504a0920c5d6778c67bf8600ac04b1f3218eef4e&v=4",
   ),
   Sponsor(
     name: "Jojor",
