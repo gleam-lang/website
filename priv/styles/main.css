@@ -732,6 +732,7 @@ main.content {
 .hl-comment,
 .code-comment {
   color: var(--color-code-grey);
+  opacity: 0.6;
 }
 
 .code-prompt {

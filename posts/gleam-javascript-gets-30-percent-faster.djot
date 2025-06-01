@@ -169,17 +169,63 @@ by Jules Jacobs and ["Efficient manipulation of binary data using pattern
 matching"](https://user.it.uu.se/~kostis/Papers/JFP_06.pdf), by Per
 Gustafsson and Konstantinos Sagonas. Thank you.
 
-## `gleam dev`
-
-- The build tool now supports placing modules in a directory called `dev`,
-  which like `test`, is only for development code.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-- There is now a new CLI command, `gleam dev`, which runs the `$PACKAGE_dev`
-  module, for running development entrypoints.
-  ([Surya Rose](https://github.com/GearsDatapacks))
+But that's not all! There's lots more new things in this release. Let's take a
+look.
 
 ## Testing with `assert`
+
+Types and static analysis are wonderful tools to help you write code, but
+you're always going to need to test your code to know that it is working
+correctly. The language itself didn't have any built-in testing capability,
+so test libraries define assertion functions that can be used in tests.
+
+```gleam
+pub fn hello_test() {
+  telephone.ring()
+  |> should.equal("Hello, Joe!")
+}
+```
+
+This has worked well enough to be productive, but it's not the world-class
+experience we want in Gleam. These assertion functions are just that, they are
+functions. All they can do is take arguments and return values, they can't know
+anything about the code that produced those arguments, or the context from
+which they are being called from. The debugging information that a Gleam test
+framework can provide with this is quite limited to compared to other languages
+that have built-in assertion capabilities, a macro system, or other such
+features.
+
+Gleam isn't a language about types, it's a language about productivity and
+developer joy. This sub-par testing experience wasn't up to our high standards,
+and with this release we've made a big step towards correcting that with the
+addition of `assert`.
+
+
+```gleam
+pub fn hello_test() {
+  assert telecom.ring() == "Hello, Joe!"
+}
+```
+
+This new syntax panics if the given expression evaluates to `False`. What makes
+it different to the existing `panic` syntax is that the runtime error is
+annotated with information about the expression that evaluated to `False`, so
+test frameworks can provide detailed debugging information in the event of a
+test failure.
+
+``` =html
+<pre><code><span class="code-success">...............</span>
+<span class="code-error"><b>assert</b></span> <span class="code-comment">test/my_app_test.gleam:215</span>
+<span class="code-fn"> test:</span> my_app_test.hello_test
+<span class="code-fn"> code:</span> assert telecom.ring() == "Hello, Joe!"
+<span class="code-fn"> left:</span> "Hello, Mike!"
+<span class="code-fn">right:</span> <span class="code-comment">literal</span>
+<span class="code-fn"> info:</span> Assertion failed.
+<span class="code-success">..........</span>
+<span class="code-error">25 tests, 1 failures</span>
+</pre></code>
+```
+
 
 - You can now use the `assert` keyword by itself to test a boolean expression.
   If the expression evaluates to `False` at runtime, the `assert` statement
@@ -205,6 +251,16 @@ Gustafsson and Konstantinos Sagonas. Thank you.
   }
   ```
 
+  ([Surya Rose](https://github.com/GearsDatapacks))
+
+## `gleam dev`
+
+- The build tool now supports placing modules in a directory called `dev`,
+  which like `test`, is only for development code.
+  ([Surya Rose](https://github.com/GearsDatapacks))
+
+- There is now a new CLI command, `gleam dev`, which runs the `$PACKAGE_dev`
+  module, for running development entrypoints.
   ([Surya Rose](https://github.com/GearsDatapacks))
 
 ## Help with understanding immutability
