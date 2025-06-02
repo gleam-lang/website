@@ -270,6 +270,11 @@ pub fn system_test() {
 }
 ```
 
+Upgrading from `gleeunit`'s assertion functions to the new `assert` syntax is a
+slow and tedious job for a human to do, so Gears has made [a helpful command
+line tool](https://github.com/gearsDatapacks/asset) to do it automatically! Run
+it and your codebase will be updated for you in just a second.
+
 Thank you [Surya Rose](https://github.com/GearsDatapacks) for this! It will
 make a big difference to all Gleam programmers testing their programs.
 
