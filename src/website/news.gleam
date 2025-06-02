@@ -17,7 +17,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
     read(
       title: "Gleam JavaScript gets 30% faster",
       subtitle: "Gleam v1.11.0 released",
-      published: calendar.Date(2025, calendar.May, 21),
+      published: calendar.Date(2025, calendar.June, 2),
       author: louis,
       path: "gleam-javascript-gets-30-percent-faster",
     ),
