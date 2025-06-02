@@ -213,55 +213,93 @@ annotated with information about the expression that evaluated to `False`, so
 test frameworks can provide detailed debugging information in the event of a
 test failure.
 
+Here's the output that the `gleeunit` test framework will use. Other Gleam test
+frameworks may go further with even better formats!
+
 ``` =html
 <pre><code><span class="code-success">...............</span>
 <span class="code-error"><b>assert</b></span> <span class="code-comment">test/my_app_test.gleam:215</span>
-<span class="code-fn"> test:</span> my_app_test.hello_test
-<span class="code-fn"> code:</span> assert telecom.ring() == "Hello, Joe!"
-<span class="code-fn"> left:</span> "Hello, Mike!"
-<span class="code-fn">right:</span> <span class="code-comment">literal</span>
-<span class="code-fn"> info:</span> Assertion failed.
+<span class="code-decoration"> test:</span> my_app_test.hello_test
+<span class="code-decoration"> code:</span> assert telecom.ring() == "Hello, Joe!"
+<span class="code-decoration"> left:</span> "Hello, Mike!"
+<span class="code-decoration">right:</span> <span class="code-comment">literal</span>
+<span class="code-decoration"> info:</span> Assertion failed.
 <span class="code-success">..........</span>
 <span class="code-error">25 tests, 1 failures</span>
 </pre></code>
 ```
 
+Note how the test framework has enough information to show the assertion code
+as it was written in the source file, and can show the values for the left and
+right of the `==` operator.
 
-- You can now use the `assert` keyword by itself to test a boolean expression.
-  If the expression evaluates to `False` at runtime, the `assert` statement
-  will cause the program to panic, with information about the expression that
-  was asserted.
+As well as operators it can also understand function calls and show what each
+argument is there too.
 
-  For example:
+``` =html
+<pre><code><span class="code-success">........</span>
+<span class="code-error"><b>assert</b></span> <span class="code-comment">test/my_app_test.gleam:353</span>
+<span class="code-decoration"> test:</span> my_app_test.system_test
+<span class="code-decoration"> code:</span> assert telecom.is_up(key, strict, 2025)
+<span class="code-decoration">    0:</span> "My WIFI"
+<span class="code-decoration">    1:</span> True
+<span class="code-decoration">    2:</span> <span class="code-comment">literal</span>
+<span class="code-decoration"> info:</span> My internet must always be up!
+<span class="code-success">.................</span>
+<span class="code-error">25 tests, 1 failures</span>
+</pre></code>
+```
 
-  ```gleam
-  pub fn ok_error_test() {
-    assert result.is_ok(Ok(10))
-    assert result.is_error(Error("Some error"))
-    assert Ok(1) != Error(1)
-    assert result.is_error(Ok(42)) // panic: Assertion failed
-  }
-  ```
 
-  A custom panic message can also be provided in order to add extra information:
+In that example there was a custom assertion message, displayed under the
+`info` key. This is provided the same way as custom messages for Gleam's `todo`
+and `panic` syntaxes, using the `as` keyword.
 
-  ```gleam
-  pub fn identity_test() {
-    assert function.identity(True) as "Identity of True should never be False"
-  }
-  ```
+```gleam
+pub fn system_test() {
+  let key = "My WIFI"
+  let strict = True
 
-  ([Surya Rose](https://github.com/GearsDatapacks))
+  assert telecom.is_up(key, strict, 2025)
+    as "My internet must always be up!"
+}
+```
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks) for this! It will
+make a big difference to all Gleam programmers who care their software is
+working as intended.
 
 ## `gleam dev`
 
-- The build tool now supports placing modules in a directory called `dev`,
-  which like `test`, is only for development code.
-  ([Surya Rose](https://github.com/GearsDatapacks))
+A Gleam application typically has two `main` functions, one in `src/` for
+running the application, and one in `test/` for running the tests. The
+application main function can be run with the console command `gleam run`, and
+the test one with the command `gleam test`.
+This is easy enough to understand, but what if you have some other code you
+need to run in development? For example, if you're making a backend web
+application you might want to run some extra code that configured a local
+development database, or compiles some frontend assets. Where would you put the
+code that does this?
 
-- There is now a new CLI command, `gleam dev`, which runs the `$PACKAGE_dev`
-  module, for running development entrypoints.
-  ([Surya Rose](https://github.com/GearsDatapacks))
+This is development code that you do not want to ship to production (extra code
+and dependencies is a potential security risk), and having code that can make
+destructive changes to the database in production is an accident waiting to
+happen!
+
+The traditional wisdom is to put a new module and `main` function the `test/`
+directory (as this code isn't included in production) and then to run it with
+`gleam run --module $THE_MODULE`. Placing non-test code in a directory called
+`test` isn't very intuitive, so it's not uncommon for people to place it in
+`src` instead, resulting in development code and dependencies accidentally
+being published.
+
+This release adds a new source directory for development code, `dev/`. Code in
+the `dev/` directory can import `src/` code and use development dependencies,
+and the `$PACKAGENAME_dev` module's `main` function can be run with the new
+`gleam dev` console command. This should hopefully be a more satisfying and
+easy to understand system, preventing future mistakes.
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 
 ## Help with understanding immutability
 
@@ -307,16 +345,18 @@ fn add(a, b) { a + b }
 
 Will produce the following warning:
 
-```
-warning: Unused value
-  ┌─ /src/main.gleam:4:3
-  │
-4 │   add(1, 2)
-  │   ^^^^^^^^^ This value is never used
+
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Unused value</b>
+<span class="code-decoration">    ┌─</span> /src/main.gleam:4:3
+<span class="code-decoration">    │</span>
+<span class="code-decoration">  4 │</span>   <span class="code-warning">add(1, 2)</span>
+<span class="code-decoration">    │</span>   <span class="code-warning">^^^^^^^^^ This value is never used</span>
 
 This expression computes a value without any side effects, but then the
 value isn't used at all. You might want to assign it to a variable, or
 delete the expression entirely if it's not needed.
+</pre></code>
 ```
 
 Thank you [Surya Rose](https://github.com/GearsDatapacks)!
@@ -418,15 +458,15 @@ and the compiler will return a helpful error showing the missing patterns.
 This error has been improved to include record field labels, as can be seen at
 the bottom of the error message.
 
-```
-error: Inexhaustive patterns
-  ┌─ /src/main.gleam:6:3
-  │
-6 │ ╭   case person {
-8 │ │     Teacher(name:) -> io.println("Good morning!")
-7 │ │     Student(name: "Samara", age: 27) -> io.println("Hello Samara!")
-9 │ │   }
-  │ ╰───^
+``` =html
+<pre><code><b><span class="code-error">Inexhaustive patterns</span>: Unused value</b>
+<span class="code-decoration">  ┌─</span> /src/main.gleam:6:3
+<span class="code-decoration">  │</span>
+<span class="code-decoration">6 │</span> <span class="code-error">╭   case person {</span>
+<span class="code-decoration">8 │</span> <span class="code-error">│     Teacher(name:) -&gt; io.println("Good morning!")</span>
+<span class="code-decoration">7 │</span> <span class="code-error">│     Student(name: "Samara", age: 27) -&gt; io.println("Hello Samara!")</span>
+<span class="code-decoration">9 │</span> <span class="code-error">│   }</span>
+<span class="code-decoration">  │</span> <span class="code-error">╰───^</span>
 
 This case expression does not have a pattern for all possible values. If it
 is run on one of the values without a pattern then it will crash.
@@ -434,6 +474,7 @@ is run on one of the values without a pattern then it will crash.
 The missing patterns are:
 
     Student(name:, age:)
+</pre></code>
 ```
 
 This improvement has also upgraded the code action to add missing patterns to a
@@ -477,15 +518,16 @@ with a literal value is going to be truncated. For example, if you wrote this:
 
 The compiler will now warn you:
 
-```txt
-warning: Truncated bit array segment
-  ┌─ /src/main.gleam:4:5
-  │
-4 │   <<258>>
-  │     ^^^ You can safely replace this with 2
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Truncated bit array segment</b>
+<span class="code-decoration">    ┌─</span> /src/main.gleam:4:5
+<span class="code-decoration">    │</span>
+<span class="code-decoration">  4 │</span>   &lt;&lt;<span class="code-warning">258</span>&gt;&gt;
+<span class="code-decoration">    │</span>     <span class="code-warning">^^^ You can safely replace this with 2</span>
 
 This segment is 1 byte long, but 258 doesn't fit in that many bytes. It
 would be truncated by taking its its first byte, resulting in the value 2.
+</pre></code>
 ```
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
