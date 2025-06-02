@@ -34,6 +34,7 @@ const done = [
       "UTF8 and UTF16 JavaScript bit array support",
       "Windows ARM precompiled binaries", "Bit array truncation warnings",
       "Record labels in exhaustiveness errors",
+      "Language server \"fill labels\" code action for pattern",
       "Language server \"generate variant\" code action",
       "Language server \"removed unsed imports\" code action complete",
     ],
