@@ -686,6 +686,7 @@ main.content {
   visibility: hidden;
 }
 
+.code-warning,
 .hl-keyword,
 .code-keyword {
   color: var(--color-code-orange);
@@ -725,6 +726,7 @@ main.content {
 
 .hl-function,
 .hl-fn,
+.code-decoration,
 .code-fn {
   color: var(--color-code-blue);
 }

@@ -15,7 +15,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
   io.print("Loading news posts: ")
   let posts = [
     read(
-      title: "Gleam JS gets 30% faster",
+      title: "Gleam JavaScript gets 30% faster",
       subtitle: "Gleam v1.11.0 released",
       published: calendar.Date(2025, calendar.May, 21),
       author: louis,
