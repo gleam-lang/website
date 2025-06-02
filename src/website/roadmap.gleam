@@ -7,12 +7,7 @@ import website/fs
 import website/page
 import website/site
 
-const in_progress = [
-  "JavaScript sourcemaps", "OTP named process support",
-  "Generating `case` expressions using a decision tree on JavaScript",
-  "Test keyword `assert`", "Language server constant expression completion",
-  "\"gleam dev\" command",
-]
+const in_progress = ["OTP named process support"]
 
 const planned = [
   "JavaScript record performance improvements", "Hex private package support",
@@ -28,6 +23,21 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "v1.11",
+    date: calendar.Date(2025, calendar.June, 2),
+    items: [
+      "Generating `case` expressions using a decision tree on JavaScript",
+      "Test keyword `assert`", "Language server constant expression completion",
+      "\"gleam dev\" command", "Side-effectless unused expression detection",
+      "Hyperlinks to referenced types in generated HTML documentation",
+      "UTF8 and UTF16 JavaScript bit array support",
+      "Windows ARM precompiled binaries", "Bit array truncation warnings",
+      "Record labels in exhaustiveness errors",
+      "Language server \"generate variant\" code action",
+      "Language server \"removed unsed imports\" code action complete",
+    ],
+  ),
   Release(
     version: "v1.10",
     date: calendar.Date(2025, calendar.April, 14),
