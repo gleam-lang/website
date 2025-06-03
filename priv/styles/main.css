@@ -786,7 +786,7 @@ pre code {
 }
 
 .news-posts h2 {
-  transition: color 200ms ease-in-out;
+  transition: color 120ms ease-in-out;
   font-weight: var(--font-weight-title-bold);
   margin: 0;
   text-decoration: none;
