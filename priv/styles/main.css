@@ -829,14 +829,6 @@ pre code {
   margin-top: 0;
 }
 
-.post iframe,
-.post video,
-.post img {
-  display: block;
-  margin: var(--gap-3) auto;
-  max-width: 100%;
-}
-
 .post blockquote {
   font-style: italic;
   border-left: 4px solid var(--color-faff-pink);
@@ -1061,6 +1053,14 @@ pre code {
   display: inline-block;
 }
 
+.prose iframe,
+.prose video,
+.prose img {
+  display: block;
+  margin: var(--gap-3) auto;
+  max-width: 100%;
+}
+
 /* Article Meta bar - Including publish date, author, and share button */
 .post-meta {
   display: flex;
@@ -1071,16 +1071,30 @@ pre code {
 }
 
 .post-meta .meta-button {
+  appearance: normal;
+  background: none;
+  color: var(--color-text-main);
+  font-weight: var(--font-weight-title-bold);
+  font-size: 1rem;
   border: #616682 1px solid;
   border-radius: .3rem;
   padding: .6rem;
   display: flex;
   align-items: center;
   gap: .6rem;
+  transition-property: color, border-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 120ms;
 }
 
 .post-meta .share-button {
   margin-left: auto;
   text-decoration: none;
   padding: .6rem 1rem;
+  cursor: pointer;
+}
+
+.post-meta .meta-button:hover {
+  border-color: var(--color-faff-pink);
+  color: #fff;
 }
