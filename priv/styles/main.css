@@ -1053,9 +1053,9 @@ pre code {
   display: inline-block;
 }
 
-.prose iframe,
-.prose video,
-.prose img {
+.prose > iframe,
+.prose > video,
+.prose > img {
   display: block;
   margin: var(--gap-3) auto;
   max-width: 100%;
