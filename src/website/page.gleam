@@ -1361,7 +1361,7 @@ version of Erlang on the computer used to compile the escript.",
       html.text(" to get help or share what you’re working on."),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> page_layout("prose", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2026,7 +2026,7 @@ workloads.",
     html.h2([attr.id("is-it-good")], [html.text("Is it good?")]),
     html.p([], [html.text("Yes, I think so. :)")]),
   ]
-  |> page_layout("", meta, ctx)
+  |> page_layout("prose", meta, ctx)
   |> to_html_file(meta)
 }
 
