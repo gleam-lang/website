@@ -8,7 +8,6 @@ import gleam/time/timestamp
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
-import lustre/element/svg
 import website/fs
 import website/news
 import website/site
@@ -52,54 +51,36 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
     html.div([class("post")], [
       html.div([class("post-meta")], [
         html.a([attr.href("/news"), class("meta-button back-button")], [
-          svg.svg(
-            [
-              attr("xmlns", "http://www.w3.org/2000/svg"),
-              attr("fill", "none"),
-              attr("viewBox", "0 0 20 20"),
-              attr("height", "20"),
-              attr("width", "20"),
-            ],
-            [
-              svg.path([
-                attr("stroke-linejoin", "round"),
-                attr("stroke-linecap", "round"),
-                attr("stroke-width", "1.5"),
-                attr("stroke", "#D9DFF8"),
-                attr(
-                  "d",
-                  "M7.5 12.5L2.5 7.5M2.5 7.5L7.5 2.5M2.5 7.5H12.5C13.8261 7.5 15.0979 8.02678 16.0355 8.96447C16.9732 9.90215 17.5 11.1739 17.5 12.5C17.5 13.8261 16.9732 15.0979 16.0355 16.0355C15.0979 16.9732 13.8261 17.5 12.5 17.5H10",
-                ),
-              ]),
-            ],
-          ),
+          html.img([
+            attr.width(20),
+            attr.src("/images/return-icon.svg"),
+            attr.alt("Return Icon"),
+          ]),
         ]),
         html.p([class("post-authored")], [
           html.time([], [html.text(short_human_date(post.published))]),
           html.text(" by "),
           html.a([attr.href(post.author.url)], [html.text(post.author.name)]),
         ]),
-        html.a([attr.href("#"), class("meta-button share-button")], [
-          svg.svg(
-            [
-              attr("xmlns", "http://www.w3.org/2000/svg"),
-              attr("fill", "none"),
-              attr("viewBox", "0 0 20 20"),
-              attr("height", "20"),
-              attr("width", "20"),
-            ],
-            [
-              svg.path([
-                attr("fill", "#949AB6"),
-                attr(
-                  "d",
-                  "M13 4.50001C13 3.91977 13.2018 3.3576 13.5709 2.90986C13.9399 2.46212 14.4533 2.15671 15.0228 2.04596C15.5924 1.93522 16.1828 2.02604 16.6927 2.30287C17.2027 2.5797 17.6004 3.02528 17.8179 3.56325C18.0353 4.10122 18.0588 4.69806 17.8844 5.25147C17.71 5.80487 17.3485 6.28038 16.8619 6.59647C16.3753 6.91257 15.7939 7.04957 15.2174 6.98398C14.6409 6.9184 14.1051 6.65432 13.702 6.23701L6.96999 9.60401C7.01177 9.86636 7.01177 10.1337 6.96999 10.396L13.703 13.763C14.1182 13.3336 14.6734 13.067 15.2681 13.0115C15.8629 12.956 16.4578 13.1153 16.9452 13.4606C17.4327 13.8058 17.7804 14.3142 17.9255 14.8936C18.0705 15.473 18.0033 16.0852 17.736 16.6194C17.4688 17.1536 17.019 17.5744 16.4683 17.8057C15.9176 18.037 15.3023 18.0634 14.7337 17.8803C14.1652 17.6971 13.681 17.3165 13.3689 16.8072C13.0567 16.298 12.9372 15.6938 13.032 15.104L6.29899 11.737C5.95283 12.0951 5.50759 12.3417 5.02037 12.4451C4.53315 12.5484 4.02615 12.5039 3.5644 12.3172C3.10264 12.1306 2.70717 11.8102 2.4287 11.3972C2.15024 10.9843 2.00146 10.4976 2.00146 9.99951C2.00146 9.50144 2.15024 9.01473 2.4287 8.60178C2.70717 8.18882 3.10264 7.86846 3.5644 7.68177C4.02615 7.49509 4.53315 7.45058 5.02037 7.55396C5.50759 7.65734 5.95283 7.9039 6.29899 8.26201L13.032 4.89601C13.0109 4.76506 13.0002 4.63265 13 4.50001Z",
-                ),
-              ]),
-            ],
-          ),
-          html.text("Share"),
-        ]),
+        html.button(
+          [
+            attr(
+              "onclick",
+              "window.navigator.clipboard.writeText('https://gleam.run/news/"
+                <> post.path
+                <> "')",
+            ),
+            class("meta-button share-button"),
+          ],
+          [
+            html.img([
+              attr.width(20),
+              attr.src("/images/share-icon.svg"),
+              attr.alt("Return Icon"),
+            ]),
+            html.text("Share"),
+          ],
+        ),
       ]),
       html.article(
         [class("prose"), attr("dangerous-unescaped-html", post.content)],
@@ -2260,7 +2241,7 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
     )
 
   let list_items =
-    list.index_map(posts, fn(post, index) {
+    list.map(posts, fn(post) {
       html.li([], [
         html.a([attr.href("/news/" <> post.path)], [
           html.h2([attr.class("links")], [html.text(post.title)]),
@@ -2268,10 +2249,21 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
         html.p([], [html.text(post.subtitle)]),
         html.ul([class("news-meta")], [
           html.li([], [
-            news_date_icon(index),
+            html.img([
+              attr.width(16),
+              attr.src("/images/date-icon.svg"),
+              attr.alt("Date Icon"),
+            ]),
             html.text(short_human_date(post.published)),
           ]),
-          html.li([], [news_author_icon(index), html.text(post.author.name)]),
+          html.li([], [
+            html.img([
+              attr.width(20),
+              attr.src("/images/user-icon.svg"),
+              attr.alt("User Icon"),
+            ]),
+            html.text(post.author.name),
+          ]),
         ]),
       ])
     })
@@ -4086,60 +4078,4 @@ fn highlighted_yaml_pre_code(code: String) -> Element(d) {
     |> list.intersperse([html.text("\n")])
     |> list.flatten
   html.pre([], [html.code([], html)])
-}
-
-fn news_date_icon(index: Int) {
-  svg.svg(
-    [
-      attr("xmlns", "http://www.w3.org/2000/svg"),
-      attr("viewBox", "0 0 16 17"),
-      attr("height", "17"),
-      attr("width", "16"),
-      attr("fill", "#949AB6"),
-    ],
-    [
-      case index {
-        0 ->
-          svg.path([
-            attr.id("newsDateIcon"),
-            attr(
-              "d",
-              "M3.75 0.5C3.94891 0.5 4.13968 0.579018 4.28033 0.71967C4.42098 0.860322 4.5 1.05109 4.5 1.25V2.5H11.5V1.25C11.5 1.05109 11.579 0.860322 11.7197 0.71967C11.8603 0.579018 12.0511 0.5 12.25 0.5C12.4489 0.5 12.6397 0.579018 12.7803 0.71967C12.921 0.860322 13 1.05109 13 1.25V2.5H13.25C13.9793 2.5 14.6788 2.78973 15.1945 3.30546C15.7103 3.82118 16 4.52065 16 5.25V13.75C16 14.4793 15.7103 15.1788 15.1945 15.6945C14.6788 16.2103 13.9793 16.5 13.25 16.5H2.75C2.02065 16.5 1.32118 16.2103 0.805456 15.6945C0.289731 15.1788 0 14.4793 0 13.75V5.25C0 4.52065 0.289731 3.82118 0.805456 3.30546C1.32118 2.78973 2.02065 2.5 2.75 2.5H3V1.25C3 1.05109 3.07902 0.860322 3.21967 0.71967C3.36032 0.579018 3.55109 0.5 3.75 0.5ZM2.75 6C2.06 6 1.5 6.56 1.5 7.25V13.75C1.5 14.44 2.06 15 2.75 15H13.25C13.94 15 14.5 14.44 14.5 13.75V7.25C14.5 6.56 13.94 6 13.25 6H2.75Z",
-            ),
-            attr("clip-rule", "evenodd"),
-            attr("fill-rule", "evenodd"),
-          ])
-        _ -> svg.use_([attr.href("#newsDateIcon")])
-      },
-    ],
-  )
-}
-
-fn news_author_icon(index: Int) {
-  svg.svg(
-    [
-      attr("xmlns", "http://www.w3.org/2000/svg"),
-      attr("fill", "none"),
-      attr("viewBox", "0 0 20 21"),
-      attr("height", "21"),
-      attr("width", "20"),
-      attr("stroke", "#949AB6"),
-    ],
-    [
-      case index {
-        0 ->
-          svg.path([
-            attr.id("newsAuthorIcon"),
-            attr("stroke-linejoin", "round"),
-            attr("stroke-linecap", "round"),
-            attr("stroke-width", "1.5"),
-            attr(
-              "d",
-              "M13.125 5.5C13.125 6.3288 12.7957 7.12366 12.2097 7.70971C11.6236 8.29576 10.8288 8.625 9.99999 8.625C9.17119 8.625 8.37633 8.29576 7.79028 7.70971C7.20423 7.12366 6.87499 6.3288 6.87499 5.5C6.87499 4.6712 7.20423 3.87634 7.79028 3.29029C8.37633 2.70424 9.17119 2.375 9.99999 2.375C10.8288 2.375 11.6236 2.70424 12.2097 3.29029C12.7957 3.87634 13.125 4.6712 13.125 5.5ZM3.75082 17.265C3.7776 15.6253 4.44777 14.0618 5.6168 12.9117C6.78584 11.7616 8.36006 11.1171 9.99999 11.1171C11.6399 11.1171 13.2141 11.7616 14.3832 12.9117C15.5522 14.0618 16.2224 15.6253 16.2492 17.265C14.2886 18.164 12.1568 18.6279 9.99999 18.625C7.76999 18.625 5.65332 18.1383 3.75082 17.265Z",
-            ),
-          ])
-        _ -> svg.use_([attr.href("#newsAuthorIcon")])
-      },
-    ],
-  )
 }
