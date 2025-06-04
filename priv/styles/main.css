@@ -383,7 +383,8 @@ main.content {
 
 .sponsor-level0 img {
   transition: transform 100ms ease-in-out;
-  height: 110px;
+  max-height: 110px;
+  max-width: 100%;
   animation: pulse-animation 2.2s infinite;
   border-radius: 100px;
 }
@@ -406,7 +407,8 @@ main.content {
 }
 
 .sponsor-level1 img {
-  height: 100px;
+  max-height: 110px;
+  max-width: 100%;
 }
 
 .sponsor-level2 img {
