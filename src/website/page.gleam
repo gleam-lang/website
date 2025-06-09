@@ -1069,7 +1069,7 @@ gleeunit = \">= 1.0.0 and < 2.0.0\"
       html.text("The "),
       html.code([], [html.text(">= 1.0.1 and < 2.0.0")]),
       html.text(
-        " version constraint means that the project wants any version 
+        " version constraint means that the project wants any version
 greater than or equal to 1.0.1, but less than 2.0.0, which will maximise compatibility while
 avoiding breaking changes as Hex packages adhere to ",
       ),
@@ -1262,7 +1262,7 @@ pub fn main() {
 
 pub fn format_pair_test() {
   let greeting = internal.format_pair(\"hello\", \"world\")
-  assert greeting = \"hello=world\"
+  assert greeting == \"hello world\"
 }
 ",
     ),
@@ -1712,7 +1712,7 @@ need a name.",
       ]),
       html.li([], [
         html.text(
-          "Alpaca’s syntax is closer to ML family languages, Gleam’s is closer to C 
+          "Alpaca’s syntax is closer to ML family languages, Gleam’s is closer to C
 family languages.",
         ),
       ]),
@@ -2415,7 +2415,7 @@ allow_hrtime = false
 # A bool or list of environment variables
 allow_env = [\"DATABASE_URL\"]
 
-# A bool or a list of IP addresses or hostnames (optionally with ports) 
+# A bool or a list of IP addresses or hostnames (optionally with ports)
 allow_net = [\"example.com:443\"]
 
 # A bool or a list of paths
@@ -3697,7 +3697,7 @@ It has these fields:
         highlighted_gleam_pre_code(
           "@external(erlang, \"Elixir.HPAX\", \"new\")
 pub fn new(size: Int) -> Table
-  
+
 
 
 pub fn register_event_handler() {
