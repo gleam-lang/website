@@ -3566,25 +3566,20 @@ pub fn main() {
           html.p([], [
             html.text(
               "Thanks to its multi-core actor based concurrency system that can run
-              millions of concurrent tasks, fast immutable data structures, and a
-              concurrent garbage collector that never stops the world, your service
-              can scale and stay lightning fast with ease.",
+              millions of concurrent green threads, fast immutable data
+              structures, and a concurrent garbage collector that never stops
+              the world, your service can scale and stay lightning fast with ease.",
             ),
           ]),
         ]),
         highlighted_gleam_pre_code(
-          "fn spawn_task(i) {
-  task.async(fn() {
+          "pub fn main() {
+  // Run loads of green threads, no problem
+  list.range(0, 200_000)
+  |> list.each(fn(i) {
     let n = int.to_string(i)
     io.println(\"Hello from \" <> n)
   })
-}
-
-pub fn main() {
-  // Run loads of threads, no problem
-  list.range(0, 200_000)
-  |> list.map(spawn_task)
-  |> list.each(task.await_forever)
 }",
         ),
       ]),
