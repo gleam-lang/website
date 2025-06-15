@@ -219,8 +219,15 @@ main.content {
   width: 100%;
   transition: transform 0.2s ease;
 }
+.navbar-lucy {
+  transition: transform 200ms ease;
+}
 .footer-lucy {
   transition: transform 200ms ease;
+}
+.logo:hover .navbar-lucy {
+  content: url("/images/lucy/lucyhappy.svg");
+  transform: rotate(23deg);
 }
 .logo:hover .footer-lucy {
   content: url("/images/lucy/lucyhappy.svg");
