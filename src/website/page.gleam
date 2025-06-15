@@ -3813,6 +3813,7 @@ fn header(
             html.img([
               attr.alt("Lucy the star, Gleam's mascot"),
               attr.src("/images/lucy/lucy.svg"),
+              attr.class("navbar-lucy"),
             ]),
             html.text("Gleam"),
           ]),
