@@ -97,6 +97,29 @@ pub fn page(ctx: site.Context) -> fs.File {
     html.p([], [
       html.text("Update dependency packages to their latest versions"),
     ]),
+    html.h2([attr.id("dev")], [html.code([], [html.text("dev")])]),
+    html.p([], [
+      html.code([], [html.text("gleam dev [OPTIONS] [ARGUMENTS]...")]),
+    ]),
+    html.p([], [html.text("Run the project development entrypoint")]),
+    html.table([], [
+      html.thead([], [
+        html.tr([], [
+          html.th([], [html.text("Option")]),
+          html.th([], [html.text("Description")]),
+        ]),
+      ]),
+      html.tbody([], [
+        html.tr([], [
+          html.td([], [html.code([], [html.text("--runtime <RUNTIME>")])]),
+          html.td([], []),
+        ]),
+        html.tr([], [
+          html.td([], [html.code([], [html.text("-t, --target <TARGET>")])]),
+          html.td([], [html.text("The platform to target")]),
+        ]),
+      ]),
+    ]),
     html.h2([attr.id("docs")], [html.code([], [html.text("docs")])]),
     html.p([], [html.code([], [html.text("gleam docs <SUBCOMMAND>")])]),
     html.p([], [html.text("Render HTML documentation")]),

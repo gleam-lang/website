@@ -2133,7 +2133,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       ]),
       html.li([], [
         html.a([attr.href("/writing-gleam/command-line-reference")], [
-          html.text("The Command line reference"),
+          html.text("The command line reference"),
         ]),
       ]),
       html.li([], [
