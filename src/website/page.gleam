@@ -3487,7 +3487,7 @@ pub fn home(ctx: site.Context) -> fs.File {
         "Lucy the star, Gleam's mascot",
       )),
       content: [
-        html.div([], [
+        html.div([class("text-left")], [
           html.b([], [html.text("Gleam")]),
           html.text(" is a "),
           html.b([], [html.text("friendly")]),

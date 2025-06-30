@@ -163,6 +163,10 @@ td {
   padding: 5px;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .content {
   max-width: 100%;
   width: var(--width-content);
@@ -250,6 +254,7 @@ main.content {
 .hero {
   padding-top: var(--gap-4);
   color: var(--color-blacker);
+  text-align: center;
 }
 
 .hero h1 {
