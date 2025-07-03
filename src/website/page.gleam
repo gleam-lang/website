@@ -3487,7 +3487,7 @@ pub fn home(ctx: site.Context) -> fs.File {
         "Lucy the star, Gleam's mascot",
       )),
       content: [
-        html.div([class("text-left")], [
+        html.div([], [
           html.b([], [html.text("Gleam")]),
           html.text(" is a "),
           html.b([], [html.text("friendly")]),
@@ -3800,7 +3800,7 @@ fn header(
         [attr("data-show-pride", ""), class("hero-lucy-container wide-only")],
         [html.img([attr.alt(alt), attr.src(src), attr.class("hero-lucy")])],
       ),
-      hero_content,
+      html.div([class("text-left")], [hero_content]),
     ]
     option.None -> [hero_content]
   }
