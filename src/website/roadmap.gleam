@@ -9,10 +9,8 @@ import website/site
 
 const in_progress = [
   "Function inlining to improve performance and stack usage",
-  "Custom messages for `echo`",
-  "JSDoc comments in generated JavaScript",
-  "Dead code elimination for definitions",
-  "Redundant comparison detection",
+  "Custom messages for `echo`", "JSDoc comments in generated JavaScript",
+  "Dead code elimination for definitions", "Redundant comparison detection",
   "Generated code size improvements for record updates",
   "Calculation support in bit array pattern size segements",
   "Alerting for when new major dependency versions are available",
