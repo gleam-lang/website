@@ -7,7 +7,18 @@ import website/fs
 import website/page
 import website/site
 
-const in_progress = ["OTP named process support"]
+const in_progress = [
+  "Function inlining to improve performance and stack usage",
+  "Custom messages for `echo`",
+  "JSDoc comments in generated JavaScript",
+  "Dead code elimination for definitions",
+  "Redundant comparison detection",
+  "Generated code size improvements for record updates",
+  "Calculation support in bit array pattern size segements",
+  "Alerting for when new major dependency versions are available",
+  "Improved error messages for dependency version conflicts",
+  "Programmer choice support for list formatting",
+]
 
 const planned = [
   "JavaScript record performance improvements", "Hex private package support",
@@ -23,6 +34,18 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "gleam_erlang v1.0, gleam_otp v1.0",
+    date: calendar.Date(2025, calendar.June, 12),
+    items: [
+      "Named process support",
+      "Improved actor API",
+      "Improved supervision API",
+      "Improved process API",
+      "Improved selective receive API",
+      "Improved atom API",
+    ],
+  ),
   Release(
     version: "v1.11",
     date: calendar.Date(2025, calendar.June, 2),
