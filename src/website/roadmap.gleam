@@ -36,11 +36,8 @@ const done = [
     version: "gleam_erlang v1.0, gleam_otp v1.0",
     date: calendar.Date(2025, calendar.June, 12),
     items: [
-      "Named process support",
-      "Improved actor API",
-      "Improved supervision API",
-      "Improved process API",
-      "Improved selective receive API",
+      "Named process support", "Improved actor API", "Improved supervision API",
+      "Improved process API", "Improved selective receive API",
       "Improved atom API",
     ],
   ),
