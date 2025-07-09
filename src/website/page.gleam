@@ -2385,9 +2385,8 @@ pages = [
 
 # Erlang specific configuration (optional)
 [erlang]
-# The name of the OTP application module, if the project has one (optional)
-# Typically Gleam projects do not use the Erlang/OTP implicit application boot
-# system and so typically do not define this.
+# The name of the OTP application module, if the project has one (optional).
+# Applications may want to use this, but libraries almost certainly do not.
 # If specified the module must implement the OTP application behaviour.
 # https://www.erlang.org/doc/man/application.html
 application_start_module = \"my_app/application\"
