@@ -6,6 +6,7 @@ import gleam/time/timestamp
 import gleave
 import snag
 import website/atom_feed
+import website/case_study
 import website/cheatsheet
 import website/command_line_reference
 import website/fs
@@ -34,6 +35,7 @@ pub fn main() -> Nil {
 fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
   use news_posts <- result.try(news.all())
+  use case_studies <- result.try(case_study.all())
 
   let ctx =
     site.Context(
@@ -69,6 +71,7 @@ fn build_site() -> snag.Result(Nil) {
     static_files(),
     page_files,
     news_files(news_posts, ctx),
+    case_study_files(case_studies, ctx),
     redirect_files(),
   ]
 
@@ -87,6 +90,13 @@ fn news_files(
   ctx: site.Context,
 ) -> List(fs.File) {
   [atom_feed.file(news_posts), ..list.map(news_posts, page.news_post(_, ctx))]
+}
+
+fn case_study_files(
+  case_studies: List(case_study.CaseStudy),
+  ctx: site.Context,
+) -> List(fs.File) {
+  list.map(case_studies, page.case_study(_, ctx))
 }
 
 fn static_files() -> List(fs.File) {

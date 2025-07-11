@@ -9,6 +9,7 @@ import just/highlight as just
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
+import website/case_study
 import website/fs
 import website/news
 import website/site
@@ -37,6 +38,51 @@ pub fn redirect(from: String, to: String) -> fs.File {
     ])
     |> element.to_document_string
   fs.File(path: from, content:)
+}
+
+pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "case-studies/" <> post.path,
+      title: post.title,
+      description: post.subtitle,
+      preload_images: [],
+    )
+
+  [
+    html.div([class("post")], [
+      html.div([class("post-meta")], [
+        html.p([class("post-authored")], [
+          html.time([], [html.text(short_human_date(post.published))]),
+        ]),
+        html.button(
+          [
+            attr(
+              "onclick",
+              "window.navigator.clipboard.writeText('https://gleam.run/case-studies/"
+                <> post.path
+                <> "')",
+            ),
+            class("meta-button share-button"),
+          ],
+          [
+            html.img([
+              attr.width(20),
+              attr.src("/images/share-icon.svg"),
+              attr.alt("Return Icon"),
+            ]),
+            html.text("Share"),
+          ],
+        ),
+      ]),
+      html.article(
+        [class("prose"), attr("dangerous-unescaped-html", post.content)],
+        [],
+      ),
+    ]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
 }
 
 pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
