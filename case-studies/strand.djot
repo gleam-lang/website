@@ -1,0 +1,146 @@
+[Strand](https://www.strand-uk.com) is a marketing agency based in London,
+UK. The company specialises in copywriting and content creation for many of the
+world’s largest enterprise technology companies, running marketing programmes
+that produce hundreds of white papers, case studies, blog posts and articles
+every year.
+
+## Challenge
+
+For many years, Strand has relied on a custom-built project management system
+to support the operational aspects of its business—creating projects, tracking
+activities and managing documents. However, managing the financial aspects of
+project management had always been a more manual process, using spreadsheets to
+ensure that billable work was assigned to the correct purchase orders and
+invoices.
+
+“Just before the pandemic, we decided to build a new financial management
+system,” recalls Ed Kelly, Director of Technology at Strand. “It turned out to
+be a very timely decision. When we had to pivot to remote working, the fact
+that everyone could track their billable work in a centralised system helped us
+keep the business on track.”
+
+The new system quickly became an integral part of Strand’s daily workflow, and
+users began requesting new features. As the application gradually grew larger
+and more complex, the company’s small development team wanted to ensure that
+the system would remain reliable, maintainable and scalable.
+
+“Almost by accident, what we launched as a prototype became a business-critical
+application,” says Ed Kelly. “Our development resources are limited, so our top
+priority was to make sure the system would just run forever without needing
+constant maintenance. At the same time, we also wanted to keep the codebase
+simple and approachable, so it’s easy for developers to dive back into when
+they need to make a change. The challenge for us was to build and maintain this
+business-critical system cost-effectively with our lean development team.”
+
+## Solution
+
+As a small business, Strand is not afraid to innovate. “We do have systems that
+are written in mainstream programming languages like Python and JavaScript, but
+our strategy is to pick the best tool for the job, not just the most popular,”
+explains Ed Kelly. “Gleam was a good fit for our requirements.”
+
+The features of Gleam that appealed to Strand were its robustness and
+maintainability, its combination of modern language features with access to a
+broad ecosystem of battle-tested, production-grade libraries, and its strong
+focus on developer experience.
+
+### Safety and reliability
+
+“Gleam is a safe language,” explains Ed Kelly. “Broadly speaking, if you write
+a program in pure Gleam, it’s guaranteed not to crash. And in cases where you
+need to interface with code written in other, less-safe languages, there is a
+second layer of protection provided by Gleam’s runtime platform, the BEAM.”
+
+The BEAM was developed by Ericsson in the 1980s as a fault-tolerant platform
+for managing large telephone switches that need to handle thousands of calls
+simultaneously and can never be taken offline for maintenance. The central idea
+is that the platform is able to divide applications into thousands or even
+millions of lightweight processes. Each process runs independently, and
+processes can communicate by sending messages to each other. If an individual
+process crashes, it can be restarted automatically without affecting any of the
+other processes.
+
+“The application that we’ve built is composed of several services that interact
+with the outside world,” explains Ed Kelly. “For example, we have a service
+that periodically downloads currency exchange rates from the UK government’s
+website, and another that syncs data with our project management system. The
+BEAM ensures that if there’s some unforeseen problem with any of these external
+services, it won’t crash our application.”
+
+### Modernity and pragmatism
+
+Gleam is designed to be a simple language that provides powerful features while
+remaining resolutely practical. “It gives us access to features from more
+academic programming languages, but it makes them approachable,” says Ed Kelly.
+“The language is small—an experienced developer can learn it in an
+afternoon—and there is a strong focus on only having one way to do things. That
+means you can onboard new developers into a Gleam codebase quickly.”
+
+Because Gleam code runs on the BEAM, developers also have easy access to
+thousands of high-quality software libraries. “The Gleam library ecosystem is
+growing rapidly year-on-year,” says Ed Kelly. “And when we need to, we can also
+reach for 40 years’ worth of battle-tested libraries written in other BEAM
+languages such as Erlang and Elixir. The language prioritises pragmatism over
+purity, which helps us get things done.”
+
+### Developer experience
+
+In Strand’s experience, Gleam’s developer tools are second to none. “When you
+download Gleam, you get all the tooling in a single package,” says Ed Kelly.
+“It integrates with your code editor to provide features like formatting,
+suggestions and autocomplete. The error messages are really friendly and
+helpful—when you make a mistake, Gleam will often tell you what you should have
+written. And it’s really fast—the days of going for a coffee break while you
+wait for your code to build are over.”
+
+He adds: “We’re heading into a new age of AI-assisted coding, and right now,
+it’s difficult to predict how that will play out. But if I had to place a bet,
+I would say that in the long run, AIs are more likely to generate high-quality
+code in a language like Gleam. Gleam makes it quick and easy for AIs to check
+their code, get instant feedback, and iterate. That should be an advantage
+compared to languages that are slow to build, have cryptic error messages, and
+can’t catch mistakes at build-time.”
+
+### Incremental adoption
+
+For Strand, introducing Gleam into its codebase was a low-risk, incremental
+process. “We started with just one service—our integration with the UK
+government’s currency exchange rate API,” says Ed Kelly. “We were so pleased
+with how it turned out that we then rewrote some of our other services in
+Gleam. And recently, we’ve decided to give Gleam an even more important role by
+replacing the whole part of the backend that talks to our database. We’re very
+confident that this will give us a safer and more maintainable codebase
+overall.”
+
+## Results
+
+As one of the first companies in the world to run Gleam in production, Strand
+took a risk. Two years later, the development team is delighted with the
+decision. “Since we started, the language has really matured and reached a
+stable state,” says Ed Kelly. “The community has grown massively and there’s a
+real buzz around the language. It’s even starting to be recognised by
+mainstream industry analysts like [Thoughtworks in their Technology
+Radar](https://www.thoughtworks.com/radar/languages-and-frameworks/gleam). I
+think today, Gleam is a safe and solid choice for companies to use in
+production.”
+
+Since go-live, the Gleam code within Strand’s application has been rock-solid.
+“We’ve had zero Gleam-related crashes, and even when there have been issues
+with other parts of the system, the BEAM has kept everything running,” says Ed
+Kelly. “We’ve been able to fix problems without our users even noticing that
+anything was wrong.”
+
+The simplicity of the language and the sophistication of the development tools
+also help to keep the codebase maintainable. “Even when we haven’t looked at
+the codebase for a few weeks, it’s easy to get back into it,” says Ed Kelly.
+“The language and tooling gently push you to use a consistent, idiomatic style,
+and to write clearly and simply without trying to be too clever. So, we don’t
+have to spend time puzzling out what our past selves were trying to do with the
+code that we wrote six months ago.”
+
+He concludes: “Adopting a new language is always a gamble, but Gleam has paid
+off. The belt-and-braces approach to safety and fault-tolerance has given us a
+system that just works, reliably, day in and day out, without constant
+babysitting and maintenance. For a team like ours, with many other priorities
+and projects we need to work on, the confidence that Gleam gives us is worth
+its weight in gold.”
