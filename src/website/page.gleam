@@ -764,6 +764,7 @@ RUN \\
   addgroup --system webapp && \\
   adduser --system webapp -g webapp
 COPY --from=build /app/build/erlang-shipment /app
+USER webapp
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
 CMD [\"run\"]
