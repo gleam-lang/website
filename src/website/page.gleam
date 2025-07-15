@@ -79,6 +79,31 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
         [class("prose"), attr("dangerous-unescaped-html", post.content)],
         [],
       ),
+      html.section([class("case-study-cta")], [
+        html.img([
+          attr.src("/images/lucy/lucy.svg"),
+          attr.alt("Lucy the star, Gleam's mascot"),
+        ]),
+        html.div([], [
+          html.h4([], [html.text("Ready to start your Gleam journey?")]),
+          html.p([], [
+            html.text("Check out the "),
+            html.a([attr.href("https://tour.gleam.run")], [
+              html.text("language tour"),
+            ]),
+            html.text(" and "),
+            html.a([attr.href("/documentation")], [html.text("documentation")]),
+            html.text("."),
+          ]),
+          html.p([], [
+            html.text("Already using it in production? "),
+            html.a([attr.href("/community")], [
+              html.text("Share your story with us"),
+            ]),
+            html.text(", we'd love to hear all about it!"),
+          ]),
+        ]),
+      ]),
     ]),
   ]
   |> page_layout("", meta, ctx)
