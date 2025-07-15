@@ -30,6 +30,7 @@
   /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
 
   --color-charcoal: #2f2f2f;
+  --color-lukewarm-charcoal: #313546;
   --color-warm-charcoal: #616682;
   --color-underwater-blue: #292d3e;
   --color-black: #1e1e1e;
@@ -1105,4 +1106,32 @@ pre code {
 .post-meta .meta-button:hover {
   border-color: var(--color-faff-pink);
   color: #fff;
+}
+
+.case-study-cta {
+  background: var(--color-lukewarm-charcoal);
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 1px solid var(--color-warm-charcoal);
+  border-radius: .8rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-study-cta img {
+  max-width: 8rem;
+}
+
+.case-study-cta h4 {
+  font-weight: var(--font-weight-title-bold);
+  color: var(--color-white);
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.case-study-cta p {
+  max-width: 40ch;
+  margin: .4rem 0 0;
 }
