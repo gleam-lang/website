@@ -3375,6 +3375,15 @@ pub fn branding(ctx: site.Context) -> fs.File {
       ]),
       html.li([], [
         html.img([
+          attr.alt(
+            "Lucy in the shape of the maple leaf and dressed in Canadian flag",
+          ),
+          attr("title", "Lucy maple by Tolek"),
+          attr.src("/images/lucy/lucymaple.svg"),
+        ]),
+      ]),
+      html.li([], [
+        html.img([
           attr("style", "height: 16px"),
           attr.alt("tiny Lucy optimized for 16x16px size"),
           attr("title", "Lucy optimized for 16x16px size by Jen Stehlik"),
