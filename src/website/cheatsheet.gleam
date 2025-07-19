@@ -82,63 +82,57 @@ pub fn elixir(ctx: site.Context) -> fs.File {
         ]),
       ]),
       html.li([], [html.a([attr.href("#patterns")], [html.text("Patterns")])]),
-      html.li([], [
-        html.a([attr.href("#flow-control")], [html.text("Flow control")]),
-        html.text(
-          "TODO
-    ",
-        ),
-        html.ul([], [
-          html.li([], [
-            html.a([attr.href("#case")], [html.text("Case")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#try")], [html.text("Try")]),
-            html.text("TODO"),
-          ]),
-        ]),
-      ]),
-      html.li([], [
-        html.a([attr.href("#type-aliases")], [html.text("Type aliases")]),
-        html.text("TODO"),
-      ]),
+      // html.li([], [
+      //   html.a([attr.href("#flow-control")], [html.text("Flow control")]),
+      //   html.text("TODO"),
+      //   html.ul([], [
+      //     html.li([], [
+      //       html.a([attr.href("#case")], [html.text("Case")]),
+      //       html.text("TODO"),
+      //     ]),
+      //     html.li([], [
+      //       html.a([attr.href("#try")], [html.text("Try")]),
+      //       html.text("TODO"),
+      //     ]),
+      //   ]),
+      // ]),
+      // html.li([], [
+      //   html.a([attr.href("#type-aliases")], [html.text("Type aliases")]),
+      //   html.text("TODO"),
+      // ]),
       html.li([], [
         html.a([attr.href("#custom-types")], [html.text("Custom types")]),
         html.ul([], [
           html.li([], [html.a([attr.href("#records")], [html.text("Records")])]),
           html.li([], [html.a([attr.href("#unions")], [html.text("Unions")])]),
-          html.li([], [
-            html.a([attr.href("#opaque-custom-types")], [
-              html.text("Opaque custom types"),
-            ]),
-            html.text("TODO"),
-          ]),
+          // html.li([], [
+        //   html.a([attr.href("#opaque-custom-types")], [
+        //     html.text("Opaque custom types"),
+        //   ]),
+        //   html.text("TODO"),
+        // ]),
         ]),
       ]),
-      html.li([], [
-        html.a([attr.href("#modules")], [html.text("Modules")]),
-        html.text(
-          "TODO
-    ",
-        ),
-        html.ul([], [
-          html.li([], [
-            html.a([attr.href("#imports")], [html.text("Imports")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#nested-modules")], [html.text("Nested modules")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#first-class-modules")], [
-              html.text("First class modules"),
-            ]),
-            html.text("TODO"),
-          ]),
-        ]),
-      ]),
+      // html.li([], [
+    //   html.a([attr.href("#modules")], [html.text("Modules")]),
+    //   html.text("TODO"),
+    //   html.ul([], [
+    //     html.li([], [
+    //       html.a([attr.href("#imports")], [html.text("Imports")]),
+    //       html.text("TODO"),
+    //     ]),
+    //     html.li([], [
+    //       html.a([attr.href("#nested-modules")], [html.text("Nested modules")]),
+    //       html.text("TODO"),
+    //     ]),
+    //     html.li([], [
+    //       html.a([attr.href("#first-class-modules")], [
+    //         html.text("First class modules"),
+    //       ]),
+    //       html.text("TODO"),
+    //     ]),
+    //   ]),
+    // ]),
     ]),
     html.h2([attr.id("comments")], [html.text("Comments")]),
     html.h4([attr.id("elixir")], [html.text("Elixir")]),
@@ -1385,27 +1379,24 @@ pub fn erlang(ctx: site.Context) -> fs.File {
           html.li([], [html.a([attr.href("#dicts")], [html.text("Dicts")])]),
         ]),
       ]),
-      html.li([], [
-        html.a([attr.href("#patterns")], [html.text("Patterns")]),
-        html.text("TODO"),
-      ]),
-      html.li([], [
-        html.a([attr.href("#flow-control")], [html.text("Flow control")]),
-        html.text(
-          "TODO
-    ",
-        ),
-        html.ul([], [
-          html.li([], [
-            html.a([attr.href("#case")], [html.text("Case")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#try")], [html.text("Try")]),
-            html.text("TODO"),
-          ]),
-        ]),
-      ]),
+      // html.li([], [
+      //   html.a([attr.href("#patterns")], [html.text("Patterns")]),
+      //   html.text("TODO"),
+      // ]),
+      // html.li([], [
+      //   html.a([attr.href("#flow-control")], [html.text("Flow control")]),
+      //   html.text("TODO"),
+      //   html.ul([], [
+      //     html.li([], [
+      //       html.a([attr.href("#case")], [html.text("Case")]),
+      //       html.text("TODO"),
+      //     ]),
+      //     html.li([], [
+      //       html.a([attr.href("#try")], [html.text("Try")]),
+      //       html.text("TODO"),
+      //     ]),
+      //   ]),
+      // ]),
       html.li([], [
         html.a([attr.href("#type-aliases")], [html.text("Type aliases")]),
       ]),
@@ -1421,29 +1412,26 @@ pub fn erlang(ctx: site.Context) -> fs.File {
           ]),
         ]),
       ]),
-      html.li([], [
-        html.a([attr.href("#modules")], [html.text("Modules")]),
-        html.text(
-          "TODO
-    ",
-        ),
-        html.ul([], [
-          html.li([], [
-            html.a([attr.href("#imports")], [html.text("Imports")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#nested-modules")], [html.text("Nested modules")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#first-class-modules")], [
-              html.text("First class modules"),
-            ]),
-            html.text("TODO"),
-          ]),
-        ]),
-      ]),
+      // html.li([], [
+    //   html.a([attr.href("#modules")], [html.text("Modules")]),
+    //   html.text("TODO"),
+    //   html.ul([], [
+    //     html.li([], [
+    //       html.a([attr.href("#imports")], [html.text("Imports")]),
+    //       html.text("TODO"),
+    //     ]),
+    //     html.li([], [
+    //       html.a([attr.href("#nested-modules")], [html.text("Nested modules")]),
+    //       html.text("TODO"),
+    //     ]),
+    //     html.li([], [
+    //       html.a([attr.href("#first-class-modules")], [
+    //         html.text("First class modules"),
+    //       ]),
+    //       html.text("TODO"),
+    //     ]),
+    //   ]),
+    // ]),
     ]),
     html.h2([attr.id("variables")], [html.text("Variables")]),
     html.h4([attr.id("erlang")], [html.text("Erlang")]),
@@ -2364,12 +2352,12 @@ dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
         ),
       ]),
     ]),
-    html.h2([attr.id("flow-control")], [html.text("Flow control")]),
-    html.p([], [html.text("TODO")]),
-    html.h3([attr.id("case")], [html.text("Case")]),
-    html.p([], [html.text("TODO")]),
-    html.h3([attr.id("try")], [html.text("Try")]),
-    html.p([], [html.text("TODO")]),
+    // html.h2([attr.id("flow-control")], [html.text("Flow control")]),
+    // html.p([], [html.text("TODO")]),
+    // html.h3([attr.id("case")], [html.text("Case")]),
+    // html.p([], [html.text("TODO")]),
+    // html.h3([attr.id("try")], [html.text("Try")]),
+    // html.p([], [html.text("TODO")]),
     html.h2([attr.id("type-aliases")], [html.text("Type aliases")]),
     html.h4([attr.id("erlang-19")], [html.text("Erlang")]),
     html.pre([], [
@@ -7076,60 +7064,57 @@ pub fn rust(ctx: site.Context) -> fs.File {
         ]),
       ]),
       html.li([], [html.a([attr.href("#patterns")], [html.text("Patterns")])]),
-      html.li([], [
-        html.a([attr.href("#flow-control")], [html.text("Flow control")]),
-        html.text("TODO"),
-        html.ul([], [
-          html.li([], [
-            html.a([attr.href("#case")], [html.text("Case")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#try")], [html.text("Try")]),
-            html.text("TODO"),
-          ]),
-        ]),
-      ]),
-      html.li([], [
-        html.a([attr.href("#type-aliases")], [html.text("Type aliases")]),
-        html.text("TODO"),
-      ]),
+      // html.li([], [
+      //   html.a([attr.href("#flow-control")], [html.text("Flow control")]),
+      //   html.text("TODO"),
+      //   html.ul([], [
+      //     html.li([], [
+      //       html.a([attr.href("#case")], [html.text("Case")]),
+      //       html.text("TODO"),
+      //     ]),
+      //     html.li([], [
+      //       html.a([attr.href("#try")], [html.text("Try")]),
+      //       html.text("TODO"),
+      //     ]),
+      //   ]),
+      // ]),
+      // html.li([], [
+      //   html.a([attr.href("#type-aliases")], [html.text("Type aliases")]),
+      //   html.text("TODO"),
+      // ]),
       html.li([], [
         html.a([attr.href("#custom-types")], [html.text("Custom types")]),
         html.ul([], [
           html.li([], [html.a([attr.href("#records")], [html.text("Records")])]),
           html.li([], [html.a([attr.href("#unions")], [html.text("Unions")])]),
-          html.li([], [
-            html.a([attr.href("#opaque-custom-types")], [
-              html.text("Opaque custom types"),
-            ]),
-            html.text("TODO"),
-          ]),
+          // html.li([], [
+        //   html.a([attr.href("#opaque-custom-types")], [
+        //     html.text("Opaque custom types"),
+        //   ]),
+        //   html.text("TODO"),
+        // ]),
         ]),
       ]),
-      html.li([], [
-        html.a([attr.href("#modules")], [html.text("Modules")]),
-        html.text(
-          "TODO
-    ",
-        ),
-        html.ul([], [
-          html.li([], [
-            html.a([attr.href("#imports")], [html.text("Imports")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#nested-modules")], [html.text("Nested modules")]),
-            html.text("TODO"),
-          ]),
-          html.li([], [
-            html.a([attr.href("#first-class-modules")], [
-              html.text("First class modules"),
-            ]),
-            html.text("TODO"),
-          ]),
-        ]),
-      ]),
+      // html.li([], [
+    //   html.a([attr.href("#modules")], [html.text("Modules")]),
+    //   html.text("TODO"),
+    //   html.ul([], [
+    //     html.li([], [
+    //       html.a([attr.href("#imports")], [html.text("Imports")]),
+    //       html.text("TODO"),
+    //     ]),
+    //     html.li([], [
+    //       html.a([attr.href("#nested-modules")], [html.text("Nested modules")]),
+    //       html.text("TODO"),
+    //     ]),
+    //     html.li([], [
+    //       html.a([attr.href("#first-class-modules")], [
+    //         html.text("First class modules"),
+    //       ]),
+    //       html.text("TODO"),
+    //     ]),
+    //   ]),
+    // ]),
     ]),
     html.h2([attr.id("comments")], [html.text("Comments")]),
     html.p([], [html.text("Comments look very similar in both languages.")]),
