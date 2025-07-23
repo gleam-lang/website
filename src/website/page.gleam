@@ -834,8 +834,8 @@ FROM erlang:27.1.1.0-alpine
 RUN \\
   addgroup --system webapp && \\
   adduser --system webapp -g webapp
-COPY --from=build /app/build/erlang-shipment /app
 USER webapp
+COPY --from=build /app/build/erlang-shipment /app
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
 CMD [\"run\"]
@@ -2628,6 +2628,7 @@ FROM erlang:27.1.1.0-alpine
 RUN \\
   addgroup --system webapp && \\
   adduser --system webapp -g webapp
+USER webapp
 COPY --from=build /app/build/erlang-shipment /app
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
@@ -4140,6 +4141,7 @@ fn highlighted_dockerfile_pre_code(code: String) -> Element(b) {
     |> list.map(fn(line) {
       case line {
         "RUN" as command <> rest
+        | "USER" as command <> rest
         | "FROM" as command <> rest
         | "COPY" as command <> rest
         | "WORKDIR" as command <> rest
