@@ -40,6 +40,97 @@ pub fn redirect(from: String, to: String) -> fs.File {
   fs.File(path: from, content:)
 }
 
+pub fn sponsor(ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "/sponsor",
+      title: "Sponsor Gleam",
+      description: "Support Gleam's development by sponsoring members of our core team!",
+      preload_images: [],
+    )
+
+  let sponsees =
+    [
+      #(
+        "Louis",
+        "Squirrel Catcher",
+        "https://avatars.githubusercontent.com/u/6134406?v=4",
+        "https://github.com/sponsors/lpil",
+      ),
+      #(
+        "Louis",
+        "Squirrel Catcher",
+        "https://avatars.githubusercontent.com/u/6134406?v=4",
+        "https://github.com/sponsors/lpil",
+      ),
+      #(
+        "Louis",
+        "Squirrel Catcher",
+        "https://avatars.githubusercontent.com/u/6134406?v=4",
+        "https://github.com/sponsors/lpil",
+      ),
+      #(
+        "Louis",
+        "Squirrel Catcher",
+        "https://avatars.githubusercontent.com/u/6134406?v=4",
+        "https://github.com/sponsors/lpil",
+      ),
+    ]
+    |> list.map(fn(sponsee) {
+      html.li([], [
+        html.img([attr.src(sponsee.2)]),
+        html.div([], [
+          html.h4([], [html.text(sponsee.0)]),
+          html.p([], [html.text(sponsee.1)]),
+          html.a([attr.href(sponsee.3)], [html.text("Sponsor")]),
+        ]),
+      ])
+    })
+
+  let content = [
+    html.section([], [
+      html.article([class("prose")], [
+        html.h3([], [html.text("Lorem Ipsum is really useful")]),
+        html.p([], [
+          html.text(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis  ullamcorper metus eu ante congue vehicula. Mauris sagittis in sapien sit amet pharetra. Aenean eleifend vehicula leo at varius. Suspendisse  fringilla libero sit amet sagittis congue. Suspendisse rhoncus, eros nec varius tempor.",
+          ),
+        ]),
+      ]),
+      html.article([class("prose")], [
+        html.h3([], [html.text("Lorem Ipsum is really useful")]),
+        html.p([], [
+          html.text(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis  ullamcorper metus eu ante congue vehicula. Mauris sagittis in sapien sit amet pharetra. Aenean eleifend vehicula leo at varius. Suspendisse  fringilla libero sit amet sagittis congue. Suspendisse rhoncus, eros nec varius tempor.",
+          ),
+        ]),
+      ]),
+    ]),
+    // TODO: Use a real class here
+    html.section([class("home-top-sponsors")], [
+      html.article([class("content prose text-center")], [
+        html.h3([], [html.text("I'm in! How do I sponsor?")]),
+        html.p([], [
+          html.text(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis  ullamcorper metus eu ante congue vehicula. Mauris sagittis in sapien sit amet pharetra. Aenean eleifend vehicula leo at varius. Suspendisse  fringilla libero sit amet sagittis congue. Suspendisse rhoncus, eros nec varius tempor.",
+          ),
+        ]),
+      ]),
+    ]),
+    html.section([], [html.ul([class("sponsees")], sponsees)]),
+  ]
+
+  [
+    header(hero_image: option.None, content: [
+      html.h1([], [html.text(meta.title)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
+    ]),
+    ..content
+  ]
+  |> top_layout(meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -3906,7 +3997,7 @@ fn header(
         html.div([], [
           html.a([attr.href("/news")], [html.text("News")]),
           html.a([attr.href("/community")], [html.text("Community")]),
-          html.a([attr.href("https://github.com/sponsors/lpil")], [
+          html.a([attr.href("/sponsor")], [
             html.text("Sponsor"),
           ]),
         ]),
