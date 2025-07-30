@@ -1167,7 +1167,6 @@ pre code {
   margin: 0 auto 6rem;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
 
@@ -1184,10 +1183,15 @@ pre code {
   padding: 1.3rem; 
 }
 
-.sponsee:nth-of-type(even) {
-  transform: translateY(30%);
-}
+@media (min-width: 960px) {
+  .sponsees {
+	grid-template-columns: 1fr 1fr;
+  }
 
+  .sponsee:nth-of-type(even) {
+	transform: translateY(30%);
+  }
+}
 .sponsee img {
   width: 4.6rem;
   height: 4.6rem;
