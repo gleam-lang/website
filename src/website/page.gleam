@@ -52,72 +52,175 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   let sponsees =
     [
       #(
-        "Louis",
-        "Squirrel Catcher",
+        "Louis Pilfold",
+        "Gleam Creator and Lead",
         "https://avatars.githubusercontent.com/u/6134406?v=4",
         "https://github.com/sponsors/lpil",
       ),
       #(
-        "Louis",
+        "Hayleigh Thompson",
         "Squirrel Catcher",
-        "https://avatars.githubusercontent.com/u/6134406?v=4",
-        "https://github.com/sponsors/lpil",
+        "https://avatars.githubusercontent.com/u/9001354?v=4",
+        "https://github.com/sponsors/hayleigh-dot-dev",
       ),
       #(
-        "Louis",
+        "Giacomo \"Jak\" Cavalieri ",
         "Squirrel Catcher",
-        "https://avatars.githubusercontent.com/u/6134406?v=4",
-        "https://github.com/sponsors/lpil",
+        "https://avatars.githubusercontent.com/u/20598369?v=4",
+        "https://github.com/sponsors/giacomocavalieri",
       ),
       #(
-        "Louis",
+        "Surya \"Gears\" Rose",
         "Squirrel Catcher",
-        "https://avatars.githubusercontent.com/u/6134406?v=4",
-        "https://github.com/sponsors/lpil",
+        "https://avatars.githubusercontent.com/u/40563462?v=4",
+        "https://github.com/sponsors/GearsDatapacks",
       ),
     ]
     |> list.map(fn(sponsee) {
-      html.li([], [
+      html.li([class("sponsee")], [
         html.img([attr.src(sponsee.2)]),
         html.div([], [
           html.h4([], [html.text(sponsee.0)]),
           html.p([], [html.text(sponsee.1)]),
-          html.a([attr.href(sponsee.3)], [html.text("Sponsor")]),
+        ]),
+        html.a([class("sponsor-button"), attr.href(sponsee.3)], [
+          html.text("Sponsor"),
         ]),
       ])
     })
 
   let content = [
-    html.section([], [
-      html.article([class("prose")], [
-        html.h3([], [html.text("Lorem Ipsum is really useful")]),
+    html.section([class("stacked-articles content prose")], [
+      html.article([class("")], [
+        html.h3([], [html.text("Why sponsor Gleam?")]),
         html.p([], [
           html.text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis  ullamcorper metus eu ante congue vehicula. Mauris sagittis in sapien sit amet pharetra. Aenean eleifend vehicula leo at varius. Suspendisse  fringilla libero sit amet sagittis congue. Suspendisse rhoncus, eros nec varius tempor.",
+            "Unlike most programming languages, Gleam does not come from any particular tech corporation or academic institution and it is a truly open-source community project. We depend entirely on sponsoring, from both individuals and companies.",
           ),
         ]),
       ]),
-      html.article([class("prose")], [
-        html.h3([], [html.text("Lorem Ipsum is really useful")]),
+      html.article([class("")], [
+        html.h3([], [html.text("What does “sponsoring” mean exactly?")]),
         html.p([], [
           html.text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis  ullamcorper metus eu ante congue vehicula. Mauris sagittis in sapien sit amet pharetra. Aenean eleifend vehicula leo at varius. Suspendisse  fringilla libero sit amet sagittis congue. Suspendisse rhoncus, eros nec varius tempor.",
+            "Sponsoring Gleam is supporting financially the Gleam company or core team members.",
           ),
         ]),
+        html.p([], [
+          html.text(
+            "Your contribution helps fund Gleam development. That includes things like paying Louis (Gleam’s creator) a salary, sponsoring other contributors, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
+          ),
+        ]),
+        html.p([], [
+          html.text("Everything we bring to the language, like "),
+          html.a([attr.href("/news/gleam-javascript-gets-30-percent-faster/")], [
+            html.text("compiled JS getting 30% faster"),
+          ]),
+          html.text(", is possible thanks to the support of our sponsors!"),
+        ]),
+      ]),
+      html.h3([class("text-center")], [
+        html.text("Check out our full "),
+        html.a([attr.href("/roadmap")], [html.text("roadmap")]),
+        html.text(" to see what we have planned next."),
       ]),
     ]),
-    // TODO: Use a real class here
-    html.section([class("home-top-sponsors")], [
-      html.article([class("content prose text-center")], [
-        html.h3([], [html.text("I'm in! How do I sponsor?")]),
+    html.section([class("sponsor-page-callout")], [
+      html.article([class("content text-center")], [
+        html.h2([], [html.text("I'm in! How do I sponsor?")]),
         html.p([], [
           html.text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis  ullamcorper metus eu ante congue vehicula. Mauris sagittis in sapien sit amet pharetra. Aenean eleifend vehicula leo at varius. Suspendisse  fringilla libero sit amet sagittis congue. Suspendisse rhoncus, eros nec varius tempor.",
+            "You can support several of the Gleam core team members to support them and their areas of expertise!",
           ),
+        ]),
+        html.p([], [
+          html.text("Meet some of the core team members you can sponsor:"),
         ]),
       ]),
     ]),
     html.section([], [html.ul([class("sponsees")], sponsees)]),
+    html.section([class("sponsor-faqs")], [
+      html.div([class("prose content")], [
+        html.h2([class("text-center")], [
+          html.text("Frequently Asked Questions"),
+        ]),
+        html.article([], [
+          html.h3([], [html.text("What’s the minimum to become a sponsor?")]),
+          html.p([], [
+            html.text(
+              "There’s no such thing as a donation too small (or too big)! Whatever feels right for you, feels right for us.",
+            ),
+          ]),
+          html.p([], [
+            html.text(
+              "Even if it’s just $1/month, it’s one dollar more towards the development of Gleam! Also, the fact that you’re sponsoring Gleam is visible on your GitHub profile, giving the language additional exposure and serving as a signal that you care about it and might encourage others to sponsor Gleam as well 🩷",
+            ),
+          ]),
+        ]),
+        html.article([], [
+          html.h3([], [html.text("How much of my sponsorship goes to Gleam?")]),
+          html.p([], [
+            html.text(
+              "All of it! GitHub Sponsors does not charge any fees for sponsorships from personal accounts. 100% of your contribution goes directly towards Gleam development!",
+            ),
+          ]),
+          html.p([], [
+            html.text("However, if you use different channels (like "),
+            html.a([attr.href("https://liberapay.com/gleam/")], [
+              html.text("Liberapay"),
+            ]),
+            html.text(
+              " - we’re there too!) there are some additional fees and commissions that depend on your payment method.",
+            ),
+          ]),
+        ]),
+        html.article([], [
+          html.h3([], [html.text("Can I sponsor multiple team members?")]),
+          html.p([], [
+            html.text(
+              "Yes! You can sponsor Louis, Hayleigh, Giacomo, Gears, or other core contributors individually through GitHub Sponsors.",
+            ),
+          ]),
+        ]),
+        html.article([], [
+          html.h3([], [html.text("Can my company sponsor Gleam?")]),
+          html.p([], [
+            html.text(
+              "Absolutely! Companies are welcome to sponsor Gleam - contact Louis directly at hello@gleam.run to get in touch about larger sponsorships, feature funding, or consulting opportunities.",
+            ),
+          ]),
+        ]),
+        html.article([], [
+          html.h3([], [
+            html.text("Do I have to commit for a certain period of time?"),
+          ]),
+          html.p([], [
+            html.text(
+              "GitHub sponsorship allows you to select a one-time donation or an ongoing, monthly support (that you can pause at any time) - whatever works for you! That said, steady monthly contributions help us plan our budget more effectively and keep the roadmap predictable.",
+            ),
+          ]),
+        ]),
+        html.article([], [
+          html.h3([], [html.text("How can I change or cancel my sponsorship?")]),
+          html.p([], [
+            html.text(
+              "You can manage, pause, or cancel your sponsorship anytime through your GitHub Sponsors dashboard.",
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+    html.section([attr.class("home-sponsors")], [
+      html.div([attr.class("content prose")], [
+        html.h2([], [html.text("Lovely people")]),
+        html.p([], [
+          html.text(
+            "Here's some of the wonderful people already supporting Gleam",
+          ),
+        ]),
+      ]),
+      wall_of_sponsors(),
+    ]),
   ]
 
   [

@@ -29,6 +29,7 @@
   --font-family-title: "Lexend", sans-serif;
   /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
 
+  --color-cool-charcoal: #1c202b;
   --color-charcoal: #2f2f2f;
   --color-lukewarm-charcoal: #313546;
   --color-warm-charcoal: #616682;
@@ -166,6 +167,14 @@ td {
 
 .text-left {
   text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .content {
@@ -1126,4 +1135,86 @@ pre code {
 .case-study-cta p {
   max-width: 40ch;
   margin: .4rem 0 0;
+}
+
+.stacked-articles > article {
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
+.sponsor-page-callout {
+  background-color: var(--color-faff-pink);
+  padding: 6rem 0 4rem;
+  margin: 3rem 0 -3rem;
+  text-align: center;
+  color: var(--color-black);
+}
+
+.sponsor-page-callout h2 {
+  font-weight: var(--font-weight-title-bold);
+}
+
+.sponsees {
+  max-width: 772px;
+  margin: 0 auto 6rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.sponsee {
+  background: var(--color-lukewarm-charcoal);
+  border: 1px solid var(--color-warm-charcoal);
+  max-width: 400px;
+  width: 100%;
+  border-radius: .6rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.3rem; 
+}
+
+.sponsee:nth-of-type(even) {
+  transform: translateY(30%);
+}
+
+.sponsee img {
+  width: 4.6rem;
+  height: 4.6rem;
+  border-radius: 100rem;
+}
+
+.sponsee h4 {
+  font-weight: var(--font-weight-title-bold);
+  color: var(--color-white);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.sponsee p {
+  margin: 0;
+}
+
+.sponsee .sponsor-button {
+  padding: .9rem 1rem;
+  border-radius: .4rem;
+  background: var(--color-faff-pink);
+  font-weight: var(--font-weight-title-bold);
+  color: var(--color-black);
+  grid-column: 1 / span 2;
+  text-align: center;
+  font-family: var(--font-family-title);
+  transition: opacity 120ms ease-in-out;
+}
+
+.sponsee .sponsor-button:hover {
+  opacity: .9;
+}
+
+.sponsor-faqs {
+  background: var(--color-cool-charcoal);
+  padding: 3rem 0;
+  margin: 2rem 0 6rem;
 }
