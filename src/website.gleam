@@ -56,6 +56,7 @@ fn build_site() -> snag.Result(Nil) {
     page.deployment_flyio(ctx),
     page.frequently_asked_questions(ctx),
     page.news_index(news_posts, ctx),
+    page.sponsor(ctx),
     roadmap.page(ctx),
     command_line_reference.page(ctx),
     language_server.page(ctx),
