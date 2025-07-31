@@ -40,6 +40,10 @@ pub fn redirect(from: String, to: String) -> fs.File {
   fs.File(path: from, content:)
 }
 
+type Sponsee {
+  Sponsee(name: String, title: String, avatar: String, sponsor_link: String)
+}
+
 pub fn sponsor(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -49,41 +53,40 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       preload_images: [],
     )
 
-  let sponsees =
-    [
-      #(
-        "Louis Pilfold",
-        "Gleam Creator and Lead",
-        "https://avatars.githubusercontent.com/u/6134406?v=4",
-        "https://github.com/sponsors/lpil",
-      ),
-      #(
-        "Hayleigh Thompson",
-        "Squirrel Catcher",
-        "https://avatars.githubusercontent.com/u/9001354?v=4",
-        "https://github.com/sponsors/hayleigh-dot-dev",
-      ),
-      #(
-        "Giacomo \"Jak\" Cavalieri ",
-        "Squirrel Catcher",
-        "https://avatars.githubusercontent.com/u/20598369?v=4",
-        "https://github.com/sponsors/giacomocavalieri",
-      ),
-      #(
-        "Surya \"Gears\" Rose",
-        "Squirrel Catcher",
-        "https://avatars.githubusercontent.com/u/40563462?v=4",
-        "https://github.com/sponsors/GearsDatapacks",
-      ),
-    ]
+  let sponsees = [
+    Sponsee(
+      name: "Louis Pilfold",
+      title: "Gleam Creator and Lead",
+      avatar: "https://avatars.githubusercontent.com/u/6134406?v=4",
+      sponsor_link: "https://github.com/sponsors/lpil",
+    ),
+    Sponsee(
+      name: "Hayleigh Thompson",
+      title: "Lustre Maintainer",
+      avatar: "https://avatars.githubusercontent.com/u/9001354?v=4",
+      sponsor_link: "https://github.com/sponsors/hayleigh-dot-dev",
+    ),
+    Sponsee(
+      name: "Giacomo \"Jak\" Cavalieri",
+      title: "Real Life Squirrel",
+      avatar: "https://avatars.githubusercontent.com/u/20598369?v=4",
+      sponsor_link: "https://github.com/sponsors/giacomocavalieri",
+    ),
+    Sponsee(
+      name: "Surya \"Gears\" Rose",
+      title: "Compiler Extraordinaire",
+      avatar: "https://avatars.githubusercontent.com/u/40563462?v=4",
+      sponsor_link: "https://github.com/sponsors/GearsDatapacks",
+    ),
+  ]
     |> list.map(fn(sponsee) {
       html.li([class("sponsee")], [
-        html.img([attr.src(sponsee.2)]),
+        html.img([attr.src(sponsee.avatar)]),
         html.div([], [
-          html.h4([], [html.text(sponsee.0)]),
-          html.p([], [html.text(sponsee.1)]),
+          html.h4([], [html.text(sponsee.name)]),
+          html.p([], [html.text(sponsee.title)]),
         ]),
-        html.a([class("sponsor-button"), attr.href(sponsee.3)], [
+        html.a([class("sponsor-button"), attr.href(sponsee.sponsor_link)], [
           html.text("Sponsor"),
         ]),
       ])
