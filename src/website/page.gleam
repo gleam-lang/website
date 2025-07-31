@@ -4104,9 +4104,7 @@ fn header(
         html.div([], [
           html.a([attr.href("/news")], [html.text("News")]),
           html.a([attr.href("/community")], [html.text("Community")]),
-          html.a([attr.href("/sponsor")], [
-            html.text("Sponsor"),
-          ]),
+          html.a([attr.href("/sponsor")], [html.text("Sponsor")]),
         ]),
         html.div([], [
           html.a([attr.href("https://packages.gleam.run")], [
