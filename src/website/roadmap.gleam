@@ -9,13 +9,7 @@ import website/site
 
 const in_progress = [
   "Function inlining to improve performance and stack usage",
-  "Custom messages for `echo`", "JSDoc comments in generated JavaScript",
-  "Dead code elimination for definitions", "Redundant comparison detection",
-  "Generated code size improvements for record updates",
-  "Calculation support in bit array pattern size segements",
-  "Alerting for when new major dependency versions are available",
-  "Improved error messages for dependency version conflicts",
-  "Programmer choice support for list formatting",
+  "Langauge server \"collapse nested case\" code action",
 ]
 
 const planned = [
@@ -32,6 +26,26 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "v1.12",
+    date: calendar.Date(2025, calendar.June, 2),
+    items: [
+      "Custom messages for `echo`",
+      "JSDoc comments in generated JavaScript",
+      "Dead code elimination for definitions",
+      "Redundant comparison detection",
+      "Generated code size improvements for record updates",
+      "Calculation support in bit array pattern size segements",
+      "Alerting for when new major dependency versions are available",
+      "Improved error messages for dependency version conflicts",
+      "Programmer choice support for list formatting",
+      "Endianness for UTF bit array segments",
+      "Same-module Erlang small function inlining",
+      "Version git tag prefix for monorepos",
+      "Redundant comparison detection",
+      "Langauge server \"remove block\" code action",
+    ],
+  ),
   Release(
     version: "gleam_erlang v1.0, gleam_otp v1.0",
     date: calendar.Date(2025, calendar.June, 12),
