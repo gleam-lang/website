@@ -145,7 +145,7 @@ pre {
 
 li > code,
 p > code {
-  font-size: 0.9em;
+  font-size: 0.8em;
   opacity: 0.75;
   margin: 0 2px;
 }
@@ -419,7 +419,7 @@ main.content {
 }
 
 .sponsor-level2 img {
-  height: 33px;
+  height: 80px;
 }
 
 .sponsors-like-you,
@@ -862,15 +862,7 @@ pre code {
 
 .post .top-sponsors li {
   list-style: none;
-}
-
-.post .sponsor-fly {
-  height: 100px;
-  margin-bottom: var(--space);
-}
-
-.post .sponsor-alembic {
-  height: 38px;
+  padding-bottom: var(--gap-2);
 }
 
 .post .top-sponsors + ul {
