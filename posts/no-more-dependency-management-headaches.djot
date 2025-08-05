@@ -96,7 +96,7 @@ lustre     3.1.4 -> 5.1.1
 
 Thank you [Amjad Mohamed](https://github.com/andho) for this!
 
-## Future dependency management improvements 
+## Future dependency management improvements
 
 Dependency packages can be extremely useful for being productive when
 programming, but great care must be taken with them, both within a single
@@ -259,7 +259,7 @@ Thank you [Aayush Tripathi](https://github.com/aayush-tripathi)!
 ## Discarded variable hints
 
 The compiler can now tell when an unknown variable might be referring to a
-variable that has been discarde with a `_` prefix, providing an helpful error
+variable that has been discarded with a `_` prefix, providing an helpful error
 message highlighting it. For example, this piece of code:
 
 ```gleam
@@ -345,11 +345,11 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 ## Helpful import errors for Pythonistas
 
 When learning a new language it can be common to make mistakes with the syntax,
-especially with syntax is similar but not the same as another language the
+especially with syntax that is similar but not the same as another language the
 programmer is more familiar with.
 
 Gleam's module import syntax looks similar to Python's, but it uses `/` instead
-of `.` in the module name. The compiler now emit a helpful message when this
+of `.` in the module name. The compiler now emits a helpful message when this
 mistake is made.
 
 ``` =html
@@ -407,7 +407,7 @@ Thank you [Carl Bordum Hansen](https://github.com/carlbordum) and
 
 ## Argument labels hints in errors
 
-The error message emitted gets when a function is called with the wrong number
+The error message emitted when a function is called with the wrong number
 of arguments has been improved, it now show the labels for the missing
 arguments.
 
@@ -447,8 +447,8 @@ Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 ## Erlang local function inlining
 
 When compiling for the Erlang VM the Gleam build tool will use the Erlang
-compile to produce BEAM bytecode for the Gleam code, so Gleam benefits from all
-the optimisations that it includes.
+compiler to produce BEAM bytecode for the Gleam code, so Gleam benefits from
+all the optimisations that it includes.
 
 One option that is disabled by default is inlining of functions within the same
 module. This Gleam release enables it with conservative configuration that
@@ -530,9 +530,9 @@ is my sole source of income.
 
 We have made great progress towards our goal of being able to appropriately pay
 the core team members, but we still have further to go. Please consider
-supporting [the project][sponsor] or core team members 
+supporting [the project][sponsor] or core team members
 [Giacomo Cavalieri](https://github.com/sponsors/giacomocavalieri) and
-[Surya Rose](https://github.com/sponsors/GearsDatapacks) 
+[Surya Rose](https://github.com/sponsors/GearsDatapacks)
 on GitHub Sponsors.
 
 ``` =html
