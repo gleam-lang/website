@@ -1,5 +1,5 @@
 Gleam is a type-safe and scalable language for the Erlang virtual machine and
-JavaScript runtimes. Today Gleam [v1.12.0][release] has been published, let's
+JavaScript runtimes. Today Gleam [v1.12.0][release] has been published. Let's
 take a look at the highlights.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.12.0
@@ -9,13 +9,13 @@ take a look at the highlights.
 Gleam packages use semantic versioning, and they specify what ranges of
 releases they are compatible with to ensure that all selected versions are
 compatible with each other. This is very useful in ensuring that you don't end
-up stuck with invalid versions which cause the project to fail to compile, or
+up stuck with invalid versions that cause the project to fail to compile, or
 are broken in more confusing subtle ways.
 
-This does however mean that sometimes you will have conflicts when adding a
+This does, however, mean that sometimes you will have conflicts when adding a
 dependency, as there's no version which is compatible with the existing
 versions you have locked. Historically this has been very confusing as we've
-not been able to display much useful information when this happens.
+haven't able to display much useful information when this happens.
 
 ``` =html
 <pre><code><b><span class="code-error">error</span>: Dependency resolution failed</b>
@@ -102,7 +102,7 @@ Dependency packages can be extremely useful for being productive when
 programming, but great care must be taken with them, both within a single
 project and across the wider ecosystem. We want the experience of using
 packages to be enjoyable and beneficial, and want to avoid developers getting
-stuck in "dependency hell". In the coming releases we will will provide new
+stuck in "dependency hell". In the coming releases we will provide new
 features that help with managing and auditing dependencies, resolving version
 conflicts, and to ensure that code published to the package manager is high
 quality and suitable for production use as much as possible.
@@ -117,7 +117,7 @@ even a language server code action for removing all `echo`s from a module once
 you are done debugging.
 
 It is now possible to add a custom message to be printed by `echo`, so you can
-add addition information to aid with your debugging.
+add additional information to aid with your debugging.
 
 ```gleam
 pub fn main() {
@@ -190,7 +190,7 @@ These improvements were the work of Surya and myself, thank you
 ## More flexible list formatting
 
 Gleam comes with an automatic code formatter, which can be run in an editor
-using the Gleam langauge server, or from the command line with `gleam format`.
+using the Gleam language server, or from the command line with `gleam format`.
 Having a canonical formatter means that all Gleam has the same predictable
 style, making it easier to read Gleam code, and removing time consuming debates
 about superficial code style.
@@ -225,7 +225,7 @@ single line again.
 
 The formatter will also permit the programmer to control whether to have
 elements be placed one-per-line, or to try and fit multiple onto a line, and
-single empty lines within lists will be preseved. This will greatly help with
+single empty lines within lists will be preserved. This will greatly help with
 large lists that would benefit from being visually segmented into different
 parts.
 
@@ -295,7 +295,7 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for these!
 ## Avoiding extra object allocations
 
 It is not uncommon when pattern matching to have case clauses where the pattern
-and the clause match exactly. These clauses cause the value to passed through
+and the clause match exactly. These clauses cause the value to be passed through
 unchanged, as can be seen here in the `Error` clause of this code.
 
 ```gleam
@@ -308,9 +308,9 @@ pub fn find_book() -> Result(Book, LibraryError) {
 ```
 
 Previously the generated code for this would construct a new `Error` to contain
-the pattern matched `error` value. With this release the compile identifies
+the pattern matched `error` value. With this release the compiler identifies
 that the resulting value would be identical to the pattern matched value and
-instead reuses that value, which is safe to do so as Gleam is an immutable
+instead reuses that value. It is safe to do this because Gleam is an immutable
 language.
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
@@ -373,7 +373,7 @@ Thank you [Zij-IT](https://github.com/zij-it)!
 Similarly a programmer learning a new language may attempt to use a feature
 their other language has that their new language does not.
 
-Gleam has a syntax for prepanding to a list, which is similar to JavaScript's
+Gleam has a syntax for prepending to a list, which is similar to JavaScript's
 array spread syntax, but faster as it doesn't need to allocate a whole new
 array and copy the elements across. One big difference to the JavaScript
 feature is that it is only for prepending, which can be unexpected for
@@ -478,7 +478,7 @@ Thank you [Sakari Bergen](https://github.com/sbergen)!
 
 Some Gleam packages may include JavaScript or Erlang modules which are used
 with Gleam's "external function" FFI functionality. With this release you can
-now include JavaScript moduels with the `.cjs` file extension, which enables
+now include JavaScript modules with the `.cjs` file extension, which enables
 use of the CommonJS import system.
 
 Thank you [yoshi](https://github.com/yoshi-monster)!
@@ -515,7 +515,7 @@ And thank you to the bug fixers and experience polishers:
 [cysabi](https://github.com/cysabi),
 [Giacomo Cavalieri](https://github.com/giacomocavalieri),
 [Louis Pilfold](https://github.com/lpil), and
-[Surya Rose](https://github.com/GearsDatapacks)).
+[Surya Rose](https://github.com/GearsDatapacks).
 
 For full details of the many fixes and improvements they've implemented see [the
 changelog][changelog].
@@ -543,7 +543,7 @@ on GitHub Sponsors.
 
 [sponsor]: https://github.com/sponsors/lpil
 
-Thank you to all our sponsors! Especially our top sponsors:
+Thank you to all our sponsors! And special thanks to our top sponsors:
 
 ``` =html
 <ul class="top-sponsors">
