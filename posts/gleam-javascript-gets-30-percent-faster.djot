@@ -472,7 +472,7 @@ This error has been improved to include record field labels, as can be seen at
 the bottom of this example:
 
 ``` =html
-<pre><code><b><span class="code-error">Inexhaustive patterns</span>: Unused value</b>
+<pre><code><b><span class="code-error">error</span>: Inexhaustive patterns</b>
 <span class="code-decoration">  ┌─</span> /src/main.gleam:6:3
 <span class="code-decoration">  │</span>
 <span class="code-decoration">6 │</span> <span class="code-error">╭   case person {</span>
