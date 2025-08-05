@@ -143,7 +143,7 @@ compiling to JavaScript to be used in a web browser as there's an initial cost
 to downloading JavaScript programs, especially on lower power devices or with
 poor network connectivity.
 
-Code generated for the record update syntax will not reuse existing variables
+Code generated for the record update syntax will now reuse existing variables
 when possible, reducing the size of the generated code, the number of
 variables, and the number of new scopes defined for both Erlang and JavaScript.
 For example:
