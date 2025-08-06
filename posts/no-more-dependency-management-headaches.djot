@@ -520,7 +520,7 @@ And thank you to the bug fixers and experience polishers:
 For full details of the many fixes and improvements they've implemented see [the
 changelog][changelog].
 
-[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.11.md
+[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.12.md
 
 ## A call for support
 
