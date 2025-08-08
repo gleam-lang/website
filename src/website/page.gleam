@@ -94,34 +94,30 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
     })
 
   let content = [
-    html.section([class("stacked-articles content prose")], [
-      html.article([class("")], [
-        html.h3([], [html.text("Why sponsor Gleam?")]),
-        html.p([], [
-          html.text(
-            "Unlike most programming languages, Gleam does not come from any particular tech corporation or academic institution and it is a truly open-source community project. We depend entirely on sponsoring, from both individuals and companies.",
-          ),
-        ]),
+    html.article([class("content prose")], [
+      html.h3([], [html.text("Why sponsor Gleam?")]),
+      html.p([], [
+        html.text(
+          "Unlike most programming languages, Gleam does not come from any particular tech corporation or academic institution and it is a truly open-source community project. We depend entirely on sponsoring, from both individuals and companies.",
+        ),
       ]),
-      html.article([class("")], [
-        html.h3([], [html.text("What does “sponsoring” mean exactly?")]),
-        html.p([], [
-          html.text(
-            "Sponsoring Gleam is supporting financially the Gleam company or core team members.",
-          ),
+      html.h3([], [html.text("What does “sponsoring” mean exactly?")]),
+      html.p([], [
+        html.text(
+          "Sponsoring Gleam is supporting financially the Gleam company or core team members.",
+        ),
+      ]),
+      html.p([], [
+        html.text(
+          "Your contribution helps fund Gleam development. That includes things like paying Louis (Gleam’s creator) a salary, sponsoring other contributors, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
+        ),
+      ]),
+      html.p([], [
+        html.text("Everything we bring to the language, like "),
+        html.a([attr.href("/news/gleam-javascript-gets-30-percent-faster/")], [
+          html.text("compiled JS getting 30% faster"),
         ]),
-        html.p([], [
-          html.text(
-            "Your contribution helps fund Gleam development. That includes things like paying Louis (Gleam’s creator) a salary, sponsoring other contributors, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
-          ),
-        ]),
-        html.p([], [
-          html.text("Everything we bring to the language, like "),
-          html.a([attr.href("/news/gleam-javascript-gets-30-percent-faster/")], [
-            html.text("compiled JS getting 30% faster"),
-          ]),
-          html.text(", is possible thanks to the support of our sponsors!"),
-        ]),
+        html.text(", is possible thanks to the support of our sponsors!"),
       ]),
       html.h3([class("text-center")], [
         html.text("Check out our full "),
@@ -134,7 +130,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
         html.h2([], [html.text("I'm in! How do I sponsor?")]),
         html.p([], [
           html.text(
-            "You can support several of the Gleam core team members to support them and their areas of expertise!",
+            "You can support several of the Gleam core team members to support them and their areas of expertise! Sponsoring Louis means sponsoring the Gleam company, and the money is used to pay other core team members, server costs, etc",
           ),
         ]),
         html.p([], [
@@ -190,7 +186,13 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
           html.h3([], [html.text("Can my company sponsor Gleam?")]),
           html.p([], [
             html.text(
-              "Absolutely! Companies are welcome to sponsor Gleam - contact Louis directly at hello@gleam.run to get in touch about larger sponsorships, feature funding, or consulting opportunities.",
+              "Absolutely! Companies are welcome to sponsor Gleam - contact Louis directly at ",
+            ),
+            html.a([attr.href("mailto:hello@gleam.run")], [
+              html.text("hello@gleam.run"),
+            ]),
+            html.text(
+              " to get in touch about larger sponsorships, feature funding, or consulting opportunities.",
             ),
           ]),
         ]),
@@ -214,8 +216,41 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
         ]),
       ]),
     ]),
+    html.section([class("sponsor-featured")], [
+      html.div([attr.class("content")], [
+        html.h2([], [html.text("Kindly supported by")]),
+        ..list.index_map(sponsor.featured(), fn(level, index) {
+          html.ul(
+            [class("sponsor-level" <> int.to_string(index + 1))],
+            list.map(level, fn(sponsor) {
+              html.li([], [
+                html.a(
+                  [
+                    attr.target("_blank"),
+                    attr.rel("noopener"),
+                    attr.href(sponsor.website),
+                  ],
+                  [
+                    html.img([
+                      attr.alt(sponsor.name),
+                      attr.src(sponsor.image),
+                    ]),
+                  ],
+                ),
+              ])
+            }),
+          )
+        })
+      ]),
+      html.img([
+        attr.alt("a soft wavey boundary between two sections of the website"),
+        attr.src("/images/waves.svg"),
+        attr.role("divider"),
+        attr.class("home-waves"),
+      ]),
+    ]),
     html.section([attr.class("home-sponsors")], [
-      html.div([attr.class("content prose")], [
+      html.div([attr.class("content")], [
         html.h2([], [html.text("Lovely people")]),
         html.p([], [
           html.text(
@@ -3800,27 +3835,33 @@ pub fn main() {
 }",
         ),
       ]),
-      html.section([attr.class("home-top-sponsors")], [
+      html.section([class("home-top-sponsors")], [
         html.div([attr.class("content")], [
           html.h2([], [html.text("Kindly supported by")]),
-          html.ul([], [
-            html.li([], [
-              html.a(
-                [
-                  attr.target("_blank"),
-                  attr.rel("noopener"),
-                  attr.href("https://lambdaclass.com/"),
-                  attr.class("sponsor-level1"),
-                ],
-                [
-                  html.img([
-                    attr.alt("Lambda Class"),
-                    attr.src("/images/sponsors/lambda-class-black.png"),
-                  ]),
-                ],
-              ),
-            ]),
-          ]),
+          element.fragment(
+            list.index_map(sponsor.featured(), fn(level, index) {
+              html.ul(
+                [class("sponsor-level" <> int.to_string(index + 1))],
+                list.map(level, fn(sponsor) {
+                  html.li([], [
+                    html.a(
+                      [
+                        attr.target("_blank"),
+                        attr.rel("noopener"),
+                        attr.href(sponsor.website),
+                      ],
+                      [
+                        html.img([
+                          attr.alt(sponsor.name),
+                          attr.src(sponsor.image),
+                        ]),
+                      ],
+                    ),
+                  ])
+                }),
+              )
+            }),
+          ),
           html.a(
             [
               attr.target("_blank"),
