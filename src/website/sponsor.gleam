@@ -13,6 +13,23 @@ import simplifile
 import snag
 import website/fs
 
+pub type FeaturedSponsor {
+  FeaturedSponsor(name: String, website: String, image: String)
+}
+
+// Return a list of featured sponsors, seperated by level.
+pub fn featured() -> List(List(FeaturedSponsor)) {
+  [
+    [
+      FeaturedSponsor(
+        name: "Lambda Class",
+        website: "https://lambdaclass.com/",
+        image: "/images/sponsors/lambda-class-black.png",
+      ),
+    ],
+  ]
+}
+
 /// Update the list of people sponsoring lpil.
 pub fn update_list() -> snag.Result(Nil) {
   use token <- result.try(
