@@ -1253,6 +1253,7 @@ pre code {
 
 .sponsor-featured {
   position: relative;
+  overflow: hidden;
   background: var(--color-faff-pink);
   color: var(--color-black);
   padding: 2rem 0 5rem;
