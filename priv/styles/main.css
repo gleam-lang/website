@@ -1107,6 +1107,7 @@ pre code {
   border: 1px solid var(--color-warm-charcoal);
   border-radius: .8rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
   justify-content: center;
