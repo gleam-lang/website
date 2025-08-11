@@ -28,7 +28,7 @@ const research = [
 const done = [
   Release(
     version: "v1.12",
-    date: calendar.Date(2025, calendar.June, 2),
+    date: calendar.Date(2025, calendar.August, 5),
     items: [
       "Custom messages for `echo`",
       "JSDoc comments in generated JavaScript",
