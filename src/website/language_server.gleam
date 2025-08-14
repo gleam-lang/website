@@ -1295,7 +1295,7 @@ fn neovim_installation_html() -> List(Element(Nil)) {
       html.a([attr.href("https://github.com/neovim/nvim-lspconfig")], [
         html.code([], [html.text("nvim-lspconfig")]),
       ]),
-      html.text("includes configuration for Gleam. Install "),
+      html.text(" includes configuration for Gleam. Install "),
       html.code([], [html.text("nvim-lspconfig")]),
       html.text(
         " with your preferred plugin manager and then add the language server to your ",
@@ -1314,7 +1314,7 @@ fn neovim_installation_html() -> List(Element(Nil)) {
       html.a([attr.href("https://github.com/nvim-treesitter/nvim-treesitter")], [
         html.code([], [html.text("nvim-treesitter")]),
       ]),
-      html.text("you can run "),
+      html.text(" you can run "),
       html.code([], [html.text(":TSInstall gleam")]),
       html.text(" to get syntax highlighting and other tree-sitter features."),
     ]),

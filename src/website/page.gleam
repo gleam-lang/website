@@ -1641,7 +1641,7 @@ use ETS, the Erlang in-memory key-value database.",
         ],
         [html.code([], [html.text("javascript_mutable_reference")])],
       ),
-      html.text("library offers mutable references."),
+      html.text(" library offers mutable references."),
     ]),
     html.h2([attr.id("does-gleam-have-side-effects")], [
       html.text("Does Gleam have side effects?"),
@@ -1761,7 +1761,7 @@ division by zero which you can use if that is more suitable for your program.",
         html.text("Alpaca"),
       ]),
       html.text(
-        "is similar to Gleam in that it is a statically typed language
+        " is similar to Gleam in that it is a statically typed language
 for the Erlang VM that is inspired by the ML family of languages. It’s a
 wonderful project and it was an early inspiration for Gleam!",
       ),
@@ -1813,7 +1813,7 @@ optionally JavaScript.",
         html.text("Caramel"),
       ]),
       html.text(
-        "is similar to Gleam in that it is a statically typed language
+        " is similar to Gleam in that it is a statically typed language
 for the Erlang VM. It is very cool, especially because of its OCaml heritage!",
       ),
     ]),
@@ -1853,7 +1853,7 @@ family languages.",
         html.text("Elixir"),
       ]),
       html.text(
-        "is another language that runs on the Erlang virtual machine.
+        " is another language that runs on the Erlang virtual machine.
 It is very popular and a great language!",
       ),
     ]),
@@ -1958,7 +1958,7 @@ programming style you personally find most enjoyable and productive.",
         html.text("Purerl"),
       ]),
       html.text(
-        "is a backend for the PureScript compiler that outputs Erlang.
+        " is a backend for the PureScript compiler that outputs Erlang.
 Both PureScript and Purerl are fantastic!",
       ),
     ]),
@@ -2007,7 +2007,7 @@ though not all of it can be used with the Purerl compiler backend.",
         html.text("Rust"),
       ]),
       html.text(
-        "is a language that compiles to native code and gives you full
+        " is a language that compiles to native code and gives you full
 control of memory use in your program, much like C or C++. Gleam’s compiler is
 written in Rust! We’re big fans of the language.",
       ),
