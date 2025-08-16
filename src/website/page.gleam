@@ -56,9 +56,9 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   let sponsees =
     [
       Sponsee(
-        name: "Louis Pilfold",
-        title: "Gleam Creator and Lead",
-        avatar: "https://avatars.githubusercontent.com/u/6134406?v=4",
+        name: "Gleam",
+        title: "Sponsor the Project",
+        avatar: "/images/lucy/lucy.svg",
         sponsor_link: "https://github.com/sponsors/lpil",
       ),
       Sponsee(
@@ -94,22 +94,36 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
     })
 
   let content = [
+    html.section([], [html.ul([class("sponsees")], sponsees)]),
     html.article([class("content prose")], [
       html.h3([], [html.text("Why sponsor Gleam?")]),
       html.p([], [
         html.text(
-          "Unlike most programming languages, Gleam does not come from any particular tech corporation or academic institution and it is a truly open-source community project. We depend entirely on sponsoring, from both individuals and companies.",
+          "Gleam is a truly open-source community project and, unlike most programming languages, it does not come from any particular tech corporation or academic institution. That means we depend entirely on sponsoring, from both individuals and companies.",
         ),
       ]),
-      html.h3([], [html.text("What does “sponsoring” mean exactly?")]),
-      html.p([], [
+      html.h3([], [
         html.text(
-          "Sponsoring Gleam is supporting financially the Gleam company or core team members.",
+          "What does “sponsoring” mean exactly? Where is the money going?",
         ),
       ]),
       html.p([], [
         html.text(
-          "Your contribution helps fund Gleam development. That includes things like paying Louis (Gleam’s creator) a salary, sponsoring other contributors, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
+          "Sponsoring Gleam means funding the people who are making it: financially supporting the Gleam project or core team members. In both cases, your contribution helps fund further Gleam development.",
+        ),
+      ]),
+      html.p([], [
+        html.text("If you choose to support the main project (which is under "),
+        html.a([attr.href("https://github.com/sponsors/lpil")], [
+          html.text("Louis'"),
+        ]),
+        html.text(
+          " account), you’re helping to cover things like Louis' (Gleam’s creator) salary, sponsoring other contributors, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
+        ),
+      ]),
+      html.p([], [
+        html.text(
+          "Sponsoring other core team members directly supports their input into the language.",
         ),
       ]),
       html.p([], [
@@ -117,28 +131,24 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
         html.a([attr.href("/news/gleam-javascript-gets-30-percent-faster/")], [
           html.text("compiled JS getting 30% faster"),
         ]),
-        html.text(", is possible thanks to the support of our sponsors!"),
-      ]),
-      html.h3([class("text-center")], [
-        html.text("Check out our full "),
+        html.text(
+          ", is possible thanks to the support of our sponsors! Check out our full ",
+        ),
         html.a([attr.href("/roadmap")], [html.text("roadmap")]),
         html.text(" to see what we have planned next."),
       ]),
-    ]),
-    html.section([class("sponsor-page-callout")], [
-      html.article([class("content text-center")], [
-        html.h2([], [html.text("I'm in! How do I sponsor?")]),
-        html.p([], [
-          html.text(
-            "You can support several of the Gleam core team members to support them and their areas of expertise! Sponsoring Louis means sponsoring the Gleam company, and the money is used to pay other core team members, server costs, etc",
-          ),
-        ]),
-        html.p([], [
-          html.text("Meet some of the core team members you can sponsor:"),
-        ]),
+      html.h3([], [html.text("How do I sponsor?")]),
+      html.p([], [
+        html.text(
+          "Most people support the project via GitHub Sponsors, but we also have few bigger contributions from organisations like Lambda Class.",
+        ),
+      ]),
+      html.p([], [
+        html.text(
+          "On GitHub you can support Gleam through Louis’ account as well as individual core team members to support them and their areas of expertise!",
+        ),
       ]),
     ]),
-    html.section([], [html.ul([class("sponsees")], sponsees)]),
     html.section([class("sponsor-faqs")], [
       html.div([class("prose content")], [
         html.h2([class("text-center")], [

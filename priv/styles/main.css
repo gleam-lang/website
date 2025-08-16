@@ -1184,9 +1184,11 @@ pre code {
 
 .sponsees {
   max-width: 772px;
-  margin: 0 auto 6rem;
+  margin: -6rem auto 6rem;
   padding: 0 1rem;
   display: grid;
+  position: relative;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -1205,11 +1207,11 @@ pre code {
 
 @media (min-width: 960px) {
   .sponsees {
-	grid-template-columns: 1fr 1fr;
+  	grid-template-columns: 1fr 1fr;
   }
 
   .sponsee:nth-of-type(even) {
-	transform: translateY(30%);
+	  transform: translateY(20%);
   }
 }
 .sponsee img {
