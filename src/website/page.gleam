@@ -166,8 +166,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
               "Even if it’s just $1/month, it’s one dollar more towards the development of Gleam! Also, the fact that you’re sponsoring Gleam is visible on your GitHub profile, giving the language additional exposure and serving as a signal that you care about it and might encourage others to sponsor Gleam as well 🩷",
             ),
           ]),
-        ]),
-        html.article([], [
+
           html.h3([], [html.text("How much of my sponsorship goes to Gleam?")]),
           html.p([], [
             html.text(
@@ -183,16 +182,14 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
               " - we’re there too!) there are some additional fees and commissions that depend on your payment method.",
             ),
           ]),
-        ]),
-        html.article([], [
+
           html.h3([], [html.text("Can I sponsor multiple team members?")]),
           html.p([], [
             html.text(
               "Yes! You can sponsor Louis, Hayleigh, Giacomo, Gears, or other core contributors individually through GitHub Sponsors.",
             ),
           ]),
-        ]),
-        html.article([], [
+
           html.h3([], [html.text("Can my company sponsor Gleam?")]),
           html.p([], [
             html.text(
@@ -205,8 +202,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
               " to get in touch about larger sponsorships, feature funding, or consulting opportunities.",
             ),
           ]),
-        ]),
-        html.article([], [
+
           html.h3([], [
             html.text("Do I have to commit for a certain period of time?"),
           ]),
@@ -215,8 +211,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
               "GitHub sponsorship allows you to select a one-time donation or an ongoing, monthly support (that you can pause at any time) - whatever works for you! That said, steady monthly contributions help us plan our budget more effectively and keep the roadmap predictable.",
             ),
           ]),
-        ]),
-        html.article([], [
+
           html.h3([], [html.text("How can I change or cancel my sponsorship?")]),
           html.p([], [
             html.text(
