@@ -10,19 +10,28 @@ import website/site
 const in_progress = [
   "Function inlining to improve performance and stack usage",
   "Langauge server \"collapse nested case\" code action",
+  "Dependency version conflict resolution assistent",
+  "Dynamic supervision of actors in Gleam OTP",
 ]
 
 const planned = [
-  "JavaScript record performance improvements", "Hex private package support",
+  "New OTP application initialisation interface",
+  "Code linking syntax for documentation comments",
+  "JavaScript record performance improvements",
+  "Hex private package support",
   "Mutual tail call optimisation on JavaScript",
   "API key generation when Hex rate limits reached",
   "Lifting constant expressions into global scope on JavaScript",
+  "Dependency package licence compliance checks",
 ]
 
 const research = [
-  "OTP release building", "Erlang stack trace line numbers",
-  "Inter-module inlining", "Test discovery functionality",
+  "OTP release building",
+  "Erlang stack trace line numbers",
+  "Test discovery functionality",
   "Build tool watch mode",
+  "FFI type correctness safeguards in development",
+  "Improved ergonomics for cross-target packages",
 ]
 
 const done = [
