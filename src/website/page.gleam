@@ -19,6 +19,8 @@ pub type PageMeta {
   PageMeta(
     path: String,
     title: String,
+    subtitle: String,
+    meta_title: String,
     description: String,
     preload_images: List(String),
   )
@@ -48,8 +50,10 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "/sponsor",
-      title: "Sponsor Gleam",
-      description: "Support Gleam's development by sponsoring members of our core team!",
+      title: "Sponsor",
+      subtitle: "Support Gleam's development by sponsoring members of our core team!",
+      meta_title: "Sponsor | Gleam Programming Language",
+      description: "Everything we bring to the language is possible thanks to our sponsors. See how to become one of them and support Gleam.",
       preload_images: [],
     )
 
@@ -270,7 +274,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   [
     header(hero_image: option.None, content: [
       html.h1([], [html.text(meta.title)]),
-      html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
     ]),
     ..content
   ]
@@ -283,7 +287,9 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
     PageMeta(
       path: "case-studies/" <> post.path,
       title: post.title,
+      subtitle: post.subtitle,
       description: post.subtitle,
+      meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
     )
 
@@ -353,7 +359,9 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
     PageMeta(
       path: "news/" <> post.path,
       title: post.title,
-      description: post.subtitle,
+      subtitle: post.subtitle,
+      description: "News post: " <> post.subtitle,
+      meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
     )
 
@@ -407,7 +415,9 @@ pub fn installing(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "getting-started/installing",
       title: "Installing Gleam",
-      description: "Get ready to start making things",
+      meta_title: "Installing Gleam: get ready to start making things!",
+      subtitle: "Get ready to start making things",
+      description: "Prepare your computer for Gleam development: install Gleam and Erlang.",
       preload_images: [],
     )
 
@@ -1013,6 +1023,8 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "deployment/fly",
       title: "Deploying on Fly.io",
+      meta_title: "Deploying Gleam on Fly.io | Gleam Programming Language",
+      subtitle: "Run Gleam all over the world. No ops required.",
       description: "Run Gleam all over the world. No ops required.",
       preload_images: [],
     )
@@ -1158,6 +1170,8 @@ pub fn writing_gleam(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "writing-gleam",
       title: "Writing Gleam",
+      meta_title: "Writing Gleam",
+      subtitle: "Learn to work with Gleam projects",
       description: "Learn to work with Gleam projects",
       preload_images: [],
     )
@@ -1694,7 +1708,9 @@ pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "frequently-asked-questions",
       title: "Frequently asked questions",
-      description: "What? Why? Where? When? How?",
+      meta_title: "Frequently asked questions | Gleam programming language",
+      subtitle: "What? Why? Where? When? How?",
+      description: "What? Why? Where? When? How? Everything you wanted to know about Gleam.",
       preload_images: [],
     )
 
@@ -2359,7 +2375,9 @@ pub fn documentation(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "documentation",
       title: "Documentation",
-      description: "Learn all about programming in Gleam!",
+      meta_title: "Documentation | Gleam programming language",
+      subtitle: "Learn all about programming in Gleam!",
+      description: "All about programming in Gleam: find the docs you need.",
       preload_images: [],
     )
 
@@ -2560,7 +2578,9 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
     PageMeta(
       path: "news",
       title: "News",
-      description: "What's happening in the Gleam world?",
+      meta_title: "News | Gleam programming language",
+      subtitle: "What's happening in the Gleam world?",
+      description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
       preload_images: [],
     )
 
@@ -2602,7 +2622,9 @@ pub fn gleam_toml(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "writing-gleam/gleam-toml",
       title: "gleam.toml",
-      description: "Configure your Gleam project",
+      subtitle: "Configure your Gleam project",
+      meta_title: "gleam.toml | Configure your Gleam project",
+      description: "Learn how to specify dependencies, set the default target, and more.",
       preload_images: [],
     )
 
@@ -2753,6 +2775,8 @@ pub fn deployment_linux(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "deployment/linux-server",
       title: "Deploy to a Linux server",
+      meta_title: "Deploying Gleam on a Linux server | Gleam Programming Language",
+      subtitle: "Run Gleam on a server from any provider",
       description: "Run Gleam on a server from any provider",
       preload_images: [],
     )
@@ -3307,6 +3331,8 @@ pub fn community(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "community",
       title: "The Gleam Community",
+      meta_title: "The Gleam Community",
+      subtitle: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
       description: "Welcome, friend! It's good to have you",
       preload_images: [],
     )
@@ -3410,7 +3436,9 @@ pub fn branding(ctx: site.Context) -> fs.File {
     PageMeta(
       path: "branding",
       title: "Gleam's branding",
-      description: "All pretty and pink 💖",
+      meta_title: "Branding and Lucy mascot | Gleam programming language",
+      subtitle: "All pretty and pink 💖",
+      description: "Meet Gleam's mascot, check branding guidelines, and see how we keep everything pretty and pink 💖",
       preload_images: [],
     )
 
@@ -3783,7 +3811,7 @@ pub fn page_layout(
   [
     header(hero_image: option.None, content: [
       html.h1([], [html.text(meta.title)]),
-      html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
     ]),
     html.main([attr.class("page content " <> class)], content),
   ]
@@ -3794,8 +3822,10 @@ pub fn home(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "",
-      title: "Gleam language",
-      description: "The Gleam programming language",
+      title: "Gleam programming language",
+      meta_title: "Gleam programming language",
+      subtitle: "",
+      description: "Discover a friendly language for scalable, type-safe systems. Gleam comes with compiler, build tool, formatter, editor integrations, and package manager all built in.",
       preload_images: ["/images/lucy/lucyhappy.svg"],
     )
 
@@ -4213,16 +4243,16 @@ fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) 
       attr.rel("alternate"),
       attr.type_("application/atom+xml"),
     ]),
-    html.title([], page.title),
+    html.title([], page.meta_title),
     html.meta([attr("content", page.description), attr.name("description")]),
     metatag("og:type", "website"),
     metatag("og:image", ctx.hostname <> "/images/social-image.png"),
-    metatag("og:title", page.title),
+    metatag("og:title", page.meta_title),
     metatag("og:description", page.description),
     metatag("og:url", ctx.hostname <> "/" <> page.path),
     metatag("twitter:card", "summary_large_image"),
     metatag("twitter:url", ctx.hostname),
-    metatag("twitter:title", page.title),
+    metatag("twitter:title", page.meta_title),
     metatag("twitter:description", page.description),
     metatag("twitter:image", ctx.hostname <> "/images/social-image.png"),
     html.script(

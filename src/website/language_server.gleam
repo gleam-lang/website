@@ -114,7 +114,9 @@ pub fn page(ctx: site.Context) -> fs.File {
     page.PageMeta(
       path: "language-server",
       title: "The Gleam Language Server reference",
-      description: "IDE features for all editors",
+      meta_title: "The Gleam Language Server - IDE features for all editors",
+      subtitle: "IDE features for all editors",
+      description: "Learn all the capabilities and code actions of the Gleam language server.",
       preload_images: [],
     )
 

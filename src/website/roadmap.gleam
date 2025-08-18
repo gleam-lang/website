@@ -233,7 +233,9 @@ pub fn page(ctx: site.Context) -> fs.File {
     page.PageMeta(
       path: "roadmap",
       title: "Gleam's Development Roadmap",
-      description: "What's coming next?",
+      meta_title: "Gleam's Development Roadmap",
+      subtitle: "What's coming next?",
+      description: "See what's been released, what's being worked on, and what's coming in the future!",
       preload_images: [],
     )
 

@@ -9,7 +9,9 @@ pub fn page(ctx: site.Context) -> fs.File {
     page.PageMeta(
       path: "command-line-reference",
       title: "Command line reference",
-      description: "Getting things done in the terminal",
+      meta_title: "Command line reference | Gleam programming language",
+      subtitle: "Getting things done in the terminal",
+      description: "Getting things done in the terminal with the 'gleam' program and its various features.",
       preload_images: [],
     )
 
