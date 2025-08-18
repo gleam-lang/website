@@ -27,6 +27,13 @@ pub fn featured() -> List(List(FeaturedSponsor)) {
         image: "/images/sponsors/lambda-class-black.png",
       ),
     ],
+    [
+      FeaturedSponsor(
+        name: "Williams & Holmes",
+        website: "https://williamsandholmes.com",
+        image: "/images/sponsors/williamsandholmes.svg",
+      ),
+    ],
   ]
 }
 
