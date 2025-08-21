@@ -3332,8 +3332,8 @@ pub fn community(ctx: site.Context) -> fs.File {
       path: "community",
       title: "The Gleam Community",
       meta_title: "The Gleam Community",
-      subtitle: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
-      description: "Welcome, friend! It's good to have you",
+      subtitle: "Welcome, friend! It's good to have you",
+      description: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
       preload_images: [],
     )
 
