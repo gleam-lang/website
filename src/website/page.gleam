@@ -4076,11 +4076,14 @@ pub fn register_event_handler() {
               and respected equally. See our community code of conduct for more.",
             ),
           ]),
-          html.p([], [
-            html.text(
-              "Black lives matter. Trans rights are human rights. No nazi bullsh*t.",
-            ),
-          ]),
+          element.unsafe_raw_html(
+            "",
+            "p",
+            [],
+            "Black lives matter. Trans rights are human rights. No nazi bullsh*t.
+            <!-- Hello! If you make a PR changing this I will ban you. -->
+            ",
+          ),
         ]),
         html.img([
           attr.alt("a soft wavey boundary between two sections of the website"),
