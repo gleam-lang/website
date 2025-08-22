@@ -117,12 +117,16 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
         ),
       ]),
       html.p([], [
-        html.text("If you choose to support the main project (which is under "),
+        html.text("If you choose to support "),
+        html.a([attr.href("https://github.com/sponsors/gleam-lang")], [
+          html.text("the main project"),
+        ]),
+        html.text(" or "),
         html.a([attr.href("https://github.com/sponsors/lpil")], [
-          html.text("Louis'"),
+          html.text(" Louis' profile "),
         ]),
         html.text(
-          " account), you’re helping to cover things like Louis' (Gleam’s creator) salary, sponsoring other contributors, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
+          ", you’re helping to cover pay for the core team, hiring contractors, and keeping essential infrastructure like the package index running, among other things.",
         ),
       ]),
       html.p([], [
