@@ -329,10 +329,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
           ],
         ),
       ]),
-      html.article(
-        [class("prose"), attr("dangerous-unescaped-html", post.content)],
-        [],
-      ),
+      element.unsafe_raw_html("", "article", [class("prose")], post.content),
       html.section([class("case-study-cta")], [
         html.img([
           attr.src("/images/lucy/lucy.svg"),
@@ -410,10 +407,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
           ],
         ),
       ]),
-      html.article(
-        [class("prose"), attr("dangerous-unescaped-html", post.content)],
-        [],
-      ),
+      element.unsafe_raw_html("", "article", [class("prose")], post.content),
     ]),
   ]
   |> page_layout("", meta, ctx)
@@ -4367,12 +4361,12 @@ fn wall_of_sponsors() -> Element(a) {
 
 pub fn highlighted_gleam_pre_code(code: String) -> Element(a) {
   let html = contour.to_html(code)
-  html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
+  html.pre([], [element.unsafe_raw_html("", "code", [], html)])
 }
 
 pub fn highlighted_javascript_pre_code(code: String) -> Element(a) {
   let html = just.html(code)
-  html.pre([], [html.code([attr("dangerous-unescaped-html", html)], [])])
+  html.pre([], [element.unsafe_raw_html("", "code", [], html)])
 }
 
 fn highlighted_shell_pre_code(code: String) -> Element(c) {
