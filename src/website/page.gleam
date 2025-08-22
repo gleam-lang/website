@@ -63,6 +63,12 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
         name: "Gleam",
         title: "Sponsor the Project",
         avatar: "/images/lucy/lucy.svg",
+        sponsor_link: "https://github.com/sponsors/gleam-lang",
+      ),
+      Sponsee(
+        name: "Louis Pilfold",
+        title: "Creator of Gleam",
+        avatar: "https://avatars.githubusercontent.com/u/6134406?v=4",
         sponsor_link: "https://github.com/sponsors/lpil",
       ),
       Sponsee(
