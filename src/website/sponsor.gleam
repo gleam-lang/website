@@ -353,11 +353,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/70202379?s=50&u=11e527351e5edd08e8f30b10a2b648760eef179b&v=4",
   ),
   Sponsor(
-    name: "NFIBrokerage",
-    url: "https://github.com/NFIBrokerage",
-    avatar: "https://avatars.githubusercontent.com/u/20132342?s=50&v=4",
-  ),
-  Sponsor(
     name: "Jérôme Schaeffer",
     url: "https://github.com/Neofox",
     avatar: "https://avatars.githubusercontent.com/u/6177937?s=50&u=dc6ff09d821fade92c48496d64214ce21162ae92&v=4",
@@ -983,6 +978,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/16063606?s=50&u=52bcbc7d698f34818a7868d52a36352998a75018&v=4",
   ),
   Sponsor(
+    name: "glippert",
+    url: "https://github.com/glippert",
+    avatar: "https://avatars.githubusercontent.com/u/1526961?s=50&u=94e240d38775e60215a1397a4cada6469d289360&v=4",
+  ),
+  Sponsor(
     name: "Isaac",
     url: "https://github.com/graphiteisaac",
     avatar: "https://avatars.githubusercontent.com/u/11805258?s=50&u=5d04d393bc24484eabc9e946fd061b6b8e550b03&v=4",
@@ -1405,7 +1405,7 @@ pub const sponsors = [
   Sponsor(
     name: "Niket Shah",
     url: "https://github.com/mrniket",
-    avatar: "https://avatars.githubusercontent.com/u/2016308?s=50&u=4e7d3322e9c77a1e705317b773985ac3798fc32d&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/2016308?s=50&u=4ebc9e678f58875bb98186d1db4685ae9738bc51&v=4",
   ),
   Sponsor(
     name: "Mike Roach",
@@ -1441,6 +1441,11 @@ pub const sponsors = [
     name: "Fernando Farias",
     url: "https://github.com/nandofarias",
     avatar: "https://avatars.githubusercontent.com/u/1944560?s=50&u=16ea7e154a7738b24c0d8c5ba013b87b7677091a&v=4",
+  ),
+  Sponsor(
+    name: "Natalie Rose",
+    url: "https://github.com/nataliethistime",
+    avatar: "https://avatars.githubusercontent.com/u/1539253?s=50&v=4",
   ),
   Sponsor(
     name: "Natanael Sirqueira",
