@@ -60,6 +60,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       Entry("Interpolate string", interpolate_string_html()),
       Entry("Pattern match", pattern_match_html()),
       Entry("Qualify and unqualify", qualify_and_unqualify_html()),
+      Entry("Remove block", remove_block_html()),
       Entry("Remove echo", remove_echo_html()),
       Entry("Remove redundant tuples", remove_redundant_tuples_html()),
       Entry("Remove unused imports", remove_unused_imports_html()),
@@ -134,6 +135,37 @@ pub fn page(ctx: site.Context) -> fs.File {
   ]
   |> page.page_layout("prose", meta, ctx)
   |> page.to_html_file(meta)
+}
+
+fn remove_block_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "This code action removes blocks from around single expressions.",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn greet(name: String) {
+  case name {
+    \"Joe\" -> { \"Hello, Joe!\" }
+    _ -> \"Hi \" <> name
+  }
+}",
+    ),
+    html.p([], [
+      html.text(
+        "If your cursor is within the block containing the \"Hello, Joe!\" string the code action will be suggested, and if run the module will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn greet(name: String) {
+  case name {
+    \"Joe\" -> \"Hello, Joe!\"
+    _ -> \"Hi \" <> name
+  }
+}",
+    ),
+  ]
 }
 
 fn wrap_in_block_html() -> List(Element(Nil)) {
