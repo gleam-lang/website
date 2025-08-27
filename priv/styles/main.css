@@ -1261,3 +1261,36 @@ pre code {
   padding: 2rem 0 5rem;
   text-align: center;
 }
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 120%;
+  background-color: var(--color-black);
+  color: var(--color-text-main);
+  font-size: .9rem;
+  font-weight: normal;
+  font-family: var(--font-family-normal);
+  width: max-content;
+  padding: 1px 8px;
+  border-radius: 0.3rem;
+  transition: opacity 120ms ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-tooltip][data-tooltip-position="left"]:before {
+  left: 0;
+}
+
+[data-tooltip][data-tooltip-position="right"]:before {
+  right: 0;
+}
+
+[data-tooltip][data-tooltip-toggle="hover"]:hover:before, [data-tooltip][data-tooltip-state="open"]:before {
+  opacity: 1;
+}

@@ -395,6 +395,9 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
                 <> post.path
                 <> "')",
             ),
+            attr.data("tooltip", "Copied the post URL!"),
+            attr.data("tooltip-position", "right"),
+            attr.data("tooltip-toggle", "click"),
             class("meta-button share-button"),
           ],
           [
