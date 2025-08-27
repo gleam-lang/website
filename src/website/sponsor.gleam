@@ -6,7 +6,7 @@ import gleam/httpc
 import gleam/io
 import gleam/json
 import gleam/list
-import gleam/option.{type Option}
+import gleam/option.{type Option, None}
 import gleam/result
 import gleam/string
 import simplifile
@@ -45,8 +45,12 @@ pub fn update_list() -> snag.Result(Nil) {
   )
 
   io.println("Querying GitHub API")
-  use sponsors <- result.try(get_github_sponsors(token, option.None, []))
-  let sponsors = list.sort(sponsors, fn(a, b) { string.compare(a.url, b.url) })
+  use sponsors <- result.try(get_github_sponsors(token, "gleam-lang", None, []))
+  use sponsors <- result.try(get_github_sponsors(token, "lpil", None, sponsors))
+  let sponsors =
+    sponsors
+    |> list.sort(fn(a, b) { string.compare(a.url, b.url) })
+    |> list.unique
 
   io.println("Updating sponsor.gleam")
 
@@ -87,10 +91,11 @@ fn render_sponsors_code(sponsors: List(Sponsor)) -> String {
 
 fn get_github_sponsors(
   token: String,
+  sponsee: String,
   cursor: Option(String),
   sponsors: List(Sponsor),
 ) -> Result(List(Sponsor), snag.Snag) {
-  let query = github_graphql_query(cursor)
+  let query = github_graphql_query(sponsee, cursor)
   let body = json.to_string(json.object([#("query", json.string(query))]))
   let assert Ok(request) = request.to("https://api.github.com/graphql")
   let request =
@@ -113,14 +118,14 @@ fn get_github_sponsors(
   )
   let sponsors = list.append(sponsors, page.1)
   case page.0 {
-    option.Some(_) -> get_github_sponsors(token, page.0, sponsors)
-    option.None -> Ok(sponsors)
+    option.Some(_) -> get_github_sponsors(token, sponsee, page.0, sponsors)
+    None -> Ok(sponsors)
   }
 }
 
-fn github_graphql_query(cursor: Option(String)) -> String {
+fn github_graphql_query(sponsee: String, cursor: Option(String)) -> String {
   let cursor = case cursor {
-    option.None -> ""
+    None -> ""
     option.Some(cursor) -> ", after: \"" <> cursor <> "\""
   }
 
@@ -128,16 +133,18 @@ fn github_graphql_query(cursor: Option(String)) -> String {
 
   "
   query {
-    user(login: \"lpil\") {
-      sponsorshipsAsMaintainer(activeOnly: true, first: 100" <> cursor <> ") {
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
-        nodes { 
-          sponsorEntity {
-            ... on User " <> fragment <> "
-            ... on Organization " <> fragment <> "
+    repositoryOwner(login: \"" <> sponsee <> "\") {
+      ... on Sponsorable {
+        sponsorshipsAsMaintainer(activeOnly: true, first: 100" <> cursor <> ") {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          nodes { 
+            sponsorEntity {
+              ... on User " <> fragment <> "
+              ... on Organization " <> fragment <> "
+            }
           }
         }
       }
@@ -155,7 +162,7 @@ fn github_page_decoder() -> decode.Decoder(#(Option(String), List(Sponsor))) {
     use has_next_page <- decode.field("hasNextPage", decode.bool)
     case has_next_page {
       True -> decode.at(["endCursor"], decode.string) |> decode.map(option.Some)
-      False -> decode.success(option.None)
+      False -> decode.success(None)
     }
   }
 
@@ -176,7 +183,7 @@ fn github_page_decoder() -> decode.Decoder(#(Option(String), List(Sponsor))) {
     decode.success(#(cursor, sponsors))
   }
 
-  decode.at(["data", "user", "sponsorshipsAsMaintainer"], decoder)
+  decode.at(["data", "repositoryOwner", "sponsorshipsAsMaintainer"], decoder)
 }
 
 // GENERATED CODE BELOW
@@ -476,6 +483,11 @@ pub const sponsors = [
     name: "Adam Wyłuda",
     url: "https://github.com/adam-wyluda",
     avatar: "https://avatars.githubusercontent.com/u/3045108?s=50&u=891792819b02cf166cceaa2aa02684359be28db5&v=4",
+  ),
+  Sponsor(
+    name: "Adam Daniels",
+    url: "https://github.com/adam12",
+    avatar: "https://avatars.githubusercontent.com/u/17083?s=50&u=214fe537cbe59bd73335516a4489949b3f0d331c&v=4",
   ),
   Sponsor(
     name: "Adam Johnston",
@@ -1001,6 +1013,11 @@ pub const sponsors = [
     name: "Hammad Javed",
     url: "https://github.com/hammad-r-javed",
     avatar: "https://avatars.githubusercontent.com/u/128047144?s=50&u=9d372b54c5da4d0db1ec8eb71c7b77c811b22030&v=4",
+  ),
+  Sponsor(
+    name: "Ahmad Alhashemi",
+    url: "https://github.com/hashemi",
+    avatar: "https://avatars.githubusercontent.com/u/5494?s=50&u=7fff4d8dc21755d140e5305b264fac67200e98ce&v=4",
   ),
   Sponsor(
     name: "Hayleigh Thompson",
@@ -1791,6 +1808,11 @@ pub const sponsors = [
     name: "Michael Duffy",
     url: "https://github.com/stunthamster",
     avatar: "https://avatars.githubusercontent.com/u/1030138?s=50&u=0b94eab83ae023f4539fd5ac0b82f67dacf520d5&v=4",
+  ),
+  Sponsor(
+    name: "syhner",
+    url: "https://github.com/syhner",
+    avatar: "https://avatars.githubusercontent.com/u/71605633?s=50&u=c5b799e5cabdf6dd22f7d085e13cb40a596ba559&v=4",
   ),
   Sponsor(
     name: "Pattadon Sa-ngasri",
