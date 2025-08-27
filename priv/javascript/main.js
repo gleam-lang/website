@@ -21,3 +21,13 @@ for (let element of document.querySelectorAll("[data-randomise-order]")) {
 for (let element of document.querySelectorAll("[data-expand-sponsors]")) {
   element.addEventListener("click", expandSponsorsSection);
 }
+
+for (let element of document.querySelectorAll("[data-tooltip][data-tooltip-toggle=\"click\"]")) {
+  element.addEventListener("click", () => {
+	element.dataset.tooltipState = "open"
+
+	setTimeout(() => {
+	  element.dataset.tooltipState = ""
+	}, 5000)
+  })
+}
