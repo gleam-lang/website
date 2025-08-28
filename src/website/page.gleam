@@ -2682,7 +2682,19 @@ pub fn case_studies_index(
       ])
     })
 
-  [html.ul([class("news-posts")], list_items)]
+  [
+    html.ul([class("news-posts")], list_items),
+    html.p([], [
+      html.text(
+        "Are you using Gleam in production and would like to share your
+        experience? Or would like help adopting Gleam at your company? Get in
+        touch at ",
+      ),
+      html.a([attr.href("mailto:hello@gleam.run")], [
+        html.text("hello@gleam.run"),
+      ]),
+    ]),
+  ]
   |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
