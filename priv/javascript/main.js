@@ -22,7 +22,7 @@ for (let element of document.querySelectorAll("[data-expand-sponsors]")) {
   element.addEventListener("click", expandSponsorsSection);
 }
 
-for (let element of document.querySelectorAll("[data-tooltip][data-tooltip-toggle=\"click\"]")) {
+for (let element of document.querySelectorAll(".tooltip-container[data-tooltip-trigger=\"click\"]")) {
   element.addEventListener("click", () => {
 	element.dataset.tooltipState = "open"
 
