@@ -15,7 +15,6 @@ pub fn page(ctx: site.Context) -> fs.File {
       description: "Getting things done in the terminal with the 'gleam' program and its various features.",
       preload_images: [],
       preview_image: option.None,
-      hero_image: option.None,
     )
 
   [
