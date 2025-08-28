@@ -395,10 +395,10 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
                 <> post.path
                 <> "')",
             ),
-            attr.data("tooltip", "Copied the post URL!"),
             attr.data("tooltip-position", "right"),
-            attr.data("tooltip-toggle", "click"),
-            class("meta-button share-button"),
+            attr.data("tooltip-trigger", "click"),
+            attr.aria_describedby("share-tooltip"),
+            class("tooltip-container meta-button share-button"),
           ],
           [
             html.img([
@@ -407,6 +407,16 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
               attr.alt("Return Icon"),
             ]),
             html.text("Share"),
+            html.span(
+              [
+                class("tooltip"),
+                attr.id("share-tooltip"),
+                attr.role("status"),
+                attr.aria_atomic(True),
+                attr.aria_live("polite"),
+              ],
+              [html.text("Copied the post URL!")],
+            ),
           ],
         ),
       ]),

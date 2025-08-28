@@ -1262,12 +1262,11 @@ pre code {
   text-align: center;
 }
 
-[data-tooltip] {
+.tooltip-container {
   position: relative;
 }
 
-[data-tooltip]:before {
-  content: attr(data-tooltip);
+.tooltip-container .tooltip {
   position: absolute;
   top: 120%;
   background-color: var(--color-black);
@@ -1283,14 +1282,14 @@ pre code {
   pointer-events: none;
 }
 
-[data-tooltip][data-tooltip-position="left"]:before {
+.tooltip-container[data-tooltip-position="left"] .tooltip {
   left: 0;
 }
 
-[data-tooltip][data-tooltip-position="right"]:before {
+.tooltip-container[data-tooltip-position="right"] .tooltip {
   right: 0;
 }
 
-[data-tooltip][data-tooltip-toggle="hover"]:hover:before, [data-tooltip][data-tooltip-state="open"]:before {
+.tooltip-container[data-tooltip-trigger="hover"]:hover .tooltip, .tooltip-container[data-tooltip-state="open"] .tooltip {
   opacity: 1;
 }
