@@ -22,6 +22,7 @@ pub type PageMeta {
     subtitle: String,
     meta_title: String,
     description: String,
+    hero_image: Option(HeroImage),
     /// Render-critical to pre-load using meta-tags
     preview_image: Option(String),
     /// Social media share preview image name
@@ -59,6 +60,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       description: "Everything we bring to the language is possible thanks to our sponsors. See how to become one of them and support Gleam.",
       preview_image: option.None,
       preload_images: [],
+      hero_image: option.None,
     )
 
   let sponsees =
@@ -306,6 +308,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
       meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
       preview_image: option.Some(post.preview_image),
+      hero_image: option.None,
     )
 
   [
@@ -376,6 +379,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
       meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -430,6 +434,7 @@ pub fn installing(ctx: site.Context) -> fs.File {
       description: "Prepare your computer for Gleam development: install Gleam and Erlang.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -1039,6 +1044,7 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
       description: "Run Gleam all over the world. No ops required.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -1187,6 +1193,7 @@ pub fn writing_gleam(ctx: site.Context) -> fs.File {
       description: "Learn to work with Gleam projects",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -1726,6 +1733,7 @@ pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
       description: "What? Why? Where? When? How? Everything you wanted to know about Gleam.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -2394,6 +2402,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       description: "All about programming in Gleam: find the docs you need.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -2598,6 +2607,7 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
       description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   let list_items =
@@ -2633,6 +2643,50 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn case_studies_index(
+  study: List(case_study.CaseStudy),
+  ctx: site.Context,
+) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "case-studies",
+      title: "Case Studies",
+      meta_title: "Case Studies | Gleam programming language",
+      subtitle: "Analysis of Gleam in production",
+      description: "Experience reports and outcome analysis of Gleam in production for business software.",
+      preload_images: [],
+      preview_image: option.None,
+      hero_image: option.Some(HeroImage(
+        src: "/images/lucy/lucymail.svg",
+        alt: "Lucy the star mascot, delivering a document",
+      )),
+    )
+
+  let list_items =
+    list.map(study, fn(post) {
+      html.li([], [
+        html.a([attr.href("/case-studies/" <> post.path)], [
+          html.h2([attr.class("links")], [html.text(post.title)]),
+        ]),
+        html.p([], [html.text(post.subtitle)]),
+        html.ul([class("news-meta")], [
+          html.li([], [
+            html.img([
+              attr.width(16),
+              attr.src("/images/date-icon.svg"),
+              attr.alt("Date Icon"),
+            ]),
+            html.text(short_human_date(post.published)),
+          ]),
+        ]),
+      ])
+    })
+
+  [html.ul([class("news-posts")], list_items)]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn gleam_toml(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -2643,6 +2697,7 @@ pub fn gleam_toml(ctx: site.Context) -> fs.File {
       description: "Learn how to specify dependencies, set the default target, and more.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   let code =
@@ -2797,6 +2852,7 @@ pub fn deployment_linux(ctx: site.Context) -> fs.File {
       description: "Run Gleam on a server from any provider",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -3354,6 +3410,7 @@ pub fn community(ctx: site.Context) -> fs.File {
       description: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   let code_of_conduct =
@@ -3460,6 +3517,7 @@ pub fn branding(ctx: site.Context) -> fs.File {
       description: "Meet Gleam's mascot, check branding guidelines, and see how we keep everything pretty and pink 💖",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   let content = [
@@ -3829,7 +3887,7 @@ pub fn page_layout(
   ctx: site.Context,
 ) -> Element(a) {
   [
-    header(hero_image: option.None, content: [
+    header(hero_image: meta.hero_image, content: [
       html.h1([], [html.text(meta.title)]),
       html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
     ]),
@@ -3848,30 +3906,28 @@ pub fn home(ctx: site.Context) -> fs.File {
       description: "Discover a friendly language for scalable, type-safe systems. Gleam comes with compiler, build tool, formatter, editor integrations, and package manager all built in.",
       preload_images: ["/images/lucy/lucyhappy.svg"],
       preview_image: option.None,
+      hero_image: option.Some(HeroImage(
+        src: "/images/lucy/lucy.svg",
+        alt: "Lucy the star, Gleam's mascot",
+      )),
     )
 
   let content = [
-    header(
-      hero_image: option.Some(#(
-        "/images/lucy/lucy.svg",
-        "Lucy the star, Gleam's mascot",
-      )),
-      content: [
-        html.div([], [
-          html.b([], [html.text("Gleam")]),
-          html.text(" is a "),
-          html.b([], [html.text("friendly")]),
-          html.text(" language for building "),
-          html.b([], [html.text("type-safe")]),
-          html.text(" systems that "),
-          html.b([], [html.text("scale")]),
-          html.text("!"),
-        ]),
-        html.a([attr.href("https://tour.gleam.run/"), attr.class("button")], [
-          html.text("Try Gleam"),
-        ]),
-      ],
-    ),
+    header(hero_image: meta.hero_image, content: [
+      html.div([], [
+        html.b([], [html.text("Gleam")]),
+        html.text(" is a "),
+        html.b([], [html.text("friendly")]),
+        html.text(" language for building "),
+        html.b([], [html.text("type-safe")]),
+        html.text(" systems that "),
+        html.b([], [html.text("scale")]),
+        html.text("!"),
+      ]),
+      html.a([attr.href("https://tour.gleam.run/"), attr.class("button")], [
+        html.text("Try Gleam"),
+      ]),
+    ]),
     html.main([attr.role("main")], [
       html.section([attr.class("content home-pair intro")], [
         html.div([], [
@@ -4172,16 +4228,26 @@ pub fn register_event_handler() {
   |> to_html_file(meta)
 }
 
+pub type HeroImage {
+  HeroImage(src: String, alt: String)
+}
+
 fn header(
-  hero_image hero_image: Option(#(String, String)),
+  hero_image hero_image: Option(HeroImage),
   content content: List(Element(a)),
 ) -> Element(a) {
   let hero_content = html.div([attr.class("text")], content)
   let hero_content = case hero_image {
-    option.Some(#(src, alt)) -> [
+    option.Some(hero_image) -> [
       html.div(
         [attr("data-show-pride", ""), class("hero-lucy-container wide-only")],
-        [html.img([attr.alt(alt), attr.src(src), attr.class("hero-lucy")])],
+        [
+          html.img([
+            attr.alt(hero_image.alt),
+            attr.src(hero_image.src),
+            attr.class("hero-lucy"),
+          ]),
+        ],
       ),
       html.div([class("text-left")], [hero_content]),
     ]
@@ -4315,6 +4381,7 @@ fn footer(ctx: site.Context) -> element.Element(a) {
     #("Packages", "https://packages.gleam.run/"),
     #("Gleam Weekly", "https://gleamweekly.com/"),
     #("Roadmap", "/roadmap"),
+    #("Case studies", "/case-studies"),
   ]
 
   let code_of_conduct =

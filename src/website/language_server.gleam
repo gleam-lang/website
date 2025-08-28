@@ -121,6 +121,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       description: "Learn all the capabilities and code actions of the Gleam language server.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [

@@ -15,6 +15,7 @@ pub fn elixir(ctx: site.Context) -> fs.File {
       description: "A handy reminder of Gleam syntax for all Alchemists out there.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -1311,6 +1312,7 @@ pub fn erlang(ctx: site.Context) -> fs.File {
       description: "A handy reminder of Gleam syntax for all Erlangers out there.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
   [
     html.ul([], [
@@ -2559,6 +2561,7 @@ pub fn python(ctx: site.Context) -> fs.File {
       description: "A handy reminder of Gleam syntax for all Pythonistas out there.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
@@ -4291,6 +4294,7 @@ pub fn php(ctx: site.Context) -> fs.File {
       description: "A handy reminder of Gleam syntax for all Hypertext crafters out there.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
   [
     html.ul([], [
@@ -7020,6 +7024,7 @@ pub fn rust(ctx: site.Context) -> fs.File {
       description: "A handy reminder of Gleam syntax for all Rustaceans out there.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
   [
     html.ul([], [
@@ -8203,6 +8208,7 @@ pub fn elm(ctx: site.Context) -> fs.File {
       description: "A handy reminder of Gleam syntax for all Elm enthusiasts out there.",
       preload_images: [],
       preview_image: option.None,
+      hero_image: option.None,
     )
 
   [
