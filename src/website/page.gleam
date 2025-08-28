@@ -1,7 +1,7 @@
 import contour
 import gleam/int
 import gleam/list
-import gleam/option
+import gleam/option.{type Option}
 import gleam/string
 import gleam/time/calendar
 import gleam/time/timestamp
@@ -22,6 +22,9 @@ pub type PageMeta {
     subtitle: String,
     meta_title: String,
     description: String,
+    /// Render-critical to pre-load using meta-tags
+    preview_image: Option(String),
+    /// Social media share preview image name
     preload_images: List(String),
   )
 }
@@ -54,6 +57,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       subtitle: "Support Gleam's development by sponsoring members of our core team!",
       meta_title: "Sponsor | Gleam Programming Language",
       description: "Everything we bring to the language is possible thanks to our sponsors. See how to become one of them and support Gleam.",
+      preview_image: option.None,
       preload_images: [],
     )
 
@@ -301,6 +305,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
       description: post.subtitle,
       meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
+      preview_image: option.Some(post.preview_image),
     )
 
   [
@@ -370,6 +375,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
       description: "News post: " <> post.subtitle,
       meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -423,6 +429,7 @@ pub fn installing(ctx: site.Context) -> fs.File {
       subtitle: "Get ready to start making things",
       description: "Prepare your computer for Gleam development: install Gleam and Erlang.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -1031,6 +1038,7 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
       subtitle: "Run Gleam all over the world. No ops required.",
       description: "Run Gleam all over the world. No ops required.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -1178,6 +1186,7 @@ pub fn writing_gleam(ctx: site.Context) -> fs.File {
       subtitle: "Learn to work with Gleam projects",
       description: "Learn to work with Gleam projects",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -1716,6 +1725,7 @@ pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
       subtitle: "What? Why? Where? When? How?",
       description: "What? Why? Where? When? How? Everything you wanted to know about Gleam.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -2383,6 +2393,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       subtitle: "Learn all about programming in Gleam!",
       description: "All about programming in Gleam: find the docs you need.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -2586,6 +2597,7 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
       subtitle: "What's happening in the Gleam world?",
       description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   let list_items =
@@ -2630,6 +2642,7 @@ pub fn gleam_toml(ctx: site.Context) -> fs.File {
       meta_title: "gleam.toml | Configure your Gleam project",
       description: "Learn how to specify dependencies, set the default target, and more.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   let code =
@@ -2783,6 +2796,7 @@ pub fn deployment_linux(ctx: site.Context) -> fs.File {
       subtitle: "Run Gleam on a server from any provider",
       description: "Run Gleam on a server from any provider",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
@@ -3339,6 +3353,7 @@ pub fn community(ctx: site.Context) -> fs.File {
       subtitle: "Welcome, friend! It's good to have you",
       description: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
       preload_images: [],
+      preview_image: option.None,
     )
 
   let code_of_conduct =
@@ -3444,6 +3459,7 @@ pub fn branding(ctx: site.Context) -> fs.File {
       subtitle: "All pretty and pink 💖",
       description: "Meet Gleam's mascot, check branding guidelines, and see how we keep everything pretty and pink 💖",
       preload_images: [],
+      preview_image: option.None,
     )
 
   let content = [
@@ -3831,6 +3847,7 @@ pub fn home(ctx: site.Context) -> fs.File {
       subtitle: "",
       description: "Discover a friendly language for scalable, type-safe systems. Gleam comes with compiler, build tool, formatter, editor integrations, and package manager all built in.",
       preload_images: ["/images/lucy/lucyhappy.svg"],
+      preview_image: option.None,
     )
 
   let content = [
@@ -4156,7 +4173,7 @@ pub fn register_event_handler() {
 }
 
 fn header(
-  hero_image hero_image: option.Option(#(String, String)),
+  hero_image hero_image: Option(#(String, String)),
   content content: List(Element(a)),
 ) -> Element(a) {
   let hero_content = html.div([attr.class("text")], content)
@@ -4239,6 +4256,10 @@ fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) 
   let metatag = fn(property, content) {
     html.meta([attr("property", property), attr("content", content)])
   }
+  let preview_image = case page.preview_image {
+    option.None -> ctx.hostname <> "/images/preview/site.png"
+    option.Some(name) -> ctx.hostname <> "/images/preview/" <> name <> ".png"
+  }
 
   [
     html.meta([attr("charset", "utf-8")]),
@@ -4253,7 +4274,7 @@ fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) 
     html.title([], page.meta_title),
     html.meta([attr("content", page.description), attr.name("description")]),
     metatag("og:type", "website"),
-    metatag("og:image", ctx.hostname <> "/images/social-image.png"),
+    metatag("og:image", preview_image),
     metatag("og:title", page.meta_title),
     metatag("og:description", page.description),
     metatag("og:url", ctx.hostname <> "/" <> page.path),
@@ -4261,7 +4282,7 @@ fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) 
     metatag("twitter:url", ctx.hostname),
     metatag("twitter:title", page.meta_title),
     metatag("twitter:description", page.description),
-    metatag("twitter:image", ctx.hostname <> "/images/social-image.png"),
+    metatag("twitter:image", preview_image),
     html.script(
       [
         attr.src("https://plausible.io/js/plausible.js"),

@@ -1,4 +1,5 @@
 import gleam/list
+import gleam/option
 import gleam/time/calendar
 import lustre/attribute as attr
 import lustre/element
@@ -237,6 +238,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       subtitle: "What's coming next?",
       description: "See what's been released, what's being worked on, and what's coming in the future!",
       preload_images: [],
+      preview_image: option.None,
     )
 
   let changelog = "https://github.com/gleam-lang/gleam/tree/main/CHANGELOG.md"

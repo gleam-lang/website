@@ -15,6 +15,7 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
       subtitle: "A case study of Gleam in production at Strand",
       description: "A case study of Gleam in production at Strand",
       published: calendar.Date(2025, calendar.July, 11),
+      preview_image: "strand",
       path: "strand",
     ),
   ]
@@ -31,6 +32,7 @@ pub type CaseStudy {
     published: calendar.Date,
     path: String,
     content: String,
+    preview_image: String,
   )
 }
 
@@ -39,6 +41,7 @@ fn read(
   subtitle subtitle: String,
   description description: String,
   published published: calendar.Date,
+  preview_image preview_image: String,
   path path: String,
 ) -> snag.Result(CaseStudy) {
   io.print(".")
@@ -47,7 +50,15 @@ fn read(
   |> fs.read
   |> snag.context("Failed to load content for /case-studies/" <> path)
   |> result.map(djot_to_html)
-  |> result.map(CaseStudy(_, title:, subtitle:, description:, published:, path:))
+  |> result.map(CaseStudy(
+    _,
+    title:,
+    subtitle:,
+    description:,
+    published:,
+    path:,
+    preview_image:,
+  ))
 }
 
 fn djot_to_html(string: String) -> String {

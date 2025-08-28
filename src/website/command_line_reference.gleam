@@ -1,3 +1,4 @@
+import gleam/option
 import lustre/attribute as attr
 import lustre/element/html
 import website/fs
@@ -13,6 +14,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       subtitle: "Getting things done in the terminal",
       description: "Getting things done in the terminal with the 'gleam' program and its various features.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [

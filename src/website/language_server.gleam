@@ -1,4 +1,5 @@
 import gleam/list
+import gleam/option
 import gleam/string
 import lustre/attribute as attr
 import lustre/element.{type Element}
@@ -119,6 +120,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       subtitle: "IDE features for all editors",
       description: "Learn all the capabilities and code actions of the Gleam language server.",
       preload_images: [],
+      preview_image: option.None,
     )
 
   [
