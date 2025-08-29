@@ -1136,6 +1136,89 @@ pre code {
   color: #fff;
 }
 
+.case-study-quote {
+  font-size: 2rem;
+  border-left: none;
+  margin: 0 0 2rem;
+  position: relative;
+  font-style: normal;
+  color: var(--color-text-highlight);
+}
+
+.case-study-quote:before {
+  position: absolute;
+  left: -4rem;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-title-bold);
+  top: -1rem;
+  font-size: 5rem;
+  content: open-quote;
+  color: var(--color-warm-charcoal);
+}
+
+.case-study-quote p {
+  margin: 0;
+}
+
+.case-study-meta {
+  padding: 1rem;
+  border: var(--color-warm-charcoal) 1px solid;
+  border-radius: .6rem;
+  margin: 0 0 1rem 0;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 960px) {
+  .case-study-meta {
+    float: right;
+    max-width: 240px;
+    margin: 0 0 1rem 1rem;
+  }
+}
+
+.case-study-meta>li:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study-meta li {
+  display: block;
+}
+
+.case-study-meta li h4 {
+  margin: 0;
+  font-weight: var(--font-weight-title-bold);
+  font-family: var(--font-family-title);
+  font-size: 1rem;
+}
+
+.case-study-meta li p {
+  margin: .4rem 0 0;
+  font-size: 1rem;
+}
+
+.case-study-meta .share-button {
+  appearance: normal;
+  background: none;
+  color: var(--color-text-main);
+  font-weight: var(--font-weight-title-bold);
+  font-size: 1rem;
+  border: #616682 1px solid;
+  border-radius: .3rem;
+  padding: .6rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  transition-property: color, border-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 120ms;
+  justify-content: center;
+}
+
 .case-study-cta {
   background: var(--color-lukewarm-charcoal);
   padding: 2rem;
@@ -1183,7 +1266,7 @@ pre code {
 }
 
 .sponsees {
-  max-width: 772px;
+  max-width: var(--width-content);
   margin: -6rem auto 6rem;
   padding: 0 1rem;
   display: grid;

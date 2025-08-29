@@ -309,10 +309,45 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
     )
 
   [
-    html.div([class("post")], [
-      html.div([class("post-meta")], [
-        html.p([class("post-authored")], [
-          html.time([], [html.text(short_human_date(post.published))]),
+    html.div([class("")], [
+      html.blockquote([class("case-study-quote")], [
+        html.p([], [html.text(post.featured_quote)]),
+      ]),
+      html.ul([class("case-study-meta")], [
+        html.li([], [
+          html.h4([], [html.text(post.company_details.name)]),
+          html.p([], [html.text(post.company_details.description)]),
+          html.p([], [
+            html.a([attr.href(post.company_details.website_url)], [
+              html.text("Visit Website"),
+            ]),
+          ]),
+        ]),
+        html.li([], [
+          html.h4([], [html.text("Founded")]),
+          html.p([], [
+            html.text(post.company_details.founded.year |> int.to_string),
+          ]),
+        ]),
+        html.li([], [
+          html.h4([], [html.text("Using Gleam Since")]),
+          html.p([], [
+            html.time([], [
+              html.text(
+                calendar.month_to_string(
+                  post.company_details.gleaming_since.month,
+                )
+                <> ", "
+                <> int.to_string(post.company_details.gleaming_since.year),
+              ),
+            ]),
+          ]),
+        ]),
+        html.li([], [
+          html.h4([], [html.text("Published")]),
+          html.p([], [
+            html.time([], [html.text(short_human_date(post.published))]),
+          ]),
         ]),
         html.button(
           [
@@ -322,7 +357,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
                 <> post.path
                 <> "')",
             ),
-            class("meta-button share-button"),
+            class("share-button"),
           ],
           [
             html.img([
@@ -334,7 +369,13 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
           ],
         ),
       ]),
-      element.unsafe_raw_html("", "article", [class("prose")], post.content),
+
+      element.unsafe_raw_html(
+        "",
+        "article",
+        [class("post prose")],
+        post.content,
+      ),
       html.section([class("case-study-cta")], [
         html.img([
           attr.src("/images/lucy/lucy.svg"),
