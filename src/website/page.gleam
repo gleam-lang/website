@@ -397,7 +397,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
             ),
             attr.data("tooltip-position", "right"),
             attr.data("tooltip-trigger", "click"),
-            attr.aria_describedby("share-tooltip"),
+            attr.aria_label("Copy post URL to clipboard"),
             class("tooltip-container meta-button share-button"),
           ],
           [
@@ -412,8 +412,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
                 class("tooltip"),
                 attr.id("share-tooltip"),
                 attr.role("status"),
-                attr.aria_atomic(True),
-                attr.aria_live("polite"),
+                attr.aria_hidden(True),
               ],
               [html.text("Copied the post URL!")],
             ),
