@@ -353,19 +353,31 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
           [
             attr(
               "onclick",
-              "window.navigator.clipboard.writeText('https://gleam.run/case-studies/"
+              "window.navigator.clipboard.writeText('https://gleam.run/news/"
                 <> post.path
                 <> "')",
             ),
-            class("share-button"),
+            attr.data("tooltip-position", "right"),
+            attr.data("tooltip-trigger", "click"),
+            attr.aria_label("Copy post URL to clipboard"),
+            class("tooltip-container meta-button share-button"),
           ],
           [
             html.img([
               attr.width(20),
               attr.src("/images/share-icon.svg"),
-              attr.alt("Return Icon"),
+              attr.alt("Share Icon"),
             ]),
             html.text("Share"),
+            html.span(
+              [
+                class("tooltip"),
+                attr.id("share-tooltip"),
+                attr.role("status"),
+                attr.aria_hidden(True),
+              ],
+              [html.text("Copied the post URL!")],
+            ),
           ],
         ),
       ]),
@@ -451,7 +463,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
             html.img([
               attr.width(20),
               attr.src("/images/share-icon.svg"),
-              attr.alt("Return Icon"),
+              attr.alt("Share Icon"),
             ]),
             html.text("Share"),
             html.span(

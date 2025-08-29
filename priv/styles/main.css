@@ -1107,7 +1107,8 @@ pre code {
   margin-bottom: 2rem;
 }
 
-.post-meta .meta-button {
+.post-meta .meta-button,
+.case-study-meta .meta-button {
   appearance: normal;
   background: none;
   color: var(--color-text-main);
@@ -1117,7 +1118,9 @@ pre code {
   border-radius: .3rem;
   padding: .6rem;
   display: flex;
+  justify-content: center;
   align-items: center;
+  cursor: pointer;
   gap: .6rem;
   transition-property: color, border-color;
   transition-timing-function: ease-in-out;
@@ -1131,7 +1134,8 @@ pre code {
   cursor: pointer;
 }
 
-.post-meta .meta-button:hover {
+.post-meta .meta-button:hover,
+.case-study-meta .meta-button:hover {
   border-color: var(--color-faff-pink);
   color: #fff;
 }
@@ -1199,24 +1203,6 @@ pre code {
 .case-study-meta li p {
   margin: .4rem 0 0;
   font-size: 1rem;
-}
-
-.case-study-meta .share-button {
-  appearance: normal;
-  background: none;
-  color: var(--color-text-main);
-  font-weight: var(--font-weight-title-bold);
-  font-size: 1rem;
-  border: #616682 1px solid;
-  border-radius: .3rem;
-  padding: .6rem;
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  transition-property: color, border-color;
-  transition-timing-function: ease-in-out;
-  transition-duration: 120ms;
-  justify-content: center;
 }
 
 .case-study-cta {
