@@ -4408,6 +4408,7 @@ fn footer(ctx: site.Context) -> element.Element(a) {
     #("Packages", "https://packages.gleam.run/"),
     #("Gleam Weekly", "https://gleamweekly.com/"),
     #("Roadmap", "/roadmap"),
+    #("Case studies", "/case-studies"),
   ]
 
   let code_of_conduct =
