@@ -17,11 +17,29 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
       published: calendar.Date(2025, calendar.July, 11),
       preview_image: "strand",
       path: "strand",
+      featured_quote: "Almost by accident, what we launched as a prototype became a business-critical application",
+      company_details: CompanyDetails(
+        name: "Strand",
+        description: "Outstanding creative services for IT companies seeking to tell and sell the business benefits of their solutions",
+        website_url: "https://strand-uk.com",
+        gleaming_since: calendar.Date(2024, calendar.January, 1),
+        founded: calendar.Date(1994, month: calendar.January, day: 1),
+      ),
     ),
   ]
   io.print("\n")
   posts
   |> result.all()
+}
+
+pub type CompanyDetails {
+  CompanyDetails(
+    name: String,
+    description: String,
+    website_url: String,
+    gleaming_since: calendar.Date,
+    founded: calendar.Date,
+  )
 }
 
 pub type CaseStudy {
@@ -33,6 +51,8 @@ pub type CaseStudy {
     path: String,
     content: String,
     preview_image: String,
+    featured_quote: String,
+    company_details: CompanyDetails,
   )
 }
 
@@ -43,6 +63,8 @@ fn read(
   published published: calendar.Date,
   preview_image preview_image: String,
   path path: String,
+  featured_quote featured_quote: String,
+  company_details company_details: CompanyDetails,
 ) -> snag.Result(CaseStudy) {
   io.print(".")
   filepath.join("case-studies", path)
@@ -58,6 +80,8 @@ fn read(
     published:,
     path:,
     preview_image:,
+    featured_quote:,
+    company_details:,
   ))
 }
 
