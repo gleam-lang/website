@@ -349,37 +349,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
             html.time([], [html.text(short_human_date(post.published))]),
           ]),
         ]),
-        html.button(
-          [
-            attr(
-              "onclick",
-              "window.navigator.clipboard.writeText('https://gleam.run/news/"
-                <> post.path
-                <> "')",
-            ),
-            attr.data("tooltip-position", "right"),
-            attr.data("tooltip-trigger", "click"),
-            attr.aria_label("Copy post URL to clipboard"),
-            class("tooltip-container meta-button share-button"),
-          ],
-          [
-            html.img([
-              attr.width(20),
-              attr.src("/images/share-icon.svg"),
-              attr.alt("Share Icon"),
-            ]),
-            html.text("Share"),
-            html.span(
-              [
-                class("tooltip"),
-                attr.id("share-tooltip"),
-                attr.role("status"),
-                attr.aria_hidden(True),
-              ],
-              [html.text("Copied the post URL!")],
-            ),
-          ],
-        ),
+        share_button(),
       ]),
 
       element.unsafe_raw_html(
@@ -446,37 +416,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
           html.text(" by "),
           html.a([attr.href(post.author.url)], [html.text(post.author.name)]),
         ]),
-        html.button(
-          [
-            attr(
-              "onclick",
-              "window.navigator.clipboard.writeText('https://gleam.run/news/"
-                <> post.path
-                <> "')",
-            ),
-            attr.data("tooltip-position", "right"),
-            attr.data("tooltip-trigger", "click"),
-            attr.aria_label("Copy post URL to clipboard"),
-            class("tooltip-container meta-button share-button"),
-          ],
-          [
-            html.img([
-              attr.width(20),
-              attr.src("/images/share-icon.svg"),
-              attr.alt("Share Icon"),
-            ]),
-            html.text("Share"),
-            html.span(
-              [
-                class("tooltip"),
-                attr.id("share-tooltip"),
-                attr.role("status"),
-                attr.aria_hidden(True),
-              ],
-              [html.text("Copied the post URL!")],
-            ),
-          ],
-        ),
+        share_button(),
       ]),
       element.unsafe_raw_html("", "article", [class("prose")], post.content),
     ]),
@@ -4597,4 +4537,36 @@ fn highlighted_yaml_pre_code(code: String) -> Element(d) {
     |> list.intersperse([html.text("\n")])
     |> list.flatten
   html.pre([], [html.code([], html)])
+}
+
+fn share_button() -> Element(a) {
+  html.button(
+    [
+      attr(
+        "onclick",
+        "window.navigator.clipboard.writeText(document.location.href)",
+      ),
+      attr.data("tooltip-position", "right"),
+      attr.data("tooltip-trigger", "click"),
+      attr.aria_label("Copy post URL to clipboard"),
+      class("tooltip-container meta-button share-button"),
+    ],
+    [
+      html.img([
+        attr.width(20),
+        attr.src("/images/share-icon.svg"),
+        attr.alt("Share Icon"),
+      ]),
+      html.text("Share"),
+      html.span(
+        [
+          class("tooltip"),
+          attr.id("share-tooltip"),
+          attr.role("status"),
+          attr.aria_hidden(True),
+        ],
+        [html.text("Copied the post URL!")],
+      ),
+    ],
+  )
 }
