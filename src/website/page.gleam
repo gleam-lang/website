@@ -303,7 +303,9 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
       title: post.title,
       subtitle: post.subtitle,
       description: post.subtitle,
-      meta_title: post.title <> " | Gleam programming language",
+      meta_title: post.title
+        <> " | A case study of Gleam in production at "
+        <> post.company.name,
       preload_images: [],
       preview_image: option.Some(post.preview_image),
     )
@@ -315,10 +317,10 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
       ]),
       html.ul([class("case-study-meta")], [
         html.li([], [
-          html.h4([], [html.text(post.company_details.name)]),
-          html.p([], [html.text(post.company_details.description)]),
+          html.h4([], [html.text(post.company.name)]),
+          html.p([], [html.text(post.company.description)]),
           html.p([], [
-            html.a([attr.href(post.company_details.website_url)], [
+            html.a([attr.href(post.company.website_url)], [
               html.text("Visit Website"),
             ]),
           ]),
@@ -326,7 +328,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
         html.li([], [
           html.h4([], [html.text("Founded")]),
           html.p([], [
-            html.text(post.company_details.founded.year |> int.to_string),
+            html.text(post.company.founded.year |> int.to_string),
           ]),
         ]),
         html.li([], [
@@ -334,11 +336,9 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
           html.p([], [
             html.time([], [
               html.text(
-                calendar.month_to_string(
-                  post.company_details.gleaming_since.month,
-                )
+                calendar.month_to_string(post.company.gleaming_since.month)
                 <> ", "
-                <> int.to_string(post.company_details.gleaming_since.year),
+                <> int.to_string(post.company.gleaming_since.year),
               ),
             ]),
           ]),

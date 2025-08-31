@@ -18,7 +18,7 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
       preview_image: "strand",
       path: "strand",
       featured_quote: "Almost by accident, what we launched as a prototype became a business-critical application",
-      company_details: CompanyDetails(
+      company: Company(
         name: "Strand",
         description: "Outstanding creative services for IT companies seeking to tell and sell the business benefits of their solutions",
         website_url: "https://strand-uk.com",
@@ -33,7 +33,7 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
 }
 
 pub type CompanyDetails {
-  CompanyDetails(
+  Company(
     name: String,
     description: String,
     website_url: String,
@@ -52,7 +52,7 @@ pub type CaseStudy {
     content: String,
     preview_image: String,
     featured_quote: String,
-    company_details: CompanyDetails,
+    company: CompanyDetails,
   )
 }
 
@@ -64,7 +64,7 @@ fn read(
   preview_image preview_image: String,
   path path: String,
   featured_quote featured_quote: String,
-  company_details company_details: CompanyDetails,
+  company company: CompanyDetails,
 ) -> snag.Result(CaseStudy) {
   io.print(".")
   filepath.join("case-studies", path)
@@ -81,7 +81,7 @@ fn read(
     path:,
     preview_image:,
     featured_quote:,
-    company_details:,
+    company:,
   ))
 }
 
