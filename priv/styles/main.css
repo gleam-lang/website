@@ -1150,14 +1150,24 @@ pre code {
 }
 
 .case-study-quote:before {
-  position: absolute;
-  left: -4rem;
+  position: relative;
+  top: 1rem;
   font-family: var(--font-family-title);
   font-weight: var(--font-weight-title-bold);
-  top: -1rem;
-  font-size: 5rem;
+  font-size: 4rem;
   content: open-quote;
   color: var(--color-warm-charcoal);
+  display: inline-block;
+  margin-right: .4rem;
+}
+
+@media (min-width: 960px) {
+  .case-study-quote:before {
+    position: absolute;
+    left: -4rem;
+    top: -1rem;
+    font-size: 5rem;
+  }
 }
 
 .case-study-quote p {

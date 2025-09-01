@@ -313,7 +313,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
   [
     html.div([class("")], [
       html.blockquote([class("case-study-quote")], [
-        html.p([], [html.text(post.featured_quote)]),
+        html.text(post.featured_quote),
       ]),
       html.ul([class("case-study-meta")], [
         html.li([], [
