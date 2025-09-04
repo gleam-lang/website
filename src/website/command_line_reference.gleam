@@ -370,7 +370,9 @@ pub fn page(ctx: site.Context) -> fs.File {
         ]),
         html.tr([], [
           html.td([], [html.code([], [html.text("--template <TEMPLATE>")])]),
-          html.td([], [html.text("[default: lib] [possible values: lib]")]),
+          html.td([], [
+            html.text("[default: erlang] [possible values: erlang, javascript]"),
+          ]),
         ]),
       ]),
     ]),
