@@ -694,6 +694,23 @@ $ export PATH=/usr/local/lib/erlang23/bin:$PATH
         ),
       ]),
     ]),
+    html.h4([attr.id("using-winget")], [html.text("Using WinGet")]),
+    html.p([], [
+      html.text("With "),
+      html.a(
+        [attr.href("https://learn.microsoft.com/windows/package-manager/")],
+        [html.text("WinGet")],
+      ),
+      html.text(" installed on your computer run the following:"),
+    ]),
+    html.pre([], [
+      html.code([], [
+        html.text(
+          "winget install --id Gleam.Gleam
+",
+        ),
+      ]),
+    ]),
     html.h3([attr.id("build-from-source")], [html.text("Build from source")]),
     html.p([], [
       html.text(
