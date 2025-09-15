@@ -345,11 +345,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/5588738?s=50&u=ea3058178b90b21f04a327921c947a2b10f1c557&v=4",
   ),
   Sponsor(
-    name: "Lily Rose",
-    url: "https://github.com/LilyRose2798",
-    avatar: "https://avatars.githubusercontent.com/u/1974590?s=50&u=db6b5cdd872363494c1bd64913a3572401509a45&v=4",
-  ),
-  Sponsor(
     name: "Constantin (Cleo) Winkler",
     url: "https://github.com/Lucostus",
     avatar: "https://avatars.githubusercontent.com/u/41841989?s=50&u=0b45e3d70326d4353b850aaddab17b5de77cfb4a&v=4",
@@ -637,12 +632,7 @@ pub const sponsors = [
   Sponsor(
     name: "Vassiliy Kuzenkov",
     url: "https://github.com/bondiano",
-    avatar: "https://avatars.githubusercontent.com/u/323479?s=50&u=c96c9d1d49bfc5815f2715a876d8b188338fb4e8&v=4",
-  ),
-  Sponsor(
-    name: "Georg Hartmann",
-    url: "https://github.com/brasilikum",
-    avatar: "https://avatars.githubusercontent.com/u/3106990?s=50&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/323479?s=50&u=f6dbc018125613412f9d34e73664d199241015b9&v=4",
   ),
   Sponsor(
     name: "Brett Cannon",
@@ -703,6 +693,11 @@ pub const sponsors = [
     name: "Christopher Dieringer",
     url: "https://github.com/cdaringe",
     avatar: "https://avatars.githubusercontent.com/u/1003261?s=50&u=ab972d3bcf47c65c23b17d55721b9953f868a764&v=4",
+  ),
+  Sponsor(
+    name: "Christopher Dolan",
+    url: "https://github.com/cdolan",
+    avatar: "https://avatars.githubusercontent.com/u/143005?s=50&v=4",
   ),
   Sponsor(
     name: "Chris Donnelly",
@@ -1032,7 +1027,7 @@ pub const sponsors = [
   Sponsor(
     name: "Hayleigh Thompson",
     url: "https://github.com/hayleigh-dot-dev",
-    avatar: "https://avatars.githubusercontent.com/u/9001354?s=50&u=47844e1a4b528ff411eda269dada4dae0629e009&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/9001354?s=50&u=7d632305f04370c78fc980d534eed14677521194&v=4",
   ),
   Sponsor(
     name: "Henning Dahlheim",
@@ -1955,7 +1950,7 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/31420747?s=50&u=dc0eaae8f8f1467f8c1322525c6efe6ff6fe2827&v=4",
   ),
   Sponsor(
-    name: "yoshi~ ",
+    name: "yoshie ",
     url: "https://github.com/yoshi-monster",
     avatar: "https://avatars.githubusercontent.com/u/84042103?s=50&u=b2c981809c143d5835bd92996420d9273e0d0207&v=4",
   ),
