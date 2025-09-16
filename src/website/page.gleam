@@ -2812,7 +2812,7 @@ pages = [
 # Applications may want to use this, but libraries almost certainly do not.
 # If specified the module must implement the OTP application behaviour.
 # https://www.erlang.org/doc/man/application.html
-application_start_module = \"my_app/application\"
+application_start_module = \"my_application\"
 
 # The names of any OTP applications that need to be started in addition to the
 # ones from the project dependencies (optional)
