@@ -10,8 +10,8 @@ import website/site
 
 const in_progress = [
   "Function inlining to improve performance and stack usage",
-  "Langauge server \"collapse nested case\" code action",
-  "Dependency version conflict resolution assistent",
+  "Language server \"collapse nested case\" code action",
+  "Dependency version conflict resolution assistant",
   "Dynamic supervision of actors in Gleam OTP",
 ]
 
