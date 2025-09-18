@@ -1496,7 +1496,7 @@ used to assert that a given term has a specific shape.",
       html.text("In Gleam, the "),
       html.code([], [html.text("let assert")]),
       html.text(
-        "keyword is used to make assertions using partial
+        " keyword is used to make assertions using partial
 patterns.",
       ),
     ]),
@@ -1578,7 +1578,7 @@ JavaScript.",
       html.text("In Gleam functions are exported with the "),
       html.code([], [html.text("pub")]),
       html.text(
-        "keyword. An export statement is
+        " keyword. An export statement is
 not required.",
       ),
     ]),
@@ -1839,7 +1839,7 @@ are fully type checked.",
     html.p([], [
       html.text("In Erlang comments are written with a "),
       html.code([], [html.text("%")]),
-      html.text("prefix."),
+      html.text(" prefix."),
     ]),
     html.pre([], [
       html.code([attr.class("language-erlang")], [
@@ -1853,7 +1853,7 @@ are fully type checked.",
     html.p([], [
       html.text("In Gleam comments are written with a "),
       html.code([], [html.text("//")]),
-      html.text("prefix."),
+      html.text(" prefix."),
     ]),
     html.pre([], [
       html.code([attr.class("language-gleam")], [
@@ -1871,7 +1871,7 @@ are fully type checked.",
 comments starting with ",
       ),
       html.code([], [html.text("////")]),
-      html.text("are used to document the current module."),
+      html.text(" are used to document the current module."),
     ]),
     html.pre([], [
       html.code([attr.class("language-gleam")], [
@@ -2056,7 +2056,7 @@ const answer: Int = 42
           html.td([], [
             html.text("See "),
             html.a([attr.href("#pipe")], [html.text("the pipe section")]),
-            html.text("for details"),
+            html.text(" for details"),
           ]),
         ]),
       ]),
@@ -2146,7 +2146,7 @@ fn main() {
     html.p([], [
       html.text("In Erlang expressions can be grouped using parenthesis or "),
       html.code([], [html.text("begin")]),
-      html.text("and "),
+      html.text(" and "),
       html.code([], [html.text("end")]),
       html.text("."),
     ]),
@@ -2240,7 +2240,7 @@ performance semantics.",
       html.text("The "),
       html.code([], [html.text("cons")]),
       html.text(
-        "operator works the same way both for pattern matching and for appending elements to the
+        " operator works the same way both for pattern matching and for appending elements to the
 head of a list, but it uses a different syntax.",
       ),
     ]),
@@ -2284,7 +2284,7 @@ Gleam that incorporate them, such as ",
       html.code([], [html.text("ok")]),
       html.text(", "),
       html.code([], [html.text("error")]),
-      html.text("and booleans."),
+      html.text(" and booleans."),
     ]),
     html.p([], [
       html.text(
@@ -2293,7 +2293,7 @@ Gleam that incorporate them, such as ",
       html.code([], [html.text("ok")]),
       html.text("and "),
       html.code([], [html.text("error")]),
-      html.text("result types, and defining custom types."),
+      html.text(" result types, and defining custom types."),
     ]),
     html.h4([attr.id("erlang-17")], [html.text("Erlang")]),
     html.pre([], [
@@ -2498,7 +2498,7 @@ fn int_or_float(x) {
       html.text("In Erlang the "),
       html.code([], [html.text("opaque")]),
       html.text(
-        "attr can be used to declare that the internal
+        " attr can be used to declare that the internal
 structure of a type is not considered a public API and isn’t to be used by
 other modules. This is purely for documentation purposes and other modules
 can introspect and manipulate opaque types any way they wish.",
@@ -2703,10 +2703,10 @@ pub fn python(ctx: site.Context) -> fs.File {
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
       html.text(
-        "are used to document the following statement. Comments starting with ",
+        " are used to document the following statement. Comments starting with ",
       ),
       html.code([], [html.text("////")]),
-      html.text("are used to document the current module."),
+      html.text(" are used to document the current module."),
     ]),
     html.pre([], [
       html.code([attr.class("language-gleam")], [
@@ -10154,9 +10154,9 @@ pub fn now() -> DateTime
         "In general, atoms are not used much in Gleam, and are mostly used for booleans, ",
       ),
       html.code([], [html.text("Ok")]),
-      html.text("and "),
+      html.text(" and "),
       html.code([], [html.text("Error")]),
-      html.text("result types, and defining custom types."),
+      html.text(" result types, and defining custom types."),
     ]),
     html.p([], [
       html.text(
