@@ -714,11 +714,11 @@ definition.",
 ",
     ),
     html.p([], [
-      html.text("If your cursor is within the "),
+      html.text("If your cursor is within the \""),
       html.code([], [html.text("Person")]),
       html.text(
-        "then the code action will be suggested,
-and if run the code will be updated to this:",
+        "\" type name then the code action will be suggested, and if run the
+code will be updated to this:",
       ),
     ]),
     page.highlighted_gleam_pre_code(
