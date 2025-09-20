@@ -1612,7 +1612,6 @@ pub fn format_pair(name: String, value: String) -> String {
     highlighted_gleam_pre_code(
       "// in test/vars_test.gleam
 import gleeunit
-import gleeunit/should
 import vars/internal
 
 pub fn main() {
