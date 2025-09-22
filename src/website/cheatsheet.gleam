@@ -402,7 +402,7 @@ def mul(x, y), do: x * y
       html.text("Functions can "),
       html.strong([], [html.text("optionally")]),
       html.text(
-        "have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
+        " have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
     html.pre([], [
@@ -2973,7 +2973,7 @@ def mul(x: int, y: int) -> bool:
       html.text("Functions can "),
       html.strong([], [html.text("optionally")]),
       html.text(
-        "have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
+        " have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
     html.pre([], [
@@ -4961,7 +4961,7 @@ function mul(int $x, int $y) : bool {
       html.text("Functions can "),
       html.strong([], [html.text("optionally")]),
       html.text(
-        "have their argument and return types annotated in
+        " have their argument and return types annotated in
 Gleam. These type annotations will always be checked by the compiler and throw
 a compilation error if not valid. The compiler will still type check your
 program using type inference if annotations are omitted.",
@@ -7416,7 +7416,7 @@ pub fn mul(x: u64, y: u64) -> u64 {
       html.text("Functions can "),
       html.strong([], [html.text("optionally")]),
       html.text(
-        "have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
+        " have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
     html.pre([], [
@@ -8573,7 +8573,7 @@ mul(1, 2)
       html.text("In Elm, functions can "),
       html.strong([], [html.text("optionally")]),
       html.text(
-        "have their argument and return types annotated. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
+        " have their argument and return types annotated. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
     html.pre([], [
