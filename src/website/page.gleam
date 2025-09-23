@@ -612,6 +612,21 @@ sudo dnf install gleam
         ),
       ]),
     ]),
+    html.h4([attr.id("using-homebrew-1")], [html.text("Using Homebrew")]),
+    html.p([], [
+      html.text("With "),
+      html.a([attr.href("https://brew.sh")], [html.text("Homebrew")]),
+      html.text(" installed run the following:"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-sh")], [
+        html.text(
+          "brew update
+brew install gleam
+",
+        ),
+      ]),
+    ]),
     html.h3([attr.id("freebsd")], [html.text("FreeBSD")]),
     html.p([], [
       html.text(
@@ -631,21 +646,6 @@ Erlang/OTP runtime and not just the standard OTP21:",
         html.text(
           "$ pkg install -r FreeBSD lang/gleam lang/erlang-runtime23
 $ export PATH=/usr/local/lib/erlang23/bin:$PATH
-",
-        ),
-      ]),
-    ]),
-    html.h4([attr.id("using-homebrew-1")], [html.text("Using Homebrew")]),
-    html.p([], [
-      html.text("With "),
-      html.a([attr.href("https://brew.sh")], [html.text("Homebrew")]),
-      html.text(" installed run the following:"),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-sh")], [
-        html.text(
-          "brew update
-brew install gleam
 ",
         ),
       ]),
