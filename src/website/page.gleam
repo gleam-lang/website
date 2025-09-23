@@ -2748,9 +2748,16 @@ repository = { type = \"github\", user = \"example\", repo = \"my_project\" }
 # { type = \"bitbucket\", user = \"example\", repo = \"my_project\" }
 # { type = \"codeberg\",  user = \"example\", repo = \"my_project\" }
 # { type = \"custom\",    url = \"https://example.com/my_project\" }
+#
 # An optional `path` to this project in the repository can be specified
 # if it is not located at the root:
 # { type = \"github\", user = \"example\", repo = \"my_project\", path = \"packages/my_project\" }
+#
+# An option `tag_prefix` can be set to change the convention for the git tags
+# for this repository, which are used to make links in the generated HTML
+# documentation for the package.
+# This is commonly used when there are multiple Gleam projects in a single repo.
+# { type = \"github\", user = \"example\", repo = \"my_project\", tag_prefix = \"my_project-\" }
 
 # Links to any related website (optional)
 # This will be displayed in generated documentation and on Hex.
