@@ -612,6 +612,13 @@ sudo dnf install gleam
         ),
       ]),
     ]),
+    html.h4([attr.id("opensuse")], [html.text("openSUSE")]),
+    html.p([], [
+      html.text(
+        "Gleam is available as part of the official packages repository. Install it with:",
+      ),
+    ]),
+    html.pre([], [html.code([], [html.text("zypper install gleam")])]),
     html.h4([attr.id("using-homebrew-1")], [html.text("Using Homebrew")]),
     html.p([], [
       html.text("With "),
@@ -657,13 +664,6 @@ $ export PATH=/usr/local/lib/erlang23/bin:$PATH
       ),
     ]),
     html.pre([], [html.code([], [html.text("doas pkg_add gleam")])]),
-    html.h3([attr.id("opensuse")], [html.text("openSUSE")]),
-    html.p([], [
-      html.text(
-        "Gleam is available as part of the official packages repository. Install it with:",
-      ),
-    ]),
-    html.pre([], [html.code([], [html.text("zypper install gleam")])]),
     html.h3([attr.id("android")], [html.text("Android")]),
     html.h4([attr.id("termux")], [html.text("Termux")]),
     html.p([], [
