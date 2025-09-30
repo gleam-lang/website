@@ -560,7 +560,7 @@ variable inside the function.",
     html.pre([], [
       html.code([attr.class("language-elixir")], [
         html.text(
-          "def replace(opts \\ []) do
+          "def replace(opts \\\\ []) do
   string = opts[:inside] || default_string()
   pattern = opts[:each] || default_pattern()
   replacement = opts[:with] || default_replacement()
