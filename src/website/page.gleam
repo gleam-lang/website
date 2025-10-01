@@ -1782,6 +1782,11 @@ pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
         ]),
       ]),
       html.li([], [
+        html.a([attr.href("#why-does-not-gleam-have-function-overloading")], [
+          html.text("Why does not Gleam have function overloading?"),
+        ]),
+      ]),
+      html.li([], [
         html.a([attr.href("#how-is-message-passing-typed")], [
           html.text("How is message passing typed?"),
         ]),
@@ -1900,6 +1905,21 @@ discussion",
         ),
       ]),
       html.text("."),
+    ]),
+    html.h2([attr.id("why-does-not-gleam-have-function-overloading")], [
+      html.text("Why does not Gleam have function overloading?"),
+    ]),
+    html.p([], [
+      html.text("Function overloading is type of polymorphism known as "),
+      html.em([], [html.text("ad hoc polymorphism")]),
+      html.text("."),
+    ]),
+    html.p([], [
+      html.text(
+        "Gleam's design philosophy is about simplicity and explicitness, because of this we favour
+just having multiple functions with obvious titles than one with many overloads. This makes you
+choose specific implementation over genral one.",
+      ),
     ]),
     html.h2([attr.id("does-gleam-have-mutable-state")], [
       html.text("Does Gleam have mutable state?"),
