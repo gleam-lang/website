@@ -78,7 +78,7 @@ Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 Gleam's compiler is fault tolerant, meaning that when an error is encountered
 in the code it does not stop immediately, instead it shows the error to the
 programmer, makes a best-effort attempts to recover and continue analysing
-the rest of the code. This behaviour is vital for the langauge server to
+the rest of the code. This behaviour is vital for the language server to
 have information about the code even when it's in an invalid state.
 
 The analysis of binary operators such as `+` and `==` have been improved so
