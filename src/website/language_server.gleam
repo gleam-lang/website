@@ -1124,7 +1124,7 @@ along with the labels of the arguments that have them.",
 
 fn rename_html() -> List(Element(Nil)) {
   [
-    html.p([], [html.text("The langauge server is able to rename:")]),
+    html.p([], [html.text("The language server is able to rename:")]),
     html.ul([], [
       html.li([], [html.text("Functions.")]),
       html.li([], [html.text("Function arguments.")]),
