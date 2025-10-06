@@ -72,6 +72,47 @@ pub fn base_layout(
   ])
 }
 
+pub fn with_toc(
+  content: List(Element(a)),
+  table_of_contents: List(ContentLink),
+  meta: site.PageMeta,
+  ctx: site.Context,
+) {
+  [
+    header(hero_image: option.None, content: [
+      html.h1([], [html.text(meta.title)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
+    ]),
+    html.main([attr.class("page toc-layout")], [
+      html.nav([class("table-of-contents")], [
+        html.h4([], [html.text("Table of Contents")]),
+        html.ul(
+          [],
+          list.map(table_of_contents, fn(item) {
+            html.li([], [
+              html.a([attr.href(item.href)], [html.text(item.title)]),
+              case item.children {
+                [] -> element.none()
+                _ ->
+                  html.ul(
+                    [],
+                    list.map(item.children, fn(item) {
+                      html.li([], [
+                        html.a([attr.href(item.href)], [html.text(item.title)]),
+                      ])
+                    }),
+                  )
+              },
+            ])
+          }),
+        ),
+      ]),
+      ..content
+    ]),
+  ]
+  |> base_layout(meta, ctx)
+}
+
 pub fn with_header(
   content: List(Element(a)),
   class: String,
