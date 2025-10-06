@@ -5,6 +5,7 @@ import lustre/attribute as attr
 import lustre/element.{type Element}
 import lustre/element/html
 import website/fs
+import website/layout
 import website/page
 import website/site
 
@@ -113,7 +114,7 @@ pub fn page(ctx: site.Context) -> fs.File {
     })
 
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "language-server",
       title: "The Gleam Language Server reference",
       meta_title: "The Gleam Language Server - IDE features for all editors",
@@ -135,7 +136,7 @@ pub fn page(ctx: site.Context) -> fs.File {
     table_of_contents,
     ..content
   ]
-  |> page.page_layout("prose", meta, ctx)
+  |> layout.with_header("prose", meta, ctx)
   |> page.to_html_file(meta)
 }
 
