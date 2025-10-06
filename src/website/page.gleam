@@ -1050,10 +1050,14 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
     )
 
   let toc = [
-    layout.ContentLink("Prepare your application", "#prepare-your-application", []),
-layout.ContentLink("Add a Dockerfile", "#add-a-dockerfile", []),
-layout.ContentLink("Set up the Fly.io CLI", "#set-up-the-flyio-cli", []),
-layout.ContentLink("Deploy the application", "#deploy-the-application", []),
+    layout.ContentLink(
+      "Prepare your application",
+      "#prepare-your-application",
+      [],
+    ),
+    layout.ContentLink("Add a Dockerfile", "#add-a-dockerfile", []),
+    layout.ContentLink("Set up the Fly.io CLI", "#set-up-the-flyio-cli", []),
+    layout.ContentLink("Deploy the application", "#deploy-the-application", []),
   ]
 
   let content = [
@@ -1188,7 +1192,7 @@ file. Once deployed you can open it in a web browser by running ",
       html.text(" after saving any changes to the source code."),
     ]),
   ]
-  
+
   layout.with_toc([html.article([class("prose")], content)], toc, meta, ctx)
   |> to_html_file(meta)
 }
