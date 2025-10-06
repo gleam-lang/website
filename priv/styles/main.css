@@ -1383,6 +1383,13 @@ pre code {
   padding-bottom: 2rem;
 }
 
+/* This just gives us a nice bit of padding atop the headings */
+.toc-layout .prose h1,
+.toc-layout .prose h2 {
+  scroll-margin-top: 1em;
+}
+
+
 .table-of-contents {
   position: sticky;
   top: 16px;
