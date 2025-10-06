@@ -1,33 +1,19 @@
 import contour
 import gleam/int
 import gleam/list
-import gleam/option.{type Option}
+import gleam/option
 import gleam/string
 import gleam/time/calendar
-import gleam/time/timestamp
 import just/highlight as just
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
 import website/case_study
 import website/fs
+import website/layout
 import website/news
 import website/site
 import website/sponsor
-
-pub type PageMeta {
-  PageMeta(
-    path: String,
-    title: String,
-    subtitle: String,
-    meta_title: String,
-    description: String,
-    /// Render-critical to pre-load using meta-tags
-    preview_image: Option(String),
-    /// Social media share preview image name
-    preload_images: List(String),
-  )
-}
 
 pub fn redirect_to_tour(from: String, to: String) -> fs.File {
   let to = "https://tour.gleam.run/" <> to
@@ -51,7 +37,7 @@ type Sponsee {
 
 pub fn sponsor(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "/sponsor",
       title: "Sponsor",
       subtitle: "Support Gleam's development by sponsoring members of our core team!",
@@ -286,19 +272,19 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   ]
 
   [
-    header(hero_image: option.None, content: [
+    layout.header(hero_image: option.None, content: [
       html.h1([], [html.text(meta.title)]),
       html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
     ]),
     ..content
   ]
-  |> top_layout(meta, ctx)
+  |> layout.base_layout(meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "case-studies/" <> post.path,
       title: post.title,
       subtitle: post.subtitle,
@@ -385,13 +371,13 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
       ]),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "news/" <> post.path,
       title: post.title,
       subtitle: post.subtitle,
@@ -421,13 +407,13 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
       element.unsafe_raw_html("", "article", [class("prose")], post.content),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn installing(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "getting-started/installing",
       title: "Installing Gleam",
       meta_title: "Installing Gleam: get ready to start making things!",
@@ -1047,13 +1033,13 @@ niceties.",
       html.text(" for an overview of the Gleam language."),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn deployment_flyio(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "deployment/fly",
       title: "Deploying on Fly.io",
       meta_title: "Deploying Gleam on Fly.io | Gleam Programming Language",
@@ -1195,13 +1181,13 @@ file. Once deployed you can open it in a web browser by running ",
       html.text(" after saving any changes to the source code."),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn writing_gleam(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "writing-gleam",
       title: "Writing Gleam",
       meta_title: "Writing Gleam",
@@ -1733,13 +1719,13 @@ version of Erlang on the computer used to compile the escript.",
       html.text(" to get help or share what you’re working on."),
     ]),
   ]
-  |> page_layout("prose", meta, ctx)
+  |> layout.with_header("prose", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn frequently_asked_questions(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "frequently-asked-questions",
       title: "Frequently asked questions",
       meta_title: "Frequently asked questions | Gleam programming language",
@@ -2401,13 +2387,13 @@ workloads.",
     html.h2([attr.id("is-it-good")], [html.text("Is it good?")]),
     html.p([], [html.text("Yes, I think so. :)")]),
   ]
-  |> page_layout("prose", meta, ctx)
+  |> layout.with_header("prose", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn documentation(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "documentation",
       title: "Documentation",
       meta_title: "Documentation | Gleam programming language",
@@ -2605,13 +2591,13 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       ]),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "news",
       title: "News",
       meta_title: "News | Gleam programming language",
@@ -2650,7 +2636,7 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
     })
 
   [html.ul([class("news-posts")], list_items)]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2659,7 +2645,7 @@ pub fn case_studies_index(
   ctx: site.Context,
 ) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "case-studies",
       title: "Case Studies",
       meta_title: "Case Studies | Gleam programming language",
@@ -2702,13 +2688,13 @@ pub fn case_studies_index(
       ]),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn gleam_toml(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "writing-gleam/gleam-toml",
       title: "gleam.toml",
       subtitle: "Configure your Gleam project",
@@ -2863,13 +2849,13 @@ allow_write = [\"./database.sqlite\"]"
   ]
 
   content
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn deployment_linux(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "deployment/linux-server",
       title: "Deploy to a Linux server",
       meta_title: "Deploying Gleam on a Linux server | Gleam Programming Language",
@@ -3420,13 +3406,13 @@ systemctl restart webapp
       html.text("."),
     ]),
   ]
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn community(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "community",
       title: "The Gleam Community",
       meta_title: "The Gleam Community",
@@ -3526,13 +3512,13 @@ pub fn community(ctx: site.Context) -> fs.File {
   ]
 
   content
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
 pub fn branding(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "branding",
       title: "Gleam's branding",
       meta_title: "Branding and Lucy mascot | Gleam programming language",
@@ -3890,7 +3876,7 @@ ul {
   ]
 
   content
-  |> page_layout("", meta, ctx)
+  |> layout.with_header("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -3902,25 +3888,9 @@ pub fn short_human_date(date: calendar.Date) -> String {
   <> int.to_string(date.year)
 }
 
-pub fn page_layout(
-  content: List(Element(a)),
-  class: String,
-  meta: PageMeta,
-  ctx: site.Context,
-) -> Element(a) {
-  [
-    header(hero_image: option.None, content: [
-      html.h1([], [html.text(meta.title)]),
-      html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
-    ]),
-    html.main([attr.class("page content " <> class)], content),
-  ]
-  |> top_layout(meta, ctx)
-}
-
 pub fn home(ctx: site.Context) -> fs.File {
   let meta =
-    PageMeta(
+    site.PageMeta(
       path: "",
       title: "Gleam programming language",
       meta_title: "Gleam programming language",
@@ -3931,7 +3901,7 @@ pub fn home(ctx: site.Context) -> fs.File {
     )
 
   let content = [
-    header(
+    layout.header(
       hero_image: option.Some(#(
         "/images/lucy/lucy.svg",
         "Lucy the star, Gleam's mascot",
@@ -4248,189 +4218,15 @@ pub fn register_event_handler() {
   ]
 
   content
-  |> top_layout(meta, ctx)
+  |> layout.base_layout(meta, ctx)
   |> to_html_file(meta)
 }
 
-fn header(
-  hero_image hero_image: Option(#(String, String)),
-  content content: List(Element(a)),
-) -> Element(a) {
-  let hero_content = html.div([attr.class("text")], content)
-  let hero_content = case hero_image {
-    option.Some(#(src, alt)) -> [
-      html.div(
-        [attr("data-show-pride", ""), class("hero-lucy-container wide-only")],
-        [html.img([attr.alt(alt), attr.src(src), attr.class("hero-lucy")])],
-      ),
-      html.div([class("text-left")], [hero_content]),
-    ]
-    option.None -> [hero_content]
-  }
-
-  html.div([attr.class("page-header")], [
-    html.nav([attr.class("navbar")], [
-      html.div([attr.class("content")], [
-        html.div([], [
-          html.a([attr.href("/"), attr.class("logo")], [
-            html.img([
-              attr.alt("Lucy the star, Gleam's mascot"),
-              attr.src("/images/lucy/lucy.svg"),
-              attr.class("navbar-lucy"),
-            ]),
-            html.text("Gleam"),
-          ]),
-        ]),
-        html.div([], [
-          html.a([attr.href("/news")], [html.text("News")]),
-          html.a([attr.href("/community")], [html.text("Community")]),
-          html.a([attr.href("/sponsor")], [html.text("Sponsor")]),
-        ]),
-        html.div([], [
-          html.a([attr.href("https://packages.gleam.run")], [
-            html.text("Packages"),
-          ]),
-          html.a([attr.href("/documentation")], [html.text("Docs")]),
-          html.a([attr.href("https://github.com/gleam-lang")], [
-            html.text("Code"),
-          ]),
-        ]),
-      ]),
-    ]),
-    html.div([attr.class("hero")], [
-      html.div([attr.class("content")], hero_content),
-      html.img([
-        attr.alt("a soft wavey boundary between two sections of the website"),
-        attr.src("/images/waves.svg"),
-        attr.class("home-waves"),
-      ]),
-    ]),
-  ])
-}
-
-pub fn to_html_file(page_content: Element(a), meta: PageMeta) -> fs.File {
+pub fn to_html_file(page_content: Element(a), meta: site.PageMeta) -> fs.File {
   fs.HtmlPage(
     path: meta.path,
     content: element.to_document_string(page_content),
   )
-}
-
-fn top_layout(
-  page_content: List(Element(a)),
-  page: PageMeta,
-  ctx: site.Context,
-) -> Element(a) {
-  html.html([], [
-    html.head([], head_elements(page, ctx)),
-    html.body(
-      [],
-      list.append(page_content, [
-        footer(ctx),
-        html.script([attr.src("/javascript/main.js"), attr("async", "")], ""),
-      ]),
-    ),
-  ])
-}
-
-fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) {
-  let metatag = fn(property, content) {
-    html.meta([attr("property", property), attr("content", content)])
-  }
-  let preview_image = case page.preview_image {
-    option.None -> ctx.hostname <> "/images/preview/site.png"
-    option.Some(name) -> ctx.hostname <> "/images/preview/" <> name <> ".png"
-  }
-
-  [
-    html.meta([attr("charset", "utf-8")]),
-    html.meta([attr("content", "width=device-width"), attr.name("viewport")]),
-    html.link([attr.href("/images/lucy/lucy.svg"), attr.rel("shortcut icon")]),
-    html.link([
-      attr("title", "Gleam"),
-      attr.href(ctx.hostname <> "/feed.xml"),
-      attr.rel("alternate"),
-      attr.type_("application/atom+xml"),
-    ]),
-    html.title([], page.meta_title),
-    html.meta([attr("content", page.description), attr.name("description")]),
-    metatag("og:type", "website"),
-    metatag("og:image", preview_image),
-    metatag("og:title", page.meta_title),
-    metatag("og:description", page.description),
-    metatag("og:url", ctx.hostname <> "/" <> page.path),
-    metatag("twitter:card", "summary_large_image"),
-    metatag("twitter:url", ctx.hostname),
-    metatag("twitter:title", page.meta_title),
-    metatag("twitter:description", page.description),
-    metatag("twitter:image", preview_image),
-    html.script(
-      [
-        attr.src("https://plausible.io/js/plausible.js"),
-        attr("data-domain", "gleam.run"),
-        attr("defer", ""),
-        attr("async", ""),
-      ],
-      "",
-    ),
-    html.link([
-      attr.href("/styles/main.css?v=" <> ctx.styles_hash),
-      attr.rel("stylesheet"),
-    ]),
-    ..list.map(page.preload_images, fn(href) {
-      html.link([attr("as", "image"), attr.href(href), attr.rel("preload")])
-    })
-  ]
-}
-
-fn footer(ctx: site.Context) -> element.Element(a) {
-  let footer_links = [
-    #("News", "/news"),
-    #("Cheat sheets", "/documentation#cheatsheets"),
-    #("Discord", "https://discord.gg/Fm8Pwmy"),
-    #("Code", "https://github.com/gleam-lang"),
-    #("Language tour", "https://tour.gleam.run"),
-    #("Playground", "https://playground.gleam.run"),
-    #("Documentation", "/documentation"),
-    #("Sponsor", "https://github.com/sponsors/lpil"),
-    #("Packages", "https://packages.gleam.run/"),
-    #("Gleam Weekly", "https://gleamweekly.com/"),
-    #("Roadmap", "/roadmap"),
-    #("Case studies", "/case-studies"),
-  ]
-
-  let code_of_conduct =
-    "https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md"
-
-  let #(date, _) = timestamp.to_calendar(ctx.time, calendar.utc_offset)
-
-  html.footer([class("footer")], [
-    html.div([class("content")], [
-      html.div([class("first")], [
-        html.a([attr.href("/"), class("logo")], [
-          html.img([
-            attr.alt("Lucy the star, Gleam's mascot"),
-            attr.src("/images/lucy/lucy.svg"),
-            class("footer-lucy"),
-          ]),
-          html.text("Gleam"),
-        ]),
-      ]),
-      html.ul(
-        [class("middle")],
-        list.map(footer_links, fn(pair) {
-          html.li([], [html.a([attr.href(pair.1)], [html.text(pair.0)])])
-        }),
-      ),
-      html.ul([class("last")], [
-        html.li([], [
-          html.text("© " <> int.to_string(date.year) <> " Louis Pilfold"),
-        ]),
-        html.li([], [
-          html.a([attr.href(code_of_conduct)], [html.text("Code of conduct")]),
-        ]),
-      ]),
-    ]),
-  ])
 }
 
 fn wall_of_sponsors() -> Element(a) {
