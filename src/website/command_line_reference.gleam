@@ -2,12 +2,13 @@ import gleam/option
 import lustre/attribute as attr
 import lustre/element/html
 import website/fs
+import website/layout
 import website/page
 import website/site
 
 pub fn page(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "command-line-reference",
       title: "Command line reference",
       meta_title: "Command line reference | Gleam programming language",
@@ -472,6 +473,6 @@ pub fn page(ctx: site.Context) -> fs.File {
       html.text("Update dependency packages to their latest versions"),
     ]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
+  |> layout.with_header("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }

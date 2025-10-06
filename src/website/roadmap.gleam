@@ -5,6 +5,7 @@ import lustre/attribute as attr
 import lustre/element
 import lustre/element/html
 import website/fs
+import website/layout
 import website/page
 import website/site
 
@@ -231,7 +232,7 @@ type Release {
 
 pub fn page(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "roadmap",
       title: "Gleam's Development Roadmap",
       meta_title: "Gleam's Development Roadmap",
@@ -304,6 +305,6 @@ pub fn page(ctx: site.Context) -> fs.File {
       }),
     ),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
+  |> layout.with_header("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }

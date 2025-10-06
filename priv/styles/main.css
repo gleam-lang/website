@@ -1372,3 +1372,70 @@ pre code {
 .tooltip-container[data-tooltip-trigger="hover"]:hover .tooltip, .tooltip-container[data-tooltip-state="open"] .tooltip {
   opacity: 1;
 }
+
+/* Table of Contents layout */
+.toc-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(auto, 340px) auto;
+  gap: 1.6rem;
+  padding-bottom: 2rem;
+}
+
+.table-of-contents {
+  position: sticky;
+  top: 16px;
+  background: var(--color-lukewarm-charcoal);
+  border: 1px solid var(--color-warm-charcoal);
+  overflow-y: auto;
+  max-height: 90vh;
+  border-radius: .4rem;
+  font-size: 1rem;
+  padding-bottom: 1.4rem;
+}
+
+.table-of-contents h4 {
+  margin: 0;
+  padding: 2rem 1.4rem .4rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-subtle);
+}
+
+.table-of-contents ul {
+  padding: 0;
+  margin: 0;
+}
+
+.table-of-contents li {
+  display: block;
+  position: relative;
+}
+
+.table-of-contents ul ul li:before {
+  content: '';
+  border-bottom: 2px solid var(--color-warm-charcoal);
+  border-left: 2px solid var(--color-warm-charcoal);
+  position: absolute;
+  top: -50%;
+  bottom: 50%;
+  width: 1ch;
+  pointer-events: none;
+  left: 1.4rem;
+}
+
+.table-of-contents ul ul li:first-child:before {
+  top: 0;
+}
+
+.table-of-contents ul ul a {
+  padding-left: 2.8rem;
+}
+
+.table-of-contents a {
+  text-decoration: none;
+  padding: .6rem 1.4rem;
+  color: #EEF1FF;
+  display: flex;
+}
