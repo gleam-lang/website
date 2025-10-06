@@ -1049,7 +1049,14 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
       preview_image: option.None,
     )
 
-  [
+  let toc = [
+    layout.ContentLink("Prepare your application", "#prepare-your-application", []),
+layout.ContentLink("Add a Dockerfile", "#add-a-dockerfile", []),
+layout.ContentLink("Set up the Fly.io CLI", "#set-up-the-flyio-cli", []),
+layout.ContentLink("Deploy the application", "#deploy-the-application", []),
+  ]
+
+  let content = [
     html.p([], [
       html.a([attr.href("https://fly.io")], [html.text("Fly.io")]),
       html.text(
@@ -1181,7 +1188,8 @@ file. Once deployed you can open it in a web browser by running ",
       html.text(" after saving any changes to the source code."),
     ]),
   ]
-  |> layout.with_header("", meta, ctx)
+  
+  layout.with_toc([html.article([class("prose")], content)], toc, meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2865,7 +2873,55 @@ pub fn deployment_linux(ctx: site.Context) -> fs.File {
       preview_image: option.None,
     )
 
-  [
+  let toc = [
+    layout.ContentLink("Provision your server", "#provision-your-server", []),
+    layout.ContentLink("Configure your DNS", "#configure-your-dns", []),
+    layout.ContentLink(
+      "Prepare your application",
+      "#prepare-your-application",
+      [],
+    ),
+    layout.ContentLink("Add a Dockerfile", "#add-a-dockerfile", []),
+    layout.ContentLink(
+      "Build your container on CI",
+      "#build-your-container-on-ci",
+      [],
+    ),
+    layout.ContentLink("Secure the SSH service", "#secure-the-ssh-service", []),
+    layout.ContentLink(
+      "Secure the network with a firewall",
+      "#secure-the-network-with-a-firewall",
+      [],
+    ),
+    layout.ContentLink(
+      "Enable automatic Ubuntu security updates",
+      "#enable-automatic-ubuntu-security-updates",
+      [],
+    ),
+    layout.ContentLink(
+      "Install Caddy and Podman",
+      "#install-caddy-and-podman",
+      [],
+    ),
+    layout.ContentLink(
+      "Define your Podman container",
+      "#define-your-podman-container",
+      [],
+    ),
+    layout.ContentLink("Start the container", "#start-the-container", []),
+    layout.ContentLink(
+      "Configure Caddy to send traffic to the application",
+      "#configure-caddy-to-send-traffic-to-the-application",
+      [],
+    ),
+    layout.ContentLink(
+      "Future deployments and maintenance",
+      "#future-deployments-and-maintenance",
+      [],
+    ),
+  ]
+
+  let content = [
     html.p([], [
       html.text(
         "This guide will take you through the process of deploying a Gleam backend web
@@ -3406,7 +3462,8 @@ systemctl restart webapp
       html.text("."),
     ]),
   ]
-  |> layout.with_header("", meta, ctx)
+
+  layout.with_toc([html.article([class("prose")], content)], toc, meta, ctx)
   |> to_html_file(meta)
 }
 
