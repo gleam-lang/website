@@ -1,12 +1,59 @@
+import gleam/dict
 import gleam/int
 import gleam/list
 import gleam/option.{type Option}
+import gleam/result
 import gleam/time/calendar
 import gleam/time/timestamp
+import jot
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
 import website/site
+
+pub type ContentLink {
+  ContentLink(title: String, href: String, children: List(ContentLink))
+}
+
+pub fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) {
+  document.content
+  |> list.fold(from: [], over: _, with: fn(accum, block) {
+    case block {
+      jot.Heading(attributes:, level:, content:) -> {
+        let href =
+          "#"
+          <> dict.get(attributes, "id")
+          |> result.unwrap("")
+
+        let text = case list.first(content) {
+          Ok(jot.Text(content)) -> content
+          // This is exceedingly unlikely to happen.
+          _ -> "Unknown header content. Malformed Guide!"
+        }
+
+        case level {
+          2 -> [ContentLink(text, href, []), ..accum]
+          3 ->
+            case accum {
+              [first, ..rest] -> [
+                ContentLink(
+                  ..first,
+                  children: list.append(first.children, [
+                    ContentLink(text, href, []),
+                  ]),
+                ),
+                ..rest
+              ]
+              [] -> accum
+            }
+          _ -> accum
+        }
+      }
+      _ -> accum
+    }
+  })
+  |> list.reverse
+}
 
 pub fn base_layout(
   page_content: List(Element(a)),
