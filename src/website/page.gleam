@@ -1267,8 +1267,8 @@ niceties.",
       html.li([], [
         html.strong([], [html.text("Vim")]),
         html.text("- "),
-        html.a([attr.href("https://github.com/gleam-lang/gleam.vim")], [
-          html.text("https://github.com/gleam-lang/gleam.vim"),
+        html.a([attr.href("https://gleam.run/language-server/#neovim")], [
+          html.text("https://gleam.run/language-server/#neovim"),
         ]),
       ]),
       html.li([], [
