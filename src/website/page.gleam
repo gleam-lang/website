@@ -97,7 +97,7 @@ pub fn base_layout(
   ])
 }
 
-pub fn layout_table_of_contents(
+pub fn table_of_contents_page_layout(
   content: List(Element(a)),
   table_of_contents: List(ContentLink),
   meta: PageMeta,
@@ -138,7 +138,7 @@ pub fn layout_table_of_contents(
   |> base_layout(meta, ctx)
 }
 
-pub fn layout_header(
+pub fn page_layout(
   content: List(Element(a)),
   class: String,
   meta: PageMeta,
@@ -653,7 +653,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
       ]),
     ]),
   ]
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -689,7 +689,7 @@ pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
       element.unsafe_raw_html("", "article", [class("prose")], post.content),
     ]),
   ]
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -1315,7 +1315,7 @@ niceties.",
       html.text(" for an overview of the Gleam language."),
     ]),
   ]
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -1471,7 +1471,7 @@ file. Once deployed you can open it in a web browser by running ",
     ]),
   ]
 
-  layout_table_of_contents(
+  table_of_contents_page_layout(
     [html.article([class("prose")], content)],
     toc,
     meta,
@@ -2014,7 +2014,7 @@ version of Erlang on the computer used to compile the escript.",
       html.text(" to get help or share what you’re working on."),
     ]),
   ]
-  |> layout_header("prose", meta, ctx)
+  |> page_layout("prose", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2682,7 +2682,7 @@ workloads.",
     html.h2([attr.id("is-it-good")], [html.text("Is it good?")]),
     html.p([], [html.text("Yes, I think so. :)")]),
   ]
-  |> layout_header("prose", meta, ctx)
+  |> page_layout("prose", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2886,7 +2886,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       ]),
     ]),
   ]
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2931,7 +2931,7 @@ pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
     })
 
   [html.ul([class("news-posts")], list_items)]
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -2983,7 +2983,7 @@ pub fn case_studies_index(
       ]),
     ]),
   ]
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -3144,7 +3144,7 @@ allow_write = [\"./database.sqlite\"]"
   ]
 
   content
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -3803,7 +3803,7 @@ systemctl restart webapp
     ]),
   ]
 
-  layout_table_of_contents(
+  table_of_contents_page_layout(
     [html.article([class("prose")], content)],
     toc,
     meta,
@@ -3914,7 +3914,7 @@ pub fn community(ctx: site.Context) -> fs.File {
   ]
 
   content
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 
@@ -4278,7 +4278,7 @@ ul {
   ]
 
   content
-  |> layout_header("", meta, ctx)
+  |> page_layout("", meta, ctx)
   |> to_html_file(meta)
 }
 

@@ -135,7 +135,7 @@ pub fn page(ctx: site.Context) -> fs.File {
     table_of_contents,
     ..content
   ]
-  |> page.layout_header("prose", meta, ctx)
+  |> page.page_layout("prose", meta, ctx)
   |> page.to_html_file(meta)
 }
 

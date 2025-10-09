@@ -472,6 +472,6 @@ pub fn page(ctx: site.Context) -> fs.File {
       html.text("Update dependency packages to their latest versions"),
     ]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }

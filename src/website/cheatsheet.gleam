@@ -1297,7 +1297,7 @@ let assert #(1 as a, 2 as b) = #(1, 2)
       ]),
     ]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }
 
@@ -2545,7 +2545,7 @@ pub fn get_id() {
     html.h3([attr.id("nested-modules")], [html.text("Nested modules")]),
     html.h3([attr.id("first-class-modules")], [html.text("First class modules")]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }
 
@@ -4277,7 +4277,7 @@ pub fn main() {
       ]),
     ]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }
 
@@ -7006,7 +7006,7 @@ server applications comparable to RabbitMQ or multiplayer game servers.",
       ]),
     ]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }
 
@@ -8189,7 +8189,7 @@ pub fn main() {
       ]),
     ]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }
 
@@ -10222,6 +10222,6 @@ string.inspect([1, 2, 3]) == \"[1, 2, 3]\"
       ]),
     ]),
   ]
-  |> page.layout_header("roadmap", meta, ctx)
+  |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
 }
