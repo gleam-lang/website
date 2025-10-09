@@ -1096,7 +1096,7 @@ sponsor of the Gleam project, thank you Fly!",
 8000 for the rest of this guide.",
       ),
     ]),
-    html.h2([attr.id("add-a-dockerfile")], [html.text("Add a Dockerfile")]),
+    html.h2([attr.id("create-a-dockerfile")], [html.text("Create a Dockerfile")]),
     html.p([], [
       html.text(
         "We can use Fly’s support for containers to build the application and prepare it
@@ -1104,7 +1104,7 @@ for deployment.",
       ),
     ]),
     html.p([], [
-      html.text("Add a file named "),
+      html.text("Create a file named "),
       html.code([], [html.text("Dockerfile")]),
       html.text(" with these contents:"),
     ]),
@@ -2950,10 +2950,7 @@ Be sure to replace this with your domain.",
     html.p([], [
       html.text("Ensure your application is listening on "),
       html.code([], [html.text("0.0.0.0")]),
-      html.text(
-        ". If you’re using Mist or Wisp
-you can do this with the ",
-      ),
+      html.text(". If you’re using Mist or Wisp you can do this with the "),
       html.code([], [html.text("mist.bind")]),
       html.text(" function, as shown here."),
     ]),
@@ -2972,24 +2969,71 @@ you can do this with the ",
 8000 for the rest of this guide.",
       ),
     ]),
-    html.h2([attr.id("add-a-dockerfile")], [html.text("Add a Dockerfile")]),
+    html.h2([attr.id("create-a-health-check-script")], [
+      html.text("Create a health check script"),
+    ]),
     html.p([], [
-      html.text("Add a file to the base of your repository called "),
+      html.text("Create a file named "),
+      html.code([], [html.text("healthcheck.sh")]),
+      html.text(" with these contents:"),
+    ]),
+    highlighted_shell_pre_code(
+      "#!/bin/sh
+#
+# This script is run periodically by the Podman container engine to check if
+# the application is healthy. If the application instance is determined to be
+# unhealthy then Podman will terminate the container, causing systemd to
+# replace it with a new instance.
+#
+# If this script returns exit code 0 then the check is a pass.
+# Any other exit code is a failure, with multiple failures in a row meaning the
+# instance is unhealthy.
+#
+# wget is used to send a HTTP request to the application, to check it is
+# serving traffic.
+# You may choose to add additional health check logic to this script.
+#
+
+exec wget --spider --quiet 'http://127.0.0.1:8000'
+",
+    ),
+    html.p([], [
+      html.text(
+        "If your application is listening on a different port then edit the ",
+      ),
+      html.code([], [html.text("8000")]),
+      html.text(" to the correct port."),
+    ]),
+    html.h2([attr.id("create-a-dockerfile")], [html.text("Create a Dockerfile")]),
+    html.p([], [
+      html.text("create a file to the base of your repository called "),
       html.code([], [html.text("Dockerfile")]),
       html.text(" with these contents:"),
     ]),
     highlighted_dockerfile_pre_code(
-      "FROM erlang:27.1.1.0-alpine AS build
-COPY --from=ghcr.io/gleam-lang/gleam:v1.8.0-erlang-alpine /bin/gleam /bin/gleam
+      "ARG ERLANG_VERSION=28.0.2.0
+ARG GLEAM_VERSION=v1.12.0
+
+# Gleam stage
+FROM ghcr.io/gleam-lang/gleam:${GLEAM_VERSION}-scratch AS gleam
+
+# Build stage
+FROM erlang:${ERLANG_VERSION}-alpine AS build
+COPY --from=gleam /bin/gleam /bin/gleam
 COPY . /app/
 RUN cd /app && gleam export erlang-shipment
 
-FROM erlang:27.1.1.0-alpine
+# Final stage
+FROM erlang:${ERLANG_VERSION}-alpine
+ARG GIT_SHA
+ARG BUILD_TIME
+ENV GIT_SHA=${GIT_SHA}
+ENV BUILD_TIME=${BUILD_TIME}
 RUN \\
   addgroup --system webapp && \\
   adduser --system webapp -g webapp
-USER webapp
 COPY --from=build /app/build/erlang-shipment /app
+COPY healthcheck.sh /app/healthcheck.sh
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
 CMD [\"run\"]
@@ -2998,9 +3042,9 @@ CMD [\"run\"]
     html.p([], [
       html.text("Edit the Erlang and Gleam versions on the 2 "),
       html.code([], [html.text("FROM")]),
-      html.text("lines and the first "),
+      html.text(" lines and the first "),
       html.code([], [html.text("COPY")]),
-      html.text("lines to be the ones you want to use."),
+      html.text(" lines to be the ones you want to use."),
     ]),
     html.p([], [
       html.text("If your application normally needs additional arguments to "),
@@ -3269,7 +3313,16 @@ After=local-fs.target
 
 [Container]
 Image=ghcr.io/gleam-lang/example:production
+
+# Expose the port the app is listening on
 PublishPort=8000:8000
+
+# Restart the service if the health check fails
+HealthCmd=sh -c /app/healthcheck.sh
+HealthInterval=30s
+HealthTimeout=5s
+HealthRetries=3
+HealthOnFailure=restart
 
 [Install]
 WantedBy=multi-user.target default.target
@@ -3285,10 +3338,7 @@ WantedBy=multi-user.target default.target
         "If your application is listening on a different port then edit the ",
       ),
       html.code([], [html.text("8000")]),
-      html.text(
-        "s to
-the correct port.",
-      ),
+      html.text(" to the correct port."),
     ]),
     html.p([], [
       html.text("Environment variables can be added using the "),
@@ -3306,6 +3356,21 @@ container using the ",
       html.text(" syntax."),
     ]),
     html.p([], [
+      html.text("If you start the "),
+      html.code([], [
+        html.text("podman-auto-update.service"),
+      ]),
+      html.text(" systemd service and add the "),
+      html.code([], [
+        html.text("AutoUpdate=registry"),
+      ]),
+      html.text(
+        " configuration then new versions of the image will
+      automatically be downloaded and deployed after they are pushed to the
+      container registry.",
+      ),
+    ]),
+    html.p([], [
       html.text("See the "),
       html.a(
         [
@@ -3315,7 +3380,7 @@ container using the ",
         ],
         [html.text("Podman systemd")],
       ),
-      html.text(" documentation for more detail."),
+      html.text(" documentation for more details."),
     ]),
     html.h2([attr.id("start-the-container")], [html.text("Start the container")]),
     html.p([], [
