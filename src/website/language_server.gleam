@@ -1339,7 +1339,10 @@ fn neovim_installation_html() -> List(Element(Nil)) {
       html.code([], [html.text("init.lua")]),
       html.text("."),
     ]),
+    html.p([], [html.text("On Nvim 0.11+ and nvim-lspconfig 2.1+:")]),
     html.code([], [html.text("vim.lsp.enable('gleam')")]),
+    html.p([], [html.text("On Nvim <= 0.10:")]),
+    html.code([], [html.text("require('lspconfig').gleam.setup({})")]),
     html.p([], [
       html.text(
         "The language server will then be automatically started when you open a Gleam file.",
