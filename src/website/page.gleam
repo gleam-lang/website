@@ -1333,7 +1333,7 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
 
   let toc = [
     ContentLink("Prepare your application", "#prepare-your-application", []),
-    ContentLink("Add a Dockerfile", "#add-a-dockerfile", []),
+    ContentLink("Create a Dockerfile", "#create-a-dockerfile", []),
     ContentLink("Set up the Fly.io CLI", "#set-up-the-flyio-cli", []),
     ContentLink("Deploy the application", "#deploy-the-application", []),
   ]
@@ -3164,7 +3164,7 @@ pub fn deployment_linux(ctx: site.Context) -> fs.File {
     ContentLink("Provision your server", "#provision-your-server", []),
     ContentLink("Configure your DNS", "#configure-your-dns", []),
     ContentLink("Prepare your application", "#prepare-your-application", []),
-    ContentLink("Add a Dockerfile", "#add-a-dockerfile", []),
+    ContentLink("Create a Dockerfile", "#create-a-dockerfile", []),
     ContentLink("Build your container on CI", "#build-your-container-on-ci", []),
     ContentLink("Secure the SSH service", "#secure-the-ssh-service", []),
     ContentLink(
