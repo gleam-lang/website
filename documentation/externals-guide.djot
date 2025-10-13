@@ -1,3 +1,5 @@
+## What are externals?
+
 Gleam's external type and external function features lets Gleam code make use
 of code written in other languages, providing solutions when there is not a
 pure-Gleam library readily available for a given task.
