@@ -8,7 +8,7 @@ import gleam/string
 import gleam/time/calendar
 import gleam/time/timestamp
 import jot
-import just/highlight as just
+import just
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
@@ -4619,7 +4619,7 @@ pub fn highlighted_gleam_pre_code(code: String) -> Element(a) {
 }
 
 pub fn highlighted_javascript_pre_code(code: String) -> Element(a) {
-  let html = just.html(code)
+  let html = just.highlight_html(code)
   html.pre([], [element.unsafe_raw_html("", "code", [], html)])
 }
 
@@ -4762,7 +4762,7 @@ pub fn parse_djot(string: String) -> jot.Document {
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         jot.Codeblock(language: option.Some("js"), content:, ..) -> {
-          let content = just.html(content)
+          let content = just.highlight_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         jot.Codeblock(language: option.Some("diff"), content:, ..) -> {

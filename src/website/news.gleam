@@ -6,6 +6,7 @@ import gleam/result
 import gleam/string
 import gleam/time/calendar
 import jot
+import just
 import lustre/attribute.{class} as attr
 import lustre/element
 import lustre/element/html
