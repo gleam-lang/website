@@ -12,6 +12,7 @@ import just/highlight as just
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
+import pearl
 import snag
 import website/case_study
 import website/fs
@@ -4622,6 +4623,11 @@ pub fn highlighted_javascript_pre_code(code: String) -> Element(a) {
   html.pre([], [element.unsafe_raw_html("", "code", [], html)])
 }
 
+pub fn highlighted_erlang_pre_code(code: String) -> Element(a) {
+  let html = pearl.highlight_html(code)
+  html.pre([], [element.unsafe_raw_html("", "code", [], html)])
+}
+
 fn highlighted_shell_pre_code(code: String) -> Element(c) {
   let html =
     code
@@ -4749,6 +4755,10 @@ pub fn parse_djot(string: String) -> jot.Document {
       case container {
         jot.Codeblock(language: option.Some("gleam"), content:, ..) -> {
           let content = contour.to_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("erlang"), content:, ..) -> {
+          let content = pearl.highlight_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         jot.Codeblock(language: option.Some("js"), content:, ..) -> {

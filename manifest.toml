@@ -25,6 +25,7 @@ packages = [
   { name = "jot", version = "5.0.1", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "splitter"], otp_app = "jot", source = "hex", outer_checksum = "B1A0C91A3D273971D1CA1F644FF0A9CAC8256BDA249CADC927041BF14E7114A6" },
   { name = "just", version = "1.1.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "just", source = "hex", outer_checksum = "818FB7FE876E50ED376AEB28976AB9DBFFEB915FD2E6B724557EB5AC50C3F80D" },
   { name = "lustre", version = "5.3.3", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_json", "gleam_otp", "gleam_stdlib", "houdini"], otp_app = "lustre", source = "hex", outer_checksum = "AB9203869B3F00D288995DF936F0154A4B88C794803C7A0CFCD641B3A80515F1" },
+  { name = "pearl", version = "2.0.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "pearl", source = "hex", outer_checksum = "069FAA917B25C6B465A31198D0579407AC782AC6C6A0C27F13664A2164AC0E66" },
   { name = "simplifile", version = "2.3.0", build_tools = ["gleam"], requirements = ["filepath", "gleam_stdlib"], otp_app = "simplifile", source = "hex", outer_checksum = "0A868DAC6063D9E983477981839810DC2E553285AB4588B87E3E9C96A7FB4CB4" },
   { name = "snag", version = "1.1.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "snag", source = "hex", outer_checksum = "7E9F06390040EB5FAB392CE642771484136F2EC103A92AE11BA898C8167E6E17" },
   { name = "splitter", version = "1.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "splitter", source = "hex", outer_checksum = "128FC521EE33B0012E3E64D5B55168586BC1B9C8D7B0D0CA223B68B0D770A547" },
@@ -48,5 +49,6 @@ gleeunit = { version = ">= 1.0.0 and < 2.0.0" }
 jot = { version = ">= 5.0.0 and < 6.0.0" }
 just = { version = ">= 1.1.0 and < 2.0.0" }
 lustre = { version = ">= 5.0.0 and < 6.0.0" }
+pearl = { version = ">= 2.0.0 and < 3.0.0" }
 simplifile = { version = ">= 2.2.0 and < 3.0.0" }
 snag = { version = ">= 1.1.0 and < 2.0.0" }
