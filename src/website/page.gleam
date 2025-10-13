@@ -4675,7 +4675,10 @@ fn highlighted_dockerfile_pre_code(code: String) -> Element(b) {
     |> string.split("\n")
     |> list.map(fn(line) {
       case line {
+        "#" <> _ -> [html.span([attr.class("hl-comment")], [html.text(line)])]
         "RUN" as command <> rest
+        | "ENV" as command <> rest
+        | "ARG" as command <> rest
         | "USER" as command <> rest
         | "FROM" as command <> rest
         | "COPY" as command <> rest
