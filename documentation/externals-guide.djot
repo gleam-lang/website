@@ -104,10 +104,6 @@ Gleam would look like this:
 pub fn pokemon_badge_count() -> Int
 ```
 
-Note that even though the external function is written in Elixir the
-`@external` target is still `erlang`, as this is the target that the Gleam code
-is using.
-
 Erlang macros are not usable outside of Erlang.
 
 ### Gleam data in Erlang
@@ -272,15 +268,19 @@ tagged tuple. These are not compatible with Gleam's result type.
 The variants of Gleam custom types are Erlang tagged tuples or Erlang atoms,
 depending on whether of not they have any fields.
 
+The Gleam `PascalCase` variant names are written in `snake_case` in Erlang.
+
 ```gleam
 // Gleam
-None
-Some(123)
+Guest
+User(id: 10)
+SuperUser(id: 11)
 ```
 
 ```erlang
-none
-{some, 123}
+guest
+{user, 123}
+{super_user, 123}
 ```
 
 The Gleam compiler will generate an Erlang header file for each custom type
@@ -331,6 +331,10 @@ Gleam would look like this:
 @external(erlang, "Elixir.Pokemon", "badge_count")
 pub fn pokemon_badge_count() -> Int
 ```
+
+Note that even though the external function is written in Elixir the
+`@external` target is still `erlang`, as this is the target that the Gleam code
+is using.
 
 Elixir macros are not usable outside of Elixir.
 
@@ -488,16 +492,20 @@ tagged tuple. These are not compatible with Gleam's result type.
 The variants of Gleam custom types are Erlang tagged tuples or Erlang atoms,
 depending on whether of not they have any fields.
 
+
+The Gleam `PascalCase` variant names are written in `snake_case` in Elixir.
+
 ```gleam
 // Gleam
-None
-Some(123)
+Guest
+User(id: 10)
+SuperUser(id: 11)
 ```
 
 ```elixir
-# Elixir
-:none
-{:some, 123}
+:guest
+{:user, 123}
+{:super_user, 123}
 ```
 
 The Gleam compiler will generate an Erlang header file for each custom type
@@ -563,7 +571,7 @@ modules.
 
 ```gleam
 @external(javascript, "has-flag", "hasFlag")
-pub fn argvHasFlag(name: String) -> Bool
+pub fn argv_has_flag(name: String) -> Bool
 ```
 
 Vendoring (i.e. copy/pasting the dependency code into your project) is strongly
