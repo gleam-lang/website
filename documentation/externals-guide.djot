@@ -1,0 +1,955 @@
+Gleam's external type and external function features lets Gleam code make use
+of code written in other languages, providing solutions when there is not a
+pure-Gleam library readily available for a given task.
+
+The languages that can be used depends on the compilation target used for the Gleam code.
+
+- Gleam on Erlang can use Erlang, Elixir, LFE, and other BEAM languages.
+- Gleam on JavaScript can use JavaScript, and other compile-to-JavaScript languages.
+
+There is no additional performance cost to calling functions written in other
+languages and those written in Gleam.
+
+## Defining external functions
+
+External functions are functions that are written in another language and then
+imported into Gleam code, where they can be called like a normal Gleam
+function.
+
+External functions are written as a bodiless function with the `@external`
+attribute. The attribute takes 3 arguments, indicating where to find the
+function written in the non-Gleam language.
+
+- The target this external is for, either `erlang` or `javascript`.
+- The module the function is exported from.
+- The name of the function.
+
+For example, here's an external function that imports the `reverse` function
+from the Erlang `lists` module.
+
+```gleam
+@external(erlang, "lists", "reverse")
+pub fn reverse_list(list: List(element)) -> List(element)
+```
+
+Type annotations are not optional for external functions, they must always be
+written. The Gleam compiler will ensure that all uses of the function will be
+correct for the annotated types, but it cannot verify that the function
+implemented in the other language returns the specified types, or even that it
+exists. Great care must be taken when defining external functions to ensure
+that the `@external` attribute and type annotations are correct.
+
+You may wish to write more unit tests than usual when using external functions.
+
+## Defining external types
+
+Gleam code can make use of data types defined in other languages using the
+"external types" feature. The syntax is similar to the custom type syntax,
+except no variants are specified.
+
+```gleam
+pub type ErlangReference
+```
+
+Here an external type has been defined with the name `ExternalReference`, which
+will be used to represent Erlang's [`reference()` type](https://www.erlang.org/doc/system/data_types.html#reference).
+The name used in Gleam doesn't have to match the name in the external language,
+it could be anything at all.
+
+Gleam doesn't know anything about this type other than its existence and the
+name it has been given in the definition, so it cannot be constructed or
+manipulated directly in Gleam code,External functions must be used instead.
+
+```gleam
+pub type ErlangReference
+
+@external(erlang, "erlang", "make_ref")
+pub fn make_reference() -> ErlangReference
+```
+
+The `make_reference` external function has been defined to construct
+references. Similar functions could be defined that take references as
+arguments.
+
+Note that while the Erlang reference type is being used in this example, a real
+Gleam program that uses references would use the
+[gleam/erlang/reference](https://hexdocs.pm/gleam_erlang/gleam/erlang/reference.html)
+module from the `gleam_erlang` package, or define a more precise type for the
+subset of operations these references are usable for. e.g. `TransactionId` or
+`MessageTag`.
+
+## Erlang externals
+
+Erlang is the most straightforward language to declare external functions for.
+The module and function names are written the same in the Erlang code as in the
+Gleam external definition. Any public function in any module can be used as an
+external.
+
+```erlang
+-module(pokemon).
+-export([badge_count/0]).
+
+badge_count() ->
+    8.
+```
+
+This is an Erlang module named `pokemon`, with a public function called
+`badge_count`, which takes no arguments. The accompanying external function in
+Gleam would look like this:
+
+```gleam
+@external(erlang, "pokemon", "badge_count")
+pub fn pokemon_badge_count() -> Int
+```
+
+Note that even though the external function is written in Elixir the
+`@external` target is still `erlang`, as this is the target that the Gleam code
+is using.
+
+Erlang macros are not usable outside of Erlang.
+
+### Gleam data in Erlang
+
+Gleam data types are also common Erlang data types, making working with Gleam
+data in Erlang relatively straightforward.
+
+Any Erlang type not listed below would be represented in Gleam using an external type.
+
+#### Bool
+
+Gleam bools are Erlang boolean atoms.
+
+```gleam
+// Gleam
+True
+False
+```
+
+```erlang
+% Erlang
+true
+false
+```
+#### Int
+
+Gleam ints are Erlang integers.
+
+```gleam
+// Gleam
+2001
+```
+
+```erlang
+% Erlang
+2001
+```
+
+#### Float
+
+Gleam floats are Erlang floats.
+
+```gleam
+// Gleam
+10.5
+```
+
+```erlang
+% Erlang
+10.5
+```
+
+#### String
+
+Gleam strings are Erlang UTF8 binary strings.
+
+```gleam
+// Gleam
+""
+"Hello, Joe!"
+"👷🏾‍♀️"
+```
+
+```erlang
+% Erlang
+<<>>
+<<"Hello, Joe!"/utf8>>
+<<"👷🏾‍♀️"/utf8>>
+```
+
+Erlang's `string()` type is a list of integers that represent characters, and
+it is not compatible with Gleam strings. To convert Erlang character lists to
+Gleam strings use the
+[`unicode:characters_to_binary/1`](https://www.erlang.org/doc/apps/stdlib/unicode.html#characters_to_binary/1)
+Erlang function. The
+[`gleam/erlang/charlist`](https://hexdocs.pm/gleam_erlang/gleam/erlang/charlist.html#to_string)
+module from the `gleam_erlang` package may be useful for working with Erlang
+character lists.
+
+#### Nil
+
+Gleam's `Nil` is the Erlang atom `nil`.
+
+```gleam
+// Gleam
+Nil
+```
+
+```erlang
+% Erlang
+nil
+```
+
+#### Bit array
+
+Gleam bit arrays are Erlang bit strings.
+
+```gleam
+// Gleam
+<<30, 56, 10>>
+```
+
+```erlang
+% Erlang
+<<30, 56, 10>>
+```
+
+#### List
+
+Gleam lists are Erlang lists.
+
+```gleam
+// Gleam
+[1, 2, 3]
+```
+
+```erlang
+% Erlang
+[1, 2, 3]
+```
+
+All elements of a list must have the same type in Gleam.
+
+In Gleam lists are always proper lists. Passing an Erlang improper list to
+Gleam code as a list is incorrect.
+
+#### Tuples
+
+Gleam tuples are Erlang tuples.
+
+```gleam
+// Gleam
+#(100, 1.9)
+```
+
+```erlang
+% Erlang
+{100, 1.9}
+```
+
+#### Result
+
+The `Ok` and `Error` variants of Gleam's result type are Erlang tagged tuples.
+
+```gleam
+// Gleam
+Ok(2)
+Error(Nil)
+```
+
+```erlang
+% Erlang
+{ok, 2}
+{error, nil}
+```
+
+Occasionally Erlang will use just the atoms `ok` or `error` in place of a
+tagged tuple. These are not compatible with Gleam's result type.
+
+#### Custom types
+
+The variants of Gleam custom types are Erlang tagged tuples or Erlang atoms,
+depending on whether of not they have any fields.
+
+```gleam
+// Gleam
+None
+Some(123)
+```
+
+```erlang
+none
+{some, 123}
+```
+
+The Gleam compiler will generate an Erlang header file for each custom type
+definition, containing an Erlang record definition for each variant. These can
+be included into Erlang modules if you would prefer to use the Erlang record
+syntax sugar.
+
+#### Dict
+
+The dict from Gleam's standard library is an Erlang map.
+
+```gleam
+// Gleam
+dict.new()
+dict.from_list([#("a", 1), #("b", 2)])
+```
+
+```erlang
+% Erlang
+#{}
+#{<<"a"/utf8>> => 1, <<"b"/utf8>> => 2}
+```
+
+All keys of a dict and all values of a list must have the same types in Gleam.
+
+## Elixir externals
+
+Using Elixir is similar to using Erlang.
+
+The function names are written the same in the Elixir code. In Elixir modules
+have the implicit `Elixir.` prefix, so this must be specified when defining an
+Elixir external function. Any public function in any module can be used as an
+external.
+
+```elixir
+defmodule Pokemon do
+  def badge_count()
+    8
+  end
+end
+```
+
+This is an Elixir module named `Pokemon`, with a public function called
+`badge_count`, which takes no arguments. The accompanying external function in
+Gleam would look like this:
+
+```gleam
+@external(erlang, "Elixir.Pokemon", "badge_count")
+pub fn pokemon_badge_count() -> Int
+```
+
+Elixir macros are not usable outside of Elixir.
+
+### Gleam data in Elixir
+
+Gleam data types are also common Elixir data types, making working with Gleam
+data in Erlang relatively straightforward.
+
+Any Elixir type not listed below would be represented in Gleam using an
+external type.
+
+#### Bool
+
+Gleam bools are Elixir boolean atoms.
+
+```gleam
+// Gleam
+True
+False
+```
+
+```elixir
+# Elixir
+true
+false
+```
+#### Int
+
+Gleam ints are Elixir integers.
+
+```gleam
+// Gleam
+2001
+```
+
+```elixir
+# Elixir
+2001
+```
+
+#### Float
+
+Gleam floats are Elixir floats.
+
+```gleam
+// Gleam
+10.5
+```
+
+```elixir
+# Elixir
+10.5
+```
+
+#### String
+
+Gleam strings are Elixir strings.
+
+```gleam
+// Gleam
+""
+"Hello, Joe!"
+"👷🏾‍♀️"
+```
+
+```elixir
+# Elixir
+""
+"Hello, Joe!"
+"👷🏾‍♀️"
+```
+
+#### Nil
+
+Gleam's `Nil` is the Elixir atom `nil`.
+
+```gleam
+// Gleam
+Nil
+```
+
+```elixir
+# Elixir
+nil
+```
+
+#### Bit array
+
+Gleam bit arrays are Elixir bit strings.
+
+```gleam
+// Gleam
+<<30, 56, 10>>
+```
+
+```elixir
+# Elixir
+<<30, 56, 10>>
+```
+
+#### List
+
+Gleam lists are Elixir lists.
+
+```gleam
+// Gleam
+[1, 2, 3]
+```
+
+```elixir
+# Elixir
+[1, 2, 3]
+```
+
+All elements of a list must have the same type in Gleam.
+
+In Gleam lists are always proper lists. Passing an Elixir improper list to
+Gleam code as a list is incorrect.
+
+#### Tuples
+
+Gleam tuples are Elixir tuples.
+
+```gleam
+// Gleam
+#(100, 1.9)
+```
+
+```elixir
+# Elixir
+{100, 1.9}
+```
+
+#### Result
+
+The `Ok` and `Error` variants of Gleam's result type are Erlang tagged tuples.
+
+```gleam
+// Gleam
+Ok(2)
+Error(Nil)
+```
+
+```elixir
+# Elixir
+{:ok, 2}
+{:error, nil}
+```
+
+Occasionally Elixir will use just the atoms `ok` or `error` in place of a
+tagged tuple. These are not compatible with Gleam's result type.
+
+#### Custom types
+
+The variants of Gleam custom types are Erlang tagged tuples or Erlang atoms,
+depending on whether of not they have any fields.
+
+```gleam
+// Gleam
+None
+Some(123)
+```
+
+```elixir
+# Elixir
+:none
+{:some, 123}
+```
+
+The Gleam compiler will generate an Erlang header file for each custom type
+definition, containing an Erlang record definition for each variant. These can
+be used with with Elixir's
+[`Record`](https://hexdocs.pm/elixir/1.12/Record.html) module if you would like
+to use the macros it provides.
+
+#### Dict
+
+The dict from Gleam's standard library is an Elixir map.
+
+```gleam
+// Gleam
+dict.new()
+dict.from_list([#("a", 1), #("b", 2)])
+```
+
+```elixir
+# Elixir
+#{}
+#{"a" => 1, "b" => 2}
+```
+
+All keys of a dict and all values of a list must have the same types in Gleam.
+
+
+## JavaScript externals
+
+When defining JavaScript externals the module is internally used with a
+JavaScript `import` statement, so it typically should be a path to a JavaScript
+file, relative to location of the Gleam file that contains the external
+definition. The function name is written the same as in the JavaScript code,
+and any public function in any module can be used as an external.
+
+```javascript
+// In src/my_app/pokemon.mjs
+export function badge_count() {
+  return 8;
+}
+```
+
+This is a JavaScript module located at `src/my_app/pokemon.mjs`, with a public
+function called `badge_count`, which takes no arguments. The accompanying
+external function in the Gleam file `src/my_app.gleam` would look like this:
+
+```gleam
+// In src/my_app/pokemon.mjs
+@external(javascript, "./my_app/pokemon.js", "badge_count")
+pub fn pokemon_badge_count() -> Int
+```
+
+Some JavaScript runtimes deviate from the specification and have different
+rules, so ensure that your paths are correct for the runtime you're using. For
+example, NodeJS may require a special `.mjs` file extension to be used for
+imports to work, which is why that extension is used in the previous example.
+
+The NodeJS runtime also has special non-standard paths for importing code from
+"node modules", typically installed using `npm`. These paths can be used with
+external functions, but you will need to make sure that you have used a
+`package.json` file or the `npm install` command to install the desired node
+modules.
+
+```gleam
+@external(javascript, "has-flag", "hasFlag")
+pub fn argvHasFlag(name: String) -> Bool
+```
+
+Vendoring (i.e. copy/pasting the dependency code into your project) is strongly
+discouraged if you intend to publish your package to the Hex package manager.
+This is because it prevent dependency de-duplication resulting in excess code
+bloat, and most importantly it makes security audits and patches extremely
+difficult.
+
+### Gleam data in JavaScript
+
+Since v1.13 Gleam code compiled to JavaScript will expose an API for
+constructing Gleam data types.
+
+Any JavaScript type not listed below would be represented in Gleam using an
+external type.
+
+#### Bool
+
+Gleam bools are JavaScript booleans.
+
+```gleam
+// Gleam
+True
+False
+```
+
+```javascript
+// JavaScript
+true;
+false;
+```
+#### Int
+
+Gleam ints are JavaScript numbers, but the numbers must be whole numbers.
+
+```gleam
+// Gleam
+2001
+```
+
+```javascript
+// JavaScript
+2001;
+```
+
+#### Float
+
+Gleam floats are JavaScript numbers, without any restrictions.
+
+```gleam
+// Gleam
+10.5
+```
+
+```javascript
+// JavaScript
+10.5;
+```
+
+Gleam doesn't have any syntax for infinity and NaN. You should avoid passing
+these to Gleam code.
+
+#### String
+
+Gleam strings are JavaScript strings.
+
+```gleam
+// Gleam
+""
+"Hello, Joe!"
+"👷🏾‍♀️"
+```
+
+```javascript
+// JavaScript
+"";
+"Hello, Joe!";
+"👷🏾‍♀️";
+```
+
+#### Nil
+
+Gleam's `Nil` is the JavaScript `undefined` value.
+
+```gleam
+// Gleam
+Nil
+```
+
+```javascript
+// JavaScript
+undefined
+```
+
+#### Bit array
+
+Gleam bit arrays are constructed using the `BitArray$BitArray` function from
+the Gleam prelude module, which takes a `Uint8Array` as an argument.
+
+The Gleam prelude module can be imported as if it were located at
+`src/gleam.mjs` in any Gleam project. The Gleam build tool will internally
+provide this module.
+
+```gleam
+// Gleam
+<<30, 56, 10>>
+```
+
+```javascript
+// JavaScript, in src/wibble/wobble.mjs
+import { BitArray$BitArray } from '../gleam.mjs';
+
+BitArray$BitArray(new Uint8Array([30, 56, 10]));
+```
+
+#### List
+
+Gleam bit arrays are constructed using these functions from the Gleam prelude module:
+
+- `List$Empty`, which takes no arguments and returns an empty list.
+- `List$NonEmpty`, which takes an element and the rest of the list as arguments.
+
+```gleam
+// Gleam
+[]
+[1]
+[1, 2, 3]
+```
+
+```javascript
+// JavaScript, in src/wibble/wobble.mjs
+import { List$Empty, List$NonEmpty } from '../gleam.mjs';
+
+List$Empty();
+List$NonEmpty(1, List$Empty());
+List$NonEmpty(1, List$NonEmpty(3, List$NonEmpty(3, List$Empty()));
+```
+
+All elements of a list must have the same type in Gleam. The second argument to
+the `List$NonEmpty` function must always be a list of the correct type.
+
+These functions are provided for deconstructing lists:
+
+- `List$isEmpty`, which takes a list and returns `true` if it is empty.
+- `List$isNonEmpty`, which takes a list and returns `false` if it is empty.
+- `List$NonEmpty$first`, which takes a non-empty list and return the first
+  element.
+- `List$NonEmpty$rest`, which takes a non-empty list and returns the rest of
+  the list without the first element.
+
+```gleam
+// Gleam
+case items {
+  [] -> "Empty list"
+  [e] -> "One element: " <> e
+  [_, ..] -> "Multiple elements"
+}
+```
+
+```javascript
+// JavaScript, in src/wibble/wobble.mjs
+import {
+  List$isEmpty,
+  List$NonEmpty$first,
+  List$NonEmpty$rest,
+} from '../gleam.mjs';
+
+if (List$isEmpty(items)) {
+  return "Empty list";
+} else {
+  const items2 = List$NonEmpty$rest(items)
+  if (List$isEmpty(items2)) {
+	const e = List$NonEmpty$first(items);
+    return "One element: " + e;
+  } else {
+    return "Multiple elements";
+  }
+}
+```
+
+Working with Gleam lists in JavaScript is not as nice as in Gleam, so you may
+instead decide to use the `Array` type from the
+[`gleam/javascript/array`](https://hexdocs.pm/gleam_javascript/gleam/javascript/array.html)
+module from the `gleam_javascript` package and then convert the arrays into
+lists in Gleam code.
+
+#### Tuples
+
+Gleam tuples are JavaScript arrays.
+```gleam
+// Gleam
+#(100, 1.9)
+```
+
+```javascript
+// JavaScript
+[100, 1.9];
+```
+
+Gleam tuples are immutable, so you should never mutate an array that is being
+used as a Gleam tuple. For example, do not use the `items.push(x)` method or
+the `items[i] = x` assignment syntax.
+
+#### Result
+
+Gleam results are constructed using these functions from the Gleam prelude module:
+
+- `Result$Ok`, which takes one argument and returns an `Ok` value.
+- `Result$Error`, which takes one argument and returns an `Error` value.
+
+```gleam
+// Gleam
+Ok(2)
+Error("oh no!")
+```
+
+```javascript
+// JavaScript, in src/wibble/wobble.mjs
+import { Result$Ok, Result$Error } from '../gleam.mjs';
+
+Result$Ok(2);
+Result$Error("oh no!");
+```
+
+These functions are provided for deconstructing results:
+
+- `Result$isOk`, which takes a result and returns `true` if it is `Ok`.
+- `Result$isError`, which takes a result and returns `true` if it is `Error`.
+- `Result$Ok$0`, which takes a `Ok` result and returns the inner value.
+- `Result$Error$0`, which takes a `Error` result and returns the inner value.
+
+All values passed to `Result$` functions must be Gleam results. All values
+passed to `Result$Ok$0` must be `Ok` results. All values passed to
+`Result$Error$0` must be `Error` results.
+
+#### Custom types
+
+Any custom types defined in Gleam will have JavaScript functions generated for
+them, similar to those for the Gleam result type. These functions can be
+imported using a path to the Gleam file that defines the custom type, though
+with the extension `.mjs` instead of `.gleam`. You should not create a file at
+this location in your project, it is internally provided by the Gleam build
+tool.
+
+When importing a module from another package specify a path as if the other
+package's `src` directory is located at the root of your project, but with the
+name of the package as the directory name instead of `src`. For example, if you
+wish to use the `gleam/option` module from the `gleam_stdlib` package, and the
+JavaScript file you are importing it from it located at `src/wibble/wobble.js`,
+then the import path would be `../../gleam_stdlib/gleam/option.mjs`.
+
+This `SchoolPerson` custom type will be used to demonstrate the JavaScript API
+provided for custom types.
+
+```gleam
+// Gleam, in src/school.gleam
+pub type SchoolPerson {
+  Teacher(name: String)
+  Student(name: String, year: Int)
+}
+```
+
+For each variant of the custom type a `TypeName$VariantName` function is
+provided to construct that variant. They will take the same arguments that the
+variant constructors would take in Gleam code.
+
+```gleam
+// Gleam
+Teacher("Mr Schofield")
+Student("Adam", 7)
+```
+
+```javascript
+// JavaScript, in src/code.mjs
+import { SchoolPerson$Teacher, SchoolPerson$Student } from '../gleam.mjs';
+
+SchoolPerson$Teacher("Mr Schofield");
+SchoolPerson$Student("Adam", 7);
+```
+
+For each variant of the custom type a `TypeName$isVariantName` function is
+provided to determine which variant a value is. The value passed to this
+function must be the correct type.
+
+```javascript
+// JavaScript, in src/code.mjs
+import {
+  SchoolPerson$Teacher,
+  SchoolPerson$isTeacher,
+  SchoolPerson$isStudent,
+} from '../gleam.mjs';
+
+const teacher = SchoolPerson$Teacher("Mr Schofield")
+
+SchoolPerson$isTeacher(teacher);
+// -> true
+
+SchoolPerson$isStudent(teacher);
+// -> false
+```
+
+For each field of each variant of the custom type a
+`TypeName$VariantName$index` function is provided to positionally access these
+fields. The value given to these functions must be the correct variant.
+
+```javascript
+// JavaScript, in src/code.mjs
+import {
+  SchoolPerson$Student,
+  SchoolPerson$Student$0,
+  SchoolPerson$Student$1,
+} from '../gleam.mjs';
+
+const student = SchoolPerson$Student("Koushiar", 7);
+
+SchoolPerson$Student$0(student);
+// -> "Koushiar"
+
+SchoolPerson$Student$1(student);
+// -> 7
+```
+
+If any fields have been given labels then similar functions are also provided
+using the labels names instead of the field indexes. The value given to these
+functions must be the correct variant.
+
+```javascript
+// JavaScript, in src/code.mjs
+import {
+  SchoolPerson$Student,
+  SchoolPerson$Student$name,
+  SchoolPerson$Student$year,
+} from '../gleam.mjs';
+
+const student = SchoolPerson$Student("Koushiar", 7);
+
+SchoolPerson$Student$name(student);
+// -> "Koushiar"
+
+SchoolPerson$Student$year(student);
+// -> 7
+```
+
+If any fields in the same position have the same label across all variants then
+a `TypeName$label_name` function is provided to access them. The value given to
+these functions must be the correct type but can be any variant.
+
+```javascript
+// JavaScript, in src/code.mjs
+import {
+  SchoolPerson$Student,
+  SchoolPerson$Teacher,
+  SchoolPerson$name,
+} from '../gleam.mjs';
+
+const teacher = SchoolPerson$Teacher("Mr Schofield");
+const student = SchoolPerson$Student("Koushiar", 7);
+
+SchoolPerson$name(teacher);
+// -> "Mr Schofield"
+
+SchoolPerson$name(student);
+// -> "Koushiar"
+```
+
+#### Dict
+
+Types that have no literal syntax in Gleam, such as the dict type, don't have
+any special JavaScript API. For these types the regular Gleam function can be
+imported and used.
+
+```gleam
+// Gleam
+dict.from_list([
+  #("Lucy", 2),
+  #("Ada", 1),
+])
+```
+
+```javascript
+// JavaScript, in src/code.mjs
+import { from_list as list_to_dict }
+  from '../gleam_stdlib/gleam/dict.mjs';
+import { to_list as array_to_list }
+  from '../gleam_stdlib/gleam/javascript/array.mjs';
+
+list_to_dict(array_to_list([
+  ["Lucy", 2],
+  ["Ada", 1],
+]));
+```

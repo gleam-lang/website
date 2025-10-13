@@ -3,6 +3,7 @@ import gleam/dict
 import gleam/int
 import gleam/list
 import gleam/option.{type Option}
+import gleam/result
 import gleam/string
 import gleam/time/calendar
 import gleam/time/timestamp
@@ -11,9 +12,9 @@ import just/highlight as just
 import lustre/attribute.{attribute as attr, class} as attr
 import lustre/element.{type Element}
 import lustre/element/html
+import snag
 import website/case_study
 import website/fs
-import website/news
 import website/site
 import website/sponsor
 
@@ -57,7 +58,7 @@ pub fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) 
     case block {
       jot.Heading(attributes:, level: 2, content: [jot.Text(text)]) ->
         case dict.get(attributes, "id") {
-          Ok(href) -> [ContentLink(text, href, []), ..accum]
+          Ok(href) -> [ContentLink(text, "#" <> href, []), ..accum]
           _ -> accum
         }
 
@@ -67,7 +68,7 @@ pub fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) 
             ContentLink(
               ..first,
               children: list.append(first.children, [
-                ContentLink(text, href, []),
+                ContentLink(text, "#" <> href, []),
               ]),
             ),
             ..rest
@@ -651,42 +652,6 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
           ]),
         ]),
       ]),
-    ]),
-  ]
-  |> page_layout("", meta, ctx)
-  |> to_html_file(meta)
-}
-
-pub fn news_post(post: news.NewsPost, ctx: site.Context) -> fs.File {
-  let meta =
-    PageMeta(
-      path: "news/" <> post.path,
-      title: post.title,
-      subtitle: post.subtitle,
-      description: "News post: " <> post.subtitle,
-      meta_title: post.title <> " | Gleam programming language",
-      preload_images: [],
-      preview_image: option.None,
-    )
-
-  [
-    html.div([class("post")], [
-      html.div([class("post-meta")], [
-        html.a([attr.href("/news"), class("meta-button back-button")], [
-          html.img([
-            attr.width(20),
-            attr.src("/images/return-icon.svg"),
-            attr.alt("Return Icon"),
-          ]),
-        ]),
-        html.p([class("post-authored")], [
-          html.time([], [html.text(short_human_date(post.published))]),
-          html.text(" by "),
-          html.a([attr.href(post.author.url)], [html.text(post.author.name)]),
-        ]),
-        share_button(),
-      ]),
-      element.unsafe_raw_html("", "article", [class("prose")], post.content),
     ]),
   ]
   |> page_layout("", meta, ctx)
@@ -2890,51 +2855,6 @@ pub fn documentation(ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
-pub fn news_index(posts: List(news.NewsPost), ctx: site.Context) -> fs.File {
-  let meta =
-    PageMeta(
-      path: "news",
-      title: "News",
-      meta_title: "News | Gleam programming language",
-      subtitle: "What's happening in the Gleam world?",
-      description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
-      preload_images: [],
-      preview_image: option.None,
-    )
-
-  let list_items =
-    list.map(posts, fn(post) {
-      html.li([], [
-        html.a([attr.href("/news/" <> post.path)], [
-          html.h2([attr.class("links")], [html.text(post.title)]),
-        ]),
-        html.p([], [html.text(post.subtitle)]),
-        html.ul([class("news-meta")], [
-          html.li([], [
-            html.img([
-              attr.width(16),
-              attr.src("/images/date-icon.svg"),
-              attr.alt("Date Icon"),
-            ]),
-            html.text(short_human_date(post.published)),
-          ]),
-          html.li([], [
-            html.img([
-              attr.width(20),
-              attr.src("/images/user-icon.svg"),
-              attr.alt("User Icon"),
-            ]),
-            html.text(post.author.name),
-          ]),
-        ]),
-      ])
-    })
-
-  [html.ul([class("news-posts")], list_items)]
-  |> page_layout("", meta, ctx)
-  |> to_html_file(meta)
-}
-
 pub fn case_studies_index(
   study: List(case_study.CaseStudy),
   ctx: site.Context,
@@ -3810,6 +3730,36 @@ systemctl restart webapp
     ctx,
   )
   |> to_html_file(meta)
+}
+
+pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "documentation/externals",
+      title: "Externals guide",
+      meta_title: "Externals guide | Gleam Programming Language",
+      subtitle: "Using code written in other languages",
+      description: "Using code written in other languages from Gleam",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let path = "documentation/externals-guide.djot"
+
+  use content <- result.try(
+    path
+    |> fs.read
+    |> snag.context("Failed to load content for " <> path),
+  )
+
+  let document = parse_djot(content)
+  let table_of_contents = table_of_contents_from_djot(document)
+  let content = jot.document_to_html(document)
+
+  [element.unsafe_raw_html("", "article", [class("prose")], content)]
+  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
+  |> to_html_file(meta)
+  |> Ok
 }
 
 pub fn community(ctx: site.Context) -> fs.File {
@@ -4760,7 +4710,7 @@ fn highlighted_yaml_pre_code(code: String) -> Element(d) {
   html.pre([], [html.code([], html)])
 }
 
-fn share_button() -> Element(a) {
+pub fn share_button() -> Element(a) {
   html.button(
     [
       attr(
@@ -4790,4 +4740,36 @@ fn share_button() -> Element(a) {
       ),
     ],
   )
+}
+
+pub fn parse_djot(string: String) -> jot.Document {
+  let document = jot.parse(string)
+  let content =
+    list.map(document.content, fn(container) {
+      case container {
+        jot.Codeblock(language: option.Some("gleam"), content:, ..) -> {
+          let content = contour.to_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("js"), content:, ..) -> {
+          let content = just.html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("diff"), content:, ..) -> {
+          let content =
+            string.split(content, "\n")
+            |> list.map(fn(line) {
+              case line {
+                "+" <> _ -> "<span class=hl-addition>" <> line <> "</span>"
+                "-" <> _ -> "<span class=hl-deletion>" <> line <> "</span>"
+                _ -> line
+              }
+            })
+            |> string.join("\n")
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        _ -> container
+      }
+    })
+  jot.Document(..document, content:)
 }

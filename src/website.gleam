@@ -44,6 +44,8 @@ fn build_site() -> snag.Result(Nil) {
       styles_hash:,
     )
 
+  use externals_guide <- result.try(page.externals_guide(ctx))
+
   let page_files = [
     page.home(ctx),
     page.branding(ctx),
@@ -55,9 +57,10 @@ fn build_site() -> snag.Result(Nil) {
     page.deployment_linux(ctx),
     page.deployment_flyio(ctx),
     page.frequently_asked_questions(ctx),
-    page.news_index(news_posts, ctx),
+    news.index_page(news_posts, ctx),
     page.case_studies_index(case_studies, ctx),
     page.sponsor(ctx),
+    externals_guide,
     roadmap.page(ctx),
     command_line_reference.page(ctx),
     language_server.page(ctx),
@@ -91,7 +94,7 @@ fn news_files(
   news_posts: List(news.NewsPost),
   ctx: site.Context,
 ) -> List(fs.File) {
-  [atom_feed.file(news_posts), ..list.map(news_posts, page.news_post(_, ctx))]
+  [atom_feed.file(news_posts), ..list.map(news_posts, news.page(_, ctx))]
 }
 
 fn case_study_files(

@@ -1,4 +1,3 @@
-import contour
 import filepath
 import gleam/io
 import gleam/list
@@ -7,9 +6,13 @@ import gleam/result
 import gleam/string
 import gleam/time/calendar
 import jot
-import just/highlight as just
+import lustre/attribute.{class} as attr
+import lustre/element
+import lustre/element/html
 import snag
 import website/fs
+import website/page.{PageMeta}
+import website/site
 
 pub fn all() -> snag.Result(List(NewsPost)) {
   io.print("Loading news posts: ")
@@ -425,33 +428,87 @@ fn read(
 }
 
 fn djot_to_html(string: String) -> String {
-  let document = jot.parse(string)
-  let content =
-    list.map(document.content, fn(container) {
-      case container {
-        jot.Codeblock(language: option.Some("gleam"), content:, ..) -> {
-          let content = contour.to_html(content)
-          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
-        }
-        jot.Codeblock(language: option.Some("js"), content:, ..) -> {
-          let content = just.html(content)
-          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
-        }
-        jot.Codeblock(language: option.Some("diff"), content:, ..) -> {
-          let content =
-            string.split(content, "\n")
-            |> list.map(fn(line) {
-              case line {
-                "+" <> _ -> "<span class=hl-addition>" <> line <> "</span>"
-                "-" <> _ -> "<span class=hl-deletion>" <> line <> "</span>"
-                _ -> line
-              }
-            })
-            |> string.join("\n")
-          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
-        }
-        _ -> container
-      }
+  page.parse_djot(string)
+  |> jot.document_to_html
+}
+
+pub fn page(post: NewsPost, ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "news/" <> post.path,
+      title: post.title,
+      subtitle: post.subtitle,
+      description: "News post: " <> post.subtitle,
+      meta_title: post.title <> " | Gleam programming language",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  [
+    html.div([class("post")], [
+      html.div([class("post-meta")], [
+        html.a([attr.href("/news"), class("meta-button back-button")], [
+          html.img([
+            attr.width(20),
+            attr.src("/images/return-icon.svg"),
+            attr.alt("Return Icon"),
+          ]),
+        ]),
+        html.p([class("post-authored")], [
+          html.time([], [html.text(page.short_human_date(post.published))]),
+          html.text(" by "),
+          html.a([attr.href(post.author.url)], [html.text(post.author.name)]),
+        ]),
+        page.share_button(),
+      ]),
+      element.unsafe_raw_html("", "article", [class("prose")], post.content),
+    ]),
+  ]
+  |> page.page_layout("", meta, ctx)
+  |> page.to_html_file(meta)
+}
+
+pub fn index_page(posts: List(NewsPost), ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "news",
+      title: "News",
+      meta_title: "News | Gleam programming language",
+      subtitle: "What's happening in the Gleam world?",
+      description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let list_items =
+    list.map(posts, fn(post) {
+      html.li([], [
+        html.a([attr.href("/news/" <> post.path)], [
+          html.h2([attr.class("links")], [html.text(post.title)]),
+        ]),
+        html.p([], [html.text(post.subtitle)]),
+        html.ul([class("news-meta")], [
+          html.li([], [
+            html.img([
+              attr.width(16),
+              attr.src("/images/date-icon.svg"),
+              attr.alt("Date Icon"),
+            ]),
+            html.text(page.short_human_date(post.published)),
+          ]),
+          html.li([], [
+            html.img([
+              attr.width(20),
+              attr.src("/images/user-icon.svg"),
+              attr.alt("User Icon"),
+            ]),
+            html.text(post.author.name),
+          ]),
+        ]),
+      ])
     })
-  jot.document_to_html(jot.Document(..document, content:))
+
+  [html.ul([class("news-posts")], list_items)]
+  |> page.page_layout("", meta, ctx)
+  |> page.to_html_file(meta)
 }
