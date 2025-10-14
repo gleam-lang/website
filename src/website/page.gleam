@@ -4764,7 +4764,8 @@ pub fn parse_djot(string: String) -> jot.Document {
           let content = pearl.highlight_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
-        jot.Codeblock(language: option.Some("js"), content:, ..) -> {
+        jot.Codeblock(language: option.Some("js"), content:, ..)
+        | jot.Codeblock(language: option.Some("javascript"), content:, ..) -> {
           let content = just.highlight_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }

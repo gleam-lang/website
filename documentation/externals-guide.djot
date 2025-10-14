@@ -553,7 +553,7 @@ function called `badge_count`, which takes no arguments. The accompanying
 external function in the Gleam file `src/my_app.gleam` would look like this:
 
 ```gleam
-// In src/my_app/pokemon.mjs
+// In src/my_app/pokemon.gleam
 @external(javascript, "./my_app/pokemon.js", "badge_count")
 pub fn pokemon_badge_count() -> Int
 ```
