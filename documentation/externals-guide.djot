@@ -761,6 +761,7 @@ lists in Gleam code.
 #### Tuples
 
 Gleam tuples are JavaScript arrays.
+
 ```gleam
 // Gleam
 #(100, 1.9)
