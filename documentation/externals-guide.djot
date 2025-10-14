@@ -53,7 +53,7 @@ except no variants are specified.
 pub type ErlangReference
 ```
 
-Here an external type has been defined with the name `ExternalReference`, which
+Here an external type has been defined with the name `ErlangReference`, which
 will be used to represent Erlang's [`reference()` type](https://www.erlang.org/doc/system/data_types.html#reference).
 The name used in Gleam doesn't have to match the name in the external language,
 it could be anything at all.
