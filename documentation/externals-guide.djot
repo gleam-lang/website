@@ -689,7 +689,7 @@ BitArray$BitArray(new Uint8Array([30, 56, 10]));
 
 #### List
 
-Gleam bit arrays are constructed using these functions from the Gleam prelude module:
+Gleam lists arrays constructed using these functions from the Gleam prelude module:
 
 - `List$Empty`, which takes no arguments and returns an empty list.
 - `List$NonEmpty`, which takes an element and the rest of the list as arguments.
