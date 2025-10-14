@@ -799,6 +799,15 @@ pre code {
   box-shadow: var(--gap-1) var(--gap-1) 0 0 var(--color-blacker);
 }
 
+@media (max-width: 960px) {
+  .page pre {
+    max-width: 100vw;
+    margin: var(--gap-3) calc(var(--gap-2) * -1) var(--gap-4) calc(var(--gap-2) * -1);
+    border-radius: 0;
+    box-shadow: 0 var(--gap-1) 0 0 var(--color-blacker);
+  }
+}
+
 .page h1,
 .page h2 {
   margin-top: var(--gap-6);
