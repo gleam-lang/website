@@ -1452,8 +1452,8 @@ pub fn writing_gleam(ctx: site.Context) -> fs.File {
       path: "writing-gleam",
       title: "Writing Gleam",
       meta_title: "Writing Gleam",
-      subtitle: "Learn to work with Gleam projects",
-      description: "Learn to work with Gleam projects",
+      subtitle: "Developing Gleam projects",
+      description: "Developing Gleam projects using the Gleam build tool",
       preload_images: [],
       preview_image: option.None,
     )
@@ -2770,6 +2770,19 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       html.li([], [
         html.a([attr.href("https://github.com/gleam-lang/awesome-gleam")], [
           html.text("The “Awesome Gleam” resource list"),
+        ]),
+      ]),
+    ]),
+    html.h2([attr.id("guides")], [html.text("Guides")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("/writing-gleam")], [
+          html.text("Developing Gleam projects using the Gleam build tool"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/documentation/externals")], [
+          html.text("Using code written in other languages from Gleam"),
         ]),
       ]),
     ]),
