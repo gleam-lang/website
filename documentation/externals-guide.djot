@@ -4,6 +4,13 @@ Gleam's external type and external function features lets Gleam code make use
 of code written in other languages, providing solutions when there is not a
 pure-Gleam library readily available for a given task.
 
+# TODO: html widget
+
+> **NOTE**: This is an advanced feature and should be used sparingly. The Gleam
+> compiler and language server cannot analyse or otherwise help with code
+> written in other languages, so prefer Gleam code unless otherwise
+> impractical.
+
 The languages that can be used depends on the compilation target used for the Gleam code.
 
 - Gleam on Erlang can use Erlang, Elixir, LFE, and other BEAM languages.
@@ -847,7 +854,7 @@ Student("Adam", 7)
 
 ```javascript
 // JavaScript, in src/code.mjs
-import { SchoolPerson$Teacher, SchoolPerson$Student } from '../gleam.mjs';
+import { SchoolPerson$Teacher, SchoolPerson$Student } from '../school.mjs';
 
 SchoolPerson$Teacher("Mr Schofield");
 SchoolPerson$Student("Adam", 7);
@@ -863,7 +870,7 @@ import {
   SchoolPerson$Teacher,
   SchoolPerson$isTeacher,
   SchoolPerson$isStudent,
-} from '../gleam.mjs';
+} from '../school.mjs';
 
 const teacher = SchoolPerson$Teacher("Mr Schofield")
 
@@ -884,7 +891,7 @@ import {
   SchoolPerson$Student,
   SchoolPerson$Student$0,
   SchoolPerson$Student$1,
-} from '../gleam.mjs';
+} from '../school.mjs';
 
 const student = SchoolPerson$Student("Koushiar", 7);
 
@@ -905,7 +912,7 @@ import {
   SchoolPerson$Student,
   SchoolPerson$Student$name,
   SchoolPerson$Student$year,
-} from '../gleam.mjs';
+} from '../school.mjs';
 
 const student = SchoolPerson$Student("Koushiar", 7);
 
@@ -926,7 +933,7 @@ import {
   SchoolPerson$Student,
   SchoolPerson$Teacher,
   SchoolPerson$name,
-} from '../gleam.mjs';
+} from '../school.mjs';
 
 const teacher = SchoolPerson$Teacher("Mr Schofield");
 const student = SchoolPerson$Student("Koushiar", 7);

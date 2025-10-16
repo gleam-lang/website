@@ -6,7 +6,6 @@ import gleam/result
 import gleam/string
 import gleam/time/calendar
 import jot
-import just
 import lustre/attribute.{class} as attr
 import lustre/element
 import lustre/element/html
@@ -18,6 +17,13 @@ import website/site
 pub fn all() -> snag.Result(List(NewsPost)) {
   io.print("Loading news posts: ")
   let posts = [
+    read(
+      title: "Formalising external APIs",
+      subtitle: "Gleam v1.13.0 released",
+      published: calendar.Date(2025, calendar.October, 16),
+      author: louis,
+      path: "formalising-external-apis",
+    ),
     read(
       title: "No more dependency management headaches",
       subtitle: "Gleam v1.12.0 released",
