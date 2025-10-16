@@ -79,7 +79,7 @@ type:
 // In src/person.gleam
 pub type Person {
   Teacher(name: String, subject: String)
-  Student(name: String, age: Int)
+  Student(name: String)
 }
 ```
 ```javascript
@@ -88,7 +88,7 @@ import {...} from "./person.mjs";
 
 // Constructing custom types
 let teacher = Person$Teacher("Joe Armstrong", "Computer Science");
-let student = Person$Student("Louis Pilfold", 17);
+let student = Person$Student("Louis Pilfold");
 
 let randomPerson = Math.random() > 0.5 ? teacher : student;
 
@@ -96,7 +96,7 @@ let randomPerson = Math.random() > 0.5 ? teacher : student;
 let randomIsTeacher = Person$isTeacher(randomPerson);
 
 // Getting fields
-let studentAge = Person$Student$age(student);
+let teacherSubject = Person$Teacher$subject(teacher);
 
 // The `name` field is shared so can be accessed from either variant
 let personName = Person$name(randomPerson);
@@ -117,355 +117,415 @@ design of this addition!
 
 ## Improved bit array exhaustiveness checking
 
-- The compiler now applies an optimisation known as "interference based pruning"
-  when compiling bit array pattern matching where matches are performed at the
-  start of bit arrays.
-  This optimisation drastically reduces compile times, memory usage and the
-  compiled code size, removing many redundant checks.
-  It is particularly important for network protocol applications where it is
-  typical to match on some fixed patterns at the start of the bitarray.
-  For example:
+Gleam's bit array syntax allows you to declaratively construct and parse binary
+data in a way that may be easier to understand than using binary operators.
 
-  ```gleam
-  pub fn parser_headers(headers: BitArray, bytes: Int) -> Headers {
-    case headers {
-      <<"CONTENT_LENGTH" as header, 0, value:size(bytes), 0, rest:bytes>>
-      | <<"QUERY_STRING" as header, 0, value:size(bytes), 0, rest:bytes>>
-      | <<"REQUEST_URI" as header, 0, value:size(bytes), 0, rest:bytes>>
-      // ...
-      | <<"REDIRECT_STATUS" as header, 0, value:size(bytes), 0, rest:bytes>>
-      | <<"SCRIPT_NAME" as header, 0, value:size(bytes), 0, rest:bytes>>
-        -> [#(header, value), ..parse_headers(rest)]
-    }
+The compiler now applies an optimisation known as "interference based pruning"
+when compiling bit array pattern matching where matches are performed at the
+start of bit arrays. This optimisation drastically reduces compile times,
+memory usage and the compiled code size, removing many redundant checks.
+
+It is particularly impactful for programs that pattern match on some fixed
+patterns at the start of the bit array. For example, network protocol
+parsers.
+
+```gleam
+pub fn parser_headers(headers: BitArray, bytes: Int) -> Headers {
+  case headers {
+    <<"CONTENT_LENGTH" as header, 0, value:size(bytes), 0, rest:bytes>>
+    | <<"QUERY_STRING" as header, 0, value:size(bytes), 0, rest:bytes>>
+    | <<"REQUEST_URI" as header, 0, value:size(bytes), 0, rest:bytes>>
+    // ...
+    | <<"REDIRECT_STATUS" as header, 0, value:size(bytes), 0, rest:bytes>>
+    | <<"SCRIPT_NAME" as header, 0, value:size(bytes), 0, rest:bytes>>
+      -> [#(header, value), ..parse_headers(rest)]
   }
-  ```
+}
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Additionally, the compiler now raises a warning for unreachable branches that
+are matching on bit array segments that could never match. Consider this
+example:
 
-- The compiler now raises a warning for unreachable branches that are matching
-  on bit array segments that could never match. Consider this example:
-
-  ```gleam
-  pub fn get_payload(packet: BitArray) -> Result(BitArray, Nil) {
-    case packet {
-      <<200, payload:bytes>> -> Ok(payload)
-      <<404, _:bits>> -> Error(Nil)
-      _ -> Ok(packet)
-    }
+```gleam
+pub fn get_payload(packet: BitArray) -> Result(BitArray, Nil) {
+  case packet {
+    <<200, payload:bytes>> -> Ok(payload)
+    <<404, _:bits>> -> Error(Nil)
+    _ -> Ok(packet)
   }
-  ```
+}
+```
 
-  There's a subtle bug here. The second branch can never match since it's
-  impossible for the first byte of the bit array to have the value `404`.
-  The new error explains this nicely:
+There's a subtle bug here. The second branch can never match since it's
+impossible for the first byte of the bit array to have the value `404`.
+The new error explains this nicely:
 
-  ```text
-  warning: Unreachable pattern
-    ┌─ /src.gleam:4:5
-    │
-  4 │     <<404, _:bits>> -> Error(Nil)
-    │     ^^^^^^^^^^^^^^^
-    │       │
-    │       A 1 byte unsigned integer will never match this value
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Unreachable pattern</b>
+<span class="code-decoration">  ┌─</span> /src.gleam:4:5
+<span class="code-decoration">  │</span>
+<span class="code-decoration">4 │</span>     <span class="code-warning">&lt;&lt;404, _:bits&gt;&gt;</span> -&gt; Error(Nil)
+<span class="code-decoration">  │</span>     <span class="code-warning">^^^^^^^^^^^^^^^</span>
+<span class="code-decoration">  │</span>       <span class="code-warning">│</span>
+<span class="code-decoration">  │</span>       <span class="code-warning">A 1 byte unsigned integer will never match this value</span>
 
-  This pattern cannot be reached as it contains segments that will never
-  match.
+This pattern cannot be reached as it contains segments that will never
+match.
 
-  Hint: It can be safely removed.
-  ```
+Hint: It can be safely removed.
+</code></pre>
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for these
+improvements! Exhaustiveness checking is a very complex field, so these
+additions are very impressive.
 
 ## Unused argument detection
 
-- The compiler now raises a warning when a function's argument is only passed
-  along in a recursive call but not actually used for anything. For example:
+Gleam's unused code detection and purity tracking emits a warning any time some
+code is unused and could be removed without changing the behaviour of the
+program.
 
-  ```gleam
-  import gleam/io
+This has been extended to be able to identify function arguments that are used
+when the function calls itself recursively, but never actually used in the
+function's implementation. For example:
 
-  pub fn greet(x, times) {
-    case times {
-      0 -> Nil
-      _ -> {
-        io.println("Hello, Joe!")
-        greet(x, times - 1)
-      }
+```gleam
+import gleam/io
+
+pub fn greet(x, times) {
+  case times {
+    0 -> Nil
+    _ -> {
+      io.println("Hello, Joe!")
+      greet(x, times - 1)
     }
   }
-  ```
+}
+```
 
-  In this piece of code the `x` argument is actually never used, and the
-  compiler will raise the following warning:
+In this piece of code the `x` argument is unused, so the compiler will raise
+the following warning:
 
-  ```text
-  warning: Unused function argument
-    ┌─ /Users/giacomocavalieri/Desktop/prova/src/prova.gleam:3:14
-    │
-  3 │ pub fn greet(x, times) {
-    │              ^ This argument is unused
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Unused function argument</b>
+<span class="code-decoration">  ┌─</span> /Users/giacomocavalieri/Desktop/prova/src/prova.gleam:3:14
+<span class="code-decoration">  │</span>
+<span class="code-decoration">3 │</span> pub fn greet(<span class="code-warning">x</span>, times) {
+<span class="code-decoration">  │</span>              <span class="code-warning">^ This argument is unused</span>
 
-  This argument is passed to the function when recursing, but it's never used
-  for anything.
-  ```
+This argument is passed to the function when recursing, but it's never
+used for anything.
+</code></pre>
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
-## Meaningless opaque type warning
+## Better meaningless opaque type error
 
-- The compiler now emits a better error message for private types marked as
-  opaque. For example, the following piece of code:
+A public custom type can be marked as "opaque", meaning that while other
+modules can import and reference the type, they are unable to construct or
+pattern match on values of that type. This is useful for restricting the ways
+that a data type can be used in order to provide a more robust API.
 
-  ```gleam
-  opaque type Wibble {
-    Wobble
-  }
-  ```
+```gleam
+pub opaque type Permission {
+  SuperUser
+  Regular
+  Restricted
+}
+```
 
-  Would result in the following error:
+It is invalid to mark a private type as opaque. Previously this would result in
+a slightly cryptic syntax, but now a specific helpful error has been added for
+this case.
 
-  ```
-  error: Private opaque type
-    ┌─ /src/one/two.gleam:2:1
-    │
-  2 │ opaque type Wibble {
-    │ ^^^^^^ You can safely remove this.
+``` =html
+<pre><code><b><span class="code-error">error</span>: Private opaque type</b>
+<span class="code-decoration">  ┌─</span> /src/one/two.gleam:2:1
+<span class="code-decoration">  │</span>
+<span class="code-decoration">2 │</span> <span class="code-error">opaque</span> type Wibble {
+<span class="code-decoration">  │</span> <span class="code-error">^^^^^^ You can safely remove this.</span>
 
-  Only a public type can be opaque.
-  ```
-
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Only a public type can be opaque.
+</code></pre>
+```
 
 # TODO: add to documentation
 
-- The language server now offers a quick fix to remove `opaque` from a private
-  type:
+The language server now also offers a "quick fix" code action to remove
+`opaque` from a private type:
 
-  ```gleam
-  opaque type Wibble {
-  // ^^^ This is an error!
-    Wobble
-  }
+```gleam
+opaque type Wibble {
+// ^^^ This is an error!
+  Wobble
+}
+```
+
+If you hover over the type and trigger the quick fix, the language server will
+automatically remove the `opaque` keyword:
+
+```gleam
+type Wibble {
+  Wobble
+}
   ```
 
-  If you hover over the type and trigger the quick fix, the language server will
-  automatically remove the `opaque` keyword:
-
-  ```gleam
-  type Wibble {
-    Wobble
-  }
-  ```
-
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## More fault tolerance
 
-- Fault tolerance for analysis of labeled fields in constructor patterns has
-  been improved.
-  ([sobolevn](https://github.com/sobolevn))
+Gleam's compiler implements _fault tolerant analysis_. This means that when
+there is some error in the code that means it is invalid and cannot be compiled,
+the compiler can still continue to analyse the code to the best of its ability,
+ignoring the invalid parts. Because of this Gleam language server can have a
+good understanding of the code and provide IDE feature even when the codebase is
+in an invalid state.
 
-- The parsing of opaque private types is now fault tolerant: having a private
-  opaque type in a module no longer stops the compiler from highlighting other
-  errors.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+[Giacomo Cavalieri](https://github.com/giacomocavalieri) and
+[sobolevn](https://github.com/sobolevn)) have improved the compiler to be fault
+tolerant for errors relating to analysis of labeled fields in variant patterns,
+parsing of private opaque type definitions, and parsing of type names followed
+by `()`, further improving the experience of using the Gleam language server.
 
-- Writing a type name followed by `()` now emits an error during analysis
-  rather than parsing, so it no longer stops the compiler from reporting errors
-  further in the code.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you both!
 
 ## Redundant pattern alias warning
 
-- Redundant `_ as x` patterns are now deprecated in favour of `x`.
-  ([eutampieri](https://github.com/eutampieri))
+`_ as x` is a valid pattern in Gleam. The `_` means "don't assign any name to
+this value", and the `as x` part means "assign the name `x` to this value".
 
-- Redundant `_ as x` patterns are rewritten to `x`.
-  ([eutampieri](https://github.com/eutampieri))
+As you can see, this is quite a silly pattern. The alias `as` pattern makes the
+discard `_` pattern redundant, and it would always be better to use
+the pattern `x`, which means "assign this value to the name x".
+
+```gleam
+// Redundant
+let _ as x = something()
+
+// Recommended
+let x = something()
+```
+
+Using an alias pattern with a discard pattern has been deprecated, and the
+Gleam code formatter will rewrite any instances of it to the recommended syntax.
+
+Thank you [eutampieri](https://github.com/eutampieri) for this!
 
 ## More inefficient list check warnings
 
-- The compiler will now raise warning for inefficient use of `list.length()`
-  when trying to check is list empty via `0 < list.length(list)` or
-  `list.length(list) > 0` as well as in other cases. For example, the following
-  code:
+Gleam's basic sequence type is an immutable linked list with structural
+sharing, a data type inherited from Erlang and one common in functional
+programming languages.
 
-  ```gleam
-  import gleam/list
+The correct way to check if a list is empty is to pattern match on it with the
+empty-list pattern, or to compare it to an empty list literal.
 
-  pub fn main() {
-    let numbers = [1, 46]
-    let _ = 0 < list.length(numbers)
-    let _ = list.length(numbers) > 0
+```gleam
+pub fn both_empty(list1: List(a), list2: List(b)) -> Bool {
+  // Pattern matching approach.
+  // More verbose, but can be part of a larger pattern match.
+  let list1_empty = case list1 {
+    [] -> True
+    _ -> False
   }
-  ```
 
-  Would result in following warnings:
+  // Comparison approach.
+  let list2_empty = list2 == []
 
-  ```
-  warning: Inefficient use of `list.length`
-    ┌─ /data/data/com.termux/files/home/test_gleam/src/test_gleam.gleam:5:13
-    │
-  5 │     let _ = 0 < list.length(numbers)
-    │             ^^^^^^^^^^^^^^^^^^^^^^^^
+  list1_empty && list2_empty
+}
+```
 
-  The `list.length` function has to iterate across the whole
-  list to calculate the length, which is wasteful if you only
-  need to know if the list is empty or not.
+The standard library's `list.length` function returns the length of a given
+list. Gleam and Erlang lists don't store the length on them as a static
+property, so this function has to traverse the full list, and count the number
+of elements, making it a very wasteful way to determine if a list is empty.
 
-  Hint: You can use `the_list != []` instead.
+This behaviour may be suprising to programmers familiar with languages with a
+different core sequence data type, so they might not realise this is not a good
+way to check for an empty list. To remove this confusion the compiler would
+emit a warning for code like `list.length(items) == 0`, informing the
+programmer of better alternatives.
 
-  warning: Inefficient use of `list.length`
-    ┌─ /data/data/com.termux/files/home/test_gleam/src/test_gleam.gleam:6:13
-    │
-  6 │     let _ = list.length(numbers) > 0
-    │             ^^^^^^^^^^^^^^^^^^^^^^^^
+With this release the warning will also be emitted for more inefficient use of
+`list.length`, including checks for non-empty lists using operators like `>`
+and `<`.
 
-  The `list.length` function has to iterate across the whole
-  list to calculate the length, which is wasteful if you only
-  need to know if the list is empty or not.
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Inefficient use of <code>`list.length`</code></b>
+<span class="code-decoration">  ┌─</span> /data/data/com.termux/files/home/test_gleam/src/test_gleam.gleam:5:13
+<span class="code-decoration">  │</span>
+<span class="code-decoration">5 │</span>     let _ = <span class="code-warning">0 &lt; list.length(numbers)</span>
+<span class="code-decoration">  │</span>             <span class="code-warning">^^^^^^^^^^^^^^^^^^^^^^^</span>
 
-  Hint: You can use `the_list != []` instead.
-  ```
+The <code>`list.length`</code> function has to iterate across the whole
+list to calculate the length, which is wasteful if you only
+need to know if the list is empty or not.
 
-  ([Andrey Kozhev](https://github.com/ankddev))
+Hint: You can use <code>`the_list != []`</code> instead.
+</code></pre>
+```
 
-## Redundant generated JavaScript code removal
-
-- The code generated for blocks on the JavaScript target has been improved and
-  is now smaller in certain cases.
-  ([Surya Rose](https://github.com/GearsDatapacks))
-https://github.com/gleam-lang/gleam/commit/5175a401a084dd524c342f5d7c7501d19a453786
-
-- The compiler now shows a specific syntax error when trying to use an
-  angle-bracket syntax for generic types or function definitions:
-
-  ```txt
-  error: Syntax error
-    ┌─ /src/parse/error.gleam:2:12
-    │
-  2 │ type Either<a, b> {
-    │            ^ I was expecting `(` here.
-
-  Type parameters use lowercase names and are surrounded by parentheses.
-
-      type Either(a, b) {
-
-  See: https://tour.gleam.run/data-types/generic-custom-types/
-  ```
-
-  ([Aaron Christiansen](https://github.com/AaronC81))
+Thank you [Andrey Kozhev](https://github.com/ankddev)!
 
 ## A helpful syntax error for JavaScripters
 
-- The compiler now provides an improved error message for when trying to define
-  a constant inside a function. For example, the following code:
+In Gleam names are assigned to values within functions using the `let` keyword.
+There is a `const` keyword too, but it is used to declare module-level
+constants, and it is a syntax error to use it within functions.
 
-  ```gleam
-  pub fn deep_thought() {
-    const the_answer = 42
-    the_answer
-  }
-  ```
+The compiler now provides an helpful error message for any programmers
+accustomed to languages where `const` is used within functions, such as
+JavaScript.
 
-  Will produce this error message:
+```gleam
+pub fn deep_thought() -> Int {
+  const the_answer = 42
+  the_answer
+}
+```
+``` =html
+<pre><code><b><span class="code-error">error</span>: Syntax error</b>
+<span class="code-decoration">  ┌─</span> /src/file.gleam:2:3
+<span class="code-decoration">  │</span>
+<span class="code-decoration">3 │</span>   <span class="code-error">const</span> the_answer = 43
+<span class="code-decoration">  │</span>   <span class="code-error">^^^^^ Constants are not allowed inside functions</span>
 
-  ```txt
-    error: Syntax error
-    ┌─ /src/file.gleam:2:3
-    │
-  3 │   const the_answer = 43
-    │   ^^^^^ Constants are not allowed inside functions
+All variables are immutable in Gleam, so constants inside functions are not
+necessary.
+Hint: Either move this into the global scope or use <code>`let`</code> binding instead.
+</code></pre>
+```
 
-  All variables are immutable in Gleam, so constants inside functions are not
-  necessary.
-  Hint: Either move this into the global scope or use `let` binding instead.
-  ```
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 
-  ([Surya Rose](https://github.com/GearsDatapacks))
+## A helpful error for Rustaceans, C#ers, and friends
+
+Gleam has a consistent syntax for constructors at the type and value level,
+using `()` for both. It does not use `()` for value constructors and `<>` for
+type constructors, as is common in some other languages.
+
+To help folks coming from other languages a set of helpful errors have been
+added for when they try to use this non-Gleam syntax in their Gleam code.
+
+``` =html
+<pre><code><b><span class="code-error">error</span>: Syntax error</b>
+<span class="code-decoration">  ┌─</span> /src/parse/error.gleam:2:12
+<span class="code-decoration">  │</span>
+<span class="code-decoration">2 │</span> type Either&lt;a, b&gt; {
+<span class="code-decoration">  │</span>            <span class="code-error">^ I was expecting `(` here.</span>
+
+Type parameters use lowercase names and are surrounded by parentheses.
+
+    type Either(a, b) {
+
+See: <a href="https://tour.gleam.run/data-types/generic-custom-types/">https://tour.gleam.run/data-types/generic-custom-types/</a>
+</code></pre>
+```
+
+Notice how the error message includes the correct syntax for the specific code
+that the programmer has written. The programmer could copy/paste the correct
+version into their code, if they so desired. A link to the documentation is
+also provided, linking to whichever feature the syntax error is for.
+
+Thank you [Aaron Christiansen](https://github.com/AaronC81)!
 
 ## A helpful syntax error for Pythonistas, Elixirists, and friends
 
-- Compiler now adds a hint when `#`-styled comments are used. This code:
-
-  ```gleam
-  fn some() {
-    let a = 1
-    # let b = 2
-  }
-  ```
-
-  Now produces:
-
-  ```txt
-  error: Syntax error
-    ┌─ /src/main.gleam:3:5
-    │
-  3 │   # let b = 2
-    │     ^^^ I was not expecting this
-
-  Found the keyword `let`, expected one of:
-  - `(`
-  Hint: Maybe you meant to create a comment?
-  Comments in Gleam start with `//`, not `#`
-  ```
-
-  ([sobolevn](https://github.com/sobolevn))
-
-## OTP application start argument configuration
-
-- The `erlang.application_start_argument` parameter has been added to
-  `gleam.toml`. This is a string containing an Erlang term that will be written
-  into the package's Erlang `.app` file if `erlang.application_start_module`
-  has been set, replacing the default argument of `[]`.
-  ([Louis Pilfold](https://github.com/lpil))
-
-## `hex owner transfer`
-
-- The build tool now has a new `hex owner transfer` subcommand to transfer
-  ownership of existing packages.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Similar to the last two new error messages, there's now a helpful error message
+for programmers trying to use `#` instead of `//` to write a comment. Thank you
+[sobolevn](https://github.com/sobolevn)!
 
 ## Displaying dependency version information
 
-- After dependency resolution the build tool will now print all packages added
-  and removed, and any versions changed.
-  ([Louis Pilfold](https://github.com/lpil))
+Gleam's built tool integrates with Hex, the package management system and
+primary package repository for the BEAM ecosystem. Gleam implements dependency
+version locking to ensure that builds are deterministic, and to prevent
+unaudited code from unexpectedly becoming part of your application. Dependency
+code is just as much of a risk and responsibility as code directly written by
+the programmer, so it must be treated with create care and consideration.
+
+The only time the build tool will select new versions of dependency packages is
+if the programmer adds or removes a dependency, if the programmer changes the
+package's dependency version requirements, or if the programmer requests the
+dependency versions be upgraded using the `gleam update` command.
+
+In these cases when dependencies are changed, added, or removed the build tool
+will now print the changes, to help the programmer understand and go on to
+audit the new code.
+
+``` =html
+<pre><code><span class="code-comment">$ gleam add lustre</span>
+<span class="code-operator">  Resolving</span> versions
+<span class="code-operator">Downloading</span> packages
+<span class="code-operator"> Downloaded</span> 3 packages in 0.04s
+<span class="code-operator">      Added</span> gleam_json v3.0.2
+<span class="code-operator">      Added</span> houdini v1.2.0
+<span class="code-operator">      Added</span> lustre v5.3.5
+</code></pre>
+```
+
+## `hex owner transfer`
+
+The `hex owner transfer` command has been added to the build tool, allowing
+Gleam programmers to transfer ownership of existing Hex packages to another
+account. Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Type parameter names in HTML documentation
 
-- When generating documentation, the build tool will now print the names of
-  public type aliases instead of internal type names when annotating functions
-  and types. For example, for the following code:
+When a Gleam package is published to Hex HTML documentation is generated and
+published to the HexDocs documentation hosting website. This documentation has
+now been improved to now print the names of public type aliases instead of
+internal type names when annotating functions and types. This makes the
+documentation more likely to use the APIs that the package author intends for
+their users.
 
-  ```gleam
-  import my_package/internal
+For example, for the following code:
 
-  pub type ExternalAlias = internal.InternalRepresentation
+```gleam
+import my_package/internal
 
-  pub fn do_thing() -> ExternalAlias { ... }
-  ```
+pub type ExternalAlias = internal.InternalRepresentation
 
-  This is what the build tool used to generate:
+pub fn do_thing() -> ExternalAlias { ... }
+```
 
-  ```gleam
-  pub fn do_thing() -> @internal InternalRepresentation
-  ```
+This is what the build tool used to generate:
 
-  Whereas now it will not use the internal name, and instead produce:
+```gleam
+pub fn do_thing() -> @internal InternalRepresentation
+```
 
-  ```gleam
-  pub fn do_thing() -> ExternalAlias
-  ```
+This is technically correct, but not very useful for the reader of the
+documentation, as they cannot learn anything about these internal types.
+Now it will not use the internal name, allowing the programmer to click-through
+to its documentation, and understand how they should refer to this type in
+their code.
 
-  ([Surya Rose](https://github.com/GearsDatapacks))
+```gleam
+pub fn do_thing() -> ExternalAlias
+```
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 
 ## Tangled support
 
-# TODO: add to documentation
+[Tangled](https://tangled.org/) is a new open source source forge, and the Gleam
+build tool now has support for it. When specified the HTML documentation will
+include links to the source code definitions for each type and value in the
+package, as it would for previously supported source forges such as GitHub and
+Forgejo.
 
-- Support has been added for using Tangled as a repository.
-  ([Naomi Roberts](https://github.com/naomieow))
+```toml
+repository = { type = "tangled", user = "me", repo = "my_project" }
+```
+
+Thank you to [Naomi Roberts](https://github.com/naomieow) for this. As part of
+this work she added support for links to multi-line sections of code in Tangled
+itself!
 
 ## Remove unreachable branches code action
 
