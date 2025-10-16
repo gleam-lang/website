@@ -2958,10 +2958,11 @@ repository = { type = \"github\", user = \"example\", repo = \"my_project\" }
 # `repository` can also be one of these formats
 # { type = \"forgejo\",   host = \"example.com\", user = \"example\", repo = \"my_project\" }
 # { type = \"gitea\",     host = \"example.com\", user = \"example\", repo = \"my_project\" }
-# { type = \"gitlab\",    user = \"example\", repo = \"my_project\" }
-# { type = \"sourcehut\", user = \"example\", repo = \"my_project\" }
 # { type = \"bitbucket\", user = \"example\", repo = \"my_project\" }
 # { type = \"codeberg\",  user = \"example\", repo = \"my_project\" }
+# { type = \"gitlab\",    user = \"example\", repo = \"my_project\" }
+# { type = \"sourcehut\", user = \"example\", repo = \"my_project\" }
+# { type = \"tangled\",   user = \"example\", repo = \"my_project\" }
 # { type = \"custom\",    url = \"https://example.com/my_project\" }
 #
 # An optional `path` to this project in the repository can be specified
