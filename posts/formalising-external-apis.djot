@@ -252,8 +252,6 @@ Only a public type can be opaque.
 </code></pre>
 ```
 
-# TODO: add to documentation
-
 The language server now also offers a "quick fix" code action to remove
 `opaque` from a private type:
 
@@ -609,8 +607,6 @@ Thank you [Surya Rose](https://github.com/GearsDatapacks) and
 
 ## Remove unreachable clauses code action
 
-# TODO: add to documentation
-
 Gleam's pattern matching analysis can identify any clauses of a case
 expression are unreachable due to previous patterns already matching any values
 the redundant one could match.
@@ -733,9 +729,7 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)! Pattern
 matching is such a important core feature of Gleam that these improvements make
 a big difference to the experience of writing and editing Gleam code.
 
-## Collapse nested case expression code action
-
-# TODO: add to documentation
+## Collapse nested case expressions code action
 
 Another new code action is one to collapse nested case expressions into one,
 reducing nesting and enabling further optimisations in some situations.
@@ -766,8 +760,6 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 
 ## Add omitted labels code action
-
-# TODO: add to documentation
 
 Function parameters and record fields can have labels, names that can be used
 at the call-site to make it clearer what each argument is, and to make the

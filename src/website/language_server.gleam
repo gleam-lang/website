@@ -44,7 +44,9 @@ pub fn page(ctx: site.Context) -> fs.File {
       Entry("Add annotations", add_annotations_html()),
       Entry("Add missing import", add_missing_import_html()),
       Entry("Add missing patterns", add_missing_patterns_html()),
+      Entry("Add omitted labels", add_omitted_labels_html()),
       Entry("Case correction", case_correction_html()),
+      Entry("Collapse nested case expressions", collapse_nested_case_html()),
       Entry("Convert to and from pipe", convert_pipes_html()),
       Entry("Convert to and from use", convert_use_html()),
       Entry("Discard unused result", discard_unused_result_html()),
@@ -63,7 +65,9 @@ pub fn page(ctx: site.Context) -> fs.File {
       Entry("Qualify and unqualify", qualify_and_unqualify_html()),
       Entry("Remove block", remove_block_html()),
       Entry("Remove echo", remove_echo_html()),
+      Entry("Remove opaque from private type", remove_opaque_html()),
       Entry("Remove redundant tuples", remove_redundant_tuples_html()),
+      Entry("Remove unreachable clauses", remove_unreachable_clauses_html()),
       Entry("Remove unused imports", remove_unused_imports_html()),
       Entry("Use label shorthand syntax", use_label_shorthand_syntax_html()),
       Entry("Wrap in block", wrap_in_block_html()),
@@ -137,6 +141,151 @@ pub fn page(ctx: site.Context) -> fs.File {
   ]
   |> page.page_layout("prose", meta, ctx)
   |> page.to_html_file(meta)
+}
+
+fn add_omitted_labels_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "This code action can add omitted labels to the call of a function or record constructor.",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub type User {
+  User(first_name: String, last_name: String, likes: List(String))
+}
+
+pub fn main() {
+  let first_name = \"Giacomo\"
+  User(first_name, \"Cavalieri\", [\"gleam\"])
+}
+",
+    ),
+    html.p([], [
+      html.text(
+        "If your cursor is within the call that does not have all labelled
+      supplied then code action will be suggested, and if run the code will be
+      updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub type User {
+  User(first_name: String, last_name: String, likes: List(String))
+}
+
+pub fn main() {
+  let first_name = \"Giacomo\"
+  User(first_name:, last_name: \"Cavalieri\", likes: [\"gleam\"])
+}
+",
+    ),
+  ]
+}
+
+fn collapse_nested_case_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "This code takes a case expression where one of the clause bodies is
+      another case expression that matches on a variable from that clause's
+      pattern, and merges the two case expressions into one.",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
+  case user {
+    User(name:) ->
+      case name {
+        \"Joe\" -> \"Hello, Joe!\"
+        _ -> \"Hello there!\"
+      }
+    Guest -> \"You're not logged in!\"
+  }
+}
+",
+    ),
+    html.p([], [
+      html.text(
+        "If your cursor is within the nested case the code action will be suggested,
+and if run the module will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
+  case user {
+    User(name: \"Joe\") -> \"Hello, Joe!\"
+    User(name: _) -> \"Hello there!\"
+    Guest -> \"You're not logged in!\"
+  }
+}
+",
+    ),
+  ]
+}
+
+fn remove_unreachable_clauses_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text(
+        "This code action removes unreachable clauses from case expressions.",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
+  case find_user() {
+    Ok(person) -> todo
+    Ok(Admin) -> todo
+    Ok(User) -> todo
+    Error(_) -> todo
+  }
+}
+",
+    ),
+    html.p([], [
+      html.text(
+        "If your cursor is within one of the unreachable clauses the code action will be suggested,
+and if run the module will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "pub fn main() {
+  case find_user() {
+    Ok(person) -> todo
+    Error(_) -> todo
+  }
+}
+",
+    ),
+  ]
+}
+
+fn remove_opaque_html() -> List(Element(Nil)) {
+  [
+    html.p([], [
+      html.text("This code action removes redundant "),
+      html.code([], [html.text("opaque")]),
+      html.text(" from private types, where it does nothing."),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "opaque type Direction {
+  Up
+  Down
+}",
+    ),
+    html.p([], [
+      html.text("If your cursor is within the "),
+      html.code([], [html.text("opaque")]),
+      html.text(
+        " the code action will be suggested, and if run the module will be updated to this:",
+      ),
+    ]),
+    page.highlighted_gleam_pre_code(
+      "type Direction {
+  Up
+  Down
+}",
+    ),
+  ]
 }
 
 fn remove_block_html() -> List(Element(Nil)) {
