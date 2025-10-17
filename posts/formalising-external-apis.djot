@@ -474,7 +474,7 @@ The `hex owner transfer` command has been added to the build tool, allowing
 Gleam programmers to transfer ownership of existing Hex packages to another
 account. Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
-## Type parameter names in HTML documentation
+## Improved type displaying
 
 When a Gleam package is published to Hex HTML documentation is generated and
 published to the HexDocs documentation hosting website. This documentation has
@@ -509,7 +509,67 @@ their code.
 pub fn do_thing() -> ExternalAlias
 ```
 
+This improvement also applies to the language server, both in information
+displayed on hover, and in code actions such as "add annotations".
+
+```gleam
+import lustre/html
+import lustre/element
+import lustre/attribute
+
+pub fn make_link(attribute, element) {
+  html.a([attribute], [elements])
+}
+```
+
+If the "add annotations" code action is run on this function the language
+server will identify that the imported `lustre/attribute` module has public
+export of the `Attribute` type, and that the imported `lustre/element` module
+has public export of the `Element` type, so they will both be used instead of
+the internal definition.
+
+```gleam
+pub fn make_link(
+  attribute: attribute.Attribute,
+  element: element.Element(a)
+) -> element.Element(a) {
+   html.a([attribute], [elements])
+}
+```
+
 Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Improved type naming in code actions
+
+Another way in which code actions need to consider type names is with type
+parameters. The "add type annotations" and "generate function" code actions
+must find names for any type variables that do not clash with any already in
+use. Previously the language server would track names in-use at the module
+level which could result in correct but unexpected names being used.
+
+Take this code, for example.
+
+```gleam
+fn something(a: a, b: b, c: c) -> d { todo }
+
+fn pair(a, b) { #(a, b) }
+```
+
+Previously, when triggering the "Add type annotations" code action on the
+`pair` function, the language server would have used these names:
+
+```gleam
+fn pair(a: e, b: f) -> #(e, f) { #(a, b) }
+```
+
+However in 1.13, it will now use these names:
+
+```gleam
+fn pair(a: a, b: b) -> #(a, b) { #(a, b) }
+```
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
 
 ## Tangled support
 
@@ -527,411 +587,339 @@ Thank you to [Naomi Roberts](https://github.com/naomieow) for this. As part of
 this work she added support for links to multi-line sections of code in Tangled
 itself!
 
-## Remove unreachable branches code action
+## Further language server support
+
+The language server was missing support for a few syntaxes, this has now been
+fixed. You can now go to definition, rename, etc. from alternative patterns in
+case expressions:
+
+```gleam
+case wibble {
+  Wibble | Wobble -> 0
+  //         ^- Previously you could not trigger actions from here
+}
+
+```
+
+And hovering over a record field in a record access expression will now show
+the documentation for that field, if any exists.
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks) and
+[fruno](https://github.com/fruno-bulax)!
+
+## Remove unreachable clauses code action
 
 # TODO: add to documentation
 
-- The language server now offers a code action to remove all the unreachable
-  branches in a case expression. For example:
+Gleam's pattern matching analysis can identify any clauses of a case
+expression are unreachable due to previous patterns already matching any values
+the redundant one could match.
 
-  ```gleam
-  pub fn main() {
-    case find_user() {
-      Ok(user) -> todo
-      Ok(Admin) -> todo
-  //  ^^^^^^^^^ This branch is unreachable
-      Ok(User) -> todo
-  //  ^^^^^^^^ This branch is unreachable
-      Error(_) -> todo
-    }
+```gleam
+pub fn main() {
+  case find_user() {
+    Ok(person) -> todo
+    Ok(Admin) -> todo
+    Ok(User) -> todo
+    Error(_) -> todo
   }
-  ```
+}
+```
 
-  Hovering over one of the unreachable branches and triggering the code action
-  would remove all the unreachable branches:
+Here the `Ok(Admin)` and `Ok(User)` patterns could never match as all the `Ok`
+values would be instead matched by the earlier `Ok(person)` pattern.
 
-  ```gleam
-  pub fn main() {
-    case find_user() {
-      Ok(user) -> todo
+This is clearly a mistake in the code, so the compiler will emit a warning and
+highlight the unreachable clauses. Most commonly the programmer will want to
+edit the patterns to correct them, but some times the clauses are no longer
+needed, and can be deleted entirely. To help with this scenario the language
+server now offers a quick-fix code action to delete any redundant clauses.
 
-      Error(_) -> todo
-    }
+Triggering it on the above code will result in the code being edited like so:
+
+
+```gleam
+pub fn main() {
+  case find_user() {
+    Ok(person) -> todo
+    Error(_) -> todo
   }
-  ```
+}
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Pattern match on value code action improvements
 
-- The "pattern match on variable" can now be triggered on lists. For example:
+Gleam has a single flow-control feature: pattern matching with the `case`
+expression. Because of this there's a lot of pattern matching in Gleam
+programs! The language server offers a code action to quickly pattern match on
+a focused value, and with this release it has been further improved.
 
-  ```gleam
-  pub fn is_empty(list: List(a)) -> Bool {
-    //            ^^^^ Triggering the action over here
+It can now be triggered on lists, with the default clauses including one for
+when the list is empty, and one for when it is non-empty.
+
+```gleam
+pub fn is_empty(list: List(a)) -> Bool {
+  //            ^^^^ Triggering the action here
+}
+```
+
+Triggering the action over the `list` argument would result in the following
+code:
+
+```gleam
+pub fn is_empty(list: List(a)) -> Bool {
+  case list {
+    [] -> todo
+    [first, ..rest] -> todo
   }
-  ```
+}
+```
 
-  Triggering the action over the `list` argument would result in the following
-  code:
+The code action can now be triggered on variables introduced by other patterns.
+For example, here we have a `let` statement with a pattern defining the
+variables `name` and `role`.
 
-  ```gleam
-  pub fn is_empty(list: List(a)) -> Bool {
-    case list {
-      [] -> todo
-      [first, ..rest] -> todo
-    }
+```gleam
+pub fn main() {
+  let User(name:, role:) = find_user("lucy")
+  //              ^^^^ Triggering the action here
+}
+```
+
+Triggering the action on `role` results in a case expression being inserted on
+the line below, with a clause for each of the possible variants of the `Role`
+type that variable held.
+
+```gleam
+pub fn main() {
+  let User(name:, role:) = find_user("lucy")
+  case role {
+    Admin -> todo
+    Member -> todo
   }
-  ```
+}
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+If the variable was introduced within a case expression already then the
+behaviour is different. For example:
 
-- The "pattern match on variable" code action can now be triggered on variables
-  introduced by other patterns. For example:
-
-  ```gleam
-  pub fn main() {
-    let User(name:, role:) = find_user("lucy")
-    //              ^^^^ Triggering the action over
+```gleam
+pub fn main() {
+  case find_user() {
+    Ok(user) -> todo
+    Error(_) -> todo
   }
-  ```
+}
+```
 
-  Triggering the action over another variable like `role` would result in the
-  following code:
+Triggering the code action on the `user` variable would cause the code to be
+rewritten to expand that clause of the case expression, replacing it with one
+specialised clause for each of the possible variants of the type of that
+variable.
 
-  ```gleam
-  pub fn main() {
-    let User(name:, role:) = find_user("lucy")
-    case role {
-      Admin -> todo
-      Member -> todo
-    }
+```gleam
+pub fn main() {
+  case find_user() {
+    Ok(Admin) -> todo
+    Ok(Member) -> todo
+    Error(_) -> todo
   }
-  ```
+}
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The "pattern match on variable" code action can now be triggered on variables
-  in case expressions. For example:
-
-  ```gleam
-  pub fn main() {
-    case find_user() {
-      Ok(user) -> todo
-      Error(_) -> todo
-    }
-  }
-  ```
-
-  Triggering the action over the `user` variable would result in the following
-  code:
-
-  ```gleam
-  pub fn main() {
-    case find_user() {
-      Ok(Admin) -> todo
-      Ok(Member) -> todo
-      Error(_) -> todo
-    }
-  }
-  ```
-
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-## Add omitted labels code action
-
-- The language server now offers a code action to add the omitted labels in a
-  call. For example:
-
-  ```gleam
-  pub type User {
-    User(first_name: String, last_name: String, likes: List(String))
-  }
-
-  pub fn main() {
-    let first_name = "Giacomo"
-    User(first_name, "Cavalieri", ["gleam"])
-  //^^^^ Triggering the code action over here
-  }
-  ```
-
-  Triggering the code action over the `User` constructor will result in the
-  following code:
-
-  ```gleam
-  pub type User {
-    User(first_name: String, last_name: String, likes: List(String))
-  }
-
-  pub fn main() {
-    let first_name = "Giacomo"
-    User(first_name:, last_name: "Cavalieri", likes: ["gleam"])
-  }
-  ```
-
-- The "inline variable" code action is now only suggested when hovering over the
-  relevant variable.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-## Hover support for record fields
-
-- When hovering over a record field in a record access expression, the language
-  sever will now show the documentation for that field, if present.
-  ([Surya Rose](https://github.com/GearsDatapacks))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)! Pattern
+matching is such a important core feature of Gleam that these improvements make
+a big difference to the experience of writing and editing Gleam code.
 
 ## Collapse nested case expression code action
 
 # TODO: add to documentation
 
-- The language server now offers a code action to collapse nested case
-  expressions. Take this example:
+Another new code action is one to collapse nested case expressions into one,
+reducing nesting and enabling further optimisations in some situations.
 
-  ```gleam
-  case user {
-    User(role: Admin, name:) ->
-      // Here the only thing we're doing is pattern matching on the
-      // `name` variable we've just defined in the outer pattern.
-      case name {
-        "Joe" -> "Hello, Joe!"
-        _ -> "Hello, stranger"
-      }
+```gleam
+case user {
+  User(name:) ->
+    case name {
+      "Joe" -> "Hello, Joe!"
+      _ -> "Hello there!"
+    }
+  Guest -> "You're not logged in!"
+}
+```
 
-    _ -> "You're not an admin!"
-  }
-  ```
+Triggering the code action on the first clause will result in it being replaced
+by multiple clauses that produce the same behaviour as the nested version.
 
-  We could simplify this case expression and reduce nesting like so:
+```gleam
+case user {
+  User(name: "Joe") -> "Hello, Joe!"
+  User(name: _) -> "Hello there!"
+  Guest -> "You're not logged in!"
+}
+```
 
-  ```gleam
-  case user {
-    User(role: Admin, name: "Joe") -> "Hello, Joe!"
-    User(role: Admin, name: _) -> "Hello, stranger"
-    _ -> "You're not an admin!"
-  }
-  ```
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
-  Now, if you hover over that pattern, the language server will offer the
-  "collapse nested case" action that will simplify your code like shown in the
-  example above.
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+## Add omitted labels code action
 
-## Improved generate function code action
+# TODO: add to documentation
 
-- The "Generate function" code action now allows generating function in other
-  modules. For example, given the following code:
+Function parameters and record fields can have labels, names that can be used
+at the call-site to make it clearer what each argument is, and to make the
+ordering of the arguments not matter. The language server now offers a code
+action to add the omitted labels in a call. For example:
 
-  ```gleam
-  // maths.gleam
-  pub fn add(a: Int, b: Int) -> Int { a + b }
+```gleam
+pub type User {
+  User(first_name: String, last_name: String, likes: List(String))
+}
 
-  // main.gleam
-  import maths
+pub fn main() {
+  let first_name = "Giacomo"
+  User(first_name, "Cavalieri", ["gleam"])
+}
+```
 
-  pub fn main() -> Int {
-    echo maths.add(1, 2)
-    echo maths.subtract(from: 2, subtract: 1)
-    //         ^ Trigger the "Generate function" code action here
-  }
-  ```
+Triggering the code action on the `User` constructor will result in the
+language server adding the labels to the arguments.
 
-  The language sever will edit the `maths.gleam` file:
+```gleam
+pub type User {
+  User(first_name: String, last_name: String, likes: List(String))
+}
 
-  ```gleam
-  pub fn add(a: Int, b: Int) -> Int { a + b }
+pub fn main() {
+  let first_name = "Giacomo"
+  User(first_name:, last_name: "Cavalieri", likes: ["gleam"])
+}
+```
 
-  pub fn subtract(from from: Int, subtract subtract: Int) -> Int {
-    todo
-  }
-  ```
+## Inter-module generate function code action
 
-  ([Surya Rose](https://github.com/GearsDatapacks))
+The "Generate function" code action now works when the missing function is to
+be defined in another module. For example:
 
-## Improved type naming in code actions
+```gleam
+// src/maths.gleam
+pub fn add(a: Int, b: Int) -> Int { a + b }
+```
 
-- The "Add type annotations" and "Generate function" code actions now ignore
-  type variables defined in other functions, improving the generated code.
-  For example:
+```gleam
+// src/app.gleam
+import maths
 
-  ```gleam
-  fn something(a: a, b: b, c: c) -> d { todo }
+pub fn main() -> Nil {
+  echo maths.add(1, 2)
+  echo maths.subtract(2, 1)
+  Nil
+}
+```
 
-  fn pair(a, b) { #(a, b) }
-  ```
+The `app` module is calling a function called `subtract` from the `maths`
+module, but that function doesn't exist. Triggering the code action on the call
+to `maths.subtract` will edit the `maths.gleam` file to add the outline of the
+function, for the programmer to complete.
 
-  Previously, when triggering the "Add type annotations" code action on the
-  `pair` function, the language server would have generated:
+```gleam
+pub fn add(a: Int, b: Int) -> Int { a + b }
 
-  ```gleam
-  fn pair(a: e, b: f) -> #(e, f) { #(a, b) }
-  ```
+pub fn subtract(int: Int, int_2: Int) -> Int {
+  todo
+}
+```
 
-  However in 1.13, it will now generate:
-
-  ```gleam
-  fn pair(a: a, b: b) -> #(a, b) { #(a, b) }
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
-
-## Alternative patterns LS support
-
-- You can now go to definition, rename, etc. from alternative patterns!
-
-  ```gleam
-  case wibble {
-    Wibble | Wobble -> 0
-    //         ^- Previously you could not trigger actions from here
-  }
-
-  ```
-
-  ([fruno](https://github.com/fruno-bulax))
-
-## Improved annotations in code actions
-
-- When showing types of values on hover, or adding type annotations, the language
-  server will now prefer public type aliases to internal types. For example, if
-  the "Add type annotations" code action was triggered on the following code:
-
-  ```gleam
-  import lustre/html
-  import lustre/element
-  import lustre/attribute
-
-  pub fn make_link(attribute, element) {
-    html.a([attribute], [elements])
-  }
-  ```
-
-  Previously, the following code would have been generated:
-
-  ```gleam
-  pub fn make_link(
-    attribute: vattr.Attribute,
-    element: vdom.Element(a)
-  ) -> vdom.Element(a) {
-     html.a([attribute], [elements])
-  }
-  ```
-
-  Which references internal types which should not be imported by the user.
-  However, now the language server will produce the following:
-
-  ```gleam
-  pub fn make_link(
-    attribute: attribute.Attribute,
-    element: element.Element(a)
-  ) -> element.Element(a) {
-     html.a([attribute], [elements])
-  }
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
+Thank you [Surya Rose](https://github.com/GearsDatapacks)! This is nice little
+quality-of-life improvement for Gleam programmers.
 
 ## Extract function code action
 
-- The language server now offers an "Extract function" code action to extract a
-  selected piece of code into a separate function. For example:
+And the last code action of this release, one that has been eagerly anticipated
+for some time by many Gleam programmers: extract function.
 
-  ```gleam
-  const head_byte_count = 256
+```gleam
+const head_byte_count = 256
 
-  pub fn get_head_of_file() {
-    let assert Ok(contents) = read_file()
-
-    case contents {
-  //^ Select from here
-      <<head:bytes-size(head_byte_count), _:bits>> -> Ok(head)
-      _ -> Error(Nil)
-    }
-  //^ Until here
+pub fn get_head_of_file() {
+  let assert Ok(contents) = read_file()
+  case contents {
+    <<head:bytes-size(head_byte_count), _:bits>> -> Ok(head)
+    _ -> Error(Nil)
   }
-  ```
+}
+```
 
-  Would become:
+If you were to select the case expression in your editor and trigger the code
+action, then it would be extracted to a new function, like so:
 
-  ```gleam
-  const head_byte_count = 256
+```gleam
+const head_byte_count = 256
 
-  pub fn get_head_of_file() {
-    let assert Ok(contents) = read_file()
+pub fn get_head_of_file() {
+  let assert Ok(contents) = read_file()
+  function(contents)
+}
 
-    function(contents)
+fn function(contents: BitArray) -> Result(BitArray, Nil) {
+  case contents {
+    <<head:bytes-size(head_byte_count), _:bits>> -> Ok(head)
+    _ -> Error(Nil)
   }
+}
+```
 
-  fn function(contents: BitArray) -> Result(BitArray, Nil) {
-    case contents {
-      <<head:bytes-size(head_byte_count), _:bits>> -> Ok(head)
-      _ -> Error(Nil)
-    }
-  }
-  ```
+Unfortunately the language server protocol design is rather limiting, so the
+Gleam language server cannot prompt the programmer for a suitable name, it has
+to use a meaningless name instead. The "rename" feature of the language server
+can be triggered to give it a more appropriate name.
 
-  You can then use language server renaming to choose an appropriate name for
-  the new function.
+I believe that Microsoft's rewrite of the TypeScript toolchain will include it
+using the language server protocol instead of their custom protocol, so
+hopefully this will result in them expanding the LSP specification to include
+features their custom protocol has, such as code actions being able to ask for
+more information.
 
-  ([Surya Rose](https://github.com/GearsDatapacks))
+Thank you again [Surya Rose](https://github.com/GearsDatapacks)!
 
 ## Formatter improvements
 
-- The formatter now removes needless multiple negations that are safe to remove.
-  For example, this snippet of code:
+Gleam has a code formatter that can clean up a file of Gleam code in an
+instant, freeing up time that would be otherwise spent on the busy-work of
+manually laying out code. Typically it is run by the programmer's text editor
+when a file is saved. Several improvements have been made to it with this
+release.
 
-  ```gleam
-  pub fn useless_negations() {
-    let lucky_number = --11
-    let lucy_is_a_star = !!!False
-  }
-  ```
+Bools can be negated with the `!` operator, and ints can be negated with the
+`-` operator. Negating a value multiple times is redundant and does nothing, so
+the formatter now collapses duplicate negations.
 
-  Is rewritten as:
+```gleam
+pub fn useless_negations() {
+  let lucky_number = --11
+  let lucy_is_a_star = !!!False
+}
+```
 
-  ```gleam
-  pub fn useless_negations() {
-    let lucky_number = 11
-    let lucy_is_a_star = !False
-  }
-  ```
+The code is rewritten like so:
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+```gleam
+pub fn useless_negations() {
+  let lucky_number = 11
+  let lucy_is_a_star = !False
+}
+```
 
-- The formatter no longer removes blocks from case clause guards.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Additionally, the formatter no longer removes blocks from case clause guards,
+as the programmer may wish to include them to make code clearer, even if they
+are not required according to Gleam's operator precedency rules. This also
+makes the behaviour consistent with the formatting of regular expressions in
+Gleam functions.
 
-- The formatter now properly formats tuple return annotation with comments.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## And the rest
 
@@ -989,12 +977,15 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 </ul>
 ```
 
+- [0riginaln0](https://github.com/0riginaln0)
+- [Aaron Christiansen](https://github.com/AaronC81)
 - [Aaron Gunderson](https://github.com/agundy)
-- [Aayush](https://github.com/aayush-tripathi)
 - [Abel Jimenez](https://github.com/abeljim)
+- [abs0luty](https://github.com/abs0luty)
 - [ad-ops](https://github.com/ad-ops)
 - [Adam Brodzinski](https://github.com/AdamBrodzinski)
 - [Adam Johnston](https://github.com/adjohnston)
+- [Adam Shannon](https://github.com/adamdecaf)
 - [Adam Wyłuda](https://github.com/adam-wyluda)
 - [Adi Iyengar](https://github.com/thebugcatcher)
 - [Adrian Mouat](https://github.com/amouat)
@@ -1003,49 +994,50 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Alembic](https://alembic.com.au)
 - [Alex Houseago](https://github.com/ahouseago)
 - [Alex Manning](https://github.com/rawhat)
-- [Alexander Koutmos](https://github.com/akoutmos)
 - [Alexander Stensrud](https://github.com/muonoum)
 - [Alexandre Del Vecchio](https://github.com/defgenx)
-- [Aliaksiej Maroz](https://github.com/ricountzero)
 - [Ameen Radwan](https://github.com/Acepie)
-- [Andho Mohamed](https://github.com/andho)
 - [Andrea Bueide](https://github.com/abueide)
+- [Andrew Ivchenkov](https://github.com/aivchen)
+- [Andrey](https://github.com/ankddev)
 - [André Mazoni](https://github.com/andremw)
 - [Andy Young](https://github.com/ayoung19)
 - [Antharuu](https://github.com/antharuu)
 - [Anthony Khong](https://github.com/anthony-khong)
 - [Anthony Maxwell](https://github.com/Illbjorn)
 - [Anthony Scotti](https://github.com/amscotti)
-- [Arthur Weagel](https://github.com/aweagel)
 - [Arya Irani](https://github.com/aryairani)
 - [Austin Beau Bodzas](https://github.com/Beaudidly)
 - [Azure Flash](https://github.com/azureflash)
 - [Barry Moore II](https://github.com/chiroptical)
-- [Bartek Górny](https://github.com/bartekgorny)
 - [Ben Martin](https://github.com/requestben)
 - [Ben Marx](https://github.com/bgmarx)
 - [Ben Myles](https://github.com/benmyles)
+- [benev0](https://github.com/benev0)
+- [Benjamin](https://github.com/bcpeinhardt)
 - [Benjamin Kane](https://github.com/bbkane)
 - [Benjamin Moss](https://github.com/drteeth)
 - [bgw](https://github.com/bgwdotdev)
+- [Billuc](https://github.com/Billuc)
 - [Bjarte Aarmo Lund](https://github.com/bjartelund)
 - [Bjoern Paschen](https://github.com/00bpa)
+- [bondiano](https://github.com/bondiano)
 - [Brad Mehder](https://github.com/bmehder)
-- [Brett Cannon](https://github.com/brettcannon)
 - [Brett Kolodny](https://github.com/brettkolodny)
 - [Brian Dawn](https://github.com/brian-dawn)
+- [Brian Dukes](https://github.com/bdukes)
 - [Brian Glusman](https://github.com/bglusman)
 - [Bruce Williams](https://github.com/bruce)
 - [Bruno Michel](https://github.com/nono)
 - [bucsi](https://github.com/bucsi)
 - [Cam Ray](https://github.com/camray)
 - [Cameron Presley](https://github.com/cameronpresley)
-- [Carl Bordum Hansen](https://github.com/carlbordum)
 - [Carlo Munguia](https://github.com/carlomunguia)
 - [Carlos Saltos](https://github.com/csaltos)
+- [Cassidy Spring (Bee)](https://github.com/beeauvin)
 - [Chad Selph](https://github.com/chadselph)
-- [Charlie Duong](https://github.com/ctdio)
 - [Charlie Govea](https://github.com/charlie-n01r)
+- [Chengjun Xie](https://github.com/madper)
 - [Chew Choon Keat](https://github.com/choonkeat)
 - [Chris Donnelly](https://github.com/ceedon)
 - [Chris King](https://github.com/Morzaram)
@@ -1066,27 +1058,29 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Comet](https://github.com/comet-ml)
 - [Constantin (Cleo) Winkler](https://github.com/Lucostus)
 - [Corentin J.](https://github.com/jcorentin)
-- [cysabi](https://github.com/cysabi)
+- [Courtcircuits](https://github.com/Courtcircuits)
+- [Cris Holm](https://github.com/uberguy)
 - [Damir Vandic](https://github.com/dvic)
 - [Dan](https://github.com/d2718)
 - [Dan Dresselhaus](https://github.com/ddresselhaus)
 - [Dan Gieschen Knutson](https://github.com/Giesch)
 - [Dan Strong](https://github.com/strongoose)
+- [Daniel Kurz](https://github.com/daniellionel01)
+- [Daniel S Jeremiah](https://github.com/Daniel-Shunom)
 - [Danielle Maywood](https://github.com/DanielleMaywood)
 - [Daniil Nevdah](https://github.com/ndan)
 - [Danny Arnold](https://github.com/pinnet)
 - [Danny Martini](https://github.com/despairblue)
 - [Dave Lucia](https://github.com/davydog187)
 - [David Bernheisel](https://github.com/dbernheisel)
-- [David Coba](https://github.com/cobac)
 - [David Cornu](https://github.com/davidcornu)
 - [David Pendray](https://github.com/dpen2000)
-- [Dennis Dang](https://github.com/dangdennis)
-- [dennistruemper](https://github.com/dennistruemper)
+- [Dennis Lustre](https://github.com/dlustre)
 - [dependabot[bot]](https://github.com/dependabot%5Bbot%5D)
+- [Diego](https://github.com/diegogub)
 - [Diemo Gebhardt](https://github.com/diemogebhardt)
 - [Donnie Flood](https://github.com/floodfx)
-- [Dusty Phillips](https://github.com/dusty-phillips)
+- [duzda](https://github.com/duzda)
 - [Dylan Anthony](https://github.com/dbanty)
 - [Dylan Carlson](https://github.com/gdcrisp)
 - [Ed Hinrichsen](https://github.com/edhinrichsen)
@@ -1094,10 +1088,8 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Edon Gashi](https://github.com/edongashi)
 - [Eileen Noonan](https://github.com/enoonan)
 - [eli](https://github.com/dropwhile)
-- [elke](https://liberapay.com/ijomeli/)
+- [Eli Treuherz](https://github.com/treuherz)
 - [Emma](https://github.com/Emma-Fuller)
-- [Emma](https://github.com/Shadowsx3)
-- [Endo Shogo](https://github.com/yellowsman)
 - [Eric Koslow](https://github.com/ekosz)
 - [Erik Terpstra](https://github.com/eterps)
 - [erikareads](https://liberapay.com/erikareads/)
@@ -1105,10 +1097,12 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [erlend-axelsson](https://github.com/erlend-axelsson)
 - [Ernesto Malave](https://github.com/oberernst)
 - [Ethan Olpin](https://github.com/EthanOlpin)
+- [eutampieri](https://github.com/eutampieri)
 - [Evaldo Bratti](https://github.com/evaldobratti)
 - [Evan Johnson](https://github.com/evanj2357)
 - [evanasse](https://github.com/evanasse)
 - [Fabrizio Damicelli](https://github.com/fabridamicelli)
+- [Falk Pauser](https://github.com/fpauser)
 - [Fede Esteban](https://github.com/fmesteban)
 - [Felix](https://github.com/yerTools)
 - [Fernando Farias](https://github.com/nandofarias)
@@ -1116,25 +1110,27 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Fleey](https://github.com/iFleey)
 - [Florian Kraft](https://github.com/floriank)
 - [Francis Hamel](https://github.com/francishamel)
+- [Francisco Budaszewski Zanatta](https://github.com/xikaos)
+- Francisco Budaszewski Zanatta
 - [frankwang](https://github.com/Frank-III)
+- [fruno](https://github.com/fruno-bulax)
 - [G-J van Rooyen](https://github.com/gvrooyen)
 - [Gabriel Vincent](https://github.com/gabrielvincent)
+- [Gareth Pendleton](https://github.com/pendletong)
 - [Gavin Panella](https://github.com/allenap)
 - [GearsDatapacks](https://github.com/GearsDatapacks)
 - [Geir Arne Hjelle](https://github.com/gahjelle)
-- [Georg Hartmann](https://github.com/brasilikum)
-- [Georgi Martsenkov](https://github.com/gmartsenkov)
 - [ggobbe](https://github.com/ggobbe)
 - [Giacomo Cavalieri](https://github.com/giacomocavalieri)
+- [ginkogruen](https://github.com/ginkogruen)
 - [Giovanni Kock Bonetti](https://github.com/giovannibonetti)
-- [given](https://github.com/givensuman)
-- [Graham Vasquez](https://github.com/GV14982)
+- [godalming123](https://github.com/godalming123)
+- [Graham](https://github.com/GV14982)
 - [Grant Everett](https://github.com/YoyoSaur)
 - [graphiteisaac](https://github.com/graphiteisaac)
 - [Guilherme de Maio](https://github.com/nirev)
 - [Guillaume Heu](https://github.com/guillheu)
 - [Guillaume Hivert](https://github.com/ghivert)
-- [Gunnar Ahlberg](https://github.com/gunnarahlberg)
 - [Hammad Javed](https://github.com/hammad-r-javed)
 - [Hannes Nevalainen](https://github.com/kwando)
 - [Hannes Schnaitter](https://github.com/ildorn)
@@ -1144,26 +1140,26 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Henning Dahlheim](https://github.com/hdahlheim)
 - [Henrik Tudborg](https://github.com/tudborg)
 - [Henry Warren](https://github.com/henrysdev)
-- [Heyang Zhou](https://github.com/losfair)
 - [Hizuru3](https://liberapay.com/Hizuru3/)
 - [Hubert Małkowski](https://github.com/hubertmalkowski)
 - [Iain H](https://github.com/iainh)
 - [Ian González](https://github.com/Ian-GL)
 - [Ian M. Jones](https://github.com/ianmjones)
 - [Igor Montagner](https://github.com/igordsm)
+- [imlargo](https://github.com/imlargo)
 - [inoas](https://github.com/inoas)
 - [Isaac Harris-Holt](https://github.com/isaacharrisholt)
 - [Isaac McQueen](https://github.com/imcquee)
-- [István Bozsó](https://github.com/bozso)
 - [Ivar Vong](https://github.com/ivarvong)
+- [Jachin Rupe](https://github.com/jachin)
 - [Jacob Lamb](https://github.com/jacobdalamb)
 - [Jake Cleary](https://github.com/jakecleary)
 - [Jake Wood](https://github.com/jzwood)
-- [Jakob Ladegaard Møller](https://github.com/jakob753951)
 - [James Birtles](https://github.com/jamesbirtles)
 - [James MacAulay](https://github.com/jamesmacaulay)
 - [Jan Pieper](https://github.com/janpieper)
 - [Jan Skriver Sørensen](https://github.com/monzool)
+- [jcha0713](https://github.com/jcha0713)
 - [Jean Niklas L'orange](https://github.com/hypirion)
 - [Jean-Adrien Ducastaing](https://github.com/MightyGoldenOctopus)
 - [Jean-Luc Geering](https://github.com/jlgeering)
@@ -1171,39 +1167,42 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Jen Stehlik](https://github.com/okkdev)
 - [Jerred Shepherd](https://github.com/shepherdjerred)
 - [Jesse Cooke](https://github.com/jc00ke)
-- [jiangplus](https://github.com/jiangplus)
 - [Jimpjorps™](https://github.com/hunkyjimpjorps)
 - [Joey Kilpatrick](https://github.com/joeykilpatrick)
 - [Joey Trapp](https://github.com/joeytrapp)
 - [Johan Strand](https://github.com/johan-st)
 - [John Björk](https://github.com/JohnBjrk)
+- [JOHN STEINBERGER](https://github.com/vistuleB)
 - [John Strunk](https://github.com/jrstrunk)
 - [Jojor](https://github.com/xjojorx)
 - [Jon Charter](https://github.com/jmcharter)
 - [Jon Lambert](https://github.com/jonlambert)
 - [Jonas E. P](https://github.com/igern)
 - [Jonas Hedman Engström](https://github.com/JonasHedEng)
-- [JonasGruenwald](https://github.com/JonasGruenwald)
-- [Jonatan Männchen](https://github.com/maennchen)
 - [jooaf](https://github.com/jooaf)
 - [Joseph Lozano](https://github.com/joseph-lozano)
+- [Joseph Myers](https://github.com/BigJayToDaIzo)
 - [Joseph T. Lyons](https://github.com/JosephTLyons)
-- [Joshua Byrd](https://github.com/phocks)
 - [Joshua Steele](https://github.com/joshocalico)
 - [Julian Hirn](https://github.com/nineluj)
 - [Julian Lukwata](https://liberapay.com/d2quadra/)
 - [Julian Schurhammer](https://github.com/schurhammer)
 - [Justin Lubin](https://github.com/justinlubin)
+- [justisCrocker](https://github.com/justisCrocker)
 - [Jérôme Schaeffer](https://github.com/Neofox)
 - [Jørgen Andersen](https://github.com/jorg1piano)
+- [Kadei](https://github.com/kadei-rat)
 - [KamilaP](https://github.com/Kamila-P)
 - [Kemp Brinson](https://github.com/jkbrinso)
 - [Kero van Gelder](https://github.com/keroami)
 - [Kevin Schweikert](https://github.com/kevinschweikert)
+- [khalidbelk](https://github.com/khalidbelk)
+- [Kristoffer Grönlund](https://github.com/krig)
 - [Kritsada Sunthornwutthikrai](https://github.com/Bearfinn)
-- [Kryštof Řezáč](https://github.com/krystofrezac)
 - [Krzysztof Gasienica-Bednarz](https://github.com/krzysztofgb)
+- [Kuma Taro](https://github.com/km-tr)
 - [Landon](https://github.com/jly36963)
+- [lazno](https://github.com/lazno)
 - [Leah Ulmschneider](https://github.com/leah-u)
 - [Leandro Ostera](https://github.com/leostera)
 - [Lee Jarvis](https://github.com/leejarvis)
@@ -1212,40 +1211,37 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Leonardo Donelli](https://github.com/LeartS)
 - [Lexx](https://github.com/lexx27)
 - [lidashuang](https://github.com/defp)
-- [Lily Rose](https://github.com/LilyRose2798)
+- [linqingmo](https://github.com/linqingmo)
 - [Lukas Bjarre](https://github.com/lbjarre)
 - [Luke Amdor](https://github.com/lamdor)
 - [Luna](https://github.com/2kool4idkwhat)
 - [Manuel Rubio](https://github.com/manuel-rubio)
+- [marcus](https://github.com/carlinigraphy)
 - [Mario Vellandi](https://github.com/mvellandi)
 - [Marius Kalvø](https://github.com/mariuskalvo)
 - [Mark Dodwell](https://github.com/mkdynamic)
 - [Mark Holmes](https://github.com/markholmes)
 - [Mark Markaryan](https://github.com/markmark206)
-- [Martin Fojtík](https://github.com/martinfojtik)
+- [Mark Rudolph](https://github.com/alterationx10)
+- [Marshall Bowers](https://github.com/maxdeviant)
 - [Martin Janiczek](https://github.com/Janiczek)
 - [Martin Poelstra](https://github.com/poelstra)
 - [Martin Rechsteiner ](https://github.com/rechsteiner)
-- [Mat Warger](https://github.com/mwarger)
+- [matiascr](https://github.com/matiascr)
 - [Matt Heise](https://github.com/mhheise)
 - [Matt Mullenweg](https://github.com/m)
 - [Matt Savoia](https://github.com/matt-savvy)
 - [Matt Van Horn](https://github.com/mattvanhorn)
 - [Matthew Jackson](https://github.com/matthewj-dev)
 - [Matthew Whitworth](https://github.com/mwhitworth)
-- [Matthias Nüßler](https://github.com/mnuessler)
-- [Max Harris](https://github.com/maxh213)
 - [Max McDonnell](https://github.com/maxmcd)
+- [Maxim Philippov](https://github.com/phmx)
 - [metame](https://github.com/metame)
 - [METATEXX GmbH](https://github.com/metatexx)
 - [Metin Emiroğlu](https://github.com/amiroff)
-- [Michael Davis](https://github.com/the-mikedavis)
 - [Michael Duffy](https://github.com/stunthamster)
 - [Michael Jones](https://github.com/michaeljones)
-- [Michael Lynch](https://github.com/mtlynch)
-- [Michael Maysonet](https://github.com/michaelmaysonet74)
 - [Michael Mazurczak](https://github.com/monocursive)
-- [Michael McClintock](https://github.com/mrmcc3)
 - [Michal Timko](https://github.com/tymak)
 - [Mikael Karlsson](https://github.com/karlsson)
 - [Mike Roach](https://github.com/mroach)
@@ -1253,20 +1249,18 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [MoeDev](https://github.com/MoeDevelops)
 - [MzRyuKa](https://github.com/rykawamu)
 - [n8n - Workflow Automation](https://github.com/n8nio)
+- [Naomi Roberts](https://github.com/naomieow)
+- [Natalie Rose](https://github.com/nataliethistime)
 - [Natanael Sirqueira](https://github.com/natanaelsirqueira)
 - [Nathaniel Knight](https://github.com/nathanielknight)
-- [NFIBrokerage](https://github.com/NFIBrokerage)
+- [Nguyễn Hồng Quân](https://github.com/hongquan)
 - [Nick Chapman](https://github.com/nchapman)
-- [Nick Reynolds](https://github.com/ndreynolds)
 - [Nicklas Sindlev Andersen](https://github.com/NicklasXYZ)
 - [NicoVIII](https://github.com/NicoVIII)
-- [Nik Revenco](https://github.com/nik-rev)
 - [Niket Shah](https://github.com/mrniket)
 - [Nikolai Steen Kjosnes](https://github.com/blink1415)
 - [Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa](https://github.com/ninanomenon)
 - [NineFX](http://www.ninefx.com)
-- [NNB](https://github.com/NNBnh)
-- [nnuuvv](https://github.com/nnuuvv)
 - [Noah Betzen](https://github.com/Nezteb)
 - [Nomio](https://github.com/nomio)
 - [nunulk](https://github.com/nunulk)
@@ -1275,21 +1269,26 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [OldhamMade](https://github.com/OldhamMade)
 - [Oliver Medhurst](https://github.com/CanadaHonk)
 - [Oliver Tosky](https://github.com/otosky)
+- [ollie](https://github.com/nnuuvv)
 - [optizio](https://github.com/optizio)
 - [Patrick Wheeler](https://github.com/Davorak)
+- [Pattadon Sa-ngasri](https://github.com/tamectosphere)
 - [Paul Guse](https://github.com/pguse)
-- [paul vidal](https://github.com/vidalpaul)
 - [Pedro Correa](https://github.com/Tulkdan)
+- [peonynopes](https://github.com/peonynopes)
 - [Pete Jodo](https://github.com/petejodo)
 - [Peter Rice](https://github.com/pvsr)
 - [Philpax](https://github.com/philpax)
+- [Pierre Rouleau](https://github.com/pierre-rouleau)
 - [Qdentity](https://github.com/qdentity)
+- [Quentin BETTOUM](https://github.com/quentin-bettoum)
 - [Race Williams](https://github.com/raquentin)
+- [raineycat](https://github.com/raineycat)
 - [Rasmus](https://github.com/stoft)
 - [Raúl Chouza ](https://github.com/chouzar)
-- [re.natillas](https://github.com/renatillas)
 - [Redmar Kerkhoff](https://github.com/redmar)
 - [Reilly Tucker Siemens](https://github.com/reillysiemens)
+- [Renata Amutio Herrero](https://github.com/renatillas)
 - [Renato Massaro](https://github.com/renatomassaro)
 - [Renovator](https://github.com/renovatorruler)
 - [Richard Viney](https://github.com/richard-viney)
@@ -1300,7 +1299,6 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Robert Ellen](https://github.com/rellen)
 - [Robert Malko](https://github.com/malkomalko)
 - [Rodrigo Álvarez](https://github.com/Papipo)
-- [Ronan Harris](https://liberapay.com/Karakunai/)
 - [Rotabull](https://github.com/rotabull)
 - [Rupus Reinefjord](https://github.com/reinefjord)
 - [Ruslan Ustitc](https://github.com/ustitc)
@@ -1317,55 +1315,51 @@ Thank you to all our sponsors! And special thanks to our top sponsors:
 - [Scott Wey](https://github.com/scottwey)
 - [Scott Zhu Reeves](https://github.com/star-szr)
 - [Sean Cribbs](https://github.com/seancribbs)
-- [Sean Jensen-Grey](https://github.com/seanjensengrey)
 - [Sean Roberts](https://github.com/SeanRoberts)
-- [Sebastian Bugge](https://github.com/Kaholaz)
 - [Sebastian Porto](https://github.com/sporto)
 - [Seve Salazar](https://github.com/tehprofessor)
 - [Sgregory42](https://github.com/Sgregory42)
 - [Shane Poppleton](https://github.com/codemonkey76)
 - [Shawn Drape](https://github.com/shawndrape)
-- [shunom](https://github.com/Daniel-Shunom)
+- [Shritesh Bhattarai](https://github.com/shritesh)
 - [Sigma](https://github.com/sigmasternchen)
 - [simone](https://github.com/simonewebdesign)
+- [sobolevn](https://github.com/sobolevn)
 - [Stefan](https://github.com/bytesource)
 - [Stefan Hagen](https://github.com/sthagen)
 - [Steinar Eliassen](https://github.com/steinareliassen)
 - [Stephen Belanger](https://github.com/Qard)
 - [Strandinator](https://github.com/Strandinator)
-- [SyntacticalAnomaly](https://github.com/SyntacticalAnomaly)
 - [Sławomir Ehlert](https://github.com/slafs)
+- [TA](https://github.com/betabrain)
 - [Theo Harris](https://github.com/Theosaurus-Rex)
 - [Thomas](https://github.com/thomaswhyyou)
 - [Thomas Coopman](https://github.com/tcoopman)
 - [Thomas Crescenzi](https://github.com/trescenzi)
-- [Thomas Ernst](https://github.com/ernstla)
 - [Tim Brown](https://github.com/tmbrwn)
 - [Timo Sulg](https://github.com/timgluz)
-- [tkanerva](https://github.com/tkanerva)
-- Tolek
 - [Tom Hughes](https://github.com/tomalexhughes)
 - [Tom Schuster](https://github.com/tomjschuster)
 - [Tomasz Kowal](https://github.com/tomekowal)
-- Tomek
 - [tommaisey](https://github.com/tommaisey)
 - [Tristan de Cacqueray](https://github.com/TristanCacqueray)
 - [Tristan Sloughter](https://github.com/tsloughter)
-- [Tudor Luca](https://github.com/lucamtudor)
+- [Tudor Luca](https://github.com/tudorluca)
 - [upsidedowncake](https://github.com/upsidedownsweetfood)
 - [Valerio Viperino](https://github.com/vvzen)
 - [Viv Verner](https://github.com/PerpetualPossum)
 - [Volker Rabe](https://github.com/yelps)
+- [vshakitskiy](https://github.com/vshakitskiy)
 - [Walton Hoops](https://github.com/Whoops)
 - [Weizheng Liu](https://github.com/weizhliu)
 - [Willyboar](https://github.com/Willyboar)
 - [Wilson Silva](https://github.com/wilsonsilva)
+- [wingdeans](https://github.com/wingdeans)
+- [yagogarea](https://github.com/yagogarea)
 - [Yamen Sader](https://github.com/yamen)
 - [Yasuo Higano](https://github.com/Yasuo-Higano)
-- [yoshi~](https://github.com/yoshi-monster)
+- [yoshie ](https://github.com/yoshi-monster)
 - [zenconomist](https://github.com/zenconomist)
-- [Zij-IT](https://github.com/Zij-IT)
-- [zonghan](https://github.com/caifanuncle)
 - [Zsombor Gasparin](https://github.com/gasparinzsombor)
 - [ZWubs](https://github.com/zwubs)
 - [~1814730](https://liberapay.com/~1814730/)
