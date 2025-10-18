@@ -1107,6 +1107,43 @@ pre code {
   max-width: 100%;
 }
 
+.prose .alert {
+  border-left: 3px solid var(--alert-color);
+  padding: 1rem 1.4rem;
+  margin: .8rem 0;
+}
+
+.prose .alert h3 {
+  color: var(--alert-color);
+  margin: 0 0 .4rem;
+  font-size: 1em;
+}
+
+.prose .alert h3:before {
+  content: var(--alert-emoji);
+  margin-right: .8ch;
+}
+
+.prose .alert p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.prose .alert-info {
+  --alert-color: #5facff;
+  --alert-emoji: 'ℹ️';
+}
+
+.prose .alert-error {
+  --alert-color: #ff5f5f;
+  --alert-emoji: '❗';
+}
+
+.prose .alert-warning {
+  --alert-color: #ffc55f;
+  --alert-emoji: '🔔';
+}
+
 /* Article Meta bar - Including publish date, author, and share button */
 .post-meta {
   display: flex;
