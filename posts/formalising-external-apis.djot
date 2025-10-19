@@ -66,8 +66,8 @@ greatly limit what changes we can make to the internal representation of Gleam
 data, and make many potential performance improvements impossible.
 
 To fix this we have done two things. First, we have created
-[a guide on Gleam externals](https://gleam.run/documentation/externals/),
-detailing how to correctly write and use externals.
+[a guide on Gleam externals](/documentation/externals/), detailing how to
+correctly write and use externals.
 
 Secondly, a dedicted API is now provided for JavaScript based code to work with
 Gleam data, both making usage clearer and giving the Gleam core team maximum
