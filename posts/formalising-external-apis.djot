@@ -1,6 +1,6 @@
 Gleam is a type-safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Today Gleam [v1.13.0][release] has been published. Let's
-go over at the highlights now.
+go over all the highlights now.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.13.0
 
@@ -69,7 +69,7 @@ To fix this we have done two things. First, we have created
 [a guide on Gleam externals](/documentation/externals/), detailing how to
 correctly write and use externals.
 
-Secondly, a dedicated API is now provided for JavaScript based code to work with
+Secondly, a dedicated API is now provided for JavaScript-based code to work with
 Gleam data, both making usage clearer and giving the Gleam core team maximum
 freedom to improve performance in future. Each data type defined in Gleam will
 have a set of functions defined to work with it, for example:
@@ -129,7 +129,7 @@ patterns at the start of the bit array. For example, network protocol
 parsers.
 
 ```gleam
-pub fn parser_headers(headers: BitArray, bytes: Int) -> Headers {
+pub fn parse_headers(headers: BitArray, bytes: Int) -> Headers {
   case headers {
     <<"CONTENT_LENGTH" as header, 0, value:size(bytes), 0, rest:bytes>>
     | <<"QUERY_STRING" as header, 0, value:size(bytes), 0, rest:bytes>>
@@ -281,7 +281,7 @@ the Gleam language server can have a good understanding of the code and provide
 IDE features even when the codebase is in an invalid state.
 
 [Giacomo Cavalieri](https://github.com/giacomocavalieri) and
-[sobolevn](https://github.com/sobolevn)) have improved the compiler to be fault
+[sobolevn](https://github.com/sobolevn) have improved the compiler to be fault
 tolerant for errors relating to analysis of labeled fields in variant patterns,
 parsing of private opaque type definitions, and parsing of type names followed
 by `()`, further improving the experience of using the Gleam language server.
@@ -340,7 +340,7 @@ list. Gleam and Erlang lists don't store the length on them as a static
 property, so this function has to traverse the full list, and count the number
 of elements, making it a very wasteful way to determine if a list is empty.
 
-This behaviour may be suprising to programmers familiar with languages with a
+This behaviour may be surprising to programmers familiar with languages with a
 different core sequence data type, so they might not realise this is not a good
 way to check for an empty list. To remove this confusion the compiler would
 emit a warning for code like `list.length(items) == 0`, informing the
@@ -373,7 +373,7 @@ In Gleam names are assigned to values within functions using the `let` keyword.
 There is a `const` keyword too, but it is used to declare module-level
 constants, and it is a syntax error to use it within functions.
 
-The compiler now provides an helpful error message for any programmers
+The compiler now provides a helpful error message for any programmers
 accustomed to languages where `const` is used within functions, such as
 JavaScript.
 
@@ -437,7 +437,7 @@ for programmers trying to use `#` instead of `//` to write a comment. Thank you
 
 ## Displaying dependency version information
 
-Gleam's built tool integrates with Hex, the package management system and
+Gleam's build tool integrates with Hex, the package management system and
 primary package repository for the BEAM ecosystem. Gleam implements dependency
 version locking to ensure that builds are deterministic, and to prevent
 unaudited code from unexpectedly becoming part of your application. Dependency
@@ -724,7 +724,7 @@ pub fn main() {
 ```
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)! Pattern
-matching is such a important core feature of Gleam that these improvements make
+matching is such an important core feature of Gleam that these improvements make
 a big difference to the experience of writing and editing Gleam code.
 
 ## Collapse nested case expressions code action
