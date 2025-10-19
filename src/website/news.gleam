@@ -20,7 +20,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
     read(
       title: "Formalising external APIs",
       subtitle: "Gleam v1.13.0 released",
-      published: calendar.Date(2025, calendar.October, 16),
+      published: calendar.Date(2025, calendar.October, 19),
       author: louis,
       path: "formalising-external-apis",
     ),
