@@ -10,9 +10,7 @@ import website/site
 
 const in_progress = [
   "Function inlining to improve performance and stack usage",
-  "Language server \"collapse nested case\" code action",
   "Dependency version conflict resolution assistant",
-  "Dynamic supervision of actors in Gleam OTP",
 ]
 
 const planned = [
@@ -36,6 +34,30 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "v1.13",
+    date: calendar.Date(2025, calendar.October, 19),
+    items: [
+      "Bit array pattern matching compilation improvements",
+      "Dependency version change information printing",
+      "Improved type name selection in language server and documentation",
+      "Unified JavaScript API for Gleam data types",
+      "Unused recursive function argument detection",
+      "Language server \"add omitted labels\" code action",
+      "Language server \"extract function\" code action",
+      "Language server \"collapse nested case\" code action",
+      "Language server \"remove unreachable clauses\" code action",
+      "Language server \"pattern match on value\" code action improvements",
+      "Language server inter-module \"generate function\" code action",
+    ],
+  ),
+  Release(
+    version: "gleam_otp v1.0",
+    date: calendar.Date(2025, calendar.October, 3),
+    items: [
+      "Dynamic process supervision",
+    ],
+  ),
   Release(
     version: "v1.12",
     date: calendar.Date(2025, calendar.August, 5),
