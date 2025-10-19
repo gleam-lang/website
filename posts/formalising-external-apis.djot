@@ -69,7 +69,7 @@ To fix this we have done two things. First, we have created
 [a guide on Gleam externals](/documentation/externals/), detailing how to
 correctly write and use externals.
 
-Secondly, a dedicted API is now provided for JavaScript based code to work with
+Secondly, a dedicated API is now provided for JavaScript based code to work with
 Gleam data, both making usage clearer and giving the Gleam core team maximum
 freedom to improve performance in future. Each data type defined in Gleam will
 have a set of functions defined to work with it, for example:
