@@ -55,7 +55,7 @@ type, the Erlang representation of Gleam's `Ok` and `Error` variants.
 
 One thing that a Gleam programmer may find challenging is knowing how to
 construct Gleam data in these wrapper functions. A lack of detailed
-documentation made it unclear what the correct approach.
+documentation made it unclear what the correct approach should be.
 
 This lack of clarity makes learning how to use external code more challenging,
 and worse, it may result in programmers using internal APIs that are intended
@@ -73,7 +73,6 @@ Secondly, a dedicted API is now provided for JavaScript based code to work with
 Gleam data, both making usage clearer and giving the Gleam core team maximum
 freedom to improve performance in future. Each data type defined in Gleam will
 have a set of functions defined to work with it, for example:
-type:
 
 ```gleam
 // In src/person.gleam
@@ -276,11 +275,10 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 ## More fault tolerance
 
 Gleam's compiler implements _fault tolerant analysis_. This means that when
-there is some error in the code that means it is invalid and cannot be compiled,
-the compiler can still continue to analyse the code to the best of its ability,
-ignoring the invalid parts. Because of this Gleam language server can have a
-good understanding of the code and provide IDE feature even when the codebase is
-in an invalid state.
+there is some error in the code the compiler can still continue to analyse the
+code to the best of its ability, ignoring the invalid parts. Because of this,
+the Gleam language server can have a good understanding of the code and provide
+IDE features even when the codebase is in an invalid state.
 
 [Giacomo Cavalieri](https://github.com/giacomocavalieri) and
 [sobolevn](https://github.com/sobolevn)) have improved the compiler to be fault
@@ -444,7 +442,7 @@ primary package repository for the BEAM ecosystem. Gleam implements dependency
 version locking to ensure that builds are deterministic, and to prevent
 unaudited code from unexpectedly becoming part of your application. Dependency
 code is just as much of a risk and responsibility as code directly written by
-the programmer, so it must be treated with create care and consideration.
+the programmer, so it must be treated with great care and consideration.
 
 The only time the build tool will select new versions of dependency packages is
 if the programmer adds or removes a dependency, if the programmer changes the
@@ -825,8 +823,8 @@ pub fn subtract(int: Int, int_2: Int) -> Int {
 }
 ```
 
-Thank you [Surya Rose](https://github.com/GearsDatapacks)! This is nice little
-quality-of-life improvement for Gleam programmers.
+Thank you [Surya Rose](https://github.com/GearsDatapacks)! This is a nice
+little quality-of-life improvement for Gleam programmers.
 
 ## Extract function code action
 
