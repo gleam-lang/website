@@ -310,7 +310,7 @@ Gleam code formatter will rewrite any instances of it to the recommended syntax.
 
 Thank you [eutampieri](https://github.com/eutampieri) for this!
 
-## More inefficient list check warnings
+## More warnings for inefficient list use
 
 Gleam's basic sequence type is an immutable linked list with structural
 sharing, a data type inherited from Erlang and one common in functional
