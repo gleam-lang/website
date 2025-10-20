@@ -14,6 +14,7 @@ import lustre/element.{type Element}
 import lustre/element/html
 import pearl
 import snag
+import tear
 import website/case_study
 import website/fs
 import website/site
@@ -4776,6 +4777,10 @@ pub fn parse_djot(string: String) -> jot.Document {
         }
         jot.Codeblock(language: option.Some("erlang"), content:, ..) -> {
           let content = pearl.highlight_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("elixir"), content:, ..) -> {
+          let content = tear.highlight(content) |> tear.to_html
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         jot.Codeblock(language: option.Some("js"), content:, ..)

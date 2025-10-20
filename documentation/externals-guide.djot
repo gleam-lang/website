@@ -534,8 +534,8 @@ dict.from_list([#("a", 1), #("b", 2)])
 
 ```elixir
 # Elixir
-#{}
-#{"a" => 1, "b" => 2}
+%{}
+%{"a" => 1, "b" => 2}
 ```
 
 All keys of a dict and all values of a list must have the same types in Gleam.
