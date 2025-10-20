@@ -318,7 +318,7 @@ All keys of a dict and all values of a list must have the same types in Gleam.
 
 Using Elixir is similar to using Erlang.
 
-The function names are written the same in the Elixir code. In Elixir modules
+The function names are written the same in the Elixir code. In Elixir, modules
 have the implicit `Elixir.` prefix, so this must be specified when defining an
 Elixir external function. Any public function in any module can be used as an
 external.
@@ -829,7 +829,7 @@ When importing a module from another package specify a path as if the other
 package's `src` directory is located at the root of your project, but with the
 name of the package as the directory name instead of `src`. For example, if you
 wish to use the `gleam/option` module from the `gleam_stdlib` package, and the
-JavaScript file you are importing it from it located at `src/wibble/wobble.js`,
+JavaScript file you are importing it from is located at `src/wibble/wobble.js`,
 then the import path would be `../../gleam_stdlib/gleam/option.mjs`.
 
 This `SchoolPerson` custom type will be used to demonstrate the JavaScript API
