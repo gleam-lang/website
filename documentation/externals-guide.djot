@@ -561,7 +561,7 @@ function called `badge_count`, which takes no arguments. The accompanying
 external function in the Gleam file `src/my_app.gleam` would look like this:
 
 ```gleam
-// In src/my_app/pokemon.gleam
+// In src/my_app.gleam
 @external(javascript, "./my_app/pokemon.js", "badge_count")
 pub fn pokemon_badge_count() -> Int
 ```
@@ -752,7 +752,7 @@ if (List$isEmpty(items)) {
 } else {
   const items2 = List$NonEmpty$rest(items)
   if (List$isEmpty(items2)) {
-	const e = List$NonEmpty$first(items);
+    const e = List$NonEmpty$first(items);
     return "One element: " + e;
   } else {
     return "Multiple elements";
