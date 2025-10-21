@@ -1717,8 +1717,8 @@ my_other_package = { path = \"../my_other_package\" }
     html.p([], [html.text("As well as git dependencies.")]),
     highlighted_toml_pre_code(
       "[dependencies]
-my_git_library = { git = \"git@github.com:my-project/my-library\", ref = \"a8b3c5d82\" }
-latest_stdlib = { git = \"git@github.com:gleam-lang/stdlib\", ref = \"main\" }
+my_library = { git = \"git@github.com:my-project/my-library\", ref = \"a8b3c5d82\" }
+gleam_stdlib = { git = \"git@github.com:gleam-lang/stdlib\", ref = \"main\" }
 ",
     ),
     html.p([], [
@@ -3012,8 +3012,8 @@ gleam_http = \">= 2.1.0 and < 3.0.0\"
 # Local dependencies can be specified with a path
 my_other_project = { path = \"../my_other_project\" }
 # Git dependencies can also be used
-my_git_library = { git = \"git@github.com:my-project/my-library.git\", ref = \"a8b3c5d82\" }
-latest_stdlib = { git = \"git@github.com:gleam-lang/stdlib.git\", ref = \"main\" }
+my_library = { git = \"git@github.com:my-project/my-library.git\", ref = \"a8b3c5d82\" }
+gleam_stdlib = { git = \"git@github.com:gleam-lang/stdlib.git\", ref = \"main\" }
 
 # The Hex packages the project needs for the tests (optional)
 # These will not be included if the package is published to Hex.
