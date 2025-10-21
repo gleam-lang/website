@@ -729,6 +729,7 @@ main.content {
 
 .code-warning,
 .hl-keyword,
+.hl-built_in,
 .code-keyword {
   color: var(--color-code-orange);
 }
@@ -749,6 +750,8 @@ main.content {
 
 .hl-module,
 .hl-variant,
+.hl-symbol,
+.hl-literal,
 .code-type,
 .code-module {
   color: var(--color-code-light-pink);
