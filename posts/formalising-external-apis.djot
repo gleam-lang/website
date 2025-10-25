@@ -529,7 +529,7 @@ pub fn make_link(
   attribute: attribute.Attribute,
   element: element.Element(a)
 ) -> element.Element(a) {
-   html.a([attribute], [elements])
+   html.a([attribute], [element])
 }
 ```
 
