@@ -287,8 +287,8 @@ SuperUser(id: 11)
 
 ```erlang
 guest
-{user, 123}
-{super_user, 123}
+{user, 10}
+{super_user, 11}
 ```
 
 The Gleam compiler will generate an Erlang header file for each custom type
