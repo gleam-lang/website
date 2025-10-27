@@ -778,27 +778,14 @@ asdf.",
     ]),
     html.h4([attr.id("arch-linux")], [html.text("Arch Linux")]),
     html.p([], [
-      html.text("Gleam is available through the "),
-      html.a(
-        [attr.href("https://wiki.archlinux.org/index.php/Arch_User_Repository")],
-        [html.text("Arch User Repository")],
-      ),
-      html.text(" as package "),
+      html.text("Gleam is available as an official Arch Linux package "),
       html.code([], [html.text("gleam")]),
-      html.text(". You can use your preferred "),
-      html.a([attr.href("https://wiki.archlinux.org/index.php/AUR_helpers")], [
-        html.text("helper"),
-      ]),
-      html.text(" to install it or clone it for manual build from "),
-      html.a([attr.href("https://aur.archlinux.org/packages/gleam-git")], [
-        html.text("https://aur.archlinux.org/packages/gleam-git"),
-      ]),
-      html.text("."),
+      html.text(". You can install it with:"),
     ]),
     html.pre([], [
-      html.code([attr.class("language-sh")], [
+      html.code([], [
         html.text(
-          "yay -S gleam
+          "pacman -S gleam
 ",
         ),
       ]),
