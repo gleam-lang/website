@@ -3269,11 +3269,12 @@ ARG GIT_SHA
 ARG BUILD_TIME
 ENV GIT_SHA=${GIT_SHA}
 ENV BUILD_TIME=${BUILD_TIME}
+COPY healthcheck.sh /app/healthcheck.sh
 RUN \\
+  chmod +x /app/healthcheck.sh \\
   addgroup --system webapp && \\
   adduser --system webapp -g webapp
 COPY --from=build /app/build/erlang-shipment /app
-COPY healthcheck.sh /app/healthcheck.sh
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
 CMD [\"run\"]
