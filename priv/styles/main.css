@@ -310,6 +310,7 @@ main.content {
   background-color: var(--color-unexpected-aubergine);
   padding: var(--gap-1) var(--gap-4);
   border-radius: 100px;
+  corner-shape: squircle;
   text-decoration: none;
   display: inline-block;
 }
