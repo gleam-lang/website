@@ -603,7 +603,7 @@ external function in the Gleam file `src/my_app.gleam` would look like this:
 
 ```gleam
 // In src/my_app.gleam
-@external(javascript, "./my_app/pokemon.js", "badge_count")
+@external(javascript, "./my_app/pokemon.mjs", "badge_count")
 pub fn pokemon_badge_count() -> Int
 ```
 
