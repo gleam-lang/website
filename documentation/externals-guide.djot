@@ -51,6 +51,47 @@ that the `@external` attribute and type annotations are correct.
 
 You may wish to write more unit tests than usual when using external functions.
 
+### Multi-target externals
+
+An external function is only usable when compiling to a target the function is
+implemented for. For example, if a function has an external implementation for
+JavaScript then attempting to use it in Gleam code compiled for Erlang will
+result in a compile error.
+
+The `@external` attribute can be specified multiple times, giving an external
+function an implementation for both targets, making it always usable.
+
+```gleam
+@external(erlang, "lists", "reverse")
+@external(javascript, "./project_ffi.mjs", "reverse_list")
+pub fn reverse_list(list: List(element)) -> List(element)
+```
+
+If compiled to Erlang this function will be the `reverse` function from the
+Erlang `lists` module, while when compiled to JavaScript it'll be the
+`reverse_list` function from the `project_ffi.mjs` JavaScript module.
+
+### Gleam fallbacks
+
+It is possible for a function to have a Gleam implementation and also an
+external implementation at the same time. If there is an external
+implementation for the current compilation target then it will be used, the
+Gleam implementation being used otherwise.
+
+This may be useful when a function can be implemented in Gleam, but an
+optimised version is possible on one particular target.
+
+```gleam
+@external(erlang, "lists", "reverse")
+pub fn reverse_list(list: List(element)) -> List(element) {
+  reverse_and_prepend(list, [])
+}
+```
+
+If compiled to Erlang this function will be the `reverse` function from the
+Erlang `lists` module, while when compiled to JavaScript it'll use the Gleam
+implementation, calling the `reverse_and_prepend` function.
+
 ## Defining external types
 
 Gleam code can make use of data types defined in other languages using the
