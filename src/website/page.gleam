@@ -3272,8 +3272,8 @@ ENV BUILD_TIME=${BUILD_TIME}
 COPY healthcheck.sh /app/healthcheck.sh
 RUN \\
   chmod +x /app/healthcheck.sh \\
-  addgroup --system webapp && \\
-  adduser --system webapp -g webapp
+  && addgroup --system webapp \\
+  && adduser --system webapp -g webapp
 COPY --from=build /app/build/erlang-shipment /app
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
