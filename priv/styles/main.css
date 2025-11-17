@@ -653,6 +653,19 @@ main.content {
   text-decoration: none;
 }
 
+/* Stack the email form for mobile devices */
+@media (max-width: 500px) {
+  [data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"] .main-form {
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  [data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"] input[type="submit"], 
+  [data-form="ebfa5ade-6f63-11ed-8f94-ef3b2b6b307a"] input[type="email"] {
+    border-radius: 100px;
+  }
+}
+
 .footer {
   padding: var(--gap-4) 0;
   background-color: var(--color-white);
