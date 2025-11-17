@@ -1455,8 +1455,13 @@ pre code {
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(auto, 340px) auto;
-  gap: 1.6rem;
-  padding: 0 var(--gap-2) 2rem;
+  gap: 1rem;
+  padding: 0 var(--gap-2);
+  box-sizing: border-box;
+}
+
+.toc-layout .prose {
+  box-sizing: border-box;
 }
 
 /* This just gives us a nice bit of padding atop the headings */
@@ -1468,7 +1473,7 @@ pre code {
 /* Hide the table of contents on mobile, it is very impracticle and bulky there. */
 @media (max-width: 960px) {
   .toc-layout {
-    grid-template-columns: auto;
+    display: block;
   }
 
   .toc-layout .table-of-contents {
