@@ -11,6 +11,8 @@ import website/site
 const in_progress = [
   "Function inlining to improve performance and stack usage",
   "Dependency version conflict resolution assistant",
+  "Security related package management features",
+  "External type annotation for better integration with BEAM and JavaScript static type checkers",
 ]
 
 const planned = [
