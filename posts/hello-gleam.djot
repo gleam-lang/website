@@ -34,7 +34,7 @@ without burdening the programmer with verbose annotations or boilerplate.
 Types are completely inferred, though future releases will allow programmers
 to add optional type annotations if desired.
 
-Gleam compiles to Erlang and runs on the <a href="https://www.wired.com/2015/09/whatsapp-serves-900-million-users-50-engineers/" target="_blank">battle proven</a>
+Gleam compiles to Erlang and runs on the [battle proven](https://www.wired.com/2015/09/whatsapp-serves-900-million-users-50-engineers/)
 Erlang virtual machine, making it suitable for writing massively concurrent
 systems that are fault tolerant and relatively easy to reason about.
 
