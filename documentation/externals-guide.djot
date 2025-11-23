@@ -896,7 +896,7 @@ Student("Adam", 7)
 
 ```javascript
 // JavaScript, in src/code.mjs
-import { SchoolPerson$Teacher, SchoolPerson$Student } from '../school.mjs';
+import { SchoolPerson$Teacher, SchoolPerson$Student } from './school.mjs';
 
 SchoolPerson$Teacher("Mr Schofield");
 SchoolPerson$Student("Adam", 7);
