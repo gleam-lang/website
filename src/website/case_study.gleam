@@ -11,6 +11,22 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
   io.print("Loading case studies: ")
   let posts = [
     read(
+      title: "No room for error",
+      subtitle: "Gleam in production at Uncover",
+      description: "A case study of Gleam in production at Uncover",
+      published: calendar.Date(2025, calendar.December, 3),
+      preview_image: "uncover",
+      path: "uncover",
+      featured_quote: "The only bugs we've seen in our Gleam codebase are mistakes in business logic - nothing that would actually crash in production. That's a breath of fresh air compared to the rest of our backend codebase",
+      company: Company(
+        name: "Uncover",
+        description: "Uncover is a solution crafted to unleash the full power of marketing data in a single easy-to-use platform.",
+        website_url: "https://www.uncover.co/",
+        gleaming_since: calendar.Date(2024, calendar.April, 1),
+        founded: calendar.Date(2020, month: calendar.September, day: 1),
+      ),
+    ),
+    read(
       title: "Optimising for maintainability",
       subtitle: "A case study of Gleam in production at Strand",
       description: "A case study of Gleam in production at Strand",

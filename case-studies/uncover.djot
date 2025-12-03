@@ -1,0 +1,129 @@
+﻿## Case study
+
+# No room for error: Gleam in production at Uncover
+
+Based in São Paulo, Brazil, [Uncover](https://www.uncover.co/) was founded to
+revolutionise the field of marketing mix modelling - helping companies harness
+state-of-the-art data integration and AI to measure the return on their
+marketing investments, optimize their use of media, and track the effects of
+pricing changes and promotions in real time.
+
+## Challenge
+
+Marketing mix modelling (MMM) first came to prominence in the early 1990s as a
+set of techniques for analysing, forecasting and optimising marketing planning.
+Today, it plays a central role in marketing strategy at most large consumer
+packaged goods companies, and is increasingly being adopted by the
+telecommunications, financial services, automotive and hospitality sectors too.
+
+One of the key advantages of MMM, compared to other commonly used marketing
+analysis techniques, is that it is purely a statistical approach and doesn't
+rely on user tracking. This makes it a great fit for companies that care about
+their customers' data privacy, and for those that want to invest in types of
+marketing campaigns and media that are not as easy to track as digital ads.
+
+Traditionally, the main providers of MMM have been specialist consultancy firms,
+which charge high fees for their services. As a result, MMM has been regarded as
+a premium service that only the largest companies can afford. Uncover's mission
+is to revolutionise the MMM market by building a platform that can bring the
+same level of marketing intelligence to businesses of all sizes.
+
+At the heart of the Uncover platform is a query engine that allows analysts to
+define sophisticated ways to interrogate and visualise marketing data as it
+streams in from multiple sources - including sales and CRM systems, market and
+economic data, and even weather forecasts.
+
+"With our competitors' consultancy-based approach, they might run a big MMM
+project and deliver a final report after six months," comments Georges Boris,
+Chief Design Officer at Uncover. "With our platform, we can deliver new insights
+weekly, and at a fraction of the cost. To do that, we need to be able to develop
+queries that identify the factors that really impact our clients' marketing
+campaigns, and run those queries reliably and repeatedly to track how things
+evolve over time."
+
+To ensure it can always deliver the timely, accurate insights its clients need,
+Uncover's query engine has to be completely bullet-proof. That's why Georges and
+his team decided to use Gleam.
+
+## Solution
+
+When Uncover started out in 2020, the company decided to use different
+programming languages to build the frontend and backend of its new platform. The
+frontend, which provides the web interface and data visualisation capabilities,
+was written in Elm, a language that is designed to completely eliminate the
+types of coding errors that could cause a system to crash. Meanwhile, the
+backend, which provides the data integration and query processing capabilities,
+was written in a language that didn't offer the same level of automatic error
+detection and couldn't provide the same guarantees.
+
+"From the beginning, I always really enjoyed working on the Elm part of the
+codebase," says Georges Boris. "But the backend wasn't such a nice experience.
+We constantly had bugs, and our error reporting system was logging literally
+thousands of errors - versus absolutely zero with Elm."
+
+He explains: "We wanted an Elm-like experience on the backend too, but Elm is
+specifically designed to be frontend only. Then, a couple of years ago, we
+started hearing about Gleam, and we realised that for the first time, there was
+a backend language that could give us the same assurances and the same level of
+comfort."
+
+### Safe and practical
+
+Georges started by using Gleam to develop a query parser - a program that can
+validate and load saved queries into the query engine so that they can be
+executed. "The parser was full of complex business logic, which made it a good
+test case for Gleam," explains Georges Boris. "Gleam helps you catch and fix a
+lot of errors before you even run your program. So once you run it, you have a
+lot of confidence that your code is correct."
+
+At the same time, Georges Boris enjoys the practicality of Gleam's design:
+"Gleam makes it very easy to interoperate with other languages. That's vital for
+us because we already had a very large backend codebase, and the new
+functionality that we are writing in Gleam has to work seamlessly with our
+existing code. I love the safety that Gleam provides, but I also appreciate the
+fact that Gleam lets me remove the guardrails when I need to interact with
+other less-safe languages."
+
+### Simple and reliable
+
+Uncover is a relatively young company that operates with a disruptor's mindset -
+you can't reinvent MMM for the midmarket without being prepared to think
+differently. Yet while the business itself may be radical, its technology
+strategy is relatively conservative.
+
+"Gleam has been gaining a lot of attention recently, but you can't choose
+programming languages based on hype," says Georges Boris. "We wouldn't be using
+Gleam if it wasn't a safe, sensible - almost boring - choice. It's a really
+simple language to learn, and there are plenty of developers who are interested
+in this style of programming, so we're not worried about hiring or onboarding.
+And while Gleam is a relatively new language, it runs on the BEAM - a
+battle-tested platform that has been regarded as the industry standard for
+building highly reliable applications since the 1980s. Combined with the
+safeguards that Gleam provides at a language level, the BEAM really helps us
+provide the most resilient environment we can for our business-critical web
+services."
+
+## Results
+
+As Uncover gradually builds out more of its backend services in Gleam, the
+company expects to see big improvements in error rates during testing and in
+production. "So far, the only bugs we've seen in our Gleam codebase are mistakes
+in business logic - nothing that would actually crash in production," says
+Georges Boris. "That's a breath of fresh air compared to the rest of our backend
+codebase, which is constantly throwing errors that Gleam would have caught
+during development."
+
+He adds: "Testing is another areas where Gleam really shines, because the
+language pushes you to write straightforward tests that don't depend on a
+database or other external services. We can execute more than 1,900 Gleam tests
+per second, compared to about 40 per second for the rest of our backend test
+suite - so the Gleam tests run about 50 times faster."
+
+Looking to the future, Uncover is keen to explore how Gleam could help in other
+areas. "Gleam isn't just a backend language, it can run in the browser too,"
+explains Georges Boris. "That means we could potentially use it as a lingua
+franca for parts of our business logic that need to run on both our backend
+servers and in our web application. We're also very impressed by Lustre, a Gleam
+web framework that takes all the things we like about Elm and adds some exciting
+new capabilities too. We're eager to contribute to the community and help
+Gleam's frontend story evolve."
