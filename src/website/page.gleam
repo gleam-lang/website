@@ -1261,6 +1261,16 @@ niceties.",
           html.text("https://github.com/DannyLettuce/gleam_gedit"),
         ]),
       ]),
+      html.li([], [
+        html.strong([], [html.text("Lapce")]),
+        html.text("- "),
+        html.a(
+          [attr.href("https://plugins.lapce.dev/plugins/krig/lapce-gleam")],
+          [
+            html.text("https://plugins.lapce.dev/plugins/krig/lapce-gleam"),
+          ],
+        ),
+      ]),
     ]),
     html.h2([attr.id("what-next")], [html.text("What next?")]),
     html.p([], [
