@@ -1240,6 +1240,13 @@ niceties.",
         ]),
       ]),
       html.li([], [
+        html.strong([], [html.text("Zed")]),
+        html.text("- "),
+        html.a([attr.href("https://github.com/gleam-lang/zed-gleam")], [
+          html.text("https://github.com/gleam-lang/zed-gleam"),
+        ]),
+      ]),
+      html.li([], [
         html.strong([], [html.text("Sublime Text")]),
         html.text("- "),
         html.a(
