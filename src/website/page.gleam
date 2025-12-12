@@ -2778,6 +2778,11 @@ pub fn documentation(ctx: site.Context) -> fs.File {
           html.text("Using code written in other languages from Gleam"),
         ]),
       ]),
+      html.li([], [
+        html.a([attr.href("/documentation/sbom")], [
+          html.text("Creating a Software Bill of Materials"),
+        ]),
+      ]),
     ]),
     html.h2([attr.id("cheatsheets")], [html.text("Cheatsheets")]),
     html.ul([], [
@@ -3754,6 +3759,36 @@ pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
     )
 
   let path = "documentation/externals-guide.djot"
+
+  use content <- result.try(
+    path
+    |> fs.read
+    |> snag.context("Failed to load content for " <> path),
+  )
+
+  let document = parse_djot(content)
+  let table_of_contents = table_of_contents_from_djot(document)
+  let content = jot.document_to_html(document)
+
+  [element.unsafe_raw_html("", "article", [class("prose")], content)]
+  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
+  |> to_html_file(meta)
+  |> Ok
+}
+
+pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "documentation/sbom",
+      title: "Creating a Software Bill of Materials",
+      meta_title: "Creating a Software Bill of Materials | Gleam Programming Language",
+      subtitle: "Generating SBOMs for Gleam projects with ORT",
+      description: "Learn how to generate Software Bill of Materials (SBOM) for your Gleam projects using the OSS Review Toolkit",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let path = "documentation/sbom-guide.djot"
 
   use content <- result.try(
     path

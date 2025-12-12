@@ -1,0 +1,232 @@
+# Creating a Software Bill of Materials
+
+Modern software is built on top of many third-party components. Even relatively
+small projects often depend on dozens of libraries that are developed, licensed,
+and maintained elsewhere.
+
+A _Software Bill of Materials (SBoM)_ helps make these dependencies explicit and
+machine-readable. This guide explains what an SBoM is, why it is useful, and how
+to generate one for a Gleam project using the *OSS Review Toolkit (ORT)*.
+
+## What is a Software Bill of Materials?
+
+A Software Bill of Materials, usually abbreviated as *SBoM*, is a structured
+inventory of the components that make up a software system.
+
+An SBoM typically includes:
+
+* Direct and transitive dependencies
+* Package names and versions
+* Source locations
+* Cryptographic hashes
+* Licence and copyright information
+
+An SBoM answers the question:
+
+> What exactly is included in this piece of software?
+
+It is important to understand what an SBoM _does not_ provide. An SBoM does not
+claim that software is secure, compliant, or free of vulnerabilities. Instead,
+it provides a factual foundation that other tools and processes can build on.
+
+### Common SBoM formats
+
+Most tooling today relies on standardised, machine-readable formats. The two
+most widely used standards are:
+
+* *CycloneDX* -
+  [https://cyclonedx.org/](https://cyclonedx.org/)
+
+* *SPDX (Software Package Data Exchange)* -
+  [https://spdx.dev/](https://spdx.dev/)
+
+Both formats are designed to be consumed by automated tooling and are supported
+by a broad ecosystem of security, compliance, and supply chain tools.
+
+## Why generate an SBoM?
+
+There are several practical reasons why projects generate and publish SBoMs.
+
+### Vulnerability analysis
+
+Security tools can use an SBoM to determine whether a project is affected by
+known vulnerabilities in its dependencies.
+
+For example, tools like *Dependency-Track* ingest CycloneDX SBoMs and
+continuously analyse them against vulnerability databases to highlight affected
+components:
+
+[https://dependencytrack.org/](https://dependencytrack.org/)
+
+In this setup, the SBoM acts as the input that enables automated vulnerability
+tracking.
+
+### Regulatory and contractual requirements
+
+SBoMs are increasingly required in regulated environments or when supplying
+software to larger organisations.
+
+Examples include:
+
+* Safety-critical industries such as automotive or medical devices
+* Government procurement requirements
+* Customers that require supply chain transparency from vendors
+
+In these contexts, providing an SBoM is often a prerequisite for doing business,
+independent of whether vulnerabilities are currently known.
+
+### Licence and copyright compliance
+
+An SBoM can also be used to:
+
+* Review the licences used by dependencies
+* Identify incompatible or problematic licences
+* Support internal or external compliance audits
+
+Having an explicit inventory makes it significantly easier to reason about legal
+and contractual obligations.
+
+## What is the OSS Review Toolkit?
+
+The *OSS Review Toolkit (ORT)* is an open source toolkit for analysing
+dependencies, licences, and other supply chain aspects of software projects.
+
+ORT supports many ecosystems and can produce reports in multiple formats,
+including CycloneDX and SPDX.
+
+Project website and documentation:
+[https://oss-review-toolkit.org/ort/](https://oss-review-toolkit.org/ort/)
+
+ORT is commonly used in automated environments such as CI pipelines, but it can
+also be run locally via Docker. Internally, ORT consists of several stages, such
+as dependency analysis, scanning, evaluation, and report generation. This guide
+keeps the configuration minimal and focuses on SBoM generation. For a detailed
+explanation of ORT’s architecture and stages, refer to the official
+documentation.
+
+## Generating an SBoM using Docker
+
+ORT can be run locally using Docker. For Gleam projects, the `ort-minimal` image
+is sufficient.
+
+ORT is executed in multiple stages. Each stage produces output that is consumed
+by the next one. All commands below assume they are run from the root of the
+project.
+
+### Dependency analysis
+
+The analyse step resolves direct and transitive dependencies and produces an
+analysis result file.
+
+```sh
+docker run --rm \
+  -v "$(pwd)":/workspace \ # foo
+  -w /workspace \
+  ghcr.io/oss-review-toolkit/ort-minimal:74.0.0 \
+  analyze \
+    --input-dir /workspace \
+    --output-dir /workspace/ort-result
+```
+
+This command generates an `analyzer-result.yml` file under `ort-result/`.
+
+For accurate results, ensure that your `manifest.toml` is checked into version
+control and reflects the current state of the project.
+
+### Scanning
+
+The scan step collects additional metadata about dependencies, such as licence
+and copyright information.
+
+```bash
+docker run --rm \
+  -v "$(pwd)":/workspace \
+  -w /workspace \
+  ghcr.io/oss-review-toolkit/ort-minimal:74.0.0 \
+  scan \
+    --input-file /workspace/ort-result/analyzer-result.yml \
+    --output-dir /workspace/ort-result
+```
+
+This produces a `scan-result.yml` file in the same output directory.
+
+### Report generation
+
+Finally, the report step generates SBoMs in the desired formats.
+
+```bash
+docker run --rm \
+  -v "$(pwd)":/workspace \
+  -w /workspace \
+  ghcr.io/oss-review-toolkit/ort-minimal:74.0.0 \
+  report \
+    --input-file /workspace/ort-result/scan-result.yml \
+    --output-dir /workspace/ort-result \
+    --report-formats CycloneDx,SpdxDocument,WebApp \
+    --option CycloneDX=output.file.formats=json,xml \
+    --option SpdxDocument=outputFileFormats=JSON,YAML
+```
+
+The generated SBoMs are written to ORT’s default report locations under
+`ort-result/`.
+
+## Generating an SBoM using GitHub Actions
+
+In CI environments, ORT is commonly run using its official GitHub Actions
+integration. The action orchestrates the individual ORT stages automatically.
+
+The following workflow generates SBoMs on every push to the `main` branch:
+
+```yaml
+name: Generate SBoM
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - name: Run OSS Review Toolkit
+        id: ort
+        uses: oss-review-toolkit/ort-ci-github-action@1805edcf1f4f55f35ae6e4d2d9795ccfb29b6021 # v1.1.0
+        with:
+          image: "ghcr.io/oss-review-toolkit/ort-minimal:74.0.0"
+          run: >-
+            labels,
+            cache-dependencies,
+            cache-scan-results,
+            analyzer,
+            scanner,
+            advisor,
+            evaluator,
+            reporter,
+            upload-results
+          report-formats: "CycloneDx,SpdxDocument,WebApp"
+          ort-cli-report-args: >-
+            -O CycloneDX=output.file.formats=json,xml
+            -O SpdxDocument=outputFileFormats=JSON,YAML
+```
+
+This workflow:
+
+* Analyses the project dependencies
+* Generates SBoMs in CycloneDX and SPDX formats
+* Uploads the results as build artefacts
+
+Uploading artefacts makes the generated reports available without committing
+them to the repository.
+
+## Next steps
+
+Once you have an SBoM, you can:
+
+* Upload it to vulnerability analysis tools
+* Share it with customers or auditors
+* Use it as part of internal compliance or review processes
+
+SBoMs are most effective when generated automatically and kept up to date.
+Integrating ORT into CI ensures that the inventory reflects the current state of
+your project over time.
