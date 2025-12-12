@@ -45,6 +45,7 @@ fn build_site() -> snag.Result(Nil) {
     )
 
   use externals_guide <- result.try(page.externals_guide(ctx))
+  use sbom_guide <- result.try(page.sbom_guide(ctx))
 
   let page_files = [
     page.home(ctx),
@@ -61,6 +62,7 @@ fn build_site() -> snag.Result(Nil) {
     page.case_studies_index(case_studies, ctx),
     page.sponsor(ctx),
     externals_guide,
+    sbom_guide,
     roadmap.page(ctx),
     command_line_reference.page(ctx),
     language_server.page(ctx),

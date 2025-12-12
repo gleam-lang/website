@@ -7,6 +7,7 @@ import gleam/result
 import gleam/string
 import gleam/time/calendar
 import gleam/time/timestamp
+import houdini
 import jot
 import just
 import lustre/attribute.{attribute as attr, class} as attr
@@ -2780,6 +2781,11 @@ pub fn documentation(ctx: site.Context) -> fs.File {
           html.text("Using code written in other languages from Gleam"),
         ]),
       ]),
+      html.li([], [
+        html.a([attr.href("/documentation/sbom")], [
+          html.text("Creating a Software Bill of Materials"),
+        ]),
+      ]),
     ]),
     html.h2([attr.id("cheatsheets")], [html.text("Cheatsheets")]),
     html.ul([], [
@@ -3773,6 +3779,36 @@ pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
   |> Ok
 }
 
+pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "documentation/sbom",
+      title: "Creating a Software Bill of Materials",
+      meta_title: "Creating a Software Bill of Materials | Gleam Programming Language",
+      subtitle: "Generating SBOMs for Gleam projects with ORT",
+      description: "Learn how to generate Software Bill of Materials (SBOM) for your Gleam projects using the OSS Review Toolkit",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let path = "documentation/sbom-guide.djot"
+
+  use content <- result.try(
+    path
+    |> fs.read
+    |> snag.context("Failed to load content for " <> path),
+  )
+
+  let document = parse_djot(content)
+  let table_of_contents = table_of_contents_from_djot(document)
+  let content = jot.document_to_html(document)
+
+  [element.unsafe_raw_html("", "article", [class("prose")], content)]
+  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
+  |> to_html_file(meta)
+  |> Ok
+}
+
 pub fn community(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -4638,20 +4674,25 @@ pub fn highlighted_erlang_pre_code(code: String) -> Element(a) {
   html.pre([], [element.unsafe_raw_html("", "code", [], html)])
 }
 
+fn highlight_shell_html(code: String) -> String {
+  // TODO: real syntax highlighting
+  code
+  |> string.split("\n")
+  |> list.map(fn(line) {
+    let escaped = houdini.escape(line)
+    case line {
+      "#" <> _ -> "<span class=hl-comment>" <> escaped <> "</span>"
+      _ -> escaped
+    }
+  })
+  |> string.join("\n")
+}
+
 fn highlighted_shell_pre_code(code: String) -> Element(c) {
-  let html =
-    code
-    |> string.split("\n")
-    |> list.map(fn(line) {
-      let t = html.text(line)
-      // TODO: real syntax highlighting
-      case line {
-        "#" <> _ -> html.span([attr.class("hl-comment")], [t])
-        _ -> t
-      }
-    })
-    |> list.intersperse(html.text("\n"))
-  html.pre([], [html.code([], html)])
+  let content = highlight_shell_html(code)
+  html.pre([], [
+    html.code([], [element.unsafe_raw_html("", "span", [], content)]),
+  ])
 }
 
 fn highlighted_toml_pre_code(code: String) -> Element(c) {
@@ -4706,27 +4747,33 @@ fn highlighted_dockerfile_pre_code(code: String) -> Element(b) {
   html.pre([], [html.code([], html)])
 }
 
-fn highlighted_yaml_pre_code(code: String) -> Element(d) {
+fn highlight_yaml_html(code: String) -> String {
   // TODO: real syntax highlighting
-  let html =
-    code
-    |> string.split("\n")
-    |> list.map(fn(line) {
-      case string.split_once(line, ": ") {
-        Ok(#(before, after)) -> [
-          html.span([attr.class("hl-function")], [html.text(before)]),
-          html.text(": " <> after),
-        ]
-        Error(_) ->
-          case string.ends_with(line, ":") {
-            True -> [html.span([attr.class("hl-function")], [html.text(line)])]
-            False -> [html.text(line)]
-          }
-      }
-    })
-    |> list.intersperse([html.text("\n")])
-    |> list.flatten
-  html.pre([], [html.code([], html)])
+  code
+  |> string.split("\n")
+  |> list.map(fn(line) {
+    let escaped = houdini.escape(line)
+    case string.split_once(line, ": ") {
+      Ok(#(before, after)) ->
+        "<span class=hl-function>"
+        <> houdini.escape(before)
+        <> "</span>: "
+        <> houdini.escape(after)
+      Error(_) ->
+        case string.ends_with(line, ":") {
+          True -> "<span class=hl-function>" <> escaped <> "</span>"
+          False -> escaped
+        }
+    }
+  })
+  |> string.join("\n")
+}
+
+fn highlighted_yaml_pre_code(code: String) -> Element(d) {
+  let content = highlight_yaml_html(code)
+  html.pre([], [
+    html.code([], [element.unsafe_raw_html("", "span", [], content)]),
+  ])
 }
 
 pub fn share_button() -> Element(a) {
@@ -4794,6 +4841,16 @@ pub fn parse_djot(string: String) -> jot.Document {
               }
             })
             |> string.join("\n")
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("yaml"), content:, ..) -> {
+          let content = highlight_yaml_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("sh"), content:, ..)
+        | jot.Codeblock(language: option.Some("shell"), content:, ..)
+        | jot.Codeblock(language: option.Some("bash"), content:, ..) -> {
+          let content = highlight_shell_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         _ -> container
