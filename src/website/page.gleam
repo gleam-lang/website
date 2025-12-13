@@ -2452,14 +2452,12 @@ more. Gleam’s support is much weaker due to going via Erlang source.",
       ]),
       html.li([], [
         html.text(
-          "Elixir has better support for the OTP actor framework. Gleam has its own
-version of OTP which is type safe, but has a smaller feature set.",
+          "Elixir and Gleam both use Erlang's OTP framework. Both have additional modules for working with OTP, which provide APIs more in the style of each respective language. Both common use Erlang's OTP APIs directly, but Elixir can do so more conveniently and concisely due to having a less-strict type system.",
         ),
       ]),
       html.li([], [
         html.text(
-          "Elixir has superior deployment tooling, including support for OTP releases and
-OTP umbrella applications.",
+          "Elixir currently has superior deployment tooling, including support for OTP releases and OTP umbrella applications.",
         ),
       ]),
       html.li([], [
