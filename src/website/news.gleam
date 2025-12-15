@@ -18,6 +18,13 @@ pub fn all() -> snag.Result(List(NewsPost)) {
   io.print("Loading news posts: ")
   let posts = [
     read(
+      title: "The happy holidays 2025 release! 🎁",
+      subtitle: "Gleam v1.14.0 released",
+      published: calendar.Date(2025, calendar.December, 15),
+      author: louis,
+      path: "the-happy-holidays-2025-release",
+    ),
+    read(
       title: "Formalising external APIs",
       subtitle: "Gleam v1.13.0 released",
       published: calendar.Date(2025, calendar.October, 19),
