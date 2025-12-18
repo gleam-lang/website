@@ -159,272 +159,344 @@ with modules like these, prompting the programmer to remove the module.
 
 Thanks to [Vitor Souza](https://github.com/vit0rr)!
 
-## Better TODO
-
-- Missing patterns in error messages and the "Add missing patterns" code action
-  are no longer sorted lexicographically. Instead, they now consider the order
-  in which variants were defined. As programmers often group "related" variants
-  together, this should mean less reshuffling after inserting missing patterns!
-  ([fruno](https://github.com/fruno-bulax/))
-
 ## Detatched documentation warnings
 
-- The compiler now emits a warning when a doc comment is not attached to a
-  definition due to a regular comment in between. For example, in the following
-  code:
+Gleam has `///` comments for writing documentation, with the comment being
+placed immediately above the definition being documented. This syntax is
+visually similar to the regular `//` comment, so occasionally a Gleam
+programmer will accidentally place regular comments within documentation,
+causing the first part of the documentation to be "detatched", and not show up
+in the rendered HTML documentation for that code.
 
-  ```gleam
-  /// This documentation is not attached
-  // This is not a doc comment
-  /// This is actual documentation
-  pub fn wibble() {
-    todo
-  }
-  ```
+```gleam
+/// This documentation is not attached.
+///
+// This is regular comment.
+///
+/// This is the attached documentation.
+pub fn wibble() {
+  todo
+}
+```
 
-  Will now produce the following warning:
-
-  ```txt
-    warning: Detached doc comment
-    ┌─ src/main.gleam:1:4
-    │
-  1 │ /// This documentation is not attached
-    │    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ This is not attached to a definition
-
-  This doc comment is followed by a regular comment so it is not attached to
-  any definition.
-  Hint: Move the comment above the doc comment
-  ```
-
-  ([Surya Rose](https://github.com/GearsDatapacks))
+The compiler now emits a warning when a documentation comment is not attached to a
+definition due to a regular comment in between, helping to prevent this
+mistake. Thank you [Surya Rose](https://github.com/GearsDatapacks)!
 
 ## Record update syntax for constants
 
-- Record update syntax can now be used in constant definitions, so constant
-  records can be derived from other records using the spread operator:
+Gleam's record update syntax can now be used in constant definitions, enabling
+constant records to be constructed from other constant records.
 
-  ```gleam
-  pub const base_http_config = HttpConfig(
-    host: "0.0.0.0",
-    port: 8080,
-    use_tls: False,
-    log_level: Info,
-  )
+```gleam
+pub const base_http_config = HttpConfig(
+  host: "0.0.0.0",
+  port: 8080,
+  use_tls: False,
+  log_level: Info,
+)
 
-  pub const dev_http_config = HttpConfig(
-    ..base_http_config,
-    port: 4000,
-    log_level: Debug,
-  )
+pub const dev_http_config = HttpConfig(
+  ..base_http_config,
+  port: 4000,
+  log_level: Debug,
+)
 
-  pub const prod_http_config = HttpConfig(
-    ..base_http_config,
-    port: 80,
-    use_tls: True,
-    log_level: Warn,
-  )
-  ```
+pub const prod_http_config = HttpConfig(
+  ..base_http_config,
+  port: 80,
+  use_tls: True,
+  log_level: Warn,
+)
+```
 
-  ([Adi Salimgereyev](https://github.com/abs0luty))
-
-## Command line API improvements
-
-- The help text displayed by `gleam dev --help`, `gleam test --help`, and
-  `gleam run --help` has been improved: now each one states which function it's
-  going to run.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The `--invert` and `--package` options of `gleam deps tree` are now mutually
-  exclusive; if both options are given the command will fail. Previously,
-  `--invert` would be silently ignored if given together with `--package`.
-  ([Evan Silberman](https://github.com/silby))
-
-- The format used for `gleam deps list` and the notice of available major
-  version upgrades has been improved.
-  ([Louis Pilfold](https://github.com/lpil))
+Thank you [Adi Salimgereyev](https://github.com/abs0luty)!
 
 ## Latest Elixir support
 
-- Update to latest Elixir API, so warning would not be shown when compiling
-  Elixir file in a Gleam project.
-  ([Andrey Kozhev](https://github.com/ankddev))
+Gleam's build tool can compile Gleam code, but also Erlang and Elixir code as
+well. This is part of Gleam's committment to being part of the wider BEAM
+ecosystem, rather than an independant language that happens to use the same
+virtual machine. Practically, this means that Gleam programs can add Erlang and
+Elixir code or packages as dependencies, and not have to do additional work or
+configuration to use that code.
 
-## Outdated dependencies command
+This release updates to the latest Elixir compiler API, fixing some warnings
+that would be emitted with previous versions of Gleam and the latest version of
+Elixir. Thank you [Andrey Kozhev](https://github.com/ankddev)!
 
-- The build tool now has a new `gleam deps outdated` command that shows outdated
-  versions for dependencies. For example:
+## Outdated dependencies view
 
-  ```sh
-  $ gleam deps outdated
-  Package  Current  Latest
-  -------  -------  ------
-  wibble   1.4.0    1.4.1
-  wobble   1.0.1    2.3.0
-  ```
+It is important to take great care when using dependency packages: They can
+save a lot of time, but all code added to a project has a maintenance cost and
+security considerations.
 
-  ([Vladislav Shakitskiy](https://github.com/vshakitskiy))
+To help with this task we have been providing more tools for working with
+dependencies, the latest of which is the `gleam deps outdated` command. This
+command makes it much easier to identify which packages have available updates
+in the package repository.
+
+```sh
+$ gleam deps outdated
+Package  Current  Latest
+-------  -------  ------
+wibble   1.4.0    1.4.1
+wobble   1.0.1    2.3.0
+```
+
+Thank you [Vladislav Shakitskiy](https://github.com/vshakitskiy)!
 
 ## Helpful git-not-installed error message
 
-- The build tool now provides better error message when trying to build Git
-  dependencies without Git installed. Previously, it would show this error:
+Dependency packages can be added from Git repositories as well as from the Hex
+package repository. The `git` program must be installed to use Git
+dependencies, and previously if it was not the build tool would fail with a
+not-very-helpful error message when trying to download these dependencies.
 
-  ```txt
-  error: Shell command failure
+With this version the error message has been improved, and includes a link to
+instructions on how to install it.
 
-  There was a problem when running the shell command `git`.
+``` =html
+<pre><code><b><span class="code-error">error</span>: Program not found</b>
 
-  The error from the shell command library was:
+The program `git` was not found. Is it installed?
 
-      Could not find the stdio stream
-  ```
+Documentation for installing Git can be viewed here:
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+</code></pre>
+```
 
-  Now it will show:
-
-  ```txt
-  error: Program not found
-
-  The program `git` was not found. Is it installed?
-
-  Documentation for installing Git can be viewed here:
-  https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-  ```
-
-  ([Andrey Kozhev](https://github.com/ankddev))
-
-## Merge case branches code action
-
-- The language server can now offer a code action to merge case branches with
-  the same body. For example:
-
-  ```gleam
-  case user {
-    Admin(name:, ..) -> todo
-  //^^^^^^^^^^^^^^^^^^^^^^^^
-    Guest(name:, ..) -> todo
-  //^^^^^^^^^^^^^^^^ Selecting these two branches you can
-  //                 trigger the "Merge case branches" code action
-    _ -> todo
-  }
-  ```
-
-  Triggering the code action would result in the following code:
-
-  ```gleam
-  case user {
-    Admin(name:, ..) | Guest(name:, ..) -> todo
-    _ -> todo
-  }
-  ```
-
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-## Improved name selection in code actions
-
-- The "generate function" code action can now pick better names for arguments
-  that use the record access syntax. For example:
-
-  ```gleam
-  pub type User {
-    User(id: Int, name: String)
-  }
-
-  pub fn go(user: User) {
-    authenticate(user.id, user.name)
-    todo
-  }
-  ```
-
-  Having the language server generate the missing `authenticate` function will
-  produce the following code:
-
-  ```gleam
-  pub fn authenticate(id: Int, name: String) {
-    todo
-  }
-  ```
-
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The "pattern match on variable" code action can now pick better names when
-  used on tuples.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
+Thank you [Andrey Kozhev](https://github.com/ankddev)!
 
 ## Further code action support
 
-- The "inline variable" code action can now trigger when used over the let
-  keyword of a variable to inline.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+The `gleam` binary also includes the Gleam language server, bringing IDE-like
+functionality to all editors that support the language server protocol. Several
+of the existing code actions (automated refactorings, etc) have been improved
+so they can be triggered from more places, or so they support a wider range of
+code.
 
-- The "add omitted labels" code action can now be used in function calls where
-  some of the labels have been provided already.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+The "inline variable" code action can now trigger when used over the `let`
+keyword of a variable to inline, rather than just the variable name and the
+usage of that variable.
 
-- The "generate function" code action can now trigger when used over constant
-  values as well.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+The "add omitted labels" code action can now be used in function calls where
+some of the labels have been provided already. This greatly increases how often
+this code action is usable, a very impactful improvement!
 
-- Qualify and unqualify code actions can now trigger when used over constant
-  values as well.
-  ([Vladislav Shakitskiy](https://github.com/vshakitskiy))
+The "generate function" code action can now trigger when used over constant
+values, while previously it could only be used in expressions within module
+functions. Gleam's type information analysis is used to contextually identify
+when a referenced name is a function, and so when this code action is relevant.
 
-## Improved language server diagnostic grouping
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for these!
 
-- Grouping of related diagnostics should now work across more editors.
-  Warnings will display together with their hints and you no longer have
-  "go to next diagnostic" twice in a row. Zedlings rejoice!
-  ([fruno](https://github.com/fruno-bulax/))
+Qualify and unqualify code actions can now be triggered on constants, instead
+of only on expressions within module functions. Thank you
+[Vladislav Shakitskiy](https://github.com/vshakitskiy)!
 
-## Language server rename failure notification
-
-- When renaming, if the new name is invalid, the language server will produce an
-  error message instead of silently doing nothing.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
 
 ## Type directed autocompletion
 
-- When providing autocomplete suggestions, the language server will now
-  prioritise values which match the expected type of the value being completed.
-  ([Surya Rose](https://github.com/GearsDatapacks))
+The Gleam language server provides autocompletion, sending a list of options
+for the programmer to select from. The options are ordered based upon how
+likely the programmer is to select each option, with the most likely candidates
+being presented first. This ordering now takes type information into account,
+with values that produce the correct type being ranked higher.
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Missing patterns order improvement
+
+Gleam performs exhaustiveness checking of case expressions, reporting an error
+if the patterns do not cover all the possible shapes of the data being matched
+upon.
+
+``` =html
+<pre><code><b><span class="code-error">error</span>: Inexhaustive patterns</b>
+<span class="code-decoration">   ┌─</span> /Users/louis/Desktop/app/src/app.gleam:10:3
+<span class="code-decoration">   │</span>
+<span class="code-decoration">10 │</span> <span class="code-error">╭   case person {</span>
+<span class="code-decoration">11 │</span> <span class="code-error">│     Student(name:) -> name</span>
+<span class="code-decoration">12 │</span> <span class="code-error">│   }</span>
+<span class="code-decoration">   │</span> <span class="code-error">╰───^</span>
+
+This case expression does not have a pattern for all possible values. If it
+is run on one of the values without a pattern then it will crash.
+
+The missing patterns are:
+
+    Teacher(title:, name:)
+    Visitor(name:)
+</code></pre>
+```
+
+The missing patterns in error messages and in the code generated by the "add
+missing patterns" code action used to be ordered lexicographically, but now
+they will be presented in definition order. This is more commonly the order
+that the programmer wants, so they are less likely to need to re-order them in
+their code.
+
+Thank you [fruno](https://github.com/fruno-bulax/)!
+
+
+## Merge case branches code action
+
+There is a new code action which can merge case clauses that havethe same body.
+For example:
+
+```gleam
+case user {
+  Admin(name:, ..) -> todo
+//^^^^^^^^^^^^^^^^^^^^^^^^
+  Guest(name:, ..) -> todo
+//^^^^^^^^^^^^^^^^ Selecting these two branches you can
+//                 trigger the "Merge case branches" code action
+  _ -> todo
+}
+```
+
+Triggering the code action would result in the following code:
+
+```gleam
+case user {
+  Admin(name:, ..) | Guest(name:, ..) -> todo
+  _ -> todo
+}
+```
+
+Little automated refactoring like these can make a big difference to the
+experience of writing and editing Gleam code. Thank you
+[Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Improved name selection in code actions
+
+Another useful code action found in the language server is "generate function".
+It is available when the code is calling an unknown function, and it will
+generate the skeleton of a function with the correct name, arguments, and
+types.
+
+To name the argument the language server looks at how it is called, reusing the
+name of any variables used, or the names of the types if the arguments given
+are not variables. This name selection has been improved, and will also look at
+the names of field labels when arguments are provided using the record access
+syntax.
+
+```gleam
+pub type User {
+  User(id: Int, name: String)
+}
+
+pub fn go(user: User) -> Session {
+  authenticate(user.id, user.name)
+}
+```
+
+Having the language server generate the missing `authenticate` function will
+produce the following code:
+
+```gleam
+pub fn authenticate(id: Int, name: String) -> Session {
+  todo
+}
+```
+A similar improvement has been made for the "pattern match on variable" code
+action when used on tuples. Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Language server rename failure notification
+
+The Gleam language server supports the popular and extremely useful "rename"
+action. Previously if you attempted to rename something to that would result in
+a syntax error (e.g. putting a space in a function name) it would not perform
+the renaming, but it wouldn't tell you why. With this release it will now send
+a notification for the editor to display, letting the programmer know that it
+is an invalid name.
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Improved language server diagnostic grouping
+
+The language server protocol (LSP) is a common interface that lets IDE engines
+(such as Gleam's language server) to work with many different code editors.
+It's brilliant in what it enables, but unfortunately the specification is vague
+in some places, so different code editors interpret messages from the server in
+different ways. This occasionally results in some editors having not-quite
+providing the experience we intended when editing Gleam.
+
+Recently we discovered that when we emit warnings or errors that point to
+multiple places in the source code the Zed editor would treat the two locations
+as independent, so the programmer would need to trigger "go to next diagnostic"
+to go to the next error. We have not adjusted the design of our diagnostics,
+bringing Zed inline with the behaviour of the other major editors.
+
+Thank you [fruno](https://github.com/fruno-bulax/). Zedlings rejoice!
+
+To be clear, we do not think that Zed was doing anything incorrect here. We
+love Zed! From our understanding both behaviours are correct due to ambiguity
+in the LSP specification.
 
 ## Annotate all top level definitions code action
 
-- The language server now offers code action to add type annotations to all
-  functions and constants. For example,
+Gleam has total and perfect type analysis, so it can tell the type of every
+expression in a project, assuming there are no errors in the code that cause it
+to fail to compile. Type annotations are optional, and while they don't help
+the type analysis or make code "more typed", it is considered good style to
+annotate all module functions to help humans read the code.
 
-  ```gleam
-  pub const answer = 42
+The language server has for some time offered a code action for adding missing
+annotations to a single definition, and now it has another for doing all
+definitions at once.
 
-  pub fn add(x, y) {
-    x + y
-  }
+```gleam
+pub const answer = 42
 
-  pub fn add_one(thing) {
-    //     ^ Triggering "Annotate all top level definitions" code action here
-    let result = add(thing, 1)
-    result
-  }
-  ```
+pub fn add(x, y) {
+  x + y
+}
 
-  Triggering the "Annotate all top level definitions" code action over
-  the name of function `add_one` would result in following code:
+pub fn add_one(thing) {
+  let result = add(thing, 1)
+  result
+}
+```
 
-  ```gleam
-  pub const answer: Int = 42
+Triggering the "Annotate all top level definitions" code action on
+the name of function `add_one` results in following code:
 
-  pub fn add(x: Int, y: Int) -> Int {
-    x + y
-  }
+```gleam
+pub const answer: Int = 42
 
-  pub fn add_one(thing: Int) -> Int {
-    let result = add(thing, 1)
-    result
-  }
-  ```
+pub fn add(x: Int, y: Int) -> Int {
+  x + y
+}
 
-  ([Andrey Kozhev](https://github.com/ankddev))
+pub fn add_one(thing: Int) -> Int {
+  let result = add(thing, 1)
+  result
+}
+```
 
+This will be useful for folks who like to forego writing type annotations when
+quickly writing new code, or exploring a new design. Thank you
+[Andrey Kozhev](https://github.com/ankddev)!
+
+
+## Command line API improvements
+
+Various ergonomic improvements have been made to the command line interface of
+Gleam's build tool.
+
+- The help text displayed by `gleam dev --help`, `gleam test --help`, and
+`gleam run --help` has been improved: now each one states which function it's
+going to run. Thanks to [Giacomo Cavalieri](https://github.com/giacomocavalieri).
+
+The `--invert` and `--package` options of `gleam deps tree` are now mutually
+exclusive; if both options are given the command will fail. Previously,
+`--invert` would be silently ignored if given together with `--package`.
+Thanks to [Evan Silberman](https://github.com/silby).
+
+The format used for `gleam deps list` and the notice of available major
+version upgrades has been improved.
 
 ## And the rest
 
