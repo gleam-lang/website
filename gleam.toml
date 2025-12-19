@@ -23,6 +23,7 @@ gleam_httpc = ">= 5.0.0 and < 6.0.0"
 just = ">= 2.0.0 and < 3.0.0"
 pearl = ">= 2.1.0 and < 3.0.0"
 tear = ">= 1.0.0 and < 2.0.0"
+houdini = ">= 1.2.0 and < 2.0.0"
 
 [dev-dependencies]
 gleeunit = ">= 1.0.0 and < 2.0.0"

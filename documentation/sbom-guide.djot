@@ -1,5 +1,3 @@
-# Creating a Software Bill of Materials
-
 Modern software is built on top of many third-party components. Even relatively
 small projects often depend on dozens of libraries that are developed, licensed,
 and maintained elsewhere.
@@ -21,9 +19,7 @@ An SBoM typically includes:
 * Cryptographic hashes
 * Licence and copyright information
 
-An SBoM answers the question:
-
-> What exactly is included in this piece of software?
+An SBoM answers the question: "What exactly is included in this piece of software?"
 
 It is important to understand what an SBoM _does not_ provide. An SBoM does not
 claim that software is secure, compliant, or free of vulnerabilities. Instead,

@@ -1117,14 +1117,6 @@ pre code {
   max-width: 100%;
 }
 
-.prose blockquote {
-  font-style: italic;
-  font-size: 1.25em;
-  border-left: 4px solid var(--color-faff-pink);
-  margin: var(--gap-3) 0;
-  padding: var(--gap-1) var(--gap-2);
-}
-
 .post {
   position: relative;
 }
@@ -1465,11 +1457,6 @@ pre code {
   grid-template-columns: minmax(auto, 340px) auto;
   gap: 1rem;
   padding: 0 var(--gap-2);
-  box-sizing: border-box;
-}
-
-.toc-layout .prose {
-  box-sizing: border-box;
 }
 
 /* This just gives us a nice bit of padding atop the headings */
@@ -1498,7 +1485,8 @@ pre code {
   max-height: 90vh;
   border-radius: .4rem;
   font-size: 1rem;
-  padding-bottom: 1.4rem;
+  padding-bottom: var(--gap-2);
+  margin-bottom: var(--gap-2);
 }
 
 .table-of-contents h4 {
