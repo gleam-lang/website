@@ -2729,6 +2729,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
         ]),
       ]),
     ]),
+
     html.h2([attr.id("gleam-references")], [html.text("Gleam references")]),
     html.ul([], [
       html.li([], [
@@ -2767,6 +2768,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
         ]),
       ]),
     ]),
+
     html.h2([attr.id("guides")], [html.text("Guides")]),
     html.ul([], [
       html.li([], [
@@ -2785,6 +2787,16 @@ pub fn documentation(ctx: site.Context) -> fs.File {
         ]),
       ]),
     ]),
+
+    html.h2([attr.id("security")], [html.text("Security")]),
+    html.ul([], [
+      html.li([], [
+        html.a([attr.href("/documentation/source-bill-of-materials")], [
+          html.text("Generating a Source Bill of Materials for a Gleam project"),
+        ]),
+      ]),
+    ]),
+
     html.h2([attr.id("cheatsheets")], [html.text("Cheatsheets")]),
     html.ul([], [
       html.li([], [
@@ -3780,11 +3792,11 @@ pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
 pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
   let meta =
     PageMeta(
-      path: "documentation/sbom",
+      path: "documentation/source-bill-of-materials",
       title: "Creating a Software Bill of Materials",
       meta_title: "Creating a Software Bill of Materials | Gleam Programming Language",
-      subtitle: "Generating SBOMs for Gleam projects with ORT",
-      description: "Learn how to generate Software Bill of Materials (SBOM) for your Gleam projects using the OSS Review Toolkit",
+      subtitle: "Generating SBoMs for Gleam projects with ORT",
+      description: "Learn how to use the OSS Review Toolkit with Gleam",
       preload_images: [],
       preview_image: option.None,
     )
