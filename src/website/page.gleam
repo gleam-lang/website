@@ -2781,11 +2781,6 @@ pub fn documentation(ctx: site.Context) -> fs.File {
           html.text("Using code written in other languages from Gleam"),
         ]),
       ]),
-      html.li([], [
-        html.a([attr.href("/documentation/sbom")], [
-          html.text("Creating a Software Bill of Materials"),
-        ]),
-      ]),
     ]),
 
     html.h2([attr.id("security")], [html.text("Security")]),
