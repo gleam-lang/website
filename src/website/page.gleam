@@ -3793,7 +3793,7 @@ pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
       subtitle: "Generating SBoMs for Gleam projects with ORT",
       description: "Learn how to use the OSS Review Toolkit with Gleam",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("sbom"),
     )
 
   let path = "documentation/sbom-guide.djot"
