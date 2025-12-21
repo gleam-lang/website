@@ -3247,7 +3247,7 @@ Be sure to replace this with your domain.",
 # Any other exit code is a failure, with multiple failures in a row meaning the
 # instance is unhealthy.
 #
-# wget is used to send a HTTP request to the application, to check it is
+# `wget` is used to send an HTTP request to the application, to check if it is
 # serving traffic.
 # You may choose to add additional health check logic to this script.
 #
@@ -3644,7 +3644,7 @@ container using the ",
     html.h2([attr.id("start-the-container")], [html.text("Start the container")]),
     html.p([], [
       html.text("The "),
-      html.code([], [html.text(".container")]),
+      html.code([], [html.text("/etc/containers/systemd/webapp.container")]),
       html.text(" file creates a systemd service, so "),
       html.code([], [html.text("systemctl")]),
       html.text(" can be used to manage the application container."),
@@ -3722,7 +3722,7 @@ with the same name.",
     ]),
     html.p([], [
       html.text("If you have changed the "),
-      html.code([], [html.text(".container")]),
+      html.code([], [html.text("/etc/containers/systemd/webapp.container")]),
       html.text(
         " file you can reload the daemon to pick up
 the changes and then restart the service to replace the container with one using
