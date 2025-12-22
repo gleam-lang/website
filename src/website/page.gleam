@@ -2631,7 +2631,7 @@ Be sure to replace this with your domain.",
 # Any other exit code is a failure, with multiple failures in a row meaning the
 # instance is unhealthy.
 #
-# `wget` is used to send an HTTP request to the application, to check if it is
+# wget is used to send an HTTP request to the application, to check if it is
 # serving traffic.
 # You may choose to add additional health check logic to this script.
 #
