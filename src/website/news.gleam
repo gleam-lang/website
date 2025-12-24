@@ -23,6 +23,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.October, 19),
       author: louis,
       path: "formalising-external-apis",
+      preview_image: option.None,
     ),
     read(
       title: "No more dependency management headaches",
@@ -30,6 +31,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.August, 5),
       author: louis,
       path: "no-more-dependency-management-headaches",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam JavaScript gets 30% faster",
@@ -37,6 +39,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.June, 2),
       author: louis,
       path: "gleam-javascript-gets-30-percent-faster",
+      preview_image: option.None,
     ),
     read(
       title: "Global rename and find references",
@@ -44,6 +47,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.April, 14),
       author: louis,
       path: "global-rename-and-find-references",
+      preview_image: option.None,
     ),
     read(
       title: "Hello echo! Hello git!",
@@ -51,6 +55,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.March, 08),
       author: louis,
       path: "hello-echo-hello-git",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam gets “rename variable”",
@@ -58,6 +63,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.February, 07),
       author: louis,
       path: "gleam-gets-rename-variable",
+      preview_image: option.None,
     ),
     read(
       title: "Developer Survey 2024 Results",
@@ -65,6 +71,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.February, 06),
       author: louis,
       path: "developer-survey-2024-results",
+      preview_image: option.None,
     ),
     read(
       title: "Improved performance and publishing",
@@ -72,6 +79,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2025, calendar.January, 05),
       author: louis,
       path: "improved-performance-and-publishing",
+      preview_image: option.None,
     ),
     read(
       title: "Introducing the Gleam roadmap!",
@@ -79,6 +87,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.December, 06),
       author: louis,
       path: "introducing-the-gleam-roadmap",
+      preview_image: option.None,
     ),
     read(
       title: "Context aware compilation",
@@ -86,6 +95,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.November, 18),
       author: louis,
       path: "context-aware-compilation",
+      preview_image: option.None,
     ),
     read(
       title: "Developer Survey 2024",
@@ -93,6 +103,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.November, 05),
       author: louis,
       path: "developer-survey-2024",
+      preview_image: option.None,
     ),
     read(
       title: "Convenient code actions",
@@ -100,6 +111,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.September, 19),
       author: louis,
       path: "convenient-code-actions",
+      preview_image: option.None,
     ),
     read(
       title: "Welcome Lambda!",
@@ -107,6 +119,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.August, 26),
       author: louis,
       path: "welcome-lambda",
+      preview_image: option.None,
     ),
     read(
       title: "Supercharged labels",
@@ -114,6 +127,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.August, 02),
       author: louis,
       path: "supercharged-labels",
+      preview_image: option.None,
     ),
     read(
       title: "Auto-imports and tolerant expressions",
@@ -121,6 +135,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.July, 09),
       author: louis,
       path: "auto-imports-and-tolerant-expressions",
+      preview_image: option.None,
     ),
     read(
       title: "Fault tolerant Gleam",
@@ -128,6 +143,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.May, 27),
       author: louis,
       path: "fault-tolerant-gleam",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam version v1.1",
@@ -135,6 +151,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.April, 16),
       author: louis,
       path: "gleam-v1.1",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam version 1",
@@ -142,6 +159,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.March, 04),
       author: louis,
       path: "gleam-version-1",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam's new interactive language tour",
@@ -149,6 +167,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.January, 19),
       author: louis,
       path: "gleams-new-interactive-language-tour",
+      preview_image: option.None,
     ),
     read(
       title: "Multi-target projects",
@@ -156,6 +175,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2024, calendar.January, 16),
       author: louis,
       path: "v0.34-multi-target-projects",
+      preview_image: option.None,
     ),
     read(
       title: "Exhaustive Gleam",
@@ -163,6 +183,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.December, 18),
       author: louis,
       path: "v0.33-exhaustive-gleam",
+      preview_image: option.None,
     ),
     read(
       title: "Polishing syntax for stability",
@@ -170,6 +191,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.November, 01),
       author: louis,
       path: "v0.32-polishing-syntax-for-stability",
+      preview_image: option.None,
     ),
     read(
       title: "Keeping dependencies explicit",
@@ -177,6 +199,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.September, 25),
       author: louis,
       path: "v0.31-keeping-dependencies-explicit",
+      preview_image: option.None,
     ),
     read(
       title: "Local dependencies and enhanced externals",
@@ -184,6 +207,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.July, 12),
       author: louis,
       path: "v0.30-local-dependencies-and-enhanced-externals",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam gets autocompletion",
@@ -191,6 +215,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.May, 23),
       author: louis,
       path: "v0.29-gleam-gets-autocompletion",
+      preview_image: option.None,
     ),
     read(
       title: "Introducing the Gleam package index",
@@ -198,6 +223,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.April, 30),
       author: louis,
       path: "introducing-the-gleam-package-index",
+      preview_image: option.None,
     ),
     read(
       title: "Monorepos, fast maps, and more",
@@ -205,6 +231,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.April, 03),
       author: louis,
       path: "v0.28-monorepos-fast-maps-and-more",
+      preview_image: option.None,
     ),
     read(
       title: "Hello panic, goodbye try",
@@ -212,6 +239,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.March, 01),
       author: louis,
       path: "v0.27-hello-panic-goodbye-try",
+      preview_image: option.None,
     ),
     read(
       title: "Incremental compilation, and hello Deno!",
@@ -219,6 +247,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2023, calendar.January, 19),
       author: louis,
       path: "v0.26-incremental-compilation-and-deno",
+      preview_image: option.None,
     ),
     read(
       title: "Developer Survey 2022 Results",
@@ -226,6 +255,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.December, 16),
       author: louis,
       path: "developer-survey-2022-results",
+      preview_image: option.None,
     ),
     read(
       title: "Introducing use expressions!",
@@ -233,6 +263,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.November, 24),
       author: louis,
       path: "v0.25-introducing-use-expressions",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.24 released!",
@@ -240,6 +271,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.October, 25),
       author: louis,
       path: "gleam-v0.24-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.23 released!",
@@ -247,6 +279,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.September, 18),
       author: louis,
       path: "gleam-v0.23-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.22 released!",
@@ -254,6 +287,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.June, 19),
       author: louis,
       path: "gleam-v0.22-released",
+      preview_image: option.None,
     ),
     read(
       title: "Introducing the Gleam language server!",
@@ -261,6 +295,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.April, 24),
       author: louis,
       path: "v0.21-introducing-the-gleam-language-server",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.20 released!",
@@ -268,6 +303,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.February, 23),
       author: louis,
       path: "gleam-v0.20-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.19 released!",
@@ -275,6 +311,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2022, calendar.January, 12),
       author: louis,
       path: "gleam-v0.19-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.18 released!",
@@ -282,6 +319,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2021, calendar.December, 06),
       author: louis,
       path: "gleam-v0.18-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.17 released!",
@@ -289,6 +327,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2021, calendar.September, 20),
       author: louis,
       path: "gleam-v0.17-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam compiles to JavaScript!",
@@ -296,6 +335,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2021, calendar.June, 17),
       author: louis,
       path: "v0.16-gleam-compiles-to-javascript",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.15 released!",
@@ -303,6 +343,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2021, calendar.May, 06),
       author: louis,
       path: "gleam-v0.15-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.14 released!",
@@ -310,6 +351,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2021, calendar.February, 18),
       author: louis,
       path: "gleam-v0.14-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.13 released!",
@@ -317,6 +359,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2021, calendar.January, 13),
       author: louis,
       path: "gleam-v0.13-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.12 and Gleam OTP v0.1 released! 🎃",
@@ -324,6 +367,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2020, calendar.October, 31),
       author: louis,
       path: "gleam-v0.12-and-gleam-otp-v0.1-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.11 released!",
@@ -331,6 +375,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2020, calendar.August, 28),
       author: louis,
       path: "gleam-v0.11-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.10 released!",
@@ -338,6 +383,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2020, calendar.July, 01),
       author: louis,
       path: "gleam-v0.10-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.9 released!",
@@ -345,6 +391,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2020, calendar.June, 1),
       author: louis,
       path: "gleam-v0.9-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.8 released!",
@@ -352,6 +399,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2020, calendar.May, 7),
       author: louis,
       path: "gleam-v0.8-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.7 released!",
@@ -359,6 +407,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2020, calendar.March, 1),
       author: louis,
       path: "gleam-v0.7-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.6 released!",
@@ -366,6 +415,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2019, calendar.December, 25),
       author: louis,
       path: "gleam-v0.6-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.5 released!",
@@ -373,6 +423,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2019, calendar.December, 16),
       author: louis,
       path: "gleam-v0.5-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.4 released!",
@@ -380,6 +431,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2019, calendar.September, 19),
       author: louis,
       path: "gleam-v0.4-released",
+      preview_image: option.None,
     ),
     read(
       title: "Gleam v0.3 released!",
@@ -387,6 +439,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2019, calendar.August, 07),
       author: louis,
       path: "gleam-v0.3-released",
+      preview_image: option.None,
     ),
     read(
       title: "Hello, Gleam!",
@@ -394,6 +447,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2019, calendar.April, 15),
       author: louis,
       path: "hello-gleam",
+      preview_image: option.None,
     ),
   ]
   io.print("\n")
@@ -411,6 +465,7 @@ pub type NewsPost {
     author: Author,
     path: String,
     content: String,
+    preview_image: option.Option(String),
   )
 }
 
@@ -424,6 +479,7 @@ fn read(
   published published: calendar.Date,
   author author: Author,
   path path: String,
+  preview_image preview_image: option.Option(String),
 ) -> snag.Result(NewsPost) {
   io.print(".")
   filepath.join("posts", path)
@@ -431,7 +487,15 @@ fn read(
   |> fs.read
   |> snag.context("Failed to load content for /news/" <> path)
   |> result.map(djot_to_html)
-  |> result.map(NewsPost(_, title:, subtitle:, published:, author:, path:))
+  |> result.map(NewsPost(
+    _,
+    title:,
+    subtitle:,
+    published:,
+    author:,
+    path:,
+    preview_image:,
+  ))
 }
 
 fn djot_to_html(string: String) -> String {
