@@ -520,7 +520,7 @@ pub fn page(post: NewsPost, ctx: site.Context) -> fs.File {
       description: "News post: " <> post.subtitle,
       meta_title: post.title <> " | Gleam programming language",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: post.preview_image,
     )
 
   [
