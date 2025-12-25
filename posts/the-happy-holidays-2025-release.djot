@@ -426,7 +426,7 @@ providing the experience we intended when editing Gleam.
 Recently we discovered that when we emit warnings or errors that point to
 multiple places in the source code the Zed editor would treat the two locations
 as independent, so the programmer would need to trigger "go to next diagnostic"
-to go to the next error. We have not adjusted the design of our diagnostics,
+to go to the next error. We have now adjusted the design of our diagnostics,
 bringing Zed inline with the behaviour of the other major editors.
 
 Thank you [fruno](https://github.com/fruno-bulax/). Zedlings rejoice!
