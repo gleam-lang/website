@@ -20,7 +20,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
     read(
       title: "The happy holidays release 2025 🎁",
       subtitle: "Gleam v1.14.0 released",
-      published: calendar.Date(2025, calendar.December, 15),
+      published: calendar.Date(2025, calendar.December, 25),
       author: louis,
       path: "the-happy-holidays-2025-release",
       preview_image: option.Some("xmas-2025"),

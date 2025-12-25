@@ -1,4 +1,4 @@
-Merry Christmas, and happy holidays everyone! Gleam is a type-safe and scalable
+Merry Christmas and happy holidays everyone! Gleam is a type-safe and scalable
 language for the Erlang virtual machine and JavaScript runtimes. Gleam
 [v1.14.0][release] is our Xmas gift for you, let's unwrap it and take a look
 inside.
@@ -66,9 +66,9 @@ and [Yoshie](https://github.com/yoshi-monster) for this!
 
 ## Interference-based pruning for ints
 
-Gleam uses _pattern matching_ for flow control, a common feature functional
+Gleam uses _pattern matching_ for flow control, a common feature of functional
 languages. This is where the programmer declares a series of _patterns_ in a
-case expression, and the first clause has pattern that matches the shape of the
+case expression, and the first clause has a pattern that matches the shape of the
 data being matched upon will be executed. Because these patterns are
 declarative the compiler can generate more optimised code than it would be able
 to for an `if`-`else` chain of boolean checks.
@@ -103,15 +103,15 @@ hexadecimal, or binary, or scientific notation could be used for floats.
 
 Gleam's compiler now internally normalises these values to a single canonical
 representation. This new representation is now used by the pattern matching
-analysis engine, further enabling optimsations such as interference-based
+analysis engine, further enabling optimisations such as interference-based
 pruning, making Gleam code faster and detecting more redundant clauses.
 
 Thank you [ptdewey](https://github.com/ptdewey)!
 
-## More precise incorrect subject count error messag
+## More precise incorrect subject count error message
 
 Gleam's `case` expression can be used to match on multiple values at the same
-time. If two value are being matched on, then each clause will need two
+time. If two values are being matched on, then each clause will need two
 patterns. If three are matched on then three patterns are needed. Etc.
 Providing the wrong number of patterns will result in a compile error, and now
 the error has been improved to show exactly where the problem is.
@@ -154,12 +154,12 @@ code. Thank you [Nafi](https://github.com/re-masashi) for this improvement!
 
 A Gleam module with no public types or functions can't do anything, so it's not
 useful! The compiler now emits a warning when a module contains no public
-definitions. The `gleam publish` command will also return an error packages
+definitions. The `gleam publish` command will also return an error for packages
 with modules like these, prompting the programmer to remove the module.
 
 Thanks to [Vitor Souza](https://github.com/vit0rr)!
 
-## Detatched documentation warnings
+## Detached documentation warnings
 
 Gleam has `///` comments for writing documentation, with the comment being
 placed immediately above the definition being documented. This syntax is
@@ -215,8 +215,8 @@ Thank you [Adi Salimgereyev](https://github.com/abs0luty)!
 ## Latest Elixir support
 
 Gleam's build tool can compile Gleam code, but also Erlang and Elixir code as
-well. This is part of Gleam's committment to being part of the wider BEAM
-ecosystem, rather than an independant language that happens to use the same
+well. This is part of Gleam's commitment to being part of the wider BEAM
+ecosystem, rather than an independent language that happens to use the same
 virtual machine. Practically, this means that Gleam programs can add Erlang and
 Elixir code or packages as dependencies, and not have to do additional work or
 configuration to use that code.
@@ -342,7 +342,7 @@ Thank you [fruno](https://github.com/fruno-bulax/)!
 
 ## Merge case branches code action
 
-There is a new code action which can merge case clauses that havethe same body.
+There is a new code action which can merge case clauses that have the same body.
 For example:
 
 ```gleam
@@ -417,7 +417,7 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 ## Improved language server diagnostic grouping
 
 The language server protocol (LSP) is a common interface that lets IDE engines
-(such as Gleam's language server) to work with many different code editors.
+(such as Gleam's language server) work with many different code editors.
 It's brilliant in what it enables, but unfortunately the specification is vague
 in some places, so different code editors interpret messages from the server in
 different ways. This occasionally results in some editors having not-quite
@@ -461,7 +461,7 @@ pub fn add_one(thing) {
 ```
 
 Triggering the "Annotate all top level definitions" code action on
-the name of function `add_one` results in following code:
+the name of function `add_one` results in the following code:
 
 ```gleam
 pub const answer: Int = 42
