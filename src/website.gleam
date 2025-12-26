@@ -46,6 +46,7 @@ fn build_site() -> snag.Result(Nil) {
 
   use externals_guide <- result.try(page.externals_guide(ctx))
   use sbom_guide <- result.try(page.sbom_guide(ctx))
+  use faq <- result.try(page.frequently_asked_questions(ctx))
 
   let page_files = [
     page.home(ctx),
@@ -57,12 +58,12 @@ fn build_site() -> snag.Result(Nil) {
     page.documentation(ctx),
     page.deployment_linux(ctx),
     page.deployment_flyio(ctx),
-    page.frequently_asked_questions(ctx),
     news.index_page(news_posts, ctx),
     page.case_studies_index(case_studies, ctx),
     page.sponsor(ctx),
     externals_guide,
     sbom_guide,
+    faq,
     roadmap.page(ctx),
     command_line_reference.page(ctx),
     language_server.page(ctx),
