@@ -12,9 +12,9 @@ JavaScript ecosystems. It's not uncommon for Gleam programs and libraries to
 internally make use of code written in other languages in the same ecosystem,
 and Gleam code can be called from those languages too. To help with the
 interoperability between these languages the Gleam compiler can generate Erlang
-type specifications and TypeScript declaration files, which can be used with
+type specifications and TypeScript declaration files. These can be used with
 external type checkers and static analysis tooling to ensure the various
-languages are calling each other's code correct.
+languages are calling each other's code correctly.
 
 ```gleam
 // Function written in Gleam
