@@ -2656,6 +2656,7 @@ RUN \\
   chmod +x /app/healthcheck.sh \\
   && addgroup --system webapp \\
   && adduser --system webapp -g webapp
+USER webapp
 COPY --from=build /app/build/erlang-shipment /app
 WORKDIR /app
 ENTRYPOINT [\"/app/entrypoint.sh\"]
