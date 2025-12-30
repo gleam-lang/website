@@ -20,6 +20,34 @@ The languages that can be used depends on the compilation target used for the Gl
 There is no additional performance cost to calling functions written in other
 languages and those written in Gleam.
 
+## When to use externals
+
+Externals are useful, but they have several disadvantages.
+
+- The external code written in other languages cannot be analysed and type
+  checked by the Gleam compiler, making bugs and runtime errors possible.
+- The Gleam language server cannot work with languages other than Gleam, so you
+  will have less editor assistance when working with external code in other
+  languages.
+- External code can make it challenging or impossible to run your Gleam project
+  on both the Erlang and JavaScript target.
+
+We recommend minimising use of externals, most projects won't use any at all.
+Externals could be a good choice in these situations:
+
+- You need to use an API provided by the runtime you are using. For
+  example, getting memory usage statistics from the virtual machine.
+- There is code written in another language on the runtime you are using
+  which implements functionality you need, and your budget and deadlines mean
+  it is impractical to implement the functionality in Gleam.
+
+In these cases check there is no existing Gleam package that provides the
+functionality you need. This may solve the problem while providing a better
+developer experience.
+
+Finally, you might choose to use externals to learn more about them, or just to
+have fun!
+
 ## Defining external functions
 
 External functions are functions that are written in another language and then
