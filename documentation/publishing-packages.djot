@@ -1,0 +1,273 @@
+Gleam uses [Hex](https://hex.pm/), the package manager for the BEAM ecosystem, to
+distribute packages. This guide walks you through publishing your first package
+and maintaining it over time.
+
+## Preparing your package
+
+Before publishing, ensure your package is ready for others to use.
+
+### The gleam.toml file
+
+Your `gleam.toml` file contains metadata about your package. Here's an example
+with all the recommended fields:
+
+```toml
+name = "my_package"
+version = "1.0.0"
+description = "A helpful description of what your package does"
+
+licences = ["Apache-2.0"]
+repository = { type = "github", user = "username", repo = "my_package" }
+links = [
+  { title = "Website", href = "https://example.com" },
+]
+
+[dependencies]
+gleam_stdlib = ">= 0.34.0 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
+```
+
+The required fields are:
+
+- `name` - Your package name. Use lowercase letters, numbers, and underscores.
+- `version` - The current version, following semantic versioning.
+- `description` - A brief explanation of what your package does.
+
+The optional but recommended fields are:
+
+- `licences` - A list of [SPDX licence identifiers](https://spdx.org/licenses/).
+- `repository` - Where your source code is hosted.
+- `links` - Additional links such as documentation or your website.
+
+### Module namespacing
+
+The Erlang virtual machine has a single global namespace for modules. To avoid
+conflicts with other packages, place your modules in a subdirectory matching
+your package name.
+
+```
+my_package/
+  src/
+    my_package/          <- Modules go here
+      internal.gleam
+      parser.gleam
+    my_package.gleam     <- Main entry point
+  test/
+  gleam.toml
+```
+
+This way your modules are named `my_package`, `my_package/internal`, and
+`my_package/parser`, which won't conflict with other packages.
+
+::: alert-warning
+### Avoid top-level generic modules
+
+Placing modules like `utils.gleam` or `helpers.gleam` directly in `src/` will
+cause conflicts when users have other dependencies with the same module names.
+If your modules are not properly namespaced, `gleam publish` will ask you to
+confirm before proceeding.
+:::
+
+### Writing documentation
+
+Good documentation makes your package much more useful. Gleam supports several
+types of documentation.
+
+*Function documentation* uses `///` comments:
+
+```gleam
+/// Creates a new queue containing the given items.
+///
+/// The first item in the list will be at the front of the queue.
+///
+/// ## Examples
+///
+/// ```gleam
+/// queue.from_list([1, 2, 3])
+/// |> queue.pop_front
+/// // -> Ok(#(1, queue.from_list([2, 3])))
+/// ```
+///
+pub fn from_list(items: List(a)) -> Queue(a) {
+  Queue(in: [], out: items)
+}
+```
+
+*Module documentation* uses `////` comments at the top of the file:
+
+```gleam
+//// A queue is a first-in, first-out data structure.
+////
+//// This module provides an efficient purely functional queue
+//// implementation using two lists.
+
+pub opaque type Queue(a) {
+  Queue(in: List(a), out: List(a))
+}
+```
+
+*Deprecation notices* use the `@deprecated` attribute to warn users when a
+function will be removed in a future version:
+
+```gleam
+@deprecated("Use `string.inspect` instead")
+pub fn to_string(value: a) -> String {
+  string.inspect(value)
+}
+```
+
+*README.md* is shown on your package's Hex page. Include:
+
+- A brief description of what your package does
+- Installation instructions
+- A quick example showing basic usage
+- Links to full documentation
+
+## Versioning
+
+### Semantic versioning
+
+Gleam packages use [semantic versioning](https://semver.org/). Version numbers
+have three parts: `MAJOR.MINOR.PATCH`.
+
+- *MAJOR* - Increment when you make incompatible API changes.
+- *MINOR* - Increment when you add functionality in a backwards compatible
+  manner.
+- *PATCH* - Increment when you make backwards compatible bug fixes.
+
+For example:
+- `1.0.0` -> `2.0.0`: Removed a public function (breaking change)
+- `1.0.0` -> `1.1.0`: Added a new function (backwards compatible)
+- `1.0.0` -> `1.0.1`: Fixed a bug (backwards compatible)
+
+### Avoid version 0.x
+
+Semantic versioning treats `0.x` versions specially: any change can be breaking.
+This means users of `0.x` packages cannot rely on semantic versioning to
+protect them from breaking changes.
+
+::: alert-warning
+### Commit to your API
+
+When publishing a package, Gleam will ask for confirmation if your version
+starts with `0.`. Consider whether your package is ready for a `1.0.0` release.
+A stable version number gives your users confidence that updates won't
+unexpectedly break their code.
+:::
+
+### Git tags
+
+After publishing a new version, create a git tag to mark the release. The
+convention is to prefix version numbers with `v`:
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+This creates a clear history of releases in your repository and allows users to
+easily view the code for any published version.
+
+## Publishing
+
+### First-time setup
+
+You'll need a Hex account to publish packages. Create one at
+[hex.pm](https://hex.pm/).
+
+The first time you run `gleam publish`, you'll be prompted for your Hex
+username and password. Gleam will use these to create an API token, which is
+then encrypted with a local password you choose. This encrypted token is stored
+on your computer for future use.
+
+For subsequent publishes, you'll only need to enter your local password, not
+your Hex credentials.
+
+### The publish command
+
+When you're ready to publish, run:
+
+```sh
+gleam publish
+```
+
+Gleam will:
+
+1. Build your package and run your tests
+2. Show you what will be published and ask for confirmation
+3. Upload the package to Hex
+4. Generate and upload documentation to [HexDocs](https://hexdocs.pm/)
+
+You may see additional prompts in certain situations:
+
+- *Namespace warning*: If your modules aren't properly namespaced under your
+  package name, you'll be asked to confirm this is intentional.
+- *gleam_ prefix warning*: Package names starting with `gleam_` are reserved
+  for packages maintained by the Gleam core team. If you use this prefix,
+  you'll need to type a confirmation.
+- *Version 0.x warning*: As mentioned above, `0.x` versions don't follow
+  semantic versioning guarantees, so you'll be asked to confirm.
+
+### After publishing
+
+Once published, your package will be available at:
+
+- *Hex*: `https://hex.pm/packages/your_package`
+- *HexDocs*: `https://hexdocs.pm/your_package`
+- *Gleam Package Index*: `https://packages.gleam.run`
+
+The Gleam package index at [packages.gleam.run](https://packages.gleam.run)
+specifically lists Gleam packages and is a great place for users to discover
+your work.
+
+## Updating your package
+
+### Making a new release
+
+To publish a new version:
+
+1. Update the `version` field in `gleam.toml`
+
+2. Update your CHANGELOG if you maintain one
+
+3. Commit and push these changes
+
+4. Run `gleam publish`
+
+5. Tag the release and push the tag:
+
+```sh
+git tag v1.1.0
+git push origin v1.1.0
+```
+
+### Retiring a version
+
+If you publish a version with a serious bug or security issue, you can retire
+it. Retired versions are still available but marked as deprecated, and users
+will see a warning when using them.
+
+The easiest way to retire a version is through the [Hex.pm](https://hex.pm/)
+web interface. Navigate to your package, go to the version you want to retire,
+and use the "Retire" button.
+
+Alternatively, if you have Elixir installed, you can use the Hex command line
+tool:
+
+```sh
+mix hex.retire your_package 1.0.0 security --message "Security vulnerability, please upgrade"
+```
+
+The retirement reasons are: `other`, `invalid`, `security`, or `deprecated`.
+
+To unretire a version:
+
+```sh
+mix hex.retire your_package 1.0.0 --unretire
+```
+
+Note that you cannot delete published versions from Hex. This is by design, as
+it ensures that builds remain reproducible even if a package author decides to
+remove their work.

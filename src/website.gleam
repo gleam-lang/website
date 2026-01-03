@@ -46,6 +46,8 @@ fn build_site() -> snag.Result(Nil) {
 
   use externals_guide <- result.try(page.externals_guide(ctx))
   use sbom_guide <- result.try(page.sbom_guide(ctx))
+  use library_design_guide <- result.try(page.library_design_guidelines(ctx))
+  use publishing_guide <- result.try(page.publishing_packages(ctx))
   use faq <- result.try(page.frequently_asked_questions(ctx))
 
   let page_files = [
@@ -63,6 +65,8 @@ fn build_site() -> snag.Result(Nil) {
     page.sponsor(ctx),
     externals_guide,
     sbom_guide,
+    library_design_guide,
+    publishing_guide,
     faq,
     roadmap.page(ctx),
     command_line_reference.page(ctx),
