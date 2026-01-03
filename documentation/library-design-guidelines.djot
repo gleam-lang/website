@@ -1,0 +1,246 @@
+These guidelines promote consistency and quality across Gleam packages. They are a
+collection of best practices that will help you write better APIs and help your
+users write better code.
+
+## Design for a concrete use case
+
+Before you start writing a library, think about what your goal is.
+
+- What is the concrete problem you want to solve?
+- What would it mean for your API to be a success?
+- Who has this problem? What do they want from an API?
+- What specific things are needed to solve that problem?
+- Have other people worked on this problem? What lessons can be learned from
+  them? Are there specific weaknesses you want to avoid?
+
+Take time to think about these questions. Write ideas on paper. Ask for advice
+from someone you trust. It will make your library better.
+
+If you are doing this right, you will have example code and a tentative API
+before you start implementing anything.
+
+## Avoid gratuitous abstraction
+
+Some programmers like to make their API as general as possible. This will
+reliably make your API harder to understand. Is that worth it? What concrete
+benefits are users gaining? Does that align with the concrete use case you have
+in mind for your library?
+
+Abstraction is a tool, not a design goal. Unless abstraction is making
+someone's life easier, it is not a good idea. If you cannot demonstrate why
+your abstraction is helpful, there is a problem with your API.
+
+A valuable package does not need to be comprehensive. It can be a minimal,
+focused package and still be extremely valuable. Think of the single-purpose
+philosophy of unix tools like `ls` or `grep`. Start simple and introduce
+complexity sparingly.
+
+## Write helpful documentation with examples
+
+All public functions should have documentation comments explaining what they do.
+
+```gleam
+/// Creates a new empty queue.
+///
+/// ## Examples
+///
+/// ```gleam
+/// queue.new()
+/// // -> queue.from_list([])
+/// ```
+///
+pub fn new() -> Queue(a) {
+  Queue(in: [], out: [])
+}
+```
+
+Providing examples of common uses is extremely helpful. The standard library
+makes a point to have examples that show how functions should be used.
+
+Also, make the documentation for the library itself helpful. Perhaps have an
+example that shows how to use many functions together, showcasing the API as a
+whole.
+
+Finally, think hard about the order that the functions appear in your modules.
+People will read documentation linearly when learning a library, so give them
+some structure! Consider putting the most commonly used functions first.
+
+## Design pipe-friendly APIs
+
+Gleam code commonly uses the pipe operator `|>` to chain function calls
+together. For this to work smoothly, the primary data structure a function
+operates on should be its last argument.
+
+```gleam
+pub fn main() {
+  people
+  |> list.map(fn(person) { person.height })
+  |> list.fold(0, int.add)
+}
+```
+
+This also works well with higher order functions like `fold`. The data
+structure being transformed should be the last argument of the accumulator
+function:
+
+```gleam
+// Good API
+pub fn remove(from dict: Dict(k, v), delete key: k) -> Dict(k, v)
+
+pub fn main() {
+  ["Tom", "Steve", "Sally"]
+  |> list.fold(people, fn(people, name) { dict.remove(people, name) })
+}
+```
+
+```gleam
+// Less pipe-friendly API
+pub fn without(dict: Dict(k, v), key: k) -> Dict(k, v)
+
+pub fn main() {
+  ["Tom", "Steve", "Sally"]
+  |> list.fold(people, fn(people, name) { without(people, name) })
+}
+```
+
+When the data structure comes last, pipelines and folds flow naturally.
+
+## Use opaque types
+
+It's convenient for users to construct your types directly, but what happens
+when you want to add a new field, change the internal representation, or switch
+to a different data structure? You would have to release a new major version
+and break everyone's code.
+
+Instead, define your type as *opaque* by exporting the type name but not its
+constructors. Then provide functions for constructing and working with values
+of that type.
+
+```gleam
+// In src/point.gleam
+
+/// A point in 2D space. This type is opaque, use `new` to create points.
+pub opaque type Point {
+  Point(x: Float, y: Float)
+}
+
+/// Creates a new point from x and y coordinates.
+pub fn new(x: Float, y: Float) -> Point {
+  Point(x:, y:)
+}
+
+/// Returns the x coordinate of a point.
+pub fn x(point: Point) -> Float {
+  point.x
+}
+
+/// Returns the y coordinate of a point.
+pub fn y(point: Point) -> Float {
+  point.y
+}
+```
+
+With this approach you can later add a third dimension with `new_3d`, or switch
+to polar coordinates with `from_polar`, without breaking existing code. Users
+construct points through your functions, not by directly using the `Point`
+constructor.
+
+Opaque types also prevent users from pattern matching on your internal
+representation, giving you freedom to change how data is stored.
+
+## Use human readable names
+
+Abbreviations are generally a poor idea for an API. Having an API that is
+clear is more important than saving a few characters by dropping letters from a
+name.
+
+```gleam
+// Good
+pub fn to_string(value: Int) -> String
+
+// Avoid
+pub fn to_str(value: Int) -> String
+```
+
+Choose names that describe what the function does, not how it does it. Prefer
+names that are familiar from the standard library or the wider Gleam ecosystem.
+
+## Module names should not reappear in function names
+
+A function called `user.create_user` is redundant. More importantly, it
+encourages people to use unqualified imports which do not scale well.
+
+In files with many unqualified dependencies, it becomes difficult to figure
+out where functions are coming from. This can make large code bases harder to
+understand.
+
+```gleam
+// Good: the module name provides context
+user.create("Lucy")
+json.decode(data, user_decoder)
+http.get(url)
+
+// Avoid: redundant naming
+user.create_user("Lucy")
+json.json_decode(data, user_decoder)
+http.http_get(url)
+```
+
+With a name like `user.create` readers are encouraged to use qualified imports,
+leading to code that will be clearer to people reading the project for the
+first time.
+
+## Place modules under your package namespace
+
+The Erlang virtual machine has a single global namespace for modules. If two
+packages define modules with the same name they will conflict.
+
+To avoid this, place your modules within a directory matching your package
+name:
+
+```
+my_package/
+  src/
+    my_package/       <- Your modules go here
+      parser.gleam
+      validator.gleam
+    my_package.gleam  <- Main entry point
+```
+
+The modules will be named `my_package/parser` and `my_package/validator`,
+ensuring they won't conflict with modules from other packages.
+
+Avoid placing modules directly in `src/` with generic names like `utils.gleam`
+or `helpers.gleam`. When your package is used as a dependency, these generic
+names are likely to conflict with modules from other packages.
+
+::: alert-warning
+### Namespace pollution check
+
+If your modules are not properly namespaced, `gleam publish` will ask you to
+confirm before proceeding. Top-level modules with generic names cause problems
+for users of your package.
+:::
+
+## Design for both targets
+
+Gleam compiles to both Erlang and JavaScript. When possible, design your
+library to work on both targets.
+
+If your library only works on one target, clearly document this in your
+README and module documentation. Consider whether the core logic could be
+written in pure Gleam, with target-specific functionality separated into
+optional modules.
+
+```gleam
+// Core library works everywhere
+pub fn validate(input: String) -> Result(Data, Error)
+
+// Target-specific module for Erlang features
+// In src/my_package/erlang.gleam
+@target(erlang)
+pub fn spawn_validator() -> Subject(Message)
+```
+
+When you do need to use external functions, follow the guidance in the
+[externals guide](/documentation/externals).

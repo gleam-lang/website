@@ -2145,6 +2145,16 @@ pub fn documentation(ctx: site.Context) -> fs.File {
           html.text("Using code written in other languages from Gleam"),
         ]),
       ]),
+      html.li([], [
+        html.a([attr.href("/documentation/library-design-guidelines")], [
+          html.text("Library design guidelines"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/documentation/publishing-packages")], [
+          html.text("Publishing packages to Hex"),
+        ]),
+      ]),
     ]),
 
     html.h2([attr.id("security")], [html.text("Security")]),
@@ -3162,6 +3172,66 @@ pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
     )
 
   let path = "documentation/sbom-guide.djot"
+
+  use content <- result.try(
+    path
+    |> fs.read
+    |> snag.context("Failed to load content for " <> path),
+  )
+
+  let document = parse_djot(content)
+  let table_of_contents = table_of_contents_from_djot(document)
+  let content = jot.document_to_html(document)
+
+  [element.unsafe_raw_html("", "article", [class("prose")], content)]
+  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
+  |> to_html_file(meta)
+  |> Ok
+}
+
+pub fn library_design_guidelines(ctx: site.Context) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "documentation/library-design-guidelines",
+      title: "Library design guidelines",
+      meta_title: "Library design guidelines | Gleam Programming Language",
+      subtitle: "Best practices for designing Gleam packages",
+      description: "Guidelines for designing high-quality, user-friendly Gleam packages",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let path = "documentation/library-design-guidelines.djot"
+
+  use content <- result.try(
+    path
+    |> fs.read
+    |> snag.context("Failed to load content for " <> path),
+  )
+
+  let document = parse_djot(content)
+  let table_of_contents = table_of_contents_from_djot(document)
+  let content = jot.document_to_html(document)
+
+  [element.unsafe_raw_html("", "article", [class("prose")], content)]
+  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
+  |> to_html_file(meta)
+  |> Ok
+}
+
+pub fn publishing_packages(ctx: site.Context) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "documentation/publishing-packages",
+      title: "Publishing packages",
+      meta_title: "Publishing packages | Gleam Programming Language",
+      subtitle: "How to publish your Gleam packages to Hex",
+      description: "A step-by-step guide to publishing and maintaining Gleam packages on Hex",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let path = "documentation/publishing-packages.djot"
 
   use content <- result.try(
     path
