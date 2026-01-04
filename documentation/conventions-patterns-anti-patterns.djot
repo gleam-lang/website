@@ -1,0 +1,92 @@
+## Conventions
+
+Gleam enforces `snake_case` for variables, constants, and functions, and
+`PascalCase` for types and variants.
+
+### Acronyms are single words
+
+Acronyms are always written as if they were a single word.
+
+```gleam
+// Good
+let json: Json = build_json()
+
+// Bad
+let j_s_o_n: JSON = build_j_s_o_n()
+```
+
+It may be tempting to ignore this convention and use the name `JSON`, but this
+will result in the BEAM code generated from the Gleam code using the name
+`j_s_o_n`.
+
+### Conversion function naming
+
+When naming a function that converts from one type to another, use the convention `x_to_y`.
+
+```gleam
+// Good
+pub fn json_to_string(data: Json) -> String
+
+// Bad
+pub fn json_into_string(data: Json) -> String
+pub fn json_as_string(data: Json) -> String
+pub fn string_of_json(data: Json) -> String
+```
+
+If the module name matches the type name then do not repeat the name of the
+type at the start of the function.
+
+```gleam
+// In src/my_app/identifier.gleam
+
+// Good
+pub fn to_string(id: Identifier) -> String
+
+// Bad
+pub fn identifier_to_string(id: Identifier) -> String
+```
+```gleam
+import my_app/identifier.{type Identifier}
+
+pub fn run(id: Identifier) -> String {
+  identifier.to_string(id)
+}
+```
+
+If there is a name for the encoding, format, or variant used in the conversion
+function, then use that in the name of the function.
+
+```gleam
+// Good
+pub fn date_to_string(date: Date) -> String
+
+// Bad
+pub fn date_to_rfc3339(date: Date) -> String
+```
+
+If there is a more descriptive name for the conversion operation then use that
+instead.
+
+```gleam
+// Good
+pub fn round(data: Float) -> Int
+
+// Bad
+pub fn float_to_int(data: Float) -> Int
+```
+
+## Patterns
+
+### Comment liberally
+
+### Replace bools with custom types
+
+### Sans-io
+
+## Anti-patterns
+
+### Check-then-assert
+
+### Global namespace pollution
+
+### Namespace trespassing
