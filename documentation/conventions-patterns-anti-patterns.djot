@@ -3,7 +3,15 @@
 Gleam enforces `snake_case` for variables, constants, and functions, and
 `PascalCase` for types and variants.
 
-### Acronyms are single words
+### Use result for fallible functions
+
+TODO
+
+### Use singular for module names
+
+TODO
+
+### Treat acronyms as single words
 
 Acronyms are always written as if they were a single word.
 
@@ -19,7 +27,7 @@ It may be tempting to ignore this convention and use the name `JSON`, but this
 will result in the BEAM code generated from the Gleam code using the name
 `j_s_o_n`.
 
-### Conversion function naming
+### Naming conversion function
 
 When naming a function that converts from one type to another, use the convention `x_to_y`.
 
@@ -64,7 +72,7 @@ pub fn date_to_string(date: Date) -> String
 pub fn date_to_rfc3339(date: Date) -> String
 ```
 
-If there is a more descriptive name for the conversion operation then use that
+If there is a more descriptive name ggfor the conversion operation then use that
 instead.
 
 ```gleam
@@ -75,18 +83,74 @@ pub fn round(data: Float) -> Int
 pub fn float_to_int(data: Float) -> Int
 ```
 
+### Naming short-circuiting result functions
+
+TODO
+
 ## Patterns
 
 ### Comment liberally
 
+TODO
+
+### Make invalid states impossible
+
+TODO
+
 ### Replace bools with custom types
+
+TODO
+
+### Match all variants
+
+TODO
 
 ### Sans-io
 
+TODO
+
 ## Anti-patterns
+
+### Fragmented modules
+
+TODO
+
+### Panicking in libraries
+
+TODO
 
 ### Check-then-assert
 
+TODO
+
 ### Global namespace pollution
 
+TODO
+
 ### Namespace trespassing
+
+TODO
+
+### Using dynamic with FFI
+
+TODO
+
+### Category theory naming
+
+## OTP anti-patterns
+
+### Processes as state
+
+TODO
+
+### Unsupervised processes
+
+TODO
+
+### Large messages
+
+TODO
+
+### Organising code with processes
+
+TODO
