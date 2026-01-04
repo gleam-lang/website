@@ -12,7 +12,6 @@ const in_progress = [
   "Function inlining to improve performance and stack usage",
   "Dependency version conflict resolution assistant",
   "Security related package management features",
-  "External type annotation for better integration with BEAM and JavaScript static type checkers",
 ]
 
 const planned = [
@@ -36,6 +35,26 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "v1.14",
+    date: calendar.Date(2025, calendar.December, 25),
+    items: [
+      "`@external` annotation for external types",
+      "Bit array pattern matching compilation improvements",
+      "Faster variant equality checking on JavaScript",
+      "`gleam deps outdated` command",
+      "Type directed autocompletion",
+      "Record update syntax for constants",
+      "Missing patterns uses definition order",
+      "Detatched documentation warnings",
+      "Redundant module warnings",
+      "Improved type name selection in language server and documentation",
+      "Language server rename failure notification",
+      "Language server improved diagnostic grouping",
+      "Language server \"merge case branches\" code action",
+      "Language server \"annotate all top level definitions\" code action",
+    ],
+  ),
   Release(
     version: "v1.13",
     date: calendar.Date(2025, calendar.October, 19),
