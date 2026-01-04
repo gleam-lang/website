@@ -1991,23 +1991,23 @@ pub fn frequently_asked_questions(ctx: site.Context) -> snag.Result(fs.File) {
       preload_images: [],
       preview_image: option.None,
     )
+  let source = "documentation/frequently-asked-questions.djot"
+  djot_page_with_table_of_contents(source, ctx, meta)
+}
 
-  let path = "documentation/frequently-asked-questions.djot"
-
-  use content <- result.try(
-    path
-    |> fs.read
-    |> snag.context("Failed to load content for " <> path),
-  )
-
-  let document = parse_djot(content)
-  let table_of_contents = table_of_contents_from_djot(document)
-  let content = jot.document_to_html(document)
-
-  [element.unsafe_raw_html("", "article", [class("prose")], content)]
-  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
-  |> to_html_file(meta)
-  |> Ok
+pub fn language_server(ctx: site.Context) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "language-server",
+      title: "The Gleam Language Server reference",
+      meta_title: "The Gleam Language Server - IDE features for all editors",
+      subtitle: "IDE features for all editors",
+      description: "Learn all the capabilities and code actions of the Gleam language server.",
+      preload_images: [],
+      preview_image: option.None,
+    )
+  let source = "documentation/language-server.djot"
+  djot_page_with_table_of_contents(source, ctx, meta)
 }
 
 pub fn documentation(ctx: site.Context) -> fs.File {
@@ -3130,13 +3130,19 @@ pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
       preload_images: [],
       preview_image: option.None,
     )
+  let source = "documentation/externals-guide.djot"
+  djot_page_with_table_of_contents(source, ctx, meta)
+}
 
-  let path = "documentation/externals-guide.djot"
-
+fn djot_page_with_table_of_contents(
+  source: String,
+  ctx: site.Context,
+  meta: PageMeta,
+) -> snag.Result(fs.File) {
   use content <- result.try(
-    path
+    source
     |> fs.read
-    |> snag.context("Failed to load content for " <> path),
+    |> snag.context("Failed to load content for " <> source),
   )
 
   let document = parse_djot(content)
@@ -3160,23 +3166,8 @@ pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
       preload_images: [],
       preview_image: option.Some("sbom"),
     )
-
-  let path = "documentation/sbom-guide.djot"
-
-  use content <- result.try(
-    path
-    |> fs.read
-    |> snag.context("Failed to load content for " <> path),
-  )
-
-  let document = parse_djot(content)
-  let table_of_contents = table_of_contents_from_djot(document)
-  let content = jot.document_to_html(document)
-
-  [element.unsafe_raw_html("", "article", [class("prose")], content)]
-  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
-  |> to_html_file(meta)
-  |> Ok
+  let source = "documentation/sbom-guide.djot"
+  djot_page_with_table_of_contents(source, ctx, meta)
 }
 
 pub fn community(ctx: site.Context) -> fs.File {

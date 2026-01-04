@@ -10,7 +10,6 @@ import website/case_study
 import website/cheatsheet
 import website/command_line_reference
 import website/fs
-import website/language_server
 import website/news
 import website/page
 import website/roadmap
@@ -46,6 +45,7 @@ fn build_site() -> snag.Result(Nil) {
 
   use externals_guide <- result.try(page.externals_guide(ctx))
   use sbom_guide <- result.try(page.sbom_guide(ctx))
+  use language_server <- result.try(page.language_server(ctx))
   use faq <- result.try(page.frequently_asked_questions(ctx))
 
   let page_files = [
@@ -61,12 +61,12 @@ fn build_site() -> snag.Result(Nil) {
     news.index_page(news_posts, ctx),
     page.case_studies_index(case_studies, ctx),
     page.sponsor(ctx),
+    language_server,
     externals_guide,
     sbom_guide,
     faq,
     roadmap.page(ctx),
     command_line_reference.page(ctx),
-    language_server.page(ctx),
     cheatsheet.erlang(ctx),
     cheatsheet.elixir(ctx),
     cheatsheet.python(ctx),
