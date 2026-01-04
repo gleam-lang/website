@@ -29,7 +29,6 @@ const research = [
   "OTP release building",
   "Erlang stack trace line numbers",
   "Test discovery functionality",
-  "Build tool watch mode",
   "FFI type correctness safeguards in development",
   "Improved ergonomics for cross-target packages",
 ]
