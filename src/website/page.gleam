@@ -55,7 +55,7 @@ pub type ContentLink {
   ContentLink(title: String, href: String, children: List(ContentLink))
 }
 
-pub fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) {
+fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) {
   document.content
   |> list.fold(from: [], over: _, with: fn(accumulator, block) {
     case block {
@@ -2030,6 +2030,23 @@ pub fn language_server(ctx: site.Context) -> snag.Result(fs.File) {
   djot_page_with_table_of_contents(source, ctx, meta)
 }
 
+pub fn conventions_patterns_and_anti_patterns(
+  ctx: site.Context,
+) -> snag.Result(fs.File) {
+  let meta =
+    PageMeta(
+      path: "documentation/conventions-patterns-and-anti-patterns",
+      title: "Conventions, patterns, and anti-patterns",
+      meta_title: "Conventions, patterns, and anti-patterns | Gleam programming language",
+      subtitle: "Writing good code in Gleam",
+      description: "Tips and guidance for writing good code in Gleam",
+      preload_images: [],
+      preview_image: option.None,
+    )
+  let source = "documentation/conventions-patterns-anti-patterns.djot"
+  djot_page_with_table_of_contents(source, ctx, meta)
+}
+
 pub fn documentation(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -2159,6 +2176,12 @@ pub fn documentation(ctx: site.Context) -> fs.File {
         html.a([attr.href("/writing-gleam")], [
           html.text("Developing Gleam projects using the Gleam build tool"),
         ]),
+      ]),
+      html.li([], [
+        html.a(
+          [attr.href("/documentation/conventions-patterns-and-anti-patterns")],
+          [html.text("Conventions, patterns, and anti-patterns in Gleam code")],
+        ),
       ]),
       html.li([], [
         html.a([attr.href("/documentation/externals")], [
