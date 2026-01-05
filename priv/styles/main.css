@@ -36,6 +36,7 @@
   --color-black: #1e1e1e;
   --color-blacker: #151515;
   --color-text-main: #F0EEFF;
+  --color-text-subtle: #C9CFEA;
   --color-text-highlight: #fff;
   --color-white: #fefefc;
   --color-faff-pink: #ffaff3;
@@ -874,6 +875,7 @@ pre code {
   display: flex;
   gap: 2ch;
 }
+
 .news-posts .news-meta li {
   display: flex;
   flex-direction: row;
@@ -881,9 +883,8 @@ pre code {
   gap: .6ch;
   align-items: center;
   font-size: 1rem;
-  color: #C9CFEA;
+  color: --color-text-subtle;
 }
-
 
 .mailing-list-page p {
   font-size: var(--font-size-normal);
@@ -948,43 +949,189 @@ pre code {
     flex-basis: 200px;
     text-align: right;
   }
+
+  .community-socials {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .community-socials {
-  padding-top: 2rem;
+  padding-left: 0;
+  margin: 0;
   list-style-type: none;
   gap: 2rem;
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
 }
 
 .community-socials a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: var(--color-lukewarm-charcoal);
+  border: 1px solid var(--color-warm-charcoal);
+  width: 100%;
+  border-radius: .6rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
   gap: 1rem;
+  align-items: center;
+  padding: 2rem;
+  text-decoration: none;
+}
+
+.community-socials h3 {
+  font-weight: var(--font-weight-title-bold);
+  font-family: var(--font-family-title);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.community-socials p {
+  line-height: 1;
+  margin: 0;
+  color: var(--color-text-main);
+  font-size: 1rem;
 }
 
 .community-socials li:hover img {
   transform: rotateZ(-10deg);
 }
 
-.community-socials__logo {
-  background-color: var(--color-white);
-  border-radius: 50%;
-}
-
 .community-socials__logo,
 .community-socials img {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .community-socials img {
   padding: 0.35rem;
   transition: transform ease-in-out 150ms;
 }
+
+.community-secondary-links {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin-top: 2rem;
+  list-style: none;
+}
+
+.community-secondary-links a {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  text-decoration: none;
+  line-height: 1;
+  color: var(--color-text-main);
+}
+
+.community-secondary-links p {
+  margin: 0 0 .3em;
+  font-size: .9em;
+}
+
+.community-secondary-links h4 {
+  margin: 0;
+  color: var(--color-white);
+  font-weight: var(--font-weight-title-bold);
+  font-size: 1.2rem;
+  font-family: var(--font-family-title);
+}
+
+.community-secondary-links .icon {
+  background: var(--color-lukewarm-charcoal);
+  border: 1px solid var(--color-warm-charcoal);
+  border-radius: .6rem;
+  padding: 1rem;
+}
+
+.community-secondary-links img {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: block;
+}
+
+.gleam-weekly-shoutout {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--gap-3);
+  gap: var(--gap-3);
+  align-items: center;
+  justify-content: center;
+}
+
+.gleam-weekly-shoutout img {
+  width: 8rem;
+}
+
+.gleam-weekly-shoutout p {
+  max-width: 45ch;
+}
+
+.community-talks {
+  padding: 1.2rem 0;
+  background: var(--color-lukewarm-charcoal);
+}
+
+.community-talks h2 {
+  color: var(--color-white);
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-title-bold);
+}
+
+.featured-talks {
+  display: grid;
+  gap: var(--gap-3);
+  padding: 0;
+  list-style: none;
+}
+
+.community-talk {
+  text-decoration: none;
+  display: block;
+}
+
+.community-talk .talk-thumbnail {
+  /* Approximately 16x9 */
+  padding-bottom: 56%;
+  background-size: cover;
+  background-position: center;
+  border-radius: .6rem;
+  background-color: var(--color-blacker);
+  margin: 0 0 1rem;
+  /* Using this very silly trick to stop strange image artifacting */
+  box-shadow: inset 0 0 0 1px var(--color-warm-charcoal);
+}
+
+.community-talk h4 {
+  font-weight: var(--font-weight-title-bold);
+  font-family: var(--font-family-title);
+  color: var(--color-white);
+  margin: 0;
+}
+
+.community-talk h5 {
+  color: var(--color-text-main);
+  font-size: .9em;
+  margin: .2rem 0 0;
+}
+
+.community-talk p {
+  color: var(--color-text-subtle);
+  font-size: .9em;
+  display: flex;
+  align-items: center;
+  gap: .8ch;
+  margin: 0.6rem 0 0;
+}
+
+@media (min-width: 960px) {
+
+  .featured-talks,
+  .community-secondary-links {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 
 /* Same as --width-content */
 @media (max-width: 960px) {

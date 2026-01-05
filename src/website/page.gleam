@@ -630,7 +630,7 @@ pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
         [class("post prose")],
         post.content,
       ),
-      html.section([class("case-study-cta")], [
+      html.section([class("page-cta")], [
         html.img([
           attr.src("/images/lucy/lucy.svg"),
           attr.alt("Lucy the star, Gleam's mascot"),
@@ -3170,6 +3170,16 @@ pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
   djot_page_with_table_of_contents(source, ctx, meta)
 }
 
+type CommunityTalk {
+  CommunityTalk(
+    thumbnail: String,
+    title: String,
+    link: String,
+    author: String,
+    event: String,
+  )
+}
+
 pub fn community(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -3184,12 +3194,36 @@ pub fn community(ctx: site.Context) -> fs.File {
 
   let code_of_conduct =
     "https://github.com/gleam-lang/gleam/blob/main/CODE_OF_CONDUCT.md"
+
+  let talks = [
+    CommunityTalk(
+      thumbnail: "https://img.youtube.com/vi/XEJxk5VUSTs/mqdefault.jpg",
+      title: "You don't need an ORM",
+      link: "https://www.youtube.com/watch?v=XEJxk5VUSTs",
+      author: "Giacomo Cavalieri",
+      event: "Lambda Days 2025",
+    ),
+    CommunityTalk(
+      thumbnail: "https://img.youtube.com/vi/Ojs0YREqX8k/mqdefault.jpg",
+      title: "Building self-contained executables with Gleam",
+      link: "https://www.youtube.com/watch?v=Ojs0YREqX8k",
+      author: "Rebecca Reusch",
+      event: "Code BEAM Europe 2025",
+    ),
+    CommunityTalk(
+      thumbnail: "https://img.youtube.com/vi/6I0IbJtUC3U/mqdefault.jpg",
+      title: "Gleam's Journey on the BEAM",
+      link: "https://www.youtube.com/watch?v=6I0IbJtUC3U",
+      author: "Hayleigh Thompson & Louis Pilfold",
+      event: "Code BEAM Europe 2024",
+    ),
+  ]
+
   let content = [
-    html.article([class("prose")], [
+    html.section([class("content")], [
       html.p([], [
         html.text(
-          "You can talk to and get help from other Gleam community members in the
-        following forums:",
+          "If you’d like to get involved in the Gleam community and chat to other members about what they’re up to, you can join our Discord community chat, contribute on GitHub, follow us on social media, and subscribe to Gleam Weekly",
         ),
       ]),
       html.ul([attr.class("community-socials")], [
@@ -3203,7 +3237,10 @@ pub fn community(ctx: site.Context) -> fs.File {
                   attr.src("/images/community/discord.svg"),
                 ]),
               ]),
-              html.span([], [html.text("Gleam’s web chat on Discord")]),
+              html.div([], [
+                html.h3([], [html.text("Discord Community")]),
+                html.p([], [html.text("Lively and friendly, just like Gleam!")]),
+              ]),
             ],
           ),
         ]),
@@ -3220,25 +3257,72 @@ pub fn community(ctx: site.Context) -> fs.File {
                   attr.src("/images/community/github.svg"),
                 ]),
               ]),
-              html.span([], [html.text("Gleam discussions on Github")]),
+              html.div([], [
+                html.h3([], [html.text("Gleam on GitHub")]),
+                html.p([], [html.text("Chat and contribute!")]),
+              ]),
             ],
           ),
         ]),
       ]),
-      html.p([], [
-        html.text(
-          "You can also subscribe to updates from community newsletter ",
-        ),
-        html.a([attr.href("https://gleamweekly.com/")], [
-          html.text("Gleam Weekly"),
+      html.ul([class("community-secondary-links")], [
+        html.li([], [
+          html.a([attr.href("https://bsky.app/profile/gleam.run")], [
+            html.span([class("icon")], [
+              html.img([attr.src("/images/community/bluesky.svg")]),
+            ]),
+            html.div([], [
+              html.p([], [html.text("Bluesky")]),
+              html.h4([], [html.text("@gleam.run")]),
+            ]),
+          ]),
         ]),
-        html.text("."),
+        html.li([], [
+          html.a([attr.href("https://reddit.com/r/gleamlang")], [
+            html.span([class("icon")], [
+              html.img([attr.src("/images/community/reddit.svg")]),
+            ]),
+            html.div([], [
+              html.p([], [html.text("Reddit")]),
+              html.h4([], [html.text("/r/gleamlang")]),
+            ]),
+          ]),
+        ]),
+        html.li([], [
+          html.a([attr.href("https://twitter.com/gleamlang")], [
+            html.span([class("icon")], [
+              html.img([attr.src("/images/community/twitter.svg")]),
+            ]),
+            html.div([], [
+              html.p([], [html.text("Twitter/X")]),
+              html.h4([], [html.text("@gleamlang")]),
+            ]),
+          ]),
+        ]),
       ]),
-      html.h2([], [html.text("Code of Conduct")]),
+      html.div([class("gleam-weekly-shoutout")], [
+        html.img([
+          attr.src("/images/lucy/lucymail.svg"),
+          attr.alt("Lucy (the Gleam mascot) holding a letter"),
+        ]),
+        html.p([], [
+          html.text("Check out the community-made "),
+          html.a([attr.href("https://gleamweekly.com")], [
+            html.text("Gleam Weekly newsletter"),
+          ]),
+          html.text(
+            " if you want to get the latest Gleam news delivered right to your inbox!",
+          ),
+        ]),
+      ]),
+    ]),
+    html.article([class("content prose")], [
+      html.h2([], [html.text("Participating in the community")]),
       html.p([], [
         html.text(
           "The Gleam community is a space where we treat each other kindly and
-        with respect. Please read and adhere to our community ",
+          with respect. We ensure that the community is safe, friendly, and open to
+          everyone. Please read and adhere to our community ",
         ),
         html.a([attr.href(code_of_conduct)], [html.text("code of conduct")]),
         html.text("."),
@@ -3269,10 +3353,50 @@ pub fn community(ctx: site.Context) -> fs.File {
         ]),
       ]),
     ]),
+    html.section([class("community-talks")], [
+      html.div([class("content")], [
+        html.h2([], [html.text("Recent Conference Recordings and Talks")]),
+        html.ul(
+          [class("featured-talks")],
+          list.map(talks, fn(talk) {
+            html.li([], [
+              html.a([class("community-talk"), attr.href(talk.link)], [
+                html.figure(
+                  [
+                    class("talk-thumbnail"),
+                    attr.style(
+                      "background-image",
+                      "url(" <> talk.thumbnail <> ")",
+                    ),
+                  ],
+                  [],
+                ),
+                html.h4([], [html.text(talk.title)]),
+                html.h5([], [html.text(talk.author)]),
+                html.p([], [
+                  html.img([
+                    attr.src("/images/date-icon.svg"),
+                    attr.width(16),
+                    attr.alt("Calendar Icon"),
+                  ]),
+                  html.text(talk.event),
+                ]),
+              ]),
+            ])
+          }),
+        ),
+      ]),
+    ]),
   ]
 
-  content
-  |> page_layout("", meta, ctx)
+  [
+    header(hero_image: option.None, content: [
+      html.h1([], [html.text(meta.title)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
+    ]),
+    ..content
+  ]
+  |> base_layout(meta, ctx)
   |> to_html_file(meta)
 }
 
