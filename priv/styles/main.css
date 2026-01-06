@@ -292,6 +292,7 @@ main.content {
 .page-banner a {
   color: var(--color-black);
   text-decoration: underline;
+  text-decoration-color: var(--color-black);
 }
 
 .pride .page-header {
