@@ -430,6 +430,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/22840519?s=50&u=fdb6db7ecf363ff9064afd455a26b760c5464bb2&v=4",
   ),
   Sponsor(
+    name: "The Sentience Company",
+    url: "https://github.com/The-Sentience-Company",
+    avatar: "https://avatars.githubusercontent.com/u/241180552?s=50&v=4",
+  ),
+  Sponsor(
     name: "Theo Harris",
     url: "https://github.com/Theosaurus-Rex",
     avatar: "https://avatars.githubusercontent.com/u/71990001?s=50&u=c2f36e63ffcfbb58b679a9e303b174467dc14a4d&v=4",
@@ -783,6 +788,11 @@ pub const sponsors = [
     name: "Chris Vincent",
     url: "https://github.com/cvincent",
     avatar: "https://avatars.githubusercontent.com/u/8297?s=50&u=a809b558601fc7bb53a21e5d6d8f7773acfb30a3&v=4",
+  ),
+  Sponsor(
+    name: "jstcz",
+    url: "https://github.com/czepluch",
+    avatar: "https://avatars.githubusercontent.com/u/1026799?s=50&u=0f77004d583d4e1f0cc9964770d5f85508cd6bd7&v=4",
   ),
   Sponsor(
     name: "Dan",
@@ -1370,6 +1380,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/2856927?s=50&u=0b997b23cf44fbddd231cc911515da593d9dccd1&v=4",
   ),
   Sponsor(
+    name: "Ryan Moore",
+    url: "https://github.com/mooreryan",
+    avatar: "https://avatars.githubusercontent.com/u/3172014?s=50&u=5efa6914e7730fa3b9e743d9030575bc6b48ebee&v=4",
+  ),
+  Sponsor(
     name: "Niket Shah",
     url: "https://github.com/mrniket",
     avatar: "https://avatars.githubusercontent.com/u/2016308?s=50&u=4ebc9e678f58875bb98186d1db4685ae9738bc51&v=4",
@@ -1413,6 +1428,11 @@ pub const sponsors = [
     name: "N. G. Scheurich",
     url: "https://github.com/ngscheurich",
     avatar: "https://avatars.githubusercontent.com/u/423798?s=50&v=4",
+  ),
+  Sponsor(
+    name: "Nick Leslie",
+    url: "https://github.com/nick-leslie",
+    avatar: "https://avatars.githubusercontent.com/u/46449945?s=50&v=4",
   ),
   Sponsor(
     name: "Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
