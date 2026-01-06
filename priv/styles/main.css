@@ -282,6 +282,18 @@ main.content {
   transition: all 0.5s ease;
 }
 
+.page-banner {
+  background-color: var(--color-faff-pink);
+  text-align: center;
+  padding: var(--gap-1);
+  color: var(--color-black);
+}
+
+.page-banner a {
+  color: var(--color-black);
+  text-decoration: underline;
+}
+
 .pride .page-header {
   background-image: url("/images/pride-wall.svg");
   background-size: cover;

@@ -227,6 +227,12 @@ pub fn header(
   }
 
   html.div([attr.class("page-header")], [
+    html.aside([attr.class("page-banner")], [
+      element.text("Have your say in the "),
+      html.a([attr.href("https://developer-survey.gleam.run/")], [
+        element.text("Gleam Developer Survey"),
+      ]),
+    ]),
     html.nav([attr.class("navbar")], [
       html.div([attr.class("content")], [
         html.div([], [
