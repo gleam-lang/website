@@ -3210,11 +3210,11 @@ pub fn community(ctx: site.Context) -> fs.File {
       event: "Lambda Days 2025",
     ),
     CommunityTalk(
-      thumbnail: "https://img.youtube.com/vi/Ojs0YREqX8k/mqdefault.jpg",
-      title: "Building self-contained executables with Gleam",
-      link: "https://www.youtube.com/watch?v=Ojs0YREqX8k",
-      author: "Rebecca Reusch",
-      event: "Code BEAM Europe 2025",
+      thumbnail: "https://img.youtube.com/vi/BfPRcanTWXA/mqdefault.jpg",
+      title: "How I ended up writing Gleam for a living",
+      link: "https://www.youtube.com/watch?v=BfPRcanTWXA",
+      author: "Isaac Harris-Holt",
+      event: "Code BEAM Lite STO 2025",
     ),
     CommunityTalk(
       thumbnail: "https://img.youtube.com/vi/6I0IbJtUC3U/mqdefault.jpg",
