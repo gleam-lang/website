@@ -475,11 +475,6 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/34782317?s=50&u=481f582a8933dff3c8075fd99ab755064b99eebf&v=4",
   ),
   Sponsor(
-    name: "Andrea Bueide",
-    url: "https://github.com/abueide",
-    avatar: "https://avatars.githubusercontent.com/u/19354425?s=50&u=ab750b23ba8530d4ed71973c97695754115aea1e&v=4",
-  ),
-  Sponsor(
     name: "ad-ops",
     url: "https://github.com/ad-ops",
     avatar: "https://avatars.githubusercontent.com/u/57237184?s=50&v=4",
@@ -773,11 +768,6 @@ pub const sponsors = [
     name: "Comet",
     url: "https://github.com/comet-ml",
     avatar: "https://avatars.githubusercontent.com/u/31487821?s=50&v=4",
-  ),
-  Sponsor(
-    name: "contra1337",
-    url: "https://github.com/contra1337",
-    avatar: "https://avatars.githubusercontent.com/u/9068381?s=50&v=4",
   ),
   Sponsor(
     name: "Carlos Saltos",
@@ -1290,6 +1280,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/696146?s=50&u=819dd4f87e0ffa21a5acf0d9f4004277176d584c&v=4",
   ),
   Sponsor(
+    name: "Daniele",
+    url: "https://github.com/lupodevelop",
+    avatar: "https://avatars.githubusercontent.com/u/589793?s=50&u=03f7021df48b606b6b3843619e3fb00d411030c7&v=4",
+  ),
+  Sponsor(
     name: "Matt Mullenweg",
     url: "https://github.com/m",
     avatar: "https://avatars.githubusercontent.com/u/48685?s=50&v=4",
@@ -1625,6 +1620,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/16689974?s=50&u=f430b3944d8900614a937f45dfe2c44e3cd5b809&v=4",
   ),
   Sponsor(
+    name: "Felina Rivera Calzadillas",
+    url: "https://github.com/roguh",
+    avatar: "https://avatars.githubusercontent.com/u/6373447?s=50&u=0b85b2a91ab6f306ea62d16b915ab7f7f0f5f932&v=4",
+  ),
+  Sponsor(
     name: "Rotabull",
     url: "https://github.com/rotabull",
     avatar: "https://avatars.githubusercontent.com/u/48396327?s=50&v=4",
@@ -1905,7 +1905,7 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/31420747?s=50&u=dc0eaae8f8f1467f8c1322525c6efe6ff6fe2827&v=4",
   ),
   Sponsor(
-    name: "yoshie ",
+    name: "rebecca",
     url: "https://github.com/yoshi-monster",
     avatar: "https://avatars.githubusercontent.com/u/84042103?s=50&u=a8f3373981d10270efc89005a17852c421c5c8fc&v=4",
   ),
