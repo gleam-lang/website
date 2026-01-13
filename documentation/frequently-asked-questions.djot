@@ -205,7 +205,7 @@ memory use in your program, much like C or C++. Gleam’s compiler is written in
 Rust! We’re big fans of the language.
 
 Despite having some syntactic similarities, Gleam and Rust are extremely
-different language.
+different languages.
 
 - Rust is a low level programming language, Gleam is a very high level language.
 - Rust is a hybrid functional and imperative language that makes heavy use of mutable state. Gleam is a functional language where everything is immutable.
