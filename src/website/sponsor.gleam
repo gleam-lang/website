@@ -220,6 +220,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/24888744?s=50&u=307d71f519cf6c84e7e6b239e5a72b03be85e04d&v=4",
   ),
   Sponsor(
+    name: "Kile Deal",
+    url: "https://github.com/Aurenos",
+    avatar: "https://avatars.githubusercontent.com/u/1689230?s=50&u=df299fbfba246673d1451a04b68769559087011a&v=4",
+  ),
+  Sponsor(
     name: "Joseph Myers",
     url: "https://github.com/BigJayToDaIzo",
     avatar: "https://avatars.githubusercontent.com/u/13368640?s=50&u=d25c31938764bbc5a7f86a9ff31a7ba44f87c931&v=4",
@@ -248,11 +253,6 @@ pub const sponsors = [
     name: "Comamoca",
     url: "https://github.com/Comamoca",
     avatar: "https://avatars.githubusercontent.com/u/93137338?s=50&u=95a9601ff7e08488494cca78d0cd4958a13beefb&v=4",
-  ),
-  Sponsor(
-    name: " Aïssata Maïga",
-    url: "https://github.com/Dajamante",
-    avatar: "https://avatars.githubusercontent.com/u/40670675?s=50&u=8cd7d0cad011347caa39ce91c7aca81bcce54ee2&v=4",
   ),
   Sponsor(
     name: "Danielle Maywood",
@@ -318,6 +318,11 @@ pub const sponsors = [
     name: "Martin Janiczek",
     url: "https://github.com/Janiczek",
     avatar: "https://avatars.githubusercontent.com/u/149425?s=50&u=45e293ad63d2bf7962eae677cc4c4548a05daff0&v=4",
+  ),
+  Sponsor(
+    name: "Jesper We",
+    url: "https://github.com/JesperWe",
+    avatar: "https://avatars.githubusercontent.com/u/1643015?s=50&u=6beec265d75898da1c3a0b2e89974effd8b88529&v=4",
   ),
   Sponsor(
     name: "Ajit Krishna",
@@ -573,11 +578,6 @@ pub const sponsors = [
     name: "Azure Flash",
     url: "https://github.com/azureflash",
     avatar: "https://avatars.githubusercontent.com/u/140976898?s=50&u=f13cd969c39317d68f252d8a4c72bff3f08ecefb&v=4",
-  ),
-  Sponsor(
-    name: "Jasmine Tang",
-    url: "https://github.com/badumbatish",
-    avatar: "https://avatars.githubusercontent.com/u/28776842?s=50&u=fad65cfcb0d608db6ebb29c82ea0c1d6a8eb0c9b&v=4",
   ),
   Sponsor(
     name: "Benjamin Kane",
@@ -955,6 +955,11 @@ pub const sponsors = [
     avatar: "https://avatars.githubusercontent.com/u/34835234?s=50&u=676a2dede51e3b0ef374b2b2b526a5d1a26a8246&v=4",
   ),
   Sponsor(
+    name: "Gabriela Sartori",
+    url: "https://github.com/gabriela-sartori",
+    avatar: "https://avatars.githubusercontent.com/u/6143964?s=50&u=6fb5cf66ef81eb5316d98bfac7023bd14d699f65&v=4",
+  ),
+  Sponsor(
     name: "Gabriel Vincent",
     url: "https://github.com/gabrielvincent",
     avatar: "https://avatars.githubusercontent.com/u/469519?s=50&v=4",
@@ -1112,7 +1117,7 @@ pub const sponsors = [
   Sponsor(
     name: "James MacAulay",
     url: "https://github.com/jamesmacaulay",
-    avatar: "https://avatars.githubusercontent.com/u/340?s=50&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/340?s=50&u=b0679cf619c27920db69aef519e4cbf562590ad7&v=4",
   ),
   Sponsor(
     name: "Jan Pieper",
@@ -1347,7 +1352,7 @@ pub const sponsors = [
   Sponsor(
     name: "Sam Zanca",
     url: "https://github.com/metruzanca",
-    avatar: "https://avatars.githubusercontent.com/u/32832892?s=50&u=d8147eab1323d98f5968e48185b8d1e209349a23&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/32832892?s=50&u=d20bbdfb024ef420419bbc94db4463e0e1303df5&v=4",
   ),
   Sponsor(
     name: "Matt Heise",
@@ -1528,6 +1533,11 @@ pub const sponsors = [
     name: "Qdentity",
     url: "https://github.com/qdentity",
     avatar: "https://avatars.githubusercontent.com/u/1351994?s=50&v=4",
+  ),
+  Sponsor(
+    name: "Ram Prasanth Udhaya Baskar",
+    url: "https://github.com/ramsgitrepo",
+    avatar: "https://avatars.githubusercontent.com/u/95440999?s=50&u=195bddea4a9b73354d9ef047c6f859d4b29d941d&v=4",
   ),
   Sponsor(
     name: "Race",
@@ -1788,11 +1798,6 @@ pub const sponsors = [
     name: "Tim Brown",
     url: "https://github.com/tmbrwn",
     avatar: "https://avatars.githubusercontent.com/u/7737081?s=50&u=cd7c415ad6d0e32f4b7a48b4d92abf952e07695e&v=4",
-  ),
-  Sponsor(
-    name: "Tom Hughes",
-    url: "https://github.com/tomalexhughes",
-    avatar: "https://avatars.githubusercontent.com/u/4213219?s=50&u=72d78033847bc7a29e45c360a517001cf6ed35d4&v=4",
   ),
   Sponsor(
     name: "Tomasz Kowal",
