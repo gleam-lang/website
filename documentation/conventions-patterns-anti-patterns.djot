@@ -3,9 +3,63 @@
 Gleam enforces `snake_case` for variables, constants, and functions, and
 `PascalCase` for types and variants.
 
+### Avoid unqualified importing of functions and constants
+
+Always used the qualified syntax for functions and constants defined in other
+modules.
+
+```gleam
+// Good
+import gleam/list
+import gleam/string
+
+pub fn reverse(input: String) -> String {
+  input
+  |> string.to_graphemes
+  |> list.reverse
+  |> string.concat
+}
+
+// Bad
+import gleam/list.{reverse}
+import gleam/string.{to_graphemes, concat}
+
+pub fn reverse(input: String) -> String {
+  input
+  |> to_graphemes
+  |> reverse
+  |> concat
+}
+```
+
+Types and record constructors may be used with the unqualified syntax,
+providing you think it does not make the code more difficult to read.
+
+### Annotate all module functions
+
+All module functions should have annotations for their argument types and for
+their return type.
+
+```gleam
+// Good
+fn calculate_total(amounts: List(Float), service_charge: Float) -> Float {
+  list.fold(amounts, 0, int.add) * service_charge
+}
+
+// Bad
+fn calculate_total(amounts, service_charge) {
+  list.fold(amounts, 0, int.add) * service_charge
+}
+
+// Bad: missing return annotation
+fn calculate_total(amounts: List(Float), service_charge: Float) {
+  list.fold(amounts, 0, int.add) * service_charge
+}
+```
+
 ### Use result for fallible functions
 
-All functions that can succeed or fail my return a result in Gleam.
+All functions that can succeed or fail may return a result in Gleam.
 
 Some languages use both the result and the option type for fallible functions,
 but Gleam does not. Using results always makes code consistent and removes the
@@ -26,7 +80,7 @@ pub fn first(list: List(a)) -> Result(a, Nil) {
   }
 }
 
-// Bad: panics/exceptions
+// Bad: options
 pub fn first(list: List(a)) -> option.Option(a) {
   case list {
     [item, ..] -> option.Some(item)
@@ -43,12 +97,27 @@ pub fn first(list: List(a)) -> Result(a, Nil) {
 }
 ```
 
-
-TODO
-
 ### Use singular for module names
 
-TODO
+Module names are singular, not plural.
+
+```gleam
+// Good
+import app/user
+
+// Bad
+import app/users
+```
+
+This applies to all segments, not just the final one.
+
+```gleam
+// Good
+import app/payment/invoice
+
+// Bad
+import app/payments/invoice
+```
 
 ### Treat acronyms as single words
 
@@ -105,13 +174,13 @@ function, then use that in the name of the function.
 
 ```gleam
 // Good
-pub fn date_to_string(date: Date) -> String
+pub fn date_to_rfc3339(date: Date) -> String
 
 // Bad
-pub fn date_to_rfc3339(date: Date) -> String
+pub fn date_to_string(date: Date) -> String
 ```
 
-If there is a more descriptive name ggfor the conversion operation then use that
+If there is a more descriptive name for the conversion operation then use that
 instead.
 
 ```gleam
@@ -124,7 +193,24 @@ pub fn float_to_int(data: Float) -> Int
 
 ### Name short-circuiting result functions as prescribed
 
-TODO
+Functions that return results should be given a name that is appropriate for
+the domain and the operation they perform.
+
+```gleam
+// Good
+pub fn parse_json(input: String) -> Result(Json, ParseError)
+pub fn enqueue(job: BackgroundJob) -> Result(Nil, EnqueueError)
+```
+
+If the function is a special result-handling version of an existing function
+that short-circuits when there is an error, then the `try_` prefix can be used,
+so long as there is not a more appropriate domain-specific name. Names based on
+design patterns or abstract concepts should be avoided.
+
+```gleam
+// Good
+pub fn map(list: List(a), f: fn(a) -> b) -> List(b)
+pub fn try_map(list: List(a), f: fn(a) -> Result(b, e)) -> Result(List(b), e)
 
 ## Patterns
 
@@ -180,7 +266,11 @@ TODO
 
 TODO
 
-### Sans-io
+### The sans-io pattern
+
+TODO
+
+### The builder pattern
 
 TODO
 
