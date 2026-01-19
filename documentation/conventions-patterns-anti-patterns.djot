@@ -1,3 +1,8 @@
+This document outlines conventions, patterns, and anti-patterns for Gleam code.
+Conventions and anti-patterns are rules that should be adhered to always, while
+patterns are to applied whenever the programmer thinks it would benefit their
+code.
+
 ## Conventions
 
 Gleam enforces `snake_case` for variables, constants, and functions, and
@@ -208,9 +213,22 @@ so long as there is not a more appropriate domain-specific name. Names based on
 design patterns or abstract concepts should be avoided.
 
 ```gleam
-// Good
 pub fn map(list: List(a), f: fn(a) -> b) -> List(b)
-pub fn try_map(list: List(a), f: fn(a) -> Result(b, e)) -> Result(List(b), e)
+
+// Good
+pub fn try_map(
+  list: List(a),
+  f: fn(a) -> Result(b, e),
+) -> Result(List(b), e)
+
+// Bad
+pub fn monadic_bind(
+  list: List(a),
+  f: fn(a) -> Result(b, e),
+) -> Result(List(b), e)
+```
+
+### Use the core libraries
 
 ## Patterns
 
