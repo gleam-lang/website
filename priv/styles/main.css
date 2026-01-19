@@ -1451,7 +1451,7 @@ pre code {
   font-size: 1rem;
 }
 
-.case-study-cta {
+.page-cta {
   background: var(--color-lukewarm-charcoal);
   padding: 2rem;
   margin-top: 2rem;
@@ -1464,18 +1464,18 @@ pre code {
   justify-content: center;
 }
 
-.case-study-cta img {
+.page-cta img {
   max-width: 8rem;
 }
 
-.case-study-cta h4 {
+.page-cta h4 {
   font-weight: var(--font-weight-title-bold);
   color: var(--color-white);
   margin: 0 0 1rem;
   font-size: 1.4rem;
 }
 
-.case-study-cta p {
+.page-cta p {
   max-width: 40ch;
   margin: .4rem 0 0;
 }
