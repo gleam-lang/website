@@ -376,9 +376,9 @@ addition.
 
 Gleam's type system and custom types enable Gleam programmers to precisely
 model their domain in their code. Types definitions that sufficiently encode
-the rules of the domain can make it impossible to construct invalid data,
-removing many types of bugs, and turning the type definitions into
-documentation for the business logic.
+the business rules can make it impossible to construct invalid data, removing
+many types of bugs, and turning the type definitions into documentation for the
+business logic.
 
 For example, say we are making a website, and the visitors to that website can
 be logged in users, or they can be guests. All logged in users have an email
@@ -398,6 +398,22 @@ let logged_in_user = Visitor(id: Some(123), email: Some("hi@example.com"))
 let guest = Visitor(id: None, email: None)
 ```
 
+However, this data structure can be constructed with just an email, or just an
+id, both states being invalid according to our business rules!
+
+```gleam
+let invalid = Visitor(id: Some(123), email: None)
+```
+
+A better design would ensure that both the id and the email are present at the
+same time, making the invalid states impossible.
+
+```gleam
+pub type Visitor {
+  LoggedInUser(id: Int, email: String)
+  Guest
+}
+```
 
 Richard Feldman has an excellent talk on this pattern which can be viewed
 [on youtube](https://www.youtube.com/watch?v=IcgmSRJHu_8).
@@ -422,7 +438,21 @@ TODO
 
 ### Fragmented modules
 
-TODO
+Do not prematurely split up modules into multiple smaller modules, and do not
+view large modules as a problem. Instead focus on the business domain and
+making the best API for the users of the code.
+
+An API that is split over many modules is harder to understand and requires
+more boilerplate to use than one well designed module, and it becomes more
+challenging to hide internal implementation details when they have to be
+exposed for other modules to use.
+
+If you are having trouble with import cycles, or if multiple modules need to be
+imported to perform a simple task with your code, then it may be a sign that
+you have split up code that should be a single module.
+
+Evan Czaplicki's talk ["The life of a file"](https://www.youtube.com/watch?v=XpDsk374LDE)
+has a wealth of information on this topic.
 
 ### Panicking in libraries
 
@@ -458,8 +488,14 @@ TODO
 
 ### Category theory naming
 
+TODO
+
 ### Grouping by design pattern
 
+TODO
+
+``` =html
+<!--
 ## OTP anti-patterns
 
 ### Processes as state
@@ -477,3 +513,5 @@ TODO
 ### Organising code with processes
 
 TODO
+-->
+```
