@@ -297,7 +297,40 @@ dependencies and any directory.
 
 ## Patterns
 
-### Errors describe what happened
+### Design descriptive errors
+
+When creating an error type, design the variants to describe what the error was
+in terms of your business domain. Each variant should hold additional
+information about the error instance, to aid debugging or with creation of
+helpful error messages.
+
+If the error was caused by a lower-level error, e.g. being unable to load
+application data due to failing to read a file, then that lower error can be
+one of the fields of the higher error.
+
+```gleam
+// Good
+pub type NotesError {
+  NoteAlreadyExists(path: String)
+  NoteCouldNotBeCreated(path: String, reason: simplifile.FileError)
+  NoteCouldNotBeRead(path: String, reason: simplifile.FileError)
+  NoteInvalidFrontmatter(path: String, reason: tom.ParseError)
+}
+
+// Bad: Not enough detail
+pub type NotesError {
+  NoteAlreadyExists
+  NoteCouldNotBeCreated
+  NoteCouldNotBeRead
+  NoteInvalidFrontmatter
+}
+
+// Bad: Designed around dependencies, not business domain
+pub type NotesError {
+  FileError(path: String, reason: simplifile.FileError)
+  TomlError(path: String, reason: tom.ParseError)
+}
+```
 
 ### Comment liberally
 
