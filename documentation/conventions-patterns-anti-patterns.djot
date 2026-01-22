@@ -230,7 +230,74 @@ pub fn monadic_bind(
 
 ### Use the core libraries
 
+The Gleam core team maintain several packages that are to be used as a shared
+foundation for other Gleam libraries and applications.
+
+- [`gleam_stdlib`](https://hexdocs.pm/gleam_stdlib)
+- [`gleam_time`](https://hexdocs.pm/gleam_time)
+- [`gleam_http`](https://hexdocs.pm/gleam_http)
+- [`gleam_erlang`](https://hexdocs.pm/gleam_erlang)
+- [`gleam_otp`](https://hexdocs.pm/gleam_otp)
+- [`gleam_javascript`](https://hexdocs.pm/gleam_javascript)
+
+This shared foundation makes it easier for related Gleam packages to work
+together, and helps avoid common problems that the design of the packages
+guard against.
+
+Do not replicate functionality provided by these packages. e.g. Do not create a
+new time type instead of using `gleam_time`'s `Timestamp`.
+
+### Keep development tool config in `gleam.toml`
+
+The `gleam` command line program provides most the functionality that we need
+for Gleam development, but there may still be occasions where additional
+tooling is desired. For example, a security scanner, or a licence compliance
+checker.
+
+If these tools are to be configured via a file, that file should be
+`gleam.toml`, with configuration going under the `tools.$TOOL_NAME` key prefix.
+
+```toml
+name = "thingy"
+version = "1.0.0"
+
+[dependencies]
+gleam_stdlib = "<= 1.0.0 and < 2.0.0"
+
+[tools.lustre.dev]
+host = "0.0.0.0"
+
+[tools.lustre.build]
+minify = true
+outdir = "../server/priv/static"
+```
+
+Do not use dedicated configuration files such as `my-tool.toml`, or
+`config/my-tool.yaml`.
+
+Dynamic configuration can be read from environment variables or provided as
+command line arguments.
+
+### Use the correct source code directory
+
+Gleam's build tool offers 3 directories for source code, `src`, `dev`, `test`.
+Each directory has a different purpose.
+
+`src` is for code to be included in application or library itself. Code in this
+directory can import modules from `dependencies` and `src/`, but not
+`dev_dependencies`, `dev/`, or `test/`.
+
+`test` is for code that tests the package, such as automated unit and
+integration tests. Code in this directory can import modules from any
+dependencies and any directory.
+
+`test` is for any additional code used in development, such as code generators
+and helper scripts. Code in this directory can import modules from any
+dependencies and any directory.
+
 ## Patterns
+
+### Errors describe what happened
 
 ### Comment liberally
 
