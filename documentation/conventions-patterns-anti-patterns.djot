@@ -374,7 +374,33 @@ addition.
 
 ### Make invalid states impossible
 
-TODO
+Gleam's type system and custom types enable Gleam programmers to precisely
+model their domain in their code. Types definitions that sufficiently encode
+the rules of the domain can make it impossible to construct invalid data,
+removing many types of bugs, and turning the type definitions into
+documentation for the business logic.
+
+For example, say we are making a website, and the visitors to that website can
+be logged in users, or they can be guests. All logged in users have an email
+address and a database id. This could be represented like so:
+
+```gleam
+pub type Visitor {
+  Visitor(id: Option(Int), email: Option(String))
+}
+```
+
+If the visitor is logged in, then both the optional fields would be set. If the
+visitor is a guest, then both would be unset.
+
+```gleam
+let logged_in_user = Visitor(id: Some(123), email: Some("hi@example.com"))
+let guest = Visitor(id: None, email: None)
+```
+
+
+Richard Feldman has an excellent talk on this pattern which can be viewed
+[on youtube](https://www.youtube.com/watch?v=IcgmSRJHu_8).
 
 ### Replace bools with custom types
 
