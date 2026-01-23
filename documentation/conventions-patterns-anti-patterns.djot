@@ -476,23 +476,62 @@ TODO
 
 ### Global namespace pollution
 
+Gleam has a global module namespace, a property inherited from the BEAM
+ecosystem. If two packages each define a module with the same name then a
+project adding both packages as dependencies will fail to compile.
+
+To avoid this problem packages should define their own namespace by placing
+their modules within a uniquely named directory. This name should match the
+name of the package. For example, the package `lustre` places its modules in
+`src/lustre/`.
+
+```sh
+# Good
+src/
+├── my_package.gleam
+└── my_package/
+    ├── distribution.gleam
+    └── inventory.gleam
+
+# Bad
+src/
+├── distribution.gleam
+├── inventory.gleam
+└── my_package.gleam
+```
+
+### Grouping by design pattern
+
 TODO
 
 ### Namespace trespassing
 
-TODO
+Other packages should not place their modules within a top-level directory that
+belongs to a different package. Trespassing in someone else's module
+namespace can result in compilation errors due to module collisions, and
+confusing code where it is unclear where modules come from.
+
+For example, I must not place my modules within `src/lustre/`, even if I am
+making a package intended to be used with the `lustre` package.
+
+The maintainers of the `lustre` package may choose to reuse the `src/lustre/`
+directory in other Lustre-related packages that they also own.
 
 ### Using dynamic with FFI
 
 TODO
 
-### Category theory naming
+### Category theory overuse
 
-TODO
+Avoid creation of complex category theory based abstractions.
 
-### Grouping by design pattern
+Gleam does not have the ergonomics to make these abstractions easy to work
+with, nor the compiler and runtime optimisations required to erase the
+significant runtime overhead they introduce. Complex abstractions typically
+introduce a high cognitive overhead to the code, running contrary to Gleam's
+simple, concrete, and approachable programming style.
 
-TODO
+Solve specific problems with specific solutions.
 
 ``` =html
 <!--
