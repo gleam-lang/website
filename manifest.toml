@@ -22,7 +22,7 @@ packages = [
   { name = "gleeunit", version = "1.9.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "DA9553CE58B67924B3C631F96FE3370C49EB6D6DC6B384EC4862CC4AAA718F3C" },
   { name = "glexer", version = "2.3.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "splitter"], otp_app = "glexer", source = "hex", outer_checksum = "40A1FB0919FA080AD6C5809B4C7DBA545841CAAC8168FACDFA0B0667C22475CC" },
   { name = "houdini", version = "1.2.0", build_tools = ["gleam"], requirements = [], otp_app = "houdini", source = "hex", outer_checksum = "5DB1053F1AF828049C2B206D4403C18970ABEF5C18671CA3C2D2ED0DD64F6385" },
-  { name = "jot", version = "8.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "splitter"], otp_app = "jot", source = "hex", outer_checksum = "CCE11C8904B129CC9DA3A293B645884B91C96D252183F6DBCAEFA8F2587CAEFD" },
+  { name = "jot", version = "10.1.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "splitter"], otp_app = "jot", source = "hex", outer_checksum = "8DFFC944CFC38428E767C677C84359BB90AE207A64AF228F89DF36CAECEC4175" },
   { name = "just", version = "2.1.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "just", source = "hex", outer_checksum = "F083289B9DCF797FA83B5F195738E9922BDBCCC2F0537EABA26B707CC00B0E50" },
   { name = "lustre", version = "5.4.0", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_json", "gleam_otp", "gleam_stdlib", "houdini"], otp_app = "lustre", source = "hex", outer_checksum = "40E097BABCE65FB7C460C073078611F7F5802EB07E1A9BFB5C229F71B60F8E50" },
   { name = "pearl", version = "2.2.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "pearl", source = "hex", outer_checksum = "E5E14CE725542BA2516570D04140F0D1471761CCE27C6579C6396369FFF1DA9F" },
@@ -48,7 +48,7 @@ gleam_time = { version = ">= 1.1.0 and < 2.0.0" }
 gleave = { version = ">= 1.0.0 and < 2.0.0" }
 gleeunit = { version = ">= 1.0.0 and < 2.0.0" }
 houdini = { version = ">= 1.2.0 and < 2.0.0" }
-jot = { version = ">= 8.0.0 and < 9.0.0" }
+jot = { version = ">= 10.1.0 and < 11.0.0" }
 just = { version = ">= 2.0.0 and < 3.0.0" }
 lustre = { version = ">= 5.0.0 and < 6.0.0" }
 pearl = { version = ">= 2.1.0 and < 3.0.0" }

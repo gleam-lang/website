@@ -57,31 +57,45 @@ pub type ContentLink {
 
 pub fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) {
   document.content
-  |> list.fold(from: [], over: _, with: fn(accum, block) {
+  |> list.fold(from: [], over: _, with: fn(accumulator, block) {
     case block {
-      jot.Heading(attributes:, level: 2, content: [jot.Text(text)]) ->
+      jot.Heading(attributes:, level: 2, ..) ->
         case dict.get(attributes, "id") {
-          Ok(href) -> [ContentLink(text, "#" <> href, []), ..accum]
-          _ -> accum
+          Ok(href) -> {
+            let text = jot.inner_text(block)
+            [ContentLink(text, "#" <> href, []), ..accumulator]
+          }
+          _ -> accumulator
         }
 
-      jot.Heading(attributes:, level: 3, content: [jot.Text(text)]) ->
-        case dict.get(attributes, "id"), accum {
-          Ok(href), [first, ..rest] -> [
-            ContentLink(
-              ..first,
-              children: list.append(first.children, [
-                ContentLink(text, "#" <> href, []),
-              ]),
-            ),
-            ..rest
-          ]
-          _, _ -> accum
+      jot.Heading(attributes:, level: 3, ..) ->
+        case dict.get(attributes, "id"), accumulator {
+          Ok(href), [first, ..rest] -> {
+            let text = jot.inner_text(block)
+            let content_link = ContentLink(text, "#" <> href, [])
+            let children = [content_link, ..first.children]
+            [ContentLink(..first, children:), ..rest]
+          }
+          _, _ -> accumulator
         }
-      _ -> accum
+      _ -> accumulator
     }
   })
-  |> list.reverse
+  |> reverse_content_links([])
+}
+
+fn reverse_content_links(
+  links: List(ContentLink),
+  accumulator: List(ContentLink),
+) -> List(ContentLink) {
+  case links {
+    [] -> accumulator
+    [link, ..links] -> {
+      let children = reverse_content_links(link.children, [])
+      let link = ContentLink(..link, children:)
+      reverse_content_links(links, [link, ..accumulator])
+    }
+  }
 }
 
 pub fn base_layout(
