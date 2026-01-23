@@ -4235,7 +4235,7 @@ fn highlight_toml_html(code: String) -> String {
       _ ->
         case string.split_once(line, "=") {
           Ok(#(before, after)) ->
-            "<span class=hl-function>" <> before <> "</span> = " <> after
+            "<span class=hl-function>" <> before <> "</span>=" <> after
           _ -> line
         }
     }
