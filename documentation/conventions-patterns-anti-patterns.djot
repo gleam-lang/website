@@ -519,7 +519,27 @@ directory in other Lustre-related packages that they also own.
 
 ### Using dynamic with FFI
 
-TODO
+When using code written in other languages there will be some arguments and
+return values that cannot be represented with the Gleam type system. For
+example, an Erlang function could take an int or a float as its argument.
+
+Never use the `gleam/dynamic` module's `Dynamic` type to represent these types.
+
+The dynamic type represents _any_ type of data, meaning it is valid to pass any
+value at all to that function, which is not correct and will cause runtime
+errors. Instead create a new type that represents exactly the expected type.
+
+```gleam
+// Good
+pub type Buffer
+
+pub fn byte_size(data: Buffer) -> Int
+
+// Bad
+import gleam/dynamic.{type Dynamic}
+
+pub fn byte_size(data: Dynamic) -> Int
+```
 
 ### Category theory overuse
 
