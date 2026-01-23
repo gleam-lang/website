@@ -4224,6 +4224,25 @@ fn highlighted_toml_pre_code(code: String) -> Element(c) {
   html.pre([], [html.code([], html)])
 }
 
+fn highlight_toml_html(code: String) -> String {
+  code
+  |> string.split("\n")
+  |> list.map(fn(line) {
+    // TODO: real syntax highlighting
+    case line {
+      "#" <> _ -> "<span class=hl-comment>" <> line <> "</span>"
+      "[" <> _ -> "<span class=hl-module>" <> line <> "</span>"
+      _ ->
+        case string.split_once(line, "=") {
+          Ok(#(before, after)) ->
+            "<span class=hl-function>" <> before <> "</span> = " <> after
+          _ -> line
+        }
+    }
+  })
+  |> string.join("\n")
+}
+
 fn highlighted_dockerfile_pre_code(code: String) -> Element(b) {
   // TODO: real syntax highlighting
   let html =
@@ -4350,6 +4369,10 @@ pub fn parse_djot(string: String) -> jot.Document {
         }
         jot.Codeblock(language: option.Some("yaml"), content:, ..) -> {
           let content = highlight_yaml_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
+        jot.Codeblock(language: option.Some("toml"), content:, ..) -> {
+          let content = highlight_toml_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
         jot.Codeblock(language: option.Some("sh"), content:, ..)
