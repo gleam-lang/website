@@ -3903,13 +3903,13 @@ pub fn main() {
           ]),
         ]),
         highlighted_gleam_pre_code(
-          "pub fn main() -> Nil {
+          "pub fn spawn_many() -> List(Pid) {
   // Run loads of green threads, no problem
   list.range(0, 200_000)
-  |> list.each(spawn_greeter)
+  |> list.map(spawn_greeter)
 }
 
-fn spawn_greeter(i: Int) {
+fn spawn_greeter(i: Int) -> Pid {
   process.spawn(fn() {
     let n = int.to_string(i)
     io.println(\"Hello from \" <> n)
