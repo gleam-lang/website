@@ -3903,20 +3903,19 @@ pub fn main() {
           ]),
         ]),
         highlighted_gleam_pre_code(
-          "pub fn spawn_many() -> List(Pid) {
-  // Run loads of green threads, no problem
-  int.range(from: 0, to: 200_000, with: Nil, run: fn(_, i) {
-    spawn_greeter(i)
-  })
-}
+          "pub fn main() {
+  let subject = process.new_subject()
 
-fn spawn_greeter(i: Int) -> Nil {
+  // Spawn a child green thread
   process.spawn(fn() {
-    let n = int.to_string(i)
-    io.println(\"Hello from \" <> n)
+    // Send a message back to the parent
+    process.send(subject, \"Hello, Joe!\")
   })
-  Nil
-}",
+
+  // Wait for the message to arrive
+  echo process.receive(subject, 100)
+}
+",
         ),
       ]),
       html.section([attr.class("content home-pair")], [
