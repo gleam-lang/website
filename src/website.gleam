@@ -43,9 +43,10 @@ fn build_site() -> snag.Result(Nil) {
       styles_hash:,
     )
 
+  use language_server <- result.try(page.language_server(ctx))
   use externals_guide <- result.try(page.externals_guide(ctx))
   use sbom_guide <- result.try(page.sbom_guide(ctx))
-  use language_server <- result.try(page.language_server(ctx))
+  use patterns <- result.try(page.conventions_patterns_and_anti_patterns(ctx))
   use faq <- result.try(page.frequently_asked_questions(ctx))
 
   let page_files = [
@@ -64,6 +65,7 @@ fn build_site() -> snag.Result(Nil) {
     language_server,
     externals_guide,
     sbom_guide,
+    patterns,
     faq,
     roadmap.page(ctx),
     command_line_reference.page(ctx),
