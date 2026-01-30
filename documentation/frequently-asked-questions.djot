@@ -151,7 +151,8 @@ Here’s a non-exhaustive list of differences:
 - Elixir’s compiler is written in Erlang and Elixir, Gleam’s is written in Rust.
 - Gleam has a more traditional C family style syntax.
 - Elixir has a namespace for module functions and another for variables, Gleam
-  has one unified namespace (so there’s no special fun.()syntax).
+  has one unified namespace (there is no `fun.()` syntax in Gleam, but in Gleam
+  variable names can override function names).
 - Gleam standard library is distributed as Hex packages, which makes
   interoperability with other BEAM languages easier.
 - Elixir is a larger language, featuring numerous language features not present in Gleam.
@@ -164,18 +165,15 @@ Here’s a non-exhaustive list of differences:
 - Elixir has superior BEAM runtime integration, featuring accurate stack traces
   and full support for tools such as code coverage, profiling, and more.
   Gleam’s support is much weaker due to going via Erlang source.
-- Elixir and Gleam both use Erlang's OTP framework. Both have additional
-  modules for working with OTP, which provide APIs more in the style of each
-  respective language. Both common use Erlang's OTP APIs directly, but Elixir
-  can do so more conveniently and concisely due to having a less-strict type
-  system.
+- Elixir and Gleam both use Erlang's OTP framework. Elixir can use Erlang/OTP
+  modules directly and also includes its own abstractions (such as tasks).
+  Gleam provide APIs more in the style of each respective language.
 - Elixir currently has superior deployment tooling, including support for OTP
   releases and OTP umbrella applications.
 - Gleam’s editor tooling is superior due to having a more mature official
   language server, but Elixir has recently announced an official language
   server project which is in active development.
 - Elixir is more mature than Gleam and has a much larger ecosystem.
-- Gleam compiles faster than Elixir.
 
 Most importantly both are BEAM languages! I advise using whichever has the
 programming style you personally find most enjoyable and productive.
