@@ -167,15 +167,19 @@ Here’s a non-exhaustive list of differences:
   Gleam’s support is much weaker due to going via Erlang source.
 - Elixir interactive and remote shells support writing both Elixir
   and Erlang code. Gleam shells require writing Erlang code.
-- Elixir and Gleam both use Erlang's OTP framework. Elixir can use Erlang/OTP
-  modules directly and also includes its own abstractions (such as tasks).
-  Gleam provide APIs more in the style of each respective language.
+- Elixir and Gleam both use Erlang's OTP framework. Both languages can
+  use Erlang/OTP modules directly, though it is more ergonomic and
+  requires less boilerplate in Elixir. Both languages offer their own
+  additional abstractions, with Elixir providing new functionality
+  and Gleam providing type-safe interfaces.
 - Elixir currently has superior deployment tooling, including support for OTP
   releases and OTP umbrella applications.
 - Gleam’s editor tooling is superior due to having a more mature official
   language server, but Elixir has recently announced an official language
   server project which is in active development.
 - Elixir is more mature than Gleam and has a much larger ecosystem.
+- Gleam compiles faster than Elixir (measured by the time taken to
+  compiling a project with 100 single-function files in each language)
 
 Most importantly both are BEAM languages! I advise using whichever has the
 programming style you personally find most enjoyable and productive.
