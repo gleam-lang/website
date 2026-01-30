@@ -179,7 +179,7 @@ Here’s a non-exhaustive list of differences:
   server project which is in active development.
 - Elixir is more mature than Gleam and has a much larger ecosystem.
 - Gleam compiles faster than Elixir (measured by the time taken to
-  compiling a project with 100 single-function files in each language)
+  compiling a project with 100 single-function files in each language).
 
 Most importantly both are BEAM languages! I advise using whichever has the
 programming style you personally find most enjoyable and productive.
