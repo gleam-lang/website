@@ -152,7 +152,7 @@ Here’s a non-exhaustive list of differences:
 - Gleam has a more traditional C family style syntax.
 - Elixir has a namespace for module functions and another for variables, Gleam
   has one unified namespace (there is no `fun.()` syntax in Gleam, but in Gleam
-  variable names can override function names).
+  variable names can shadow function names).
 - Gleam standard library is distributed as Hex packages, which makes
   interoperability with other BEAM languages easier.
 - Elixir is a larger language, featuring numerous language features not present in Gleam.
