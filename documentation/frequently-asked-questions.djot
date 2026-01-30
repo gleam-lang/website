@@ -165,9 +165,6 @@ Here’s a non-exhaustive list of differences:
 - Elixir has superior BEAM runtime integration, featuring accurate stack traces
   and full support for tools such as code coverage, profiling, and more.
   Gleam’s support is much weaker due to going via Erlang source.
-- Elixir documentation adheres to the official Erlang VM format,
-  which facilitates interoperability between documentation tooling.
-  Gleam does not store documentation metadata in source files.
 - Elixir interactive and remote shells support writing both Elixir
   and Erlang code. Gleam shells require writing Erlang code.
 - Elixir and Gleam both use Erlang's OTP framework. Elixir can use Erlang/OTP
