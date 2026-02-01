@@ -1260,13 +1260,15 @@ pre code {
   line-height: 1.4em;
 }
 
-.prose p>code {
+.prose :not(pre)>code {
   color: var(--color-code-orange);
   opacity: 1;
   border: var(--color-warm-charcoal) 1px solid;
   border-radius: .2rem;
   padding: 0 .3rem;
   display: inline-block;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .prose > iframe,
