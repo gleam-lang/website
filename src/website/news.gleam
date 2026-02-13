@@ -20,7 +20,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
     read(
       title: "Join us at Gleam Gathering",
       subtitle: "The first ever all Gleam conference!",
-      published: calendar.Date(2025, calendar.February, 11),
+      published: calendar.Date(2026, calendar.February, 11),
       author: louis,
       path: "join-us-at-gleam-gathering",
       preview_image: option.None,
