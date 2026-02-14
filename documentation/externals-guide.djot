@@ -202,6 +202,9 @@ pub fn open(zip: BitString) -> Result(ZipHandle, ZipError)
 pub fn extract(zip: ZipHandle, file: String) -> Result(ZipHandle, ZipError)
 ```
 
+Always design your APIs with Gleam in mind, no matter how they are implemented
+internally.
+
 ## Erlang externals
 
 Erlang is the most straightforward language to declare external functions for.
