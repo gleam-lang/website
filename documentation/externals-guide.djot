@@ -157,6 +157,51 @@ module from the `gleam_erlang` package, or define a more precise type for the
 subset of operations these references are usable for. e.g. `TransactionId` or
 `MessageTag`.
 
+## Designing APIs using externals
+
+When using externals it may be tempting to create a Gleam API that imitates the
+API of the external code being used, but this is most often a mistake, as what
+may be a good API in another language is unlikely to be optimal in Gleam.
+Instead design your API as you would with regular code, using Gleam's type
+system and other features to make the best API possible, and to make invalid
+states impossible.
+
+For example, the Erlang `zip` module has an `open` function which takes a ZIP
+archive and returns a handle to the opened archive, the handle being used to
+inspect and extract files from within. The handle is an Erlang pid (process
+identifier), and the `gleam_erlang` package defines a `Pid` data type, so a
+direct recreation of the API might use that as the return type of the `open`
+function. The problem with this is that it would permit Gleam programs to use
+that pid with any other pid-expecting functions, and also to pass in pids that
+did not originate from `open` into other functions from the `zip` module that
+expect this handle pid. Both of these are invalid use, so the programmer has to
+be careful to avoid runtime errors, and the type system will not prevent
+mistakes.
+
+A better design is to create a new external type specifically for the handle
+value, ensuring that only these values can be passed to the other zip
+functions.
+
+```gleam
+// Bad
+import gleam/erlang/process.{type Pid}
+
+@external(erlang, "my_zip_library_ffi", "open")
+pub fn open(zip: BitString) -> Result(Pid, ZipError)
+
+@external(erlang, "my_zip_library_ffi", "extract_file")
+pub fn extract(zip: Pid, file: String) -> Result(BitArray, ZipError)
+
+// Good
+pub type ZipHandle
+
+@external(erlang, "my_zip_library_ffi", "open")
+pub fn open(zip: BitString) -> Result(ZipHandle, ZipError)
+
+@external(erlang, "my_zip_library_ffi", "extract_file")
+pub fn extract(zip: ZipHandle, file: String) -> Result(ZipHandle, ZipError)
+```
+
 ## Erlang externals
 
 Erlang is the most straightforward language to declare external functions for.
