@@ -1295,12 +1295,14 @@ pre code {
   padding: 0 var(--gap-2);
 }
 
-.post summary {
-  cursor: pointer;
+details {
+  margin-bottom: var(--gap-2);
+  padding-left: var(--gap-2)
 }
 
-.post details {
-  margin-bottom: var(--gap-2);
+details > summary {
+  margin-left: calc(var(--gap-2) * -1);
+  cursor: pointer;
 }
 
 .post .top-sponsors {
@@ -1566,8 +1568,12 @@ pre code {
 
 .sponsor-faqs {
   background: var(--color-lukewarm-charcoal);
+  margin-top: 2rem;
+}
+
+.sponsor-faqs,
+.sponsor-bank-transfer {
   padding: 3rem 0;
-  margin: 2rem 0 0;
 }
 
 .sponsor-featured {
