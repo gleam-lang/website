@@ -1278,6 +1278,52 @@ pre code {
   max-width: 100%;
 }
 
+.prose details {
+  border: 1px solid var(--color-warm-charcoal);
+  padding: 1.2rem;
+  border-radius: .6rem;
+}
+
+.prose details>summary {
+  font-size: 1rem;
+  font-family: var(--font-family-title);
+  color: var(--color-white);
+  margin: 0 -1.2rem;
+  display: flex;
+  padding: 0 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prose details[open]>summary {
+  border-bottom: var(--color-warm-charcoal) 1px solid;
+  padding-bottom: 1.2rem;
+}
+
+.prose details>summary:after {
+  content: '';
+  border: 6px solid transparent;
+  border-top-color: var(--color-warm-charcoal);
+  border-bottom: 0px;
+}
+
+.prose details[open]>summary::after {
+  transform: rotate(180deg);
+}
+
+.prose dl dt {
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-title-bold);
+  color: var(--color-text-subtle);
+  font-size: 1rem;
+}
+
+.prose dl dd {
+  padding: 0;
+  margin: .2rem 0 1rem;
+  font-size: ;
+}
+
 .post {
   position: relative;
 }
