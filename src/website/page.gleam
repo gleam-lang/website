@@ -653,6 +653,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       html.img([attr.src("/images/lucy/lucy.svg")]),
       html.article([], [
         html.h3([], [html.text("Sponsor Gleam")]),
+        html.h5([], [html.text("Something encouraging about the project")]),
         html.p([], [
           html.text(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam imperdiet massa erat, sit amet sodales felis iaculis nec. Suspendisse a feugiat lorem. Fusce quis velit at enim gravida tempus at ac diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras ligula libero, tincidunt vitae orci id, sodales imperdiet neque.",
@@ -667,7 +668,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       ]),
     ]),
     html.p([class("text-center")], [
-      html.text("Or sponsor some of our Core Team members!"),
+      html.text("Or sponsor some of our core team members!"),
     ]),
     html.section([], [html.ul([class("sponsees")], sponsees)]),
 
