@@ -1547,19 +1547,25 @@ details>summary {
 
 .sponsor-project {
   background-color: var(--color-lukewarm-charcoal);
-  border: 1px solid var(--color-warm-charcoal);
-  border-radius: .6rem;
+  border: 0 solid var(--color-warm-charcoal);
+  border-width: 1px 0;
   max-width: 980px;
   margin: -3rem auto 2rem;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   color: var(--color-white);
-  padding: 3rem 2rem;
+  padding: 2.4rem 1.2rem;
   gap: 2rem;
   position: relative;
 }
 
 .sponsor-project img {
   width: 8rem;
+}
+
+.sponsor-project article {
+  flex: 0 1 600px;
 }
 
 .sponsor-project h3 {
@@ -1576,6 +1582,13 @@ details>summary {
   color: var(--color-text-main);
 }
 
+.sponsor-project .sponsor-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 1rem;
+}
+
 .sponsor-project .sponsor-btn-group a {
   display: inline-flex;
   color: var(--color-blacker);
@@ -1586,12 +1599,6 @@ details>summary {
   font-size: 1rem;
   font-weight: var(--font-weight-title-bold);
   font-family: var(--font-family-title);
-}
-
-.sponsor-project .sponsor-btn-group {
-  display: flex;
-  gap: .6rem;
-  margin-top: 1rem;
 }
 
 .sponsees {
@@ -1618,6 +1625,12 @@ details>summary {
 }
 
 @media (min-width: 960px) {
+  .sponsor-project {
+    border-radius: .6rem;
+    border-width: 1px 1px;
+    padding: 3rem 2rem;
+  }
+
   .sponsees {
     grid-template-columns: 1fr 1fr;
   }
