@@ -1501,6 +1501,53 @@ details > summary {
   font-weight: var(--font-weight-title-bold);
 }
 
+.sponsor-project {
+  background: var(--color-faff-pink);
+  border-radius: .6rem;
+  max-width: 980px;
+  margin: -3rem auto 0;
+  display: flex;
+  color: var(--color-blacker);
+  padding: 3rem 2rem;
+  gap: 2rem;
+  position: relative;
+}
+
+.sponsor-project img {
+  width: 8rem;
+}
+
+.sponsor-project h3 {
+  font-family: var(--font-family-title);
+  margin: 0 0 .6rem;
+  font-size: 1.5rem;
+}
+
+.sponsor-project p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #271231;
+}
+
+.sponsor-project .sponsor-btn-group a {
+  display: inline-flex;
+  color: var(--color-blacker);
+  background: var(--color-code-light-pink);
+  text-decoration: none;
+  padding: .5rem 1rem;
+  border-radius: .6rem;
+  font-size: 1rem;
+  border: 1px solid white;
+  font-family: var(--font-family-title);
+}
+
+.sponsor-project .sponsor-btn-group {
+  display: flex;
+  gap: .6rem;
+  margin-top: 1rem;
+}
+
 .sponsees {
   max-width: var(--width-content);
   margin: -6rem auto 6rem;

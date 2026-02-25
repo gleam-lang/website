@@ -350,28 +350,28 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
     )
 
   let sponsees = [
-    sponsor_card(
-      name: "Gleam",
-      title: "Sponsor the Project",
-      avatar: "/images/lucy/lucy.svg",
-      links: [
-        #("GitHub Sponors", "https://github.com/sponsors/gleam-lang"),
-        #("Bank transfer", "#sponsor-bank-transfer"),
-        #("Liberapay", "https://liberapay.com/gleam/"),
-      ],
-    ),
+    // sponsor_card(
+    //   name: "Gleam",
+    //   title: "Sponsor the Project",
+    //   avatar: "/images/lucy/lucy.svg",
+    //   links: [
+    //     #("GitHub Sponors", "https://github.com/sponsors/gleam-lang"),
+    //     #("Bank transfer", "#sponsor-bank-transfer"),
+    //     #("Liberapay", "https://liberapay.com/gleam/"),
+    //   ],
+    // ),
     sponsor_card(
       name: "Louis Pilfold",
       title: "Creator of Gleam",
       avatar: "https://avatars.githubusercontent.com/u/6134406?v=4",
-      links: [#("GitHub Sponors", "https://github.com/sponsors/lpil")],
+      links: [#("GitHub Sponsors", "https://github.com/sponsors/lpil")],
     ),
     sponsor_card(
       name: "Hayleigh Thompson",
       title: "Lustre Maintainer",
       avatar: "https://avatars.githubusercontent.com/u/9001354?v=4",
       links: [
-        #("GitHub Sponors", "https://github.com/sponsors/hayleigh-dot-dev"),
+        #("GitHub Sponsors", "https://github.com/sponsors/hayleigh-dot-dev"),
       ],
     ),
     sponsor_card(
@@ -379,14 +379,16 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       title: "Real Life Squirrel",
       avatar: "https://avatars.githubusercontent.com/u/20598369?v=4",
       links: [
-        #("GitHub Sponors", "https://github.com/sponsors/giacomocavalieri"),
+        #("GitHub Sponsors", "https://github.com/sponsors/giacomocavalieri"),
       ],
     ),
     sponsor_card(
       name: "Surya \"Gears\" Rose",
       title: "Compiler Extraordinaire",
       avatar: "https://avatars.githubusercontent.com/u/40563462?v=4",
-      links: [#("GitHub Sponors", "https://github.com/sponsors/GearsDatapacks")],
+      links: [
+        #("GitHub Sponsors", "https://github.com/sponsors/GearsDatapacks"),
+      ],
     ),
   ]
 
@@ -448,6 +450,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       ),
     ]),
   ]
+
   let faqs_section = [
     html.h2([class("text-center")], [
       html.text("Frequently Asked Questions"),
@@ -526,6 +529,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   let wise_eu = "Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium"
   let wise_usa =
     "Community Federal Savings Bank, 89-16 Jamaica Ave, Woodhaven, NY, 11421, United States"
+
   let bank_transfer_section = [
     html.h2([class("text-center")], [
       html.text("Donating by bank transfer"),
@@ -637,8 +641,36 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       )
     })
   ]
+
+  let project_sponsor_links = [
+    #("Github Sponsors", "https://github.com/sponsors/gleam-lang"),
+    #("Bank Transfer", "#sponsor-bank-transfer"),
+    #("Liberapay", "https://liberapay.com/gleam/"),
+  ]
+
   let content = [
+    html.section([class("sponsor-project")], [
+      html.img([attr.src("/images/lucy/lucy.svg")]),
+      html.article([], [
+        html.h3([], [html.text("Sponsor Gleam")]),
+        html.p([], [
+          html.text(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam imperdiet massa erat, sit amet sodales felis iaculis nec. Suspendisse a feugiat lorem. Fusce quis velit at enim gravida tempus at ac diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras ligula libero, tincidunt vitae orci id, sodales imperdiet neque.",
+          ),
+        ]),
+        html.div(
+          [class("sponsor-btn-group")],
+          list.map(project_sponsor_links, fn(link) {
+            html.a([attr.href(link.1)], [html.text(link.0)])
+          }),
+        ),
+      ]),
+    ]),
+    html.p([class("text-center")], [
+      html.text("Or sponsor some of our Core Team members!"),
+    ]),
     html.section([], [html.ul([class("sponsees")], sponsees)]),
+
     html.article([class("content prose")], sponsees_section),
 
     html.section([class("sponsor-faqs")], [
