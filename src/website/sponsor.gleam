@@ -33,11 +33,6 @@ pub fn featured() -> List(List(FeaturedSponsor)) {
         website: "https://williamsandholmes.com",
         image: "/images/sponsors/williamsandholmes.svg",
       ),
-      FeaturedSponsor(
-        name: "Black Hammer Consulting",
-        website: "https://black-hammer.consulting/",
-        image: "/images/sponsors/black-hammer.svg",
-      ),
     ],
   ]
 }

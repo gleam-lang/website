@@ -341,8 +341,8 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "/sponsor",
-      title: "Sponsor",
-      subtitle: "Support Gleam's development by sponsoring members of our core team!",
+      title: "Sponsorship and donations",
+      subtitle: "Support Gleam's development by sponsoring us!",
       meta_title: "Sponsor | Gleam Programming Language",
       description: "Everything we bring to the language is possible thanks to our sponsors. See how to become one of them and support Gleam.",
       preview_image: option.None,
@@ -350,16 +350,6 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
     )
 
   let sponsees = [
-    // sponsor_card(
-    //   name: "Gleam",
-    //   title: "Sponsor the Project",
-    //   avatar: "/images/lucy/lucy.svg",
-    //   links: [
-    //     #("GitHub Sponors", "https://github.com/sponsors/gleam-lang"),
-    //     #("Bank transfer", "#sponsor-bank-transfer"),
-    //     #("Liberapay", "https://liberapay.com/gleam/"),
-    //   ],
-    // ),
     sponsor_card(
       name: "Louis Pilfold",
       title: "Creator of Gleam",
@@ -450,6 +440,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
           definition("Name", "Otter Nonsense Ltd"),
           definition("IBAN", "BE49 9671 6861 5971"),
           definition("Swift/BIC", "TRWIBEB1XXX"),
+          definition("Bank", wise_eu),
         ]),
       ]),
 
@@ -500,12 +491,6 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
   ]
 
   let sponsees_section = [
-    html.h3([], [html.text("Why sponsor Gleam?")]),
-    html.p([], [
-      html.text(
-        "Gleam is a truly open-source community project and, unlike most programming languages, it does not come from any particular tech corporation or academic institution. That means we depend entirely on sponsoring, from both individuals and companies.",
-      ),
-    ]),
     html.h3([], [
       html.text(
         "What does “sponsoring” mean exactly? Where is the money going?",
@@ -545,18 +530,10 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       html.a([attr.href("/roadmap")], [html.text("roadmap")]),
       html.text(" to see what we have planned next."),
     ]),
-    html.h3([], [html.text("How do I sponsor?")]),
-    html.p([], [
-      html.text(
-        "Most people support the project via GitHub Sponsors, but we also have few bigger contributions from organisations like Lambda Class.",
-      ),
-    ]),
-    html.p([], [
-      html.text(
-        "On GitHub you can support Gleam through Louis’ account as well as individual core team members to support them and their areas of expertise!",
-      ),
-    ]),
   ]
+  let github_fees =
+    "https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/about-sponsorships-fees-and-taxes#sponsorship-fees"
+  let liberapay_fee = "https://liberapay.com/about/faq#fees"
   let faqs_section = [
     html.h2([class("text-center")], [
       html.text("Frequently Asked Questions"),
@@ -577,36 +554,45 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       html.h3([], [html.text("How much of my sponsorship goes to Gleam?")]),
       html.p([], [
         html.text(
-          "All of it! GitHub Sponsors does not charge any fees for sponsorships from personal accounts. 100% of your contribution goes directly towards Gleam development!",
+          "GitHub Sponsors does not charge any fees for sponsorships from personal accounts. 100% of your contribution goes directly towards Gleam development!",
         ),
       ]),
+
       html.p([], [
-        html.text("However, if you use different channels (like "),
-        html.a([attr.href("https://liberapay.com/gleam/")], [
-          html.text("Liberapay"),
-        ]),
         html.text(
-          " - we’re there too!) there are some additional fees and commissions that depend on your payment method.",
+          "If you are sponsoring from an organisation account then GitHub Sponsors will charge a 6% ",
+        ),
+        html.a([attr.href(github_fees)], [element.text("transfer fee")]),
+        html.text("."),
+      ]),
+      html.p([], [
+        html.text("Liberapay charges a "),
+        html.a([attr.href(liberapay_fee)], [element.text("transfer fee")]),
+        html.text(" of between 3% and 5%, depending on payment method used."),
+      ]),
+      html.p([], [
+        html.text(
+          "For bank transfers your bank may charge a fee, and it may vary depending on the location and currency of the account you are transferring to. If the cost is the same for all the accounts we prefer to receive money to the GBP account, to minimise the number of currency conversions.",
         ),
       ]),
 
       html.h3([], [html.text("Can I sponsor multiple team members?")]),
       html.p([], [
         html.text(
-          "Yes! You can sponsor Louis, Hayleigh, Giacomo, Gears, or other core contributors individually through GitHub Sponsors.",
+          "Yes! You can sponsor whichever and however many team members you like.",
         ),
       ]),
 
       html.h3([], [html.text("Can my company sponsor Gleam?")]),
       html.p([], [
         html.text(
-          "Absolutely! Companies are welcome to sponsor Gleam - contact Louis directly at ",
+          "Absolutely! Companies are welcome to sponsor Gleam! You can also contact Louis directly at ",
         ),
         html.a([attr.href("mailto:hello@gleam.run")], [
           html.text("hello@gleam.run"),
         ]),
         html.text(
-          " to get in touch about larger sponsorships, feature funding, or consulting opportunities.",
+          " to get in touch about larger sponsorships, invoicing, feature funding, or consulting opportunities.",
         ),
       ]),
 
@@ -615,14 +601,14 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       ]),
       html.p([], [
         html.text(
-          "GitHub sponsorship allows you to select a one-time donation or an ongoing, monthly support (that you can pause at any time) - whatever works for you! That said, steady monthly contributions help us plan our budget more effectively and keep the roadmap predictable.",
+          "All the sponsorship options allow you to select a one-time donation or an ongoing, monthly support (that you can pause at any time) - whatever works for you! That said, steady monthly contributions help us plan our budget more effectively and keep the roadmap predictable.",
         ),
       ]),
 
       html.h3([], [html.text("How can I change or cancel my sponsorship?")]),
       html.p([], [
         html.text(
-          "You can manage, pause, or cancel your sponsorship anytime through your GitHub Sponsors dashboard.",
+          "If you are using Github Sponsors or Liberapay you can manage, pause, or cancel your sponsorship anytime through their sponsor's dashboards. If you want to edit a standing order or other regular bank transfer you will need to do this via your bank's app or website.",
         ),
       ]),
     ]),
@@ -650,11 +636,11 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
     html.section([class("sponsor-project")], [
       html.img([attr.src("/images/lucy/lucy.svg")]),
       html.article([], [
-        html.h3([], [html.text("Sponsor Gleam")]),
-        html.h5([], [html.text("Something encouraging about the project")]),
+        html.h3([], [html.text("The Gleam Project")]),
+        // html.h5([], [html.text("Something encouraging about the project")]),
         html.p([], [
           html.text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam imperdiet massa erat, sit amet sodales felis iaculis nec. Suspendisse a feugiat lorem. Fusce quis velit at enim gravida tempus at ac diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras ligula libero, tincidunt vitae orci id, sodales imperdiet neque.",
+            "Gleam is a truly open-source community project and, unlike most programming languages, it is not owned by any particular tech corporation or academic institution. That means we depend entirely on sponsorship, from both individuals and companies.",
           ),
         ]),
         html.div(
