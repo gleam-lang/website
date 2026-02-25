@@ -637,7 +637,6 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       html.img([attr.src("/images/lucy/lucy.svg")]),
       html.article([], [
         html.h3([], [html.text("The Gleam Project")]),
-        // html.h5([], [html.text("Something encouraging about the project")]),
         html.p([], [
           html.text(
             "Gleam is a truly open-source community project and, unlike most programming languages, it is not owned by any particular tech corporation or academic institution. That means we depend entirely on sponsorship, from both individuals and companies.",
