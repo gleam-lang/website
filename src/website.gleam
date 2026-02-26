@@ -28,7 +28,7 @@ pub fn main() -> Nil {
   }
 }
 
-fn build_site() -> snag.Result(Nil) {
+pub fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
   let ctx =
     site.Context(
