@@ -33,15 +33,6 @@ pub fn delete_dist() -> snag.Result(Nil) {
   |> handle_error("Reset")
 }
 
-pub fn delete_dist_folders(paths: List(String)) {
-  use _ <- result.try(ensure_directory_exists(dist))
-
-  paths
-  |> list.map(filepath.join(dist, _))
-  |> simplifile.delete_all
-  |> handle_error("Reset")
-}
-
 pub fn create(file: File) -> snag.Result(Nil) {
   case file {
     HtmlPage(path:, content:) -> {
