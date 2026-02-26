@@ -31,7 +31,7 @@ pub fn main() -> Nil {
   }
 }
 
-fn build_site() -> snag.Result(Nil) {
+pub fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
   use news_posts <- result.try(news.all())
   use case_studies <- result.try(case_study.all())
@@ -107,7 +107,7 @@ fn case_study_files(
   list.map(case_studies, page.case_study(_, ctx))
 }
 
-fn static_files() -> List(fs.File) {
+pub fn static_files() -> List(fs.File) {
   [
     fs.Copy("fonts"),
     fs.Copy("images"),
