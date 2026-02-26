@@ -1,8 +1,10 @@
+import gleam/erlang/charlist
 import gleam/erlang/process
 import gleam/http/request
 import gleam/http/response
 import gleam/list
 import gleam/otp/actor
+import gleam/result
 import gleam/string
 import mist
 import simplifile
@@ -62,6 +64,8 @@ type UpdateEvent {
 }
 
 fn watch_files() {
+  let assert Ok(cwd) = cwd()
+
   actor.new_with_initialiser(5000, fn(_subject) {
     let assert Ok(src_watcher) =
       watchexec.new(watching: "./src") |> watchexec.start
@@ -92,7 +96,7 @@ fn watch_files() {
         let assert Ok(#(updated, events)) =
           watchexec.parse_data(priv_watcher, data)
         let paths = event_to_path(events)
-        rebuild_assets(paths)
+        rebuild_assets(cwd, paths)
         #(src_watcher, updated)
       }
     }
@@ -107,10 +111,12 @@ fn rebuild_full(_paths: List(String)) {
   wisp.log_info("Rebuilt full website")
 }
 
-fn rebuild_assets(changed_paths: List(String)) {
+fn rebuild_assets(cwd: String, changed_paths: List(String)) {
   list.each(changed_paths, fn(path) {
     let dest = string.replace(path, each: "/priv", with: "/dist")
-    let assert Ok(#(_, shortened_path)) = string.split_once(path, "/priv")
+    let assert Ok(#(_, shortened_path)) =
+      string.split_once(path, cwd <> "/priv")
+      as { path <> " is not in the private directory" }
 
     case simplifile.copy_file(path, dest) {
       Ok(_) -> wisp.log_info("Replaced " <> shortened_path)
@@ -134,3 +140,11 @@ fn event_to_path(events: List(watchexec.FileEvent)) -> List(String) {
     }
   }
 }
+
+fn cwd() -> Result(String, Nil) {
+  erl_cwd()
+  |> result.map(charlist.to_string)
+}
+
+@external(erlang, "file", "get_cwd")
+fn erl_cwd() -> Result(charlist.Charlist, Nil)
