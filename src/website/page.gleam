@@ -269,8 +269,8 @@ pub fn header(
             html.text("Packages"),
           ]),
           html.a([attr.href("/documentation")], [html.text("Docs")]),
-          html.a([attr.href("https://github.com/gleam-lang")], [
-            html.text("Code"),
+          html.a([attr.href("/install")], [
+            html.text("Install"),
           ]),
         ]),
       ]),
