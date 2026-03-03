@@ -1,7 +1,9 @@
 import gleam/dict
 import gleam/list
 import gleam/option
+import gleam/order.{type Order}
 import gleam/result
+import gleam/string
 import jot
 import lustre/attribute
 import lustre/element
@@ -17,6 +19,7 @@ pub fn methods() -> List(InstallationMethod) {
       slug: "apk",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(AlpineLinux)],
+      priority: HighPriority,
       content: "
 Gleam can be installed with apk by running this command:
 
@@ -27,10 +30,26 @@ sudo apk add gleam erlang rebar3
     ),
 
     InstallationMethod(
+      name: "Install with apk",
+      slug: "apk",
+      installs: InstallsErlang,
+      systems: [LinuxDistro(AlpineLinux)],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with apk by running this command:
+
+```
+sudo apk add erlang rebar3
+```
+",
+    ),
+
+    InstallationMethod(
       name: "Install with pacman",
       slug: "pacman",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(ArchLinux)],
+      priority: HighPriority,
       content: "
 Gleam can be installed with pacman by running this command:
 
@@ -41,17 +60,51 @@ sudo pacman -S gleam erlang rebar3
     ),
 
     InstallationMethod(
+      name: "Install with pacman",
+      slug: "pacman",
+      installs: InstallsErlang,
+      systems: [LinuxDistro(ArchLinux)],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with pacman by running this command:
+
+```
+sudo pacman -S erlang rebar3
+```
+",
+    ),
+
+    InstallationMethod(
       name: "Install with emerge",
       slug: "emerge",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(GentooLinux)],
+      priority: HighPriority,
       content: "
 Gleam is available via emerge, but may need to be unmasked. Install it with
-this command:
+these commands:
 
 ```
 sudo echo 'dev-lang/gleam ~amd64' >> /etc/portage/package.accept_keywords
 emerge --ask dev-lang/gleam
+```
+",
+    ),
+    InstallationMethod(
+      name: "Install with emerge",
+      slug: "emerge",
+      installs: InstallsErlang,
+      systems: [LinuxDistro(GentooLinux)],
+      priority: HighPriority,
+      content: "
+Erlang is available via emerge, but may need to be unmasked. Install it with
+these commands:
+
+```
+sudo echo 'dev-lang/erlang ~amd64' >> /etc/portage/package.accept_keywords
+sudo echo 'dev-util/rebar ~amd64' >> /etc/portage/package.accept_keywords
+emerge --ask dev-lang/erlang
+emerge --ask dev-util/rebar
 ```
 ",
     ),
@@ -61,11 +114,26 @@ emerge --ask dev-lang/gleam
       slug: "xbps",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(VoidLinux)],
+      priority: HighPriority,
       content: "
 Gleam can be installed with xbps by running this command:
 
 ```
 sudo xbps-install gleam
+```
+",
+    ),
+    InstallationMethod(
+      name: "Install with xbps",
+      slug: "xbps",
+      installs: InstallsErlang,
+      systems: [LinuxDistro(VoidLinux)],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with xbps by running this command:
+
+```
+sudo xbps-install erlang rebar3
 ```
 ",
     ),
@@ -75,6 +143,7 @@ sudo xbps-install gleam
       slug: "zypper",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(OpenSuseLinux)],
+      priority: HighPriority,
       content: "
 Gleam can be installed with zypper by running this command:
 
@@ -85,15 +154,45 @@ sudo zypper install gleam
     ),
 
     InstallationMethod(
+      name: "Install with zypper",
+      slug: "zypper",
+      installs: InstallsErlang,
+      systems: [LinuxDistro(OpenSuseLinux)],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with zypper by running this command:
+
+```
+sudo zypper install erlang erlang-rebar3
+```
+",
+    ),
+
+    InstallationMethod(
       name: "Install with pkg",
       slug: "pkg",
       installs: InstallsGleamAndErlang,
       systems: [FreeBsd],
+      priority: HighPriority,
       content: "
-Gleam cann be installed with pkg by running this command:
+Gleam can be installed with pkg by running this command:
 
 ```
 sudo pkg install gleam erlang rebar3
+```
+",
+    ),
+    InstallationMethod(
+      name: "Install with pkg",
+      slug: "pkg",
+      installs: InstallsErlang,
+      systems: [FreeBsd],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with pkg by running this command:
+
+```
+sudo pkg install erlang rebar3
 ```
 ",
     ),
@@ -103,11 +202,26 @@ sudo pkg install gleam erlang rebar3
       slug: "pkg",
       installs: InstallsGleamAndErlang,
       systems: [OpenBsd],
+      priority: HighPriority,
       content: "
-Gleam cann be installed with pkg_add by running this command:
+Gleam can be installed with pkg_add by running this command:
 
 ```
 doas pkg_add install gleam erlang erl27-rebar3
+```
+",
+    ),
+    InstallationMethod(
+      name: "Install with pkg",
+      slug: "pkg",
+      installs: InstallsErlang,
+      systems: [OpenBsd],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with pkg_add by running this command:
+
+```
+doas pkg_add install erlang erl27-rebar3
 ```
 ",
     ),
@@ -117,11 +231,26 @@ doas pkg_add install gleam erlang erl27-rebar3
       slug: "termux",
       installs: InstallsGleamAndErlang,
       systems: [Android],
+      priority: HighPriority,
       content: "
 Gleam can be installed with [Termux](https://termux.dev/)'s pkg by running this command:
 
 ```
 pkg install gleam && pkg install erlang
+```
+",
+    ),
+    InstallationMethod(
+      name: "Install with termux pkg",
+      slug: "termux",
+      installs: InstallsErlang,
+      systems: [Android],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with [Termux](https://termux.dev/)'s pkg by running this command:
+
+```
+pkg install erlang
 ```
 ",
     ),
@@ -131,6 +260,7 @@ pkg install gleam && pkg install erlang
       slug: "winget",
       installs: InstallsGleamAndErlang,
       systems: [Windows],
+      priority: HighPriority,
       content: "
 Gleam can be installed with [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 by running this command:
@@ -140,12 +270,28 @@ winget install --id Gleam.Gleam
 ```
 ",
     ),
+    InstallationMethod(
+      name: "Install with winget",
+      slug: "winget",
+      installs: InstallsErlang,
+      systems: [Windows],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
+by running this command:
+
+```
+winget install --id Erlang.ErlangOTP
+```
+",
+    ),
 
     InstallationMethod(
       name: "Install with Scoop",
       slug: "scoop",
       installs: InstallsGleamAndErlang,
       systems: [Windows],
+      priority: MediumPriority,
       content: "
 Gleam can be installed with [Scoop](https://scoop.sh/) by running these
 commands:
@@ -158,13 +304,32 @@ scoop install main/rebar3
 ```
 ",
     ),
+    InstallationMethod(
+      name: "Install with Scoop",
+      slug: "scoop",
+      installs: InstallsErlang,
+      systems: [Windows],
+      priority: MediumPriority,
+      content: "
+Erlang can be installed with [Scoop](https://scoop.sh/) by running these
+commands:
+
+```
+scoop bucket add main
+scoop install main/erlang
+scoop install main/rebar3
+```
+",
+    ),
 
     InstallationMethod(
       name: "Install with Homebrew",
       slug: "homebrew",
       installs: InstallsGleamAndErlang,
-      systems: [MacOs, Linux],
-      content: "Gleam can be installed with [Homebrew](https://brew.sh/) using this command:
+      systems: [Linux],
+      priority: MediumPriority,
+      content: "
+Gleam can be installed with [Homebrew](https://brew.sh/) using this command:
 
 ```txt
 brew install gleam
@@ -172,10 +337,41 @@ brew install gleam
 ",
     ),
     InstallationMethod(
+      name: "Install with Homebrew",
+      slug: "homebrew",
+      installs: InstallsErlang,
+      systems: [Linux],
+      priority: MediumPriority,
+      content: "
+Erlang can be installed with [Homebrew](https://brew.sh/) using this command:
+
+```txt
+brew install erlang
+```
+",
+    ),
+
+    InstallationMethod(
+      name: "Install with Homebrew",
+      slug: "homebrew",
+      installs: InstallsErlang,
+      systems: [MacOs],
+      priority: HighPriority,
+      content: "
+Erlang can be installed with [Homebrew](https://brew.sh/) using this command:
+
+```txt
+brew install erlang
+```
+",
+    ),
+
+    InstallationMethod(
       name: "Install with MacPorts",
       slug: "macports",
       installs: InstallsGleamAndErlang,
       systems: [MacOs],
+      priority: MediumPriority,
       content: "
 Gleam can be installed with [MacPorts](https://www.macports.org/) by running
 this command:
@@ -185,12 +381,29 @@ sudo port install gleam
 ```
 ",
     ),
+    InstallationMethod(
+      name: "Install with MacPorts",
+      slug: "macports",
+      installs: InstallsErlang,
+      systems: [MacOs],
+      priority: MediumPriority,
+      content: "
+Erlang can be installed with [MacPorts](https://www.macports.org/) by running
+these commands:
+
+```
+sudo port install erlang
+sudo port install rebar3
+```
+",
+    ),
 
     InstallationMethod(
       name: "Install with asdf version manager",
       slug: "asdf",
-      installs: InstallsGleam,
+      installs: InstallsGleamAndErlang,
       systems: [MacOs, Linux],
+      priority: MediumPriority,
       content: "Gleam can be installed with [asdf](https://asdf-vm.com/guide/getting-started.html)
 by running these commands:
 
@@ -198,9 +411,30 @@ by running these commands:
 asdf install gleam latest
 asdf install erlang latest
 asdf install rebar3 latest
-asdf global install gleam
-asdf global install erlang
-asdf global install rebar3
+asdf global gleam latest
+asdf global erlang latest
+asdf global rebar3 latest
+```
+
+Installing with asdf can take a long time as it builds Erlang from source. On MacOS the
+[pre-build Erlang plugin](https://github.com/michallepicki/asdf-erlang-prebuilt-macos)
+can be used to skip this work.
+",
+    ),
+    InstallationMethod(
+      name: "Install with asdf version manager",
+      slug: "asdf",
+      installs: InstallsErlang,
+      systems: [MacOs, Linux],
+      priority: MediumPriority,
+      content: "Erlang can be installed with [asdf](https://asdf-vm.com/guide/getting-started.html)
+by running these commands:
+
+```txt
+asdf install erlang latest
+asdf install rebar3 latest
+asdf global erlang latest
+asdf global rebar3 latest
 ```
 
 Installing with asdf can take a long time as it builds Erlang from source. On MacOS the
@@ -214,6 +448,7 @@ can be used to skip this work.
       slug: "github",
       installs: InstallsGleam,
       systems: [Linux, MacOs, Windows],
+      priority: LowPriority,
       content: "
 The core team provides precompiled `gleam` binaries. Navigate to the
 [GitHub release](https://github.com/gleam-lang/gleam/releases) page for Gleam
@@ -253,6 +488,7 @@ mv gleam ~/.local/bin/
       slug: "source",
       installs: InstallsGleam,
       systems: [Linux, MacOs, Windows],
+      priority: LowPriority,
       content: "
 The Gleam toolchain can be compiled with Cargo, Rust's build tool. The most
 recent stable version of Rust needs to be installed, as other versions may not
@@ -272,7 +508,172 @@ cargo install --path cargo-bin --force --locked
 ```
 ",
     ),
+
+    InstallationMethod(
+      name: "Neovim",
+      slug: "nvim",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+Neovim’s [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) includes
+configuration for Gleam. Install `nvim-lspconfig` with your preferred plugin
+manager and then add the language server to your `init.lua`.
+
+On Nvim 0.11+ and nvim-lspconfig 2.1+:
+
+```lua
+vim.lsp.enable('gleam')
+```
+
+On Nvim <= 0.10:
+
+```lua
+require('lspconfig').gleam.setup({})
+```
+
+The language server will then be automatically started when you open a Gleam file.
+
+If you are using [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter)
+you can run `:TSInstall gleam` to get syntax highlighting and other tree-sitter
+features.
+",
+    ),
+
+    InstallationMethod(
+      name: "VS Code",
+      slug: "vscode",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+Install the [VS Code Gleam plugin](https://marketplace.visualstudio.com/items?itemName=Gleam.gleam).
+
+The language server will then automatically started when you open a Gleam file.
+If VS Code is unable to run the language server ensure that the `gleam` binary
+is included on VS Code’s `PATH`, and consider restarting VS Code.
+",
+    ),
+
+    InstallationMethod(
+      name: "Helix",
+      slug: "helix",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+Helix supports the language server out-of-the-box. No additional configuration
+is required and Helix will automatically start the language server when a Gleam
+file is opened.
+",
+    ),
+
+    InstallationMethod(
+      name: "Zed",
+      slug: "zed",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+The [`zed-gleam`](https://github.com/gleam-lang/zed-gleam) plugin provides
+syntax highlighting and Language Server support for Gleam.
+
+To install the plugin open a Gleam file in Zed and accept the prompt that
+appears.
+",
+    ),
+
+    InstallationMethod(
+      name: "Sublime Text",
+      slug: "sublime-text",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows],
+      priority: MediumPriority,
+      content: "
+The [`sublime-text-gleam`](https://github.com/digitalcora/sublime-text-gleam)
+package provides Gleam syntax highlighting is available on package control, to
+install it:
+
+1. Open the command palette (Ctrl/Cmd+Shift+P)
+2. Select Package Control: Install Package
+3. Select Gleam
+
+The LSP package can be configured to use the Gleam language server. Open
+\"Preferences: LSP Settings\" in the command palette, and then add this config:
+
+```json
+{
+  \"clients\": {
+    \"gleam\": {
+      \"enabled\": true,
+      \"command\": [\"gleam\", \"lsp\"],
+      \"selector\": \"source.gleam\"
+    }
+  },
+  \"lsp_format_on_save\": true
+}
+```
+
+For more information see the documentation for
+[`sublime-text-gleam`](https://github.com/digitalcora/sublime-text-gleam).
+",
+    ),
+
+    InstallationMethod(
+      name: "Emacs",
+      slug: "emacs",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+[`gleam-ts-mode`](https://github.com/gleam-lang/gleam-mode) is a major mode for
+Emacs 29 or higher.
+
+If you are using MELPA you can install it like so:
+
+```lisp
+(use-package gleam-ts-mode
+  :mode (rx \".gleam\" eos))
+```
+
+See the documentation for the mode for other installation methods and
+considerations.
+",
+    ),
+
+    InstallationMethod(
+      name: "Vim",
+      slug: "vim",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+Vim has built in syntax highlighting and `:make` commands for Gleam.
+
+If you are using a plugin to add Language Server Protocol support for Vim then
+configure it to run `gleam lsp` from the root of your workspace.
+",
+    ),
+
+    InstallationMethod(
+      name: "Other editors",
+      slug: "other-editors",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      priority: LowPriority,
+      content: "
+Any other editor that supports the Language Server Protocol can use the Gleam
+Language Server. Configure your editor to run `gleam lsp` from the root of your
+workspace.
+",
+    ),
   ]
+}
+
+pub type Priority {
+  HighPriority
+  MediumPriority
+  LowPriority
 }
 
 pub type OperatingSystem {
@@ -322,6 +723,7 @@ pub type InstallationMethod {
     slug: String,
     installs: Component,
     systems: List(OperatingSystem),
+    priority: Priority,
     content: String,
   )
 }
@@ -389,12 +791,50 @@ pub fn pages(ctx: site.Context) -> List(fs.File) {
     })
 
   let #(linux_distros, systems) = dict.keys(methods) |> partition_systems
-  let pages = [start_page(systems, ctx), linux_distros_page(linux_distros, ctx)]
+  let systems = list.sort(systems, compare_operating_system)
+  let linux_distros = list.sort(linux_distros, compare_linux_distros)
+  let pages = [
+    which_operating_system_page(systems, ctx),
+    which_linux_distro_page(linux_distros, ctx),
+  ]
   let linux_methods = dict.get(methods, Linux) |> result.unwrap([])
 
   dict.fold(methods, pages, fn(pages, system, methods) {
     system_pages(pages, system, methods, linux_methods, ctx)
   })
+}
+
+fn compare_linux_distros(a: LinuxDistribution, b: LinuxDistribution) -> Order {
+  string.compare(linux_distro_slug(a), linux_distro_slug(b))
+}
+
+fn compare_operating_system(a: OperatingSystem, b: OperatingSystem) -> Order {
+  compare_priority(operating_system_priority(a), operating_system_priority(b))
+  |> order.break_tie(string.compare(
+    operating_system_slug(a),
+    operating_system_slug(b),
+  ))
+}
+
+fn operating_system_priority(system: OperatingSystem) -> Priority {
+  case system {
+    Linux | LinuxDistro(_) | Windows | MacOs -> HighPriority
+    Android | FreeBsd | OpenBsd -> MediumPriority
+  }
+}
+
+fn compare_priority(a: Priority, b: Priority) -> Order {
+  case a, b {
+    HighPriority, HighPriority
+    | MediumPriority, MediumPriority
+    | LowPriority, LowPriority
+    -> order.Eq
+
+    HighPriority, _ -> order.Lt
+    _, HighPriority -> order.Gt
+    MediumPriority, _ -> order.Lt
+    _, MediumPriority -> order.Gt
+  }
 }
 
 fn system_pages(
@@ -408,6 +848,11 @@ fn system_pages(
     LinuxDistro(_) -> list.append(methods, linux_methods)
     _ -> methods
   }
+  let methods =
+    list.sort(methods, fn(a, b) {
+      compare_priority(a.priority, b.priority)
+      |> order.break_tie(string.compare(a.slug, b.slug))
+    })
 
   let pages = [
     what_method_page(system, GleamStep, methods, ctx),
@@ -487,20 +932,24 @@ fn what_method_page(
   ctx: site.Context,
 ) -> fs.File {
   let name = operating_system_name(system)
-  let item = case step {
-    GleamStep -> "Gleam"
-    ErlangStep -> "Erlang"
-    EditorStep -> "Gleam editor support"
+  let title = case step {
+    GleamStep -> "Installing Gleam on " <> name
+    ErlangStep -> "Installing Erlang on " <> name
+    EditorStep -> "Installing editor support"
   }
   let path = method_selection_path(step, system)
+  let subtitle = case step {
+    GleamStep | ErlangStep -> "What method would you like to use?"
+    EditorStep -> "What's your editor of choice?"
+  }
+
   let meta =
     page.PageMeta(
       path:,
-      title: "Installing " <> item <> " on " <> name,
-      meta_title: "Installing " <> item <> " on " <> name,
-      subtitle: "What method would you like to use?",
-      description: "Documentation on installation methods you can use to install "
-        <> item,
+      title:,
+      meta_title: title,
+      subtitle:,
+      description: "Documentation and guides on how to prepare your computer for Gleam development",
       preload_images: [],
       preview_image: option.None,
     )
@@ -511,7 +960,7 @@ fn what_method_page(
         GleamStep, InstallsGleam -> True
         GleamStep, InstallsGleamAndErlang -> True
         ErlangStep, InstallsErlang -> True
-        EditorStep, _ -> False
+        EditorStep, InstallsEditorSupport -> True
         _, _ -> False
       }
     })
@@ -552,7 +1001,7 @@ fn operating_system_path(system: OperatingSystem) -> String {
   }
 }
 
-fn linux_distros_page(
+fn which_linux_distro_page(
   distros: List(LinuxDistribution),
   ctx: site.Context,
 ) -> fs.File {
@@ -589,7 +1038,10 @@ fn linux_distros_page(
   |> page.to_html_file(meta)
 }
 
-fn start_page(systems: List(OperatingSystem), ctx: site.Context) -> fs.File {
+fn which_operating_system_page(
+  systems: List(OperatingSystem),
+  ctx: site.Context,
+) -> fs.File {
   let meta =
     page.PageMeta(
       path: "install",
