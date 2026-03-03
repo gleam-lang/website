@@ -15,7 +15,7 @@ import website/site
 pub fn methods() -> List(InstallationMethod) {
   [
     InstallationMethod(
-      name: "Install with apk",
+      name: "apk package manager",
       slug: "apk",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(AlpineLinux)],
@@ -30,7 +30,7 @@ sudo apk add gleam erlang rebar3
     ),
 
     InstallationMethod(
-      name: "Install with apk",
+      name: "apk package manager",
       slug: "apk",
       installs: InstallsErlang,
       systems: [LinuxDistro(AlpineLinux)],
@@ -45,7 +45,7 @@ sudo apk add erlang rebar3
     ),
 
     InstallationMethod(
-      name: "Install with pacman",
+      name: "pacman package manager",
       slug: "pacman",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(ArchLinux)],
@@ -60,7 +60,7 @@ sudo pacman -S gleam erlang rebar3
     ),
 
     InstallationMethod(
-      name: "Install with pacman",
+      name: "pacman package manager",
       slug: "pacman",
       installs: InstallsErlang,
       systems: [LinuxDistro(ArchLinux)],
@@ -75,7 +75,7 @@ sudo pacman -S erlang rebar3
     ),
 
     InstallationMethod(
-      name: "Install with emerge",
+      name: "emerge package manager",
       slug: "emerge",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(GentooLinux)],
@@ -91,7 +91,7 @@ emerge --ask dev-lang/gleam
 ",
     ),
     InstallationMethod(
-      name: "Install with emerge",
+      name: "emerge package mananger",
       slug: "emerge",
       installs: InstallsErlang,
       systems: [LinuxDistro(GentooLinux)],
@@ -110,7 +110,7 @@ emerge --ask dev-util/rebar
     ),
 
     InstallationMethod(
-      name: "Install with xbps",
+      name: "xbps package manager",
       slug: "xbps",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(VoidLinux)],
@@ -124,7 +124,7 @@ sudo xbps-install gleam
 ",
     ),
     InstallationMethod(
-      name: "Install with xbps",
+      name: "xbps package manager",
       slug: "xbps",
       installs: InstallsErlang,
       systems: [LinuxDistro(VoidLinux)],
@@ -139,7 +139,7 @@ sudo xbps-install erlang rebar3
     ),
 
     InstallationMethod(
-      name: "Install with zypper",
+      name: "zypper package manager",
       slug: "zypper",
       installs: InstallsGleamAndErlang,
       systems: [LinuxDistro(OpenSuseLinux)],
@@ -154,7 +154,7 @@ sudo zypper install gleam
     ),
 
     InstallationMethod(
-      name: "Install with zypper",
+      name: "zypper package manager",
       slug: "zypper",
       installs: InstallsErlang,
       systems: [LinuxDistro(OpenSuseLinux)],
@@ -169,7 +169,7 @@ sudo zypper install erlang erlang-rebar3
     ),
 
     InstallationMethod(
-      name: "Install with pkg",
+      name: "pkg package manager",
       slug: "pkg",
       installs: InstallsGleamAndErlang,
       systems: [FreeBsd],
@@ -183,7 +183,7 @@ sudo pkg install gleam erlang rebar3
 ",
     ),
     InstallationMethod(
-      name: "Install with pkg",
+      name: "pkg package manager",
       slug: "pkg",
       installs: InstallsErlang,
       systems: [FreeBsd],
@@ -198,7 +198,7 @@ sudo pkg install erlang rebar3
     ),
 
     InstallationMethod(
-      name: "Install with pkg",
+      name: "pkg package manager",
       slug: "pkg",
       installs: InstallsGleamAndErlang,
       systems: [OpenBsd],
@@ -212,7 +212,7 @@ doas pkg_add install gleam erlang erl27-rebar3
 ",
     ),
     InstallationMethod(
-      name: "Install with pkg",
+      name: "pkg package manager",
       slug: "pkg",
       installs: InstallsErlang,
       systems: [OpenBsd],
@@ -227,7 +227,7 @@ doas pkg_add install erlang erl27-rebar3
     ),
 
     InstallationMethod(
-      name: "Install with termux pkg",
+      name: "Termux pkg package manager",
       slug: "termux",
       installs: InstallsGleamAndErlang,
       systems: [Android],
@@ -241,7 +241,7 @@ pkg install gleam && pkg install erlang
 ",
     ),
     InstallationMethod(
-      name: "Install with termux pkg",
+      name: "Termux pkg package manager",
       slug: "termux",
       installs: InstallsErlang,
       systems: [Android],
@@ -256,7 +256,7 @@ pkg install erlang
     ),
 
     InstallationMethod(
-      name: "Install with winget",
+      name: "winget package manager",
       slug: "winget",
       installs: InstallsGleamAndErlang,
       systems: [Windows],
@@ -271,7 +271,7 @@ winget install --id Gleam.Gleam
 ",
     ),
     InstallationMethod(
-      name: "Install with winget",
+      name: "winget package manager",
       slug: "winget",
       installs: InstallsErlang,
       systems: [Windows],
@@ -287,7 +287,7 @@ winget install --id Erlang.ErlangOTP
     ),
 
     InstallationMethod(
-      name: "Install with Scoop",
+      name: "Scoop package manager",
       slug: "scoop",
       installs: InstallsGleamAndErlang,
       systems: [Windows],
@@ -305,7 +305,7 @@ scoop install main/rebar3
 ",
     ),
     InstallationMethod(
-      name: "Install with Scoop",
+      name: "Scoop package manager",
       slug: "scoop",
       installs: InstallsErlang,
       systems: [Windows],
@@ -323,7 +323,7 @@ scoop install main/rebar3
     ),
 
     InstallationMethod(
-      name: "Install with Homebrew",
+      name: "Homebrew package manager",
       slug: "homebrew",
       installs: InstallsGleamAndErlang,
       systems: [Linux],
@@ -337,7 +337,7 @@ brew install gleam
 ",
     ),
     InstallationMethod(
-      name: "Install with Homebrew",
+      name: "Homebrew package manager",
       slug: "homebrew",
       installs: InstallsErlang,
       systems: [Linux],
@@ -352,7 +352,7 @@ brew install erlang
     ),
 
     InstallationMethod(
-      name: "Install with Homebrew",
+      name: "Homebrew package manager",
       slug: "homebrew",
       installs: InstallsErlang,
       systems: [MacOs],
@@ -367,7 +367,7 @@ brew install erlang
     ),
 
     InstallationMethod(
-      name: "Install with MacPorts",
+      name: "MacPorts package manager",
       slug: "macports",
       installs: InstallsGleamAndErlang,
       systems: [MacOs],
@@ -382,7 +382,7 @@ sudo port install gleam
 ",
     ),
     InstallationMethod(
-      name: "Install with MacPorts",
+      name: "MacPorts package manager",
       slug: "macports",
       installs: InstallsErlang,
       systems: [MacOs],
@@ -399,7 +399,7 @@ sudo port install rebar3
     ),
 
     InstallationMethod(
-      name: "Install with asdf version manager",
+      name: "asdf version manager",
       slug: "asdf",
       installs: InstallsGleamAndErlang,
       systems: [MacOs, Linux],
@@ -422,7 +422,7 @@ can be used to skip this work.
 ",
     ),
     InstallationMethod(
-      name: "Install with asdf version manager",
+      name: "asdf version manager",
       slug: "asdf",
       installs: InstallsErlang,
       systems: [MacOs, Linux],
@@ -444,7 +444,7 @@ can be used to skip this work.
     ),
 
     InstallationMethod(
-      name: "Install from GitHub",
+      name: "Precompiled executable from GitHub",
       slug: "github",
       installs: InstallsGleam,
       systems: [Linux, MacOs, Windows],
@@ -484,7 +484,7 @@ mv gleam ~/.local/bin/
     ),
 
     InstallationMethod(
-      name: "Compile from source with Cargo",
+      name: "Compile from source",
       slug: "source",
       installs: InstallsGleam,
       systems: [Linux, MacOs, Windows],
@@ -967,8 +967,14 @@ fn what_method_page(
 
   let method_html = fn(method: InstallationMethod) {
     let path = method_path(step, system, method)
+    let badge = case method.priority {
+      HighPriority -> html.i([], [html.text(" (recommended!)")])
+      MediumPriority | LowPriority -> element.none()
+    }
+
     html.li([], [
       html.a([attribute.href(path)], [html.text(method.name)]),
+      badge,
     ])
   }
 
@@ -977,6 +983,19 @@ fn what_method_page(
   ]
   |> page.page_layout("", meta, ctx)
   |> page.to_html_file(meta)
+}
+
+fn system_choice(
+  text text: String,
+  href href: String,
+  image image: String,
+) -> element.Element(a) {
+  html.li([], [
+    html.a([attribute.href(href)], [
+      html.img([attribute.src("/images/" <> image)]),
+      html.text(text),
+    ]),
+  ])
 }
 
 const which_distro_path = "/install/linux"
@@ -1016,21 +1035,21 @@ fn which_linux_distro_page(
       preview_image: option.None,
     )
 
-  let li = fn(name, href) {
-    html.li([], [
-      html.a([attribute.href(href)], [html.text(name)]),
-    ])
-  }
   let distro_html = fn(distro) {
-    li(
+    system_choice(
       linux_distro_name(distro),
       method_selection_path(GleamStep, LinuxDistro(distro)),
+      linux_distro_slug(distro) <> ".svg",
     )
   }
 
   [
     html.ul([], [
-      li("Any other Linux", method_selection_path(GleamStep, Linux)),
+      system_choice(
+        "Any other Linux",
+        method_selection_path(GleamStep, Linux),
+        "linux.svg",
+      ),
       ..list.map(distros, distro_html)
     ]),
   ]
@@ -1054,10 +1073,11 @@ fn which_operating_system_page(
     )
 
   let system_html = fn(system) {
-    let path = operating_system_path(system)
-    html.li([], [
-      html.a([attribute.href(path)], [html.text(operating_system_name(system))]),
-    ])
+    system_choice(
+      operating_system_name(system),
+      operating_system_path(system),
+      operating_system_slug(system) <> ".svg",
+    )
   }
 
   let start =
