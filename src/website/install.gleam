@@ -987,7 +987,7 @@ fn what_method_page(
 
     let icon = case method.installs == InstallsEditorSupport {
       True ->
-        html.div([attribute.class("install-logo")], [
+        html.div([attribute.class("icon")], [
           html.img([
             attribute.src("/images/install/" <> method.slug <> ".svg"),
           ]),
@@ -1001,8 +1001,17 @@ fn what_method_page(
     ])
   }
 
+  let class = case step {
+    GleamStep -> "gleam-step"
+    ErlangStep -> "erlang-step"
+    EditorStep -> "editor-step"
+  }
+
   [
-    html.ul([], list.map(methods, method_html)),
+    html.ul(
+      [attribute.class("install-options"), attribute.class(class)],
+      list.map(methods, method_html),
+    ),
   ]
   |> page.page_layout("", meta, ctx)
   |> page.to_html_file(meta)
@@ -1015,7 +1024,7 @@ fn system_choice(
 ) -> element.Element(a) {
   html.li([], [
     html.a([attribute.href(href)], [
-      html.div([attribute.class("install-logo")], [
+      html.div([attribute.class("icon")], [
         html.img([
           attribute.src("/images/install/" <> image),
         ]),
@@ -1071,9 +1080,9 @@ fn which_linux_distro_page(
   }
 
   [
-    html.ul([], [
+    html.ul([attribute.class("install-options")], [
       system_choice(
-        "Any other Linux",
+        "Other Linuxes",
         method_selection_path(GleamStep, Linux),
         "linux.svg",
       ),
@@ -1108,7 +1117,12 @@ fn which_operating_system_page(
   }
 
   let start =
-    [html.ul([], list.map(systems, system_html))]
+    [
+      html.ul(
+        [attribute.class("install-options")],
+        list.map(systems, system_html),
+      ),
+    ]
     |> page.page_layout("", meta, ctx)
     |> page.to_html_file(meta)
   start

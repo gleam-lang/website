@@ -1806,20 +1806,59 @@ details>summary {
 .table-of-contents a {
   text-decoration: none;
   padding: .6rem 1.4rem;
-  color: #EEF1FF;
+  color: #eef1ff;
   display: flex;
 }
 
-.install-logo {
-  width: 50px;
+.install-options {
+  padding: 0;
+  list-style: none;
+  gap: var(--gap-2);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.install-options img {
+  transition: transform ease-in-out 100ms;
+}
+
+.install-options a:hover .icon img {
+  transform: scale(1.08);
+}
+
+.install-options li {
+  flex: 1;
+  min-width: 280px;
+  background: var(--color-lukewarm-charcoal);
+  border: 1px solid var(--color-warm-charcoal);
+  border-radius: .6rem;
+  padding: 1rem;
+}
+
+.install-options.erlang-step li,
+.install-options.gleam-step li {
+  min-width: 400px;
+}
+
+.install-options a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.install-options .icon {
+  width: 75px;
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: var(--gap-1);
+  margin-right: var(--gap-2);
 }
 
-.install-logo img {
+.install-options .icon img {
   max-width: 100%;
   max-height: 100%;
 }
