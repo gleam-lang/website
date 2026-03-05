@@ -980,11 +980,6 @@ fn what_method_page(
 
   let method_html = fn(method: InstallationMethod) {
     let path = method_path(step, system, method)
-    let badge = case method.priority {
-      HighPriority -> html.i([], [html.text(" (recommended!)")])
-      MediumPriority | LowPriority -> element.none()
-    }
-
     let icon = case method.installs == InstallsEditorSupport {
       True ->
         html.div([attribute.class("icon")], [
@@ -997,7 +992,6 @@ fn what_method_page(
 
     html.li([], [
       html.a([attribute.href(path)], [icon, html.text(method.name)]),
-      badge,
     ])
   }
 
