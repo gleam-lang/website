@@ -501,7 +501,7 @@ mv gleam ~/.local/bin/
       name: "Compile from source",
       slug: "source",
       installs: InstallsGleam,
-      systems: [Linux, MacOs, Windows],
+      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
       priority: LowPriority,
       content: "
 The Gleam toolchain can be compiled with Cargo, Rust's build tool. The most
