@@ -985,8 +985,18 @@ fn what_method_page(
       MediumPriority | LowPriority -> element.none()
     }
 
+    let icon = case method.installs == InstallsEditorSupport {
+      True ->
+        html.div([attribute.class("install-logo")], [
+          html.img([
+            attribute.src("/images/install/" <> method.slug <> ".svg"),
+          ]),
+        ])
+      False -> element.none()
+    }
+
     html.li([], [
-      html.a([attribute.href(path)], [html.text(method.name)]),
+      html.a([attribute.href(path)], [icon, html.text(method.name)]),
       badge,
     ])
   }
@@ -1005,7 +1015,11 @@ fn system_choice(
 ) -> element.Element(a) {
   html.li([], [
     html.a([attribute.href(href)], [
-      html.img([attribute.src("/images/" <> image)]),
+      html.div([attribute.class("install-logo")], [
+        html.img([
+          attribute.src("/images/install/" <> image),
+        ]),
+      ]),
       html.text(text),
     ]),
   ])

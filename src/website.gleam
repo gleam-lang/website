@@ -10,7 +10,7 @@ import website/case_study
 import website/cheatsheet
 import website/command_line_reference
 import website/fs
-import website/installing
+import website/install
 import website/news
 import website/page
 import website/roadmap
@@ -77,7 +77,7 @@ fn build_site() -> snag.Result(Nil) {
 
   let files = [
     static_files(),
-    installing.pages(ctx),
+    install.pages(ctx),
     page_files,
     news_files(news_posts, ctx),
     case_study_files(case_studies, ctx),

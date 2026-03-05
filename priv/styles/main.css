@@ -1695,3 +1695,17 @@ pre code {
   color: #EEF1FF;
   display: flex;
 }
+
+.install-logo {
+  width: 50px;
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--gap-1);
+}
+
+.install-logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
