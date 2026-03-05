@@ -339,6 +339,21 @@ brew install gleam
     InstallationMethod(
       name: "Homebrew package manager",
       slug: "homebrew",
+      installs: InstallsGleamAndErlang,
+      systems: [MacOs],
+      priority: HighPriority,
+      content: "
+Gleam can be installed with [Homebrew](https://brew.sh/) using this command:
+
+```txt
+brew install gleam
+```
+",
+    ),
+
+    InstallationMethod(
+      name: "Homebrew package manager",
+      slug: "homebrew",
       installs: InstallsErlang,
       systems: [Linux],
       priority: MediumPriority,
@@ -350,7 +365,6 @@ brew install erlang
 ```
 ",
     ),
-
     InstallationMethod(
       name: "Homebrew package manager",
       slug: "homebrew",
