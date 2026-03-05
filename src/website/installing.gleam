@@ -569,10 +569,23 @@ file is opened.
     ),
 
     InstallationMethod(
+      name: "Gram",
+      slug: "gram",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, Windows],
+      priority: MediumPriority,
+      content: "
+Gram [supports](https://gram.liten.app/docs/languages/gleam/) the language
+server out-of-the-box. No additional configuration is required and Gram will
+automatically start the language server when a Gleam file is opened.
+",
+    ),
+
+    InstallationMethod(
       name: "Zed",
       slug: "zed",
       installs: InstallsEditorSupport,
-      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      systems: [Linux, MacOs, Windows],
       priority: MediumPriority,
       content: "
 The [`zed-gleam`](https://github.com/gleam-lang/zed-gleam) plugin provides

@@ -19,6 +19,12 @@ The Gleam Language Server is included in the regular `gleam` binary, so if you
 have Gleam installed then you have the Gleam language server installed. You may
 need to configure your editor to use the language server for Gleam code.
 
+### Gram
+
+Gram [supports](https://gram.liten.app/docs/languages/gleam/) the language
+server out-of-the-box. No additional configuration is required and Gram will
+automatically start the language server when a Gleam file is opened.
+
 ### Helix
 
 Helix supports the language server out-of-the-box. No additional configuration
