@@ -641,8 +641,7 @@ The LSP package can be configured to use the Gleam language server. Open
 }
 ```
 
-For more information see the documentation for
-[`sublime-text-gleam`](https://github.com/digitalcora/sublime-text-gleam).
+For more information see [the documentation](https://github.com/digitalcora/sublime-text-gleam).
 ",
     ),
 
@@ -653,7 +652,7 @@ For more information see the documentation for
       systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
       priority: MediumPriority,
       content: "
-[`gleam-ts-mode`](https://github.com/gleam-lang/gleam-mode) is a major mode for
+`gleam-ts-mode` is a major mode for
 Emacs 29 or higher.
 
 If you are using MELPA you can install it like so:
@@ -663,8 +662,8 @@ If you are using MELPA you can install it like so:
   :mode (rx \".gleam\" eos))
 ```
 
-See the documentation for the mode for other installation methods and
-considerations.
+See the []documentation](https://github.com/gleam-lang/gleam-mode) for the mode
+for other installation methods and considerations.
 ",
     ),
 
