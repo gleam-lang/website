@@ -1821,7 +1821,6 @@ details>summary {
 }
 
 .install-options img {
-  aspect-ratio: 1;
   width: 100%;
   transition: transform ease-in-out 100ms;
 }
