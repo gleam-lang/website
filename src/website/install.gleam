@@ -524,6 +524,22 @@ cargo install --path cargo-bin --force --locked
     ),
 
     InstallationMethod(
+      name: "apt package manager",
+      slug: "apt",
+      installs: InstallsErlang,
+      systems: [LinuxDistro(UbuntuLinux)],
+      priority: HighPriority,
+      content: "
+Erlang can be installed on Ubuntu 25.04 or higher with apt by running this
+command:
+
+```
+sudo apt install erlang-dev
+```
+",
+    ),
+
+    InstallationMethod(
       name: "Neovim",
       slug: "nvim",
       installs: InstallsEditorSupport,
@@ -717,6 +733,7 @@ pub type LinuxDistribution {
   ArchLinux
   GentooLinux
   OpenSuseLinux
+  UbuntuLinux
   VoidLinux
 }
 
@@ -780,6 +797,7 @@ fn linux_distro_slug(distro: LinuxDistribution) -> String {
     ArchLinux -> "arch-linux"
     GentooLinux -> "gentoo-linux"
     OpenSuseLinux -> "opensuse-linux"
+    UbuntuLinux -> "ubuntu-linux"
     VoidLinux -> "void-linux"
   }
 }
@@ -790,6 +808,7 @@ fn linux_distro_name(distro: LinuxDistribution) -> String {
     ArchLinux -> "Arch Linux"
     GentooLinux -> "Gentoo Linux"
     OpenSuseLinux -> "OpenSUSE Linux"
+    UbuntuLinux -> "Ubuntu Linux"
     VoidLinux -> "Void Linux"
   }
 }
