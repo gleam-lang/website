@@ -527,6 +527,25 @@ cargo install --path cargo-bin --force --locked
       name: "apt package manager",
       slug: "apt",
       installs: InstallsErlang,
+      systems: [LinuxDistro(DebianLinux)],
+      priority: HighPriority,
+      content: "
+Erlang can be installed on Debian 13 (Trixie) or higher with apt by running
+this command:
+
+```
+sudo apt install erlang-dev rebar3
+```
+
+Earlier versions of Debian have an older version of Erlang that are no longer
+supported by the Erlang team or by most Gleam package authors.
+",
+    ),
+
+    InstallationMethod(
+      name: "apt package manager",
+      slug: "apt",
+      installs: InstallsErlang,
       systems: [LinuxDistro(UbuntuLinux)],
       priority: HighPriority,
       content: "
@@ -534,8 +553,11 @@ Erlang can be installed on Ubuntu 25.04 or higher with apt by running this
 command:
 
 ```
-sudo apt install erlang-dev
+sudo apt install erlang-dev rebar3
 ```
+
+Earlier versions of Ubuntu have an older version of Erlang that are no longer
+supported by the Erlang team or by most Gleam package authors.
 ",
     ),
 
@@ -731,6 +753,7 @@ pub type OperatingSystem {
 pub type LinuxDistribution {
   AlpineLinux
   ArchLinux
+  DebianLinux
   GentooLinux
   OpenSuseLinux
   UbuntuLinux
@@ -795,6 +818,7 @@ fn linux_distro_slug(distro: LinuxDistribution) -> String {
   case distro {
     AlpineLinux -> "alpine-linux"
     ArchLinux -> "arch-linux"
+    DebianLinux -> "debian-linux"
     GentooLinux -> "gentoo-linux"
     OpenSuseLinux -> "opensuse-linux"
     UbuntuLinux -> "ubuntu-linux"
@@ -806,6 +830,7 @@ fn linux_distro_name(distro: LinuxDistribution) -> String {
   case distro {
     AlpineLinux -> "Alpine Linux"
     ArchLinux -> "Arch Linux"
+    DebianLinux -> "Debian Linux"
     GentooLinux -> "Gentoo Linux"
     OpenSuseLinux -> "OpenSUSE Linux"
     UbuntuLinux -> "Ubuntu Linux"
