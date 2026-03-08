@@ -7111,6 +7111,26 @@ pub fn rust(ctx: site.Context) -> fs.File {
         // ]),
         ]),
       ]),
+      html.li([], [
+        html.a([attr.href("#results")], [html.text("Results")]),
+        html.ul([], [
+          html.li([], [
+            html.a([attr.href("#let-assert")], [
+              html.text("Asserting a Result"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#unwrapping-with-a-default")], [
+              html.text("Unwrapping with a default"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#early-return-on-error")], [
+              html.text("Early return on error"),
+            ]),
+          ]),
+        ]),
+      ]),
       // html.li([], [
     //   html.a([attr.href("#modules")], [html.text("Modules")]),
     //   html.text("TODO"),
@@ -8116,8 +8136,157 @@ case x {
         ),
       ]),
     ]),
-    html.h2([attr.id("modules")], [html.text("Modules")]),
+    html.h2([attr.id("results")], [html.text("Results")]),
+    html.p([], [
+      html.text(
+        "Both Rust and Gleam use a Result type for error handling instead of exceptions. The concepts are very similar, though the syntax differs.",
+      ),
+    ]),
+    html.h3([attr.id("let-assert")], [html.text("Asserting a Result")]),
     html.h4([attr.id("rust-16")], [html.text("Rust")]),
+    html.p([], [
+      html.text("In Rust, you can use "),
+      html.code([], [html.text(".unwrap()")]),
+      html.text(
+        " to extract the value from a Result, panicking if it is an Err:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-rust")], [
+        html.text(
+          "let value = my_result.unwrap();
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("Or with a custom message using "),
+      html.code([], [html.text(".expect()")]),
+      html.text(":"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-rust")], [
+        html.text(
+          "let value = my_result.expect(\"This should never fail\");
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("In Gleam, "),
+      html.code([], [html.text("let assert")]),
+      html.text(
+        " can be used to extract a value from a Result, crashing if the pattern does not match:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-gleam")], [
+        html.text(
+          "let assert Ok(value) = my_result
+",
+        ),
+      ]),
+    ]),
+    html.p([], [
+      html.text("An optional message can be provided using "),
+      html.code([], [html.text("as")]),
+      html.text(":"),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-gleam")], [
+        html.text(
+          "let assert Ok(value) = my_result as \"This should never fail\"
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("unwrapping-with-a-default")], [
+      html.text("Unwrapping with a default"),
+    ]),
+    html.h4([attr.id("rust-17")], [html.text("Rust")]),
+    html.p([], [
+      html.text("In Rust, "),
+      html.code([], [html.text(".unwrap_or()")]),
+      html.text(
+        " returns the contained Ok value or a provided default:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-rust")], [
+        html.text(
+          "let value = my_result.unwrap_or(0);
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("gleam-17")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("In Gleam, "),
+      html.code([], [html.text("result.unwrap")]),
+      html.text(
+        " from the standard library provides the same functionality:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-gleam")], [
+        html.text(
+          "import gleam/result
+
+let value = result.unwrap(my_result, or: 0)
+",
+        ),
+      ]),
+    ]),
+    html.h3([attr.id("early-return-on-error")], [
+      html.text("Early return on error"),
+    ]),
+    html.h4([attr.id("rust-18")], [html.text("Rust")]),
+    html.p([], [
+      html.text("Rust has the "),
+      html.code([], [html.text("?")]),
+      html.text(
+        " operator, which returns early from a function with the Err value if the Result is an Err:",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-rust")], [
+        html.text(
+          "fn run() -> Result<i64, String> {
+    let a = may_fail_a()?;
+    let b = may_fail_b(a)?;
+    Ok(a + b)
+}
+",
+        ),
+      ]),
+    ]),
+    html.h4([attr.id("gleam-18")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("In Gleam, "),
+      html.code([], [html.text("use")]),
+      html.text(" with "),
+      html.code([], [html.text("result.try")]),
+      html.text(
+        " provides similar early-return behaviour. If the Result is an Ok, its value is bound to the variable and execution continues. If it is an Error, that Error is returned immediately.",
+      ),
+    ]),
+    html.pre([], [
+      html.code([attr.class("language-gleam")], [
+        html.text(
+          "import gleam/result
+
+fn run() -> Result(Int, String) {
+  use a <- result.try(may_fail_a())
+  use b <- result.try(may_fail_b(a))
+  Ok(a + b)
+}
+",
+        ),
+      ]),
+    ]),
+    html.h2([attr.id("modules")], [html.text("Modules")]),
+    html.h4([attr.id("rust-19")], [html.text("Rust")]),
     html.p([], [
       html.text("In Rust, the "),
       html.code([], [html.text("mod")]),
@@ -8152,7 +8321,7 @@ mod wobble {
         ),
       ]),
     ]),
-    html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
+    html.h4([attr.id("gleam-19")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "In Gleam, each file is a module, named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.",
