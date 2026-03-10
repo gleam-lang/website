@@ -420,15 +420,107 @@ Richard Feldman has an excellent talk on this pattern which can be viewed
 
 ### Replace bools with custom types
 
-TODO
+The bool type can be useful for representing data with 2 possible states,
+however, there are some drawbacks to this:
+
+- `Bool`, `True`, and `False` have no meaning without context, making it easier
+  to misunderstand what values represent.
+- The bool type will be used for many unrelated pieces of data, so it is
+  possible to mistake one bool value for another without a type error to
+  prevent the mistake.
+- If a third state is required in future then bool can no longer be used, and a
+  larger refactoring will be needed. It may be tempting to use a second bool,
+  but that results in 4 states, and a third bool results in 8 states.
+  Combinations of bools can be especially unclear.
+
+Consider defining and using descriptive custom types instead, as they avoid
+these issues.
+
+```gleam
+// Using a bool
+pub type SchoolPerson {
+  SchoolPerson(name: String, is_student: Bool)
+}
+
+// Using a custom type
+pub type SchoolPerson {
+  SchoolPerson(name: String, role: Role)
+}
+
+pub type Role {
+  Student
+  Teacher
+}
+```
 
 ### Match all variants
 
-TODO
+Gleam's exhaustiveness checking of case expressions ensures that when you
+change your data model all your code is updated appropriately before it
+compiled again.
+
+If the final pattern of a case expression is one that matches any value, then
+this refactoring assistance is effectively disabled for new additions, and the
+compiler will not be able to help you update your code. This makes it easy to
+introduce bugs due to old logic no longer being correct, so avoid catch-all
+patterns where possible.
+
+```gleam
+// Bad: assumes all other variants are teachers
+case role {
+  Student -> handle_student()
+  _ -> handle_teacher()
+}
+
+// Good: cannot silently become incorrect
+case role {
+  Student -> handle_student()
+  Teacher -> handle_teacher()
+}
+```
 
 ### The sans-io pattern
 
-TODO
+The sans-io pattern is a way of designing API clients, SDKs, and similar
+packages so that they do not depend on any particular HTTP client. Instead it
+gives responsibility to the library user for sending HTTP requests, etc.
+With this pattern the user has full control over HTTP sending, so they can use
+it on any target, inside any structure or framework, they can add rate limiting
+or retries, or anything else they might need.
+
+To implement the pattern structure your code so that each API action has a pair
+of functions: One that constructs a HTTP request, and another that takes a HTTP
+response and returns the resulting data.
+
+```gleam
+import gleam/http/request.{type Request}
+import gleam/http/response.{type Response}
+
+/// Construct a request for the create-user endpoint.
+pub fn create_user_request(name: String) -> Request(String) {
+  request.new()
+  |> request.set_method(Post)
+  |> request.set_host("example.com")
+  |> request.set_body(json.to_string(json.object([#("name", name)])))
+  |> request.prepend_header("accept", "application/json")
+  |> request.prepend_header("content-type", "application/json")
+}
+
+/// Parse a response from the create-user endpoint.
+pub fn create_user_request(response: Request(String)) -> Result(Nil, ApiError) {
+  case response.status {
+    201 -> Ok(User(name: response.body))
+    409 -> Error(UserNameAlreadyInUse)
+    429 -> Error(RateLimitWasHit)
+    code -> Error(GotUnexpectedResponse(code, response.body))
+  }
+}
+```
+
+This is not the same as taking a HTTP-sending function as an argument. That
+design means that only HTTP clients that conform to that type can be used,
+which is very limiting. Most notably, it would mean that the library cannot be
+used on both the Erlang and the JavaScript targets.
 
 ### The builder pattern
 
