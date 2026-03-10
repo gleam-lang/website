@@ -524,9 +524,68 @@ used on both the Erlang and the JavaScript targets.
 
 ### The builder pattern
 
-TODO
+The builder pattern is a flexible way to create records with multiple optional
+fields, often used for configuration.
+
+```gleam
+// Usage
+button.new(text: "Continue")
+|> button.colour("green")
+|> button.large
+|> button.to_html
+```
+
+Any required fields can be taken as arguments by the function that starts the
+builder pipeline, the remaining fields being set to default values.
+
+
+```gleam
+pub type Button {
+  Button(text: String, colour: String, classes: Set(String))
+}
+
+pub fn new(text text: String) -> Button {
+  Button(text:, colour: "pink", classes: set.new())
+}
+```
+
+In this example the `Button` type is not opaque, so the record can be
+constructed and manipulated directly. Other times you may wish to make it
+opaque and force the builder functions to be used, which could be for
+validation or data integrity reasons.
+
+Builder functions take the builder value as an argument and return a new
+version of it with one or more fields changed.
+
+```gleam
+pub fn colour(button: Button, value: String) -> Button {
+  Button(..button, colour: value)
+}
+```
+
+Builder functions do not need to only set a field to a value taken as an
+argument, they can perform any logic to construct the data. Often it is helpful
+to have convenience functions for common uses, and possibly have the users of
+the code construct the builder record directly if they need full control.
+
+```gleam
+pub fn large(button: Button) -> Button {
+  let classes = button.classes |> set.delete("small") |> set.insert("large")
+  Button(..button, classes:)
+}
+```
 
 ## Anti-patterns
+
+## Abbreviations
+
+Using shortened names can save a few keystrokes when typing, but they greatly
+hinder code reading and understanding. Abbreviations are ambiguous, so the
+reader has to guess what they are short for, and often they will get it wrong.
+This is especially likely if you are working with people with different
+backgrounds or from different cultures.
+
+Always write names in full.
 
 ### Fragmented modules
 
@@ -562,10 +621,6 @@ they have a suitably designed supervision tree. The library author would
 benefit from having a strong understanding of OTP system to identify when this
 is a good option.
 
-### Check-then-assert
-
-TODO
-
 ### Global namespace pollution
 
 Gleam has a global module namespace, a property inherited from the BEAM
@@ -592,10 +647,6 @@ src/
 └── my_package.gleam
 ```
 
-### Grouping by design pattern
-
-TODO
-
 ### Namespace trespassing
 
 Other packages should not place their modules within a top-level directory that
@@ -608,6 +659,79 @@ making a package intended to be used with the `lustre` package.
 
 The maintainers of the `lustre` package may choose to reuse the `src/lustre/`
 directory in other Lustre-related packages that they also own.
+
+### Grouping by design pattern
+
+When splitting your code into modules always design the boundaries in your
+system around your business domain and what would be the best API for the users
+of the code. This means never using design patterns or abstract code constructs
+as the basis for boundaries within the project.
+
+```gleam
+// Bad: kind grouping
+import app/constants
+import app/functions
+import app/types
+import app/utilities
+
+// Bad: category theory grouping
+import app/functors
+import app/monads
+import app/monoids
+import app/semigroups
+
+// Bad: design pattern grouping
+import app/controllers/user_controller
+import app/decorator/user_decorator
+import app/model/user_mode
+import app/services/user_service
+import app/views/user_view
+
+// Good: business domain grouping
+import app/accounts
+import app/billing
+```
+
+### Check-then-assert
+
+Check-then-assert is a pattern common in procedural languages where one
+performs a check that a value is in some desired state, and then performance
+some action afterwards with the knowledge that it is in the desired state. This
+is an anti-pattern in functional languages Gleam, and it should never be done.
+
+Instead use pattern matching, combinators, or other functional patterns to
+handle data that could be in some other state. These patterns take advantage of
+the type system to ensure that there are no mistakes coming from a disconnect
+between the checking and the using, and they can have performance benefits too.
+
+```gleam
+// Bad: check then assert
+case result.is_ok(data) {
+  True -> {
+    let assert Ok(value) = data
+    process(value)
+  }
+  False -> data
+}
+
+// Bad: check then assert with `use`
+use <- bool.guard(when: result.is_error(data), return: data)
+let assert Ok(value) = data
+process(data)
+
+// Good: pattern matching
+case data {
+  Ok(value) -> process(value)
+  Error(e) -> Error(e)
+}
+
+// Good: combinators
+data |> result.try(process)
+
+// Good: combinators with `use`
+use value <- result.try(value)
+process(value)
+```
 
 ### Using dynamic with FFI
 
