@@ -507,7 +507,7 @@ pub fn create_user_request(name: String) -> Request(String) {
 }
 
 /// Parse a response from the create-user endpoint.
-pub fn create_user_request(response: Request(String)) -> Result(Nil, ApiError) {
+pub fn create_user_response(response: Response(String)) -> Result(Nil, ApiError) {
   case response.status {
     201 -> Ok(User(name: response.body))
     409 -> Error(UserNameAlreadyInUse)
