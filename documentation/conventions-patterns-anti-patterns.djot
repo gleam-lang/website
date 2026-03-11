@@ -602,14 +602,15 @@ has a wealth of information on this topic.
 
 ```gleam
 // Bad
-import yaml/data
-import yaml/error
-import yaml/format
-import yaml/parse
-import yaml/schema
+import my_library/client
+import my_library/config
+import my_library/decode
+import my_library/error
+import my_library/parser
+import my_library/types
 
 // Good
-import yaml
+import my_library
 ```
 
 This anti-pattern is especially common with AI-generated code. If you are using
