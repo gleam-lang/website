@@ -48,17 +48,17 @@ their return type.
 ```gleam
 // Good
 fn calculate_total(amounts: List(Float), service_charge: Float) -> Float {
-  list.fold(amounts, 0, int.add) * service_charge
+  int.sum(amounts) * service_charge
 }
 
 // Bad
 fn calculate_total(amounts, service_charge) {
-  list.fold(amounts, 0, int.add) * service_charge
+  int.sum(amounts) * service_charge
 }
 
 // Bad: missing return annotation
 fn calculate_total(amounts: List(Float), service_charge: Float) {
-  list.fold(amounts, 0, int.add) * service_charge
+  int.sum(amounts) * service_charge
 }
 ```
 
@@ -85,7 +85,7 @@ pub fn first(list: List(a)) -> Result(a, Nil) {
   }
 }
 
-// Bad: options
+// Bad: returns an option
 pub fn first(list: List(a)) -> option.Option(a) {
   case list {
     [item, ..] -> option.Some(item)
@@ -93,8 +93,8 @@ pub fn first(list: List(a)) -> option.Option(a) {
   }
 }
 
-// Bad: panics/exceptions
-pub fn first(list: List(a)) -> Result(a, Nil) {
+// Bad: panics on failure
+pub fn first(list: List(a)) -> a {
   case list {
     [item, ..] -> item
     _ -> panic as "cannot get first of empty list"
@@ -140,7 +140,7 @@ It may be tempting to ignore this convention and use the name `JSON`, but this
 will result in the BEAM code generated from the Gleam code using the name
 `j_s_o_n`.
 
-### Name conversion functions as prescribed
+### Conventional conversion function naming
 
 When naming a function that converts from one type to another, use the convention `x_to_y`.
 
@@ -166,6 +166,9 @@ pub fn to_string(id: Identifier) -> String
 // Bad
 pub fn identifier_to_string(id: Identifier) -> String
 ```
+Functions are used with a module qualifier, so the name of the module clarifies
+what the input value is:
+
 ```gleam
 import my_app/identifier.{type Identifier}
 
@@ -196,7 +199,7 @@ pub fn round(data: Float) -> Int
 pub fn float_to_int(data: Float) -> Int
 ```
 
-### Name short-circuiting result functions as prescribed
+### Conventional failible function naming
 
 Functions that return results should be given a name that is appropriate for
 the domain and the operation they perform.
@@ -208,7 +211,7 @@ pub fn enqueue(job: BackgroundJob) -> Result(Nil, EnqueueError)
 ```
 
 If the function is a special result-handling version of an existing function
-that short-circuits when there is an error, then the `try_` prefix can be used,
+that returns-early when there is an error, then the `try_` prefix can be used,
 so long as there is not a more appropriate domain-specific name. Names based on
 design patterns or abstract concepts should be avoided.
 
@@ -310,7 +313,7 @@ one of the fields of the higher error.
 
 ```gleam
 // Good
-pub type NotesError {
+pub type NoteBookError {
   NoteAlreadyExists(path: String)
   NoteCouldNotBeCreated(path: String, reason: simplifile.FileError)
   NoteCouldNotBeRead(path: String, reason: simplifile.FileError)
@@ -334,13 +337,13 @@ pub type NotesError {
 
 ### Comment liberally
 
-Comments are a very effective way to make code easier to understand, and they
-take little time to write, so comments can be a very efficient way to make code
-easier to work with.
+Comments are a very effective way to make code easier to understand. This is
+especially valuable for projects with more than one programmer, or projects
+that are expected read and edited over longer periods of time.
 
 Comments can explain both _what_ the code does as well as _why_ the code does
 what it does. Often the reader could determine _what_ without the aid of the
-comment, but that may not be the case for unfamiliar readers, or if the code is
+comment, but that may not be the case for unfamiliar readers or if the code is
 later determined to have a bug, so what it does and what the writer intended it
 to do do not match.
 
@@ -433,16 +436,16 @@ however, there are some drawbacks to this:
   but that results in 4 states, and a third bool results in 8 states.
   Combinations of bools can be especially unclear.
 
+```gleam
+pub type SchoolPerson {
+  SchoolPerson(name: String, is_student: Bool)
+}
+```
+
 Consider defining and using descriptive custom types instead, as they avoid
 these issues.
 
 ```gleam
-// Using a bool
-pub type SchoolPerson {
-  SchoolPerson(name: String, is_student: Bool)
-}
-
-// Using a custom type
 pub type SchoolPerson {
   SchoolPerson(name: String, role: Role)
 }
@@ -450,32 +453,6 @@ pub type SchoolPerson {
 pub type Role {
   Student
   Teacher
-}
-```
-
-### Match all variants
-
-Gleam's exhaustiveness checking of case expressions ensures that when you
-change your data model all your code is updated appropriately before it
-compiled again.
-
-If the final pattern of a case expression is one that matches any value, then
-this refactoring assistance is effectively disabled for new additions, and the
-compiler will not be able to help you update your code. This makes it easy to
-introduce bugs due to old logic no longer being correct, so avoid catch-all
-patterns where possible.
-
-```gleam
-// Bad: assumes all other variants are teachers
-case role {
-  Student -> handle_student()
-  _ -> handle_teacher()
-}
-
-// Good: cannot silently become incorrect
-case role {
-  Student -> handle_student()
-  Teacher -> handle_teacher()
 }
 ```
 
@@ -520,7 +497,8 @@ pub fn create_user_response(response: Response(String)) -> Result(Nil, ApiError)
 This is not the same as taking a HTTP-sending function as an argument. That
 design means that only HTTP clients that conform to that type can be used,
 which is very limiting. Most notably, it would mean that the library cannot be
-used on both the Erlang and the JavaScript targets.
+used on both the Erlang and the JavaScript targets, as one will be using a
+promise type, while the other will not.
 
 ### The builder pattern
 
@@ -577,7 +555,7 @@ pub fn large(button: Button) -> Button {
 
 ## Anti-patterns
 
-## Abbreviations
+### Abbreviations
 
 Using shortened names can save a few keystrokes when typing, but they greatly
 hinder code reading and understanding. Abbreviations are ambiguous, so the
@@ -586,6 +564,18 @@ This is especially likely if you are working with people with different
 backgrounds or from different cultures.
 
 Always write names in full.
+
+```gleam
+// Bad
+let cap = 5
+let off = 0
+let cnt = proc_dat(ss)
+
+// Good
+let capacity = 5
+let offset = 0
+let continuation = process_data(session)
+```
 
 ### Fragmented modules
 
@@ -598,12 +588,32 @@ more boilerplate to use than one well designed module, and it becomes more
 challenging to hide internal implementation details when they have to be
 exposed for other modules to use.
 
+Multiple modules also encourages the creation of a much larger number of
+functions and types, with overlapping functionality between modules. The larger
+the API the more difficult it is to understand and to work with. The best APIs
+are small and focused.
+
 If you are having trouble with import cycles, or if multiple modules need to be
 imported to perform a simple task with your code, then it may be a sign that
 you have split up code that should be a single module.
 
 Evan Czaplicki's talk ["The life of a file"](https://www.youtube.com/watch?v=XpDsk374LDE)
 has a wealth of information on this topic.
+
+```gleam
+// Bad
+import yaml/data
+import yaml/error
+import yaml/format
+import yaml/parse
+import yaml/schema
+
+// Good
+import yaml
+```
+
+This anti-pattern is especially common with AI-generated code. If you are using
+AI in your coding pay extra attention to this rule.
 
 ### Panicking in libraries
 
@@ -695,14 +705,16 @@ import app/billing
 ### Check-then-assert
 
 Check-then-assert is a pattern common in procedural languages where one
-performs a check that a value is in some desired state, and then performance
+performs a check that a value is in some desired state, and then performs
 some action afterwards with the knowledge that it is in the desired state. This
-is an anti-pattern in functional languages Gleam, and it should never be done.
+is an anti-pattern in functional languages like Gleam, and it should never be
+done.
 
-Instead use pattern matching, combinators, or other functional patterns to
-handle data that could be in some other state. These patterns take advantage of
-the type system to ensure that there are no mistakes coming from a disconnect
-between the checking and the using, and they can have performance benefits too.
+Instead use pattern matching or functions such as `result.try` and `result.map`
+to handle data that could be in some other state. These patterns take advantage
+of the type system to ensure that there are no mistakes coming from a
+disconnect between the checking and the using, and they can have performance
+benefits too.
 
 ```gleam
 // Bad: check then assert
@@ -755,6 +767,32 @@ pub fn byte_size(data: Buffer) -> Int
 import gleam/dynamic.{type Dynamic}
 
 pub fn byte_size(data: Dynamic) -> Int
+```
+
+### Match all variants
+
+Gleam's exhaustiveness checking of case expressions ensures that when you
+change your data model all your code is updated appropriately before it
+compiled again.
+
+If the final pattern of a case expression is one that matches any value, then
+this refactoring assistance is effectively disabled for new additions, and the
+compiler will not be able to help you update your code. This makes it easy to
+introduce bugs due to old logic no longer being correct, so avoid catch-all
+patterns where possible.
+
+```gleam
+// Bad: assumes all other variants are teachers
+case role {
+  Student -> handle_student()
+  _ -> handle_teacher()
+}
+
+// Good: cannot silently become incorrect
+case role {
+  Student -> handle_student()
+  Teacher -> handle_teacher()
+}
 ```
 
 ### Category theory overuse
