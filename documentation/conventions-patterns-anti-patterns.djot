@@ -807,6 +807,22 @@ simple, concrete, and approachable programming style.
 
 Solve specific problems with specific solutions.
 
+```gleam
+// Bad: abstract style
+pub fn sum(
+  data: a,
+  monoid: Monoid(a),
+  catamorphism: Catamorphism(a, b),
+) -> b {
+  catamorphism.apply(data, monoid.empty, monoid.append)
+}
+
+// Good: concrete style
+pub fn total_cost(costs: List(Int)) -> Int {
+  int.sum(costs)
+}
+```
+
 ``` =html
 <!--
 ## OTP anti-patterns
