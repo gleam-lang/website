@@ -699,7 +699,7 @@ import app/services/user_service
 import app/views/user_view
 
 // Good: business domain grouping
-import app/accounts
+import app/stock
 import app/billing
 ```
 
