@@ -47,7 +47,7 @@ their return type.
 
 ```gleam
 // Good
-fn calculate_total(amounts: List(Float), service_charge: Float) -> Float {
+fn calculate_total(amounts: List(Int), service_charge: Int) -> Int {
   int.sum(amounts) * service_charge
 }
 
@@ -57,7 +57,7 @@ fn calculate_total(amounts, service_charge) {
 }
 
 // Bad: missing return annotation
-fn calculate_total(amounts: List(Float), service_charge: Float) {
+fn calculate_total(amounts: List(Int), service_charge: Int) {
   int.sum(amounts) * service_charge
 }
 ```
