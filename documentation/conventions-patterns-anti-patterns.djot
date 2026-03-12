@@ -166,6 +166,7 @@ pub fn to_string(id: Identifier) -> String
 // Bad
 pub fn identifier_to_string(id: Identifier) -> String
 ```
+
 Functions are used with a module qualifier, so the name of the module clarifies
 what the input value is:
 
@@ -516,7 +517,6 @@ button.new(text: "Continue")
 Any required fields can be taken as arguments by the function that starts the
 builder pipeline, the remaining fields being set to default values.
 
-
 ```gleam
 pub type Button {
   Button(text: String, colour: String, classes: Set(String))
@@ -648,8 +648,8 @@ name of the package. For example, the package `lustre` places its modules in
 src/
 ├── my_package.gleam
 └── my_package/
-    ├── distribution.gleam
-    └── inventory.gleam
+    ├── distribution.gleam
+    └── inventory.gleam
 
 # Bad
 src/
