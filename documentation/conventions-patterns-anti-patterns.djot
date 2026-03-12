@@ -294,7 +294,7 @@ directory can import modules from `dependencies` and `src/`, but not
 integration tests. Code in this directory can import modules from any
 dependencies and any directory.
 
-`test` is for any additional code used in development, such as code generators
+`dev` is for any additional code used in development, such as code generators
 and helper scripts. Code in this directory can import modules from any
 dependencies and any directory.
 
