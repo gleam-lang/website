@@ -518,7 +518,7 @@ cd gleam
 Compile and install Gleam.
 
 ```
-cargo install --path cargo-bin --force --locked
+cargo install --path gleam-bin --force --locked
 ```
 ",
     ),
