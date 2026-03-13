@@ -1979,8 +1979,8 @@ details > summary {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(auto, 340px) auto;
-  gap: 1rem;
+  grid-template-columns: minmax(240px, 340px) auto;
+  gap: var(--gap-2);
   padding: 0 var(--gap-2);
 }
 
@@ -2007,7 +2007,7 @@ details > summary {
   background: var(--color-lukewarm-charcoal);
   border: 1px solid var(--color-warm-charcoal);
   overflow-y: auto;
-  max-height: 90vh;
+  max-height: calc(100svh - 32px); /* 16px from top and bottom */
   border-radius: 0.4rem;
   font-size: 1rem;
   padding-bottom: var(--gap-2);
@@ -2027,6 +2027,16 @@ details > summary {
   margin: 0;
 }
 
+.table-of-contents ul ul::before {
+  content: "";
+  background: var(--color-warm-charcoal);
+  width: 2px;
+  position: absolute;
+  top: 38px;
+  left: 23px;
+  bottom: 18px;
+}
+
 .table-of-contents li {
   display: block;
   position: relative;
@@ -2034,18 +2044,13 @@ details > summary {
 
 .table-of-contents ul ul li:before {
   content: "";
-  border-bottom: 2px solid var(--color-warm-charcoal);
-  border-left: 2px solid var(--color-warm-charcoal);
   position: absolute;
-  top: -50%;
-  bottom: 50%;
+  top: 50%;
+  height: 2px;
+  background-color: var(--color-warm-charcoal);
   width: 1ch;
-  pointer-events: none;
   left: 1.4rem;
-}
-
-.table-of-contents ul ul li:first-child:before {
-  top: 0;
+  pointer-events: none;
 }
 
 .table-of-contents ul ul a {
