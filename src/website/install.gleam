@@ -422,12 +422,15 @@ sudo port install rebar3
 by running these commands:
 
 ```txt
-asdf install gleam latest
-asdf install erlang latest
-asdf install rebar3 latest
-asdf global gleam latest
-asdf global erlang latest
-asdf global rebar3 latest
+asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin add rebar https://github.com/Stratus3D/asdf-rebar.git
+asdf plugin add gleam https://github.com/vic/asdf-gleam.git
+
+asdf set -u erlang latest
+asdf set -u rebar latest
+asdf set -u gleam latest
+
+asdf install
 ```
 
 Installing with asdf can take a long time as it builds Erlang from source. On MacOS the
@@ -445,10 +448,13 @@ can be used to skip this work.
 by running these commands:
 
 ```txt
-asdf install erlang latest
-asdf install rebar3 latest
-asdf global erlang latest
-asdf global rebar3 latest
+asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin add rebar https://github.com/Stratus3D/asdf-rebar.git
+
+asdf set -u erlang latest
+asdf set -u rebar latest
+
+asdf install
 ```
 
 Installing with asdf can take a long time as it builds Erlang from source. On MacOS the
