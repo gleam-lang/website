@@ -58,40 +58,6 @@ immediately obvious what the problem is and how the programmer should proceed.
 have added custom errors for these two scenarios, fixing the two main stumbling
 points folks have with Hex errors. Thank you both!
 
-## CLI documentation improvements
-
-The `help` command and `--help` flag can be used with Gleam's command line
-interface to view a concise overview of various commands. This was helpful for
-the very basics, but typically the programmer would need to refer to the
-documentation on the Gleam website for more complex tasks, such as adding a
-dependency from `git`, or adding a package with a specific version constraint.
-
-Stopping what you are doing to go and find a web page is annoying, so the
-`gleam help add`, `gleam help deps`, and `gleam help docs` commands have
-been improved with much more detailed documentation output, covering these
-sorts of tasks.
-
-## Consistent configuration
-
-Gleam tooling uses the `gleam.toml` file for configuration. Due to a mistake
-very early in Gleam's initial development there has been an odd inconsistency
-with the names of two of the keys in this file: `dev-dependencies` and
-`tag-prefix`. They use sausage-case, but all the others use snake_case!
-
-With this release they are now canonically snake case, making them consistent.
-The old format continues to be supported, but it is deprecated.
-
-```toml
-name = "my_app"
-version = "2.4.0"
-
-[dependencies]
-gleam_stdlib = ">= 0.44.0 and < 2.0.0"
-
-[dev_dependencies]
-gleeunit = ">= 1.0.0 and < 2.0.0"
-```
-
 ## Guard clause ergonomics
 
 [Adi Salimgereyev](https://github.com/abs0luty) has implemented two nice
@@ -196,6 +162,39 @@ import gleam/int ...
 
 Thank you [Aayush Tripathi](https://github.com/aayush-tripathi)!
 
+## CLI documentation improvements
+
+The `help` command and `--help` flag can be used with Gleam's command line
+interface to view a concise overview of various commands. This was helpful for
+the very basics, but typically the programmer would need to refer to the
+documentation on the Gleam website for more complex tasks, such as adding a
+dependency from `git`, or adding a package with a specific version constraint.
+
+Stopping what you are doing to go and find a web page is annoying, so the
+`gleam help add`, `gleam help deps`, and `gleam help docs` commands have
+been improved with much more detailed documentation output, covering these
+sorts of tasks.
+
+## Consistent configuration
+
+Gleam tooling uses the `gleam.toml` file for configuration. Due to a mistake
+very early in Gleam's initial development there has been an odd inconsistency
+with the names of two of the keys in this file: `dev-dependencies` and
+`tag-prefix`. They use sausage-case, but all the others use snake_case!
+
+With this release they are now canonically snake case, making them consistent.
+The old format continues to be supported, but it is deprecated.
+
+```toml
+name = "my_app"
+version = "2.4.0"
+
+[dependencies]
+gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+
+[dev_dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
+```
 
 ## Extract anonymous function
 
@@ -371,9 +370,8 @@ of a string, regardless of whether it is a valid Gleam identifier or not.
 Thank you [Hari Mohan](https://github.com/seafoamteal).
 
 The language server now performs best-effort zero value generation for
-`decode.failure` and have support for `Nil` when using the `Generate Dynamic
-Decoder` code action.
-Thank you [Hari Mohan](https://github.com/seafoamteal).
+`decode.failure` and have support for `Nil` when using the `generate dynamic decoder`
+code action. Thank you [Hari Mohan](https://github.com/seafoamteal).
 
 The language server now allows extracting the start of a pipeline into a
 variable. Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri).
