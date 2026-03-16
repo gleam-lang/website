@@ -727,6 +727,20 @@ configure it to run `gleam lsp` from the root of your workspace.
     ),
 
     InstallationMethod(
+      name: "Kakoune",
+      slug: "kakoune",
+      installs: InstallsEditorSupport,
+      systems: [Linux, MacOs, FreeBsd, OpenBsd, Android],
+      priority: MediumPriority,
+      content: "
+Kakoune has built-in support for Gleam syntax highlighting and indenting.
+
+If you are using a language server client for Kakoune configure it to run
+`gleam lsp` from the root of your workspace to get Gleam LS functionality.
+",
+    ),
+
+    InstallationMethod(
       name: "Other editors",
       slug: "other-editors",
       installs: InstallsEditorSupport,
