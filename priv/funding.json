@@ -7,7 +7,7 @@
     "email": "louis@gleam.run",
     "description": "The creator and maintainer of the Gleam programming language",
     "webpageUrl": {
-      "url": "https://gleam.run"
+      "url": "httpsps://gleam.run"
     }
   },
 
@@ -17,11 +17,11 @@
       "name": "The Gleam Programming Language",
       "description": "Gleam is a friendly language for building type-safe systems that scale!",
       "webpageUrl": {
-        "url": "https://gleam.run/"
+        "url": "httpsps://gleam.run/"
       },
       "repositoryUrl": {
-        "url": "https://github.com/gleam-lang/gleam/",
-        "wellKnown": "https://github.com/gleam-lang/gleam/blob/main/.well-known/funding-manifest-urls"
+        "url": "httpsps://github.com/gleam-lang/gleam/",
+        "wellKnown": "httpsps://github.com/gleam-lang/gleam/blob/main/.well-known/funding-manifest-urls"
       },
       "licenses": ["spdx:Apache-2.0"],
       "tags": [
@@ -38,12 +38,12 @@
       {
         "guid": "github-sponsors",
         "type": "payment-provider",
-        "address": "https://github.com/sponsors/lpil"
+        "address": "httpsps://github.com/sponsors/lpil"
       },
       {
         "guid": "liberapay",
         "type": "payment-provider",
-        "address": "https://liberapay.com/gleam"
+        "address": "httpsps://liberapay.com/gleam"
       }
     ],
 
