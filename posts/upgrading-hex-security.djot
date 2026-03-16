@@ -1,6 +1,6 @@
 Gleam is a type safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Today Gleam [v1.15.0][release] has been published, let's
-go over what's new..
+go over what's new.
 
 [release]: https://github.com/gleam-lang/gleam/releases/tag/v1.15.0
 
@@ -71,7 +71,7 @@ case message {
 }
 ```
 
-And a helpful custom error message is now shown when when int and float binary
+And a helpful custom error message is now shown when int and float binary
 operators are used incorrectly in case expression guards.
 
 Thank you [Adi Salimgereyev](https://github.com/abs0luty)!
@@ -247,7 +247,7 @@ fn view(model: Int) -> element.Element(Msg) {
 }
 ```
 
-Using renaming when hovering on module name will would result in the
+Using renaming when hovering on module name would result in the
 following code:
 
 ```gleam
@@ -370,7 +370,7 @@ of a string, regardless of whether it is a valid Gleam identifier or not.
 Thank you [Hari Mohan](https://github.com/seafoamteal).
 
 The language server now performs best-effort zero value generation for
-`decode.failure` and have support for `Nil` when using the `generate dynamic decoder`
+`decode.failure` and has support for `Nil` when using the `generate dynamic decoder`
 code action. Thank you [Hari Mohan](https://github.com/seafoamteal).
 
 The language server now allows extracting the start of a pipeline into a
@@ -391,7 +391,6 @@ And thank you to the bug fixers and experience polishers:
 [Gavin Morrow](https://github.com/gavinmorrow),
 [Giacomo Cavalieri](https://github.com/giacomocavalieri),
 [Hari Mohan](https://github.com/seafoamteal),
-[Hari Mohan](https://gituhub.com/seafoamteal),
 [John Downey](https://github.com/jtdowney),
 [Justin Lubin](https://github.com/justinlubin),
 [Surya Rose](https://github.com/GearsDatapacks),
