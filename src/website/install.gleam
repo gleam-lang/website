@@ -741,6 +741,19 @@ If you are using a language server client for Kakoune configure it to run
     ),
 
     InstallationMethod(
+      name: "JetBrains IDEs",
+      slug: "jetbrains",
+      installs: InstallsEditorSupport,
+      systems: [Windows, Linux, MacOs],
+      priority: MediumPriority,
+      content: "
+The [Gleam Language plugin](https://plugins.jetbrains.com/plugin/25254-gleam-language)
+from Simon Martineau provides syntax highlighting and language server support
+for JetBrains IDEs.
+",
+    ),
+
+    InstallationMethod(
       name: "Other editors",
       slug: "other-editors",
       installs: InstallsEditorSupport,
