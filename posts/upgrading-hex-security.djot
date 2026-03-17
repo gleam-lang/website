@@ -346,7 +346,7 @@ pub fn main() {
 This will show this signature help information:
 
 ```gleam
-wibble(input, fn(input) -> output)
+twice(input, fn(input) -> output)
 
 ```
 
