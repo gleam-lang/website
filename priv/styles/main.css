@@ -1979,14 +1979,15 @@ details > summary {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(240px, 340px) auto;
+  grid-template-columns: 300px auto;
   gap: var(--gap-2);
   padding: 0 var(--gap-2);
 }
 
 /* This just gives us a nice bit of padding atop the headings */
 .toc-layout .prose h1,
-.toc-layout .prose h2 {
+.toc-layout .prose h2,
+.toc-layout .prose h3 {
   scroll-margin-top: 1em;
 }
 
@@ -2027,16 +2028,6 @@ details > summary {
   margin: 0;
 }
 
-.table-of-contents ul ul::before {
-  content: "";
-  background: var(--color-warm-charcoal);
-  width: 2px;
-  position: absolute;
-  top: 38px;
-  left: 23px;
-  bottom: 18px;
-}
-
 .table-of-contents li {
   display: block;
   position: relative;
@@ -2045,11 +2036,26 @@ details > summary {
 .table-of-contents ul ul li:before {
   content: "";
   position: absolute;
+  top: 0;
+  left: 22px;
+  bottom: 0;
+  background-color: var(--color-warm-charcoal);
+  width: 2px;
+  pointer-events: none;
+}
+
+.table-of-contents ul ul li:last-child:before {
+  bottom: calc(50% - 2px);
+}
+
+.table-of-contents ul ul li:after {
+  content: "";
+  position: absolute;
   top: 50%;
   height: 2px;
   background-color: var(--color-warm-charcoal);
   width: 1ch;
-  left: 1.4rem;
+  left: 24px;
   pointer-events: none;
 }
 
