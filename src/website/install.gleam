@@ -990,7 +990,7 @@ fn method_page(
       },
       description: "Installing Gleam on " <> name,
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("install"),
     )
 
   let nav = case method.installs {

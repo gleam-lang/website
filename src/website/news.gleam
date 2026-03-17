@@ -572,7 +572,7 @@ pub fn index_page(posts: List(NewsPost), ctx: site.Context) -> fs.File {
       subtitle: "What's happening in the Gleam world?",
       description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("news"),
     )
 
   let list_items =
