@@ -1,3 +1,4 @@
+import gleam/int
 import gleam/list
 import gleam/option
 import gleam/time/calendar
@@ -9,21 +10,45 @@ import website/page
 import website/site
 
 const in_progress = [
-  "Function inlining to improve performance and stack usage",
-  "Dependency version conflict resolution assistant",
-  "Windows OS non-developer mode support",
-  "Language server document-highlight support",
-  "Language server \"split alternative patterns\" code action",
+  #(
+    "Function inlining",
+    "Improve performance and stack usage by inlining a few functions from the core libraries",
+  ),
+  #(
+    "Dependency conflict resolution",
+    "Improve dealing with conflicting dependency versions by giving the user hints",
+  ),
+  #(
+    "Better Windows Support",
+    "Improve the Windows OS non-developer mode support for running production programs",
+  ),
+  #(
+    "LSP document-highlight",
+    "Support document-highlight in the language server",
+  ),
+  #(
+    "LSP split alternative patterns",
+    "Add a \"split alternative patterns\" code action in the language server",
+  ),
 ]
 
 const planned = [
-  "API key generation when Hex rate limits reached",
-  "Code linking syntax for documentation comments",
-  "Hex private package support",
-  "JavaScript record performance improvements",
-  "Lifting constant expressions into global scope on JavaScript",
-  "Mutual tail call optimisation on JavaScript",
-  "New OTP application initialisation interface",
+  #(
+    "Hex API key generation",
+    "Generate an API key for Hex when we reach the rate limit",
+  ),
+  #("Code linking syntax for documentation comments", ""),
+  #("Private Hex", "Hex private package support for companies and big teams"),
+  #("Better JavasScript Records", "JavaScript record performance improvements"),
+  #(
+    "Lift constants to the global scope in JS",
+    "Lifting constant expressions into global scope on JavaScript",
+  ),
+  #(
+    "Mutual TCO on JavaScript",
+    "Improve how we generate recursion on JavaScript to support mutual tail calls",
+  ),
+  #("Better OTP apps", "New OTP application initialisation interface"),
 ]
 
 const research = [
@@ -315,67 +340,205 @@ pub fn page(ctx: site.Context) -> fs.File {
     )
 
   let changelog = "https://github.com/gleam-lang/gleam/tree/main/CHANGELOG.md"
-  let changelogs = "https://github.com/gleam-lang/gleam/tree/main/changelog"
   let issues = "https://github.com/gleam-lang/gleam/issues"
 
-  let list = fn(items, formatter) {
-    html.ul(
-      [attr.class("roadmap-list")],
-      list.map(items, fn(item) { html.li([], [formatter(item)]) }),
-    )
-  }
-  let section = fn(title, blurb, items) {
-    element.fragment([
-      html.h2([], [html.text(title)]),
-      html.p([], [html.text(blurb)]),
-      list(items, html.text),
-    ])
-  }
-
   [
-    html.p([], [
-      html.text(
-        "The highlights of what's been released, what's being worked on, and what's
-  coming in future! To see all the details please see the ",
-      ),
-      html.a([attr.href(changelog)], [html.text("current changelogs")]),
-      html.text(", the "),
-      html.a([attr.href(changelogs)], [html.text("historical changelogs")]),
-      html.text(", and the "),
-      html.a([attr.href(issues)], [html.text("issue tracker")]),
-      html.text("."),
+    html.ul([attr.class("roadmap-buttons")], [
+      html.li([], [
+        html.a([attr.href(changelog), attr.id("changelog-button")], [
+          html.h3([], [
+            html.img([
+              attr.src("/images/news-scroll-icon.svg"),
+              attr.aria_hidden(True),
+              attr.role("icon"),
+            ]),
+            html.text("Current Changelog"),
+          ]),
+          html.p([], [
+            html.text(
+              "Read our in-progress changelog on GitHub to see what’s coming",
+            ),
+          ]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href(issues), attr.id("issues-button")], [
+          html.h3([], [
+            html.img([
+              attr.src("/images/circle-dot-icon.svg"),
+              attr.aria_hidden(True),
+              attr.role("icon"),
+            ]),
+            html.text("Current Issues"),
+          ]),
+          html.p([], [
+            html.text(
+              "See current Gleam issues for a glimpse at what is coming",
+            ),
+          ]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#version-history"), attr.id("versions-button")], [
+          html.h3([], [
+            html.img([
+              attr.src("/images/archive-box-icon.svg"),
+              attr.aria_hidden(True),
+              attr.role("icon"),
+            ]),
+            html.text("Version History"),
+          ]),
+          html.p([], [
+            html.text(
+              "Check out the history of Gleam and see what each release added",
+            ),
+          ]),
+        ]),
+      ]),
     ]),
-    section(
-      "In progress",
-      "Features that are currently being worked on, or complete but not yet released.",
-      in_progress,
-    ),
-    section(
-      "Planned",
-      "Features that will be implemented, but work has not yet started.",
-      planned,
-    ),
-    section(
-      "Research",
-      "Features that likely will be added in future, but we have some outstanding
-  design questions to resolve.",
-      research,
-    ),
-    html.h2([], [html.text("Done")]),
-    html.ol(
-      [attr.class("roadmap-release-list")],
-      list.map(done, fn(release) {
-        let title =
-          release.version <> " - " <> page.short_human_date(release.date)
-        html.li([], [
-          html.h3([], [html.text(title)]),
-          html.ul(
-            [attr.class("roadmap-list")],
-            list.map(release.items, fn(item) { html.li([], [html.text(item)]) }),
+
+    html.section([attr.class("roadmap-section"), attr.id("in-progress")], [
+      html.aside([], [
+        html.div([attr.class("roadmap-star")], [
+          html.text("1"),
+        ]),
+      ]),
+      html.main([], [
+        html.header([], [
+          html.h2([], [html.text("In Progress")]),
+          html.h5([], [html.text("Features for the next release")]),
+        ]),
+        html.ul(
+          [attr.class("roadmap-issues")],
+          list.map(in_progress, fn(issue) {
+            let #(title, body) = issue
+            html.li([attr.class("roadmap-issue roadmap-in-progress")], [
+              html.h4([], [html.text(title)]),
+              html.p([], [html.text(body)]),
+            ])
+          }),
+        ),
+      ]),
+    ]),
+
+    html.section([attr.class("roadmap-section"), attr.id("planned")], [
+      html.aside([], [
+        html.div([attr.class("roadmap-star")], [
+          html.text("2"),
+        ]),
+      ]),
+      html.main([], [
+        html.header([], [
+          html.h2([], [html.text("Planned Features and Explorations")]),
+          html.h5([], [
+            html.text(
+              "Things we're exploring or working on for the next few Gleam versions",
+            ),
+          ]),
+        ]),
+        html.ul([attr.class("roadmap-issues")], [
+          element.fragment(
+            list.map(planned, fn(issue) {
+              let #(title, body) = issue
+              html.li([attr.class("roadmap-issue roadmap-planned")], [
+                html.h4([], [html.text(title)]),
+                html.p([], [html.text(body)]),
+              ])
+            }),
           ),
-        ])
-      }),
-    ),
+          element.fragment(
+            list.map(research, fn(item) {
+              html.li([attr.class("roadmap-issue roadmap-research")], [
+                html.h6([], [html.text("Researching")]),
+                html.h4([], [html.text(item)]),
+              ])
+            }),
+          ),
+        ]),
+      ]),
+    ]),
+
+    html.section([attr.class("roadmap-section"), attr.id("version-history")], [
+      html.aside([], [
+        html.div([attr.class("roadmap-star")], [
+          html.text("3"),
+        ]),
+        html.span([attr.class("filler-line")], []),
+      ]),
+      html.main([], [
+        html.header([], [
+          html.h2([], [html.text("Version History")]),
+          html.h5([], [
+            html.text("Check out everything that's come to Gleam in the past!"),
+          ]),
+        ]),
+        html.ul(
+          [],
+          list.map(done, fn(release) {
+            html.li([attr.class("previous-release")], [
+              html.h4([], [html.text(release.version)]),
+              html.h5([], [
+                html.text(
+                  release.date.month |> calendar.month_to_string
+                  <> " "
+                  <> int.to_string(release.date.year),
+                ),
+              ]),
+              html.ul(
+                [],
+                list.map(release.items, fn(item) {
+                  html.li([], [html.text(item)])
+                }),
+              ),
+            ])
+          }),
+        ),
+      ]),
+    ]),
+    //   html.p([], [
+  //     html.text(
+  //       "The highlights of what's been released, what's being worked on, and what's
+  // coming in future! To see all the details please see the ",
+  //     ),
+  //     html.a([attr.href(changelog)], [html.text("current changelogs")]),
+  //     html.text(", the "),
+  //     html.a([attr.href(changelogs)], [html.text("historical changelogs")]),
+  //     html.text(", and the "),
+  //     html.a([attr.href(issues)], [html.text("issue tracker")]),
+  //     html.text("."),
+  //   ]),
+  //   section(
+  //     "In progress",
+  //     "Features that are currently being worked on, or complete but not yet released.",
+  //     [],
+  //     // in_progress,
+  //   ),
+  //   section(
+  //     "Planned",
+  //     "Features that will be implemented, but work has not yet started.",
+  //     planned,
+  //   ),
+  //   section(
+  //     "Research",
+  //     "Features that likely will be added in future, but we have some outstanding
+  // design questions to resolve.",
+  //     research,
+  //   ),
+  //   html.h2([], [html.text("Done")]),
+  //   html.ol(
+  //     [attr.class("roadmap-release-list")],
+  //     list.map(done, fn(release) {
+  //       let title =
+  //         release.version <> " - " <> page.short_human_date(release.date)
+  //       html.li([], [
+  //         html.h3([], [html.text(title)]),
+  //         html.ul(
+  //           [attr.class("roadmap-list")],
+  //           list.map(release.items, fn(item) { html.li([], [html.text(item)]) }),
+  //         ),
+  //       ])
+  //     }),
+  //   ),
   ]
   |> page.page_layout("roadmap", meta, ctx)
   |> page.to_html_file(meta)
