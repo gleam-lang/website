@@ -336,7 +336,7 @@ pub fn page(ctx: site.Context) -> fs.File {
       subtitle: "What's coming next?",
       description: "See what's been released, what's being worked on, and what's coming in the future!",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("roadmap"),
     )
 
   let changelog = "https://github.com/gleam-lang/gleam/tree/main/CHANGELOG.md"

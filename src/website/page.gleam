@@ -345,7 +345,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
       subtitle: "Support Gleam's development by sponsoring us!",
       meta_title: "Sponsor | Gleam Programming Language",
       description: "Everything we bring to the language is possible thanks to our sponsors. See how to become one of them and support Gleam.",
-      preview_image: option.None,
+      preview_image: option.Some("sponsor"),
       preload_images: [],
     )
 
@@ -830,7 +830,7 @@ pub fn deployment_flyio(ctx: site.Context) -> fs.File {
       subtitle: "Run Gleam all over the world. No ops required.",
       description: "Run Gleam all over the world. No ops required.",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("deploy-fly"),
     )
 
   let toc = [
@@ -991,7 +991,7 @@ pub fn writing_gleam(ctx: site.Context) -> fs.File {
       subtitle: "Developing Gleam projects",
       description: "Developing Gleam projects using the Gleam build tool",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("writing"),
     )
 
   [
@@ -1529,7 +1529,7 @@ pub fn frequently_asked_questions(ctx: site.Context) -> snag.Result(fs.File) {
       subtitle: "What? Why? Where? When? How?",
       description: "What? Why? Where? When? How? Everything you wanted to know about Gleam.",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("faq"),
     )
   let source = "documentation/frequently-asked-questions.djot"
   djot_page_with_table_of_contents(source, ctx, meta)
@@ -1544,7 +1544,7 @@ pub fn language_server(ctx: site.Context) -> snag.Result(fs.File) {
       subtitle: "IDE features for all editors",
       description: "Learn all the capabilities and code actions of the Gleam language server.",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("language-server"),
     )
   let source = "documentation/language-server.djot"
   djot_page_with_table_of_contents(source, ctx, meta)
@@ -1576,7 +1576,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
       subtitle: "Learn all about programming in Gleam!",
       description: "All about programming in Gleam: find the docs you need.",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("documentation"),
     )
 
   [
@@ -1863,7 +1863,7 @@ pub fn gleam_toml(ctx: site.Context) -> fs.File {
       meta_title: "gleam.toml | Configure your Gleam project",
       description: "Learn how to specify dependencies, set the default target, and more.",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("toml"),
     )
 
   let code =
@@ -2025,7 +2025,7 @@ pub fn deployment_linux(ctx: site.Context) -> fs.File {
       subtitle: "Run Gleam on a server from any provider",
       description: "Run Gleam on a server from any provider",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("deploy-linux"),
     )
 
   let toc = [
@@ -2752,7 +2752,7 @@ pub fn community(ctx: site.Context) -> fs.File {
       subtitle: "Welcome, friend! It's good to have you",
       description: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("community"),
     )
 
   let code_of_conduct =
@@ -2972,7 +2972,7 @@ pub fn branding(ctx: site.Context) -> fs.File {
       subtitle: "All pretty and pink 💖",
       description: "Meet Gleam's mascot, check branding guidelines, and see how we keep everything pretty and pink 💖",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("branding"),
     )
 
   let content = [
