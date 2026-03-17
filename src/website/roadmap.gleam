@@ -37,7 +37,7 @@ const planned = [
     "Hex API key generation",
     "Generate an API key for Hex when we reach the rate limit",
   ),
-  #("Code linking syntax for documentation comments", ""),
+  #("Code linking in docs", "Code linking syntax for documentation comments"),
   #("Private Hex", "Hex private package support for companies and big teams"),
   #("Better JavasScript Records", "JavaScript record performance improvements"),
   #(
