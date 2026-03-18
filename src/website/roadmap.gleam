@@ -39,7 +39,7 @@ const planned = [
   ),
   #("Code linking in docs", "Code linking syntax for documentation comments"),
   #("Private Hex", "Hex private package support for companies and big teams"),
-  #("Better JavasScript Records", "JavaScript record performance improvements"),
+  #("Better JavaScript Records", "JavaScript record performance improvements"),
   #(
     "Lift constants to the global scope in JS",
     "Lifting constant expressions into global scope on JavaScript",
