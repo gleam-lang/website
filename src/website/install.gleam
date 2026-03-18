@@ -707,7 +707,7 @@ If you are using MELPA you can install it like so:
   :mode (rx \".gleam\" eos))
 ```
 
-See the []documentation](https://github.com/gleam-lang/gleam-mode) for the mode
+See the [documentation](https://github.com/gleam-lang/gleam-mode) for the mode
 for other installation methods and considerations.
 ",
     ),
