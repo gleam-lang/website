@@ -39,11 +39,10 @@ Lastly, the password used for encrypting local Hex tokens must now be at least
 </div>
 ```
 
-This work was done in collaboration with and was sponsored by
-[The Erlang Ecosystem Foundation](https://erlef.org). A huge thank-you to
-Jonatan Männchen and the rest of the team there! If you would like to support
-important infrastructure projects for the whole ecosystem consider becoming a
-member of the foundation.
+This work was done in collaboration with [The Erlang Ecosystem Foundation](https://erlef.org).
+A huge thank-you to Jonatan Männchen and the rest of the team there! If you
+would like to support important infrastructure projects for the whole ecosystem
+consider becoming a member of the foundation.
 
 ## Better Hex errors
 
