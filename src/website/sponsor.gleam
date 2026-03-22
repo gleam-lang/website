@@ -29,6 +29,11 @@ pub fn featured() -> List(List(FeaturedSponsor)) {
     ],
     [
       FeaturedSponsor(
+        name: "NineFX",
+        website: "https://www.ninefx.com/",
+        image: "/images/sponsors/nine-fx.svg",
+      ),
+      FeaturedSponsor(
         name: "Williams & Holmes",
         website: "https://williamsandholmes.com",
         image: "/images/sponsors/williamsandholmes.svg",
