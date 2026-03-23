@@ -337,7 +337,7 @@ fn footer(ctx: site.Context) -> element.Element(a) {
   ])
 }
 
-pub fn sponsor(ctx: site.Context) -> fs.File {
+pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "/sponsor",
@@ -684,7 +684,7 @@ pub fn sponsor(ctx: site.Context) -> fs.File {
           ),
         ]),
       ]),
-      wall_of_sponsors(),
+      wall_of_sponsors(sponsors),
     ]),
   ]
 
@@ -3335,7 +3335,7 @@ pub fn short_human_date(date: calendar.Date) -> String {
   <> int.to_string(date.year)
 }
 
-pub fn home(ctx: site.Context) -> fs.File {
+pub fn home(sponsors: List(sponsor.Sponsor), ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
       path: "",
@@ -3617,7 +3617,7 @@ pub fn register_event_handler() {
             html.text(" (or tell your boss to)"),
           ]),
         ]),
-        wall_of_sponsors(),
+        wall_of_sponsors(sponsors),
       ]),
       html.section([attr.class("home-still-here")], [
         html.div([attr.class("content")], [
@@ -3677,8 +3677,8 @@ pub fn to_html_file(page_content: Element(a), meta: PageMeta) -> fs.File {
   )
 }
 
-fn wall_of_sponsors() -> Element(a) {
-  let sponsors = list.shuffle(sponsor.sponsors)
+fn wall_of_sponsors(sponsors: List(sponsor.Sponsor)) -> Element(a) {
+  let sponsors = list.shuffle(sponsors)
 
   let sponsors_html =
     list.map(sponsors, fn(sponsor) {

@@ -30,6 +30,7 @@ packages = [
   { name = "snag", version = "1.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "snag", source = "hex", outer_checksum = "274F41D6C3ECF99F7686FDCE54183333E41D2C1CA5A3A673F9A8B2C7A4401077" },
   { name = "splitter", version = "1.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "splitter", source = "hex", outer_checksum = "3DFD6B6C49E61EDAF6F7B27A42054A17CFF6CA2135FF553D0CB61C234D281DD0" },
   { name = "tear", version = "1.0.4", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "tear", source = "hex", outer_checksum = "FBDBC14414E5141D8A73EA45C4A992C250E164E1C80E828F9C436BA8A7E24B78" },
+  { name = "tom", version = "2.0.1", build_tools = ["gleam"], requirements = ["gleam_stdlib", "gleam_time"], otp_app = "tom", source = "hex", outer_checksum = "90791DA4AACE637E30081FE77049B8DB850FBC8CACC31515376BCC4E59BE1DD2" },
   { name = "xmb", version = "1.4.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "xmb", source = "hex", outer_checksum = "1C4B67ACBFE703122414691A63DC3591AE6FCACF7DC13A78A1C1E96D7B56B757" },
 ]
 
@@ -55,3 +56,4 @@ pearl = { version = ">= 2.1.0 and < 3.0.0" }
 simplifile = { version = ">= 2.2.0 and < 3.0.0" }
 snag = { version = ">= 1.1.0 and < 2.0.0" }
 tear = { version = ">= 1.0.0 and < 2.0.0" }
+tom = { version = ">= 2.0.1 and < 3.0.0" }

@@ -77,6 +77,12 @@ pub fn read(path: String) -> snag.Result(String) {
   |> snag.context("Failed to read " <> path)
 }
 
+pub fn write(path: String, contents: String) -> snag.Result(Nil) {
+  simplifile.write(path, contents)
+  |> snag.map_error(simplifile.describe_error)
+  |> snag.context("Failed to write " <> path)
+}
+
 fn copy(path: String) -> snag.Result(Nil) {
   let from = filepath.join(priv, path)
   let to = filepath.join(dist, path)

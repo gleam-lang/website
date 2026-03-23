@@ -34,6 +34,7 @@ pub fn main() -> Nil {
 
 fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
+  use sponsors <- result.try(sponsor.sponsors_from_toml())
   use news_posts <- result.try(news.all())
   use case_studies <- result.try(case_study.all())
 
@@ -51,7 +52,7 @@ fn build_site() -> snag.Result(Nil) {
   use faq <- result.try(page.frequently_asked_questions(ctx))
 
   let page_files = [
-    page.home(ctx),
+    page.home(sponsors, ctx),
     page.branding(ctx),
     page.community(ctx),
     page.gleam_toml(ctx),
@@ -61,7 +62,7 @@ fn build_site() -> snag.Result(Nil) {
     page.deployment_flyio(ctx),
     news.index_page(news_posts, ctx),
     page.case_studies_index(case_studies, ctx),
-    page.sponsor(ctx),
+    page.sponsor(sponsors, ctx),
     language_server,
     externals_guide,
     sbom_guide,
