@@ -497,7 +497,7 @@ pub const sponsors = [
   Sponsor(
     name: "Alistair Smith",
     url: "https://github.com/alii",
-    avatar: "https://avatars.githubusercontent.com/u/25351731?s=50&v=4",
+    avatar: "https://avatars.githubusercontent.com/u/25351731?s=50&u=0d56e54914da6ff0cd1b98d4e882f630f8286b5a&v=4",
   ),
   Sponsor(
     name: "Mark Rudolph",
@@ -1568,6 +1568,11 @@ pub const sponsors = [
     name: "Rob Durst",
     url: "https://github.com/robertDurst",
     avatar: "https://avatars.githubusercontent.com/u/16689974?s=50&u=f430b3944d8900614a937f45dfe2c44e3cd5b809&v=4",
+  ),
+  Sponsor(
+    name: "SR",
+    url: "https://github.com/rogics",
+    avatar: "https://avatars.githubusercontent.com/u/5059347?s=50&v=4",
   ),
   Sponsor(
     name: "Rotabull",
