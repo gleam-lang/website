@@ -23,7 +23,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
       published: calendar.Date(2026, calendar.March, 16),
       author: louis,
       path: "upgrading-hex-security",
-      preview_image: option.None,
+      preview_image: option.Some("v1.15"),
     ),
     read(
       title: "Join us at Gleam Gathering",
