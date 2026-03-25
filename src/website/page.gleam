@@ -1203,7 +1203,7 @@ gleam_stdlib = \">= 0.34.0 and < 2.0.0\"
 envoy = \">= 1.0.1 and < 2.0.0\"
 argv = \">= 1.0.2 and < 2.0.0\"
 
-[dev-dependencies]
+[dev_dependencies]
 gleeunit = \">= 1.0.0 and < 2.0.0\"
 ",
     ),
@@ -1475,7 +1475,7 @@ production builds. The build tool will then add ",
       ),
       html.code([], [html.text("gleescript")]),
       html.text(" to the "),
-      html.code([], [html.text("[dev-dependencies]")]),
+      html.code([], [html.text("[dev_dependencies]")]),
       html.text(" section rather than the regular "),
       html.code([], [html.text("[dependencies]")]),
       html.text(" section."),
@@ -1951,7 +1951,7 @@ gleam_stdlib = { git = \"git@github.com:gleam-lang/stdlib.git\", ref = \"main\" 
 # These will not be included if the package is published to Hex.
 # This table cannot include any packages that are already found in the
 # `dependencies` table.
-[dev-dependencies]
+[dev_dependencies]
 gleeunit = \">= 1.0.0 and < 2.0.0\"
 
 # Documentation specific configuration (optional)
