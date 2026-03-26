@@ -1006,7 +1006,7 @@ fn method_page(
       nav_button("Learn Gleam!", "https://tour.gleam.run")
   }
 
-  let content = jot.parse(method.content) |> jot.document_to_html
+  let content = page.parse_djot(method.content) |> jot.document_to_html
   [
     html.article([attribute.class("prose")], [
       element.unsafe_raw_html("", "div", [], content),
