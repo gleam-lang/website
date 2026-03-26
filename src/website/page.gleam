@@ -3898,6 +3898,13 @@ pub fn parse_djot(string: String) -> jot.Document {
           let content = just.highlight_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
+        // Lua syntax is close enough to JavaScript for us to reuse the
+        // highlighting. We have very little Lua code, so it's ok that it's not
+        // perfect.
+        jot.Codeblock(language: option.Some("lua"), content:, ..) -> {
+          let content = just.highlight_html(content)
+          jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
+        }
         jot.Codeblock(language: option.Some("diff"), content:, ..) -> {
           let content =
             string.split(content, "\n")
