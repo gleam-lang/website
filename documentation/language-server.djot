@@ -181,6 +181,12 @@ constants, for the current Gleam file.
 The language server can show the type of each argument when calling a function,
 along with the labels of the arguments that have them.
 
+### Code folding
+
+The language server reports foldable ranges to the editor for contiguous import
+blocks and multi-line top-level definitions, such as function bodies, custom
+types, constants, and type aliases.
+
 ## Code actions
 
 ### Add annotations
