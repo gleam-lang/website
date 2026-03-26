@@ -255,6 +255,27 @@ pub fn run(value: Bool) -> Nil {
 }
 ```
 
+### Add missing type parameter
+
+This code action can add type paramters to an custom type definitions.
+
+```gleam
+pub type Store {
+  Store(name: String, data: inner_type)
+}
+```
+
+This code doesn't compile as `inner_type` is not in scope.
+
+If your cursor is within the definition then code action will be
+suggested, and if run the code will be updated to this:
+
+```gleam
+pub type Store(inner_type) {
+  Store(name: String, data: inner_type)
+}
+```
+
 ### Add omitted labels
 
 This code action can add omitted labels to the call of a function or record
