@@ -77,6 +77,12 @@ pub fn read(path: String) -> snag.Result(String) {
   |> snag.context("Failed to read " <> path)
 }
 
+pub fn read_directory(path: String) -> snag.Result(List(String)) {
+  simplifile.read_directory(path)
+  |> snag.map_error(simplifile.describe_error)
+  |> snag.context("Failed to read " <> path)
+}
+
 pub fn write(path: String, contents: String) -> snag.Result(Nil) {
   simplifile.write(path, contents)
   |> snag.map_error(simplifile.describe_error)

@@ -15,12 +15,13 @@ import website/fs
 
 pub fn all() -> snag.Result(List(Guide)) {
   io.print("Loading guides: ")
-  let guides = [read("deploying-to-linux")]
+
+  use all_guides <- result.try(fs.read_directory("./guides"))
+  let guides = list.try_map(all_guides, read)
 
   io.print("\n")
 
   guides
-  |> result.all()
 }
 
 pub type Target {
@@ -84,10 +85,15 @@ fn toml_to_snag(result: Result(a, tom.GetError)) -> snag.Result(a) {
 }
 
 fn read(path: String) -> snag.Result(Guide) {
+  let slug = case string.ends_with(path, ".djot") {
+    // The length of ".djot", not my favourite way of doing this, but it works.
+    True -> string.drop_end(path, 5)
+    False -> path
+  }
+
   io.print(".")
   use content <- result.try(
     filepath.join("guides", path)
-    |> string.append(".djot")
     |> fs.read
     |> snag.context("Failed to load content for /guides/" <> path),
   )
@@ -98,7 +104,7 @@ fn read(path: String) -> snag.Result(Guide) {
   )
   use guide <- result.try(decode_frontmatter(path, parsed_frontmatter))
   let content = jot.parse(content)
-  Ok(Guide(..guide, slug: path, content:))
+  Ok(Guide(..guide, slug:, content:))
 }
 
 pub fn target_string(target: Target) -> String {
