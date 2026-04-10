@@ -18,6 +18,7 @@ import snag
 import tear
 import website/case_study
 import website/fs
+import website/guides
 import website/site
 import website/sponsor
 
@@ -1802,6 +1803,59 @@ pub fn documentation(ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
+pub fn guides_index(guides: List(guides.Guide), ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "guides",
+      title: "Guides",
+      description: "TODO",
+      preload_images: [],
+      subtitle: "",
+      meta_title: "",
+      preview_image: option.None,
+    )
+
+  let guides =
+    list.index_map(guides, fn(guide, i) {
+      html.li([], [
+        html.a([class("link"), attr.href("/guides/" <> guide.slug)], [
+          html.h4([], [html.text(guide.title)]),
+          html.ul([class("link-meta")], [
+            html.li([class("guide-target")], [
+              guides.target_icon(guide.target, i),
+              html.text(guides.target_string(guide.target)),
+            ]),
+            html.li([class("guide-tags")], [
+              html.text(
+                guide.tags
+                |> string.join(", "),
+              ),
+            ]),
+          ]),
+        ]),
+      ])
+    })
+
+  [
+    html.main([class("page content")], [
+      // html.p([], [html.text("Filter by tag")]),
+      // html.ul(
+      //   [class("tag-picker")],
+      //   list.map(tags, fn(tag) {
+      //     html.li([], [html.button([], [html.text(tag.name)])])
+      //   }),
+      // ),
+      // html.p([], [html.text("Or search by title")]),
+      // html.form([class("tag-search-form")], [
+      //   html.input([attribute.type_("text")]),
+      // ]),
+      html.ul([class("link-cards")], guides),
+    ]),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
 pub fn case_studies_index(
   study: List(case_study.CaseStudy),
   ctx: site.Context,
@@ -2695,6 +2749,34 @@ pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
     )
   let source = "documentation/externals-guide.djot"
   djot_page_with_table_of_contents(source, ctx, meta)
+}
+
+pub fn guide_page(guide: guides.Guide, ctx: site.Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "guides/" <> guide.slug,
+      title: guide.title,
+      meta_title: guide.title <> " | Gleam Programming Language",
+      subtitle: guide.subtitle,
+      description: guide.subtitle,
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let table_of_contents =
+    guide.content
+    |> table_of_contents_from_djot
+
+  [
+    element.unsafe_raw_html(
+      "",
+      "article",
+      [class("prose")],
+      jot.document_to_html(guide.content),
+    ),
+  ]
+  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
+  |> to_html_file(meta)
 }
 
 fn djot_page_with_table_of_contents(
