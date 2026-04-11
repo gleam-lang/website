@@ -189,7 +189,7 @@ Hex.
 ### `documentation.pages`
 
 ```toml
-[documentation.pages]
+[[documentation.pages]]
 title = "My Page"
 path = "my-page.html"
 source = "./path/to/my-page.md"
