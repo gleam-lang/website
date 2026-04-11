@@ -256,8 +256,11 @@ application_start_module = "my_application"
 
 The name of the OTP application module for the project, if it has one. This
 key is optional. Applications may want to use it, but libraries almost
-certainly do not. If specified, the module must implement the OTP application
-behaviour: <https://www.erlang.org/doc/man/application.html>.
+certainly do not. If specified, the module must implement the [OTP application
+behaviour](https://www.erlang.org/doc/man/application.html).
+
+The module is specified in the Erlang atom format, so the Gleam module
+`my_project/application` would be written as `my_project@application`.
 
 ### `erlang.extra_applications`
 
