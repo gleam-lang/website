@@ -1,0 +1,334 @@
+All Gleam packages require a `gleam.toml` configuration file. The `toml`
+configuration format is documented at [toml.io](https://toml.io/).
+
+The default configuration for a new Gleam package looks like this:
+
+```toml
+name = "my_package"
+version = "1.0.0"
+
+[dependencies]
+gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+
+[dev_dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
+```
+
+## Project metadata 
+
+### `name`
+
+```toml
+name = "my_project"
+```
+
+The name of your project. This key is required.
+
+### `version`
+
+```toml
+version = "1.0.0"
+```
+
+The version of your project. This key is required.
+
+### `licences`
+
+```toml
+licences = ["Apache-2.0"]
+```
+
+The licences used by your project, written in SPDX format. This key is
+optional unless you wish to publish your package to the Hex package manager.
+
+### `description`
+
+```toml
+description = "A parser for the PureData file format"
+```
+
+A short description of your project. This key is optional unless you wish to
+publish your package to the Hex package manager.
+
+## Dependency management
+
+### `dependencies`
+
+```toml
+[dependencies]
+gleam_stdlib = ">= 1.0.0 and < 2.0.0"
+gleam_time = ">= 1.0.0 and < 2.0.0"
+```
+
+The dependency packages that the Gleam build tool needs to download and compile
+for this package to use.
+
+The version requirement string uses the [Hex requirement format](https://hexdocs.pm/elixir/Version.html#module-requirements),
+and the name must match the name the dependency package has in their own
+package configuration file.
+
+Erlang rebar3 packages and Elixir mix packages can also be added as
+dependencies without any change in syntax.
+
+#### Path dependencies
+
+```toml
+my_other_project = { path = "../my_other_project" }
+```
+
+Gleam packages on the local file system can be added as dependencies using the
+`path` field.
+
+#### Git dependencies
+
+```toml
+my_library = {
+  git = "https://github.com/my-project/my-library",
+  ref = "a8b3c5d82"
+}
+```
+
+Gleam packages available via git can be added as dependencies using the `path`
+field. Always prefer a commit sha reference over a branch or tag reference to
+ensure you get the expected version of the code, and to prevent attacks from
+malicious actors.
+
+### `dev_dependencies`
+
+```toml
+[dev_dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
+```
+
+The dependency packages needed only for tests, using the same syntax as the
+`dependencies` field.
+
+These dependencies are not included if the package is published to Hex. A
+package cannot appear in both `dependencies` and `dev_dependencies`.
+
+## Documentation
+
+### `repository`
+
+```toml
+[repository]
+type = "github"
+user = "torvalds"
+repo = "linux"
+```
+
+The source code repository for your project. This is used in generated
+documentation and displayed on Hex.
+
+This key is optional unless you wish to publish your package to the Hex package
+manager.
+
+The repository types `bitbucket`, `codeberg`, `github`, `gitlab`, `sourcehut`,
+and `tangled` require the `user` and `repo` fields.
+
+```toml
+[repository]
+type = "tangled"
+user = "my-username"
+repo = "my-repo"
+```
+
+The repository types `forgejo`, and `gitea` require the `host`, `user` and
+`repo` fields.
+
+```toml
+[repository]
+type = "gitea"
+host = "https://example.com"
+user = "my-username"
+repo = "my-repo"
+```
+
+If you are using a different code hosting solution you can use the `custom`
+type, which requires the `url` field. When this is used generated HTML
+documentation will include a link to the repo, but will not include links to
+the definitions of public types and values in the source code.
+
+```toml
+[repository]
+type = "custom"
+url = "https://example.com/my-project"
+```
+
+All types other than `custom` support the fields `path` and `tag_prefix`. These
+are used when you have one repo (a "monorepo") that contains multiple Gleam
+packages.
+
+`path` contains the path to the directory that contains the package from the
+root of the repository. `tag_prefix` contains a prefix that is to be added to
+git tags for package releases, to avoid collisions between the multiple
+packages.
+
+```toml
+[repository]
+type = "github"
+user = "my-user"
+repo = "package_one"
+path = "packages/one"
+tag_prefix = "one-"
+```
+
+### `links`
+
+```toml
+links = [
+  { title = "Home page", href = "https://example.com" },
+  { title = "Other site", href = "https://another.example.com" },
+]
+```
+
+Links to related websites, to be displayed in generated documentation and on
+Hex.
+
+
+### `documentation.pages`
+
+```toml
+[documentation.pages]
+title = "My Page"
+path = "my-page.html"
+source = "./path/to/my-page.md"
+```
+
+Additional Markdown pages to include in generated HTML documentation. The
+`documentation` table is optional, and so is the `pages` key within it.
+
+## Compilation
+
+### `gleam`
+
+```toml
+gleam = ">= 1.15.0"
+```
+
+The required Gleam compiler version for the package.
+
+An error is raised if the compiler version used to compile the package does not
+satisfy this requirement, informing the programmer that they will not be able
+to successfully compile the project.
+
+### `target`
+
+```toml
+target = "erlang"
+```
+
+The default compilation target to use when compiling or running Gleam code.
+Accepted values are `"erlang"` and `"javascript"`. If this is not provided then
+the default value `"erlang"` is used.
+
+This value can be overridden by the `--target` flag for the CLI commands that
+accept it.
+
+### `internal_modules`
+
+```toml
+internal_modules = ["my_app/internal", "my_app/internal/*"]
+```
+
+An internal module is a module that is not part of the public API of the
+package. It is technically possible to import and use internal modules, but as
+they are not public there is no stability or behavioural guarantees for them.
+You may wish to use internal modules for helper modules that are used by your
+public modules.
+
+This field list of [glob patterns](<https://docs.rs/glob/latest/glob/struct.Pattern.html>),
+and any module names that match one of the glob patterns are marked as internal.
+
+If not given then the default value for this field is
+`["$PACKAGE_NAME/internal", "$PACKAGE_NAME/internal/*"]`, so for a package
+named `wibble` the modules `wibble/internal` and `wibble/internal/wobble` would
+be internal modules.
+
+## Erlang compilation
+
+### `erlang.application_start_module`
+
+```toml
+[erlang]
+application_start_module = "my_application"
+```
+
+The name of the OTP application module for the project, if it has one. This
+key is optional. Applications may want to use it, but libraries almost
+certainly do not. If specified, the module must implement the OTP application
+behaviour: <https://www.erlang.org/doc/man/application.html>.
+
+### `erlang.extra_applications`
+
+```toml
+[erlang]
+extra_applications = ["inets", "ssl"]
+```
+
+The names of any OTP applications that need to be started in addition to
+those provided by project dependencies.
+
+## JavaScript compilation
+
+### `javascript.typescript_declarations`
+
+```toml
+[javascript]
+typescript_declarations = true
+```
+
+Whether to generate TypeScript `.d.ts` files. This key is optional.
+
+### `javascript.runtime`
+
+```toml
+[javascript]
+runtime = "node"
+```
+
+The JavaScript runtime to use with `gleam run`, `gleam test`, and related
+commands. Accepted values are `"node"`, `"deno"`, and `"bun"`, and the default
+value is `"node"`.
+
+### `javascript.deno.allow_*`
+
+The Deno runtime uses a permissions system for IO, with the program having to
+be explicitly given permission to perform these actions. These fields configure
+each of these permissions, and any combination of them can be provided or
+omitted.
+
+An example configuration might look like this:
+
+```toml
+[javascript.deno]
+allow_hrtime = true
+allow_net = ["example.com:443"]
+allow_run = ["./bin/migrate.sh"]
+allow_read = ["./database.sqlite"]
+allow_write = ["./database.sqlite"]
+```
+
+- `allow_all`: Whether to grant all Deno permissions. This is the equivalent of
+  setting all the other fields to true.
+
+- `allow_env`: The environment variable access to allow. This can be either a
+  bool or a list of environment variable names.
+
+- `allow_ffi`: Whether to allow foreign function interface access.
+
+- `allow_hrtime`: Whether to allow high-resolution time APIs.
+
+- `allow_net`: The network access to allow. This can be either a boolean or a
+  list of IP addresses or hostnames, optionally including ports.
+
+- `allow_read`: The file system read access to allow. This can be either a
+  boolean or a list of paths.
+
+- `allow_run`: The subprocess execution access to allow. This can be either a
+  boolean or a list of paths.
+
+- `allow_sys`: Whether to allow access to system information.
+
+- `allow_write`: The file system write access to allow. This can be either a
+  boolean or a list of paths.

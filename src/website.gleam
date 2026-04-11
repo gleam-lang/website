@@ -50,12 +50,12 @@ fn build_site() -> snag.Result(Nil) {
   use sbom_guide <- result.try(page.sbom_guide(ctx))
   use patterns <- result.try(page.conventions_patterns_and_anti_patterns(ctx))
   use faq <- result.try(page.frequently_asked_questions(ctx))
+  use config_reference <- result.try(page.gleam_toml(ctx))
 
   let page_files = [
     page.home(sponsors, ctx),
     page.branding(ctx),
     page.community(ctx),
-    page.gleam_toml(ctx),
     page.writing_gleam(ctx),
     page.documentation(ctx),
     page.deployment_linux(ctx),
@@ -63,6 +63,7 @@ fn build_site() -> snag.Result(Nil) {
     news.index_page(news_posts, ctx),
     page.case_studies_index(case_studies, ctx),
     page.sponsor(sponsors, ctx),
+    config_reference,
     language_server,
     externals_guide,
     sbom_guide,
