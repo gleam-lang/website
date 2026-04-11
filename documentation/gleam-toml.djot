@@ -101,7 +101,7 @@ attacks from malicious actors.
 gleeunit = ">= 1.0.0 and < 2.0.0"
 ```
 
-The dependency packages needed only for tests, using the same syntax as the
+The dependency packages needed only during development, using the same syntax as the
 `dependencies` field.
 
 These dependencies are not included if the package is published to Hex. A
