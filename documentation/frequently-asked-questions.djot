@@ -13,7 +13,7 @@ Gleam compiles to Erlang or JavaScript.
 ## Will Gleam have type classes?
 
 Type classes are fun and enable creation of very nice, concise APIs, but they
-can make it easy to make challenging to understand code, tend to have confusing
+can make it challenging to understand code, tend to have confusing
 error messages, make consuming the code from other languages much harder, have
 a high compile time cost, and have a runtime cost unless the compiler performs
 full-program compilation and expensive monomorphisation. This is unfortunately
@@ -21,7 +21,7 @@ not a good fit for Gleam and they are not planned.
 
 ## Will Gleam have metaprogramming?
 
-We are open interested in some form of metaprogramming in Gleam so long as it
+We are open to some form of metaprogramming in Gleam so long as it
 is not detrimental to Gleam’s readability and fast compilation. If you wish to
 propose a design for metaprogramming then the process is outlined in this
 article: [How to add metaprogramming to Gleam](https://lpil.uk/blog/how-to-add-metaprogramming-to-gleam/).
