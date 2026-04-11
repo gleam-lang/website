@@ -88,7 +88,7 @@ my_library = {
 }
 ```
 
-Gleam packages available via git can be added as dependencies using the `path`
+Gleam packages available via git can be added as dependencies using the `git`
 field. Always prefer a commit sha reference over a branch or tag reference to
 ensure you get the expected version of the code, and to prevent attacks from
 malicious actors.
