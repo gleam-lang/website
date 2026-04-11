@@ -124,7 +124,7 @@ pub fn table_of_contents_page_layout(
   [
     header(hero_image: option.None, content: [
       html.h1([], [html.text(meta.title)]),
-      html.p([attr.class("hero-subtitle")], [html.text(meta.description)]),
+      html.p([attr.class("hero-subtitle")], [html.text(meta.subtitle)]),
     ]),
     html.main([attr.class("page toc-layout")], [
       html.nav([class("table-of-contents")], [
