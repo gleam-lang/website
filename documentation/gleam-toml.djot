@@ -238,7 +238,7 @@ they are not public there is no stability or behavioural guarantees for them.
 You may wish to use internal modules for helper modules that are used by your
 public modules.
 
-This field list of [glob patterns](<https://docs.rs/glob/latest/glob/struct.Pattern.html>),
+This field list of [glob patterns](https://docs.rs/glob/latest/glob/struct.Pattern.html),
 and any module names that match one of the glob patterns are marked as internal.
 
 If not given then the default value for this field is
