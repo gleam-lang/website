@@ -289,9 +289,9 @@ pub fn header(
 fn footer(ctx: site.Context) -> element.Element(a) {
   let footer_links = [
     #("News", "/news"),
-    #("Cheat sheets", "/documentation#cheatsheets"),
-    #("Discord", "https://discord.gg/Fm8Pwmy"),
     #("Code", "https://github.com/gleam-lang"),
+    #("Discord", "https://discord.gg/Fm8Pwmy"),
+    #("Merch store", "https://shop.gleam.run/en-gbp"),
     #("Language tour", "https://tour.gleam.run"),
     #("Playground", "https://playground.gleam.run"),
     #("Documentation", "/documentation"),

@@ -4286,7 +4286,7 @@ pub fn php(ctx: site.Context) -> fs.File {
     page.PageMeta(
       path: "cheatsheets/gleam-for-php-users",
       title: "Gleam for PHP users",
-      meta_title: "Gleam for PHP users | Cheat sheets",
+      meta_title: "Gleam for PHP users | Cheat sheet",
       subtitle: "Hello Hypertext crafters!",
       description: "A handy reminder of Gleam syntax for all Hypertext crafters out there.",
       preload_images: [],
