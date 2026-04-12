@@ -63,8 +63,8 @@ fn build_site() -> snag.Result(Nil) {
     page.deployment_linux(ctx),
     page.deployment_flyio(ctx),
     news.index_page(news_posts, ctx),
+    guides.index_page(guides, ctx),
     page.case_studies_index(case_studies, ctx),
-    page.guides_index(guides, ctx),
     page.sponsor(sponsors, ctx),
     language_server,
     externals_guide,
@@ -109,7 +109,7 @@ fn news_files(
 }
 
 fn guide_files(guides: List(guides.Guide), ctx: site.Context) -> List(fs.File) {
-  list.map(guides, page.guide_page(_, ctx))
+  list.map(guides, guides.page(_, ctx))
 }
 
 fn case_study_files(
