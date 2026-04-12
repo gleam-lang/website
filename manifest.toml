@@ -17,13 +17,13 @@ packages = [
   { name = "gleam_json", version = "3.1.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_json", source = "hex", outer_checksum = "44FDAA8847BE8FC48CA7A1C089706BD54BADCC4C45B237A992EDDF9F2CDB2836" },
   { name = "gleam_otp", version = "1.2.0", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_stdlib"], otp_app = "gleam_otp", source = "hex", outer_checksum = "BA6A294E295E428EC1562DC1C11EA7530DCB981E8359134BEABC8493B7B2258E" },
   { name = "gleam_regexp", version = "1.1.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_regexp", source = "hex", outer_checksum = "9C215C6CA84A5B35BB934A9B61A9A306EC743153BE2B0425A0D032E477B062A9" },
-  { name = "gleam_stdlib", version = "0.68.1", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "F7FAEBD8EF260664E86A46C8DBA23508D1D11BB3BCC6EE1B89B3BC3E5C83FF1E" },
+  { name = "gleam_stdlib", version = "0.71.0", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "702F3BC2A14793906880B1078B19A6165F87323AEE8D0C4A34085846336FCAAE" },
   { name = "gleam_time", version = "1.7.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_time", source = "hex", outer_checksum = "56DB0EF9433826D3B99DB0B4AF7A2BFED13D09755EC64B1DAAB46F804A9AD47D" },
   { name = "gleave", version = "1.0.1", build_tools = ["gleam"], requirements = [], otp_app = "gleave", source = "hex", outer_checksum = "E34C23F8AD68A3DB19F19EE044193137B0245CB5CEFF83B3B310BD584BF74A07" },
   { name = "gleeunit", version = "1.9.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "DA9553CE58B67924B3C631F96FE3370C49EB6D6DC6B384EC4862CC4AAA718F3C" },
   { name = "glexer", version = "2.3.1", build_tools = ["gleam"], requirements = ["gleam_stdlib", "splitter"], otp_app = "glexer", source = "hex", outer_checksum = "41D8D2E855AEA87ADC94B7AF26A5FEA3C90268D4CF2CCBBD64FD6863714EE085" },
   { name = "houdini", version = "1.2.0", build_tools = ["gleam"], requirements = [], otp_app = "houdini", source = "hex", outer_checksum = "5DB1053F1AF828049C2B206D4403C18970ABEF5C18671CA3C2D2ED0DD64F6385" },
-  { name = "jot", version = "10.1.1", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "splitter"], otp_app = "jot", source = "hex", outer_checksum = "395907A191D8558C7FA39653157D77674467D15B07794A1543A6CF24F6A10278" },
+  { name = "jot", version = "11.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "splitter"], otp_app = "jot", source = "hex", outer_checksum = "03FD7C6E3FFC91CE6751C42B7F02E24E9DE6D1488A384B6619B0E3AA457D0704" },
   { name = "just", version = "2.1.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "just", source = "hex", outer_checksum = "F083289B9DCF797FA83B5F195738E9922BDBCCC2F0537EABA26B707CC00B0E50" },
   { name = "lustre", version = "5.5.2", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_json", "gleam_otp", "gleam_stdlib", "houdini"], otp_app = "lustre", source = "hex", outer_checksum = "2DC2973D81C12E63251B636773217B8E09C5C84590A729750F6BCF009420B38E" },
   { name = "pearl", version = "2.2.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini", "splitter"], otp_app = "pearl", source = "hex", outer_checksum = "E5E14CE725542BA2516570D04140F0D1471761CCE27C6579C6396369FFF1DA9F" },
@@ -46,12 +46,12 @@ gleam_crypto = { version = ">= 1.4.0 and < 2.0.0" }
 gleam_http = { version = ">= 4.0.0 and < 5.0.0" }
 gleam_httpc = { version = ">= 5.0.0 and < 6.0.0" }
 gleam_json = { version = ">= 3.0.0 and < 4.0.0" }
-gleam_stdlib = { version = ">= 0.44.0 and < 2.0.0" }
+gleam_stdlib = { version = ">= 0.71.0 and < 2.0.0" }
 gleam_time = { version = ">= 1.1.0 and < 2.0.0" }
 gleave = { version = ">= 1.0.0 and < 2.0.0" }
 gleeunit = { version = ">= 1.0.0 and < 2.0.0" }
 houdini = { version = ">= 1.2.0 and < 2.0.0" }
-jot = { version = ">= 10.1.0 and < 11.0.0" }
+jot = { version = ">= 11.0.0 and < 12.0.0" }
 just = { version = ">= 2.0.0 and < 3.0.0" }
 lustre = { version = ">= 5.0.0 and < 6.0.0" }
 pearl = { version = ">= 2.1.0 and < 3.0.0" }
