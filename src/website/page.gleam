@@ -675,7 +675,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: site.Context) -> fs.File {
         attr.class("home-waves"),
       ]),
     ]),
-    html.section([attr.class("home-sponsors")], [
+    html.section([attr.class("home-sponsors"), attr.id("home-sponsors")], [
       html.div([attr.class("content")], [
         html.h2([], [html.text("Lovely people")]),
         html.p([], [
@@ -3273,7 +3273,7 @@ pub fn main() {
             [
               attr.target("_blank"),
               attr.rel("noopener"),
-              attr.href("https://github.com/sponsors/lpil"),
+              attr.href("/sponsor#home-sponsors"),
               attr.class("sponsor-level0"),
             ],
             [html.text("and sponsors like you!")],
