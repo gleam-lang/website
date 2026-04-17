@@ -174,7 +174,10 @@ pub fn page_layout(
 
 // Page elements
 
-fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) {
+fn head_elements(
+  page: PageMeta,
+  ctx: site.Context,
+) -> List(element.Element(a)) {
   let metatag = fn(property, content) {
     html.meta([attr("property", property), attr("content", content)])
   }
@@ -295,7 +298,7 @@ fn footer(ctx: site.Context) -> element.Element(a) {
     #("Language tour", "https://tour.gleam.run"),
     #("Playground", "https://playground.gleam.run"),
     #("Documentation", "/documentation"),
-    #("Sponsor", "https://github.com/sponsors/lpil"),
+    #("Sponsor", "/sponsor"),
     #("Packages", "https://packages.gleam.run/"),
     #("Gleam Weekly", "https://gleamweekly.com/"),
     #("Roadmap", "/roadmap"),
@@ -3465,7 +3468,7 @@ pub fn register_event_handler() {
           html.h2([], [html.text("Lovely people")]),
           html.p([], [
             html.text("If you enjoy Gleam consider "),
-            html.a([attr.href("https://github.com/sponsors/lpil")], [
+            html.a([attr.href("/sponsor")], [
               html.text("becoming a sponsor"),
             ]),
             html.text(" (or tell your boss to)"),
