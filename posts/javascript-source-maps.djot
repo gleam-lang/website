@@ -153,9 +153,9 @@ debugging unexpected parse errors.
 
 ### Hex package ownership management
 
-[Niklas Kirschall](https://github.com/nkxxll) has added the new `gleam hex
-owner add` command, allowing folks to add additional owners to their Hex
-packages. Thank you Niklas!
+[Niklas Kirschall](https://github.com/nkxxll) has added the new
+`gleam hex owner add` command, allowing folks to add additional owners to their
+Hex packages. Thank you Niklas!
 
 ## Hex package manager error message improvements
 
