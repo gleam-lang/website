@@ -1,0 +1,807 @@
+Gleam is a type safe and scalable language for the Erlang virtual machine and
+JavaScript runtimes. Today Gleam [v1.16.0][release] has been published, let's
+go over what's new.
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v1.16.0
+
+## Gleam gets source maps
+
+Gleam's robust type system makes runtime errors very rare, but it would be naive
+to say that it's never necessary to debug Gleam code at runtime. When compiling
+code to JavaScript one challenge for runtime debugging is that the error and
+the source code shown is that of the compiled JavaScript, not the Gleam the
+programmer actually wrote.
+
+The solution to this problem is source maps, additional files that Gleam's
+compiler can now generate, teaching browsers and JavaScript runtimes what the
+original code is and how it maps on to the JavaScript it runs. Here it is in
+action with Safari's dev-tools:
+
+``` =html
+<img src="/images/news/gleam-v1.16-released/debugger.png" class="shadow" alt="Safari's dev tools debugger showing Gleam code">
+```
+
+As you may know, it's not limited to just displaying the code, it also
+translates exception stack traces to the original locations, and enables use of
+breakpoints and debuggers.
+
+To enable source maps set the `javascript.source_maps` property to `true` in
+your `gleam.toml`, and ensure that you are serving these new files to the web
+browser along with your JavaScript code. If you are serving the build directory
+or using [Lustre's](https://lustre.build/) dev-tools then there's nothing else
+to do.
+
+```toml
+name = "my_project"
+version = "1.0.0"
+
+[javascript]
+source_maps = true
+
+[dependencies]
+gleam_stdlib = ">= 1.0.0 and < 2.0.0"
+```
+
+A huge thank you to [Ameen Radwan](https://github.com/Acepie) for this big
+improvement. Folks who enjoy breakpoint debugging will be especially pleased.
+
+## Package-level fault tolerance
+
+Gleam is a fully-typed language, so to compile a module of Gleam code the
+compiler must first successfully compile all the modules it imports in order to
+have the required type information. Attempting to analyse modules without this
+information would result in a cascading failure of incorrect and misleading
+error messages, so when a module cannot be compiled the build tool stops and
+reports the errors.
+
+This behaviour successfully prevents the error cascade, but it has been a
+source of confusion at times. Some developers may not realise they have an error
+upstream in their project and so do not understand why the language server is
+providing minimal assistance, presuming that it is broken.
+
+Worse still, because compilation stops at the first failed module the language
+server may be unable to help with modules that do not directly or indirectly
+import an invalid module, but just happen to come after them in the compilation
+order. There's no justifiable reason why these modules could not have been
+compiled, but the developer is stuck without them.
+
+These two pain points have now been resolved. If the programmer opens in their
+editor a module that genuinely could not be compiled, then the language server
+will display a diagnostic on the import that leads to the problem, removing the
+confusion.
+
+When a module fails to compile the build tool will prune that sub-tree of
+modules and move on to the next set of modules that can be compiled, ensuring
+that the programmer has as much up-to-date information as possible available to
+them in their editor.
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)! This will
+make a big difference to some Gleam programmers.
+
+## Faster string pattern matching
+
+The compiler now emits more efficient code when matching on single-character
+string prefixes on the JavaScript target. For example, `glance`  (a Gleam
+package that can parse Gleam code) is now nearly 30% faster on the JavaScript
+target:
+
+```
+# before:
+min: 10.8ms, max: 365.82ms, median: 14.74ms, mean: 14.76ms
+warmup: 100/1.5s, total post-warmup: 1000/14.76s
+
+# after:
+min: 8.96ms, max: 143.76ms, median: 10.72ms, mean: 11.06ms
+warmup: 100/1.24s, total post-warmup: 1000/11.06s
+```
+
+Thank you [Rebecca Reusch](https://github.com/yoshi-monster/) and
+[Surya Rose](https://github.com/GearsDatapacks)!
+
+## Record update fault tolerance
+
+To provide a good language server experience with invalid code, Gleam's
+compilation aims to be fault-tolerant, and will attempt to continue analysing
+the code after finding an error.
+
+With this release the analysis of record update expressions is now fault-
+tolerant, and the compiler now shows a better error message when trying to use
+the record update syntax with variants that have no labelled fields.
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Oversized int pattern warning
+
+The largest size an int can have on JavaScript is 52 bits, after which
+precision is lost. The compiler now raises a warning on the JavaScript target
+when a pattern attempts to extract an int larger than JavaScript supports, to
+avoid unexpected results.
+
+```txt
+warning: Truncated bit array segment
+  ┌─ /src/app/warning.gleam:3:20
+  │
+3 │     let <<_, number:152>> = sha
+  │                     ^^^
+
+This segment is a 152-bit long int, but on the JavaScript target
+numbers have at most 52 bits. It would be truncated to its first 52 bits.
+Hint: Did you mean to use the `bytes` segment option?
+```
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Spoiling practical jokes
+
+The compiler now emits a helpful error message when source code contains an
+invalid unicode character that looks similar to a correct character.
+
+```
+error: Syntax error
+  ┌─ /src/parse/error.gleam:1:20
+  │
+1 │ pub fn main() { #(1‚ 2) }
+  │                    ^ Unexpected character
+
+This looks like ascii comma, but it is actually the unicode low single
+comma quotation mark.
+```
+
+Bad news for mischievous pranksters, good news for folks who don't like
+debugging unexpected parse errors.
+
+### Hex package ownership management
+
+[Niklas Kirschall](https://github.com/nkxxll) has added the new `gleam hex
+owner add` command, allowing folks to add additional owners to their Hex
+packages. Thank you Niklas!
+
+## Hex package manager error message improvements
+
+The build tool now produces a nicer error message when trying to add a package
+version that doesn't exist. For example, running `gleam add wisp@11`
+will now produce:
+
+```txt
+error: Dependency resolution failed
+
+The package `wisp` has no versions in the range >= 11.0.0 and < 12.0.0.
+```
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+
+[David Matz](https://github.com/d-matz) has also updated our error handling for
+the new error types recently added to Hex's API, fixing some incorrect and
+misleading messages that we would show due to attempting to parse them as the
+old errors. Thank you David!
+
+## Add and remove anonymous function code actions
+
+Gleam is a functional programming language, so functions are very commonly used
+as values, and are passed as arguments to other functions. Sometimes an
+anonymous function is used.
+
+```gleam
+let add_item = fn(item) { catalog.record(item) }
+```
+
+Other times the function is referenced directly.
+
+```gleam
+let add_item = catalog.record
+```
+
+These two expressions are equivalent, and the programmer would pick between the
+two depending on what they find to be clearer at each point in their code.
+
+To make writing Gleam even nicer the language server now offers code actions to
+switch between the two syntaxes. For example:
+
+```gleam
+pub fn main() {
+  [-1, -2, -3] |> list.map(fn(a) { int.absolute_value(a) })
+                        // ^^ Activating the "Remove anonymous function"
+                        // code action here
+}
+```
+
+Would result in this code:
+
+```gleam
+pub fn main() {
+  [-1, -2, -3] |> list.map(int.absolute_value)
+}
+```
+
+And with this code the other action could be used to reverse the change.
+
+Thank you [Eli Treuherz](https://github.com/treuherz)!
+
+## Extract function code action improvements
+
+Gleam's language server has an "extract function" code action that can be used
+to... well... extract a function.
+
+It can now be used in pipelines to extract a part of one into a function. For
+example, triggering it here:
+
+```gleam
+pub fn words(phrase: String) -> List(String) {
+  phrase
+  |> string.lowercase
+  // ^^^
+  |> string.replace(each: "jak", with: "lucy")
+  // ^^^ selecting these two steps of the pipeline
+  |> string.split(on: " ")
+}
+```
+
+Would result in the following code:
+
+```gleam
+pub fn words(phrase: String) -> List(String) {
+  phrase
+  |> function
+  |> string.split(on: " ")
+}
+
+fn function(string: String) -> String {
+  string
+  |> string.lowercase
+  |> string.replace(each: "jak", with: "lucy")
+}
+```
+
+It has also been improved to work better with assignments, extracting the
+assigned value. For example:
+
+```gleam
+pub fn personal_blog() {
+  let introduction =
+    html.main([], [
+      html.h1([], [html.text("Hello, world!")]),
+      html.p([], [html.text("Gleam is cool")])
+    ])
+  //^^^ Triggering "extract function" on this expression
+
+  html.body([introduction, blog_posts()])
+}
+```
+
+Would result in the following code:
+
+```gleam
+pub fn personal_blog() {
+  let introduction = function()
+  html.body([introduction, blog_posts()])
+}
+
+pub fn function() {
+  html.main([], [
+    html.h1([], [html.text("Hello, world!")]),
+    html.p([], [html.text("Gleam is cool")])
+  ])
+}
+```
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Replace `_` with type code action
+
+Gleam's type hole syntax allows to omit parts of a type annotation, putting no
+restrictions on what that part of the type can be inferred as. This can be
+convenient when sketching out new code, but it's best practice to have full
+annotations to make the code and the intended behaviour of the code easier to
+understand.
+
+To aid with moving to full annotation the language server has a code action to
+replace a type hole with the underlying type. For example:
+
+```gleam
+pub fn load_user(id: Int) -> Result(_, Error) {
+  sql.find_by_id(id)
+  |> result.map_error(CannotLoadUser)
+}
+```
+
+Triggering the code action over the `_` will result in the following code:
+
+```gleam
+pub fn load_user(id: Int) -> Result(User, Error) {
+  sql.find_by_id(id)
+  |> result.map_error(CannotLoadUser)
+}
+```
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Constant list prepending
+
+The compiler now supports list prepending in constants. For example:
+
+```gleam
+pub const viviparous_mammals = ["dog", "cat", "human"]
+
+pub const all_mammals = ["platypus", "echidna", ..viviparous_mammals]
+```
+
+Thank you [Surya Rose](https://github.com/GearsDatapacks)!
+
+## Language server completion improvements
+
+The language server's completion capability has been improved to understand
+Gleam code more precisely. It now shows completions for the labelled
+argument of a record when writing a record update, and no longer shows
+completions for values when editing a qualified type.
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## Tuple formatting improvement
+
+Gleam has a source code formatter, automating the business of formatting your
+code, so you can focus on your task, and not get stuck in another argument
+about whether or not you should use a trailing comma.
+
+With this release the formatting of long nested tuples has been improved.
+Previously the formatter would split only the last tuple, but now it favours
+first splitting each element onto its own line:
+
+```gleam
+// Old format
+#(#(12345, wobble), #(
+  some_long_tuple,
+  "passed_as_last_argument"
+))
+
+// New format:
+#(
+  #(12345, wobble),
+  #(some_long_tuple, "passed_as_last_argument")
+)
+```
+
+Thank you to formatter wizard [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
+
+## More external code source extension support
+
+Gleam's external type and external function features allow Gleam code to make
+use of code written in other languages on the same runtime, and Gleam's build tool
+will process source files of these languages that are included in a source
+directory of a Gleam project.
+
+Some JavaScript runtimes now have built-in support for TypeScript and JSX, so
+the build tool has had support for including files with `mts`, `cts`, `jsx`,
+and `tsx` extensions.
+
+Thank you [Niklas Kirschall](https://github.com/nkxxll)!
+
+## And the rest
+
+And thank you to the bug fixers and experience polishers:
+[Andrey Kozhev](https://github.com/ankddev),
+[Daniele Scaratti](https://github.com/lupodevelop),
+[Eyup Can Akman](https://github.com/eyupcanakman),
+[Giacomo Cavalieri](https://github.com/giacomocavalieri),
+[Giovanni Maria Zanchetta](https://github.com/GioMaz),
+[John Downey](https://github.com/jtdowney),
+[Louis Pilfold](https://github.com/lpil),
+[Lucy McPhail](https://github.com/lucymcphail),
+[Luka Ivanović](https://github.com/luka-hash),
+[Niklas Kirschall](https://github.com/nkxxll), and
+[Surya Rose](https://github.com/GearsDatapacks).
+
+
+For full details of the many fixes and improvements they've implemented see [the
+changelog][changelog].
+
+[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.16.md
+
+## A call for support
+
+Gleam is not owned by a corporation; instead it is entirely supported by
+sponsors, most of which contribute between $5 and $20 USD per month, and Gleam
+is my sole source of income.
+
+We have made great progress towards our goal of being able to appropriately pay
+the core team members, but we still have further to go. Please consider
+supporting [the project][sponsor] or core team members
+[Giacomo Cavalieri](https://github.com/sponsors/giacomocavalieri) and
+[Surya Rose](https://github.com/sponsors/GearsDatapacks)
+on GitHub Sponsors.
+
+``` =html
+<a class="sponsor-level0" href="https://github.com/sponsors/lpil" rel="noopener" target="_blank">
+  <img src="/images/community/github.svg" alt="GitHub Sponsors" style="filter: invert(1)">
+</a>
+```
+
+[sponsor]: https://github.com/sponsors/lpil
+
+Thank you to all our sponsors! And special thanks to our top sponsor:
+
+``` =html
+<ul class="top-sponsors">
+  <li>
+    <a class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
+      <img src="/images/sponsors/lambda-class-white.png" alt="Lambda Class">
+    </a>
+  </li>
+</ul>
+```
+- [Aaron Gunderson](https://github.com/agundy)
+- [Abel Jimenez](https://github.com/abeljim)
+- [Aboio](https://github.com/aboio-labs)
+- [ad-ops](https://github.com/ad-ops)
+- [Adam Brodzinski](https://github.com/AdamBrodzinski)
+- [Adam Daniels](https://github.com/adam12)
+- [Adam Johnston](https://github.com/adjohnston)
+- [Adi Iyengar](https://github.com/thebugcatcher)
+- [Adrian Mouat](https://github.com/amouat)
+- [Ajit Krishna](https://github.com/JitPackJoyride)
+- [albertchae](https://github.com/albertchae)
+- [Aleksei Gurianov](https://github.com/Guria)
+- [Alembic](https://alembic.com.au)
+- [Alex Houseago](https://github.com/ahouseago)
+- [Alex Kelley](https://github.com/adkelley)
+- [Alex Manning](https://github.com/rawhat)
+- [Alexander Stensrud](https://github.com/muonoum)
+- [Alexandre Del Vecchio](https://github.com/defgenx)
+- [Aliaksiej Homza](https://github.com/GomZik)
+- [Alistair Smith](https://github.com/alii)
+- [Ameen Radwan](https://github.com/Acepie)
+- [Andrey](https://github.com/ankddev)
+- [André Mazoni](https://github.com/andremw)
+- [Andy Young](https://github.com/ayoung19)
+- [Antharuu](https://github.com/antharuu)
+- [Anthony Scotti](https://github.com/amscotti)
+- [Antonio Farinetti](https://github.com/afarinetti)
+- [Arthur Weagel](https://github.com/aweagel)
+- [Arya Irani](https://github.com/aryairani)
+- [Baqtiar](https://github.com/domalaq)
+- [Barry Moore II](https://github.com/chiroptical)
+- [Ben Martin](https://github.com/requestben)
+- [Ben Marx](https://github.com/bgmarx)
+- [Ben Myles](https://github.com/benmyles)
+- [Benjamin Kane](https://github.com/bbkane)
+- [Benjamin Moss](https://github.com/drteeth)
+- [bgw](https://github.com/bgwdotdev)
+- [Billuc](https://github.com/Billuc)
+- [Bjarte Aarmo Lund](https://github.com/bjartelund)
+- [Bjoern Paschen](https://github.com/00bpa)
+- [blurrcat](https://github.com/blurrcat)
+- [Brad Mehder](https://github.com/bmehder)
+- [Brett Cannon](https://github.com/brettcannon)
+- [Brett Kolodny](https://github.com/brettkolodny)
+- [Brian Glusman](https://github.com/bglusman)
+- [Bruce Williams](https://github.com/bruce)
+- [Bruno Konrad](https://github.com/brunoskonrad)
+- [bucsi](https://github.com/bucsi)
+- [Cameron Presley](https://github.com/cameronpresley)
+- [Carlo Munguia](https://github.com/carlomunguia)
+- [Carlos Saltos](https://github.com/csaltos)
+- [Chad Selph](https://github.com/chadselph)
+- [Charlie Govea](https://github.com/charlie-n01r)
+- Charlie Tonneslan
+- [Chew Choon Keat](https://github.com/choonkeat)
+- [Chris Lloyd](https://github.com/chrislloyd)
+- [Chris Ohk](https://github.com/utilForever)
+- [Chris Olsen](https://github.com/chrisolsen)
+- [Chris Vincent](https://github.com/cvincent)
+- [Christian Visintin](https://github.com/veeso)
+- [Christopher David Shirk](https://github.com/christophershirk)
+- [Christopher De Vries](https://github.com/devries)
+- [Christopher Dieringer](https://github.com/cdaringe)
+- [Christopher Keele](https://github.com/christhekeele)
+- [Clifford Anderson](https://github.com/CliffordAnderson)
+- [Coder](https://github.com/coder)
+- [Cole Lawrence](https://github.com/colelawrence)
+- [Comamoca](https://github.com/Comamoca)
+- [Constantin (Cleo) Winkler](https://github.com/Lucostus)
+- [Corentin J.](https://github.com/jcorentin)
+- [Cris Holm](https://github.com/uberguy)
+- [Curling IO](https://github.com/pairshaped)
+- [dagi3d](https://github.com/dagi3d)
+- [Damir Vandic](https://github.com/dvic)
+- [Dan](https://github.com/d2718)
+- [Dan Dresselhaus](https://github.com/ddresselhaus)
+- [Dan Gieschen Knutson](https://github.com/Giesch)
+- [Dan Piths](https://github.com/danpiths)
+- [Dan Strong](https://github.com/strongoose)
+- [Daniele](https://github.com/lupodevelop)
+- [Daniil Nevdah](https://github.com/ndan)
+- [Danny Arnold](https://github.com/pinnet)
+- [Danny Martini](https://github.com/despairblue)
+- [Dave Lucia](https://github.com/davydog187)
+- [David Bernheisel](https://github.com/dbernheisel)
+- [David Cornu](https://github.com/davidcornu)
+- [David Matz](https://github.com/PotatoEMR)
+- [David Pendray](https://github.com/dpen2000)
+- [Diemo Gebhardt](https://github.com/diemogebhardt)
+- [Djordje Djukic](https://github.com/djordjedjukic)
+- [Donnie Adams](https://github.com/thedadams)
+- [Dylan Anthony](https://github.com/dbanty)
+- [Dylan Carlson](https://github.com/gdcrisp)
+- [Ed Rosewright](https://github.com/EdRW)
+- [Edon Gashi](https://github.com/edongashi)
+- [Eileen Noonan](https://github.com/enoonan)
+- [Eli Treuherz](https://github.com/treuherz)
+- [Emma](https://github.com/Emma-Fuller)
+- [Eric Koslow](https://github.com/ekosz)
+- [Erik Ohlsson](https://github.com/Nimok)
+- [Erik Terpstra](https://github.com/eterps)
+- [erikareads](https://liberapay.com/erikareads/)
+- [ErikML](https://github.com/ErikML)
+- [erlend-axelsson](https://github.com/erlend-axelsson)
+- [Ernesto Malave](https://github.com/oberernst)
+- [Ethan Olpin](https://github.com/EthanOlpin)
+- [Evaldo Bratti](https://github.com/evaldobratti)
+- [Evan Johnson](https://github.com/evanj2357)
+- [evanasse](https://github.com/evanasse)
+- [Eyüp Can Akman](https://github.com/eyupcanakman)
+- [Fabrizio Damicelli](https://github.com/fabridamicelli)
+- [Falk Pauser](https://github.com/fpauser)
+- [Fede Esteban](https://github.com/fmesteban)
+- [Felix](https://github.com/yerTools)
+- [Fernando Farias](https://github.com/nandofarias)
+- [Filip Figiel](https://github.com/ffigiel)
+- [Filip Hoffmann](https://github.com/folospior)
+- [Florian Kraft](https://github.com/floriank)
+- [Francis Hamel](https://github.com/francishamel)
+- [frankwang](https://github.com/Frank-III)
+- [G-J van Rooyen](https://github.com/gvrooyen)
+- [Gabriela Sartori](https://github.com/gabriela-sartori)
+- [Gavin Morrow](https://github.com/gavinmorrow)
+- [Gears](https://github.com/GearsDatapacks)
+- [Geir Arne Hjelle](https://github.com/gahjelle)
+- [George Grec](https://github.com/george-grec)
+- [Giacomo Cavalieri](https://github.com/giacomocavalieri)
+- [ginkogruen](https://github.com/ginkogruen)
+- [GioMaz](https://github.com/GioMaz)
+- [Giovanni Kock Bonetti](https://github.com/giovannibonetti)
+- [Graham](https://github.com/GV14982)
+- [Grant Everett](https://github.com/YoyoSaur)
+- [Guilherme de Maio](https://github.com/nirev)
+- [Guillaume Heu](https://github.com/guillheu)
+- [Gungun974](https://github.com/gungun974)
+- [Hannes Nevalainen](https://github.com/kwando)
+- [Hans Raaf](https://github.com/oderwat)
+- [Hari Mohan](https://github.com/seafoamteal)
+- [Harry Bairstow](https://github.com/HarryET)
+- [Hazel Bachrach](https://github.com/hibachrach)
+- [Henning Dahlheim](https://github.com/hdahlheim)
+- [Henrik Tudborg](https://github.com/tudborg)
+- [Henry Warren](https://github.com/henrysdev)
+- [Hizuru3](https://liberapay.com/Hizuru3/)
+- [Hubert Małkowski](https://github.com/hubertmalkowski)
+- [Iain H](https://github.com/iainh)
+- [Ian González](https://github.com/Ian-GL)
+- [Ian M. Jones](https://github.com/ianmjones)
+- [Igor Montagner](https://github.com/igordsm)
+- [inoas](https://github.com/inoas)
+- [Isaac](https://github.com/graphiteisaac)
+- [Isaac Harris-Holt](https://github.com/isaacharrisholt)
+- [Isaac McQueen](https://github.com/imcquee)
+- [iskrisis](https://github.com/iskrisis)
+- [Ivar Vong](https://github.com/ivarvong)
+- [Jachin Rupe](https://github.com/jachin)
+- [Jake Cleary](https://github.com/jakecleary)
+- [Jake Wood](https://github.com/jzwood)
+- [James Birtles](https://github.com/jamesbirtles)
+- [James MacAulay](https://github.com/jamesmacaulay)
+- [Jan Fooken](https://github.com/janvhs)
+- [Jan Pieper](https://github.com/janpieper)
+- [Jan Skriver Sørensen](https://github.com/monzool)
+- [Jason Florentino](https://github.com/jasonflorentino)
+- [Jean Niklas L'orange](https://github.com/hypirion)
+- [Jean-Adrien Ducastaing](https://github.com/MightyGoldenOctopus)
+- [Jean-Luc Geering](https://github.com/jlgeering)
+- [Jen Stehlik](https://github.com/okkdev)
+- [Jerred Shepherd](https://github.com/shepherdjerred)
+- [Jimmy Utterström](https://github.com/jimutt)
+- [Jimpjorps™](https://github.com/hunkyjimpjorps)
+- [Joey Kilpatrick](https://github.com/joeykilpatrick)
+- [Joey Trapp](https://github.com/joeytrapp)
+- [Johan Strand](https://github.com/johan-st)
+- [Johanna Larsson](https://github.com/joladev)
+- [John Björk](https://github.com/JohnBjrk)
+- [John Downey](https://github.com/jtdowney)
+- [John Strunk](https://github.com/jrstrunk)
+- [Jojor](https://github.com/xjojorx)
+- [Jon Charter](https://github.com/jmcharter)
+- [Jon Lambert](https://github.com/jonlambert)
+- [Jonas E. P](https://github.com/igern)
+- [Jonas Hedman Engström](https://github.com/JonasHedEng)
+- [Jonatan Männchen](https://github.com/maennchen)
+- [Jonathan D.A. Jewell](https://github.com/hyperpolymath)
+- [jooaf](https://github.com/jooaf)
+- [Joseph Lozano](https://github.com/joseph-lozano)
+- [Joshua Steele](https://github.com/joshocalico)
+- [jstcz](https://github.com/czepluch)
+- [Julian Hirn](https://github.com/nineluj)
+- [Julian Lukwata](https://liberapay.com/d2quadra/)
+- [Julian Schurhammer](https://github.com/schurhammer)
+- [Justin Lubin](https://github.com/justinlubin)
+- [Jérôme Schaeffer](https://github.com/Neofox)
+- [Jørgen Andersen](https://github.com/jorg1piano)
+- [KamilaP](https://github.com/Kamila-P)
+- [Kemp Brinson](https://github.com/jkbrinso)
+- [Kero van Gelder](https://github.com/keroami)
+- [Kevin Schweikert](https://github.com/kevinschweikert)
+- [Kile Deal](https://github.com/Aurenos)
+- [Kirill Morozov](https://github.com/kirillmorozov)
+- [Kramer Hampton](https://github.com/bytesofpie)
+- [Kristoffer Grönlund](https://github.com/krig)
+- [Kristoffer Grönlund](https://liberapay.com/krig/)
+- [Krzysztof Gasienica-Bednarz](https://github.com/krzysztofgb)
+- [Kuma Taro](https://github.com/km-tr)
+- [Landon](https://github.com/jly36963)
+- [Leah Ulmschneider](https://github.com/leah-u)
+- [Lee Jarvis](https://github.com/leejarvis)
+- [Lennon Day-Reynolds](https://github.com/rcoder)
+- [Leon Qadirie](https://github.com/leonqadirie)
+- [Leonardo Donelli](https://github.com/LeartS)
+- [Lexx](https://github.com/lexx27)
+- [lidashuang](https://github.com/defp)
+- [Lucy McPhail](https://github.com/lucymcphail)
+- [Luka Ivanović](https://github.com/luka-hash)
+- [Lukas Bjarre](https://github.com/lbjarre)
+- [Luke Amdor](https://github.com/lamdor)
+- [Manuel Rubio](https://github.com/manuel-rubio)
+- [Mario Vellandi](https://github.com/mvellandi)
+- [Marius Kalvø](https://github.com/mariuskalvo)
+- [Mark Dodwell](https://github.com/mkdynamic)
+- [Mark Holmes](https://github.com/markholmes)
+- [Mark Markaryan](https://github.com/markmark206)
+- [Mark Rudolph](https://github.com/alterationx10)
+- [Markus Wesslén](https://github.com/m4reko)
+- [Martin Janiczek](https://github.com/Janiczek)
+- [Martin Poelstra](https://github.com/poelstra)
+- [Martin Rechsteiner ](https://github.com/rechsteiner)
+- [Matt Heise](https://github.com/mhheise)
+- [Matt Mullenweg](https://github.com/m)
+- [Matt Savoia](https://github.com/matt-savvy)
+- [Matt Van Horn](https://github.com/mattvanhorn)
+- [Matthew Jackson](https://github.com/matthewj-dev)
+- [Max Bridges](https://github.com/maxwelldb)
+- [Max McDonnell](https://github.com/maxmcd)
+- [metame](https://github.com/metame)
+- [METATEXX GmbH](https://github.com/metatexx)
+- [Michael Davis](https://github.com/the-mikedavis)
+- [Michael Duffy](https://github.com/stunthamster)
+- [Michael G](https://github.com/mgruen)
+- [Michael Jones](https://github.com/michaeljones)
+- [Michael Mazurczak](https://github.com/monocursive)
+- [Michal Timko](https://github.com/tymak)
+- [Mikael Karlsson](https://github.com/karlsson)
+- [Mike Roach](https://github.com/mroach)
+- [Mikey J](https://liberapay.com/mikej/)
+- [MoeDev](https://github.com/MoeDevelops)
+- [Moin](https://liberapay.com/mhm/)
+- [N. G. Scheurich](https://github.com/ngscheurich)
+- [n8n - Workflow Automation](https://github.com/n8nio)
+- [Natalie Rose](https://github.com/nataliethistime)
+- [Natanael Sirqueira](https://github.com/natanaelsirqueira)
+- [Nessa Jane Marin](https://github.com/nessamurmur)
+- [Nick Leslie](https://github.com/nick-leslie)
+- [Nicklas Sindlev Andersen](https://github.com/NicklasXYZ)
+- [NicoVIII](https://github.com/NicoVIII)
+- [Nigel Baillie](https://github.com/Resonious)
+- [Niket Shah](https://github.com/mrniket)
+- Niklas Kirschall
+- [Nikolai Steen Kjosnes](https://github.com/blink1415)
+- [Nikolas](https://github.com/Willyboar)
+- [Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa](https://github.com/ninanomenon)
+- [NineFX](http://www.ninefx.com)
+- [nkxxll](https://github.com/nkxxll)
+- [NNB](https://github.com/NNBnh)
+- [Noah Betzen](https://github.com/Nezteb)
+- [Nomio](https://github.com/nomio)
+- [nshkrdotcom](https://github.com/nshkrdotcom)
+- [nunulk](https://github.com/nunulk)
+- [Olaf Sebelin](https://github.com/osebelin)
+- [OldhamMade](https://github.com/OldhamMade)
+- [Oliver Medhurst](https://github.com/CanadaHonk)
+- [Oliver Tosky](https://github.com/otosky)
+- [ollie](https://github.com/ollie-dot-earth)
+- [Optizio](https://github.com/optizio)
+- [P.](https://liberapay.com/P./)
+- [Patrick Wheeler](https://github.com/Davorak)
+- [Pattadon Sa-ngasri](https://github.com/tamectosphere)
+- [Paul Guse](https://github.com/pguse)
+- [Pedro Correa](https://github.com/Tulkdan)
+- [Pete Jodo](https://github.com/petejodo)
+- [Peter Rice](https://github.com/pvsr)
+- [Peter Saxton](https://github.com/CrowdHailer)
+- [Philpax](https://github.com/philpax)
+- [Qdentity](https://github.com/qdentity)
+- [qexat](https://github.com/qexat)
+- [R.Kawamura](https://github.com/rykawamu)
+- [Race](https://github.com/raquentin)
+- [Ram Prasanth Udhaya Baskar](https://github.com/ramsgitrepo)
+- [Rasmus](https://github.com/stoft)
+- [Raúl Chouza ](https://github.com/chouzar)
+- [rebecca](https://github.com/yoshi-monster)
+- [Redmar Kerkhoff](https://github.com/redmar)
+- [Reilly Tucker Siemens](https://github.com/reillysiemens)
+- [Renato Massaro](https://github.com/renatomassaro)
+- [Renovator](https://github.com/renovatorruler)
+- [Richard Viney](https://github.com/richard-viney)
+- [Richy McGregor](https://github.com/Deepfriedice)
+- [Rico Leuthold](https://github.com/rico)
+- [Rintaro Okamura](https://github.com/rinx)
+- [Ripta Pasay](https://github.com/ripta)
+- [Rob Durst](https://github.com/robertDurst)
+- [Robert Attard](https://github.com/TanklesXL)
+- [Robert Ellen](https://github.com/rellen)
+- [Robert Malko](https://github.com/malkomalko)
+- [Rodrigo Álvarez](https://github.com/Papipo)
+- [Rohan](https://github.com/genericrohan)
+- [Rotabull](https://github.com/rotabull)
+- [Rupus Reinefjord](https://github.com/reinefjord)
+- [Ruslan Ustitc](https://github.com/ustitc)
+- [Russell Clarey](https://github.com/rclarey)
+- [Ryan Davis](https://github.com/zenspider)
+- [Ryan Moore](https://github.com/mooreryan)
+- [Sakari Bergen](https://github.com/sbergen)
+- [Sam Aaron](https://github.com/samaaron)
+- [Sam Zanca](https://github.com/metruzanca)
+- [Sammy Isseyegh](https://github.com/bkspace)
+- [Samu](https://github.com/scristobal)
+- [Savva](https://github.com/castletaste)
+- [Saša Jurić](https://github.com/sasa1977)
+- [Scott Trinh](https://github.com/scotttrinh)
+- [Scott Wey](https://github.com/scottwey)
+- [Scott Zhu Reeves](https://github.com/star-szr)
+- [Sean Cribbs](https://github.com/seancribbs)
+- [Sean Roberts](https://github.com/SeanRoberts)
+- [Sebastian Porto](https://github.com/sporto)
+- [Seve Salazar](https://github.com/tehprofessor)
+- [Sgregory42](https://github.com/Sgregory42)
+- [Shane Poppleton](https://github.com/codemonkey76)
+- [Shawn Drape](https://github.com/shawndrape)
+- [Shritesh Bhattarai](https://github.com/shritesh)
+- [shxdow](https://github.com/shxdow)
+- [Sigma](https://github.com/sigmasternchen)
+- [simone](https://github.com/simonewebdesign)
+- [SR](https://github.com/rogics)
+- [Stefan](https://github.com/bytesource)
+- [Steinar Eliassen](https://github.com/steinareliassen)
+- [Stephane Rangaya](https://github.com/stephanerangaya)
+- [Strandinator](https://github.com/Strandinator)
+- [Sławomir Ehlert](https://github.com/slafs)
+- [The Sentience Company](https://github.com/The-Sentience-Company)
+- [Thomas](https://github.com/thomaswhyyou)
+- [Thomas Coopman](https://github.com/tcoopman)
+- [Thomas Crescenzi](https://github.com/trescenzi)
+- [Tim Brown](https://github.com/tmbrwn)
+- [Timo Sulg](https://github.com/timgluz)
+- [Tobias Ammann](https://github.com/betabrain)
+- [Tomasz Kowal](https://github.com/tomekowal)
+- [tommaisey](https://github.com/tommaisey)
+- [Tristan de Cacqueray](https://github.com/TristanCacqueray)
+- [Tristan Sloughter](https://github.com/tsloughter)
+- [Tudor Luca](https://github.com/tudorluca)
+- [unknown](https://github.com/ygunayer)
+- [upsidedowncake](https://github.com/upsidedownsweetfood)
+- [Valerio Viperino](https://github.com/vvzen)
+- [Vassiliy Kuzenkov](https://github.com/bondiano)
+- [Viv Verner](https://github.com/PerpetualPossum)
+- [Volker Rabe](https://github.com/yelps)
+- [Walton Hoops](https://github.com/Whoops)
+- [Will Ramirez](https://github.com/willramirezdev)
+- [Wilson Silva](https://github.com/wilsonsilva)
+- [Yamen Sader](https://github.com/yamen)
+- [Yasuo Higano](https://github.com/Yasuo-Higano)
+- [Zsolt Kreisz](https://github.com/zenconomist)
+- [ZWubs](https://github.com/zwubs)
+- [~1847917](https://liberapay.com/~1847917/)
+- [~1867501](https://liberapay.com/~1867501/)
+- [Éber Freitas Dias](https://github.com/eberfreitas)
+- [音㦡](https://github.com/0ngk)
+
+``` =html
+<div style="text-align: center">
+  <a class="button" href="https://tour.gleam.run/">Try Gleam</a>
+</div>
+```
