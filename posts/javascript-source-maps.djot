@@ -136,15 +136,16 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 The compiler now emits a helpful error message when source code contains an
 invalid unicode character that looks similar to a correct character.
 
-```
-error: Syntax error
-  ┌─ /src/parse/error.gleam:1:20
-  │
-1 │ pub fn main() { #(1‚ 2) }
-  │                    ^ Unexpected character
+``` =html
+<pre><code><b><span class="code-error">error</span>: Syntax error</b>
+<span class="code-decoration">  ┌─</span> /src/parse/error.gleam:1:20
+<span class="code-decoration">  │</span>
+<span class="code-decoration">1 │</span> pub fn main() { #(1‚ 2) }
+<span class="code-decoration">  │</span>                    <span class="code-error">^ Unexpected character</span>
 
 This looks like ascii comma, but it is actually the unicode low single
 comma quotation mark.
+</code></pre>
 ```
 
 Bad news for mischievous pranksters, good news for folks who don't like
@@ -162,10 +163,11 @@ The build tool now produces a nicer error message when trying to add a package
 version that doesn't exist. For example, running `gleam add wisp@11`
 will now produce:
 
-```txt
-error: Dependency resolution failed
+``` =html
+<pre><code><b><span class="code-error">error</span>: Dependency resolution failed</b>
 
-The package `wisp` has no versions in the range >= 11.0.0 and < 12.0.0.
+The package `wisp` has no versions in the range &gt;= 11.0.0 and &lt; 12.0.0.
+</code></pre>
 ```
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
