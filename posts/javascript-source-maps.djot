@@ -292,8 +292,8 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Replace `_` with type code action
 
-Gleam's type hole syntax allows to omit parts of a type annotation, putting no
-restrictions on what that part of the type can be inferred as. This can be
+Gleam's type hole syntax allows one to omit parts of a type annotation, putting
+no restrictions on what that part of the type can be inferred as. This can be
 convenient when sketching out new code, but it's best practice to have full
 annotations to make the code and the intended behaviour of the code easier to
 understand.
