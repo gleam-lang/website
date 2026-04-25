@@ -117,16 +117,17 @@ precision is lost. The compiler now raises a warning on the JavaScript target
 when a pattern attempts to extract an int larger than JavaScript supports, to
 avoid unexpected results.
 
-```txt
-warning: Truncated bit array segment
-  ┌─ /src/app/warning.gleam:3:20
-  │
-3 │     let <<_, number:152>> = sha
-  │                     ^^^
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Truncated bit array segment</b>
+<span class="code-decoration">  ┌─</span> /src/app/warning.gleam:3:20
+<span class="code-decoration">  │</span>
+<span class="code-decoration">3 │</span>     let &lt;&lt;_, number:152&gt;&gt; = sha
+<span class="code-decoration">  │</span>                     <span class="code-warning">^^^</span>
 
 This segment is a 152-bit long int, but on the JavaScript target
 numbers have at most 52 bits. It would be truncated to its first 52 bits.
 Hint: Did you mean to use the `bytes` segment option?
+</code></pre>
 ```
 
 Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
@@ -151,7 +152,7 @@ comma quotation mark.
 Bad news for mischievous pranksters, good news for folks who don't like
 debugging unexpected parse errors.
 
-### Hex package ownership management
+## Hex package ownership management
 
 [Niklas Kirschall](https://github.com/nkxxll) has added the new
 `gleam hex owner add` command, allowing folks to add additional owners to their
