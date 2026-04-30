@@ -812,6 +812,14 @@ import { BitArray$BitArray } from '../gleam.mjs';
 BitArray$BitArray(new Uint8Array([30, 56, 10]));
 ```
 
+These functions are provided for deconstructing bit arrays:
+
+- `BitArray$isBitArray`, which takes a value and returns `true` if it is a bit
+  array.
+- `BitArray$data`, which returns the data from the bit array as a JavaScript
+  `DataView`. The bit array must contain a number of bits that is divisible by
+  8 or an exception will be raised.
+
 #### List
 
 Gleam lists arrays constructed using these functions from the Gleam prelude module:
@@ -840,8 +848,9 @@ the `List$NonEmpty` function must always be a list of the correct type.
 
 These functions are provided for deconstructing lists:
 
-- `List$isEmpty`, which takes a list and returns `true` if it is empty.
-- `List$isNonEmpty`, which takes a list and returns `false` if it is empty.
+- `List$isEmpty`, which takes a value and returns `true` if it is an empty list.
+- `List$isNonEmpty`, which takes a value and returns `true` if it is a list with
+  at least 1 element.
 - `List$NonEmpty$first`, which takes a non-empty list and return the first
   element.
 - `List$NonEmpty$rest`, which takes a non-empty list and returns the rest of
