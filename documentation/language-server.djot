@@ -189,6 +189,31 @@ types, constants, and type aliases.
 
 ## Code actions
 
+### Add and remove anonymous function wrappers
+
+This code action can add convert between a reference to a function and an
+anonymous function that calls that function, two syntaxes that are equivalent.
+
+```gleam
+pub fn main() {
+  fn(a, b) { int.add(a, b) }
+}
+```
+
+If your cursor is within an anonymous function that calls a another function
+directly then the "remove anonymous function wrapper" code action will be
+suggested, and if run the code will be updated like so:
+
+```gleam
+pub fn increment(x: Int) -> Int {
+  int.add
+}
+```
+
+If your cursor is within the `int.add` function reference then the "wrap with
+anonymous function" code action will be suggested, and if run the code will
+revert to the original version.
+
 ### Add annotations
 
 This code action can add type annotations to assignments and functions.
