@@ -939,6 +939,26 @@ pub fn main() {
 }
 ```
 
+### Replace `_` with type
+
+This code action can be used to replace a type hole with the full type in a
+type annotation.
+
+```gleam
+pub fn numbers() -> List(_) {
+  [1, 2, 3]
+}
+```
+
+If your cursor is within the `_` the code action will be suggested, and if run
+the module will be updated to this:
+
+```gleam
+pub fn numbers() -> List(Int) {
+  [1, 2, 3]
+}
+```
+
 ### Use label shorthand syntax
 
 This code action updates calls and patterns to use the label shorthand syntax.
