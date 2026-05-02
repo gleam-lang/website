@@ -2366,7 +2366,10 @@ HealthCmd=sh -c /app/healthcheck.sh
 HealthInterval=30s
 HealthTimeout=5s
 HealthRetries=3
-HealthOnFailure=restart
+
+[Service]
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target default.target
