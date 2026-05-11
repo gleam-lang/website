@@ -919,21 +919,31 @@ fn main() {
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("elixir-12")], [html.text("Elixir")]),
     html.p([], [
-      html.text("In Elixir expressions can be grouped using "),
+      html.text(
+        "In Elixir expressions can be grouped using parentheses. The ",
+      ),
       html.code([], [html.text("do")]),
-      html.text(" and "),
+      html.text("/"),
       html.code([], [html.text("end")]),
-      html.text("."),
+      html.text(
+        " syntax is only valid as a keyword argument to macros such as ",
+      ),
+      html.code([], [html.text("def")]),
+      html.text(", "),
+      html.code([], [html.text("if")]),
+      html.text(", and "),
+      html.code([], [html.text("case")]),
+      html.text(", not for grouping expressions in a bare assignment."),
     ]),
     html.pre([], [
       html.code([attr.class("language-elixir")], [
         html.text(
           "defmodule Wibble do
   def main() do
-    x = do
-      print(1)
+    x = (
+      IO.puts(1)
       2
-    end
+    )
     y = x * (x + 10) # parentheses are used to change arithmetic operations order
     y
   end
