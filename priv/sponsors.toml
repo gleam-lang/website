@@ -9,7 +9,7 @@ avatar = "https://avatars.githubusercontent.com/u/89401395?s=50&v=4"
 [[sponsors]]
 name = "音㦡"
 url = "https://github.com/0ngk"
-avatar = "https://avatars.githubusercontent.com/u/215371699?s=50&u=b867922bb1f42b59048fb1a2541bfff8a2d6fd2a&v=4"
+avatar = "https://avatars.githubusercontent.com/u/215371699?s=50&u=e05e2e6c7650d16d5c17978245cb6b51ebc45665&v=4"
 
 [[sponsors]]
 name = "Ameen Radwan"
@@ -79,12 +79,17 @@ avatar = "https://avatars.githubusercontent.com/u/73262844?s=50&u=61b3eaeaf6d7b4
 [[sponsors]]
 name = "Graham"
 url = "https://github.com/GV14982"
-avatar = "https://avatars.githubusercontent.com/u/7041175?s=50&u=698504a26b0d23796497defc48d1d143aa057221&v=4"
+avatar = "https://avatars.githubusercontent.com/u/7041175?s=50&u=29661016b406dec2ea0e7d3d4c6089d0fc353514&v=4"
 
 [[sponsors]]
 name = "Dan Gieschen Knutson"
 url = "https://github.com/Giesch"
 avatar = "https://avatars.githubusercontent.com/u/19314778?s=50&u=ad585888b9b32074097d915a2d91d188384928ef&v=4"
+
+[[sponsors]]
+name = "Aliaksiej Homza"
+url = "https://github.com/GomZik"
+avatar = "https://avatars.githubusercontent.com/u/1038473?s=50&u=a2ae01467f4e793ae8297f9941ef2f9c76c93d4a&v=4"
 
 [[sponsors]]
 name = "Aleksei Gurianov"
@@ -97,14 +102,14 @@ url = "https://github.com/HarryET"
 avatar = "https://avatars.githubusercontent.com/u/29015545?s=50&u=1f25c8e1072f284ee2c1168d06d5f92af8dacc80&v=4"
 
 [[sponsors]]
+name = "Xucong Zhan"
+url = "https://github.com/HymanZHAN"
+avatar = "https://avatars.githubusercontent.com/u/26806995?s=50&u=4de3c370201b6703a46769951516e7102d954a13&v=4"
+
+[[sponsors]]
 name = "Ian González"
 url = "https://github.com/Ian-GL"
 avatar = "https://avatars.githubusercontent.com/u/24900688?s=50&u=614cfcc202ae1bd60c5e86357af95131b5a9396b&v=4"
-
-[[sponsors]]
-name = "Anthony \"Max\" Maxwell"
-url = "https://github.com/Illbjorn"
-avatar = "https://avatars.githubusercontent.com/u/133805840?s=50&u=07e8ba13affdd1025b1add7f0cf96af68b01ca8f&v=4"
 
 [[sponsors]]
 name = "Martin Janiczek"
@@ -239,7 +244,7 @@ avatar = "https://avatars.githubusercontent.com/u/304505?s=50&v=4"
 [[sponsors]]
 name = "Nikolas"
 url = "https://github.com/Willyboar"
-avatar = "https://avatars.githubusercontent.com/u/22755228?s=50&u=ac567d810659bb48588ed655c82981b8659553c9&v=4"
+avatar = "https://avatars.githubusercontent.com/u/22755228?s=50&u=729752ca984eca45412098e14608a4b129f284e4&v=4"
 
 [[sponsors]]
 name = "Yasuo Higano"
@@ -289,7 +294,7 @@ avatar = "https://avatars.githubusercontent.com/u/575513?s=50&u=f887fd6ab399afa5
 [[sponsors]]
 name = "Aaron Gunderson"
 url = "https://github.com/agundy"
-avatar = "https://avatars.githubusercontent.com/u/2281120?s=50&u=281d05e14d23bfc04c31eb84f3651d6598e9a4dc&v=4"
+avatar = "https://avatars.githubusercontent.com/u/2281120?s=50&u=aa65fe9e778bcfa680325ff65b2818ec42a1cfb3&v=4"
 
 [[sponsors]]
 name = "Alex Houseago"
@@ -347,11 +352,6 @@ url = "https://github.com/ayoung19"
 avatar = "https://avatars.githubusercontent.com/u/18640252?s=50&u=17e5f2d86fe16907457874d78297b9e3f88bcc55&v=4"
 
 [[sponsors]]
-name = "Azure Flash"
-url = "https://github.com/azureflash"
-avatar = "https://avatars.githubusercontent.com/u/140976898?s=50&u=f13cd969c39317d68f252d8a4c72bff3f08ecefb&v=4"
-
-[[sponsors]]
 name = "Benjamin Kane"
 url = "https://github.com/bbkane"
 avatar = "https://avatars.githubusercontent.com/u/6081085?s=50&u=cfea130a8721b472b99feb656c3579251e5e8e7c&v=4"
@@ -370,11 +370,6 @@ avatar = "https://avatars.githubusercontent.com/u/685232?s=50&u=5ce1ac16251cab65
 name = "Brian Glusman"
 url = "https://github.com/bglusman"
 avatar = "https://avatars.githubusercontent.com/u/105444?s=50&v=4"
-
-[[sponsors]]
-name = "Ben Marx"
-url = "https://github.com/bgmarx"
-avatar = "https://avatars.githubusercontent.com/u/153267?s=50&u=a70b20a79361700fbf8d73fde753c454804ff9b6&v=4"
 
 [[sponsors]]
 name = "bgw"
@@ -507,11 +502,6 @@ url = "https://github.com/christhekeele"
 avatar = "https://avatars.githubusercontent.com/u/1406220?s=50&v=4"
 
 [[sponsors]]
-name = "Christopher Jung"
-url = "https://github.com/christopherhjung"
-avatar = "https://avatars.githubusercontent.com/u/10675541?s=50&u=206f3dd3558d0a0259401bb20cda2e144ce7c245&v=4"
-
-[[sponsors]]
 name = "Christopher David Shirk"
 url = "https://github.com/christophershirk"
 avatar = "https://avatars.githubusercontent.com/u/1655014?s=50&u=d7c2baf3f4ebbd9ca587ce69aa76c60067423d13&v=4"
@@ -555,6 +545,11 @@ avatar = "https://avatars.githubusercontent.com/u/16721230?s=50&u=99f1d59fe658b9
 name = "dagi3d"
 url = "https://github.com/dagi3d"
 avatar = "https://avatars.githubusercontent.com/u/11283?s=50&u=48e09fda3aed90b2dd22e3ea1eadf4dd2106f16b&v=4"
+
+[[sponsors]]
+name = "Dan Piths"
+url = "https://github.com/danpiths"
+avatar = "https://avatars.githubusercontent.com/u/85949566?s=50&u=44800ba1054bff911a593263a456efda9c024640&v=4"
 
 [[sponsors]]
 name = "David Cornu"
@@ -907,6 +902,11 @@ url = "https://github.com/johan-st"
 avatar = "https://avatars.githubusercontent.com/u/53336235?s=50&u=552f8e1e16c4e8e3d160b3dfc6b7a061f8bb0f79&v=4"
 
 [[sponsors]]
+name = "Johanna Larsson"
+url = "https://github.com/joladev"
+avatar = "https://avatars.githubusercontent.com/u/297627?s=50&u=1e3477b13f4a750c8ec7281da7823043b126e881&v=4"
+
+[[sponsors]]
 name = "Jon Lambert"
 url = "https://github.com/jonlambert"
 avatar = "https://avatars.githubusercontent.com/u/856225?s=50&u=236ec57e909829a7b1db74538468aaac5c3a05f3&v=4"
@@ -1057,6 +1057,11 @@ url = "https://github.com/markmark206"
 avatar = "https://avatars.githubusercontent.com/u/218696?s=50&u=06ddfe39562f21d97e7278b8fa687e494e40fa79&v=4"
 
 [[sponsors]]
+name = "Martin Fojtík"
+url = "https://github.com/martinfojtik"
+avatar = "https://avatars.githubusercontent.com/u/7465851?s=50&u=853c825994ecf51d1a5686615dff1efb4efa7dac&v=4"
+
+[[sponsors]]
 name = "Matt Savoia"
 url = "https://github.com/matt-savvy"
 avatar = "https://avatars.githubusercontent.com/u/6637105?s=50&u=13bf3c171573bae76a4671125ca1f9fc95f35fba&v=4"
@@ -1090,6 +1095,11 @@ avatar = "https://avatars.githubusercontent.com/u/10522448?s=50&v=4"
 name = "Sam Zanca"
 url = "https://github.com/metruzanca"
 avatar = "https://avatars.githubusercontent.com/u/32832892?s=50&u=8fee715bd7a7a8a936bdebce04dcf912a6a72c6f&v=4"
+
+[[sponsors]]
+name = "Michael G"
+url = "https://github.com/mgruen"
+avatar = "https://avatars.githubusercontent.com/u/6547037?s=50&v=4"
 
 [[sponsors]]
 name = "Matt Heise"
@@ -1147,11 +1157,6 @@ url = "https://github.com/n8nio"
 avatar = "https://avatars.githubusercontent.com/u/52133374?s=50&v=4"
 
 [[sponsors]]
-name = "Fernando Farias"
-url = "https://github.com/nandofarias"
-avatar = "https://avatars.githubusercontent.com/u/1944560?s=50&u=16ea7e154a7738b24c0d8c5ba013b87b7677091a&v=4"
-
-[[sponsors]]
 name = "Natalie Rose"
 url = "https://github.com/nataliethistime"
 avatar = "https://avatars.githubusercontent.com/u/1539253?s=50&v=4"
@@ -1160,6 +1165,11 @@ avatar = "https://avatars.githubusercontent.com/u/1539253?s=50&v=4"
 name = "Natanael Sirqueira"
 url = "https://github.com/natanaelsirqueira"
 avatar = "https://avatars.githubusercontent.com/u/13697898?s=50&u=2aedada2b840e9a047fbec5b49fc8e0d3e5f7236&v=4"
+
+[[sponsors]]
+name = "Daniil Nevdah"
+url = "https://github.com/ndan"
+avatar = "https://avatars.githubusercontent.com/u/760394?s=50&v=4"
 
 [[sponsors]]
 name = "Nessa Jane Marin"
@@ -1177,7 +1187,7 @@ url = "https://github.com/nick-leslie"
 avatar = "https://avatars.githubusercontent.com/u/46449945?s=50&v=4"
 
 [[sponsors]]
-name = "Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+name = "# <h1>NinaLovesToPutLongTextIntoNameFields.GitHubNamesArePrettyFun(IThinkThereAreOnlyAFewAnnoyingBugsAndOneFormShatStoppedWorkingCompletely).AnywayCheckOutGleam!ItIsAReallyCoolLanguageWithALovelyCommunity.BLM!CovidIsNotOver!TransRightsAreHumanRights!</h1>"
 url = "https://github.com/ninanomenon"
 avatar = "https://avatars.githubusercontent.com/u/38247461?s=50&u=5146f19d9a751a85860f6cbb48aeb483ac95d991&v=4"
 
@@ -1190,11 +1200,6 @@ avatar = "https://avatars.githubusercontent.com/u/11633602?s=50&u=8715cb6c671bc8
 name = "Guilherme de Maio"
 url = "https://github.com/nirev"
 avatar = "https://avatars.githubusercontent.com/u/686510?s=50&u=abb24e34725b5f0390f1fded181e4e56f92146cc&v=4"
-
-[[sponsors]]
-name = "ollie"
-url = "https://github.com/nnuuvv"
-avatar = "https://avatars.githubusercontent.com/u/79169882?s=50&u=60da141a24463197233a3892a04e05242079d899&v=4"
 
 [[sponsors]]
 name = "Nomio"
@@ -1220,6 +1225,11 @@ avatar = "https://avatars.githubusercontent.com/u/719156?s=50&v=4"
 name = "Jen Stehlik"
 url = "https://github.com/okkdev"
 avatar = "https://avatars.githubusercontent.com/u/20144629?s=50&u=eff2327f3154fd1341f02c640fbd00b67fc6bf76&v=4"
+
+[[sponsors]]
+name = "ollie"
+url = "https://github.com/ollie-dot-earth"
+avatar = "https://avatars.githubusercontent.com/u/79169882?s=50&u=99dcfd8bfa48d80b38fcfd73b3192caaf617f472&v=4"
 
 [[sponsors]]
 name = "Optizio"
@@ -1265,11 +1275,6 @@ avatar = "https://avatars.githubusercontent.com/u/5225217?s=50&u=fc4c4c9067182f7
 name = "Martin Poelstra"
 url = "https://github.com/poelstra"
 avatar = "https://avatars.githubusercontent.com/u/1025628?s=50&u=34690bffb12e46348ce0433a1e250a16bfddb52e&v=4"
-
-[[sponsors]]
-name = "ppp"
-url = "https://github.com/ppp3ppj"
-avatar = "https://avatars.githubusercontent.com/u/104762988?s=50&u=803dd948a7ecdf1bacbb07a85ad135941ff6a4a0&v=4"
 
 [[sponsors]]
 name = "Peter Rice"
@@ -1382,7 +1387,7 @@ url = "https://github.com/rotabull"
 avatar = "https://avatars.githubusercontent.com/u/48396327?s=50&v=4"
 
 [[sponsors]]
-name = "MzRyuKa"
+name = "R.Kawamura"
 url = "https://github.com/rykawamu"
 avatar = "https://avatars.githubusercontent.com/u/38804392?s=50&v=4"
 
@@ -1547,19 +1552,9 @@ url = "https://github.com/tomekowal"
 avatar = "https://avatars.githubusercontent.com/u/907415?s=50&v=4"
 
 [[sponsors]]
-name = "Tom Schuster"
-url = "https://github.com/tomjschuster"
-avatar = "https://avatars.githubusercontent.com/u/19388254?s=50&v=4"
-
-[[sponsors]]
 name = "tommaisey"
 url = "https://github.com/tommaisey"
 avatar = "https://avatars.githubusercontent.com/u/2369921?s=50&u=49a3c8c923d3ba5e4dbf0b1a876c9ec7fa7df555&v=4"
-
-[[sponsors]]
-name = "Tolek"
-url = "https://github.com/toulerl"
-avatar = "https://avatars.githubusercontent.com/u/200484220?s=50&u=00aacf332e3eaef6fcbc34c4e17ebe1dd123f70c&v=4"
 
 [[sponsors]]
 name = "Thomas Crescenzi"
