@@ -919,9 +919,7 @@ fn main() {
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("elixir-12")], [html.text("Elixir")]),
     html.p([], [
-      html.text(
-        "In Elixir expressions can be grouped using parentheses. The ",
-      ),
+      html.text("In Elixir expressions can be grouped using parentheses. The "),
       html.code([], [html.text("do")]),
       html.text("/"),
       html.code([], [html.text("end")]),
