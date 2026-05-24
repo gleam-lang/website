@@ -61,6 +61,25 @@ const research = [
 
 const done = [
   Release(
+    version: "v1.16",
+    date: calendar.Date(2026, calendar.April, 24),
+    items: [
+      "JavaScript source map generation",
+      "Package level fault tolerance",
+      "Language server failed import diagnostic messages",
+      "String prefix performance improvements on JavaScript",
+      "Oversized int warnings on JavaScript",
+      "Helpful error messages for invalid source characters that look like valid characters",
+      "Hex package ownership transfer command",
+      "Hex resolution error message improvements",
+      "List prepending in constant expressions",
+      "Build tool support for mts, cts, jsx, and tsx external files",
+      "Formatter tuple handling improvements",
+      "Language server and and remove anonymous function code actions",
+      "Language server replace hole with type code action",
+    ],
+  ),
+  Release(
     version: "v1.15",
     date: calendar.Date(2026, calendar.March, 16),
     items: [
