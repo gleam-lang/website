@@ -11,10 +11,6 @@ import website/site
 
 const in_progress = [
   #(
-    "Function inlining",
-    "Improve performance and stack usage by inlining a few functions from the core libraries",
-  ),
-  #(
     "Dependency conflict resolution",
     "Improve dealing with conflicting dependency versions by giving the user hints",
   ),
@@ -37,6 +33,10 @@ const planned = [
     "Hex API key generation",
     "Generate an API key for Hex when we reach the rate limit",
   ),
+  #(
+    "Function inlining",
+    "Improve performance and stack usage by inlining a few functions from the core libraries",
+  ),
   #("Code linking in docs", "Code linking syntax for documentation comments"),
   #("Private Hex", "Hex private package support for companies and big teams"),
   #("Better JavaScript Records", "JavaScript record performance improvements"),
@@ -49,6 +49,14 @@ const planned = [
     "Improve how we generate recursion on JavaScript to support mutual tail calls",
   ),
   #("Better OTP apps", "New OTP application initialisation interface"),
+  #(
+    "Licence compliance tooling",
+    "Helping developers ensure their dependencies have compatible licences",
+  ),
+  #(
+    "Dependency CVE tooling",
+    "Alerting developers to reported vulnerabilities in their dependencies",
+  ),
 ]
 
 const research = [
