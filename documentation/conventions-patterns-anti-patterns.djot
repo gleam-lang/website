@@ -239,6 +239,7 @@ foundation for other Gleam libraries and applications.
 
 - [`gleam_stdlib`](https://hexdocs.pm/gleam_stdlib)
 - [`gleam_time`](https://hexdocs.pm/gleam_time)
+- [`gleam_json`](https://hexdocs.pm/gleam_json)
 - [`gleam_http`](https://hexdocs.pm/gleam_http)
 - [`gleam_erlang`](https://hexdocs.pm/gleam_erlang)
 - [`gleam_otp`](https://hexdocs.pm/gleam_otp)
