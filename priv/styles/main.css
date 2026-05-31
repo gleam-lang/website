@@ -775,6 +775,7 @@ main.content {
 }
 
 .hl-operator,
+.code-progress,
 .code-operator {
   color: var(--color-code-pink);
 }

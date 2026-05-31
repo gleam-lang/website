@@ -18,6 +18,14 @@ pub fn all() -> snag.Result(List(NewsPost)) {
   io.print("Loading news posts: ")
   let posts = [
     read(
+      title: "Single file Gleam BEAM programs with escript",
+      subtitle: "Gleam v1.17.0 released!",
+      published: calendar.Date(2026, calendar.May, 26),
+      author: louis,
+      path: "single-file-gleam-beam-programs-with-escript",
+      preview_image: option.Some("v1.17"),
+    ),
+    read(
       title: "JavaScript source maps",
       subtitle: "Gleam v1.16.0 released!",
       published: calendar.Date(2026, calendar.April, 24),
