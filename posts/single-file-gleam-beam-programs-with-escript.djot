@@ -1,8 +1,16 @@
 Gleam is a type safe and scalable language for the Erlang virtual machine and
-JavaScript runtimes. Today Gleam [v1.16.0][release] has been published, let's
-go over what's new.
+JavaScript runtimes. Today Gleam [v1.17.0][release] has been published.
 
-[release]: https://github.com/gleam-lang/gleam/releases/tag/v1.16.0
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v1.17.0
+
+## Gleam Gathering
+
+But first: the first videos from the first even all-Gleam conference have been
+released! You can view them on [the Gleam Gathering YouTube account](https://www.youtube.com/@GleamGathering).
+The event was a roaring success and loads of fun. Stay tuned for news of the
+next one in 2027!
+
+Right, back to the release coverage.
 
 ## BEAM escripts
 
@@ -216,7 +224,7 @@ compiling to JavaScript, detecting and removing some redundant checks when
 working with the length of bit arrays, and making the code for assignments more
 compact. Thank you both!
 
-## `gleam dev --no-print-progress`
+## Quiet development
 
 When running the Gleam build tool it will print messages that show what it is
 doing.
@@ -257,6 +265,7 @@ example:
 Package       Current  Latest
 -------       -------  ------
 gleam_stdlib  0.70.0   0.71.0
+</code></pre>
 ```
 
 It is also helpful with no packages are outdated, as before some people were
@@ -266,6 +275,7 @@ outdated dependencies or not.
 ``` =html
 <pre><code><b><span class="code-prompt">louis ~/src/my_project $</span></b> gleam deps outdated
 0 of 12 packages have newer versions available.
+</code></pre>
 ```
 
 Thank you [Daniele Scaratti](https://github.com/lupodevelop)!
@@ -325,100 +335,96 @@ Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Correct operator in guard expression code action
 
-- When using the wrong operator in a guard, the language server can now suggest
-  and apply an automatic fix. For example:
+Gleam doesn't have overloading for its operators, so each one works with a
+specific type. This is beneficial as it removes ambiguity and helps the
+compiler reliably infer the types of all the values in the program without
+requiring additional annotations. Other languages approach this problem using
+sub-typing, but Gleam doesn't have sub-typing, so it uses unambiguous syntax
+instead.
 
-  ```gleam
-  pub fn categorise() {
-    case pokemon {
-      Pokemon(name:, ..) if name == "rai" + "chu" -> todo
-      _ -> todo
-    }
+Sometimes programmers new to Gleam can mix up operators, such as trying to use
+`+` to concatenate strings instead of Gleam's `<>`. When this happens Gleam
+will suggest the correct operator to the programmer and provide a language
+server auto-fix action to correct it. This is now also supported for guard
+expressions, so it can be triggered on the erroneous `+` in this code:
+
+```gleam
+pub fn categorise() {
+  case pokemon {
+    Pokemon(name:, ..) if name == "rai" + "chu" -> todo
+    _ -> todo
   }
-  ```
+}
+```
 
-  Gleam has no operator overloading, and the operator used to join strings is
-  `<>`, not `+`. The language server can automatically fix this common mistake.
-  Triggering the code action on the guard will replace `+` with `<>`.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Pattern match on discarded value code action
 
-- The language server now allows to further pattern match on a discard by
-  replacing it with the patterns it is discarding.
-  For example:
+Gleam implements exhaustiveness checking, so if a program fails to cover all
+the possible edge cases with its flow control a helpful error will be raised
+during compiling, showing the programmer what is missing.
 
-  ```gleam
-  pub fn list_names(x: Result(List(String), Nil)) {
-    case x {
-      Error(Nil) -> io.println("no names")
-      Ok(_) -> todo
-      // ^ Triggering the code action here
-    }
+The information that the compiler collects from the code for this feature also
+enables it to provide some very convenient time-saving language server code
+actions, such as "add missing patterns" and "pattern match on value". The
+latest of these is an action to expand a discard pattern in a case expression,
+replacing it with clauses to match what it was discarding.
+
+```gleam
+pub fn list_names(x: Result(List(String), Nil)) {
+  case x {
+    Error(Nil) -> io.println("no names")
+    Ok(_) -> todo
+    // ^ Triggering the code action here
   }
-  ```
+}
+```
 
-  Triggering the code action will result in the following code:
+Here the `_` discard pattern is being used to match on any list. Triggering the
+code action on that pattern expands that clause to the 2 clauses with the
+patterns most commonly used with lists.
 
-  ```gleam
-  pub fn list_names(x: Result(List(String), Nil)) {
-    case x {
-      Error(Nil) -> io.println("no names")
-      Ok([]) -> todo
-      Ok([first, ..rest]) -> todo
-    }
+```gleam
+pub fn list_names(x: Result(List(String), Nil)) {
+  case x {
+    Error(Nil) -> io.println("no names")
+    Ok([]) -> todo
+    Ok([first, ..rest]) -> todo
   }
-  ```
+}
+```
 
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri)!
 
 ## Create unknown module code action
 
-- The language server now offers a code action to create unknown modules
-  when an import is added for a module that doesn't exist.
-  For example, if `import wobble/woo` is added to `src/wiggle.gleam`,
-  then a code action to create `src/wobble/woo.gleam` will be presented
-  when triggered over `import wobble/woo`.
-  ([Cory Forsstrom](https://github.com/tarkah))
+There are two types of programmers in this world: top-down, and bottom-up. A
+top-down programmer starts with the biggest picture and breaks it down into
+progressively smaller pieces, recursively implementing them until the lowest
+level is reached. A bottom-up programmer starts by making the smallest building
+blocks and composing them until they have a full working system.
 
-## Language server improvements
+This release brings a new code action that may be especially appreciated by
+top-down programmers: create module. This action is available any time that a
+module that does not exist is imported, and when run will create the missing
+module in the programmer's package.
 
-- The language server now presents quick fix code actions before refactoring
-  ones.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+For example, if `import wobble/woo` is added to `src/wiggle.gleam`,
+then a code action to create `src/wobble/woo.gleam` will be presented
+when triggered over `import wobble/woo`.
 
-- The "Generate variant" code action now automatically adds an import to use the
-  generated variant if it is generated in a module from the different one.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The language server no longer shows completions for deprecated values from
-  dependencies.
-  ([Andrey Kozhev](https://github.com/ankddev))
-
-- The language server now supports finding references when triggered on an
-  aliased import. For example, in the following snippet, moving the cursor
-  over `log` and triggering "find references" will show all references of
-  `io.println()`.
-
-  ```gleam
-  import gleam/io.{println as log}
-  fn main() {
-    log("Hello, world!")
-  //^^^ trigger here
-  }
-  ```
-
-  ([Gavin Morrow](https://github.com/gavinmorrow))
-
+Thank you [Cory Forsstrom](https://github.com/tarkah)!
 
 ## And the rest
 
-And thank you to the bug fixers and experience polishers:
+And a huge thank you to the bug fixers and experience polishers:
 
 [Andrey Kozhev](https://github.com/ankddev),
 [apsoras](https://github.com/apsoras),
 [Charlie Tonneslan](https://github.com/c-tonneslan),
 [daniellionel01](https://github.com/daniellionel01),
+[Gavin Morrow](https://github.com/gavinmorrow),
 [Giacomo Cavalieri](https://github.com/giacomocavalieri),
 [John Downey](https://github.com/jtdowney),
 [Logan Bresnahan](https://github.com/LoganBresnahan),
@@ -429,13 +435,12 @@ And thank you to the bug fixers and experience polishers:
 For full details of the many fixes and improvements they've implemented see [the
 changelog][changelog].
 
-[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.16.md
+[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.17.md
 
-## A call for support
+## Help us pay the bills
 
-Gleam is not owned by a corporation; instead it is entirely supported by
-sponsors, most of which contribute between $5 and $20 USD per month, and Gleam
-is my sole source of income.
+Gleam is not from big-tech and has not taken any VC funding. We rely entirely
+on the community for our livelihoods.
 
 We have made great progress towards our goal of being able to appropriately pay
 the core team members, but we still have further to go. Please consider
@@ -463,7 +468,9 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
   </li>
 </ul>
 ```
-- [Aaron Gunderson](https://github.com/agundy)
+- [# <h1>NinaLovesToPutLongTextIntoNameFields.GitHubNamesArePrettyFun(IThinkThereAreOnlyAFewAnnoyingBugsAndOneFormShatStoppedWorkingCompletely).AnywayCheckOutGleam!ItIsAReallyCoolLanguageWithALovelyCommunity.BLM!CovidIsNotOver!TransRightsAreHumanRights!</h1>](https://github.com/ninanomenon)
+- [0xda157](https://github.com/0xda157)
+- [404salad](https://github.com/404salad)
 - [Abel Jimenez](https://github.com/abeljim)
 - [Aboio](https://github.com/aboio-labs)
 - [ad-ops](https://github.com/ad-ops)
@@ -495,19 +502,19 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Baqtiar](https://github.com/domalaq)
 - [Barry Moore II](https://github.com/chiroptical)
 - [Ben Martin](https://github.com/requestben)
-- [Ben Marx](https://github.com/bgmarx)
 - [Ben Myles](https://github.com/benmyles)
 - [Benjamin Kane](https://github.com/bbkane)
 - [Benjamin Moss](https://github.com/drteeth)
 - [bgw](https://github.com/bgwdotdev)
 - [Billuc](https://github.com/Billuc)
 - [Bjarte Aarmo Lund](https://github.com/bjartelund)
-- [Bjoern Paschen](https://github.com/00bpa)
 - [blurrcat](https://github.com/blurrcat)
 - [Brad Mehder](https://github.com/bmehder)
 - [Brett Cannon](https://github.com/brettcannon)
 - [Brett Kolodny](https://github.com/brettkolodny)
 - [Brian Glusman](https://github.com/bglusman)
+- [BrockMatthews](https://github.com/BrockMatthews)
+- [brone1323](https://github.com/brone1323)
 - [Bruce Williams](https://github.com/bruce)
 - [Bruno Konrad](https://github.com/brunoskonrad)
 - [bucsi](https://github.com/bucsi)
@@ -515,15 +522,12 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Carlo Munguia](https://github.com/carlomunguia)
 - [Carlos Saltos](https://github.com/csaltos)
 - [Chad Selph](https://github.com/chadselph)
-- [Charlie Govea](https://github.com/charlie-n01r)
 - Charlie Tonneslan
 - [Chew Choon Keat](https://github.com/choonkeat)
 - [Chris Lloyd](https://github.com/chrislloyd)
 - [Chris Ohk](https://github.com/utilForever)
-- [Chris Olsen](https://github.com/chrisolsen)
 - [Chris Vincent](https://github.com/cvincent)
 - [Christian Visintin](https://github.com/veeso)
-- [Christopher David Shirk](https://github.com/christophershirk)
 - [Christopher De Vries](https://github.com/devries)
 - [Christopher Dieringer](https://github.com/cdaringe)
 - [Christopher Keele](https://github.com/christhekeele)
@@ -533,8 +537,10 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Comamoca](https://github.com/Comamoca)
 - [Constantin (Cleo) Winkler](https://github.com/Lucostus)
 - [Corentin J.](https://github.com/jcorentin)
+- [Cory Forsstrom](https://github.com/tarkah)
 - [Cris Holm](https://github.com/uberguy)
 - [Curling IO](https://github.com/pairshaped)
+- [Cyphernil](https://github.com/charlie-n01r)
 - [dagi3d](https://github.com/dagi3d)
 - [Damir Vandic](https://github.com/dvic)
 - [Dan](https://github.com/d2718)
@@ -542,6 +548,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Dan Gieschen Knutson](https://github.com/Giesch)
 - [Dan Piths](https://github.com/danpiths)
 - [Dan Strong](https://github.com/strongoose)
+- [Daniel Kurz](https://github.com/daniellionel01)
 - [Daniele](https://github.com/lupodevelop)
 - [Daniil Nevdah](https://github.com/ndan)
 - [Danny Arnold](https://github.com/pinnet)
@@ -553,7 +560,6 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [David Pendray](https://github.com/dpen2000)
 - [Diemo Gebhardt](https://github.com/diemogebhardt)
 - [Djordje Djukic](https://github.com/djordjedjukic)
-- [Donnie Adams](https://github.com/thedadams)
 - [Dylan Anthony](https://github.com/dbanty)
 - [Dylan Carlson](https://github.com/gdcrisp)
 - [Ed Rosewright](https://github.com/EdRW)
@@ -577,7 +583,6 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Falk Pauser](https://github.com/fpauser)
 - [Fede Esteban](https://github.com/fmesteban)
 - [Felix](https://github.com/yerTools)
-- [Fernando Farias](https://github.com/nandofarias)
 - [Filip Figiel](https://github.com/ffigiel)
 - [Filip Hoffmann](https://github.com/folospior)
 - [Florian Kraft](https://github.com/floriank)
@@ -617,6 +622,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Isaac Harris-Holt](https://github.com/isaacharrisholt)
 - [Isaac McQueen](https://github.com/imcquee)
 - [iskrisis](https://github.com/iskrisis)
+- [Ismael Abreu](https://github.com/ismaelga)
 - [Ivar Vong](https://github.com/ivarvong)
 - [Jachin Rupe](https://github.com/jachin)
 - [Jake Cleary](https://github.com/jakecleary)
@@ -651,6 +657,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [jooaf](https://github.com/jooaf)
 - [Joseph Lozano](https://github.com/joseph-lozano)
 - [Joshua Steele](https://github.com/joshocalico)
+- [João Palmeiro](https://liberapay.com/joaopalmeiro/)
 - [jstcz](https://github.com/czepluch)
 - [Julian Hirn](https://github.com/nineluj)
 - [Julian Lukwata](https://liberapay.com/d2quadra/)
@@ -677,6 +684,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Leonardo Donelli](https://github.com/LeartS)
 - [Lexx](https://github.com/lexx27)
 - [lidashuang](https://github.com/defp)
+- [Logan Bresnahan](https://github.com/LoganBresnahan)
 - [Lucy McPhail](https://github.com/lucymcphail)
 - [Luka Ivanović](https://github.com/luka-hash)
 - [Lukas Bjarre](https://github.com/lbjarre)
@@ -689,6 +697,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Mark Markaryan](https://github.com/markmark206)
 - [Mark Rudolph](https://github.com/alterationx10)
 - [Markus Wesslén](https://github.com/m4reko)
+- [Martin Fojtík](https://github.com/martinfojtik)
 - [Martin Janiczek](https://github.com/Janiczek)
 - [Martin Poelstra](https://github.com/poelstra)
 - [Martin Rechsteiner ](https://github.com/rechsteiner)
@@ -697,9 +706,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Matt Savoia](https://github.com/matt-savvy)
 - [Matt Van Horn](https://github.com/mattvanhorn)
 - [Matthew Jackson](https://github.com/matthewj-dev)
-- [Max Bridges](https://github.com/maxwelldb)
 - [Max McDonnell](https://github.com/maxmcd)
-- [metame](https://github.com/metame)
 - [METATEXX GmbH](https://github.com/metatexx)
 - [Michael Davis](https://github.com/the-mikedavis)
 - [Michael Duffy](https://github.com/stunthamster)
@@ -715,7 +722,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [N. G. Scheurich](https://github.com/ngscheurich)
 - [n8n - Workflow Automation](https://github.com/n8nio)
 - [Natalie Rose](https://github.com/nataliethistime)
-- [Natanael Sirqueira](https://github.com/natanaelsirqueira)
+- [Natanael Oliveira](https://github.com/natanaelsirqueira)
 - [Nessa Jane Marin](https://github.com/nessamurmur)
 - [Nick Leslie](https://github.com/nick-leslie)
 - [Nicklas Sindlev Andersen](https://github.com/NicklasXYZ)
@@ -725,11 +732,10 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - Niklas Kirschall
 - [Nikolai Steen Kjosnes](https://github.com/blink1415)
 - [Nikolas](https://github.com/Willyboar)
-- [Ninaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa](https://github.com/ninanomenon)
 - [NineFX](http://www.ninefx.com)
 - [nkxxll](https://github.com/nkxxll)
 - [NNB](https://github.com/NNBnh)
-- [Noah Betzen](https://github.com/Nezteb)
+- [Noah](https://github.com/Nezteb)
 - [Nomio](https://github.com/nomio)
 - [nshkrdotcom](https://github.com/nshkrdotcom)
 - [nunulk](https://github.com/nunulk)
@@ -748,11 +754,14 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Peter Rice](https://github.com/pvsr)
 - [Peter Saxton](https://github.com/CrowdHailer)
 - [Philpax](https://github.com/philpax)
+- [Psoras](https://github.com/apsoras)
+- [puneeth_aditya_5656](https://github.com/mugiwaraluffy56)
 - [Qdentity](https://github.com/qdentity)
 - [qexat](https://github.com/qexat)
 - [R.Kawamura](https://github.com/rykawamu)
 - [Race](https://github.com/raquentin)
 - [Ram Prasanth Udhaya Baskar](https://github.com/ramsgitrepo)
+- [raphrous](https://github.com/realraphrous)
 - [Rasmus](https://github.com/stoft)
 - [Raúl Chouza ](https://github.com/chouzar)
 - [rebecca](https://github.com/yoshi-monster)
@@ -763,6 +772,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Richard Viney](https://github.com/richard-viney)
 - [Richy McGregor](https://github.com/Deepfriedice)
 - [Rico Leuthold](https://github.com/rico)
+- [Riley Bruins](https://github.com/ribru17)
 - [Rintaro Okamura](https://github.com/rinx)
 - [Ripta Pasay](https://github.com/ripta)
 - [Rob Durst](https://github.com/robertDurst)
@@ -786,6 +796,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Saša Jurić](https://github.com/sasa1977)
 - [Scott Trinh](https://github.com/scotttrinh)
 - [Scott Wey](https://github.com/scottwey)
+- [Scott Wilson](https://github.com/scott-ray-wilson)
 - [Scott Zhu Reeves](https://github.com/star-szr)
 - [Sean Cribbs](https://github.com/seancribbs)
 - [Sean Roberts](https://github.com/SeanRoberts)
@@ -794,7 +805,7 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Sgregory42](https://github.com/Sgregory42)
 - [Shane Poppleton](https://github.com/codemonkey76)
 - [Shawn Drape](https://github.com/shawndrape)
-- [Shritesh Bhattarai](https://github.com/shritesh)
+- [Shunji Lin](https://github.com/shunjilin)
 - [shxdow](https://github.com/shxdow)
 - [Sigma](https://github.com/sigmasternchen)
 - [simone](https://github.com/simonewebdesign)
@@ -825,10 +836,12 @@ Thank you to all our sponsors! And special thanks to our top sponsor:
 - [Walton Hoops](https://github.com/Whoops)
 - [Will Ramirez](https://github.com/willramirezdev)
 - [Wilson Silva](https://github.com/wilsonsilva)
+- [Xucong Zhan](https://github.com/HymanZHAN)
 - [Yamen Sader](https://github.com/yamen)
 - [Yasuo Higano](https://github.com/Yasuo-Higano)
 - [Zsolt Kreisz](https://github.com/zenconomist)
 - [ZWubs](https://github.com/zwubs)
+- [~1814730](https://liberapay.com/~1814730/)
 - [~1847917](https://liberapay.com/~1847917/)
 - [~1867501](https://liberapay.com/~1867501/)
 - [Éber Freitas Dias](https://github.com/eberfreitas)
