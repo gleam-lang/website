@@ -19,10 +19,6 @@ const in_progress = [
     "Improve the Windows OS non-developer mode support for running production programs",
   ),
   #(
-    "LSP document-highlight",
-    "Support document-highlight in the language server",
-  ),
-  #(
     "LSP split alternative patterns",
     "Add a \"split alternative patterns\" code action in the language server",
   ),
@@ -68,6 +64,27 @@ const research = [
 ]
 
 const done = [
+  Release(
+    version: "v1.17",
+    date: calendar.Date(2026, calendar.June, 2),
+    items: [
+      "Export escript command",
+      "Todo expressions in constants",
+      "Unknown value import suggestions",
+      "Context aware type printing in warnings",
+      "Further JavaScript pattern matching optimisation",
+      "Improved git repository detection for package publication",
+      "Fault tolerant compilation of the list prepend and record update syntaxes",
+      "Counts displayed in gleam deps outdated command",
+      "--no-print-progress flag for gleam dev command",
+      "Operator correction hints for guard expressions",
+      "Language server highlight references",
+      "Language server record update hover improvements",
+      "Language server remove redundant record update code action",
+      "Language server pattern match on discarded value code action",
+      "Language server create unknown module code action",
+    ],
+  ),
   Release(
     version: "v1.16",
     date: calendar.Date(2026, calendar.April, 24),
