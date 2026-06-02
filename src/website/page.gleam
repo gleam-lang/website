@@ -1564,7 +1564,7 @@ pub fn conventions_patterns_and_anti_patterns(
       subtitle: "Writing good code in Gleam",
       description: "Tips and guidance for writing good code in Gleam",
       preload_images: [],
-      preview_image: option.None,
+      preview_image: option.Some("patterns"),
     )
   let source = "documentation/conventions-patterns-anti-patterns.djot"
   djot_page_with_table_of_contents(source, ctx, meta)
