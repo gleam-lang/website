@@ -156,17 +156,18 @@ pub fn main() -> Nil {
 
 The compiler will display this error message:
 
-```text
-  error: Unknown variable
-  ┌─ /path/to/project/src/project.gleam:4:3
-  │
-4 │   println("Hello, World!")
-  │   ^^^^^^^
+``` =html
+<pre><code><b><span class="code-error">error</span>: Unknown variable</b>
+<span class="code-decoration">  ┌─</span> /path/to/project/src/project.gleam:4:3
+<span class="code-decoration">  │</span>
+<span class="code-decoration">4 │</span>   println("Hello, World!")
+<span class="code-decoration">  │</span>   <span class="code-error">^^^^^^^</span>
 
 The name `println` is not in scope here.
 Did you mean one of these:
 
     - io.println
+</code></pre>
 ```
 
 Thank you [raphrous](https://github.com/realraphrous)!
@@ -194,17 +195,18 @@ pub fn main() {
 
 Will produce the following warning:
 
-```
-warning: Todo found
-  ┌─ /src/warning/wrn.gleam:4:19
-  │
-4 │     user.to_string(todo)
-  │                    ^^^^ This code is incomplete
+``` =html
+<pre><code><b><span class="code-warning">warning</span>: Todo found</b>
+<span class="code-decoration">  ┌─</span> /src/warning/wrn.gleam:4:19
+<span class="code-decoration">  │</span>
+<span class="code-decoration">4 │</span>     user.to_string(todo)
+<span class="code-decoration">  │</span>                    <span class="code-warning">^^^^</span> <span class="code-error">This code is incomplete</span>
 
 This code will crash if it is run. Be sure to finish it before
 running your program.
 
 Hint: I think its type is `visitor.User`.
+</code></pre>
 ```
 
 Notice how the type hint is correctly qualified for the module the warning is
@@ -416,7 +418,26 @@ when triggered over `import wobble/woo`.
 
 Thank you [Cory Forsstrom](https://github.com/tarkah)!
 
-## And the rest
+## Security fixes
+
+Security researchers 
+[Abdelrahman Ahmed Aboelkasem](https://github.com/0x2face),
+[Aly](https://github.com/spect3r1), and 
+[evipepota](https://github.com/evipepota), found some configuration validation
+related vulnerabilities in the Gleam build tool. Thankfully they are not too
+scary, and they have now been fixed. For details see
+[CVE-2026-43965](https://github.com/gleam-lang/gleam/security/advisories/GHSA-jqvf-f6p2-wrv3),
+[CVE-2026-32685](https://github.com/gleam-lang/gleam/security/advisories/GHSA-wjx8-7w8m-p4v7),
+and [CVE-2026-42795](https://github.com/gleam-lang/gleam/security/advisories/GHSA-qhh5-fg4c-8gqc).
+
+The [Erlang Ecosystem Foundation](https://erlef.org/) security team has been
+invaluable for their work securing the whole Erlang ecosystem, especially now
+as AI-based vulnerability detection tools become more effective. If you or your
+company is able, please offer them your support.
+
+Thank you to all the researchers and remediators!
+
+## And more!
 
 And a huge thank you to the bug fixers and experience polishers:
 
@@ -424,6 +445,7 @@ And a huge thank you to the bug fixers and experience polishers:
 [apsoras](https://github.com/apsoras),
 [Charlie Tonneslan](https://github.com/c-tonneslan),
 [daniellionel01](https://github.com/daniellionel01),
+[Eyup Can Akman](https://github.com/eyupcanakman),
 [Gavin Morrow](https://github.com/gavinmorrow),
 [Giacomo Cavalieri](https://github.com/giacomocavalieri),
 [John Downey](https://github.com/jtdowney),
@@ -437,7 +459,7 @@ changelog][changelog].
 
 [changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.17.md
 
-## Help us pay the bills
+## Support Gleam
 
 Gleam is not from big-tech and has not taken any VC funding. We rely entirely
 on the community for our livelihoods.
