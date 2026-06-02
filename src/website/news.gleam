@@ -20,7 +20,7 @@ pub fn all() -> snag.Result(List(NewsPost)) {
     read(
       title: "Single file Gleam BEAM programs with escript",
       subtitle: "Gleam v1.17.0 released!",
-      published: calendar.Date(2026, calendar.May, 26),
+      published: calendar.Date(2026, calendar.June, 2),
       author: louis,
       path: "single-file-gleam-beam-programs-with-escript",
       preview_image: option.Some("v1.17"),
