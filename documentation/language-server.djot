@@ -436,6 +436,19 @@ pub fn main() {
 
 The running the code action again will reverse this change.
 
+### Create unknown module
+
+This code action will create a new empty module when that module has been
+imported but does not exist.
+
+```gleam
+import wibble/wobble
+```
+
+With this code, if there is no module named `wibble/wobble` then the code
+action will be offered from that import, and if run it will create the new
+module in the same package.
+
 ### Discard unused result
 
 This code action assigns unused results to `_`, silencing the warning.
@@ -863,6 +876,37 @@ run the module will be updated to this:
 type Direction {
   Up
   Down
+}
+```
+
+### Remove redundant record update
+
+This code action removes redundant record updates where all fields are updated.
+
+```gleam
+pub type User {
+  User(name: String, likes: List(String))
+}
+
+pub fn main() -> List(User) {
+  let lucy = User(name: "Lucy", likes: ["Gleam", "Ice Cream"])
+  let jak = User(..lucy, name: "Jak", likes: ["Gleam", "Dogs"])
+  [lucy, jak]
+}
+```
+
+If your cursor is within the second record update expression the code action
+will be suggested, and if run the module will be updated to this:
+
+```gleam
+pub type User {
+  User(name: String, likes: List(String))
+}
+
+pub fn main() -> List(User) {
+  let lucy = User(name: "Lucy", likes: ["Gleam", "Ice Cream"])
+  let jak = User(name: "Jak", likes: ["Gleam", "Dogs"])
+  [lucy, jak]
 }
 ```
 
