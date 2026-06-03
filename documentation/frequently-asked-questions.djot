@@ -118,10 +118,13 @@ project and it was an early inspiration for Gleam!
 Here’s a non-exhaustive list of differences:
 
 - Alpaca’s functions are auto-curried, Gleam’s are not.
-- Alpaca’s unions can be untagged, with Gleam all variants in a custom type need a name.
+- Alpaca’s unions can be untagged, with Gleam all variants in a custom type
+  need a name.
 - Alpaca’s compiler is written in Erlang, Gleam’s is written in Rust.
-- Alpaca’s syntax is closer to ML family languages, Gleam’s is closer to C family languages.
-- Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang and optionally JavaScript.
+- Alpaca’s syntax is closer to ML family languages, Gleam’s is closer to C
+  family languages.
+- Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang and
+  optionally JavaScript.
 - Alpaca uses the Erlang build tool, Gleam has its own build tool.
 - Gleam is more actively developed than Alpaca (at time of writing).
 
@@ -132,7 +135,8 @@ Erlang VM. It is very cool, especially because of its OCaml heritage!
 
 Here’s a non-exhaustive list of differences:
 
-- Caramel is based off of OCaml and forks the OCaml compiler, Gleam is an entirely new language, syntax, and compiler.
+- Caramel is based off of OCaml and forks the OCaml compiler, Gleam is an
+  entirely new language, syntax, and compiler.
 - Caramel’s functions are auto-curried, Gleam’s are not.
 - Caramel’s compiler is written in OCaml, Gleam’s is written in Rust.
 - Caramel uses OCaml syntax, Gleam has its own syntax that is closer to C family languages.
@@ -145,25 +149,28 @@ popular and a great language!
 
 Here’s a non-exhaustive list of differences:
 
-- Elixir is dynamically typed, Gleam is statically typed. Elixir is integrating
-  a gradual type system into the language.
+- Elixir is gradually typed, while Gleam is fully statically typed.
+- Elixir's type system does not have generics, while Gleam's type system does.
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir’s compiler is written in Erlang and Elixir, Gleam’s is written in Rust.
 - Gleam has a more traditional C family style syntax.
 - Elixir has a namespace for module functions and another for variables, Gleam
-  has one unified namespace (so there’s no special fun.()syntax).
+  has one unified namespace (so there’s no special `fun.()` syntax).
 - Gleam standard library is distributed as Hex packages, which makes
   interoperability with other BEAM languages easier.
-- Elixir is a larger language, featuring numerous language features not present in Gleam.
-- Elixir has a robust test framework with excellent support for concurrency,
+- Elixir is a larger language, featuring numerous language features not present
+  in Gleam.
+- Elixir has an official test framework with excellent support for concurrency,
   partitioning, parameterized tests, integrated error reports, and more. Gleam
-  does not yet.
+  has no official test framework, but there are multiple community-maintained
+  frameworks.
 - Both languages compile to Erlang but Elixir compiles to Erlang abstract
   format, while Gleam compiles to Erlang source. Gleam can also compile to
   JavaScript.
 - Elixir has superior BEAM runtime integration, featuring accurate stack traces
   and full support for tools such as code coverage, profiling, and more.
-  Gleam’s support is much weaker due to going via Erlang source.
+  Gleam’s support is much weaker due to going via Erlang source, resulting in
+  less accurate line numbers with these tools.
 - Elixir and Gleam both use Erlang's OTP framework. Both have additional
   modules for working with OTP, which provide APIs more in the style of each
   respective language. Both common use Erlang's OTP APIs directly, but Elixir
@@ -175,7 +182,11 @@ Here’s a non-exhaustive list of differences:
   language server, but Elixir has recently announced an official language
   server project which is in active development.
 - Elixir is more mature than Gleam and has a much larger ecosystem.
-- Gleam compiles faster than Elixir.
+- Gleam and Elixir compile at similar speeds due to using the Erlang compiler
+  as their compiler backend. Elixir's macros are evaluated at compile time, so
+  a program that uses macros will take longer to compile the larger the amount
+  of work performed in macros. Gleam has no language features that result in
+  slower compilation.
 
 Most importantly both are BEAM languages! I advise using whichever has the
 programming style you personally find most enjoyable and productive.
@@ -208,9 +219,11 @@ Despite having some syntactic similarities, Gleam and Rust are extremely
 different languages.
 
 - Rust is a low level programming language, Gleam is a very high level language.
-- Rust is a hybrid functional and imperative language that makes heavy use of mutable state. Gleam is a functional language where everything is immutable.
+- Rust is a hybrid functional and imperative language that makes heavy use of
+  mutable state. Gleam is a functional language where everything is immutable.
 - Rust compiles to native code. Gleam runs on the Erlang VM and JavaScript runtimes.
-- Rust is a very large language which can be challenging to learn. Gleam is a small language and is designed to be easy to learn.
+- Rust is a very large language which can be challenging to learn. Gleam is a
+  small language and is designed to be easy to learn.
 - Rust uses futures with async/await, Gleam uses the actor model on Erlang.
 - Rust features traits and multiple macro systems, Gleam does not.
 
