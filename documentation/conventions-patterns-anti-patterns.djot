@@ -200,7 +200,7 @@ pub fn round(data: Float) -> Int
 pub fn float_to_int(data: Float) -> Int
 ```
 
-### Conventional failible function naming
+### Conventional fallible function naming
 
 Functions that return results should be given a name that is appropriate for
 the domain and the operation they perform.
