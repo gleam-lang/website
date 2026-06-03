@@ -218,6 +218,13 @@ pub fn page(ctx: site.Context) -> fs.File {
     ]),
     html.p([], [html.code([], [html.text("gleam export erlang-shipment")])]),
     html.p([], [html.text("Precompiled Erlang, suitable for deployment")]),
+    html.h3([attr.id("export-escript")], [
+      html.code([], [html.text("export escript")]),
+    ]),
+    html.p([], [html.code([], [html.text("gleam export escript")])]),
+    html.p([], [
+      html.text("Escript file, for running in a script-like manner"),
+    ]),
     html.h3([attr.id("export-hex-tarball")], [
       html.code([], [html.text("export hex-tarball")]),
     ]),
