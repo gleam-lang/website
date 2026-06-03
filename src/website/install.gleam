@@ -433,7 +433,7 @@ asdf set -u gleam latest
 asdf install
 ```
 
-Installing with asdf can take a long time as it builds Erlang from source. On MacOS the
+Installing with asdf can take a long time as it builds Erlang from source. On macOS the
 [pre-build Erlang plugin](https://github.com/michallepicki/asdf-erlang-prebuilt-macos)
 can be used to skip this work.
 ",
@@ -457,7 +457,7 @@ asdf set -u rebar latest
 asdf install
 ```
 
-Installing with asdf can take a long time as it builds Erlang from source. On MacOS the
+Installing with asdf can take a long time as it builds Erlang from source. On macOS the
 [pre-build Erlang plugin](https://github.com/michallepicki/asdf-erlang-prebuilt-macos)
 can be used to skip this work.
 ",
@@ -877,7 +877,7 @@ fn operating_system_name(os: OperatingSystem) -> String {
     Android -> "Android"
     FreeBsd -> "FreeBSD"
     Linux -> "Linux"
-    MacOs -> "MacOS"
+    MacOs -> "macOS"
     OpenBsd -> "OpenBSD"
     Windows -> "Windows"
     LinuxDistro(distro) -> linux_distro_name(distro)
