@@ -159,7 +159,7 @@ Here’s a non-exhaustive list of differences:
     dynamically typed. Gleam is always fully statically typed.
   - Elixir's type system is structural, while Gleam's type system is nominal.
     Elixir's types can be more precise in many respects. On the other hand,
-    Elixir is still in active development and lacks common features (discussed below).
+    Elixir's types are in active development and lacks common features (mentioned below).
   - Elixir does not have opaque types and therefore cannot distinguish between
     types that are semantically distinct but structurally the same, while Gleam can.
   - Elixir does not support type annotations, so the programmer cannot restrict
