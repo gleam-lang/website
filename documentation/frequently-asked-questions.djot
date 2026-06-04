@@ -152,23 +152,22 @@ Here’s a non-exhaustive list of differences:
 - Elixir and Gleam both have compile type type checking, but their respective
   type systems are very different, so they offer a different development
   experience.
-  - Elixir has a set-theoretic type system, where types can be composed with
-    unions, intersections, and negations. Gleam's type system is based on
+  - Elixir has a set-theoretic type system. Gleam's type system is based on
     the same Hindley-Milner type system that underpins OCaml, Haskell, F#, etc.
   - Elixir's type system is gradual, so portions of the codebase can be
     dynamically typed. Gleam is always fully statically typed.
   - Elixir's type system is structural, while Gleam's type system is nominal.
-    Elixir's types can be more precise in many respects. On the other hand,
-    Elixir's types are in active development and lacks common features (mentioned below).
-  - Elixir does not have opaque types and therefore cannot distinguish between
-    types that are semantically distinct but structurally the same, while Gleam can.
+    Elixir's types can be more precise in many respects.
+  - Elixir's type system is in development, while Gleam's is more mature.
   - Elixir does not support type annotations, so the programmer cannot restrict
     the type beyond what Elixir infers them to be. Gleam supports type
     annotations, but they are not required.
   - Elixir does not support generics, while Gleam does. This makes Gleam's type
     system more precise in some respects.
-  - Elixir does not support recursive types, while Gleam does.
+  - Elixir does not support recursive type declarations, while Gleam does.
     This makes some data structures impossible to represent in Elixir.
+  - Elixir does not support nominal types and therefore cannot distinguish between
+    types that are semantically distinct but structurally the same, while Gleam can.
   - Elixir does not integrate with any other type system. Gleam generates
     BEAM typespecs, TypeScript definitions, and API type
     information can be exported to be used by other external tools.
