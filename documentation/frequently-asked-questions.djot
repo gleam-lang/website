@@ -150,12 +150,14 @@ popular and a great language!
 Here’s a non-exhaustive list of differences:
 
 - Elixir is gradually typed, while Gleam is fully statically typed.
-- Elixir's type system does not have generics, while Gleam's type system does.
+- Elixir's type system does not support user provided type annotations at the moment,
+  while Gleam's type system does.
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir’s compiler is written in Erlang and Elixir, Gleam’s is written in Rust.
 - Gleam has a more traditional C family style syntax.
 - Elixir has a namespace for module functions and another for variables, Gleam
-  has one unified namespace (so there’s no special `fun.()` syntax).
+  has one unified namespace (so there’s no special `fun.()` syntax, but in Gleam
+  variable names can shadow function names).
 - Gleam standard library is distributed as Hex packages, which makes
   interoperability with other BEAM languages easier.
 - Elixir is a larger language, featuring numerous language features not present
@@ -171,11 +173,13 @@ Here’s a non-exhaustive list of differences:
   and full support for tools such as code coverage, profiling, and more.
   Gleam’s support is much weaker due to going via Erlang source, resulting in
   less accurate line numbers with these tools.
-- Elixir and Gleam both use Erlang's OTP framework. Both have additional
-  modules for working with OTP, which provide APIs more in the style of each
-  respective language. Both common use Erlang's OTP APIs directly, but Elixir
-  can do so more conveniently and concisely due to having a less-strict type
-  system.
+- Elixir interactive and remote shells support writing both Elixir
+  and Erlang code. Gleam shells require writing Erlang code.
+- Elixir and Gleam both use Erlang's OTP framework. Both languages can
+  use Erlang/OTP modules directly, though it is more ergonomic and
+  requires less boilerplate in Elixir. Both languages offer their own
+  additional abstractions, with Elixir providing new functionality
+  and Gleam providing type-safe interfaces.
 - Elixir currently has superior deployment tooling, including support for OTP
   releases and OTP umbrella applications.
 - Gleam’s editor tooling is superior due to having a more mature official
