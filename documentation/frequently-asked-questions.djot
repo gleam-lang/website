@@ -173,6 +173,10 @@ Here’s a non-exhaustive list of differences:
   - Elixir's type system does not integrate with any other system. Gleam's type
     system generates BEAM typespecs, TypeScript definitions, and API type
     information can be exported to be used by other external tools.
+  - Elixir's type system is the product of novel research specifically for
+    Elixir. Gleam's type system is based on the same Hindley-Milner type system
+    that underpins OCaml, Haskell, F#, etc. 
+  - Elixir's system is set-theoretic. Gleam's system is type-theoretic.
 - Elixir is gradually typed, while Gleam is fully statically typed.
 - Elixir's type system does not support user provided type annotations at the moment,
   while Gleam's type system does.
