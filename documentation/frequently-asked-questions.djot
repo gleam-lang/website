@@ -163,23 +163,12 @@ Here’s a non-exhaustive list of differences:
     annotations, but they are not required.
   - Elixir does not support generics, while Gleam does. This makes Gleam's type
     system more precise in some respects.
-  - Elixir's type system does not support recursive types, while Gleam does.
+  - Elixir does not support recursive types, while Gleam does.
     This makes some data structures impossible to represent in Elixir's type
     system.
-  - Gleam's type system errs on the side of false negatives, whereas Elixir's
-    type system chooses to prefer false positives. This means Gleam may reject
-    a program that is actually safe, but Elixir may accept a program that
-    crashes at runtime due to a type error.
-  - Elixir's type system does not integrate with any other system. Gleam's type
+  - Elixir does not currently integrate with any other system. Gleam's type
     system generates BEAM typespecs, TypeScript definitions, and API type
     information can be exported to be used by other external tools.
-  - Elixir's type system is the product of novel research specifically for
-    Elixir. Gleam's type system is based on the same Hindley-Milner type system
-    that underpins OCaml, Haskell, F#, etc. 
-  - Elixir's system is set-theoretic. Gleam's system is type-theoretic.
-- Elixir is gradually typed, while Gleam is fully statically typed.
-- Elixir's type system does not support user provided type annotations at the moment,
-  while Gleam's type system does.
 - Elixir has a powerful macro system, Gleam has no metaprogramming features.
 - Elixir’s compiler is written in Erlang and Elixir, Gleam’s is written in Rust.
 - Gleam has a more traditional C family style syntax.
