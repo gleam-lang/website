@@ -164,8 +164,6 @@ Here’s a non-exhaustive list of differences:
     annotations, but they are not required.
   - Elixir does not support generics, while Gleam does. This makes Gleam's type
     system more precise in some respects.
-  - Elixir does not support recursive type declarations, while Gleam does.
-    This makes some data structures impossible to represent in Elixir.
   - Elixir does not support nominal types and therefore cannot distinguish between
     types that are semantically distinct but structurally the same, while Gleam can.
   - Elixir does not integrate with any other type system. Gleam generates
