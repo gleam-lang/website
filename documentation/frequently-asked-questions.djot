@@ -149,7 +149,7 @@ popular and a great language!
 
 Here’s a non-exhaustive list of differences:
 
-- Elixir and Gleam both have compile type type checking, but their respective
+- Elixir and Gleam both have compile time type checking, but their respective
   type systems are very different, so they offer a different development
   experience.
   - Elixir's type system is gradual, so portions of the codebase can be
