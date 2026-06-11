@@ -2620,18 +2620,18 @@ pub fn community(ctx: site.Context) -> fs.File {
 
   let talks = [
     CommunityTalk(
-      thumbnail: "https://img.youtube.com/vi/XEJxk5VUSTs/mqdefault.jpg",
-      title: "You don't need an ORM",
-      link: "https://www.youtube.com/watch?v=XEJxk5VUSTs",
+      thumbnail: "https://img.youtube.com/vi/E6_JqYMeNqs/mqdefault.jpg",
+      title: "Gleam and the value of small",
+      link: "https://www.youtube.com/watch?v=E6_JqYMeNqs",
       author: "Giacomo Cavalieri",
-      event: "Lambda Days 2025",
+      event: "Ubuntu Summit 26.04",
     ),
     CommunityTalk(
-      thumbnail: "https://img.youtube.com/vi/BfPRcanTWXA/mqdefault.jpg",
-      title: "How I ended up writing Gleam for a living",
-      link: "https://www.youtube.com/watch?v=BfPRcanTWXA",
-      author: "Isaac Harris-Holt",
-      event: "Code BEAM Lite STO 2025",
+      thumbnail: "https://img.youtube.com/vi/LgfzH_WBlr4/mqdefault.jpg",
+      title: "Panel Discussion",
+      link: "https://www.youtube.com/watch?v=LgfzH_WBlr4",
+      author: "Gleam Core Team",
+      event: "Gleam Gathering 2026",
     ),
     CommunityTalk(
       thumbnail: "https://img.youtube.com/vi/6I0IbJtUC3U/mqdefault.jpg",
