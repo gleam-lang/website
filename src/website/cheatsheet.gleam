@@ -7403,7 +7403,7 @@ fn mul(x, y) {
     html.p([], [
       html.text("Rust functions "),
       html.strong([], [html.text("always")]),
-      html.text("need type annotations."),
+      html.text(" need type annotations."),
     ]),
     html.pre([], [
       html.code([attr.class("language-rust")], [
