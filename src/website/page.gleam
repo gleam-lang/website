@@ -174,10 +174,7 @@ pub fn page_layout(
 
 // Page elements
 
-fn head_elements(
-  page: PageMeta,
-  ctx: site.Context,
-) -> List(element.Element(a)) {
+fn head_elements(page: PageMeta, ctx: site.Context) -> List(element.Element(a)) {
   let metatag = fn(property, content) {
     html.meta([attr("property", property), attr("content", content)])
   }
