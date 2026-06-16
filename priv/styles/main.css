@@ -828,6 +828,7 @@ pre code {
 }
 
 .page pre {
+  overflow-x: auto;
   overflow-y: auto;
   margin: var(--gap-3) 0 var(--gap-4) 0;
   padding: var(--gap-2) var(--gap-2);
