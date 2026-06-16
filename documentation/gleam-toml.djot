@@ -1,5 +1,5 @@
-All Gleam packages require a `gleam.toml` configuration file. The `toml`
-configuration format is documented at [toml.io](https://toml.io/).
+All Gleam packages require a `gleam.toml` configuration file. They are written
+in the toml 1.1 format, documentation for which can be found at [toml.io](https://toml.io/).
 
 The default configuration for a new Gleam package looks like this:
 
