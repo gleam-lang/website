@@ -1511,12 +1511,55 @@ Erlang installed. Typically this will be within a few major versions of the
 version of Erlang on the computer used to compile the escript.",
       ),
     ]),
+    html.h2([attr.id("development-entrypoint")], [
+      html.text("Adding a development entrypoint"),
+    ]),
     html.p([], [
-      html.text("And that’s it! Get hacking! And do drop by "),
-      html.a([attr.href("https://discord.gg/Fm8Pwmy")], [
-        html.text("the Gleam Discord server"),
+      html.text(
+        "It may be useful to have your project run extra code during development, for instance to set up databases or create fake data for testing.",
+      ),
+    ]),
+    html.p([], [
+      html.text("To create a development entrypoint, create a directory named "),
+      html.code([], [html.text("dev/")]),
+      html.text(" in the root of your project. The "),
+      html.code([], [html.text("dev/")]),
+      html.text(" directory is similar to "),
+      html.code([], [html.text("test/")]),
+      html.text(" but it only contains development code."),
+    ]),
+    html.p([], [
+      html.text("Now add some code to "),
+      html.code([], [html.text("dev/vars_dev.gleam")]),
+      html.text("."),
+    ]),
+    highlighted_gleam_pre_code(
+      "// In dev/vars_dev.gleam
+import envoy
+import vars
+
+pub fn main() {
+  envoy.set(\"TEST_VAR\", \"Hello from the dev entrypoint!\")
+  vars.main()
+}
+",
+    ),
+    html.p([], [
+      html.text("Now use the "),
+      html.a([attr.href("https://gleam.run/command-line-reference/#dev")], [
+        html.text("gleam dev"),
       ]),
-      html.text(" to get help or share what you’re working on."),
+      html.text(" command to run the development entrypoint."),
+      html.code([], [html.text("gleam dev")]),
+      html.text(" will run the $PACKAGE_dev module, in this case the "),
+      html.code([], [html.text("vars_dev")]),
+      html.text(" module we just created."),
+      highlighted_gleam_pre_code("gleam dev get TEST_VAR"),
+    ]),
+    html.p([], [
+      html.text(
+        "And that’s it! Get hacking! And do drop by the Gleam Discord server to get help or share what you’re working on.",
+      ),
     ]),
   ]
   |> page_layout("prose", meta, ctx)
