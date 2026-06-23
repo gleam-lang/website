@@ -683,27 +683,71 @@ external function in the Gleam file `src/my_app.gleam` would look like this:
 pub fn pokemon_badge_count() -> Int
 ```
 
-Some JavaScript runtimes deviate from the specification and have different
-rules, so ensure that your paths are correct for the runtime you're using. For
-example, NodeJS may require a special `.mjs` file extension to be used for
-imports to work, which is why that extension is used in the previous example.
+Each JavaScript runtime has its own ES module import rules, so ensure that
+your paths are correct for the runtime you're using. For example, NodeJS may
+require a special `.mjs` file extension to be used for imports to work, which
+is why that extension is used in the previous example.
 
-The NodeJS runtime also has special non-standard paths for importing code from
-"node modules", typically installed using `npm`. These paths can be used with
-external functions, but you will need to make sure that you have used a
-`package.json` file or the `npm install` command to install the desired node
-modules.
+### Using node modules
+
+Node modules can be used by using the same path that you would use in
+JavaScript code. For example, if you wanted to use the `hasFlag` function from
+the `has-flag` package you could do it like so:
 
 ```gleam
 @external(javascript, "has-flag", "hasFlag")
 pub fn argv_has_flag(name: String) -> Bool
 ```
 
+Gleam does not have any special support for `npm` or any other JavaScript
+package managers, so you will need to configure your JavaScript runtime to
+ensure that any packages you are using are present. If you are using NodeJS
+this could mean using a `package.json` and the `npm install` command to install
+them.
+
 Vendoring (i.e. copy/pasting the dependency code into your project) is strongly
 discouraged if you intend to publish your package to the Hex package manager.
 This is because it prevent dependency de-duplication resulting in excess code
 bloat, and most importantly it makes security audits and patches extremely
-difficult.
+difficult. Instead clearly document any node modules that the users will need
+to install.
+
+### Importing Gleam modules from JavaScript
+
+Each Gleam module compiles to a JavaScript ES module which can be imported from
+other JavaScript code using a relative path using the path to the Gleam file,
+but with a `.mjs` extension. After compilation each Gleam package in the
+project resides in the same directory, so a relative path can be written by
+ascending up past the root of the current package and back down into the
+desired dependency package directory.
+
+A file at `src/code.mjs` can import a Gleam module named `visitor` from the
+same package like so:
+
+```js
+import * as visitor from "./visitor.mjs";
+```
+
+A file at `src/one/two/three.mjs` can import a Gleam module named `do/ray/me`
+from the same package like so:
+
+```js
+import * as me from "../../do/ray/me.mjs";
+```
+
+A file at `test/hello.mjs` can import a Gleam module named `world` from the same package
+like so:
+
+```js
+import * as world from "./world.mjs";
+```
+
+A file at `src/app/web.mjs` can import a Gleam module named `one/two` from
+a package named `wibble` like so:
+
+```js
+import * as two from "../../wibble/one/one.mjs";
+```
 
 ### Gleam data in JavaScript
 
