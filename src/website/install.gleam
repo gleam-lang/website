@@ -485,13 +485,13 @@ Verify the checksum is correct. If this command shows a warning then delete
 both files and start again.
 
 ```
-sha256sum -c gleam-v1.14.0-x86_64-unknown-linux-musl.tar.gz.sha256
+sha256sum -c gleam-v1.14.0-aarch64-unknown-linux-musl.tar.gz.sha256
 ```
 
 Extract the `gleam` program from the tarball.
 
 ```
-tar xf gleam-v1.14.0-x86_64-unknown-linux-musl.tar.gz
+tar xf gleam-v1.14.0-aarch64-unknown-linux-musl.tar.gz
 ```
 
 Make the binary executable and place it in a directory on your `PATH`.
