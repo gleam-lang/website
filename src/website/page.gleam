@@ -1459,43 +1459,15 @@ into a single file that can be easily shared with others.",
       html.em([], [html.text("escript")]),
       html.text(
         ", which is part
-of the Erlang runtime. Add the ",
-      ),
-      html.code([], [html.text("gleescript")]),
-      html.text(" package as a dependency."),
-    ]),
-    highlighted_shell_pre_code(
-      "gleam add --dev gleescript
-",
-    ),
-    html.p([], [
-      html.text("The "),
-      html.code([], [html.text("--dev")]),
-      html.text(
-        " flag is used to indicate that this package is only used for building,
-developing, and testing the project, and should not be included in the final
-production builds. The build tool will then add ",
-      ),
-      html.code([], [html.text("gleescript")]),
-      html.text(" to the "),
-      html.code([], [html.text("[dev_dependencies]")]),
-      html.text(" section rather than the regular "),
-      html.code([], [html.text("[dependencies]")]),
-      html.text(" section."),
-    ]),
-    html.p([], [
-      html.text("Once added run "),
-      html.code([], [html.text("gleam run -m gleescript")]),
-      html.text(
-        " to compile your package into an escript file, which will be written to ",
+of the Erlang runtime. Gleam can compile your package into an escript file,
+which will be written to ",
       ),
       html.code([], [html.text("./vars")]),
       html.text("."),
     ]),
     highlighted_shell_pre_code(
       "# Compile the program to an escript
-gleam build
-gleam run -m gleescript
+gleam export escript
 
 # Run the program
 ./vars get USER
