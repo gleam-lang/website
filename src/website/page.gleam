@@ -1202,9 +1202,9 @@ need to add some dependencies that provide this functionality.",
 version = \"1.0.0\"
 
 [dependencies]
-gleam_stdlib = \">= 0.34.0 and < 2.0.0\"
-envoy = \">= 1.0.1 and < 2.0.0\"
-argv = \">= 1.0.2 and < 2.0.0\"
+gleam_stdlib = \">= 1.0.0 and < 2.0.0\"
+envoy = \">= 1.2.0 and < 2.0.0\"
+argv = \">= 1.1.0 and < 2.0.0\"
 
 [dev_dependencies]
 gleeunit = \">= 1.0.0 and < 2.0.0\"
@@ -1212,10 +1212,10 @@ gleeunit = \">= 1.0.0 and < 2.0.0\"
     ),
     html.p([], [
       html.text("The "),
-      html.code([], [html.text(">= 1.0.1 and < 2.0.0")]),
+      html.code([], [html.text(">= 1.2.0 and < 2.0.0")]),
       html.text(
         " version constraint means that the project wants any version
-greater than or equal to 1.0.1, but less than 2.0.0, which will maximise compatibility while
+greater than or equal to 1.2.0, but less than 2.0.0, which will maximise compatibility while
 avoiding breaking changes as Hex packages adhere to ",
       ),
       html.a([attr.href("https://semver.org/")], [
