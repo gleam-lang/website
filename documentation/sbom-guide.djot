@@ -116,7 +116,7 @@ analysis result file.
 
 ```sh
 docker run --rm \
-  -v "$(pwd)":/workspace \ # foo
+  -v "$(pwd)":/workspace \
   -w /workspace \
   ghcr.io/oss-review-toolkit/ort-minimal:74.0.0 \
   analyze \
