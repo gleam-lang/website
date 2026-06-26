@@ -152,6 +152,7 @@ Here’s a non-exhaustive list of differences:
 - Elixir and Gleam both have compile time type checking, but their respective
   type systems are very different, so they offer a different development
   experience.
+
   - Elixir's type system is gradual, so portions of the codebase can be
     dynamically typed. Gleam is always fully statically typed.
   - Elixir's type system is structural, while Gleam's type system is nominal.
