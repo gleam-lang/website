@@ -37,7 +37,7 @@ to Gleam. This includes, but is not limited to:
 - Function and operator overloading
 - Implicit arguments
 - Implicitly nullable values
-- Linear or affine or relevant types
+- Linear or affine types
 - Lisp style macros
 - Manual memory management
 - Mutation
@@ -107,71 +107,7 @@ by zero which you can use if that is more suitable for your program.
 For more information on division by zero from a mathematical perspective, see
 this article by Hillel Wayne: [1/0 = 0](https://www.hillelwayne.com/post/divide-by-zero/).
 
-### Elixir also has a type system now. What does that mean for Gleam?
-
-Elixir is another language that runs on the Erlang virtual machine, and we're
-very happy to see Gleam's big-sister language getting types as well.
-
-Elixir and Gleam's type systems are as different as two type systems can be,
-offering different programming experiences and being designed with different
-goals in mind. Given they are so different most folks will prefer one to the
-other, so try them both out and stick with whichever works best for you; You
-will get the excellence of the BEAM either way!
-
-## How does Gleam compare to...
-
-### Alpaca?
-
-Alpaca is similar to Gleam in that it is a statically typed language for the
-Erlang VM that is inspired by the ML family of languages. It’s a wonderful
-project and it was an early inspiration for Gleam!
-
-Here’s a non-exhaustive list of differences:
-
-- Alpaca’s functions are auto-curried, Gleam’s are not.
-- Alpaca’s unions can be untagged, with Gleam all variants in a custom type
-  need a name.
-- Alpaca’s compiler is written in Erlang, Gleam’s is written in Rust.
-- Alpaca’s syntax is closer to ML family languages, Gleam’s is closer to C
-  family languages.
-- Alpaca compiles to Core Erlang, Gleam compiles to regular Erlang and
-  optionally JavaScript.
-- Alpaca uses the Erlang build tool, Gleam has its own build tool.
-- Gleam is more actively developed than Alpaca (at time of writing).
-
-### Caramel?
-
-Caramel is similar to Gleam in that it is a statically typed language for the
-Erlang VM. It is very cool, especially because of its OCaml heritage!
-
-Here’s a non-exhaustive list of differences:
-
-- Caramel is based off of OCaml and forks the OCaml compiler, Gleam is an
-  entirely new language, syntax, and compiler.
-- Caramel’s functions are auto-curried, Gleam’s are not.
-- Caramel’s compiler is written in OCaml, Gleam’s is written in Rust.
-- Caramel uses OCaml syntax, Gleam has its own syntax that is closer to C family languages.
-- Gleam is more actively developed than Caramel (at time of writing).
-
-### Purerl?
-
-Purerl is a backend for the PureScript compiler that outputs Erlang. Both
-PureScript and Purerl are fantastic!
-
-Here’s a non-exhaustive list of differences:
-
-- Purerl is a backend for the PureScript compiler, Gleam is its own language
-  and compiler.
-- PureScript has a more sophisticated type system than Gleam, featuring rows,
-  HKTs, type classes, and more.
-- Purerl’s compiler is written in Haskell, Gleam’s is written in Rust.
-- PureScript has an ML family style syntax, Gleam has a C family style syntax.
-- Purerl code can be difficult to use from other BEAM languages, Gleam code is
-  designed to be usable from all BEAM languages.
-- PureScript is more mature than Gleam and has a much larger ecosystem, though
-  not all of it can be used with the Purerl compiler backend.
-
-### Rust?
+### How does Gleam compare to Rust?
 
 Rust is a language that compiles to native code and gives you full control of
 memory use in your program, much like C or C++. Gleam’s compiler is written in
@@ -188,6 +124,17 @@ different languages.
   small language and is designed to be easy to learn.
 - Rust uses futures with async/await, Gleam uses the actor model on Erlang.
 - Rust features traits and multiple macro systems, Gleam does not.
+
+### Elixir also has a type system now. What does that mean for Gleam?
+
+Elixir is another language that runs on the Erlang virtual machine, and we're
+very happy to see Gleam's big-sister language getting types as well.
+
+Elixir and Gleam's type systems are as different as two type systems can be,
+offering different programming experiences and being designed with different
+goals in mind. Given they are so different most folks will prefer one to the
+other, so try them both out and stick with whichever works best for you; You
+will get the excellence of the BEAM either way!
 
 ## Can I use Elixir code with Gleam?
 
