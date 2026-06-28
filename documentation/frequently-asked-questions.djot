@@ -153,9 +153,12 @@ was made to Rust as the lack of static types was making refactoring a slow and
 error prone process. A full Rust rewrite of the prototype resulted in the
 removal of a lot of tech debt and bugs, and the performance boost is nice too!
 
-The community may one day implement a Gleam compiler written in Gleam, but the
-core team are focused on developing other areas of the ecosystem such as
-libraries, tooling, and documentation, as this will provide more value overall.
+## Will the compiler be rewritten in Gleam?
+
+Rewriting the Gleam compiler would take a lot of time, putting all other work
+on pause for months or years. This is not a good use of our time, and the Gleam
+version would probably be slower than the current Rust version, so this would
+not be beneficial for the Gleam community.
 
 ## Should I put Gleam in production?
 
