@@ -107,7 +107,7 @@ by zero which you can use if that is more suitable for your program.
 For more information on division by zero from a mathematical perspective, see
 this article by Hillel Wayne: [1/0 = 0](https://www.hillelwayne.com/post/divide-by-zero/).
 
-### How does Gleam compare to Rust?
+## How does Gleam compare to Rust?
 
 Despite having some syntactic similarities, Gleam and Rust are extremely
 different languages.
@@ -123,7 +123,7 @@ area. It runs on Erlang and JavaScript virtual machines.
 Both languages have strong static type systems, and Gleam's developer tooling
 were inspired in-part by Rust's.
 
-### Elixir also has a type system now. What does that mean for Gleam?
+## Elixir also has a type system now. What does that mean for Gleam?
 
 Elixir is another language that runs on the Erlang virtual machine, and we're
 very happy to see Gleam's big-sister language getting types as well.
