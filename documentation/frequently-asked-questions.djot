@@ -109,21 +109,19 @@ this article by Hillel Wayne: [1/0 = 0](https://www.hillelwayne.com/post/divide-
 
 ### How does Gleam compare to Rust?
 
-Rust is a language that compiles to native code and gives you full control of
-memory use in your program, much like C or C++. Gleam’s compiler is written in
-Rust! We’re big fans of the language.
-
 Despite having some syntactic similarities, Gleam and Rust are extremely
 different languages.
 
-- Rust is a low level programming language, Gleam is a very high level language.
-- Rust is a hybrid functional and imperative language that makes heavy use of
-  mutable state. Gleam is a functional language where everything is immutable.
-- Rust compiles to native code. Gleam runs on the Erlang VM and JavaScript runtimes.
-- Rust is a very large language which can be challenging to learn. Gleam is a
-  small language and is designed to be easy to learn.
-- Rust uses futures with async/await, Gleam uses the actor model on Erlang.
-- Rust features traits and multiple macro systems, Gleam does not.
+- Rust is a low-level imperative language with controlled mutation, statically
+verified manual memory management, multiple metaprogramming systems, and a large
+language surface area. It compiles to native code and has little-to-no runtime.
+
+- Gleam is a high-level immutable functional language with automatic garbage
+collection, no metaprogramming, and a small and easy to learn language surface
+area. It runs on Erlang and JavaScript virtual machines.
+
+Both languages have strong static type systems, and Gleam's developer tooling
+were inspired in-part by Rust's.
 
 ### Elixir also has a type system now. What does that mean for Gleam?
 
