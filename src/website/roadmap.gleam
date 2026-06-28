@@ -19,8 +19,12 @@ const in_progress = [
     "Improve the Windows OS non-developer mode support for running production programs",
   ),
   #(
-    "LSP split alternative patterns",
-    "Add a \"split alternative patterns\" code action in the language server",
+    "Hex vulnerability alerting",
+    "Showing warnings to the programming when packages with known vulnerabilities are used",
+  ),
+  #(
+    "Compilation to Erlang abstract forms",
+    "Erlang debugger support, line numbers in stack traces, and faster compilation",
   ),
 ]
 
@@ -49,14 +53,9 @@ const planned = [
     "Licence compliance tooling",
     "Helping developers ensure their dependencies have compatible licences",
   ),
-  #(
-    "Dependency CVE tooling",
-    "Alerting developers to reported vulnerabilities in their dependencies",
-  ),
 ]
 
 const research = [
-  "Erlang stack trace line numbers",
   "FFI type correctness safeguards in development",
   "Improved ergonomics for cross-target packages",
   "OTP release building",
