@@ -107,6 +107,17 @@ by zero which you can use if that is more suitable for your program.
 For more information on division by zero from a mathematical perspective, see
 this article by Hillel Wayne: [1/0 = 0](https://www.hillelwayne.com/post/divide-by-zero/).
 
+### Elixir also has a type system now. What does that mean for Gleam?
+
+Elixir is another language that runs on the Erlang virtual machine, and we're
+very happy to see Gleam's big-sister language getting types as well.
+
+Elixir and Gleam's type systems are as different as two type systems can be,
+offering different programming experiences and being designed with different
+goals in mind. Given they are so different most folks will prefer one to the
+other, so try them both out and stick with whichever works best for you; You
+will get the excellence of the BEAM either way!
+
 ## How does Gleam compare to...
 
 ### Alpaca?
@@ -141,85 +152,6 @@ Here’s a non-exhaustive list of differences:
 - Caramel’s compiler is written in OCaml, Gleam’s is written in Rust.
 - Caramel uses OCaml syntax, Gleam has its own syntax that is closer to C family languages.
 - Gleam is more actively developed than Caramel (at time of writing).
-
-### Elixir?
-
-Elixir is another language that runs on the Erlang virtual machine. It is very
-popular and a great language!
-
-Here’s a non-exhaustive list of differences:
-
-- Elixir and Gleam both have compile time type checking, but their respective
-  type systems are very different, so they offer a different development
-  experience.
-  - Elixir's type system is gradual, so portions of the codebase can be
-    dynamically typed. Gleam is always fully statically typed.
-  - Elixir's type system is structural, while Gleam's type system is nominal.
-    This means Elixir's types can be more precise in some respects, but it
-    cannot distinguish between types that are semantically distinct but
-    structurally the same.
-  - Elixir does not support type annotations, so the programmer cannot restrict
-    the type beyond what Elixir infers them to be. Gleam supports type
-    annotations, but they are not required.
-  - Elixir does not support generics, while Gleam does. This makes Gleam's type
-    system more precise in some respects.
-  - Elixir's type system does not support recursive types, while Gleam's type
-    system does.
-    This makes some data structures impossible to represent in Elixir's type
-    system.
-  - Elixir's type checker is more likely to have false-negatives, while Gleam
-    is more likely to have false-positives. This means Gleam may reject a
-    program that is actually safe, but Elixir may accept a program that crashes
-    at runtime due to a type error.
-  - Elixir's type system does not integrate with any other system. Gleam's type
-    system generates BEAM typespecs, TypeScript definitions, and API type
-    information can be exported to be used by other external tools.
-  - Elixir's type system is the product of novel research specifically for
-    Elixir. Gleam's type system is based on the same Hindley-Milner type system
-    that underpins OCaml, Haskell, F#, etc. 
-  - Elixir's system is set-theoretic. Gleam's system is type-theoretic.
-- Elixir has a powerful macro system, Gleam has no metaprogramming features.
-- Elixir’s compiler is written in Erlang and Elixir, Gleam’s is written in Rust.
-- Gleam has a more traditional C family style syntax.
-- Elixir has a namespace for module functions and another for variables, Gleam
-  has one unified namespace (so there’s no special `fun.()` syntax, and Gleam
-  variables can be used to shadow functions).
-- Gleam standard library is distributed as Hex packages, which makes
-  interoperability with other BEAM languages easier.
-- Elixir is a larger language, featuring numerous language features not present
-  in Gleam.
-- Elixir has an official test framework with excellent support for concurrency,
-  partitioning, parameterized tests, integrated error reports, and more. Gleam
-  has no official test framework, but there are multiple community-maintained
-  frameworks.
-- Both languages compile to Erlang but Elixir compiles to Erlang abstract
-  format, while Gleam compiles to Erlang source. Gleam can also compile to
-  JavaScript.
-- Elixir has superior BEAM runtime integration, featuring accurate stack traces
-  and full support for tools such as code coverage, profiling, and more.
-  Gleam’s support is much weaker due to going via Erlang source, resulting in
-  less accurate line numbers with these tools.
-- Elixir has an interactive shell, while Gleam does not. Gleam programmers can
-  use Erlang, Elixir, or JavaScript shells to work with Gleam code.
-- Elixir and Gleam both use Erlang's OTP framework. Both languages can
-  use Erlang/OTP modules directly, though it is more ergonomic and
-  requires less boilerplate in Elixir. Both languages offer their own
-  additional abstractions, with Elixir providing new functionality
-  and Gleam providing type-safety.
-- Elixir currently has superior deployment tooling, including support for OTP
-  releases and OTP umbrella applications.
-- Gleam’s editor tooling is superior due to having a more mature official
-  language server, but Elixir has recently announced an official language
-  server project which is in active development.
-- Elixir is more mature than Gleam and has a much larger ecosystem.
-- Gleam and Elixir compile at similar speeds due to using the Erlang compiler
-  as their compiler backend. Elixir's macros are evaluated at compile time, so
-  a program that uses macros will take longer to compile the larger the amount
-  of work performed in macros. Gleam has no language features that result in
-  slower compilation.
-
-Most importantly both are BEAM languages! I advise using whichever has the
-programming style you personally find most enjoyable and productive.
 
 ### Purerl?
 
