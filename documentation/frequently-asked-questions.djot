@@ -118,7 +118,7 @@ language surface area. It compiles to native code and has little-to-no runtime.
 
 - Gleam is a high-level immutable functional language with automatic garbage
 collection, no metaprogramming, and a small and easy to learn language surface
-area. It runs on Erlang and JavaScript virtual machines.
+area\. It runs on Erlang and JavaScript virtual machines.
 
 Both languages have strong static type systems, and Gleam's developer tooling
 were inspired in-part by Rust's.
