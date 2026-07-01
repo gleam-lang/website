@@ -2140,3 +2140,7 @@ details > summary {
   object-fit: contain;
   aspect-ratio: 1;
 }
+
+.language-cli:before {
+  content: "$ ";
+}
