@@ -102,6 +102,17 @@ and `ref` fields. Always prefer a commit sha reference over a branch or tag
 reference to ensure you get the expected version of the code, and to prevent
 attacks from malicious actors.
 
+An optional `path` field can specify a subdirectory within the repository,
+which is useful for monorepos that contain multiple Gleam packages.
+
+```toml
+my_library = {
+  git = "https://github.com/my-project/monorepo",
+  ref = "a8b3c5d82",
+  path = "packages/my_library"
+}
+```
+
 ### `dev_dependencies`
 
 ```toml
