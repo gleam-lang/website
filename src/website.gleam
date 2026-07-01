@@ -8,7 +8,6 @@ import snag
 import website/atom_feed
 import website/case_study
 import website/cheatsheet
-import website/command_line_reference
 import website/fs
 import website/install
 import website/news
@@ -51,6 +50,7 @@ fn build_site() -> snag.Result(Nil) {
   use patterns <- result.try(page.conventions_patterns_and_anti_patterns(ctx))
   use faq <- result.try(page.frequently_asked_questions(ctx))
   use config_reference <- result.try(page.gleam_toml(ctx))
+  use command_line <- result.try(page.gleam_cli(ctx))
 
   let page_files = [
     page.home(sponsors, ctx),
@@ -64,13 +64,13 @@ fn build_site() -> snag.Result(Nil) {
     page.case_studies_index(case_studies, ctx),
     page.sponsor(sponsors, ctx),
     config_reference,
+    command_line,
     language_server,
     externals_guide,
     sbom_guide,
     patterns,
     faq,
     roadmap.page(ctx),
-    command_line_reference.page(ctx),
     cheatsheet.erlang(ctx),
     cheatsheet.elixir(ctx),
     cheatsheet.python(ctx),

@@ -1,0 +1,274 @@
+Gleam's command line is the primary way of working with Gleam projects.
+
+Most commands have to be run from within a Gleam package, i.e. a directory
+containing a `gleam.toml` file and a `src` directory containing Gleam code.
+
+## add
+
+Add new dependencies to the package.
+
+The newest compatible version of the package is determined, and then
+`gleam.toml` is updated to require at least that version, with a range
+permitting future patch and minor updates.
+
+Add the package "wibble":
+
+```cli
+gleam add wibble
+```
+
+Add the package "wibble", requiring version >= v2.0.0 and < v3.0.0:
+
+```cli
+gleam add wibble@2
+```
+
+Add the package "wibble", requiring version >= v2.5.1 and < v3.0.0:
+
+```cli
+gleam add wibble@2.5.1
+```
+
+Add multiple packages:
+
+```cli
+gleam add wibble@2 warble@1
+```
+
+Add a package as a non-production dependency:
+
+```cli
+gleam add --dev wibble
+```
+
+You can also edit `gleam.toml` directly, for further control over your
+package dependencies. Run `gleam help deps` for documentation on the
+format.
+
+## build
+
+Compile the Gleam package. Any dependencies will be downloaded and compiled as
+required. If the package has been previously compiled then only the Gleam
+modules that have changed will be compiled.
+
+```cli
+gleam build --target javascript
+```
+
+The `--target` flag is used to pick which compilation target to use. It has two
+possible values, `erlang` and `javascript`. If this flag is not given then the
+`target` value from `gleam.toml` is used, and if neither are present then the
+Erlang target is used.
+
+```cli
+gleam build --warnings-as-errors
+```
+
+When the `--warnings-as-errors` flag is given if there are any warnings emitted
+during compilation then the build is considered a failure, and a non-zero
+exit-code will be used. This may be useful to run on CI, to ensure that all
+warnings are fixed before merging changes into the main branch.
+
+```cli
+gleam build --no-print-progress
+```
+
+When given this flag disables the progress messages that Gleam prints during
+compilation.
+
+## check
+
+Analyse the project for errors. This command is similar to `gleam build` except
+compilation halts after type checking, skipping optimisation and code
+generation. It may be useful in-development for rapidly checking code is valid
+while writing it.
+
+```cli
+gleam check --target javascript
+```
+
+The `--target` flag is used to pick which compilation target to use. It has two
+possible values, `erlang` and `javascript`. If this flag is not given then the
+`target` value from `gleam.toml` is used, and if neither are present then the
+Erlang target is used.
+
+## clean
+
+Delete the build directory and all build artefacts.
+
+```cli
+gleam clean
+```
+
+## compile-package
+
+This command is a lower-level compilation API that very few people will have a
+use for. The most common time you would want this command is if you are adding
+Gleam support to some other build tool.
+
+```cli
+gleam compile-package \
+    --target javascript \
+    --package ./packages/wibble \
+    --out ./build \
+    --lib ./build \
+    --javascript-prelude prelude.mjs
+```
+
+The `--target` flag is used to pick which compilation target to use. It has two
+possible values, `erlang` and `javascript`.
+
+The `--package` flag specifies the path to the Gleam package to be compiled.
+
+The `--out` flag specifies the path to compile the package to.
+
+The `--lib` flag specifies the path to where the compiler can file can find the
+already-compiled dependencies of the package being compiled.
+
+The `--javascript-prelude` flag specifies the path to the JavaScript prelude
+module, relative to the `out` directory. This is required when compiling to
+JavaScript.
+
+The `--no-beam` flag will make the compiler output Erlang code but not compile
+it to BEAM bytecode. This flag is invalid when compiling to JavaScript.
+
+## deps list
+
+Print the names and versions of the all the dependencies of the package.
+
+```cli
+gleam deps list
+```
+
+## deps download
+
+Download the dependencies of the package. This is performed automatically by
+any other command that needs the dependencies, so typically you do not run this
+yourself.
+
+```cli
+gleam deps download
+```
+
+If the versions of the dependencies listed in `gleam.toml` have not been
+selected yet then this command will perform version resolution, and a
+`manifest.toml` file will be generated to lock the used versions.
+
+## deps outdated
+
+Print the names, current versions, and latest available versions of all
+dependencies that are not at their latest version.
+
+```cli
+gleam deps outdated
+```
+
+## deps update
+
+Upgrade the dependencies to the newest available versions that are compatible
+with the requirements specified in `gleam.toml`.
+
+```cli
+gleam deps update
+```
+
+If you only wish to upgrade certain dependencies then their names can be given
+as arguments to this command.
+
+```cli
+gleam deps update gleam_stdlib lustre
+```
+
+This command will not change the requirements specified in `gleam.toml`. If you
+wish to change them you will need to edit that file.
+
+## deps tree
+
+Print the names and versions of all dependencies in a tree-like format, showing
+which dependencies depend on which others. If a dependency A is depended on by
+multiple other dependencies then dependency A will be down in the tree multiple
+times.
+
+```cli
+gleam deps tree
+```
+
+The `--package` flag can be used to print the tree from a particular package,
+only shows its dependencies.
+
+
+```cli
+gleam deps tree --package pearl
+```
+
+The `--invert` flag can be used to show all the paths from a dependency package
+up to the root package. This is useful for understanding why a particular
+package and version is included in the project.
+
+```cli
+gleam deps tree --invert splitter
+```
+
+## dev
+
+## docs build
+
+## docs publish
+
+## docs remove
+
+## export escript
+
+## export erlang-shipment
+
+## export hex-tarball
+
+## export javascript-prelude
+
+## export typescript-prelude
+
+## export package-interface
+
+## export package-information
+
+## fix
+
+## format
+
+## help
+
+The `help` command can be used to view documentation for the command line,
+similar to this document. Put `help` after before the command you wish to know
+more about and it will print documentation for it.
+
+```cli
+gleam help build
+```
+
+Running this would show documentation for the `gleam build` command.
+
+## hex retire
+
+## hex unretire
+
+## hex revert
+
+## hex owner
+
+## hex authenticate
+
+## lsp
+
+## new
+
+## publish
+
+## remove
+
+## run
+
+## shell
+
+## test
+
+## update
