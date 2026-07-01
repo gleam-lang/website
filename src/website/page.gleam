@@ -1845,6 +1845,22 @@ pub fn gleam_toml(ctx: site.Context) -> Result(fs.File, snag.Snag) {
   djot_page_with_table_of_contents(source, ctx, meta)
 }
 
+pub fn gleam_cli(ctx: site.Context) -> Result(fs.File, snag.Snag) {
+  let meta =
+    PageMeta(
+      path: "command-line-reference",
+      title: "Command line reference",
+      meta_title: "Command line reference | Gleam programming language",
+      subtitle: "Getting things done in the terminal",
+      description: "Getting things done in the terminal with the 'gleam' program and its various features.",
+      preload_images: [],
+      preview_image: option.Some("command-line"),
+    )
+
+  let source = "documentation/gleam-cli.djot"
+  djot_page_with_table_of_contents(source, ctx, meta)
+}
+
 pub fn deployment_linux(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
