@@ -211,29 +211,176 @@ gleam deps tree --invert splitter
 
 ## dev
 
+Run the `main` function of the development module of the package, which is the
+module with the name of the package with `_dev` appended. For example, if the
+package is called `wibble`, then the module is called `wibble_dev`.
+
+```cli
+gleam dev
+```
+
 ## docs build
+
+Build the documentation for the package, saving the HTML files to the local
+disc.
+
+```cli
+gleam docs build --open
+```
+
+If the `--open` flag is given then the index page of the generated
+documentation will be opened in the computer's default web browser.
+
+The `--target` flag is used to pick which compilation target to use. It has two
+possible values, `erlang` and `javascript`. If this flag is not given then the
+`target` value from `gleam.toml` is used, and if neither are present then the
+Erlang target is used.
 
 ## docs publish
 
+Build the documentation for the package and publish it to HexDocs for the
+latest version of the package.
+
+```cli
+gleam docs publish
+```
+
+This command will ask you to log-in with Hex.
+
 ## docs remove
+
+Remove the documentation from HexDocs for a specific package and version that
+has been published to Hex.
+
+```cli
+gleam docs remove --package wibble_package --version 1.0.0
+```
+
+This command will ask you to log-in with Hex.
+
+This command can be run outside of a Gleam package.
 
 ## export escript
 
+This command builds the Gleam package into an escript.
+
+An escript is a single-file bundle of an Erlang-based program, which can be run
+on any computer with a compatible version of Erlang installed on it. Escripts
+are most commonly used for command line programs as they can be easily shared,
+due to being a single file.
+
+```cli
+gleam export escript
+```
+
 ## export erlang-shipment
+
+This command builds the Gleam package into a directory of compiled Erlang
+bytecode, configuration, and a start script. This is most suited for server
+deployment, desktop software, and other scenarios where a directory of files is
+not a problem for installation.
+
+```cli
+gleam export erlang-shipment
+```
+
+This is preferred over escripts as it can make use of the `priv` directories
+for packages, and in future will be easier to migrate to "OTP releases", which
+will replace Erlang shipments.
 
 ## export hex-tarball
 
+Build the tarball that would be send to the Hex package manager in order to
+publish the package. This may be useful for debugging or for auditing.
+
+```cli
+gleam export hex-tarball
+```
+
 ## export javascript-prelude
+
+Print the JavaScript prelude module. This command is likely only useful for
+people using the [`gleam compile-package`](#compile-package) command.
+
+```cli
+gleam export javascript-prelude
+```
 
 ## export typescript-prelude
 
+Print the TypeScript prelude module. This command is likely only useful for
+people using the [`gleam compile-package`](#compile-package) command.
+
+```cli
+gleam export typescript-prelude
+```
+
 ## export package-interface
+
+Output a JSON file containing information about the code in the package.
+
+```cli
+gleam export package-interface --out ./wibble.json
+```
+
+Decoders for this data can be found in the
+[`gleam_package_interface`](https://gleam-package-interface.hexdocs.pm/)
+package.
 
 ## export package-information
 
+Output a JSON file containing information about the package, including the
+contents of its `gleam.toml` file.
+
+```cli
+gleam export package-information --out ./wibble.json
+```
+
 ## fix
 
+Run automatic fixes for problems with the code of the package. Historically
+this was used to help with grading code to new language versions before Gleam
+v1.0.0. Currently this code does nothing.
+
+```cli
+gleam fix
+```
+
 ## format
+
+Run the Gleam code formatter, rewriting the code to use the canonical Gleam
+format.
+
+```cli
+gleam format
+```
+
+By default this command will format all Gleam files within the current
+directory that are not inside a Gleam build directory.
+
+```cli
+gleam format projects/wibble projects/wobble another_file.gleam
+```
+
+Paths can be given to the command to format specific files or directories.
+
+```cli
+gleam format --check
+```
+
+When the `--check` flag is given this command will check that the code has the
+correct format but will not reformat it. If any code is found to have the
+incorrect format then the command will return an error.
+
+```cli
+cat some_module.gleam | gleam format --stdin | cowsay
+```
+
+The `--stdin` flag can be used to read the Gleam source code from standard
+input. When given the formatted code will be printed to standard output, making
+it suitable for shell pipelines.
+
+
 
 ## help
 
@@ -272,3 +419,5 @@ Running this would show documentation for the `gleam build` command.
 ## test
 
 ## update
+
+An alias for [`gleam deps update`](#deps-update).

@@ -1857,7 +1857,7 @@ pub fn gleam_cli(ctx: site.Context) -> Result(fs.File, snag.Snag) {
       preview_image: option.Some("command-line"),
     )
 
-  let source = "documentation/gleam-cli.djot"
+  let source = "documentation/gleam-command-line.djot"
   djot_page_with_table_of_contents(source, ctx, meta)
 }
 
