@@ -380,8 +380,6 @@ The `--stdin` flag can be used to read the Gleam source code from standard
 input. When given the formatted code will be printed to standard output, making
 it suitable for shell pipelines.
 
-
-
 ## help
 
 The `help` command can be used to view documentation for the command line,
@@ -396,11 +394,79 @@ Running this would show documentation for the `gleam build` command.
 
 ## hex retire
 
+Retire a published version of a package from Hex. The retired version is still
+available in the repository for projects that already depend on it, but they
+should upgrade to another version, and new packages should not use it.
+
+```cli
+gleam hex retire \
+    --package wobble \
+    --version 1.0.0 \
+    --reason security \
+    "The wobble.load function is vulnerable to..."
+```
+
+A detailed message should be given explaining the reason for the retirement. If
+you have a CVE number then include that in the message.
+
+The `--reason` flag must be given one of `other`, `invalid`, `security`,
+`deprecated`, or `renamed`.
+
+This command will ask you to log-in with Hex.
+
+This command can be run outside of a Gleam package.
+
 ## hex unretire
+
+Restore a package version that has been previous retired.
+
+```cli
+gleam hex unretire --package wobble --version 1.0.0
+```
+
+This command will ask you to log-in with Hex.
+
+This command can be run outside of a Gleam package.
 
 ## hex revert
 
-## hex owner
+Revert a package release. This removes the version from Hex entirely; Projects
+that were already using that version will no longer be able to download it.
+
+Releases can only be reverted within 24 hours since they were published.
+
+```cli
+gleam hex revert --package wobble --version 1.0.0
+```
+
+This command will ask you to log-in with Hex.
+
+This command can be run outside of a Gleam package.
+
+## hex owner add
+
+Add a Hex user account as an additional owner of a package you own, given them
+permission to manage the package.
+
+```cli
+gleam hex owner add --user their_username --level maintainer my_package
+```
+
+The `--user` flag can be given a Hex username or the email address of a Hex
+account.
+
+The `--level` flag specified what permissions the new owner has over the
+package.
+- `maintainer`: Has every package permission EXCEPT the ability to change who
+  owns the package.
+- `full`: Has every package permission including the ability to change who owns
+  the package.
+
+This command will ask you to log-in with Hex.
+
+This command can be run outside of a Gleam package.
+
+## hex owner transfer
 
 ## hex authenticate
 
