@@ -468,21 +468,182 @@ This command can be run outside of a Gleam package.
 
 ## hex owner transfer
 
+Transfer ownership of a package to another Hex user. This action is not
+reversible, and you will no longer have permissions to make changes to the
+package.
+
+```cli
+gleam hex owner transfer --package my_package --to their_username
+```
+
+The `--to` flag can be given a Hex username or the email address of a Hex
+account.
+
+This command will ask you to log-in with Hex.
+
+This command can be run outside of a Gleam package.
+
 ## hex authenticate
+
+Log-in with Hex, saving a token to disc using an encryption password of your
+choice. Any pre-existing token saved locally is revoked and replaced.
+
+```cli
+gleam hex authenticate
+```
 
 ## lsp
 
+Run the Gleam language server. This command it run by code editors, you do not
+need to run this command yourself.
+
+```cli
+gleam lsp
+```
+
 ## new
+
+Create a new Gleam package at a specified location.
+
+```cli
+gleam new wibble
+```
+```
+wibble/
+├── .github
+│   └── workflows
+│       └── test.yml
+├── .gitignore
+├── gleam.toml
+├── README.md
+├── src/
+│   └── wibble.gleam
+└── test/
+    └── wibble_test.gleam
+```
+
+These are the directories and files that are created by the command by default.
+The exact output can be configured by giving addition flags to the command.
+
+```cli
+gleam new gleam-wibble --name wibble
+```
+
+If the name of the directory given is not a valid Gleam module name then the
+`--name` flag can be used to specify a valid name. In this example the package
+name is `wibble` and the directory is called `gleam-wibble/`.
+
+If the `--skip-github` flag is given then the `.github/` directory is not
+created.
+
+If the `--skip-git` flag is given then the `.github/` and `.git/` directories
+are not created.
+
+If the `--template` flag is given the argument `javascript` then the package is
+created with the `target` property in `gleam.toml` set to `"javascript"`.
 
 ## publish
 
+Publish the package to the Hex package repository.
+
+::: alert-warning
+### Only publish production-ready packages
+
+The package repository is for high quality code for others to depend on. It is
+not a way to share prototypes, experiments, or work-in-progress versions.
+
+If you have non-production-ready code that you wish to share with other then
+publish it to GitHub or similar, and have your users add it as a git
+dependency. If you are looking for feedback on your project ask for it on the
+Gleam discord server.
+
+:::
+
+```cli
+gleam publish
+```
+
+The `--replace` function can be used to replace an existing release with new
+code, so long as that release it not more than 1 hour old. This can be used to
+correct any mistakes when publishing.
+
 ## remove
+
+Remove one or more dependencies from the package.
+
+```cli
+gleam remove dependency_one dependency_two
+```
 
 ## run
 
+Compile and run the code.
+
+```cli
+gleam run
+```
+
+By default the `main` function in the module that has the same name
+as the package is run.
+
+```cli
+gleam run --module other/module
+```
+
+The `--module` or `-m` flag can be used to specify another module to run.
+
+```cli
+gleam run --target erlang
+```
+
+The `--target` flag is used to pick which target to use. It has two possible
+values, `erlang` and `javascript`. If this flag is not given then the `target`
+value from `gleam.toml` is used, and if neither are present then the Erlang
+target is used.
+
+```cli
+gleam run --target javascript --runtime deno
+```
+
+The `--runtime` flag is used to pick which JavaScript runtime to use. It has
+three possible values, `nodejs`, `deno` and `bun`. If this flag is not given
+then the `javascript.runtime` value from `gleam.toml` is used, and if neither
+are present then NodeJS is used. This flag is only valid when using the
+JavaScript target.
+
+The `--no-print-progress` flag disables the progress messages that Gleam prints
+during compilation.
+
 ## shell
 
+Compile the package and start and Erlang REPL with the package's code available.
+
+```cli
+gleam shell
+```
+
+This is an Erlang REPL, not a Gleam one, so Erlang syntax is used.
+
 ## test
+
+Run the `main` function of the test module of the package, which is the
+module with the name of the package with `_test` appended. For example, if the
+package is called `wibble`, then the module is called `wibble_test`.
+
+```cli
+gleam test
+```
+
+The `--target` flag is used to pick which target to use. It has two possible
+values, `erlang` and `javascript`. If this flag is not given then the `target`
+value from `gleam.toml` is used, and if neither are present then the Erlang
+target is used.
+
+The `--runtime` flag is used to pick which JavaScript runtime to use. It has
+three possible values, `nodejs`, `deno` and `bun`. If this flag is not given
+then the `javascript.runtime` value from `gleam.toml` is used, and if neither
+are present then NodeJS is used. This flag is only valid when using the
+JavaScript target.
 
 ## update
 
