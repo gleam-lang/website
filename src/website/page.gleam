@@ -3774,6 +3774,12 @@ pub fn parse_djot(string: String) -> jot.Document {
           let content = highlight_toml_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
         }
+        jot.Codeblock(language: option.Some("cli"), content:, ..) -> {
+          let content = highlight_html_cli(content)
+          jot.RawBlock(
+            "<pre><code class=language-cli>" <> content <> "</code></pre>",
+          )
+        }
         jot.Codeblock(language: option.Some("sh"), content:, ..)
         | jot.Codeblock(language: option.Some("shell"), content:, ..)
         | jot.Codeblock(language: option.Some("bash"), content:, ..) -> {
@@ -3784,4 +3790,22 @@ pub fn parse_djot(string: String) -> jot.Document {
       }
     })
   jot.Document(..document, content:)
+}
+
+fn highlight_html_cli(content: String) -> String {
+  let highlight = fn(text, class) {
+    "<span class=code-" <> class <> ">" <> text <> "</span>"
+  }
+  content
+  |> string.split(" ")
+  |> list.map(fn(word) {
+    case word {
+      "gleam" -> highlight(word, "operator")
+      "--" <> _ -> highlight(word, "keyword")
+      "\\\n" -> highlight(word, "comment")
+      "|" -> highlight(word, "comment")
+      _ -> word
+    }
+  })
+  |> string.join(" ")
 }
