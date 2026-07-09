@@ -2143,4 +2143,5 @@ details > summary {
 
 .language-cli:before {
   content: "$ ";
+  color: var(--color-code-dark-grey);
 }
