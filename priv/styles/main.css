@@ -59,24 +59,24 @@
   --width-content: 960px;
 
   /* TODO: condense these into a few appopriatedly named variables */
-  --font-size-small: 12px;
-  --font-size-code: 16px;
-  --font-size-normal: 18px;
-  --font-size-navbar: 18px;
-  --font-size-hero-button: 24px;
-  --font-size-pair-text: 22px;
-  --font-size-friendly-text: 24px;
-  --font-size-still-here-subtitle: 24px;
-  --font-size-still-here-button: 24px;
-  --font-size-hero-subtitle: 24px;
-  --font-size-logo: 28px;
-  --font-size-hero: 36px;
-  --font-size-pair-title: 36px;
-  --font-size-hero-title: 36px;
-  --font-size-still-here-title: 36px;
-  --font-size-footer-logo: 36px;
-  --font-size-friendly-title: 48px;
-  --font-size-sponsors-title: 48px;
+  --font-size-small: 0.75rem;
+  --font-size-code: 1rem;
+  --font-size-normal: 1.125rem;
+  --font-size-navbar: 1.125rem;
+  --font-size-hero-button: 1.5rem;
+  --font-size-pair-text: 1.375rem;
+  --font-size-friendly-text: 1.5rem;
+  --font-size-still-here-subtitle: 1.5rem;
+  --font-size-still-here-button: 1.5rem;
+  --font-size-hero-subtitle: 1.5rem;
+  --font-size-logo: 1.75rem;
+  --font-size-hero: 2.25rem;
+  --font-size-pair-title: 2.25rem;
+  --font-size-hero-title: 2.25rem;
+  --font-size-still-here-title: 2.25rem;
+  --font-size-footer-logo: 2.25rem;
+  --font-size-friendly-title: 3rem;
+  --font-size-sponsors-title: 3rem;
 
   --font-weight-normal: 400;
   --font-weight-title-bold: 700;
@@ -112,7 +112,7 @@ body {
   background-color: var(--color-underwater-blue);
   color: var(--color-text-main);
   font-family: var(--font-family-normal);
-  font-size: var(--font-size-normal);
+  font-size: 18px;
 }
 
 h1,
