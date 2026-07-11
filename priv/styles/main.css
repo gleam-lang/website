@@ -112,7 +112,7 @@ body {
   background-color: var(--color-underwater-blue);
   color: var(--color-text-main);
   font-family: var(--font-family-normal);
-  font-size: 18px;
+  font-size: var(--font-size-normal);
 }
 
 h1,
