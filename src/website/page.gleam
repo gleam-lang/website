@@ -2650,7 +2650,7 @@ pub fn community(ctx: site.Context) -> fs.File {
               ]),
               html.div([], [
                 html.h3([], [html.text("Discord Community")]),
-                html.p([], [html.text("Lively and friendly, just like Gleam!")]),
+                html.p([], [html.text("Lovely and friendly, just like Gleam!")]),
               ]),
             ],
           ),
