@@ -15,7 +15,7 @@ are broken in more confusing subtle ways.
 This does, however, mean that sometimes you will have conflicts when adding a
 dependency, as there's no version which is compatible with the existing
 versions you have locked. Historically this has been very confusing as we
-haven't able to display much useful information when this happens.
+haven't been able to display much useful information when this happens.
 
 ``` =html
 <pre><code><b><span class="code-error">error</span>: Dependency resolution failed</b>
