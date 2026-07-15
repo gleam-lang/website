@@ -1,3 +1,20 @@
+---
+title = "No room for error"
+subtitle = "A case study of Gleam in production at Uncover"
+description = "A case study of Gleam in production at Uncover"
+meta_title = "No room for error | A case study of Gleam in production at Strand"
+
+published = 2025/07/11
+featured_quote = "Almost by accident, what we launched as a prototype became a business-critical application"
+
+[company]
+name = "Strand",
+description = "Outstanding creative services for IT companies seeking to tell and sell the business benefits of their solutions"
+website_url = "https://strand-uk.com"
+gleaming_since = 2024/01/01
+founded = 1994/01/01
+---
+
 [Strand](https://www.strand-uk.com) is a marketing agency based in London,
 UK. The company specialises in copywriting and content creation for many of the
 world’s largest enterprise technology companies, running marketing programmes
