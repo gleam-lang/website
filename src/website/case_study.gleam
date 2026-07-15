@@ -14,9 +14,9 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
       title: "No room for error",
       subtitle: "A case study of Gleam in production at Uncover",
       description: "A case study of Gleam in production at Uncover",
-      published: calendar.Date(2025, calendar.December, 3),
       preview_image: "uncover",
       path: "uncover",
+      published: calendar.Date(2025, calendar.December, 3),
       featured_quote: "We wouldn't be using Gleam if it wasn't a safe, sensible - almost boring - choice.",
       company: Company(
         name: "Uncover",
@@ -30,9 +30,9 @@ pub fn all() -> snag.Result(List(CaseStudy)) {
       title: "Optimising for maintainability",
       subtitle: "A case study of Gleam in production at Strand",
       description: "A case study of Gleam in production at Strand",
-      published: calendar.Date(2025, calendar.July, 11),
       preview_image: "strand",
       path: "strand",
+      published: calendar.Date(2025, calendar.July, 11),
       featured_quote: "Almost by accident, what we launched as a prototype became a business-critical application",
       company: Company(
         name: "Strand",

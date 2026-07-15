@@ -1,4 +1,21 @@
-﻿Based in São Paulo, Brazil, [Uncover](https://www.uncover.co/) was founded to
+﻿---
+title = "Optimising for maintainability",
+subtitle = "A case study of Gleam in production at Strand",
+description = "A case study of Gleam in production at Strand",
+meta_title = "Optimising for maintainability | A case study of Gleam in production at Uncover"
+
+published = 2025/12/03
+featured_quote = "We wouldn't be using Gleam if it wasn't a safe, sensible - almost boring - choice."
+
+[company]
+name = "Uncover"
+description = "Uncover is a solution crafted to unleash the full power of marketing data in a single easy-to-use platform."
+website_url = "https://www.uncover.co/"
+gleaming_since = 2024/04/01
+founded = 2020/09/01
+---
+
+Based in São Paulo, Brazil, [Uncover](https://www.uncover.co/) was founded to
 revolutionise the field of marketing mix modelling - helping companies harness
 state-of-the-art data integration and AI to measure the return on their
 marketing investments, optimize their use of media, and track the effects of

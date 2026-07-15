@@ -8,8 +8,8 @@ import snag
 import website/atom_feed
 import website/case_study
 import website/cheatsheet
+import website/external_page
 import website/fs
-import website/guides
 import website/install
 import website/news
 import website/page
@@ -36,7 +36,7 @@ fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
   use sponsors <- result.try(sponsor.sponsors_from_toml())
   use news_posts <- result.try(news.all())
-  use guides <- result.try(guides.all())
+  use guides <- result.try(external_page.all())
   use case_studies <- result.try(case_study.all())
 
   let ctx =
@@ -63,7 +63,6 @@ fn build_site() -> snag.Result(Nil) {
     page.deployment_linux(ctx),
     page.deployment_flyio(ctx),
     news.index_page(news_posts, ctx),
-    guides.index_page(guides, ctx),
     page.case_studies_index(case_studies, ctx),
     page.sponsor(sponsors, ctx),
     config_reference,
@@ -109,8 +108,11 @@ fn news_files(
   [atom_feed.file(news_posts), ..list.map(news_posts, news.page(_, ctx))]
 }
 
-fn guide_files(guides: List(guides.Guide), ctx: site.Context) -> List(fs.File) {
-  list.map(guides, guides.page(_, ctx))
+fn guide_files(
+  guides: List(external_page.Page),
+  ctx: site.Context,
+) -> List(fs.File) {
+  list.map(guides, external_page.page(_, ctx))
 }
 
 fn case_study_files(
