@@ -1,3 +1,11 @@
+---
+published = 2019-08-07
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 [Gleam](https://github.com/lpil/gleam) has reached v0.3! Let's take a look at
 some of the new features introduced since v0.1.
 

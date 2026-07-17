@@ -1,3 +1,11 @@
+---
+published = 2020-03-01
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 It has been two months since the last one, so now it's time for another Gleam
 release! Let's see what's new this time:
 

@@ -1,3 +1,11 @@
+---
+published = 2019-12-16
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 [Gleam](https://github.com/gleam-lang/gleam) has reached v0.5! It's quite a bit
 larger than any of the previous releases, so let's take a look.
 

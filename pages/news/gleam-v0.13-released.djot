@@ -1,3 +1,11 @@
+---
+published = 2021-01-13
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 ``` =html
 <style>
 details h3 {

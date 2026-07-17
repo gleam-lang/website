@@ -1,3 +1,11 @@
+---
+published = 2020-05-07
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 It's been a really good couple months for Gleam. The community has been
 growing, we've been getting new features and improvements, and now it's time
 for another release. Let's take a look!

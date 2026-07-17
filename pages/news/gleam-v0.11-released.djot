@@ -1,3 +1,11 @@
+---
+published = 2020-08-28
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 It's time for another Gleam release! This time as well as taking a look at
 what's new in the compiler, we're going to take a look at what's new in the
 wider Gleam ecosystem too.

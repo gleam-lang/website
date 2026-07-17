@@ -1,3 +1,11 @@
+---
+published = 2019-04-15
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 Gleam has reached v0.1! Happy first release-day Gleam!
 
 ## What's Gleam?

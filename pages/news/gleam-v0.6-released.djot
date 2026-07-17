@@ -1,3 +1,11 @@
+---
+published = 2019-12-25
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 Merry Christmas! Following in the Ruby tradition we're having a release on
 Christmas day, and so [Gleam](https://github.com/gleam-lang/gleam) v0.6 is here!
 

@@ -1,3 +1,11 @@
+---
+published = 2022-04-24
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 Gleam is a type safe, scalable, and productivity focused language for the Erlang
 virtual machine. Today Gleam [v0.21.0][release] has been released, which
 includes the first version of the Gleam Language Server, bringing IDE features
