@@ -979,7 +979,7 @@ fn method_page(
   let install_step = method_step(method.installs)
   let path = method_path(install_step, system, method)
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path:,
       title: method.name,
       meta_title: method.name <> " | Gleam programming language",
@@ -1048,7 +1048,7 @@ fn what_method_page(
   }
 
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path:,
       title:,
       meta_title: title,
@@ -1146,7 +1146,7 @@ fn which_linux_distro_page(
   ctx: site.Context,
 ) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: which_distro_path,
       title: "Installing Gleam",
       meta_title: "Installing the Gleam Programming Language",
@@ -1183,7 +1183,7 @@ fn which_operating_system_page(
   ctx: site.Context,
 ) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "install",
       title: "Installing Gleam",
       meta_title: "Installing the Gleam Programming Language",

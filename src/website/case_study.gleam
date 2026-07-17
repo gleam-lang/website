@@ -1,54 +1,19 @@
-import filepath
-import gleam/io
+import gleam/dynamic/decode
+import gleam/int
+import gleam/list
+import gleam/option
 import gleam/result
-import gleam/string
 import gleam/time/calendar
-import jot
+import lustre/attribute.{class} as attr
+import lustre/element
+import lustre/element/html
 import snag
+import tom
 import website/fs
+import website/page
+import website/site
 
-pub fn all() -> snag.Result(List(CaseStudy)) {
-  io.print("Loading case studies: ")
-  let posts = [
-    read(
-      title: "No room for error",
-      subtitle: "A case study of Gleam in production at Uncover",
-      description: "A case study of Gleam in production at Uncover",
-      preview_image: "uncover",
-      path: "uncover",
-      published: calendar.Date(2025, calendar.December, 3),
-      featured_quote: "We wouldn't be using Gleam if it wasn't a safe, sensible - almost boring - choice.",
-      company: Company(
-        name: "Uncover",
-        description: "Uncover is a solution crafted to unleash the full power of marketing data in a single easy-to-use platform.",
-        website_url: "https://www.uncover.co/",
-        gleaming_since: calendar.Date(2024, calendar.April, 1),
-        founded: calendar.Date(2020, month: calendar.September, day: 1),
-      ),
-    ),
-    read(
-      title: "Optimising for maintainability",
-      subtitle: "A case study of Gleam in production at Strand",
-      description: "A case study of Gleam in production at Strand",
-      preview_image: "strand",
-      path: "strand",
-      published: calendar.Date(2025, calendar.July, 11),
-      featured_quote: "Almost by accident, what we launched as a prototype became a business-critical application",
-      company: Company(
-        name: "Strand",
-        description: "Outstanding creative services for IT companies seeking to tell and sell the business benefits of their solutions",
-        website_url: "https://strand-uk.com",
-        gleaming_since: calendar.Date(2024, calendar.January, 1),
-        founded: calendar.Date(1994, month: calendar.January, day: 1),
-      ),
-    ),
-  ]
-  io.print("\n")
-  posts
-  |> result.all()
-}
-
-pub type CompanyDetails {
+pub type Company {
   Company(
     name: String,
     description: String,
@@ -58,50 +23,172 @@ pub type CompanyDetails {
   )
 }
 
-pub type CaseStudy {
-  CaseStudy(
-    title: String,
-    subtitle: String,
-    description: String,
-    published: calendar.Date,
-    path: String,
-    content: String,
-    preview_image: String,
-    featured_quote: String,
-    company: CompanyDetails,
-  )
-}
-
-fn read(
-  title title: String,
-  subtitle subtitle: String,
-  description description: String,
-  published published: calendar.Date,
-  preview_image preview_image: String,
-  path path: String,
-  featured_quote featured_quote: String,
-  company company: CompanyDetails,
-) -> snag.Result(CaseStudy) {
-  io.print(".")
-  filepath.join("case-studies", path)
-  |> string.append(".djot")
-  |> fs.read
-  |> snag.context("Failed to load content for /case-studies/" <> path)
-  |> result.map(djot_to_html)
-  |> result.map(CaseStudy(
-    _,
-    title:,
-    subtitle:,
+fn company_decoder() -> decode.Decoder(Company) {
+  use name <- decode.field("name", decode.string)
+  use description <- decode.field("description", decode.string)
+  use website_url <- decode.field("website_url", decode.string)
+  use gleaming_since <- decode.field("gleaming_since", tom.date_decoder())
+  use founded <- decode.field("founded", tom.date_decoder())
+  decode.success(Company(
+    name:,
     description:,
-    published:,
-    path:,
-    preview_image:,
-    featured_quote:,
-    company:,
+    website_url:,
+    gleaming_since:,
+    founded:,
   ))
 }
 
-fn djot_to_html(string: String) -> String {
-  jot.parse(string)
-  |> jot.document_to_html
+pub type CaseStudyData {
+  CaseStudy(published: calendar.Date, featured_quote: String, company: Company)
+}
+
+fn data_decoder() -> decode.Decoder(CaseStudyData) {
+  use published <- decode.field("published", tom.date_decoder())
+  use featured_quote <- decode.field("featured_quote", decode.string)
+  use company <- decode.field("company", company_decoder())
+  decode.success(CaseStudy(published:, featured_quote:, company:))
+}
+
+pub fn files(
+  pages: List(site.Page),
+  context: site.Context,
+) -> snag.Result(List(fs.File)) {
+  use studies <- result.try(
+    list.try_map(pages, page.decode_frontmatter(_, data_decoder())),
+  )
+  Ok([index_page(studies, context), ..list.map(studies, study_page(_, context))])
+}
+
+fn study_page(page: #(site.Page, CaseStudyData), ctx: site.Context) -> fs.File {
+  let #(page, data) = page
+  [
+    html.div([class("")], [
+      html.blockquote([class("case-study-quote")], [
+        html.text(data.featured_quote),
+      ]),
+      html.ul([class("case-study-meta")], [
+        html.li([], [
+          html.h4([], [html.text(data.company.name)]),
+          html.p([], [html.text(data.company.description)]),
+          html.p([], [
+            html.a([attr.href(data.company.website_url)], [
+              html.text("Visit Website"),
+            ]),
+          ]),
+        ]),
+        html.li([], [
+          html.h4([], [html.text("Founded")]),
+          html.p([], [
+            html.text(data.company.founded.year |> int.to_string),
+          ]),
+        ]),
+        html.li([], [
+          html.h4([], [html.text("Using Gleam Since")]),
+          html.p([], [
+            html.time([], [
+              html.text(
+                calendar.month_to_string(data.company.gleaming_since.month)
+                <> ", "
+                <> int.to_string(data.company.gleaming_since.year),
+              ),
+            ]),
+          ]),
+        ]),
+        html.li([], [
+          html.h4([], [html.text("Published")]),
+          html.p([], [
+            html.time([], [html.text(page.short_human_date(data.published))]),
+          ]),
+        ]),
+        page.share_button(),
+      ]),
+
+      element.unsafe_raw_html(
+        "",
+        "article",
+        [class("post prose")],
+        page.djot_to_html(page.content),
+      ),
+      html.section([class("page-cta")], [
+        html.img([
+          attr.src("/images/lucy/lucy.svg"),
+          attr.alt("Lucy the star, Gleam's mascot"),
+        ]),
+        html.div([], [
+          html.h4([], [html.text("Ready to start your Gleam journey?")]),
+          html.p([], [
+            html.text("Check out the "),
+            html.a([attr.href("https://tour.gleam.run")], [
+              html.text("language tour"),
+            ]),
+            html.text(" and "),
+            html.a([attr.href("/documentation")], [html.text("documentation")]),
+            html.text("."),
+          ]),
+          html.p([], [
+            html.text("Already using it in production? "),
+            html.a([attr.href("/community")], [
+              html.text("Share your story with us"),
+            ]),
+            html.text(", we'd love to hear all about it!"),
+          ]),
+        ]),
+      ]),
+    ]),
+  ]
+  |> page.page_layout("", page.meta, ctx)
+  |> page.to_html_file(page.meta)
+}
+
+pub fn index_page(
+  studies: List(#(site.Page, CaseStudyData)),
+  ctx: site.Context,
+) -> fs.File {
+  let meta =
+    site.PageMeta(
+      path: "case-studies",
+      title: "Case Studies",
+      meta_title: "Case Studies | Gleam programming language",
+      subtitle: "Analysis of Gleam in production",
+      description: "Experience reports and outcome analysis of Gleam in production for business software.",
+      preload_images: [],
+      preview_image: option.None,
+    )
+
+  let list_items =
+    list.map(studies, fn(case_study) {
+      let #(page, data) = case_study
+      html.li([], [
+        html.a([attr.href(page.meta.path)], [
+          html.h2([attr.class("links")], [html.text(page.meta.title)]),
+        ]),
+        html.p([], [html.text(page.meta.subtitle)]),
+        html.ul([class("news-meta")], [
+          html.li([], [
+            html.img([
+              attr.width(16),
+              attr.src("/images/date-icon.svg"),
+              attr.alt("Date Icon"),
+            ]),
+            html.text(page.short_human_date(data.published)),
+          ]),
+        ]),
+      ])
+    })
+
+  [
+    html.ul([class("news-posts")], list_items),
+    html.p([], [
+      html.text(
+        "Are you using Gleam in production and would like to share your
+        experience? Or would like help adopting Gleam at your company? Get in
+        touch at ",
+      ),
+      html.a([attr.href("mailto:hello@gleam.run")], [
+        html.text("hello@gleam.run"),
+      ]),
+    ]),
+  ]
+  |> page.page_layout("", meta, ctx)
+  |> page.to_html_file(meta)
 }

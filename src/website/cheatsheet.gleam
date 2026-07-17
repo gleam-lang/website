@@ -7,7 +7,7 @@ import website/site
 
 pub fn elixir(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "cheatsheets/gleam-for-elixir-users",
       title: "Gleam for Elixir users",
       meta_title: "Gleam for Elixir users | Cheat sheet",
@@ -1311,7 +1311,7 @@ let assert #(1 as a, 2 as b) = #(1, 2)
 
 pub fn erlang(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "cheatsheets/gleam-for-erlang-users",
       title: "Gleam for Erlang users",
       meta_title: "Gleam for Erlang users | Cheat sheet",
@@ -2559,7 +2559,7 @@ pub fn get_id() {
 
 pub fn python(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "cheatsheets/gleam-for-python-users",
       title: "Gleam for Python users",
       meta_title: "Gleam for Python users | Cheat sheet",
@@ -4291,7 +4291,7 @@ pub fn main() {
 
 pub fn php(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "cheatsheets/gleam-for-php-users",
       title: "Gleam for PHP users",
       meta_title: "Gleam for PHP users | Cheat sheet",
@@ -7020,7 +7020,7 @@ server applications comparable to RabbitMQ or multiplayer game servers.",
 
 pub fn rust(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "cheatsheets/gleam-for-rust-users",
       title: "Gleam for Rust users",
       meta_title: "Gleam for Rust users | Cheat sheet",
@@ -8203,7 +8203,7 @@ pub fn main() {
 
 pub fn elm(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "cheatsheets/gleam-for-elm-users",
       title: "Gleam for Elm users",
       meta_title: "Gleam for Elm users | Cheat sheet",
