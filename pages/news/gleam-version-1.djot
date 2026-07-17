@@ -1,3 +1,11 @@
+---
+published = 2024-03-04
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 Today Gleam v1.0.0 has been released! This is the first "stable" release of the
 language (more on what that means later) and a big milestone for the ecosystem.
 

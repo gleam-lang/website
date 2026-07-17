@@ -1,3 +1,11 @@
+---
+published = 2020-07-01
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 1 month and 10,910 lines of code later it is time for another Gleam
 release! Let's see what's new this time.
 

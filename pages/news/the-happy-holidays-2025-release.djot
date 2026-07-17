@@ -1,3 +1,11 @@
+---
+published = 2025-12-25
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 Merry Christmas and happy holidays everyone! Gleam is a type-safe and scalable
 language for the Erlang virtual machine and JavaScript runtimes. Gleam
 [v1.14.0][release] is our Xmas gift for you, let's unwrap it and take a look

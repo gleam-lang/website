@@ -1,3 +1,11 @@
+---
+published = 2023-12-18
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 Gleam is a type safe and scalable language for the Erlang virtual machine and
 JavaScript runtimes. Today Gleam [v0.33.0][release] has been published, a
 release that contains some features we in the community have been looking

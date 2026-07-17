@@ -1,3 +1,11 @@
+---
+published = 2024-08-26
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 ``` =html
 <a style="float: right; padding-left: var(--gap-4)" class="sponsor-level1" href="https://lambdaclass.com/" rel="noopener" target="_blank" >
   <img src="/images/sponsors/lambda-class-white.png" alt="Lambda Class">

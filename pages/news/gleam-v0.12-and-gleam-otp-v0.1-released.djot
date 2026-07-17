@@ -1,3 +1,11 @@
+---
+published = 2020-10-31
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
 It's halloween and time for another Gleam release! This time it's an extra
 special release as it also includes the first version of [Gleam's type safe
 actor system][gleam-otp], compatible with Erlang's OTP.
