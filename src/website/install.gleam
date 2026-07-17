@@ -462,7 +462,53 @@ Installing with asdf can take a long time as it builds Erlang from source. On ma
 can be used to skip this work.
 ",
     ),
+    InstallationMethod(
+      name: "NixOS configuration",
+      slug: "nixos",
+      installs: InstallsGleamAndErlang,
+      systems: [LinuxDistro(NixOsLinux)],
+      priority: HighPriority,
+      content: "Gleam can be installed globally in a declarative maner via your NixOS
+configuration:
 
+```nix
+# Generally /etc/nixos/configuration.nix
+{ pkgs, ... }:
+{
+  # ...
+ 
+  environment.systemPackages = with pkgs; [
+    gleam
+    beamPackages.erlang
+    beamPackages.rebar3
+  ];
+}
+```",
+    ),
+    InstallationMethod(
+      name: "Nix package manager (channels)",
+      slug: "nix",
+      installs: InstallsGleamAndErlang,
+      systems: [Linux, MacOs],
+      priority: MediumPriority,
+      content: "Gleam can be temporary added to the `$PATH` with `nix-shell`:
+
+```
+nix-shell -p gleam beamPackages.erlang beamPackages.rebar3
+```",
+    ),
+    InstallationMethod(
+      name: "Nix package manager (flakes)",
+      slug: "nix",
+      installs: InstallsGleamAndErlang,
+      systems: [Linux, MacOs],
+      priority: MediumPriority,
+      content: "Gleam can be temporary added to the `$PATH` with `nix shell`:
+
+```
+nix shell nixpkgs#gleam nixpkgs#beamPackages.erlang nixpkgs#beamPackages.rebar3
+```",
+    ),
     InstallationMethod(
       name: "Precompiled executable from GitHub",
       slug: "github",
@@ -789,6 +835,7 @@ pub type LinuxDistribution {
   ArchLinux
   DebianLinux
   GentooLinux
+  NixOsLinux
   OpenSuseLinux
   UbuntuLinux
   VoidLinux
@@ -854,6 +901,7 @@ fn linux_distro_slug(distro: LinuxDistribution) -> String {
     ArchLinux -> "arch-linux"
     DebianLinux -> "debian-linux"
     GentooLinux -> "gentoo-linux"
+    NixOsLinux -> "nixos-linux"
     OpenSuseLinux -> "opensuse-linux"
     UbuntuLinux -> "ubuntu-linux"
     VoidLinux -> "void-linux"
@@ -866,6 +914,7 @@ fn linux_distro_name(distro: LinuxDistribution) -> String {
     ArchLinux -> "Arch Linux"
     DebianLinux -> "Debian Linux"
     GentooLinux -> "Gentoo Linux"
+    NixOsLinux -> "NixOS Linux"
     OpenSuseLinux -> "OpenSUSE Linux"
     UbuntuLinux -> "Ubuntu Linux"
     VoidLinux -> "Void Linux"
