@@ -6,7 +6,6 @@ import gleam/time/timestamp
 import gleave
 import snag
 import website/atom_feed
-import website/case_study
 import website/cheatsheet
 import website/external_page
 import website/fs
@@ -34,11 +33,6 @@ pub fn main() -> Nil {
 
 fn build_site() -> snag.Result(Nil) {
   use styles_hash <- result.try(fs.asset_hash("styles/main.css"))
-  use sponsors <- result.try(sponsor.sponsors_from_toml())
-  use news_posts <- result.try(news.all())
-  use guides <- result.try(external_page.all())
-  use case_studies <- result.try(case_study.all())
-
   let ctx =
     site.Context(
       hostname: "https://gleam.run",
@@ -46,6 +40,9 @@ fn build_site() -> snag.Result(Nil) {
       styles_hash:,
     )
 
+  use sponsors <- result.try(sponsor.sponsors_from_toml())
+  // use news_posts <- result.try(news.all())
+  use files <- result.try(external_page.pages(ctx))
   use language_server <- result.try(page.language_server(ctx))
   use externals_guide <- result.try(page.externals_guide(ctx))
   use sbom_guide <- result.try(page.sbom_guide(ctx))
@@ -62,8 +59,7 @@ fn build_site() -> snag.Result(Nil) {
     page.documentation(ctx),
     page.deployment_linux(ctx),
     page.deployment_flyio(ctx),
-    news.index_page(news_posts, ctx),
-    page.case_studies_index(case_studies, ctx),
+    // news.index_page(news_posts, ctx),
     page.sponsor(sponsors, ctx),
     config_reference,
     command_line,
@@ -81,45 +77,21 @@ fn build_site() -> snag.Result(Nil) {
     cheatsheet.rust(ctx),
   ]
 
-  let files = [
-    static_files(),
-    install.pages(ctx),
-    page_files,
-    news_files(news_posts, ctx),
-    guide_files(guides, ctx),
-    case_study_files(case_studies, ctx),
-    redirect_files(),
-  ]
+  let files =
+    list.flatten([
+      static_files(),
+      install.pages(ctx),
+      page_files,
+      // news_files(news_posts, ctx),
+      redirect_files(),
+      files,
+    ])
 
   io.print("Writing to disc: ")
   use _ <- result.try(fs.delete_dist())
-  let result =
-    files
-    |> list.flatten
-    |> list.try_each(fs.create)
+  let result = list.try_each(files, fs.create)
   io.print("\n")
   result
-}
-
-fn news_files(
-  news_posts: List(news.NewsPost),
-  ctx: site.Context,
-) -> List(fs.File) {
-  [atom_feed.file(news_posts), ..list.map(news_posts, news.page(_, ctx))]
-}
-
-fn guide_files(
-  guides: List(external_page.Page),
-  ctx: site.Context,
-) -> List(fs.File) {
-  list.map(guides, external_page.page(_, ctx))
-}
-
-fn case_study_files(
-  case_studies: List(case_study.CaseStudy),
-  ctx: site.Context,
-) -> List(fs.File) {
-  list.map(case_studies, page.case_study(_, ctx))
 }
 
 fn static_files() -> List(fs.File) {

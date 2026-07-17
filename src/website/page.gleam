@@ -1,8 +1,10 @@
 import contour
 import gleam/dict
+import gleam/dynamic/decode
 import gleam/int
 import gleam/list
 import gleam/option.{type Option}
+import gleam/pair
 import gleam/result
 import gleam/string
 import gleam/time/calendar
@@ -16,24 +18,9 @@ import lustre/element/html
 import pearl
 import snag
 import tear
-import website/case_study
 import website/fs
-import website/site
+import website/site.{type PageMeta, PageMeta}
 import website/sponsor
-
-pub type PageMeta {
-  PageMeta(
-    path: String,
-    title: String,
-    subtitle: String,
-    meta_title: String,
-    description: String,
-    /// Render-critical to pre-load using meta-tags
-    preview_image: Option(String),
-    /// Social media share preview image name
-    preload_images: List(String),
-  )
-}
 
 pub fn redirect_to_tour(from: String, to: String) -> fs.File {
   let to = "https://tour.gleam.run/" <> to
@@ -55,7 +42,9 @@ pub type ContentLink {
   ContentLink(title: String, href: String, children: List(ContentLink))
 }
 
-pub fn table_of_contents_from_djot(document: jot.Document) -> List(ContentLink) {
+pub fn table_of_contents_from_djot(
+  document: jot.Document,
+) -> List(ContentLink) {
   document.content
   |> list.fold(from: [], over: _, with: fn(accumulator, block) {
     case block {
@@ -729,99 +718,6 @@ fn sponsor_card(
       }),
     ),
   ])
-}
-
-pub fn case_study(post: case_study.CaseStudy, ctx: site.Context) -> fs.File {
-  let meta =
-    PageMeta(
-      path: "case-studies/" <> post.path,
-      title: post.title,
-      subtitle: post.subtitle,
-      description: post.subtitle,
-      meta_title: post.title
-        <> " | A case study of Gleam in production at "
-        <> post.company.name,
-      preload_images: [],
-      preview_image: option.Some(post.preview_image),
-    )
-
-  [
-    html.div([class("")], [
-      html.blockquote([class("case-study-quote")], [
-        html.text(post.featured_quote),
-      ]),
-      html.ul([class("case-study-meta")], [
-        html.li([], [
-          html.h4([], [html.text(post.company.name)]),
-          html.p([], [html.text(post.company.description)]),
-          html.p([], [
-            html.a([attr.href(post.company.website_url)], [
-              html.text("Visit Website"),
-            ]),
-          ]),
-        ]),
-        html.li([], [
-          html.h4([], [html.text("Founded")]),
-          html.p([], [
-            html.text(post.company.founded.year |> int.to_string),
-          ]),
-        ]),
-        html.li([], [
-          html.h4([], [html.text("Using Gleam Since")]),
-          html.p([], [
-            html.time([], [
-              html.text(
-                calendar.month_to_string(post.company.gleaming_since.month)
-                <> ", "
-                <> int.to_string(post.company.gleaming_since.year),
-              ),
-            ]),
-          ]),
-        ]),
-        html.li([], [
-          html.h4([], [html.text("Published")]),
-          html.p([], [
-            html.time([], [html.text(short_human_date(post.published))]),
-          ]),
-        ]),
-        share_button(),
-      ]),
-
-      element.unsafe_raw_html(
-        "",
-        "article",
-        [class("post prose")],
-        post.content,
-      ),
-      html.section([class("page-cta")], [
-        html.img([
-          attr.src("/images/lucy/lucy.svg"),
-          attr.alt("Lucy the star, Gleam's mascot"),
-        ]),
-        html.div([], [
-          html.h4([], [html.text("Ready to start your Gleam journey?")]),
-          html.p([], [
-            html.text("Check out the "),
-            html.a([attr.href("https://tour.gleam.run")], [
-              html.text("language tour"),
-            ]),
-            html.text(" and "),
-            html.a([attr.href("/documentation")], [html.text("documentation")]),
-            html.text("."),
-          ]),
-          html.p([], [
-            html.text("Already using it in production? "),
-            html.a([attr.href("/community")], [
-              html.text("Share your story with us"),
-            ]),
-            html.text(", we'd love to hear all about it!"),
-          ]),
-        ]),
-      ]),
-    ]),
-  ]
-  |> page_layout("", meta, ctx)
-  |> to_html_file(meta)
 }
 
 pub fn deployment_flyio(ctx: site.Context) -> fs.File {
@@ -1777,58 +1673,6 @@ pub fn documentation(ctx: site.Context) -> fs.File {
   |> to_html_file(meta)
 }
 
-pub fn case_studies_index(
-  study: List(case_study.CaseStudy),
-  ctx: site.Context,
-) -> fs.File {
-  let meta =
-    PageMeta(
-      path: "case-studies",
-      title: "Case Studies",
-      meta_title: "Case Studies | Gleam programming language",
-      subtitle: "Analysis of Gleam in production",
-      description: "Experience reports and outcome analysis of Gleam in production for business software.",
-      preload_images: [],
-      preview_image: option.None,
-    )
-
-  let list_items =
-    list.map(study, fn(post) {
-      html.li([], [
-        html.a([attr.href("/case-studies/" <> post.path)], [
-          html.h2([attr.class("links")], [html.text(post.title)]),
-        ]),
-        html.p([], [html.text(post.subtitle)]),
-        html.ul([class("news-meta")], [
-          html.li([], [
-            html.img([
-              attr.width(16),
-              attr.src("/images/date-icon.svg"),
-              attr.alt("Date Icon"),
-            ]),
-            html.text(short_human_date(post.published)),
-          ]),
-        ]),
-      ])
-    })
-
-  [
-    html.ul([class("news-posts")], list_items),
-    html.p([], [
-      html.text(
-        "Are you using Gleam in production and would like to share your
-        experience? Or would like help adopting Gleam at your company? Get in
-        touch at ",
-      ),
-      html.a([attr.href("mailto:hello@gleam.run")], [
-        html.text("hello@gleam.run"),
-      ]),
-    ]),
-  ]
-  |> page_layout("", meta, ctx)
-  |> to_html_file(meta)
-}
-
 pub fn gleam_toml(ctx: site.Context) -> Result(fs.File, snag.Snag) {
   let meta =
     PageMeta(
@@ -2545,6 +2389,37 @@ pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
   djot_page_with_table_of_contents(source, ctx, meta)
 }
 
+pub fn djot_to_html(document: jot.Document) -> String {
+  jot.document_to_html(document)
+}
+
+pub fn djot_page(page: site.Page, ctx: site.Context) -> Element(a) {
+  let html = [
+    element.unsafe_raw_html(
+      "",
+      "article",
+      [class("prose")],
+      djot_to_html(page.content),
+    ),
+  ]
+  case table_of_contents_from_djot(page.content) {
+    [] -> page_layout(html, "", page.meta, ctx)
+    headings -> table_of_contents_page_layout(html, headings, page.meta, ctx)
+  }
+}
+
+pub fn djot_tocless_page(page: site.Page, ctx: site.Context) -> Element(a) {
+  let html = [
+    element.unsafe_raw_html(
+      "",
+      "article",
+      [class("prose")],
+      djot_to_html(page.content),
+    ),
+  ]
+  page_layout(html, "", page.meta, ctx)
+}
+
 fn djot_page_with_table_of_contents(
   source: String,
   ctx: site.Context,
@@ -2558,7 +2433,7 @@ fn djot_page_with_table_of_contents(
 
   let document = parse_djot(content)
   let table_of_contents = table_of_contents_from_djot(document)
-  let content = jot.document_to_html(document)
+  let content = djot_to_html(document)
 
   [element.unsafe_raw_html("", "article", [class("prose")], content)]
   |> table_of_contents_page_layout(table_of_contents, meta, ctx)
@@ -3722,6 +3597,16 @@ pub fn share_button() -> Element(a) {
       ),
     ],
   )
+}
+
+pub fn decode_frontmatter(
+  page: site.Page,
+  decoder: decode.Decoder(t),
+) -> Result(#(site.Page, t), snag.Snag) {
+  decode.run(page.frontmatter, decoder)
+  |> result.map(pair.new(page, _))
+  |> snag.map_error(string.inspect)
+  |> snag.context("Failed to decode additional metadata for " <> page.meta.path)
 }
 
 pub fn parse_djot(string: String) -> jot.Document {

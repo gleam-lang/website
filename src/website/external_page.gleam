@@ -1,26 +1,23 @@
-import filepath
 import frontmatter
-import gleam/dynamic.{type Dynamic}
 import gleam/dynamic/decode
 import gleam/io
 import gleam/list
 import gleam/option
 import gleam/result
 import gleam/string
-import jot
-import lustre/attribute
-import lustre/element
 import snag
 import tom
+import website/case_study
 import website/fs
+import website/news
 import website/page
-import website/site
+import website/site.{type Page, Page}
 
-pub fn all() -> snag.Result(Site) {
+pub fn pages(context: site.Context) -> snag.Result(List(fs.File)) {
   io.print("Loading pages: ")
 
-  use pages <- result.try(fs.read_directory("./pages"))
-  use pages <- result.map(
+  use pages <- result.try(fs.all_files("./pages"))
+  use pages <- result.try(
     list.try_map(pages, fn(path) {
       read(path)
       |> snag.context("Failed to load " <> path)
@@ -28,20 +25,30 @@ pub fn all() -> snag.Result(Site) {
   )
   io.print("\n")
 
-  pages
-  |> list.fold(Site([], [], []), fn(site, page) {
-    case page.meta.path {
-      "case-studies/" <> _ -> {
-        Site(..site, case_studies: [page, ..site.case_studies])
+  let Site(case_studies:, news:, other:) =
+    list.fold(pages, Site([], [], []), fn(site, page) {
+      case page.meta.path {
+        "/case-studies/" <> _ -> {
+          Site(..site, case_studies: [page, ..site.case_studies])
+        }
+        "/news/" <> _ -> {
+          Site(..site, news: [page, ..site.news])
+        }
+        _ -> {
+          Site(..site, other: [page, ..site.other])
+        }
       }
-      "news/" <> _ -> {
-        Site(..site, news: [page, ..site.news])
-      }
-      _ -> {
-        Site(..site, other: [page, ..site.other])
-      }
-    }
-  })
+    })
+
+  use case_studies <- result.try(case_study.files(case_studies, context))
+  use news <- result.try(news.files(news, context))
+
+  [
+    case_studies,
+    news,
+  ]
+  |> list.flatten
+  |> Ok
 }
 
 pub type Target {
@@ -54,37 +61,11 @@ pub type Site {
   Site(case_studies: List(Page), news: List(Page), other: List(Page))
 }
 
-pub type Page {
-  Page(meta: page.PageMeta, content: jot.Document, frontmatter: Dynamic)
-}
-
-fn meta_decoder(path: String) -> decode.Decoder(page.PageMeta) {
-  use title <- decode.field("title", decode.string)
-  use subtitle <- decode.field("subtitle", decode.string)
-  use meta_title <- decode.field("meta_title", decode.string)
-  use description <- decode.field("description", decode.string)
-  use preview_image <- decode.optional_field(
-    "preview_image",
-    option.None,
-    decode.optional(decode.string),
-  )
-  decode.success(
-    page.PageMeta(
-      path:,
-      title:,
-      subtitle:,
-      meta_title:,
-      description:,
-      preview_image:,
-      preload_images: [],
-    ),
-  )
-}
-
 fn read(path: String) -> snag.Result(Page) {
   io.print(".")
-  use content <- result.try(filepath.join("pages", path) |> fs.read)
+  use content <- result.try(fs.read(path))
   let path = string.remove_suffix(path, ".djot")
+  let assert "./pages" <> path = path as "pages directory prefix"
   let frontmatter.Extracted(meta, content) = frontmatter.extract(content)
 
   use toml <- result.try(
@@ -96,11 +77,11 @@ fn read(path: String) -> snag.Result(Page) {
     |> snag.context("Invalid toml syntax in frontmatter"),
   )
   use meta <- result.try(
-    decode.run(frontmatter, meta_decoder(path))
+    decode.run(frontmatter, site.page_meta_decoder(path))
     |> snag.map_error(string.inspect)
     |> snag.context("Invalid frontmatter fields"),
   )
-  let content = jot.parse(content)
+  let content = page.parse_djot(content)
   Ok(Page(meta:, content:, frontmatter:))
 }
 
@@ -111,22 +92,9 @@ pub fn target_string(target: Target) -> String {
     Any -> "Any"
   }
 }
-
-pub fn page(page: Page, ctx: site.Context) -> fs.File {
-  let headings = page.content |> page.table_of_contents_from_djot
-  let layout = case headings {
-    [] -> page.page_layout(_, "", page.meta, ctx)
-    _ -> page.table_of_contents_page_layout(_, headings, page.meta, ctx)
-  }
-
-  let html = jot.document_to_html(page.content)
-  [element.unsafe_raw_html("", "article", [attribute.class("prose")], html)]
-  |> layout
-  |> page.to_html_file(page.meta)
-}
 // pub fn index_page(guides: List(Page), ctx: site.Context) -> fs.File {
 //   let meta =
-//     page.PageMeta(
+//     page.PageMeta(to_toc_html
 //       path: "guides",
 //       title: "Guides",
 //       description: "TODO",

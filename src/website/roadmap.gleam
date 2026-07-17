@@ -372,7 +372,7 @@ type Release {
 
 pub fn page(ctx: site.Context) -> fs.File {
   let meta =
-    page.PageMeta(
+    site.PageMeta(
       path: "roadmap",
       title: "Gleam's Development Roadmap",
       meta_title: "Gleam's Development Roadmap",
