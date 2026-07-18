@@ -1,3 +1,11 @@
+---
+title = "The Gleam Language Server reference"
+meta_title = "The Gleam Language Server - IDE features for all editors"
+subtitle = "IDE features for all editors"
+description = "Learn all the capabilities and code actions of the Gleam language server."
+preview_image = "language-server"
+---
+
 The Gleam Language Server is a program that can provide IDE features to text
 editors that implement the language server protocol, such as VS Code and
 Neovim. This document details the current state of the language server and its

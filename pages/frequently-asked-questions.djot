@@ -1,3 +1,11 @@
+---
+title = "Frequently asked questions"
+meta_title = "Frequently asked questions | Gleam programming language"
+subtitle = "What? Why? Where? When? How?"
+description = "What? Why? Where? When? How? Everything you wanted to know about Gleam."
+preview_image = "faq"
+---
+
 ## Why is it called Gleam?
 
 Gleam rhymes with and is a synonym of “beam”, which is the name of the Erlang

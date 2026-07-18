@@ -1,3 +1,11 @@
+---
+title = "Conventions, patterns, and anti-patterns"
+meta_title = "Conventions, patterns, and anti-patterns | Gleam programming language"
+subtitle = "Writing good code in Gleam"
+description = "Tips and guidance for writing good code in Gleam"
+preview_image = "patterns"
+---
+
 This document outlines conventions, patterns, and anti-patterns for Gleam code.
 Conventions and anti-patterns are rules that should be adhered to always, while
 patterns are to applied whenever the programmer thinks it would benefit their

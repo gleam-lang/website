@@ -9,7 +9,6 @@ import website/cheatsheet
 import website/external_page
 import website/fs
 import website/install
-import website/page
 import website/roadmap
 import website/site
 import website/sponsor
@@ -39,33 +38,17 @@ fn build_site() -> snag.Result(Nil) {
     )
 
   use sponsors <- result.try(sponsor.sponsors_from_toml())
-  // use news_posts <- result.try(news.all())
   use files <- result.try(external_page.pages(ctx))
-  use language_server <- result.try(page.language_server(ctx))
-  use externals_guide <- result.try(page.externals_guide(ctx))
-  use sbom_guide <- result.try(page.sbom_guide(ctx))
-  use patterns <- result.try(page.conventions_patterns_and_anti_patterns(ctx))
-  use faq <- result.try(page.frequently_asked_questions(ctx))
-  use config_reference <- result.try(page.gleam_toml(ctx))
-  use command_line <- result.try(page.gleam_cli(ctx))
 
   let page_files = [
-    page.home(sponsors, ctx),
-    page.branding(ctx),
-    page.community(ctx),
-    page.writing_gleam(ctx),
-    page.documentation(ctx),
-    page.deployment_linux(ctx),
-    page.deployment_flyio(ctx),
-    // news.index_page(news_posts, ctx),
-    page.sponsor(sponsors, ctx),
-    config_reference,
-    command_line,
-    language_server,
-    externals_guide,
-    sbom_guide,
-    patterns,
-    faq,
+    site.home(sponsors, ctx),
+    site.branding(ctx),
+    site.community(ctx),
+    site.writing_gleam(ctx),
+    site.documentation(ctx),
+    site.deployment_linux(ctx),
+    site.deployment_flyio(ctx),
+    site.sponsor(sponsors, ctx),
     roadmap.page(ctx),
     cheatsheet.erlang(ctx),
     cheatsheet.elixir(ctx),
@@ -80,7 +63,6 @@ fn build_site() -> snag.Result(Nil) {
       static_files(),
       install.pages(ctx),
       page_files,
-      // news_files(news_posts, ctx),
       redirect_files(),
       files,
     ])
@@ -105,56 +87,56 @@ fn static_files() -> List(fs.File) {
 
 fn redirect_files() -> List(fs.File) {
   [
-    page.redirect(
+    site.redirect(
       "writing-gleam/command-line-reference/index.html",
       "/command-line-reference",
     ),
-    page.redirect("getting-started/installing/index.html", "/install"),
-    page.redirect_to_tour("book/index.html", ""),
-    page.redirect_to_tour("book/print.html", ""),
-    page.redirect_to_tour("book/tour/index.html", ""),
-    page.redirect_to_tour("book/tour/use.html", "advanced-features/use/"),
-    page.redirect_to_tour("book/tour/functions.html", "functions/functions"),
-    page.redirect_to_tour("book/tour/expression-blocks.html", "basics/blocks/"),
-    page.redirect_to_tour("book/tour/constants.html", "basics/constants/"),
-    page.redirect_to_tour("book/tour/custom-types.html", "basics/custom-types/"),
-    page.redirect_to_tour("book/tour/bools.html", "basics/bools/"),
-    page.redirect_to_tour("book/tour/bit-strings.html", "data-types/bit-arrays"),
-    page.redirect_to_tour("book/tour/bit-arrays.html", "data-types/bit-arrays"),
-    page.redirect_to_tour("book/tour/strings.html", "data-types/strings/"),
-    page.redirect_to_tour("book/tour/result.html", "data-types/results/"),
-    page.redirect_to_tour("book/tour/modules.html", "basics/hello-world/"),
-    page.redirect_to_tour("book/tour/lists.html", "basics/lists/"),
-    page.redirect_to_tour("book/tour/let-bindings.html", "basics/assignments/"),
-    page.redirect_to_tour("book/tour/ints-and-floats.html", "basics/ints/"),
-    page.redirect_to_tour("book/tour/type-aliases.html", "basics/type-aliases/"),
-    page.redirect_to_tour("book/tour/tuples.html", "data-types/tuples/"),
-    page.redirect_to_tour("book/tour/todo.html", "advanced-features/todo/"),
-    page.redirect_to_tour(
+    site.redirect("getting-started/installing/index.html", "/install"),
+    site.redirect_to_tour("book/index.html", ""),
+    site.redirect_to_tour("book/print.html", ""),
+    site.redirect_to_tour("book/tour/index.html", ""),
+    site.redirect_to_tour("book/tour/use.html", "advanced-features/use/"),
+    site.redirect_to_tour("book/tour/functions.html", "functions/functions"),
+    site.redirect_to_tour("book/tour/expression-blocks.html", "basics/blocks/"),
+    site.redirect_to_tour("book/tour/constants.html", "basics/constants/"),
+    site.redirect_to_tour("book/tour/custom-types.html", "basics/custom-types/"),
+    site.redirect_to_tour("book/tour/bools.html", "basics/bools/"),
+    site.redirect_to_tour("book/tour/bit-strings.html", "data-types/bit-arrays"),
+    site.redirect_to_tour("book/tour/bit-arrays.html", "data-types/bit-arrays"),
+    site.redirect_to_tour("book/tour/strings.html", "data-types/strings/"),
+    site.redirect_to_tour("book/tour/result.html", "data-types/results/"),
+    site.redirect_to_tour("book/tour/modules.html", "basics/hello-world/"),
+    site.redirect_to_tour("book/tour/lists.html", "basics/lists/"),
+    site.redirect_to_tour("book/tour/let-bindings.html", "basics/assignments/"),
+    site.redirect_to_tour("book/tour/ints-and-floats.html", "basics/ints/"),
+    site.redirect_to_tour("book/tour/type-aliases.html", "basics/type-aliases/"),
+    site.redirect_to_tour("book/tour/tuples.html", "data-types/tuples/"),
+    site.redirect_to_tour("book/tour/todo.html", "advanced-features/todo/"),
+    site.redirect_to_tour(
       "book/tour/assert.html",
       "advanced-features/let-assert/",
     ),
-    page.redirect_to_tour(
+    site.redirect_to_tour(
       "book/tour/type-annotations.html",
       "basics/assignments/",
     ),
-    page.redirect_to_tour(
+    site.redirect_to_tour(
       "book/tour/todo-and-panic.html",
       "advanced-features/todo/",
     ),
-    page.redirect_to_tour(
+    site.redirect_to_tour(
       "book/tour/external-functions.html",
       "advanced-features/externals/",
     ),
-    page.redirect_to_tour(
+    site.redirect_to_tour(
       "book/tour/external-types.html",
       "advanced-features/externals/",
     ),
-    page.redirect_to_tour(
+    site.redirect_to_tour(
       "book/tour/comments.html",
       "functions/documentation-comments/",
     ),
-    page.redirect_to_tour(
+    site.redirect_to_tour(
       "book/tour/case-expressions.html",
       "flow-control/case-expressions/",
     ),

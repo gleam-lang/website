@@ -1,3 +1,11 @@
+---
+title = "Creating a Software Bill of Materials"
+meta_title = "Creating a Software Bill of Materials | Gleam Programming Language"
+subtitle = "Generating SBoMs for Gleam projects with ORT"
+description = "Learn how to use the OSS Review Toolkit with Gleam"
+preview_image = "sbom"
+---
+
 Modern software is built on top of many third-party components. Even relatively
 small projects often depend on dozens of libraries that are developed, licensed,
 and maintained elsewhere.

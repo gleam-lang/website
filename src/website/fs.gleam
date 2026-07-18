@@ -10,9 +10,9 @@ import snag
 
 pub type File {
   /// A file with some content
-  HtmlPage(path: String, content: String)
+  HtmlPage(path: String, title: String, content: String)
   /// A file with some content
-  File(path: String, content: String)
+  NonPageFile(path: String, content: String)
   /// A directory copied into the output
   Copy(path: String)
 }
@@ -35,12 +35,12 @@ pub fn delete_dist() -> snag.Result(Nil) {
 
 pub fn create(file: File) -> snag.Result(Nil) {
   case file {
-    HtmlPage(path:, content:) -> {
+    HtmlPage(path:, content:, title: _) -> {
       path
       |> filepath.join("index.html")
       |> write_file(<<content:utf8>>)
     }
-    File(path:, content:) -> {
+    NonPageFile(path:, content:) -> {
       path
       |> write_file(<<content:utf8>>)
     }

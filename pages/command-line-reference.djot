@@ -1,3 +1,11 @@
+---
+title = "Command line reference"
+meta_title = "Command line reference | Gleam programming language"
+subtitle = "Getting things done in the terminal"
+description = "Getting things done in the terminal with the 'gleam' program and its various features."
+preview_image = "command-line"
+---
+
 Gleam's command line is the primary way of working with Gleam projects.
 
 Most commands have to be run from within a Gleam package, i.e. a directory

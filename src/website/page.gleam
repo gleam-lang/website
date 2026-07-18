@@ -35,7 +35,7 @@ pub fn redirect(from: String, to: String) -> fs.File {
       html.script([], "window.location = \"" <> to <> "\";"),
     ])
     |> element.to_document_string
-  fs.File(path: from, content:)
+  fs.NonPageFile(path: from, content:)
 }
 
 pub type ContentLink {
@@ -1391,53 +1391,6 @@ version of Erlang on the computer used to compile the escript.",
   |> to_html_file(meta)
 }
 
-pub fn frequently_asked_questions(ctx: site.Context) -> snag.Result(fs.File) {
-  let meta =
-    PageMeta(
-      path: "frequently-asked-questions",
-      title: "Frequently asked questions",
-      meta_title: "Frequently asked questions | Gleam programming language",
-      subtitle: "What? Why? Where? When? How?",
-      description: "What? Why? Where? When? How? Everything you wanted to know about Gleam.",
-      preload_images: [],
-      preview_image: option.Some("faq"),
-    )
-  let source = "documentation/frequently-asked-questions.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
-}
-
-pub fn language_server(ctx: site.Context) -> snag.Result(fs.File) {
-  let meta =
-    PageMeta(
-      path: "language-server",
-      title: "The Gleam Language Server reference",
-      meta_title: "The Gleam Language Server - IDE features for all editors",
-      subtitle: "IDE features for all editors",
-      description: "Learn all the capabilities and code actions of the Gleam language server.",
-      preload_images: [],
-      preview_image: option.Some("language-server"),
-    )
-  let source = "documentation/language-server.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
-}
-
-pub fn conventions_patterns_and_anti_patterns(
-  ctx: site.Context,
-) -> snag.Result(fs.File) {
-  let meta =
-    PageMeta(
-      path: "documentation/conventions-patterns-and-anti-patterns",
-      title: "Conventions, patterns, and anti-patterns",
-      meta_title: "Conventions, patterns, and anti-patterns | Gleam programming language",
-      subtitle: "Writing good code in Gleam",
-      description: "Tips and guidance for writing good code in Gleam",
-      preload_images: [],
-      preview_image: option.Some("patterns"),
-    )
-  let source = "documentation/conventions-patterns-anti-patterns.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
-}
-
 pub fn documentation(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
@@ -1671,38 +1624,6 @@ pub fn documentation(ctx: site.Context) -> fs.File {
   ]
   |> page_layout("", meta, ctx)
   |> to_html_file(meta)
-}
-
-pub fn gleam_toml(ctx: site.Context) -> Result(fs.File, snag.Snag) {
-  let meta =
-    PageMeta(
-      path: "writing-gleam/gleam-toml",
-      title: "gleam.toml",
-      subtitle: "Configure your Gleam project",
-      meta_title: "gleam.toml | Configure your Gleam project",
-      description: "Learn how to specify dependencies, set the default target, and more.",
-      preload_images: [],
-      preview_image: option.Some("toml"),
-    )
-
-  let source = "documentation/gleam-toml.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
-}
-
-pub fn gleam_cli(ctx: site.Context) -> Result(fs.File, snag.Snag) {
-  let meta =
-    PageMeta(
-      path: "command-line-reference",
-      title: "Command line reference",
-      meta_title: "Command line reference | Gleam programming language",
-      subtitle: "Getting things done in the terminal",
-      description: "Getting things done in the terminal with the 'gleam' program and its various features.",
-      preload_images: [],
-      preview_image: option.Some("command-line"),
-    )
-
-  let source = "documentation/gleam-command-line.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
 }
 
 pub fn deployment_linux(ctx: site.Context) -> fs.File {
@@ -2374,26 +2295,11 @@ systemctl restart webapp
   |> to_html_file(meta)
 }
 
-pub fn externals_guide(ctx: site.Context) -> snag.Result(fs.File) {
-  let meta =
-    PageMeta(
-      path: "documentation/externals",
-      title: "Externals guide",
-      meta_title: "Externals guide | Gleam Programming Language",
-      subtitle: "Using code written in other languages",
-      description: "Using code written in other languages from Gleam",
-      preload_images: [],
-      preview_image: option.None,
-    )
-  let source = "documentation/externals-guide.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
-}
-
 pub fn djot_to_html(document: jot.Document) -> String {
   jot.document_to_html(document)
 }
 
-pub fn djot_page(page: site.Page, ctx: site.Context) -> Element(a) {
+pub fn djot_page(page: site.Page, ctx: site.Context) -> fs.File {
   let html = [
     element.unsafe_raw_html(
       "",
@@ -2406,54 +2312,7 @@ pub fn djot_page(page: site.Page, ctx: site.Context) -> Element(a) {
     [] -> page_layout(html, "", page.meta, ctx)
     headings -> table_of_contents_page_layout(html, headings, page.meta, ctx)
   }
-}
-
-pub fn djot_tocless_page(page: site.Page, ctx: site.Context) -> Element(a) {
-  let html = [
-    element.unsafe_raw_html(
-      "",
-      "article",
-      [class("prose")],
-      djot_to_html(page.content),
-    ),
-  ]
-  page_layout(html, "", page.meta, ctx)
-}
-
-fn djot_page_with_table_of_contents(
-  source: String,
-  ctx: site.Context,
-  meta: PageMeta,
-) -> snag.Result(fs.File) {
-  use content <- result.try(
-    source
-    |> fs.read
-    |> snag.context("Failed to load content for " <> source),
-  )
-
-  let document = parse_djot(content)
-  let table_of_contents = table_of_contents_from_djot(document)
-  let content = djot_to_html(document)
-
-  [element.unsafe_raw_html("", "article", [class("prose")], content)]
-  |> table_of_contents_page_layout(table_of_contents, meta, ctx)
-  |> to_html_file(meta)
-  |> Ok
-}
-
-pub fn sbom_guide(ctx: site.Context) -> snag.Result(fs.File) {
-  let meta =
-    PageMeta(
-      path: "documentation/source-bill-of-materials",
-      title: "Creating a Software Bill of Materials",
-      meta_title: "Creating a Software Bill of Materials | Gleam Programming Language",
-      subtitle: "Generating SBoMs for Gleam projects with ORT",
-      description: "Learn how to use the OSS Review Toolkit with Gleam",
-      preload_images: [],
-      preview_image: option.Some("sbom"),
-    )
-  let source = "documentation/sbom-guide.djot"
-  djot_page_with_table_of_contents(source, ctx, meta)
+  |> to_html_file(page.meta)
 }
 
 type CommunityTalk {
@@ -3396,6 +3255,7 @@ pub fn register_event_handler() {
 pub fn to_html_file(page_content: Element(a), meta: PageMeta) -> fs.File {
   fs.HtmlPage(
     path: meta.path,
+    title: meta.title,
     content: element.to_document_string(page_content),
   )
 }
