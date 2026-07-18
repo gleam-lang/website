@@ -9,7 +9,6 @@ import lustre/attribute
 import lustre/element
 import lustre/element/html
 import website/fs
-import website/page
 import website/site
 
 pub fn methods() -> List(InstallationMethod) {
@@ -1006,15 +1005,15 @@ fn method_page(
       nav_button("Learn Gleam!", "https://tour.gleam.run")
   }
 
-  let content = page.parse_djot(method.content) |> jot.document_to_html
+  let content = site.parse_djot(method.content) |> jot.document_to_html
   [
     html.article([attribute.class("prose")], [
       element.unsafe_raw_html("", "div", [], content),
       html.nav([attribute.class("text-center")], [nav]),
     ]),
   ]
-  |> page.page_layout("", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 fn method_step(installs: Component) -> InstallStep {
@@ -1098,8 +1097,8 @@ fn what_method_page(
       list.map(methods, method_html),
     ),
   ]
-  |> page.page_layout("", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 fn system_choice(
@@ -1174,8 +1173,8 @@ fn which_linux_distro_page(
       ..list.map(distros, distro_html)
     ]),
   ]
-  |> page.page_layout("", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 fn which_operating_system_page(
@@ -1208,8 +1207,8 @@ fn which_operating_system_page(
         list.map(systems, system_html),
       ),
     ]
-    |> page.page_layout("", meta, ctx)
-    |> page.to_html_file(meta)
+    |> site.page_layout("", meta, ctx)
+    |> site.to_html_file(meta)
   start
 }
 

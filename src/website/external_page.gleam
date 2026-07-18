@@ -7,10 +7,9 @@ import gleam/result
 import gleam/string
 import snag
 import tom
-import website/case_study
+import website/external_page/case_study
+import website/external_page/news
 import website/fs
-import website/news
-import website/page
 import website/site.{type Page, Page}
 
 pub fn pages(context: site.Context) -> snag.Result(List(fs.File)) {
@@ -42,10 +41,12 @@ pub fn pages(context: site.Context) -> snag.Result(List(fs.File)) {
 
   use case_studies <- result.try(case_study.files(case_studies, context))
   use news <- result.try(news.files(news, context))
+  let other = list.map(other, site.djot_page(_, context))
 
   [
     case_studies,
     news,
+    other,
   ]
   |> list.flatten
   |> Ok
@@ -81,7 +82,7 @@ fn read(path: String) -> snag.Result(Page) {
     |> snag.map_error(string.inspect)
     |> snag.context("Invalid frontmatter fields"),
   )
-  let content = page.parse_djot(content)
+  let content = site.parse_djot(content)
   Ok(Page(meta:, content:, frontmatter:))
 }
 

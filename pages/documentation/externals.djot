@@ -1,3 +1,10 @@
+---
+title = "Externals guide"
+meta_title = "Externals guide | Gleam Programming Language"
+subtitle = "Using code written in other languages"
+description = "Using code written in other languages from Gleam"
+---
+
 ::: alert-warning
 ### Externals should be used sparingly.
 

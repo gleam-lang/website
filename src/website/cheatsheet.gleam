@@ -2,7 +2,6 @@ import gleam/option
 import lustre/attribute.{attribute as attr} as attr
 import lustre/element/html
 import website/fs
-import website/page
 import website/site
 
 pub fn elixir(ctx: site.Context) -> fs.File {
@@ -1305,8 +1304,8 @@ let assert #(1 as a, 2 as b) = #(1, 2)
       ]),
     ]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 pub fn erlang(ctx: site.Context) -> fs.File {
@@ -2553,8 +2552,8 @@ pub fn get_id() {
     html.h3([attr.id("nested-modules")], [html.text("Nested modules")]),
     html.h3([attr.id("first-class-modules")], [html.text("First class modules")]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 pub fn python(ctx: site.Context) -> fs.File {
@@ -4285,8 +4284,8 @@ pub fn main() {
       ]),
     ]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 pub fn php(ctx: site.Context) -> fs.File {
@@ -7014,8 +7013,8 @@ server applications comparable to RabbitMQ or multiplayer game servers.",
       ]),
     ]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 pub fn rust(ctx: site.Context) -> fs.File {
@@ -8197,8 +8196,8 @@ pub fn main() {
       ]),
     ]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 pub fn elm(ctx: site.Context) -> fs.File {
@@ -10230,6 +10229,6 @@ string.inspect([1, 2, 3]) == \"[1, 2, 3]\"
       ]),
     ]),
   ]
-  |> page.page_layout("roadmap", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
 }

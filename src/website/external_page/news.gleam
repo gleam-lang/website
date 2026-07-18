@@ -12,7 +12,6 @@ import lustre/element/html
 import snag
 import tom
 import website/fs
-import website/page
 import website/site
 
 type NewsData {
@@ -48,22 +47,22 @@ fn news_post_page(page: #(site.Page, NewsData), ctx: site.Context) -> fs.File {
           ]),
         ]),
         html.p([class("post-authored")], [
-          html.time([], [html.text(page.short_human_date(data.published))]),
+          html.time([], [html.text(site.short_human_date(data.published))]),
           html.text(" by "),
           html.a([attr.href(data.author.url)], [html.text(data.author.name)]),
         ]),
-        page.share_button(),
+        site.share_button(),
       ]),
       element.unsafe_raw_html(
         "",
         "article",
         [class("prose")],
-        page.djot_to_html(page.content),
+        site.djot_to_html(page.content),
       ),
     ]),
   ]
-  |> page.page_layout("", page.meta, ctx)
-  |> page.to_html_file(page.meta)
+  |> site.page_layout("", page.meta, ctx)
+  |> site.to_html_file(page.meta)
 }
 
 fn index_page(
@@ -96,7 +95,7 @@ fn index_page(
               attr.src("/images/date-icon.svg"),
               attr.alt("Date Icon"),
             ]),
-            html.text(page.short_human_date(data.published)),
+            html.text(site.short_human_date(data.published)),
           ]),
           html.li([], [
             html.img([
@@ -111,8 +110,8 @@ fn index_page(
     })
 
   [html.ul([class("news-posts")], list_items)]
-  |> page.page_layout("", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("", meta, ctx)
+  |> site.to_html_file(meta)
 }
 
 pub fn files(
@@ -120,7 +119,7 @@ pub fn files(
   context: site.Context,
 ) -> snag.Result(List(fs.File)) {
   use posts <- result.try(
-    list.try_map(posts, page.decode_frontmatter(_, news_data_decoder())),
+    list.try_map(posts, site.decode_frontmatter(_, news_data_decoder())),
   )
   let posts =
     list.sort(posts, fn(a, b) {
@@ -164,7 +163,10 @@ fn atom_feed(news_posts: List(#(site.Page, NewsData))) -> fs.File {
       )),
       entries: news_posts |> list.take(10) |> list.map(atom_feed_entry),
     )
-  fs.File("feed.xml", content: atomb.render(feed) |> string_tree.to_string)
+  fs.NonPageFile(
+    "feed.xml",
+    content: atomb.render(feed) |> string_tree.to_string,
+  )
 }
 
 fn to_calendar(date: calendar.Date) -> timestamp.Timestamp {
@@ -186,7 +188,7 @@ fn atom_feed_entry(post: #(site.Page, NewsData)) -> atomb.Entry {
     published: option.Some(published),
     content: option.Some(atomb.InlineText(
       atomb.Html,
-      page.djot_to_html(post.content),
+      site.djot_to_html(post.content),
     )),
     summary: option.None,
     categories: [],

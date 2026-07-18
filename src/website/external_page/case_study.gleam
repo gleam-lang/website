@@ -10,7 +10,6 @@ import lustre/element/html
 import snag
 import tom
 import website/fs
-import website/page
 import website/site
 
 pub type Company {
@@ -54,7 +53,7 @@ pub fn files(
   context: site.Context,
 ) -> snag.Result(List(fs.File)) {
   use studies <- result.try(
-    list.try_map(pages, page.decode_frontmatter(_, data_decoder())),
+    list.try_map(pages, site.decode_frontmatter(_, data_decoder())),
   )
   Ok([index_page(studies, context), ..list.map(studies, study_page(_, context))])
 }
@@ -97,17 +96,17 @@ fn study_page(page: #(site.Page, CaseStudyData), ctx: site.Context) -> fs.File {
         html.li([], [
           html.h4([], [html.text("Published")]),
           html.p([], [
-            html.time([], [html.text(page.short_human_date(data.published))]),
+            html.time([], [html.text(site.short_human_date(data.published))]),
           ]),
         ]),
-        page.share_button(),
+        site.share_button(),
       ]),
 
       element.unsafe_raw_html(
         "",
         "article",
         [class("post prose")],
-        page.djot_to_html(page.content),
+        site.djot_to_html(page.content),
       ),
       html.section([class("page-cta")], [
         html.img([
@@ -136,8 +135,8 @@ fn study_page(page: #(site.Page, CaseStudyData), ctx: site.Context) -> fs.File {
       ]),
     ]),
   ]
-  |> page.page_layout("", page.meta, ctx)
-  |> page.to_html_file(page.meta)
+  |> site.page_layout("", page.meta, ctx)
+  |> site.to_html_file(page.meta)
 }
 
 pub fn index_page(
@@ -170,7 +169,7 @@ pub fn index_page(
               attr.src("/images/date-icon.svg"),
               attr.alt("Date Icon"),
             ]),
-            html.text(page.short_human_date(data.published)),
+            html.text(site.short_human_date(data.published)),
           ]),
         ]),
       ])
@@ -189,6 +188,6 @@ pub fn index_page(
       ]),
     ]),
   ]
-  |> page.page_layout("", meta, ctx)
-  |> page.to_html_file(meta)
+  |> site.page_layout("", meta, ctx)
+  |> site.to_html_file(meta)
 }
