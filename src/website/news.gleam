@@ -15,9 +15,7 @@ import website/fs
 import website/page
 import website/site
 
-const louis = Author(name: "Louis Pilfold", url: "https://github.com/lpil")
-
-pub type NewsData {
+type NewsData {
   NewsData(published: calendar.Date, author: Author)
 }
 
@@ -27,7 +25,7 @@ fn news_data_decoder() -> decode.Decoder(NewsData) {
   decode.success(NewsData(published:, author:))
 }
 
-pub type Author {
+type Author {
   Author(name: String, url: String)
 }
 
@@ -68,7 +66,7 @@ fn news_post_page(page: #(site.Page, NewsData), ctx: site.Context) -> fs.File {
   |> page.to_html_file(page.meta)
 }
 
-pub fn index_page(
+fn index_page(
   posts: List(#(site.Page, NewsData)),
   ctx: site.Context,
 ) -> fs.File {
@@ -124,6 +122,10 @@ pub fn files(
   use posts <- result.try(
     list.try_map(posts, page.decode_frontmatter(_, news_data_decoder())),
   )
+  let posts =
+    list.sort(posts, fn(a, b) {
+      calendar.naive_date_compare(b.1.published, a.1.published)
+    })
   Ok([
     index_page(posts, context),
     atom_feed(posts),
@@ -175,7 +177,7 @@ fn to_calendar(date: calendar.Date) -> timestamp.Timestamp {
 
 fn atom_feed_entry(post: #(site.Page, NewsData)) -> atomb.Entry {
   let #(post, data) = post
-  let url = "https://gleam.run/" <> post.meta.path
+  let url = "https://gleam.run" <> post.meta.path
   let published = to_calendar(data.published)
   atomb.Entry(
     id: url,

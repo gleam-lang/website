@@ -5,12 +5,10 @@ import gleam/result
 import gleam/time/timestamp
 import gleave
 import snag
-import website/atom_feed
 import website/cheatsheet
 import website/external_page
 import website/fs
 import website/install
-import website/news
 import website/page
 import website/roadmap
 import website/site
