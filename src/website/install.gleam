@@ -1183,7 +1183,7 @@ fn which_operating_system_page(
 ) -> fs.File {
   let meta =
     site.PageMeta(
-      path: "install",
+      path: "/install",
       title: "Installing Gleam",
       meta_title: "Installing the Gleam Programming Language",
       subtitle: "What operating system do you use?",

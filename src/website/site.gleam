@@ -371,6 +371,81 @@ fn footer(ctx: Context) -> element.Element(a) {
   ])
 }
 
+pub fn sitemap(files: List(fs.File), ctx: Context) -> fs.File {
+  let meta =
+    PageMeta(
+      path: "/sitemap",
+      title: "Gleam sitemap",
+      subtitle: "todo",
+      meta_title: "todo",
+      description: "todo",
+      preview_image: option.None,
+      preload_images: [],
+    )
+
+  let pages =
+    files
+    |> list.filter_map(fn(page) {
+      case page {
+        fs.NonPageFile(..)
+        | fs.HtmlPage(path: "/news/" <> _, ..)
+        | fs.HtmlPage(path: "/install/" <> _, ..)
+        | fs.Copy(..) -> Error(Nil)
+
+        fs.HtmlPage(path:, title:, ..) -> Ok(#(string.split(path, "/"), title))
+      }
+    })
+
+  let tree = make_sitemap_tree(pages, new_sitemap_entry())
+
+  [
+    html.ul(
+      [],
+      [todo as "sitemap"],
+      // list.map(pages, fn(page) {
+    //   let #(segments, string) = page
+    //   html.li([], [
+    //     html.text(page),
+    //   ])
+    // }),
+    ),
+  ]
+  |> page_layout("", meta, ctx)
+  |> to_html_file(meta)
+}
+
+fn make_sitemap_tree(
+  pages: List(#(List(String), String)),
+  tree: SitemapTree,
+) -> SitemapTree {
+  case pages {
+    [] -> tree
+
+    [#([], title), ..pages] -> {
+      make_sitemap_tree(pages, SitemapEntry(..tree, title: option.Some(title)))
+    }
+
+    [#([segment, ..segments], title), ..pages] -> {
+      let subtree =
+        dict.get(tree.children, segment) |> result.unwrap(new_sitemap_entry())
+      let subtree = make_sitemap_tree([#(segments, title)], subtree)
+      let children = dict.insert(tree.children, segment, subtree)
+      make_sitemap_tree(pages, SitemapEntry(..tree, children:))
+    }
+  }
+}
+
+fn new_sitemap_entry() -> SitemapTree {
+  SitemapEntry(option.None, dict.new())
+}
+
+type SitemapTree {
+  SitemapEntry(
+    title: option.Option(String),
+    children: dict.Dict(String, SitemapTree),
+  )
+}
+
 pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
   let meta =
     PageMeta(
@@ -765,7 +840,7 @@ fn sponsor_card(
 pub fn deployment_flyio(ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "deployment/fly",
+      path: "/deployment/fly",
       title: "Deploying on Fly.io",
       meta_title: "Deploying Gleam on Fly.io | Gleam Programming Language",
       subtitle: "Run Gleam all over the world. No ops required.",
@@ -926,7 +1001,7 @@ file. Once deployed you can open it in a web browser by running ",
 pub fn writing_gleam(ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "writing-gleam",
+      path: "/writing-gleam",
       title: "Writing Gleam",
       meta_title: "Writing Gleam",
       subtitle: "Developing Gleam projects",
@@ -1436,7 +1511,7 @@ version of Erlang on the computer used to compile the escript.",
 pub fn documentation(ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "documentation",
+      path: "/documentation",
       title: "Documentation",
       meta_title: "Documentation | Gleam programming language",
       subtitle: "Learn all about programming in Gleam!",
@@ -1671,7 +1746,7 @@ pub fn documentation(ctx: Context) -> fs.File {
 pub fn deployment_linux(ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "deployment/linux-server",
+      path: "/deployment/linux-server",
       title: "Deploy to a Linux server",
       meta_title: "Deploying Gleam on a Linux server | Gleam Programming Language",
       subtitle: "Run Gleam on a server from any provider",
@@ -2370,7 +2445,7 @@ type CommunityTalk {
 pub fn community(ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "community",
+      path: "/community",
       title: "The Gleam Community",
       meta_title: "The Gleam Community",
       subtitle: "Welcome, friend! It's good to have you",
@@ -2590,7 +2665,7 @@ pub fn community(ctx: Context) -> fs.File {
 pub fn branding(ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "branding",
+      path: "/branding",
       title: "Gleam's branding",
       meta_title: "Branding and Lucy mascot | Gleam programming language",
       subtitle: "All pretty and pink 💖",
@@ -2962,7 +3037,7 @@ pub fn short_human_date(date: calendar.Date) -> String {
 pub fn home(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "",
+      path: "/",
       title: "Gleam programming language",
       meta_title: "Gleam programming language",
       subtitle: "",

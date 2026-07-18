@@ -67,6 +67,8 @@ fn build_site() -> snag.Result(Nil) {
       files,
     ])
 
+  let files = [site.sitemap(files, ctx), ..files]
+
   io.print("Writing to disc: ")
   use _ <- result.try(fs.delete_dist())
   let result = list.try_each(files, fs.create)

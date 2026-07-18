@@ -71,7 +71,7 @@ fn index_page(
 ) -> fs.File {
   let meta =
     site.PageMeta(
-      path: "news",
+      path: "/news",
       title: "News",
       meta_title: "News | Gleam programming language",
       subtitle: "What's happening in the Gleam world?",
