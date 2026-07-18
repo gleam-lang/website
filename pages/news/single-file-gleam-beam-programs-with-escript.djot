@@ -1,4 +1,9 @@
 ---
+title = "Single file Gleam BEAM programs with escript"
+meta_title = "Single file Gleam BEAM programs with escript | Gleam programming language"
+subtitle = "Gleam v1.17.0 released!"
+description = "News post: Gleam v1.17.0 released!"
+preview_image = "v1.17"
 published = 2026-06-02
 
 [author]

@@ -1,4 +1,8 @@
 ---
+title = "Hello panic, goodbye try"
+meta_title = "Hello panic, goodbye try | Gleam programming language"
+subtitle = "Gleam v0.27 released"
+description = "News post: Gleam v0.27 released"
 published = 2023-03-01
 
 [author]

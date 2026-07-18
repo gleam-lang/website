@@ -1,4 +1,8 @@
 ---
+title = "Keeping dependencies explicit"
+meta_title = "Keeping dependencies explicit | Gleam programming language"
+subtitle = "Gleam v0.31 released"
+description = "News post: Gleam v0.31 released"
 published = 2023-09-25
 
 [author]

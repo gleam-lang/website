@@ -1,4 +1,9 @@
 ---
+title = "Upgrading Hex security"
+meta_title = "Upgrading Hex security | Gleam programming language"
+subtitle = "Gleam v1.15.0 released!"
+description = "News post: Gleam v1.15.0 released!"
+preview_image = "v1.15"
 published = 2026-03-16
 
 [author]
