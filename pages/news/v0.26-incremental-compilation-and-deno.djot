@@ -1,4 +1,8 @@
 ---
+title = "Incremental compilation, and hello Deno!"
+meta_title = "Incremental compilation, and hello Deno! | Gleam programming language"
+subtitle = "Gleam v0.26 released"
+description = "News post: Gleam v0.26 released"
 published = 2023-01-19
 
 [author]

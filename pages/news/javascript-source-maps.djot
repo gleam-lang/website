@@ -1,4 +1,9 @@
 ---
+title = "JavaScript source maps"
+meta_title = "JavaScript source maps | Gleam programming language"
+subtitle = "Gleam v1.16.0 released!"
+description = "News post: Gleam v1.16.0 released!"
+preview_image = "v1.16"
 published = 2026-04-24
 
 [author]

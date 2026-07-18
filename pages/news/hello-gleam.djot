@@ -1,4 +1,8 @@
 ---
+title = "Hello, Gleam!"
+meta_title = "Hello, Gleam! | Gleam programming language"
+subtitle = "There's a new friendly language in town"
+description = "News post: There's a new friendly language in town"
 published = 2019-04-15
 
 [author]
