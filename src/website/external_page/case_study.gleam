@@ -145,7 +145,7 @@ pub fn index_page(
 ) -> fs.File {
   let meta =
     site.PageMeta(
-      path: "case-studies",
+      path: "/case-studies",
       title: "Case Studies",
       meta_title: "Case Studies | Gleam programming language",
       subtitle: "Analysis of Gleam in production",

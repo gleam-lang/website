@@ -884,7 +884,7 @@ file. Once deployed you can open it in a web browser by running ",
 pub fn writing_gleam(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "writing-gleam",
+      path: "/writing-gleam",
       title: "Writing Gleam",
       meta_title: "Writing Gleam",
       subtitle: "Developing Gleam projects",
@@ -1394,7 +1394,7 @@ version of Erlang on the computer used to compile the escript.",
 pub fn documentation(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "documentation",
+      path: "/documentation",
       title: "Documentation",
       meta_title: "Documentation | Gleam programming language",
       subtitle: "Learn all about programming in Gleam!",
@@ -1629,7 +1629,7 @@ pub fn documentation(ctx: site.Context) -> fs.File {
 pub fn deployment_linux(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "deployment/linux-server",
+      path: "/deployment/linux-server",
       title: "Deploy to a Linux server",
       meta_title: "Deploying Gleam on a Linux server | Gleam Programming Language",
       subtitle: "Run Gleam on a server from any provider",
@@ -2328,7 +2328,7 @@ type CommunityTalk {
 pub fn community(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "community",
+      path: "/community",
       title: "The Gleam Community",
       meta_title: "The Gleam Community",
       subtitle: "Welcome, friend! It's good to have you",
@@ -2548,7 +2548,7 @@ pub fn community(ctx: site.Context) -> fs.File {
 pub fn branding(ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "branding",
+      path: "/branding",
       title: "Gleam's branding",
       meta_title: "Branding and Lucy mascot | Gleam programming language",
       subtitle: "All pretty and pink 💖",
@@ -2920,7 +2920,7 @@ pub fn short_human_date(date: calendar.Date) -> String {
 pub fn home(sponsors: List(sponsor.Sponsor), ctx: site.Context) -> fs.File {
   let meta =
     PageMeta(
-      path: "",
+      path: "/",
       title: "Gleam programming language",
       meta_title: "Gleam programming language",
       subtitle: "",
