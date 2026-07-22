@@ -46,7 +46,6 @@ fn build_site() -> snag.Result(Nil) {
     site.community(ctx),
     site.writing_gleam(ctx),
     site.documentation(ctx),
-    site.deployment_linux(ctx),
     site.deployment_flyio(ctx),
     site.sponsor(sponsors, ctx),
     roadmap.page(ctx),
