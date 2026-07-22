@@ -377,7 +377,6 @@ pub fn page(ctx: site.Context) -> fs.File {
       meta_title: "Gleam's Development Roadmap",
       subtitle: "What's coming next?",
       description: "See what's been released, what's being worked on, and what's coming in the future!",
-      preload_images: [],
       preview_image: option.Some("roadmap"),
     )
 

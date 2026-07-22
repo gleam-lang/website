@@ -150,7 +150,6 @@ pub fn index_page(
       meta_title: "Case Studies | Gleam programming language",
       subtitle: "Analysis of Gleam in production",
       description: "Experience reports and outcome analysis of Gleam in production for business software.",
-      preload_images: [],
       preview_image: option.None,
     )
 
