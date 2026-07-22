@@ -1,10 +1,12 @@
 ---
 title = "Deploy to a Linux server"
-slug = "deploying-to-linux"
+meta_title = "Deploying Gleam on a Linux server | Gleam Programming Language"
 subtitle = "Run Gleam on a server from any provider"
-tags = ["development"]
-target = "any"
+description = "Run Gleam on a server from any provider"
+preview_image = "deploy-linux"
 ---
+
+
 This guide will take you through the process of deploying a Gleam backend web application to a single Linux server. The application will be run by systemd in a Linux container, and [Caddy]("https://caddyserver.com/") will be used to handle HTTPS.
 
 ## Provision your server
@@ -28,29 +30,28 @@ We will be using the domain `example.gleam.run` for the rest of this tutorial. B
 Ensure your application is listening on `0.0.0.0`. If you’re using Mist or Wisp you can do this with the `mist.bind` function, as shown here.
 
 ```gleam
-  let assert Ok(_) =
-	wisp_mist.handler(handle_request, secret_key_base)
-	|> mist.new
-	|> mist.bind("0.0.0.0") // <- add this line
-	|> mist.port(8000)
-	|> mist.start_http
+let assert Ok(_) =
+  wisp_mist.handler(handle_request, secret_key_base)
+  |> mist.new
+  |> mist.bind("0.0.0.0") // <- add this line
+  |> mist.port(8000)
+  |> mist.start_http
 ```
-    
 Take note of what port your application is starting on. We will be using port 8000 for the rest of this guide.
 
 ## Add a Dockerfile
 
 Add a file to the base of your repository called `Dockerfile` with these contents:
 
-```dockerfile
+```containerfile
 FROM erlang:27.1.1.0-alpine AS build
 COPY --from=ghcr.io/gleam-lang/gleam:v1.8.0-erlang-alpine /bin/gleam /bin/gleam
 COPY . /app/
 RUN cd /app && gleam export erlang-shipment
 
 FROM erlang:27.1.1.0-alpine
-RUN \\
-  addgroup --system webapp && \\
+RUN \
+  addgroup --system webapp && \
   adduser --system webapp -g webapp
 COPY --from=build /app/build/erlang-shipment /app
 WORKDIR /app
@@ -71,35 +72,34 @@ We will be using GitHub actions to build and publish the container image to the 
 Create a file at `.github/workflows/build-container.yml` with these contents:
 
 ```yaml
-    name: Build container image
-    on:
-      push:
-        tags:
-          - v*
-    
-    jobs:
-      push:
-        runs-on: ubuntu-latest
-        permissions:
-          packages: write
-          contents: read
-        steps:
-          - uses: actions/checkout@v4
-    
-          - name: Build image
-            run: docker build . --file Dockerfile --tag webapp
-    
-          - name: Log in to registry
-            run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-    
-          - name: Push image
-            run: |
-              IMAGE_ID=ghcr.io/gleam-run/example
-              TAG="$IMAGE_ID":$(echo "${{ github.ref }}" | sed -e 's,.*/\\(.*\\),\\1,')
-              docker tag webapp "$TAG"
-              docker push "$TAG"
+name: Build container image
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag webapp
+
+      - name: Log in to registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: |
+          IMAGE_ID=ghcr.io/gleam-run/example
+          TAG="$IMAGE_ID":$(echo "${{ github.ref }}" | sed -e 's,.*/\\(.*\\),\\1,')
+          docker tag webapp "$TAG"
+          docker push "$TAG"
 ```
-    
 
 Edit `IMAGE_ID=ghcr.io/gleam-run/example` with the name of your GitHub repository. If you repository is at `https://github.com/wibble/wob` it should be `IMAGE_ID=ghcr.io/wibble/wob`.
 
@@ -108,7 +108,7 @@ After you have pushed these changes push a new git tag to GitHub. This will trig
 ```bash
 git tag production
 git push --tags
-```  
+```
 
 We’re using the tag `production`, but you can use any tag name you want.
 
@@ -146,7 +146,6 @@ ufw allow http
 ufw allow https
 ufw enable
 ```
-    
 
 `ufw` may prompt for confirmation when enabling it. Accept by entering `y`.
 
@@ -226,14 +225,14 @@ The status of the systemd service can be viewed with `systemctl status webapp`.
 Check that service is handling HTTP requests by making a request to `localhost` on the port that your application is listening on.
 
 ```bash
-    curl -I localhost:8000
+curl -I localhost:8000
 ```
 
 ## Configure Caddy to send traffic to the application
 
 Replace the contents of `/etc/caddy/Caddyfile` with this, making sure to replace the domain and port with the ones you are using. Keep `localhost` the same.
 
-```Caddyfile
+```caddyfile
 example.gleam.run {
 		reverse_proxy localhost:8000
 }
