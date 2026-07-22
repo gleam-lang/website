@@ -5,6 +5,7 @@ import gleam/dynamic/decode
 import gleam/int
 import gleam/list
 import gleam/option.{type Option}
+import gleam/order
 import gleam/pair
 import gleam/result
 import gleam/string
@@ -375,10 +376,10 @@ pub fn sitemap(files: List(fs.File), ctx: Context) -> fs.File {
   let meta =
     PageMeta(
       path: "/sitemap",
-      title: "Gleam sitemap",
-      subtitle: "todo",
-      meta_title: "todo",
-      description: "todo",
+      title: "Sitemap",
+      subtitle: "All the pages of the Gleam website",
+      meta_title: "Sitemap",
+      description: "All the pages of the Gleam website",
       preview_image: option.None,
       preload_images: [],
     )
@@ -387,31 +388,54 @@ pub fn sitemap(files: List(fs.File), ctx: Context) -> fs.File {
     files
     |> list.filter_map(fn(page) {
       case page {
-        fs.NonPageFile(..)
-        | fs.HtmlPage(path: "/news/" <> _, ..)
-        | fs.HtmlPage(path: "/install/" <> _, ..)
-        | fs.Copy(..) -> Error(Nil)
+        fs.NonPageFile(..) | fs.Copy(..) -> Error(Nil)
 
-        fs.HtmlPage(path:, title:, ..) -> Ok(#(string.split(path, "/"), title))
+        fs.HtmlPage(path:, title:, ..) -> {
+          let path =
+            string.split(path, "/")
+            |> list.filter(fn(segment) { segment != "" })
+          Ok(#(path, title))
+        }
       }
     })
 
   let tree = make_sitemap_tree(pages, new_sitemap_entry())
 
   [
-    html.ul(
-      [],
-      [todo as "sitemap"],
-      // list.map(pages, fn(page) {
-    //   let #(segments, string) = page
-    //   html.li([], [
-    //     html.text(page),
-    //   ])
-    // }),
-    ),
+    html.ul([], [sitemap_html("", #("", tree))]),
   ]
   |> page_layout("", meta, ctx)
   |> to_html_file(meta)
+}
+
+fn sitemap_html(parent: String, data: #(String, SitemapTree)) -> Element(a) {
+  let #(segment, tree) = data
+  let segment = case dict.is_empty(tree.children) {
+    True -> segment
+    False -> segment <> "/"
+  }
+  let path = parent <> segment
+  let page_link = case tree.title {
+    option.Some(title) ->
+      element.fragment([
+        html.text(" "),
+        html.a([attr.href(path)], [html.text(title)]),
+      ])
+    option.None -> element.none()
+  }
+  let children =
+    tree.children
+    |> dict.to_list
+    |> list.sort(fn(a, b) {
+      int.compare(dict.size(a.1.children), dict.size(b.1.children))
+      |> order.break_tie(string.compare(a.0, b.0))
+    })
+    |> list.map(sitemap_html(path, _))
+  html.li([], [
+    html.code([], [html.text(segment)]),
+    page_link,
+    html.ul([], children),
+  ])
 }
 
 fn make_sitemap_tree(
