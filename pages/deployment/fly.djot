@@ -1,0 +1,78 @@
+---
+title = "Deploy to a Fly.io"
+meta_title = "Deploying Gleam on Fly.io | Gleam Programming Language"
+subtitle = "Run Gleam all over the world."
+description = "Run Gleam all over the world."
+preview_image = "deploy-fly"
+---
+
+[Fly.io ](https://fly.io/) is a convenient and easy to use deployment platform. They were also an early sponsor of the Gleam project, thank you Fly!
+
+## Prepare your application
+
+Ensure your application is listening on 0.0.0.0. If you’re using Mist or Wisp you can do this with the mist.bind function, as shown here.
+
+```gleam
+let assert Ok(_) =
+  wisp_mist.handler(handle_request, secret_key_base)
+  |> mist.new
+  |> mist.bind("0.0.0.0") // <- add this line
+  |> mist.port(8000)
+  |> mist.start_http
+```
+
+Take note of what port your application is starting on. We will be using port 8000 for the rest of this guide.
+
+## Create a Dockerfile
+
+We can use Fly’s support for containers to build the application and prepare it for deployment.
+
+Create a file named `Dockerfile` with these contents:
+
+```containerfile
+FROM erlang:27.1.1.0-alpine AS build
+COPY --from=ghcr.io/gleam-lang/gleam:v1.8.0-erlang-alpine /bin/gleam /bin/gleam
+COPY . /app/
+RUN cd /app && gleam export erlang-shipment
+
+FROM erlang:27.1.1.0-alpine
+RUN \
+  addgroup --system webapp && \
+  adduser --system webapp -g webapp
+USER webapp
+COPY --from=build /app/build/erlang-shipment /app
+WORKDIR /app
+ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["run"]
+```
+
+## Set up the Fly.io CLI
+
+[Follow the instructions on the Fly website](https://fly.io/docs/getting-started/installing-flyctl/) to install Flyctl, the command-line interface for the Fly.io platform.
+
+Once installed use the CLI to sign up (or log in if you already have a Fly.io account).
+
+```sh
+fly auth signup
+# OR
+fly auth login
+```
+
+Deploy the application
+
+From within the project use the Fly CLI to create and run your application on their platform.
+
+```sh
+flyctl launch
+```
+
+The CLI will ask you a series of questions:
+
+- What the application should be named.
+- What Fly organisation should the application belong to.
+- What region the application should be deployed to.
+- Whether you would like a PostgreSQL database to go with the application.
+
+Once you have answered these it will build the application using the docker file. Once deployed you can open it in a web browser by running `flyctl open`.
+
+To deploy future versions of the application run `flyctl deploy` after saving any changes to the source code.

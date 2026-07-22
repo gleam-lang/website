@@ -6,7 +6,6 @@ description = "Run Gleam on a server from any provider"
 preview_image = "deploy-linux"
 ---
 
-
 This guide will take you through the process of deploying a Gleam backend web application to a single Linux server. The application will be run by systemd in a Linux container, and [Caddy]("https://caddyserver.com/") will be used to handle HTTPS.
 
 ## Provision your server
