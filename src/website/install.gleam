@@ -988,7 +988,6 @@ fn method_page(
         InstallsEditorSupport -> "Installing Gleam editor support on " <> name
       },
       description: "Installing Gleam on " <> name,
-      preload_images: [],
       preview_image: option.Some("install"),
     )
 
@@ -1053,7 +1052,6 @@ fn what_method_page(
       meta_title: title,
       subtitle:,
       description: "Documentation and guides on how to prepare your computer for Gleam development",
-      preload_images: [],
       preview_image: option.None,
     )
 
@@ -1151,7 +1149,6 @@ fn which_linux_distro_page(
       meta_title: "Installing the Gleam Programming Language",
       subtitle: "What Linux distribution do you use?",
       description: "Get your computer ready for Gleam development",
-      preload_images: [],
       preview_image: option.None,
     )
 
@@ -1188,7 +1185,6 @@ fn which_operating_system_page(
       meta_title: "Installing the Gleam Programming Language",
       subtitle: "What operating system do you use?",
       description: "Get your computer ready for Gleam development",
-      preload_images: [],
       preview_image: option.None,
     )
 

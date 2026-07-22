@@ -38,10 +38,8 @@ pub type PageMeta {
     subtitle: String,
     meta_title: String,
     description: String,
-    /// Render-critical to pre-load using meta-tags
-    preview_image: Option(String),
     /// Social media share preview image name
-    preload_images: List(String),
+    preview_image: Option(String),
   )
 }
 
@@ -55,17 +53,14 @@ pub fn page_meta_decoder(path: String) -> decode.Decoder(PageMeta) {
     option.None,
     decode.optional(decode.string),
   )
-  decode.success(
-    PageMeta(
-      path:,
-      title:,
-      subtitle:,
-      meta_title:,
-      description:,
-      preview_image:,
-      preload_images: [],
-    ),
-  )
+  decode.success(PageMeta(
+    path:,
+    title:,
+    subtitle:,
+    meta_title:,
+    description:,
+    preview_image:,
+  ))
 }
 
 pub fn redirect_to_tour(from: String, to: String) -> fs.File {
@@ -253,9 +248,11 @@ fn head_elements(page: PageMeta, ctx: Context) -> List(element.Element(a)) {
       attr.href("/styles/main.css?v=" <> ctx.styles_hash),
       attr.rel("stylesheet"),
     ]),
-    ..list.map(page.preload_images, fn(href) {
-      html.link([attr("as", "image"), attr.href(href), attr.rel("preload")])
-    })
+    html.link([
+      attr("as", "image"),
+      attr.href("/images/lucy/lucyhappy.svg"),
+      attr.rel("preload"),
+    ]),
   ]
 }
 
@@ -381,7 +378,6 @@ pub fn sitemap(files: List(fs.File), ctx: Context) -> fs.File {
       meta_title: "Sitemap",
       description: "All the pages of the Gleam website",
       preview_image: option.None,
-      preload_images: [],
     )
 
   let pages =
@@ -479,7 +475,6 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
       meta_title: "Sponsor | Gleam Programming Language",
       description: "Everything we bring to the language is possible thanks to our sponsors. See how to become one of them and support Gleam.",
       preview_image: option.Some("sponsor"),
-      preload_images: [],
     )
 
   let sponsees = [
@@ -869,7 +864,6 @@ pub fn deployment_flyio(ctx: Context) -> fs.File {
       meta_title: "Deploying Gleam on Fly.io | Gleam Programming Language",
       subtitle: "Run Gleam all over the world. No ops required.",
       description: "Run Gleam all over the world. No ops required.",
-      preload_images: [],
       preview_image: option.Some("deploy-fly"),
     )
 
@@ -1030,7 +1024,6 @@ pub fn writing_gleam(ctx: Context) -> fs.File {
       meta_title: "Writing Gleam",
       subtitle: "Developing Gleam projects",
       description: "Developing Gleam projects using the Gleam build tool",
-      preload_images: [],
       preview_image: option.Some("writing"),
     )
 
@@ -1540,7 +1533,6 @@ pub fn documentation(ctx: Context) -> fs.File {
       meta_title: "Documentation | Gleam programming language",
       subtitle: "Learn all about programming in Gleam!",
       description: "All about programming in Gleam: find the docs you need.",
-      preload_images: [],
       preview_image: option.Some("documentation"),
     )
 
@@ -1775,7 +1767,6 @@ pub fn deployment_linux(ctx: Context) -> fs.File {
       meta_title: "Deploying Gleam on a Linux server | Gleam Programming Language",
       subtitle: "Run Gleam on a server from any provider",
       description: "Run Gleam on a server from any provider",
-      preload_images: [],
       preview_image: option.Some("deploy-linux"),
     )
 
@@ -2474,7 +2465,6 @@ pub fn community(ctx: Context) -> fs.File {
       meta_title: "The Gleam Community",
       subtitle: "Welcome, friend! It's good to have you",
       description: "Welcome, friend! It's good to have you. Come check where all the Gleamlins hang out and join us 🩷",
-      preload_images: [],
       preview_image: option.Some("community"),
     )
 
@@ -2694,7 +2684,6 @@ pub fn branding(ctx: Context) -> fs.File {
       meta_title: "Branding and Lucy mascot | Gleam programming language",
       subtitle: "All pretty and pink 💖",
       description: "Meet Gleam's mascot, check branding guidelines, and see how we keep everything pretty and pink 💖",
-      preload_images: [],
       preview_image: option.Some("branding"),
     )
 
@@ -3066,7 +3055,6 @@ pub fn home(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
       meta_title: "Gleam programming language",
       subtitle: "",
       description: "Discover a friendly language for scalable, type-safe systems. Gleam comes with compiler, build tool, formatter, editor integrations, and package manager all built in.",
-      preload_images: ["/images/lucy/lucyhappy.svg"],
       preview_image: option.None,
     )
 

@@ -76,7 +76,6 @@ fn index_page(
       meta_title: "News | Gleam programming language",
       subtitle: "What's happening in the Gleam world?",
       description: "Check what's happening in the Gleam world: stay up to date with Gleam’s latest releases, feature announcements, and project updates.",
-      preload_images: [],
       preview_image: option.Some("news"),
     )
 
