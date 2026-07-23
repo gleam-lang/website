@@ -6,9 +6,9 @@ import gleam/time/timestamp
 import gleave
 import snag
 import website/cheatsheet
-import website/external_page
 import website/fs
 import website/install
+import website/page
 import website/roadmap
 import website/site
 import website/sponsor
@@ -38,7 +38,7 @@ fn build_site() -> snag.Result(Nil) {
     )
 
   use sponsors <- result.try(sponsor.sponsors_from_toml())
-  use files <- result.try(external_page.pages(ctx))
+  use files <- result.try(page.pages(ctx))
 
   let page_files = [
     site.home(sponsors, ctx),
