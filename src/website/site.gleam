@@ -43,26 +43,6 @@ pub type PageMeta {
   )
 }
 
-pub fn page_meta_decoder(path: String) -> decode.Decoder(PageMeta) {
-  use title <- decode.field("title", decode.string)
-  use subtitle <- decode.field("subtitle", decode.string)
-  use meta_title <- decode.field("meta_title", decode.string)
-  use description <- decode.field("description", decode.string)
-  use preview_image <- decode.optional_field(
-    "preview_image",
-    option.None,
-    decode.optional(decode.string),
-  )
-  decode.success(PageMeta(
-    path:,
-    title:,
-    subtitle:,
-    meta_title:,
-    description:,
-    preview_image:,
-  ))
-}
-
 pub fn redirect_to_tour(from: String, to: String) -> fs.File {
   let to = "https://tour.gleam.run/" <> to
   redirect(from, to)
