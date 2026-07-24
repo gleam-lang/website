@@ -1,9 +1,9 @@
 ---
 path = "writing-gleam/gleam-toml"
-title = "gleam.toml"
-subtitle = "Configure your Gleam project"
-meta_title = "gleam.toml | Configure your Gleam project"
-description = "Learn how to specify dependencies, set the default target, and more."
+title = "gleam.toml reference"
+subtitle = "Configure your Gleam project | Gleam programming language"
+meta_title = "gleam.toml reference | Configure your Gleam project"
+description = "Learn how to configure your Gleam project, specify dependencies, set the compile target, and more."
 preview_image = "toml"
 ---
 

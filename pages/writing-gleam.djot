@@ -1,6 +1,6 @@
 ---
-title = "Writing Gleam"
-meta_title = "Writing Gleam"
+title = "Getting started writing Gleam"
+meta_title = "Writing Gleam | Gleam programming language"
 subtitle = "Developing Gleam projects"
 description = "Developing Gleam projects using the Gleam build tool"
 preview_image = "writing"

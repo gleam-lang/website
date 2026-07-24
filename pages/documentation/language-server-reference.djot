@@ -1,19 +1,19 @@
 ---
-title = "The Gleam Language Server reference"
-meta_title = "The Gleam Language Server - IDE features for all editors"
+title = "The Gleam language server reference"
+meta_title = "The language server reference | Gleam programming language"
 subtitle = "IDE features for all editors"
 description = "Learn all the capabilities and code actions of the Gleam language server."
 preview_image = "language-server"
 ---
 
-The Gleam Language Server is a program that can provide IDE features to text
+The Gleam language server is a program that can provide IDE features to text
 editors that implement the language server protocol, such as VS Code and
 Neovim. This document details the current state of the language server and its
 features.
 
 ## Project Status
 
-The Gleam Language Server is an official Gleam project and the newest part of
+The Gleam language server is an official Gleam project and the newest part of
 the Gleam toolchain. It is actively being developed and is rapidly improving,
 but it does not have all the features you might find in more mature language
 servers for older languages.
@@ -23,7 +23,7 @@ Gleam roadmap](https://gleam.run/roadmap/).
 
 ## Installation
 
-The Gleam Language Server is included in the regular `gleam` binary, so if you
+The Gleam language server is included in the regular `gleam` binary, so if you
 have Gleam installed then you have the Gleam language server installed. You may
 need to configure your editor to use the language server for Gleam code.
 
@@ -79,8 +79,8 @@ Gleam file.
 
 ### Other editors
 
-Any other editor that supports the Language Server Protocol can use the Gleam
-Language Server. Configure your editor to run `gleam lsp` from the root of your
+Any other editor that supports the language server Protocol can use the Gleam
+language server. Configure your editor to run `gleam lsp` from the root of your
 workspace.
 
 ## Features
