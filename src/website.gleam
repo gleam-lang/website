@@ -90,13 +90,16 @@ fn redirect_files() -> List(fs.File) {
       "writing-gleam/command-line-reference/index.html",
       "/command-line-reference",
     ),
-    site.redirect("language-server", "/documentation/language-server-reference"),
     site.redirect(
-      "writing-gleam/gleam-toml",
+      "language-server/index.html",
+      "/documentation/language-server-reference",
+    ),
+    site.redirect(
+      "writing-gleam/gleam-toml/index.html",
       "/documentation/gleam-toml-reference",
     ),
     site.redirect(
-      "command-line-reference",
+      "command-line-reference/index.html",
       "/documentation/command-line-reference",
     ),
     site.redirect("getting-started/installing/index.html", "/install"),
