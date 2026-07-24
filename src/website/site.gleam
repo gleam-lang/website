@@ -50,10 +50,14 @@ pub fn redirect_to_tour(from: String, to: String) -> fs.File {
 
 pub fn redirect(from: String, to: String) -> fs.File {
   let content =
-    html.body([], [
-      html.text("You are being redirected to "),
-      html.a([attr.href(to)], [html.text(to)]),
-      html.script([], "window.location = \"" <> to <> "\";"),
+    html.html([], [
+      html.head([], [
+        html.meta([attr.http_equiv("refresh"), attr.content("0;url=" <> to)]),
+      ]),
+      html.body([], [
+        html.text("You are being redirected to "),
+        html.a([attr.href(to)], [html.text(to)]),
+      ]),
     ])
     |> element.to_document_string
   fs.NonPageFile(path: from, content:)
