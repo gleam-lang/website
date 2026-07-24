@@ -14,6 +14,8 @@ import wisp/wisp_mist
 
 pub fn main() {
   wisp.configure_logger()
+  let _ = website.build_site()
+  wisp.log_info("Site built")
 
   let assert Ok(_) = watch_files()
 
