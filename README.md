@@ -1,8 +1,9 @@
 # The Gleam website
 
-https://gleam.run
+See it live at <https://gleam.run>, which is built on GitHub Actions and hosted
+on GitHub Pages.
 
 ```sh
-# Build the website to the `dist` directory
-gleam run
+# Run the dev server
+gleam dev
 ```
