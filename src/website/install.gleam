@@ -475,22 +475,22 @@ version you want to install. Under \"assets\" locate and download the tarball
 and sha256 checksum files for your operating system and processor archecture.
 
 ```
-wget https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v1.14.0-aarch64-unknown-linux-musl.tar.gz
+wget https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz
 
-wget https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v1.14.0-aarch64-unknown-linux-musl.tar.gz.sha256
+wget https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz.sha256
 ```
 
 Verify the checksum is correct. If this command shows a warning then delete
 both files and start again.
 
 ```
-sha256sum -c gleam-v1.14.0-aarch64-unknown-linux-musl.tar.gz.sha256
+sha256sum -c gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz.sha256
 ```
 
 Extract the `gleam` program from the tarball.
 
 ```
-tar xf gleam-v1.14.0-aarch64-unknown-linux-musl.tar.gz
+tar xf gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz
 ```
 
 Make the binary executable and place it in a directory on your `PATH`.
@@ -506,7 +506,7 @@ mv gleam ~/.local/bin/
       name: "Compile from source",
       slug: "source",
       installs: InstallsGleam,
-      systems: [Linux, MacOs, Windows, FreeBsd, OpenBsd, Android],
+      systems: [Linux, MacOs, FreeBsd, OpenBsd, Android],
       priority: LowPriority,
       content: "
 The Gleam toolchain can be compiled with Cargo, Rust's build tool. The most
