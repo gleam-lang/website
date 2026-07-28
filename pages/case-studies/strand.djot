@@ -1,7 +1,7 @@
 ---
-title = "No room for error"
-subtitle = "A case study of Gleam in production at Uncover"
-description = "A case study of Gleam in production at Uncover"
+title = "Optimising for maintainability"
+subtitle = "A case study of Gleam in production at Strand"
+description = "A case study of Gleam in production at Strand"
 meta_title = "No room for error | A case study of Gleam in production at Strand"
 
 published = 2025-07-11
