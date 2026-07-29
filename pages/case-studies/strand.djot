@@ -2,7 +2,7 @@
 title = "Optimising for maintainability"
 subtitle = "A case study of Gleam in production at Strand"
 description = "A case study of Gleam in production at Strand"
-meta_title = "No room for error | A case study of Gleam in production at Strand"
+meta_title = "Optimising for maintainability | A case study of Gleam in production at Strand"
 
 published = 2025-07-11
 featured_quote = "Almost by accident, what we launched as a prototype became a business-critical application"

@@ -2,7 +2,7 @@
 title = "No room for error"
 subtitle = "A case study of Gleam in production at Uncover"
 description = "A case study of Gleam in production at Uncover"
-meta_title = "Optimising for maintainability | A case study of Gleam in production at Uncover"
+meta_title = "No room for error | A case study of Gleam in production at Uncover"
 
 published = 2025-12-03
 featured_quote = "We wouldn't be using Gleam if it wasn't a safe, sensible - almost boring - choice."
