@@ -187,9 +187,9 @@ correct types then it can instead compile to `two(three)(one)`. This second
 option means that the pipe syntax is visually ambiguous, and one cannot tell
 exactly how it compiles without knowing about the function being called. This
 is not in keeping with the wider language, so the `two(three)(one)` version has
-been deprecated and will need to be written explicitly as `one |>
-two(three)()`. With this, pipelines have the same rules as `use` expressions,
-and the reader can always tell how they compile.
+been deprecated and will need to be written explicitly as `one |> two(three)()`.
+With this, pipelines have the same rules as `use` expressions, and the reader
+can always tell how they compile.
 
 We scanned all the publicly published Gleam code and found that the deprecated
 style is almost never used, but just to help anyone who is using it, the
