@@ -394,7 +394,7 @@ And a huge thank you to the bug fixers and experience polishers:
 For full details of the many fixes and improvements they've implemented, see [the
 changelog][changelog].
 
-[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.17.md
+[changelog]: https://github.com/gleam-lang/gleam/blob/main/changelog/v1.18.md
 
 ## Support Gleam
 
