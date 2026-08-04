@@ -1,7 +1,7 @@
 ---
 title = "How to read a file"
 meta_title = "How to read a file in Gleam"
-subtitle = "Using the simplifile package"
+subtitle = "using simplifile"
 description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
 ---
 

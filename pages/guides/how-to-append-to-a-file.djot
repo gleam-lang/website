@@ -1,0 +1,51 @@
+---
+title = "How to append a file"
+meta_title = "How to append a file in Gleam"
+subtitle = "using simplifile"
+description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+---
+
+The `simplifile` package provides file-system functions that work both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add simplifile
+```
+
+Use the [`simplfile.append`](https://simplifile.hexdocs.pm/simplifile.html#append)
+function to append content to a file. If the file does not exist it will be
+created, and if it does already exist then the new content will be added to the
+end of any existing content.
+
+```gleam
+import simplifile.{type FileError}
+
+pub fn record_match(winner: String, loser: String) -> Result(Nil, FileError) {
+  let line = winner <> " beat " <> loser <> "\n"
+  simplifile.append(to: "matches.log", contents: line)
+}
+```
+
+If you want to append binary data to a file then you can use the
+[`simplfile.append_bits`](https://simplifile.hexdocs.pm/simplifile.html#append_bits)
+function instead.
+
+```gleam
+import simplifile
+
+pub fn record_data(data: BitArray) -> Result(Nil, FileError) {
+  simplifile.append_bits("data.bin", data)
+}
+```
+
+If the file cannot be written for any reason, these functions will return a
+[`simplifile.FileError`](https://simplifile.hexdocs.pm/simplifile.html#FileError).
+
+::: alert-warning
+### Files and web browsers
+
+For security reasons web browsers do not let code directly read and write
+files, so if your program runs in browser you will need to use a different
+approach.
+
+:::
