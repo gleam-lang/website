@@ -1,0 +1,54 @@
+---
+title = "How to read a file"
+meta_title = "How to read a file in Gleam"
+subtitle = "Using the simplifile package"
+description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+---
+
+The `simplifile` package provides file-system functions that work both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add simplifile
+```
+
+Use the [`simplfile.read`](https://simplifile.hexdocs.pm/simplifile.html#read)
+function to read the file contents to a string.
+
+```gleam
+import simplifile
+
+pub fn main() -> Nil {
+  case simplifile.read("path/to/file.txt") {
+    Ok(contents) -> todo as "use file contents"
+    Error(error) -> todo as "handle error"
+  }
+}
+```
+
+If the file contains binary data instead of human readable UTF8 text then you
+can use the [`simplfile.read_bits`](https://simplifile.hexdocs.pm/simplifile.html#read_bits)
+function, which reads the contents as a bit array.
+
+```gleam
+import simplifile
+
+pub fn main() -> Nil {
+  case simplifile.read_bits("photo.jpg") {
+    Ok(jpg_data) -> todo as "use binary data"
+    Error(error) -> todo as "handle error"
+  }
+}
+```
+
+If the file cannot be read for any reason, these functions will return a
+[`simplifile.FileError`](https://simplifile.hexdocs.pm/simplifile.html#FileError).
+
+::: alert-warning
+### Files and web browsers
+
+For security reasons web browsers do not let code directly read files, so if
+your program runs in browser you will need to use a [HTML file input](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file)
+instead.
+
+:::
