@@ -1,0 +1,50 @@
+---
+title = "How to create a directory"
+meta_title = "How to create a directory in Gleam"
+subtitle = "using simplifile"
+description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+---
+
+The `simplifile` package provides file-system functions that work on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add simplifile
+```
+
+Use the [`simplfile.create_directory`](https://simplifile.hexdocs.pm/simplifile.html#create_directory)
+function to create a directory.
+
+```gleam
+import simplifile.{type FileError}
+
+pub fn main() -> Result(Nil, FileError) {
+  simplifile.create_directory("pokemon-cards")
+}
+```
+
+The containing directory must already exist and there must not already be a
+directory at the given location, otherwise an error will be returned.
+
+If you want to ensure a directory and all of its parent directories exist then
+you can use the [`simplfile.create_directory_all`](https://simplifile.hexdocs.pm/simplifile.html#create_directory_all)
+function instead.
+
+```gleam
+import simplifile.{type FileError}
+
+pub fn main() -> Result(Nil, FileError) {
+  simplifile.create_directory_all("pokemon/generation-1/fire-type")
+}
+```
+
+If a directory cannot be created for any reason then these functions will
+return a [`simplifile.FileError`](https://simplifile.hexdocs.pm/simplifile.html#FileError).
+
+::: alert-warning
+### Files and web browsers
+
+For security reasons web browsers do not let code directly access files, so if
+your program runs in browser you will need to use a different approach.
+
+:::
