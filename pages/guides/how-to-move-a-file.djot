@@ -1,0 +1,35 @@
+---
+title = "How to move a file"
+meta_title = "How to move a file in Gleam"
+subtitle = "using simplifile"
+description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+---
+
+The `simplifile` package provides file-system functions that work on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add simplifile
+```
+
+Use the [`simplfile.rename`](https://simplifile.hexdocs.pm/simplifile.html#rename)
+function to move a file to a new location.
+
+```gleam
+import simplifile.{type FileError}
+
+pub fn main() -> Result(Nil, FileError) {
+  simplifile.rename("notes.txt", to: "old-notes.txt")
+}
+```
+
+If the file cannot be renamed for any reason this function will return a
+[`simplifile.FileError`](https://simplifile.hexdocs.pm/simplifile.html#FileError).
+
+::: alert-warning
+### Files and web browsers
+
+For security reasons web browsers do not let code directly access files, so if
+your program runs in browser you will need to use a different approach.
+
+:::
