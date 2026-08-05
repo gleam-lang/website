@@ -5,7 +5,7 @@ subtitle = "using simplifile"
 description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
 ---
 
-The `simplifile` package provides file-system functions that work both the
+The `simplifile` package provides file-system functions that work on both the
 Erlang and JavaScript targets. Add it as a dependency to your package:
 
 ```cli

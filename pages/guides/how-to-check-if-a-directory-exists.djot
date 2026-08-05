@@ -1,0 +1,40 @@
+---
+title = "How to check if a directory exists"
+meta_title = "How to check if a file exists in Gleam"
+subtitle = "using simplifile"
+description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+---
+
+The `simplifile` package provides file-system functions that work on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add simplifile
+```
+
+Use the [`simplfile.is_directory`](https://simplifile.hexdocs.pm/simplifile.html#is_directory)
+function to check if a directory exists at a given path.
+
+```gleam
+import simplifile
+
+pub fn main() -> Nil {
+  case simplifile.is_file("src") {
+    Ok(True) -> todo as "directory exists"
+    Ok(False) -> todo as "directory does not exist"
+    Error(_) -> todo as "could not tell if directory exists"
+  }
+}
+```
+
+If the directory path cannot be checked for any reason, these functions will
+return a [`simplifile.FileError`](https://simplifile.hexdocs.pm/simplifile.html#FileError).
+
+::: alert-warning
+### Files and web browsers
+
+For security reasons web browsers do not let code directly read and write
+files, so if your program runs in browser you will need to use a different
+approach.
+
+:::
