@@ -3,6 +3,7 @@ title = "How to check if a directory exists"
 meta_title = "How to check if a file exists in Gleam"
 subtitle = "using simplifile"
 description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+tags = ["files"]
 ---
 
 The `simplifile` package provides file-system functions that work on both the

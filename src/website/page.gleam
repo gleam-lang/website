@@ -9,6 +9,7 @@ import snag
 import tom
 import website/fs
 import website/page/case_study
+import website/page/guide
 import website/page/news
 import website/site.{type Page, Page}
 
@@ -24,14 +25,17 @@ pub fn pages(context: site.Context) -> snag.Result(List(fs.File)) {
   )
   io.print("\n")
 
-  let Site(case_studies:, news:, other:) =
-    list.fold(pages, Site([], [], []), fn(site, page) {
+  let Site(case_studies:, news:, guides:, other:) =
+    list.fold(pages, Site([], [], [], []), fn(site, page) {
       case page.meta.path {
         "/case-studies/" <> _ -> {
           Site(..site, case_studies: [page, ..site.case_studies])
         }
         "/news/" <> _ -> {
           Site(..site, news: [page, ..site.news])
+        }
+        "/guides/" <> _ -> {
+          Site(..site, guides: [page, ..site.guides])
         }
         _ -> {
           Site(..site, other: [page, ..site.other])
@@ -40,11 +44,13 @@ pub fn pages(context: site.Context) -> snag.Result(List(fs.File)) {
     })
 
   use case_studies <- result.try(case_study.files(case_studies, context))
+  use guides <- result.try(guide.files(guides, context))
   use news <- result.try(news.files(news, context))
   let other = list.map(other, site.djot_page(_, context))
 
   [
     case_studies,
+    guides,
     news,
     other,
   ]
@@ -53,7 +59,12 @@ pub fn pages(context: site.Context) -> snag.Result(List(fs.File)) {
 }
 
 pub type Site {
-  Site(case_studies: List(Page), news: List(Page), other: List(Page))
+  Site(
+    case_studies: List(Page),
+    news: List(Page),
+    guides: List(Page),
+    other: List(Page),
+  )
 }
 
 fn read(path: String) -> snag.Result(Page) {
