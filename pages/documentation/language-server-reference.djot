@@ -397,6 +397,31 @@ pub fn main() {
 }
 ```
 
+### Convert comment
+
+This code action can convert between regular and documentation comments.
+
+```gleam
+// This is my favourite function.
+pub fn wibble() {
+  123
+}
+```
+
+If your cursor is within the comment then the code actions will be
+suggested, and if it is run the code will be updated to this:
+
+```gleam
+/// This is my favourite function.
+pub fn wibble() {
+  123
+}
+```
+
+The code action can also be used on documentation comments to convert them into
+regular comments, and comments at the start of a module can be converted to
+module documentation.
+
 ### Convert int base
 
 These code actions can be used to convert int literals between decimal, octal,
