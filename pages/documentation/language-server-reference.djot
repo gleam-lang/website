@@ -397,6 +397,27 @@ pub fn main() {
 }
 ```
 
+### Convert int base
+
+These code actions can be used to convert int literals between decimal, octal,
+hexadecimal, and binary.
+
+```gleam
+pub fn lucky_number() {
+  0b1011
+}
+```
+
+If your cursor is within the list argument then the code actions will be
+suggested, and if the one for converting to decimal is run the code will be
+updated to this:
+
+```gleam
+pub fn lucky_number() {
+  11
+}
+```
+
 ### Convert to and from pipe
 
 These code actions can be used to convert between the `|>` pipe syntax and the
@@ -791,6 +812,9 @@ pub fn run(items: List(Int)) -> Nil {
   }
 }
 ```
+
+This code action can also be triggered on function calls to pattern match on
+the value they return.
 
 ### Qualify and unqualify
 
