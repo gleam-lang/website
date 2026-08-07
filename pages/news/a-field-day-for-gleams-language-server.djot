@@ -110,7 +110,9 @@ pub fn main() {
 // ^^ Triggering the code action over here
 }
 
-fn load_user() -> Result(User, Nil) { todo }
+fn load_user() -> Result(User, Nil) {
+  todo
+}
 ```
 
 Will produce the following code:
@@ -280,7 +282,9 @@ definition when an unknown type is referenced. For example, if `Wibble`
 is not defined:
 
 ```gleam
-pub fn run(data: Wibble(Int)) { todo }
+pub fn run(data: Wibble(Int)) {
+  todo
+}
 ```
 
 The code action will generate:
@@ -288,7 +292,9 @@ The code action will generate:
 ```gleam
 pub type Wibble(a)
 
-pub fn run(data: Wibble(Int)) { todo }
+pub fn run(data: Wibble(Int)) {
+  todo
+}
 ```
 
 Thank you [Daniele Scaratti](https://github.com/lupodevelop)!
