@@ -575,6 +575,37 @@ cargo install --path gleam-bin --force --locked
     ),
 
     InstallationMethod(
+      name: "Compile from source",
+      slug: "source",
+      installs: InstallsGleam,
+      systems: [Windows],
+      priority: LowPriority,
+      content: "
+The Gleam toolchain can be compiled with Cargo, Rust's build tool. Install the
+most recent stable version of [Rust](https://www.rust-lang.org/tools/install/)
+and [Git for Windows](https://git-scm.com/downloads/win) before continuing.
+
+The Rust installer may prompt you to install the Visual Studio C++ Build Tools,
+which provide the linker needed to compile Gleam.
+
+Clone the Gleam source code repository at the version you want. The
+`core.longpaths` option allows Git to check out the repository's long file
+paths on Windows.
+
+```powershell
+git -c core.longpaths=true clone --depth 1 --branch v1.14.0 https://github.com/gleam-lang/gleam.git
+cd gleam
+```
+
+Compile and install Gleam.
+
+```powershell
+cargo install --path gleam-bin --force --locked
+```
+",
+    ),
+
+    InstallationMethod(
       name: "apt package manager",
       slug: "apt",
       installs: InstallsErlang,
