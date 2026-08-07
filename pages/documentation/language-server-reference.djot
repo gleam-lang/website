@@ -176,11 +176,14 @@ The language server support completion of:
 
 The language server is able to rename:
 
-- Functions.
-- Function arguments.
 - Constants.
-- Types
-- Custom type variants
+- Custom type variants.
+- Function arguments.
+- Functions.
+- Imported module aliases.
+- Record field labels.
+- Types parameters.
+- Types.
 - Variables.
 
 ### Document symbols
