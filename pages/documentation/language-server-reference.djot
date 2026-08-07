@@ -705,6 +705,28 @@ fn person_to_json(person: Person) -> json.Json {
 }
 ```
 
+### Generate type
+
+This code action can generate the definition of a type that is being used but
+does not yet exist.
+
+```gleam
+pub fn run(data: Wibble(Int)) {
+  todo
+}
+```
+
+If your cursor is within `Wibble` then the code action will be suggested, and
+if run the code will be updated to this:
+
+```gleam
+pub type Wibble(a)
+
+pub fn run(data: Wibble(Int)) {
+  todo
+}
+```
+
 ### Inexhaustive let to case
 
 This code action can convert from `let` to `case` when the pattern is not
