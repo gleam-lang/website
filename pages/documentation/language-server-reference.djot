@@ -132,8 +132,11 @@ hovering on:
 The language server supports go-to definition for:
 
 - Constants.
+- Custom type variants.
 - Functions.
 - Import statements, including unqualified values and types.
+- Modules.
+- Record fields.
 - Type annotations.
 - Variables.
 
@@ -147,11 +150,12 @@ in the expression and present their definitions for you to view and to jump to.
 
 The language server supports find references for these entities:
 
-- Functions.
-- Function arguments.
 - Constants.
-- Types
 - Custom type variants
+- Function arguments.
+- Functions.
+- Record fields.
+- Types
 - Variables.
 
 ### Code completion
