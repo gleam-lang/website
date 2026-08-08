@@ -63,6 +63,24 @@ const research = [
 
 const done = [
   Release(
+    version: "v1.18",
+    date: calendar.Date(2026, calendar.July, 29),
+    items: [
+      "Language server go-to-definition, find references, and rename for record fields",
+      "Pipe rewriting syntax deprecation",
+      "Singleton values for JavaScript variants with no fields",
+      "Git dependency subdirectory support",
+      "Authenticated requests to Hex with `HEXPM_READ_API_KEY` environment variable",
+      "Hexdocs URL format update in generated links",
+      "Language server automatic import updates on module rename",
+      "Language server generate missing type definition code action",
+      "Language server rewrite int in different base code action",
+      "Language server type variable renaming",
+      "Language server discard unused variable code action",
+      "Formatter performance improvements",
+    ],
+  ),
+  Release(
     version: "v1.17",
     date: calendar.Date(2026, calendar.June, 2),
     items: [
