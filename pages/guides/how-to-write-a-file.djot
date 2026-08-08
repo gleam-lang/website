@@ -1,0 +1,50 @@
+---
+title = "How to write a file"
+meta_title = "How to write a file in Gleam"
+subtitle = "using simplifile"
+description = "The simplifile package provides file system functionality that works with Gleam on both Erlang and JavaScript"
+tags = ["files"]
+---
+
+The `simplifile` package provides file-system functions that work on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add simplifile
+```
+
+Use the [`simplfile.write`](https://simplifile.hexdocs.pm/simplifile.html#write)
+function to write content to a file. If the file does not exist it will be
+created, and if it does already exist then the contents will be replaced.
+
+```gleam
+import simplifile
+
+pub fn write_greeting() -> Result(Nil, simplifile.FileError) {
+  simplifile.write(to: "greeting.txt", contents: "Hello, Joe!\n")
+}
+```
+
+If you want to write binary data to a file then you can use the
+[`simplfile.write_bits`](https://simplifile.hexdocs.pm/simplifile.html#write_bits)
+function instead.
+
+```gleam
+import simplifile
+
+pub fn write_data() -> Result(Nil, simplifile.FileError) {
+  simplifile.write_bits("data.bin", <<1, 2, 3, 4, 5>>)
+}
+```
+
+If the file cannot be written for any reason, these functions will return a
+[`simplifile.FileError`](https://simplifile.hexdocs.pm/simplifile.html#FileError).
+
+::: alert-warning
+### Files and web browsers
+
+For security reasons web browsers do not let code directly read and write
+files, so if your program runs in browser you will need to use a different
+approach.
+
+:::
