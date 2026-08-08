@@ -116,7 +116,7 @@ const done = [
       "List prepending in constant expressions",
       "Build tool support for mts, cts, jsx, and tsx external files",
       "Formatter tuple handling improvements",
-      "Language server and and remove anonymous function code actions",
+      "Language server and remove anonymous function code actions",
       "Language server replace hole with type code action",
     ],
   ),
