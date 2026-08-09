@@ -68,7 +68,7 @@ const done = [
     items: [
       "Language server go-to-definition, find references, and rename for record fields",
       "Pipe rewriting syntax deprecation",
-      "Singleton values for JavaScript variants with no fields",
+      "Singleton optimisation for values on JavaScript",
       "Git dependency subdirectory support",
       "Authenticated requests to Hex with `HEXPM_READ_API_KEY` environment variable",
       "Hexdocs URL format update in generated links",
