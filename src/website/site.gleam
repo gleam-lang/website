@@ -2255,6 +2255,7 @@ pub fn parse_djot(string: String) -> jot.Document {
         | jot.Codeblock(language: option.Some("systemd"), ..)
         | jot.Codeblock(language: option.Some("markdown"), ..)
         | jot.Codeblock(language: option.Some("md"), ..)
+        | jot.Codeblock(language: option.Some("powershell"), ..)
         | jot.Codeblock(language: option.Some("nix"), ..)
         | jot.Codeblock(language: option.Some("txt"), ..)
         | jot.Codeblock(language: option.Some("text"), ..) -> container
