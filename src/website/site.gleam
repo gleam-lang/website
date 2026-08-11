@@ -931,18 +931,23 @@ pub fn documentation(ctx: Context) -> fs.File {
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/writing-gleam/command-line-reference")], [
+        html.a([attr.href("/documentation/command-line-reference")], [
           html.text("The command line reference"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/language-server")], [
+        html.a([attr.href("/documentation/language-server-reference")], [
           html.text("The Gleam language server reference"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/writing-gleam/gleam-toml")], [
+        html.a([attr.href("/documentation/gleam-toml-reference")], [
           html.text("The gleam.toml config file reference"),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("/documentation/compatibility-reference")], [
+          html.text("The operating system and platform compatibility reference"),
         ]),
       ]),
       html.li([], [
