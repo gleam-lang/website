@@ -12,7 +12,7 @@ release schedule for Gleam, but there is typically a new minor release every
 1-to-3 months. Patch releases may occur as needed between minor releases. 
 
 Release-candidate versions have the suffix `-rc#`, where `#` is one or more
-digits. e.g. `v1.20.0-rc2`. These are for testing the changes in the next
+digits, e.g. `v1.20.0-rc2`. These are for testing the changes in the next
 release, and are more likely to contain bugs. There may be breaking changes
 between release candidate versions.
 
@@ -63,12 +63,12 @@ the time of each Gleam release.
 - Gleam v1.2 through v1.10 support Erlang/OTP 27 and 26.
 - Gleam v1.0 through v1.1 support Erlang/OTP 26 and 25.
 
-Individual Gleam packages may have additional requirements. i.e. Only
+Individual Gleam packages may have additional requirements, e.g. only
 supporting the most recent Erlang/OTP major version.
 
 ## JavaScript versions
 
 Gleam's JavaScript target supports ECMAScript 2022 or higher.
 
-Individual Gleam packages may have additional requirements. i.e. Only
+Individual Gleam packages may have additional requirements. e.g. only
 supporting sufficiently new web browsers.
