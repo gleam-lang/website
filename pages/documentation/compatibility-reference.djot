@@ -1,0 +1,74 @@
+---
+title = "Compatibility reference"
+meta_title = "Compatibility reference | Gleam programming language"
+subtitle = "Which versions can you use?"
+description = "This document details the operating systems and the versions of Erlang and JavaScript that each version of Gleam is compatible with."
+---
+
+## Gleam versions
+
+Gleam follows [semantic versioning](https://semver.org/). There is no fixed
+release schedule for Gleam, but there is typically a new minor release every
+1-to-3 months. Patch releases may occur as needed between minor releases. 
+
+Release-candidate versions have the suffix `-rc#`, where `#` is one or more
+digits. e.g. `v1.20.0-rc2`. These are for testing the changes in the next
+release, and are more likely to contain bugs. There may be breaking changes
+between release candidate versions.
+
+Gleam releases are listed on the [git repository release page](http://github.com/gleam-lang/gleam/releases),
+which is also available as an [atom feed](http://github.com/gleam-lang/gleam/releases.atom).
+
+Typically only the latest minor version will receive bug fixes and security
+fixes. If your organisation requires and are willing to help finance the
+support of older versions please contact [support@gleam.run](mailto:support@gleam.run).
+
+## Operating systems
+
+Gleam is continuously tested on and provides precompiled executables for these
+operating systems:
+
+- Linux aarch64
+- Linux x86_64
+- MacOS aarch64
+- MacOS x86_64
+- Windows aarch64
+- Windows x86_64
+
+We also make an effort to support these operating systems, but we are unable to
+offer the same level of support due to lack of continuous testing
+infrastructure and development machines for them.
+
+- Android aarch64
+- Android x86_64
+- FreeBSD aarch64
+- FreeBSD x86_64
+- OpenBSD aarch64
+- OpenBSD x86_64
+
+The Gleam compiler is written to be largely operating-system agnostic so it may
+work on other operating systems without modification.
+
+If your organisation wishes to supply or finance development and testing
+capability for more operating systems please contact
+[support@gleam.run](mailto:support@gleam.run).
+
+## Erlang versions
+
+Gleam's Erlang target supports the two most recent Erlang/OTP major versions at
+the time of each Gleam release.
+
+- Gleam v1.18 and higher support Erlang/OTP 29 and 28.
+- Gleam v1.11 through v1.17 support Erlang/OTP 28 and 27.
+- Gleam v1.2 through v1.10 support Erlang/OTP 27 and 26.
+- Gleam v1.0 through v1.1 support Erlang/OTP 26 and 25.
+
+Individual Gleam packages may have additional requirements. i.e. Only
+supporting the most recent Erlang/OTP major version.
+
+## JavaScript versions
+
+Gleam's JavaScript target supports ECMAScript 2022 or higher.
+
+Individual Gleam packages may have additional requirements. i.e. Only
+supporting sufficiently new web browsers.
