@@ -63,12 +63,23 @@ the time of each Gleam release.
 - Gleam v1.2 through v1.10 support Erlang/OTP 27 and 26.
 - Gleam v1.0 through v1.1 support Erlang/OTP 26 and 25.
 
+Erlang/OTP is largely backwards compatible, so newer versions of Erlang/OTP are
+likely to work with older versions of Gleam. If a new major version of
+Erlang/OTP is released then the currently active Gleam version will support
+that version in addition to the 2 major versions it already supported.
+
 Individual Gleam packages may have additional requirements, e.g. only
 supporting the most recent Erlang/OTP major version.
 
 ## JavaScript versions
 
-Gleam's JavaScript target supports ECMAScript 2022 or higher.
+Gleam's JavaScript target supports ECMAScript 2022 or higher. Future versions
+of Gleam may upgrade the required ECMAScript version.
+
+If your runtime does not offer a new enough ECMAScript version then a
+JavaScript bundler or other tool can be used to compile the JavaScript into an
+older version of JavaScript. This is commonly done by JavaScript programmers in
+order to support older web browsers.
 
 Individual Gleam packages may have additional requirements. e.g. only
 supporting sufficiently new web browsers.
