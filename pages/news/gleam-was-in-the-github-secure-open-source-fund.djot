@@ -1,0 +1,104 @@
+---
+title = "Gleam was in the GitHub Secure Open Source Fund"
+meta_title = "Gleam was in the GitHub Secure Open Source Fund | Gleam programming language"
+subtitle = "Help from the GitHub Security Lab"
+description = "This year Gleam got a bunch of help from the GitHub Security Lab through their 4th annual open source security program"
+published = 2026-08-14
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
+Earlier in the year, Gleam was invited to and participated in the 4th
+[GitHub Secure Open Source Fund](https://github.com/open-source/github-secure-open-source-fund),
+an annual program that supports key open source projects in order to secure the
+open source ecosystem as a whole. It consists of a 3-week security training
+program, a 12-month engagement in which ongoing security improvements are
+implemented, and $10,000 USD of [GitHub Sponsorship](https://github.com/sponsors/gleam-lang).
+All incredibly valuable to the Gleam project, and what an honour to be
+selected!
+
+We've made numerous security improvements off the back of the program, and have
+more yet planned, but they would either make rather dry reading or deserve
+their own release announcement, so I won't bore you with the details here.
+Instead, here are my main takeaways from the program so far.
+
+## Gleam is ahead of the pack in terms of security
+
+I'm delighted to say that the Gleam project was in an excellent position in
+terms of security before the program even began. Thanks to the hard work of the
+Gleam team and contributors, and our collaboration with [The Erlang Ecosystem
+Foundation](https://erlef.org/) (aka the EEF), we were able to slap a
+metaphorical `#already-implemented` tag on many of the items that other
+projects would have to add to their development backlog.
+
+We did not uncover any security vulnerabilities or ways in which our security
+processes were lacking. Excellent news!
+
+Does that mean that this aspect of the security education was not helpful? Not
+at all, it was still greatly impactful because...
+
+## Experts know what you don't know
+
+In the Gleam team we care deeply about security, and it is at the front of my
+mind any time we develop anything, from compiler improvements, to language
+design, to libraries, to documentation. The security of the Gleam ecosystem and
+Gleam programmers is non-negotiable.
+
+That said, we are not primarily security experts[^john]. We have security skills
+and knowledge, but our real strengths lie in language design, compiler and
+application development, ecosystem construction, and community management. When
+making changes in those domains, we can have great confidence that we have
+considered all the necessary factors, but that's less true for other
+areas. Is there some key factor that we are missing with one of our decisions? 
+
+The GitHub Security Lab are leading experts in security, especially when it
+comes to open source. The guidance and feedback from them and the EEF's security
+team are able to turn those unknowns of ours into knowns, letting us know what
+we have missed, or, just as importantly, that we have not missed anything at
+all.
+
+Being secure is one thing; having confidence in security is another.
+
+## Compliance and evidence are highly impactful
+
+It's all very well and good being technically secure, but if we are unable to
+evidence to our users how and to what extent we are secure then it's all a
+big "just trust me bro".
+
+It is easy for us technical folks to focus on technical matters, but security is
+as much about social behaviour and communication as it is about technical
+challenges. A relatively small amount of time spent on publishing a
+security policy, producing security documentation and guidance, and meeting
+standard security and compliance frameworks can have a huge impact on our
+users. It can also help with adoption: a company with this evidence is much
+more likely to trust a technology and make it part of their software stack.
+
+## Your dependency graph is full of opportunity
+
+The software industry has not yet solved the problem of supporting open source
+projects, and many of the projects you depend on will be lacking in time,
+expertise, and funding. The effect of this is that many applications and
+services are built on a foundation that is vulnerable to security and
+maintenance problems. If not resolved, the consequences of these problems
+can be expensive.
+
+It has been excellent to see all the improvements all 50 projects in the 4th
+cohort have made so far. I don't want to understate how much work, time, and
+money GitHub and their partners have put into this program, but with the many
+millions of users who benefit from these improvements the cost effectiveness of
+their investment is striking. As the adage goes, an ounce of prevention is
+worth a pound of cure. 
+
+Bravo to everyone who has contributed to open source security with the GitHub
+Secure Open Source Fund! I commend your strategic and civic-minded thinking,
+and I hope others follow your lead and take small steps to support their own
+dependencies.
+
+Thanks again, folks! Happy hacking!
+
+[^john]: OK, that's not quite true any more. Since completing the program, the
+          brilliant [John Downey](https://jtdowney.com/) has joined the Gleam
+          core team, bringing a great wealth of security expertise with him.
+          Thanks, John! It's great to have you.
