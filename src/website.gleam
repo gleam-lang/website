@@ -9,6 +9,7 @@ import website/cheatsheet
 import website/fs
 import website/install
 import website/page
+import website/page/guides
 import website/roadmap
 import website/site
 import website/sponsor
@@ -45,6 +46,7 @@ pub fn build_site() -> snag.Result(Nil) {
     site.branding(ctx),
     site.community(ctx),
     site.documentation(ctx),
+    guides.index(ctx),
     site.sponsor(sponsors, ctx),
     roadmap.page(ctx),
     cheatsheet.erlang(ctx),
