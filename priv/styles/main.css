@@ -2199,3 +2199,12 @@ details > summary {
   object-fit: contain;
   aspect-ratio: 1;
 }
+
+.prose [role=doc-endnotes] {
+  font-size: 0.85em;
+  margin-top: var(--gap-6);
+}
+
+.prose [role=doc-backlink] {
+  padding-left: var(--gap-1);
+}
