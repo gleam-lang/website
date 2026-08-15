@@ -521,22 +521,22 @@ version you want to install. Under \"assets\" locate and download the tarball
 and sha256 checksum files for your operating system and processor archecture.
 
 ```
-wget https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz
+curl -o gleam.tar.gz $GLEAM_TAR_GZ_URL_HERE
 
-wget https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz.sha256
+curl -o gleam.tar.gz.sha256 $GLEAM_SHA256_URL_HERE
 ```
 
 Verify the checksum is correct. If this command shows a warning then delete
 both files and start again.
 
 ```
-sha256sum -c gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz.sha256
+sha256sum -c gleam.tar.gz.sha256
 ```
 
 Extract the `gleam` program from the tarball.
 
 ```
-tar xf gleam-v0.0.0-aarch64-unknown-linux-musl.tar.gz
+tar xf gleam.tar.gz
 ```
 
 Make the binary executable and place it in a directory on your `PATH`.
