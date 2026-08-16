@@ -6,13 +6,13 @@ description = "Run Gleam on a server from any provider"
 preview_image = "deploy-linux"
 ---
 
-This guide will take you through the process of deploying a Gleam backend web application to a single Linux server. The application will be run by systemd in a Linux container, and [Caddy]("https://caddyserver.com/") will be used to handle HTTPS.
+This guide will take you through the process of deploying a Gleam backend web application to a single Linux server. The application will be run by systemd in a Linux container, and [Caddy](https://caddyserver.com/) will be used to handle HTTPS.
 
 ## Provision your server
 
 We will be using the most recent LTS version of Ubuntu in this tutorial. You can use other Linux distributions but there may be slight differences in commands or additional steps you need to undertake to deploy your application.
 
-If you do not have a server already there are a number of companies who can provide you one for a small monthly fee. You can use [Gleam’s referral link for Vultr]("https://www.vultr.com/?ref=9694426") if you do not already have a preferred server provider.
+If you do not have a server already there are a number of companies who can provide you one for a small monthly fee. You can use [Gleam’s referral link for Vultr](https://www.vultr.com/?ref=9694426) if you do not already have a preferred server provider.
 
 We will be using an amd64 server with 1 shared virtual CPU and 1 GB of memory. You can use a smaller server if you wish, but at least 250MB of memory is recommended. If your application is to receive a lot of traffic or perform expensive computation then you may wish to upgrade to a more powerful server. Be sure to add your SSH public key to the server when creating it. SSH should never be used with passwords, it is insecure.
 
@@ -206,7 +206,7 @@ Environment variables can be added using the `Environment=KEY=value` syntax.
 
 Directories on the server can be made accessible to the application inside the container using the `Volume=/path/on/server:/path/in/container:rw,z` syntax.
 
-See the [Podman systemd]("https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html") documentation for more detail.
+See the [Podman systemd](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html) documentation for more detail.
 
 ## Start the container
 
