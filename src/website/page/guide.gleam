@@ -119,20 +119,95 @@ fn index_page(
 
   [
     html.main([attr.class("page content")], [
-      // html.p([], [html.text("Filter by tag")]),
-      // html.ul(
-      //   [attr.class("tag-picker")],
-      //   list.map(tags, fn(tag) {
-      //     html.li([], [html.button([], [html.text(tag)])])
-      //   }),
-      // ),
-      // html.p([], [html.text("Or search by title")]),
-      // html.form([attr.class("tag-search-form")], [
-      //   html.input([attr.type_("text")]),
-      // ]),
-      html.ul([attr.class("link-cards")], guides),
+      html.h5([attr.class("guide-filter-label")], [html.text("Filter by tag")]),
+      html.ul(
+        [attr.class("tag-picker")],
+        list.map(tags, fn(tag) {
+          html.li([], [html.button([], [html.text(tag)])])
+        }),
+      ),
+      html.h5([attr.class("guide-filter-label")], [
+        html.text("Or search by title"),
+      ]),
+      html.form([attr.class("guide-search-form")], [
+        html.input([
+          attr.type_("text"),
+          attr.placeholder("eg. external, patterns, http"),
+        ]),
+        html.img([
+          attr.class("search-icon"),
+          attr.src("/images/search-icon.svg"),
+          attr.alt("Search icon"),
+          attr.aria_hidden(True),
+        ]),
+      ]),
+      html.ul([attr.class("link-cards guides-list")], guides),
+      html.script([], filter_script),
     ]),
   ]
   |> site.page_layout("", meta, ctx)
   |> site.to_html_file(meta)
 }
+
+const filter_script = "
+function updateDisplayedGuides(tags, filterValue) {
+	const search = filterValue.trim().toLowerCase();
+
+	for (const guide of document.querySelectorAll(\".link-cards>li\")) {
+		const tagsEl = guide.querySelector(\".guide-tags\");
+		const guideTags = tagsEl ? tagsEl.textContent : \"\";
+
+		// Guide must include every active tag
+		const matchesTags = tags.every((tag) => guideTags.includes(tag));
+
+		// Guide must match the search string somewhere in its text
+		const matchesSearch =
+			search.length === 0 || guide.textContent.toLowerCase().includes(search);
+
+		guide.style.display = matchesTags && matchesSearch ? \"\" : \"none\";
+	}
+
+  if ([...document.querySelectorAll(\".link-cards>li\")].every(child => window.getComputedStyle(child).display === 'none'))
+    document.querySelector('.guides-list').classList.add('empty')
+  else
+    document.querySelector('.guides-list').classList.remove('empty')
+}
+
+const filter = new Proxy(
+	{ value: \"\" },
+	{
+		set(target, prop, value) {
+			target[prop] = value;
+			updateDisplayedGuides(tags, filter.value);
+			return true;
+		},
+	},
+);
+
+const tags = new Proxy([], {
+	set(target, prop, value) {
+		target[prop] = value;
+		updateDisplayedGuides(tags, filter.value);
+		return true;
+	},
+});
+
+for (const button of document.querySelectorAll(\".tag-picker button\")) {
+	const tag = button.textContent;
+	button.addEventListener(\"click\", () => {
+		if (tags.includes(tag)) {
+			tags.splice(tags.indexOf(tag), 1);
+			button.classList.remove(\"active\");
+			return;
+		}
+		tags.push(tag);
+		button.classList.add(\"active\");
+	});
+}
+
+const searchInput = document.querySelector(\".guide-search-form input\");
+
+searchInput.addEventListener(\"input\", () => {
+	filter.value = searchInput.value;
+});
+"
