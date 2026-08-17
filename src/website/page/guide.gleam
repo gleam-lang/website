@@ -91,25 +91,26 @@ fn index_page(
     ])
   }
 
-  // let tags =
-  //   list.fold(guides, set.new(), fn(tags, guide) {
-  //     list.fold(guide.1.tags, tags, set.insert)
-  //   })
-  //   |> set.to_list
-  //   |> list.sort(string.compare)
+  let tags =
+    list.fold(guides, set.new(), fn(tags, guide) {
+      list.fold(guide.1.tags, tags, set.insert)
+    })
+    |> set.to_list
+    |> list.sort(string.compare)
 
   let guides =
     list.map(guides, fn(guide) {
+      let #(page, guide) = guide
       html.li([], [
-        html.a([attr.class("link"), attr.href(guide.0.meta.path)], [
-          html.h4([], [html.text(guide.0.meta.title)]),
+        html.a([attr.class("link"), attr.href(page.meta.path)], [
+          html.h4([], [html.text(page.meta.title)]),
           html.ul([attr.class("link-meta")], [
             html.li([attr.class("guide-target")], [
-              guide_icon(guide.1.target),
-              html.text(target_string(guide.1.target)),
+              guide_icon(guide.target),
+              html.text(target_string(guide.target)),
             ]),
             html.li([attr.class("guide-tags")], [
-              html.text(guide.1.tags |> string.join(", ")),
+              html.text(guide.tags |> string.join(", ")),
             ]),
           ]),
         ]),
