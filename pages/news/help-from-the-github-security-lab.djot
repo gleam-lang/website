@@ -4,6 +4,7 @@ meta_title = "Help from the Github Security Lab | Gleam programming language"
 subtitle = "Takeaways from the GitHub Secure Open Source Fund"
 description = "Gleam's takeaways from the GitHub Secure Open Source Fund program."
 published = 2026-08-17
+preview_image = "github-secure-open-source-fund"
 
 [author]
 name = "Louis Pilfold"
