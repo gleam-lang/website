@@ -1,9 +1,9 @@
 ---
-title = "Gleam was in the GitHub Secure Open Source Fund"
-meta_title = "Gleam was in the GitHub Secure Open Source Fund | Gleam programming language"
-subtitle = "Help from the GitHub Security Lab"
-description = "This year Gleam got a bunch of help from the GitHub Security Lab through their 4th annual open source security program"
-published = 2026-08-14
+title = "Help from the Github Security Lab"
+meta_title = "Help from the Github Security Lab | Gleam programming language"
+subtitle = "Takeaways from the GitHub Secure Open Source Fund"
+description = "Gleam's takeaways from the GitHub Secure Open Source Fund program."
+published = 2026-08-17
 
 [author]
 name = "Louis Pilfold"
@@ -14,7 +14,7 @@ Earlier in the year, Gleam was invited to and participated in the 4th
 [GitHub Secure Open Source Fund](https://github.com/open-source/github-secure-open-source-fund),
 an annual program that supports key open source projects in order to secure the
 open source ecosystem as a whole. It consists of a 3-week security training
-program, a 12-month engagement in which ongoing security improvements are
+program[^ai], a 12-month engagement in which ongoing security improvements are
 implemented, and $10,000 USD of [GitHub Sponsorship](https://github.com/sponsors/gleam-lang).
 All incredibly valuable to the Gleam project, and what an honour to be
 selected!
@@ -98,7 +98,12 @@ dependencies.
 
 Thanks again, folks! Happy hacking!
 
+[^ai]: The training included material on how to secure AI-based systems, and
+  including guidance on some AI-based tooling. This does not mean that Gleam's
+  AI policy is changing! We are not adopting AI development and AI
+  contributions are not accepted.
+
 [^john]: OK, that's not quite true any more. Since completing the program, the
-          brilliant [John Downey](https://jtdowney.com/) has joined the Gleam
-          core team, bringing a great wealth of security expertise with him.
-          Thanks, John! It's great to have you.
+  brilliant [John Downey](https://jtdowney.com/) has joined the Gleam core
+  team, bringing a great wealth of security expertise with him. Thanks, John!
+  It's great to have you.
