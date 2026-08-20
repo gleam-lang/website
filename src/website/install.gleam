@@ -475,7 +475,7 @@ configuration:
 { pkgs, ... }:
 {
   # ...
- 
+
   environment.systemPackages = with pkgs; [
     gleam
     beamPackages.erlang
@@ -709,7 +709,7 @@ file is opened.
       systems: [Linux, MacOs, Windows],
       priority: MediumPriority,
       content: "
-Gram [supports](https://gram.liten.app/docs/languages/gleam/) the language
+Gram [supports](https://gram-editor.com/docs/languages/gleam/) the language
 server out-of-the-box. No additional configuration is required and Gram will
 automatically start the language server when a Gleam file is opened.
 ",
