@@ -1169,11 +1169,28 @@ fn what_method_page(
     EditorStep -> "editor-step"
   }
 
+  let extra_content = case step {
+    GleamStep | EditorStep -> []
+    ErlangStep -> {
+      let reference = "/documentation/compatibility-reference/#Erlang-versions"
+      [
+        html.p([], [
+          html.text("Installing some other way? Check "),
+          html.a([attribute.href(reference)], [
+            html.text("Gleam's compatibility"),
+          ]),
+          html.text(" to ensure you install the right version."),
+        ]),
+      ]
+    }
+  }
+
   [
     html.ul(
       [attribute.class("install-options"), attribute.class(class)],
       list.map(methods, method_html),
     ),
+    ..extra_content
   ]
   |> site.page_layout("", meta, ctx)
   |> site.to_html_file(meta)
