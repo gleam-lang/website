@@ -53,7 +53,7 @@ sudo apk add erlang rebar3
 Gleam can be installed with pacman by running this command:
 
 ```
-sudo pacman -S gleam erlang rebar3
+sudo pacman -S gleam rebar3
 ```
 ",
     ),
