@@ -1,6 +1,11 @@
+import contour
 import gleam/option
+import houdini
 import lustre/attribute.{attribute as attr} as attr
+import lustre/element
 import lustre/element/html
+import pearl
+import tear
 import website/fs
 import website/site
 
@@ -143,28 +148,20 @@ pub fn elixir(ctx: site.Context) -> fs.File {
       html.code([], [html.text("#")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "# Hello, Joe!
+    elixir_code(
+      "# Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam comments are written with a "),
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Hello, Joe!
+    gleam_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -174,59 +171,43 @@ pub fn elixir(ctx: site.Context) -> fs.File {
       html.code([], [html.text("////")]),
       html.text("are used to document the current module."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// This module is very important.
+    gleam_code(
+      "//// This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("variables")], [html.text("Variables")]),
     html.p([], [html.text("You can reassign variables in both languages.")]),
     html.h4([attr.id("elixir-1")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "size = 50
+    elixir_code(
+      "size = 50
 size = size + 100
 size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-1")], [html.text("Gleam")]),
     html.p([], [
       html.text("Gleam has the "),
       html.code([], [html.text("let")]),
       html.text("keyword before each variable assignment."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let size = 50
+    gleam_code(
+      "let size = 50
 let size = size + 100
 let size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("match-operator")], [html.text("Match operator")]),
     html.h4([attr.id("elixir-2")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "[x, y] = [1, 2] # assert that the list has 2 elements
+    elixir_code(
+      "[x, y] = [1, 2] # assert that the list has 2 elements
 2 = y # assert that y is 2
 2 = x # runtime error because x's value is 1
 [y] = \"Hello\" # runtime error
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-2")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, "),
@@ -239,44 +220,32 @@ let size = 1
       html.code([], [html.text("let assert")]),
       html.text(" keyword is preferred."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let assert [x, y] = [1, 2]
+    gleam_code(
+      "let assert [x, y] = [1, 2]
 let assert 2 = y // assert that y is 2
 let assert 2 = x // runtime error
 let assert [y] = \"Hello\" // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("variables-type-annotations")], [
       html.text("Variables type annotations"),
     ]),
     html.h4([attr.id("elixir-3")], [html.text("Elixir")]),
     html.p([], [html.text("In Elixir there’s no static types.")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "some_list = [1, 2, 3]
+    elixir_code(
+      "some_list = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-3")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "In Gleam type annotations can optionally be given when binding variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let some_list: List(Int) = [1, 2, 3]
+    gleam_code(
+      "let some_list: List(Int) = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Gleam will check the type annotation to ensure that it matches the type of the assigned value. It does not need annotations to type check your code, but you may find it useful to annotate variables to hint to the compiler that you want a specific type to be inferred.",
@@ -293,19 +262,15 @@ let assert [y] = \"Hello\" // compile error, type mismatch
       html.code([], [html.text(".")]),
       html.text(" when calling them."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "def sum(x, y) do
+    elixir_code(
+      "def sum(x, y) do
   x + y
 end
 
 mul = fn(x, y) -> x * y end
 mul.(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-4")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -314,19 +279,15 @@ mul.(1, 2)
       html.code([], [html.text(".")]),
       html.text(" when called."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn sum(x, y) {
+    gleam_code(
+      "pub fn sum(x, y) {
   x + y
 }
 
 let mul = fn(x, y) { x * y }
 mul(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("exporting-functions")], [html.text("Exporting functions")]),
     html.h4([attr.id("elixir-5")], [html.text("Elixir")]),
     html.p([], [
@@ -336,10 +297,8 @@ mul(1, 2)
       html.code([], [html.text("defp")]),
       html.text(" are private."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "# this is public
+    elixir_code(
+      "# this is public
 def sum(x, y) do
   x + y
 end
@@ -349,19 +308,15 @@ defp mul(x, y) do
   x * y
 end
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-5")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam functions are private by default and need the "),
       html.code([], [html.text("pub")]),
       html.text("keyword to be public."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// this is public
+    gleam_code(
+      "// this is public
 pub fn sum(x, y) {
   x + y
 }
@@ -371,9 +326,7 @@ fn mul(x, y) {
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-type-annotations")], [
       html.text("Function type annotations"),
     ]),
@@ -383,18 +336,14 @@ fn mul(x, y) {
         "You can use Typespecs to annotate functions in Elixir but they mainly serve as documentation. Typespecs can be optionally used by tools like Dialyzer to find some subset of possible bugs.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "@spec sum(number, number) :: number
+    elixir_code(
+      "@spec sum(number, number) :: number
 def sum(x, y), do: x + y
 
 @spec mul(number, number) :: boolean # no Elixir compile error
 def mul(x, y), do: x * y
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-6")], [html.text("Gleam")]),
     html.p([], [
       html.text("Functions can "),
@@ -403,10 +352,8 @@ def mul(x, y), do: x * y
         " have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn add(x: Int, y: Int) -> Int {
+    gleam_code(
+      "pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
@@ -414,40 +361,30 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-heads")], [html.text("Function heads")]),
     html.h4([attr.id("elixir-7")], [html.text("Elixir")]),
     html.p([], [html.text("Elixir functions can have multiple function heads.")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "def zero?(0), do: true
+    elixir_code(
+      "def zero?(0), do: true
 def zero?(x), do: false
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-7")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Gleam functions can have only one function head. Use a case expression to pattern match on function arguments.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
+    gleam_code(
+      "pub fn is_zero(x) { // we cannot use `?` in function names in Gleam
   case x {
     0 -> True
     _ -> False
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-overloading")], [
       html.text("Function overloading"),
     ]),
@@ -468,10 +405,8 @@ is no need for a special syntax to assign a module function to a variable.",
       ),
     ]),
     html.h4([attr.id("elixir-8")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "def identity(x) do
+    elixir_code(
+      "def identity(x) do
   x
 end
 
@@ -480,14 +415,10 @@ def main() do
   func.(100)
 end
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-8")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn identity(x) {
+    gleam_code(
+      "fn identity(x) {
   x
 }
 
@@ -496,9 +427,7 @@ fn main() {
   func(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("calling-anonymous-functions")], [
       html.text("Calling anonymous functions"),
     ]),
@@ -514,27 +443,19 @@ so a special ",
       html.text("In Gleam all functions are called using the same syntax."),
     ]),
     html.h4([attr.id("elixir-9")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "anon_function = fn x, y -> x + y end
+    elixir_code(
+      "anon_function = fn x, y -> x + y end
 anon_function.(1, 2)
 mod_function(3, 4)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-9")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let anon_function = fn(x, y) { x + y }
+    gleam_code(
+      "let anon_function = fn(x, y) { x + y }
 anon_function(1, 2)
 mod_function(3, 4)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("labelled-arguments")], [html.text("Labelled arguments")]),
     html.p([], [
       html.text(
@@ -555,27 +476,19 @@ argument being the first element in the tuple.",
 variable inside the function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "def replace(opts \\\\ []) do
+    elixir_code(
+      "def replace(opts \\\\ []) do
   string = opts[:inside] || default_string()
   pattern = opts[:each] || default_pattern()
   replacement = opts[:with] || default_replacement()
   go(string, pattern, replacement)
 end
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "replace(each: \",\", with: \" \", inside: \"A,B,C\")
+    ),
+    elixir_code(
+      "replace(each: \",\", with: \" \", inside: \"A,B,C\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Because the arguments are stored in a list there is a small runtime
@@ -592,24 +505,16 @@ Elixir the name used at the call-site does not have to match the name used
 for the variable inside the function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn replace(inside string, each pattern, with replacement) {
+    gleam_code(
+      "pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "replace(each: \",\", with: \" \", inside: \"A,B,C\")
+    ),
+    gleam_code(
+      "replace(each: \",\", with: \" \", inside: \"A,B,C\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "There is no performance cost to Gleam’s labelled arguments as they are
@@ -859,61 +764,45 @@ are fully type checked.",
         "In Elixir module attrs can be defined to name literals we may want to use in multiple places. They can only be used within the current module.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "defmodule MyServer do
+    elixir_code(
+      "defmodule MyServer do
   @the_answer 42
   def main, do: @the_answer
 end
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-11")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam constants can be created using the "),
       html.code([], [html.text("const")]),
       html.text("keyword."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "const the_answer = 42
+    gleam_code(
+      "const the_answer = 42
 
 pub fn main() {
   the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Additionally, Gleam constants can be referenced from other modules.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file other_module.gleam
+    gleam_code(
+      "// in file other_module.gleam
 pub const the_answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import other_module
+    ),
+    gleam_code(
+      "import other_module
 
 fn main() {
   other_module.the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("elixir-12")], [html.text("Elixir")]),
     html.p([], [
@@ -931,10 +820,8 @@ fn main() {
       html.code([], [html.text("case")]),
       html.text(", not for grouping expressions in a bare assignment."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "defmodule Wibble do
+    elixir_code(
+      "defmodule Wibble do
   def main() do
     x = (
       IO.puts(1)
@@ -945,9 +832,7 @@ fn main() {
   end
 end
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam braces "),
@@ -955,10 +840,8 @@ end
       html.code([], [html.text("}")]),
       html.text(" are used to group expressions."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    gleam_code(
+      "pub fn main() {
   let x = {
     print(1)
     2
@@ -968,9 +851,7 @@ end
   y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("data-types")], [html.text("Data types")]),
     html.h3([attr.id("strings")], [html.text("Strings")]),
     html.p([], [
@@ -979,23 +860,15 @@ end
       ),
     ]),
     html.h4([attr.id("elixir-13")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "\"Hellø, world!\"
+    elixir_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "\"Hellø, world!\"
+    gleam_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("tuples")], [html.text("Tuples")]),
     html.p([], [
       html.text(
@@ -1003,25 +876,17 @@ end
       ),
     ]),
     html.h4([attr.id("elixir-14")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "my_tuple = {\"username\", \"password\", 10}
+    elixir_code(
+      "my_tuple = {\"username\", \"password\", 10}
 {_, password, _} = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let my_tuple = #(\"username\", \"password\", 10)
+    gleam_code(
+      "let my_tuple = #(\"username\", \"password\", 10)
 let #(_, password, _) = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("lists")], [html.text("Lists")]),
     html.p([], [
       html.text(
@@ -1036,29 +901,21 @@ let #(_, password, _) = my_tuple
       ),
     ]),
     html.h4([attr.id("elixir-15")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "list = [2, 3, 4]
+    elixir_code(
+      "list = [2, 3, 4]
 list = [1 | list]
 [1, second_element | _] = list
 [1.0 | list] # works
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [2, 3, 4]
+    gleam_code(
+      "let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("atoms")], [html.text("Atoms")]),
     html.p([], [
       html.text(
@@ -1084,23 +941,17 @@ let [1, second_element, ..] = list
       html.text(" result types, and defining custom types."),
     ]),
     html.h4([attr.id("elixir-16")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "var = :my_new_var
+    elixir_code(
+      "var = :my_new_var
 
 # true and false are atoms in elixir
 {:ok, true}
 {:error, false}
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type MyNewType {
+    gleam_code(
+      "type MyNewType {
   MyNewVar
 }
 let var = MyNewVar
@@ -1109,9 +960,7 @@ let var = MyNewVar
 Ok(True)
 Error(False)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("dicts")], [html.text("Dicts")]),
     html.p([], [
       html.text(
@@ -1124,27 +973,19 @@ Error(False)
       ),
     ]),
     html.h4([attr.id("elixir-17")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "%{\"key1\" => \"value1\", \"key2\" => \"value2\"}
+    elixir_code(
+      "%{\"key1\" => \"value1\", \"key2\" => \"value2\"}
 %{\"key1\" => :value1, \"key2\" => 2}
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-17")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/dict
+    gleam_code(
+      "import gleam/dict
 
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", \"value2\")])
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("custom-types")], [html.text("Custom types")]),
     html.p([], [
       html.text(
@@ -1156,28 +997,22 @@ dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
     html.p([], [
       html.text("Elixir uses Structs which are implemented using Erlang’s Map."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "defmodule Person do
+    elixir_code(
+      "defmodule Person do
  defstruct name: \"John\", age: 35
 end
 
 person = %Person{name: \"Jake\"}
 name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "In Elixir, the Record module can be used to create Erlang’s Records, but they are not used frequently.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "defmodule Person do
+    elixir_code(
+      "defmodule Person do
   require Record
   Record.defrecord(:person, Person, name: \"John\", age: \"35\")
 end
@@ -1185,28 +1020,22 @@ end
 require Person
 {Person, \"Jake\", 35} == Person.person(name: \"Jake\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-18")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Gleam’s custom types can be used in much the same way that structs are used in Elixir. At runtime, they have a tuple representation and are compatible with Erlang records.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Person {
+    gleam_code(
+      "type Person {
   Person(name: String, age: Int)
 }
 
 let person = Person(name: \"Jake\", age: 35)
 let name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("modules")], [html.text("Modules")]),
     html.h4([attr.id("elixir-19")], [html.text("Elixir")]),
     html.p([], [
@@ -1216,10 +1045,8 @@ let name = person.name
         "keyword allows to create a module. Multiple modules can be defined in a single file.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "defmodule Wibble do
+    elixir_code(
+      "defmodule Wibble do
   def identity(x) do
     x
   end
@@ -1231,38 +1058,28 @@ defmodule Wobble do
   end
 end
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-19")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Gleam’s file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file Wibble.gleam
+    gleam_code(
+      "// in file Wibble.gleam
 pub fn identity(x) {
   x
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file main.gleam
+    ),
+    gleam_code(
+      "// in file main.gleam
 import Wibble // if Wibble was in a folder called `lib` the import would be `lib/Wibble`
 pub fn main() {
   Wibble.identity(1)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("patterns")], [html.text("Patterns")]),
     html.p([], [
       html.text(
@@ -1274,10 +1091,8 @@ pub fn main() {
       html.text("in Elixir."),
     ]),
     html.h4([attr.id("gleam-20")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [1, 2, 3]
+    gleam_code(
+      "let list = [1, 2, 3]
 
 let assert [1 as first, second, ..rest] = list
 
@@ -1285,23 +1100,17 @@ let assert Person(name: \"Jack\" as name, age: 20 as age) = Person(name: \"Jack\
 
 let assert #(1 as a, 2 as b) = #(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("elixir-20")], [html.text("Elixir")]),
-    html.pre([], [
-      html.code([attr.class("language-elixir")], [
-        html.text(
-          "list = [1, 2, 3]
+    elixir_code(
+      "list = [1, 2, 3]
 [1 = first, second | rest] = list
 
 %Person{name: \"Jack\", age: 20} = %Person{name: \"Jack\", age: 20}
 
 {1 = a, 2 = b} = {1, 2}
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
   |> site.page_layout("roadmap", meta, ctx)
   |> site.to_html_file(meta)
@@ -1453,16 +1262,12 @@ pub fn erlang(ctx: site.Context) -> fs.File {
 assigned once.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "Size = 50
+    erlang_code(
+      "Size = 50
 Size2 = Size + 100
 Size2 = 1 % Runtime error! Size2 is 150, not 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -1470,16 +1275,12 @@ Size2 = 1 % Runtime error! Size2 is 150, not 1
 reassigned.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let size = 50
+    gleam_code(
+      "let size = 50
 let size = size + 100
 let size = 1 // size now refers to 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("partial-assignments")], [html.text("Partial assignments")]),
     html.h4([attr.id("erlang-1")], [html.text("Erlang")]),
     html.p([], [
@@ -1488,14 +1289,10 @@ let size = 1 // size now refers to 1
 used to assert that a given term has a specific shape.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "[Element] = SomeList % assert `SomeList` is a 1 element list
+    erlang_code(
+      "[Element] = SomeList % assert `SomeList` is a 1 element list
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-1")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, the "),
@@ -1505,15 +1302,11 @@ used to assert that a given term has a specific shape.",
 patterns.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let [element] = some_list // Compile error! Partial pattern
+    gleam_code(
+      "let [element] = some_list // Compile error! Partial pattern
 let assert [element] = some_list
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("variables-type-annotations")], [
       html.text("Variables type annotations"),
     ]),
@@ -1529,14 +1322,10 @@ let assert [element] = some_list
         "In Gleam type annotations can optionally be given when binding variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let some_list: List(Int) = [1, 2, 3]
+    gleam_code(
+      "let some_list: List(Int) = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Gleam will check the type annotation to ensure that it matches the type of the
@@ -1558,26 +1347,18 @@ JavaScript.",
       ),
     ]),
     html.h4([attr.id("erlang-3")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "my_function(X) ->
+    erlang_code(
+      "my_function(X) ->
     X + 1.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-3")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn my_function(x) {
+    gleam_code(
+      "fn my_function(x) {
   x + 1
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("exporting-functions")], [html.text("Exporting functions")]),
     html.p([], [
       html.text("In Gleam functions are exported with the "),
@@ -1588,28 +1369,20 @@ not required.",
       ),
     ]),
     html.h4([attr.id("erlang-4")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "-export([my_function/1]).
+    erlang_code(
+      "-export([my_function/1]).
 
 my_function(X) ->
     X + 1.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-4")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn my_function(x) {
+    gleam_code(
+      "pub fn my_function(x) {
   x + 1
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-type-annotations")], [
       html.text("Function type annotations"),
     ]),
@@ -1619,27 +1392,19 @@ my_function(X) ->
       ),
     ]),
     html.h4([attr.id("erlang-5")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "-spec my_function(integer()) :: integer().
+    erlang_code(
+      "-spec my_function(integer()) :: integer().
 my_function(X) ->
     X + 1.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-5")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn my_function(x: Int) -> Int {
+    gleam_code(
+      "fn my_function(x: Int) -> Int {
   x + 1
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Unlike in Erlang these type annotations will always be checked by the compiler
@@ -1655,10 +1420,8 @@ used.",
       ),
     ]),
     html.h4([attr.id("erlang-6")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "identify(1) ->
+    erlang_code(
+      "identify(1) ->
     \"one\";
 identify(2) ->
     \"two\";
@@ -1667,14 +1430,10 @@ identify(3) ->
 identify(_) ->
     \"dunno\".
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-6")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn identify(x) {
+    gleam_code(
+      "fn identify(x) {
   case x {
     1 -> \"one\"
     2 -> \"two\"
@@ -1683,9 +1442,7 @@ identify(_) ->
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-overloading")], [
       html.text("Function overloading"),
     ]),
@@ -1706,24 +1463,18 @@ is no need for a special syntax to assign a module function to a variable.",
       ),
     ]),
     html.h4([attr.id("erlang-7")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "identity(X) ->
+    erlang_code(
+      "identity(X) ->
   X.
 
 main() ->
   Func = fun identity/1,
   Func(100).
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-7")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn identity(x) {
+    gleam_code(
+      "fn identity(x) {
   x
 }
 
@@ -1732,9 +1483,7 @@ fn main() {
   func(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("chaining-function-calls")], [
       html.text("Chaining function calls"),
     ]),
@@ -1745,23 +1494,15 @@ without adding parenthesis around the function call.",
       ),
     ]),
     html.h4([attr.id("erlang-8")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "(((some_function(0))(1))(2))(3)
+    erlang_code(
+      "(((some_function(0))(1))(2))(3)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-8")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "some_function(0)(1)(2)(3)
+    gleam_code(
+      "some_function(0)(1)(2)(3)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("labelled-arguments")], [html.text("Labelled arguments")]),
     html.p([], [
       html.text(
@@ -1781,23 +1522,15 @@ though they function differently.",
 variable inside the function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "replace(#{inside => String, each => Pattern, with => Replacement}) ->
+    erlang_code(
+      "replace(#{inside => String, each => Pattern, with => Replacement}) ->
   go(String, Pattern, Replacement).
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "replace(#{each => <<\",\">>, with => <<\" \">>, inside => <<\"A,B,C\">>}).
+    ),
+    erlang_code(
+      "replace(#{each => <<\",\">>, with => <<\" \">>, inside => <<\"A,B,C\">>}).
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Because the arguments are stored in a map there is a small runtime
@@ -1814,24 +1547,16 @@ Erlang the name used at the call-site does not have to match the name used
 for the variable inside the function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn replace(inside string, each pattern, with replacement) {
+    gleam_code(
+      "pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "replace(each: \",\", with: \" \", inside: \"A,B,C\")
+    ),
+    gleam_code(
+      "replace(each: \",\", with: \" \", inside: \"A,B,C\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "There is no performance cost to Gleam’s labelled arguments as they are
@@ -1846,28 +1571,20 @@ are fully type checked.",
       html.code([], [html.text("%")]),
       html.text(" prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "% Hello, Joe!
+    erlang_code(
+      "% Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-10")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam comments are written with a "),
       html.code([], [html.text("//")]),
       html.text(" prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Hello, Joe!
+    gleam_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -1878,17 +1595,13 @@ comments starting with ",
       html.code([], [html.text("////")]),
       html.text(" are used to document the current module."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// This module is very important.
+    gleam_code(
+      "//// This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("operators")], [html.text("Operators")]),
     html.table([], [
       html.thead([], [
@@ -2074,28 +1787,20 @@ read from top to bottom.",
       ),
     ]),
     html.h4([attr.id("erlang-11")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "X1 = trim(Input),
+    erlang_code(
+      "X1 = trim(Input),
 X2 = csv:parse(X1, <<\",\">>),
 ledger:from_list(X2).
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-11")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "input
+    gleam_code(
+      "input
 |> trim
 |> csv.parse(\",\")
 |> ledger.from_list
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("constants")], [html.text("Constants")]),
     html.h4([attr.id("erlang-12")], [html.text("Erlang")]),
     html.p([], [
@@ -2104,48 +1809,36 @@ ledger:from_list(X2).
 multiple places. They can only be used within the current module",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "-define(the_answer, 42).
+    erlang_code(
+      "-define(the_answer, 42).
 
 main() ->
   ?the_answer.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam constants can be used to achieve the same."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "const the_answer = 42
+    gleam_code(
+      "const the_answer = 42
 
 fn main() {
   the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Gleam constants can be referenced from other modules."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import other_module
+    gleam_code(
+      "import other_module
 
 fn main() {
   other_module.the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("erlang-13")], [html.text("Erlang")]),
     html.p([], [
@@ -2155,10 +1848,8 @@ fn main() {
       html.code([], [html.text("end")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "main() ->
+    erlang_code(
+      "main() ->
   X = begin
     print(1),
     2
@@ -2166,15 +1857,11 @@ fn main() {
   Y = X * (X + 10),
   Y.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
     html.p([], [html.text("In Gleam braces are used to group expressions.")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn main() {
+    gleam_code(
+      "fn main() {
   let x = {
     print(1)
     2
@@ -2183,30 +1870,20 @@ fn main() {
   y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("data-types")], [html.text("Data types")]),
     html.h3([attr.id("strings")], [html.text("Strings")]),
     html.p([], [html.text("All strings in Gleam are UTF-8 encoded binaries.")]),
     html.h4([attr.id("erlang-14")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "<<\"Hellø, world!\"/utf8>>.
+    erlang_code(
+      "<<\"Hellø, world!\"/utf8>>.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "\"Hellø, world!\"
+    gleam_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("tuples")], [html.text("Tuples")]),
     html.p([], [
       html.text(
@@ -2215,25 +1892,17 @@ types of elements in the collection.",
       ),
     ]),
     html.h4([attr.id("erlang-15")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "Tuple = {\"username\", \"password\", 10}.
+    erlang_code(
+      "Tuple = {\"username\", \"password\", 10}.
 {_, Password, _} = Tuple.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let my_tuple = #(\"username\", \"password\", 10)
+    gleam_code(
+      "let my_tuple = #(\"username\", \"password\", 10)
 let #(_, password, _) = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("lists")], [html.text("Lists")]),
     html.p([], [
       html.text(
@@ -2250,29 +1919,21 @@ head of a list, but it uses a different syntax.",
       ),
     ]),
     html.h4([attr.id("erlang-16")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "List0 = [2, 3, 4].
+    erlang_code(
+      "List0 = [2, 3, 4].
 List1 = [1 | List0].
 [1, SecondElement | _] = List1.
 [1.0 | List1].
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [2, 3, 4]
+    gleam_code(
+      "let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
 [1.0, ..list] // Type error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("atoms")], [html.text("Atoms")]),
     html.p([], [
       html.text(
@@ -2301,23 +1962,17 @@ Gleam that incorporate them, such as ",
       html.text(" result types, and defining custom types."),
     ]),
     html.h4([attr.id("erlang-17")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "Var = my_new_var.
+    erlang_code(
+      "Var = my_new_var.
 
 {ok, true}.
 
 {error, false}.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-17")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type MyNewType {
+    gleam_code(
+      "type MyNewType {
   MyNewVar
 }
 let var = MyNewVar
@@ -2326,9 +1981,7 @@ Ok(True)
 
 Error(False)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("dicts")], [html.text("Dicts")]),
     html.p([], [
       html.text(
@@ -2342,28 +1995,20 @@ not used much in Gleam, custom types are more common.",
       ),
     ]),
     html.h4([attr.id("erlang-18")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "#{\"key1\" => \"value1\", \"key2\" => \"value2\"}.
+    erlang_code(
+      "#{\"key1\" => \"value1\", \"key2\" => \"value2\"}.
 #{\"key1\" => \"value1\", \"key2\" => 2}.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-18")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/dict
+    gleam_code(
+      "import gleam/dict
 
 
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", \"value2\")])
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     // html.h2([attr.id("flow-control")], [html.text("Flow control")]),
     // html.p([], [html.text("TODO")]),
     // html.h3([attr.id("case")], [html.text("Case")]),
@@ -2372,24 +2017,16 @@ dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
     // html.p([], [html.text("TODO")]),
     html.h2([attr.id("type-aliases")], [html.text("Type aliases")]),
     html.h4([attr.id("erlang-19")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "-type scores() :: list(integer()).
+    erlang_code(
+      "-type scores() :: list(integer()).
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-19")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Scores =
+    gleam_code(
+      "pub type Scores =
   List(Int)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("custom-types")], [html.text("Custom types")]),
     html.h3([attr.id("records")], [html.text("Records")]),
     html.p([], [
@@ -2415,44 +2052,28 @@ number of named fields, and the values in those fields can be of differing types
       ),
     ]),
     html.h4([attr.id("erlang-20")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "-record(person, {age :: integer(),
+    erlang_code(
+      "-record(person, {age :: integer(),
                  name :: binary()}).
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "Person = #person{name = <<\"name\">>, age = 35}.
+    ),
+    erlang_code(
+      "Person = #person{name = <<\"name\">>, age = 35}.
 Name = Person#person.name.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-20")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Person {
+    gleam_code(
+      "type Person {
   Person(age: Int, name: String)
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let person = Person(name: \"name\", age: 35)
+    ),
+    gleam_code(
+      "let person = Person(name: \"name\", age: 35)
 let name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("unions")], [html.text("Unions")]),
     html.p([], [
       html.text(
@@ -2467,23 +2088,17 @@ two different types they must be wrapped in a new custom type.",
       ),
     ]),
     html.h4([attr.id("erlang-21")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "int_or_float(X) ->
+    erlang_code(
+      "int_or_float(X) ->
   case X of
     true -> 1;
     false -> 1.0
   end.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-21")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type IntOrFloat {
+    gleam_code(
+      "type IntOrFloat {
   AnInt(Int)
   AFloat(Float)
 }
@@ -2495,9 +2110,7 @@ fn int_or_float(x) {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("opaque-custom-types")], [html.text("Opaque custom types")]),
     html.p([], [
       html.text("In Erlang the "),
@@ -2518,23 +2131,17 @@ using the intended API.",
       ),
     ]),
     html.h4([attr.id("erlang-22")], [html.text("Erlang")]),
-    html.pre([], [
-      html.code([attr.class("language-erlang")], [
-        html.text(
-          "-opaque identifier() :: integer().
+    erlang_code(
+      "-opaque identifier() :: integer().
 
 -spec get_id() -> identifier().
 get_id() ->
   100.
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-22")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub opaque type Identifier {
+    gleam_code(
+      "pub opaque type Identifier {
   Identifier(Int)
 }
 
@@ -2542,9 +2149,7 @@ pub fn get_id() {
   Identifier(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("modules")], [html.text("Modules")]),
     html.h3([attr.id("imports")], [html.text("Imports")]),
     html.h3([attr.id("nested-modules")], [html.text("Nested modules")]),
@@ -2664,14 +2269,10 @@ pub fn python(ctx: site.Context) -> fs.File {
       html.code([], [html.text("#")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "# Hello, Joe!
+    python_code(
+      "# Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "A docstring that occurs as the first statement in a module, function, class, or method definition will become the ",
@@ -2679,30 +2280,22 @@ pub fn python(ctx: site.Context) -> fs.File {
       html.code([], [html.text("__doc__")]),
       html.text("attr of that object."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def a_function():
+    python_code(
+      "def a_function():
     \"\"\"Return some important data.\"\"\"
     pass
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, comments are written with a "),
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Hello, Joe!
+    gleam_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -2712,30 +2305,22 @@ pub fn python(ctx: site.Context) -> fs.File {
       html.code([], [html.text("////")]),
       html.text(" are used to document the current module."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// This module is very important.
+    gleam_code(
+      "//// This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("variables")], [html.text("Variables")]),
     html.p([], [html.text("You can reassign variables in both languages.")]),
     html.h4([attr.id("python-1")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "size = 50
+    python_code(
+      "size = 50
 size = size + 100
 size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Python has no specific variable keyword. You choose a name and that’s it!",
@@ -2747,16 +2332,12 @@ size = 1
       html.code([], [html.text("let")]),
       html.text("keyword before its variable names."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let size = 50
+    gleam_code(
+      "let size = 50
 let size = size + 100
 let size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("match-operator")], [html.text("Match operator")]),
     html.h4([attr.id("python-2")], [html.text("Python")]),
     html.p([], [
@@ -2765,10 +2346,8 @@ let size = 1
 Tuple of values can be unpacked and inner values can be assigned to left-hand variable names.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "(a, b) = (1, 2)
+    python_code(
+      "(a, b) = (1, 2)
 # a == 1
 # b == 2
 
@@ -2776,9 +2355,7 @@ Tuple of values can be unpacked and inner values can be assigned to left-hand va
 for key, value in enumerate(a_dict):
     print(key, value)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-2")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, "),
@@ -2791,16 +2368,12 @@ for key, value in enumerate(a_dict):
       html.code([], [html.text("let assert")]),
       html.text("keyword is preferred."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let #(x, _) = #(1, 2)
+    gleam_code(
+      "let #(x, _) = #(1, 2)
 let assert [] = [1] // runtime error
 let assert [y] = \"Hello\" // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("variables-type-annotations")], [
       html.text("Variables type annotations"),
     ]),
@@ -2823,28 +2396,20 @@ These annotations are accessible at runtime via the ",
         "These hints will mainly be used to inform static analysis tools like IDEs, linters…",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "some_list: list[int] = [1, 2, 3]
+    python_code(
+      "some_list: list[int] = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-3")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "In Gleam type annotations can optionally be given when binding variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let some_list: List(Int) = [1, 2, 3]
+    gleam_code(
+      "let some_list: List(Int) = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Gleam will check the type annotation to ensure that it matches the type of the assigned value. It does not need annotations to type check your code, but you may find it useful to annotate variables to hint to the compiler that you want a specific type to be inferred.",
@@ -2861,15 +2426,11 @@ These annotations are accessible at runtime via the ",
       html.code([], [html.text("None")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def sum(x, y):
+    python_code(
+      "def sum(x, y):
     return x + y
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Anonymous functions returning a single expression can also be defined with the ",
@@ -2877,15 +2438,11 @@ These annotations are accessible at runtime via the ",
       html.code([], [html.text("lambda")]),
       html.text("keyword and be assigned into variables."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "mul = lambda x, y: x * y
+    python_code(
+      "mul = lambda x, y: x * y
 mul(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-4")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -2894,19 +2451,15 @@ mul(1, 2)
       html.code([], [html.text(".")]),
       html.text("when called."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn sum(x, y) {
+    gleam_code(
+      "pub fn sum(x, y) {
   x + y
 }
 
 let mul = fn(x, y) { x * y }
 mul(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("exporting-functions")], [html.text("Exporting functions")]),
     html.h4([attr.id("python-5")], [html.text("Python")]),
     html.p([], [
@@ -2924,10 +2477,8 @@ mul(1, 2)
       html.code([], [html.text("pub")]),
       html.text("keyword to be public."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// this is public
+    gleam_code(
+      "// this is public
 pub fn sum(x, y) {
   x + y
 }
@@ -2937,9 +2488,7 @@ fn mul(x, y) {
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-type-annotations")], [
       html.text("Function type annotations"),
     ]),
@@ -2959,19 +2508,15 @@ fn mul(x, y) {
         "Static code analysers (IDE tooling, type checkers like mypy) are necessary to detect those errors.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def sum(x: int, y: int) -> int:
+    python_code(
+      "def sum(x: int, y: int) -> int:
     return x + y
 
 def mul(x: int, y: int) -> bool:
     # no errors from the interpreter.
     return x * y
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-6")], [html.text("Gleam")]),
     html.p([], [
       html.text("Functions can "),
@@ -2980,10 +2525,8 @@ def mul(x: int, y: int) -> bool:
         " have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn add(x: Int, y: Int) -> Int {
+    gleam_code(
+      "pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
@@ -2991,9 +2534,7 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("referencing-functions")], [
       html.text("Referencing functions"),
     ]),
@@ -3010,10 +2551,8 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
 is no need for a special syntax to assign a module function to a variable.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn identity(x) {
+    gleam_code(
+      "fn identity(x) {
   x
 }
 
@@ -3022,9 +2561,7 @@ fn main() {
   func(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("labelled-arguments")], [html.text("Labelled arguments")]),
     html.p([], [
       html.text(
@@ -3044,19 +2581,15 @@ fn main() {
       ]),
       html.li([], [html.text("by name, in any order")]),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def replace(inside: str, each: str, with_string: str):
+    python_code(
+      "def replace(inside: str, each: str, with_string: str):
     pass
 
 # equivalent calls
 replace('hello world', 'world', 'you')
 replace(each='world', inside='hello world', with_string='you')
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-8")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -3064,24 +2597,16 @@ replace(each='world', inside='hello world', with_string='you')
 for the variable inside the function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn replace(inside string, each pattern, with replacement) {
+    gleam_code(
+      "pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "replace(each: \",\", with: \" \", inside: \"A,B,C\")
+    ),
+    gleam_code(
+      "replace(each: \",\", with: \" \", inside: \"A,B,C\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "There is no performance cost to Gleam’s labelled arguments as they are
@@ -3409,35 +2934,27 @@ are fully type checked.",
     html.p([], [
       html.text("There is no notion of constant variables in Python."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "from typing import Final
+    python_code(
+      "from typing import Final
 
 # in the global scope
 THE_ANSWER: Final = 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-9")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam constants can be created using the "),
       html.code([], [html.text("const")]),
       html.text("keyword."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "const the_answer = 42
+    gleam_code(
+      "const the_answer = 42
 
 pub fn main() {
   the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("python-10")], [html.text("Python")]),
     html.p([], [
@@ -3446,16 +2963,12 @@ pub fn main() {
       ),
     ]),
     html.p([], [html.text("Blocks are declared via indentation.")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def a_func():
+    python_code(
+      "def a_func():
     # A block here
     pass
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-10")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam braces "),
@@ -3463,10 +2976,8 @@ pub fn main() {
       html.code([], [html.text("}")]),
       html.text("are used to group expressions."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    gleam_code(
+      "pub fn main() {
   let x = {
     some_function(1)
     2
@@ -3475,9 +2986,7 @@ pub fn main() {
   y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("data-types")], [html.text("Data types")]),
     html.h3([attr.id("strings")], [html.text("Strings")]),
     html.p([], [
@@ -3487,23 +2996,15 @@ pub fn main() {
     ]),
     html.p([], [html.text("In Gleam all strings are UTF-8 encoded binaries.")]),
     html.h4([attr.id("python-11")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "\"Hellø, world!\"
+    python_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-11")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "\"Hellø, world!\"
+    gleam_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("tuples")], [html.text("Tuples")]),
     html.p([], [
       html.text(
@@ -3516,25 +3017,17 @@ pub fn main() {
         "Python tuples are immutable, fixed-size lists that can contain mixed value types. Unpacking can be used to bind a name to a specific value of the tuple.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "my_tuple = (\"username\", \"password\", 10)
+    python_code(
+      "my_tuple = (\"username\", \"password\", 10)
 _, password, _ = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let my_tuple = #(\"username\", \"password\", 10)
+    gleam_code(
+      "let my_tuple = #(\"username\", \"password\", 10)
 let #(_, password, _) = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("lists")], [html.text("Lists")]),
     html.p([], [
       html.text(
@@ -3549,17 +3042,13 @@ let #(_, password, _) = my_tuple
       html.code([], [html.text("*")]),
       html.text("operator and unpacking:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "list = [2, 3, 4]
+    python_code(
+      "list = [2, 3, 4]
 [head, *tail] = list
 # head == 2
 # tail == [3, 4]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
     html.p([], [
       html.text("Gleam has a "),
@@ -3570,17 +3059,13 @@ let #(_, password, _) = my_tuple
         ") operator that works for lists destructuring and pattern matching. In Gleam lists are immutable so adding and removing elements from the start of a list is highly efficient.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [2, 3, 4]
+    gleam_code(
+      "let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("dictionaries")], [html.text("Dictionaries")]),
     html.p([], [
       html.text("In Python, dictionaries can have keys of any type as long as:"),
@@ -3613,27 +3098,19 @@ and values of any type.",
       ),
     ]),
     html.h4([attr.id("python-14")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "{\"key1\": \"value1\", \"key2\": \"value2\"}
+    python_code(
+      "{\"key1\": \"value1\", \"key2\": \"value2\"}
 {\"key1\": \"1\", \"key2\": 2}
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/dict
+    gleam_code(
+      "import gleam/dict
 
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", \"value2\")])
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("flow-control")], [html.text("Flow control")]),
     html.h3([attr.id("case")], [html.text("Case")]),
     html.p([], [
@@ -3649,10 +3126,8 @@ expression. Gleam’s ",
     ]),
     html.h4([attr.id("python-15")], [html.text("Python")]),
     html.p([], [html.text("Matching on primitive types:")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def http_error(status):
+    python_code(
+      "def http_error(status):
     match status:
         case 400:
             return \"Bad request\"
@@ -3661,14 +3136,10 @@ expression. Gleam’s ",
         case 418:
             return \"I'm a teapot\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("Matching on tuples with variable capturing:")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "match point:
+    python_code(
+      "match point:
     case (0, 0):
         print(\"Origin\")
     case (0, y):
@@ -3680,14 +3151,10 @@ expression. Gleam’s ",
     case _:
         raise ValueError(\"Not a point\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("Matching on type constructors:")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "match point:
+    python_code(
+      "match point:
     case Point(x=0, y=0):
         print(\"Origin is the point's location.\")
     case Point(x=0, y=y):
@@ -3699,84 +3166,62 @@ expression. Gleam’s ",
     case _:
         print(\"Not a point\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("The match expression supports guards, similar to Gleam:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "match point:
+    python_code(
+      "match point:
     case Point(x, y) if x == y:
         print(f\"The point is located on the diagonal Y=X at {x}.\")
     case Point(x, y):
         print(f\"Point is not on the diagonal.\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
     html.p([], [
       html.text("The case operator is a top level construct in Gleam:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case some_number {
+    gleam_code(
+      "case some_number {
   0 -> \"Zero\"
   1 -> \"One\"
   2 -> \"Two\"
   n -> \"Some other number\" // This matches anything
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "The case operator especially coupled with destructuring to provide native pattern matching:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case xs {
+    gleam_code(
+      "case xs {
   [] -> \"This list is empty\"
   [a] -> \"This list has 1 element\"
   [a, b] -> \"This list has 2 elements\"
   _other -> \"This list has more than 2 elements\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("The case operator supports guards:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case xs {
+    gleam_code(
+      "case xs {
   [a, b, c] if a >. b && a <=. c -> \"ok\"
   _other -> \"ko\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("and disjoint union matching:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case number {
+    gleam_code(
+      "case number {
   2 | 4 | 6 | 8 -> \"This is an even number\"
   1 | 3 | 5 | 7 -> \"This is an odd number\"
   _ -> \"I'm not sure\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("try")], [html.text("Try")]),
     html.p([], [
       html.text(
@@ -3794,15 +3239,11 @@ expression. Gleam’s ",
       html.code([], [html.text("raise")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def a_function_that_fails():
+    python_code(
+      "def a_function_that_fails():
     raise Exception(\"an error\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "The callee block will be able to capture any exception raised in the block using a ",
@@ -3810,10 +3251,8 @@ expression. Gleam’s ",
       html.code([], [html.text("try/except")]),
       html.text("set of blocks:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "try:
+    python_code(
+      "try:
     print(\"executed\")
     a_function_that_fails()
     print(\"not_executed\")
@@ -3821,9 +3260,7 @@ except Exception as e:
     print(\"doing something with the exception\", e)
 
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -3852,17 +3289,13 @@ except Exception as e:
         "Handling errors actually means to match the return value against those two scenarios, using a case for instance:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case int.parse(\"123\") {
+    gleam_code(
+      "case int.parse(\"123\") {
   Error(e) -> io.println(\"That wasn't an Int\")
   Ok(i) -> io.println(\"We parsed the Int\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("In order to simplify this construct, we can use the "),
       html.code([], [html.text("use")]),
@@ -3887,10 +3320,8 @@ except Exception as e:
         html.code([], [html.text("Error(Something)")]),
       ]),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let a_number = \"1\"
+    gleam_code(
+      "let a_number = \"1\"
 let an_error = \"ouch\"
 let another_number = \"3\"
 
@@ -3900,9 +3331,7 @@ use int_another_number <- try(parse_int(another_number)) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("type-aliases")], [html.text("Type aliases")]),
     html.p([], [
       html.text(
@@ -3915,34 +3344,26 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
         "A simple variable can store the result of a compound set of types.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "type Headers = list[tuple[str, str]]
+    python_code(
+      "type Headers = list[tuple[str, str]]
 
 # can now be used to annotate a variable
 headers: Headers = [(\"Content-Type\", \"application/json\")]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-17")], [html.text("Gleam")]),
     html.p([], [
       html.text("The "),
       html.code([], [html.text("type")]),
       html.text("keyword can be used to create aliases:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Headers =
+    gleam_code(
+      "pub type Headers =
   List(#(String, String))
 
 let headers: Headers = [#(\"Content-Type\", \"application/json\")]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("custom-types")], [html.text("Custom types")]),
     html.h3([attr.id("records")], [html.text("Records")]),
     html.p([], [
@@ -3962,10 +3383,8 @@ Properties are defined as class members and initial values are generally set in 
         "By default the constructor does not provide base initializers in the constructor so some boilerplate is needed:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "class Person:
+    python_code(
+      "class Person:
     name: str
     age: int
 
@@ -3977,9 +3396,7 @@ person = Person(name=\"Jake\", age=20)
 # or with positional arguments Person(\"Jake\", 20)
 name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("More recent alternatives use "),
       html.code([], [html.text("dataclasses")]),
@@ -4000,10 +3417,8 @@ you can pass options to the ",
       html.code([], [html.text("dataclass")]),
       html.text("decorator to change the behavior):"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "from dataclasses import dataclass
+    python_code(
+      "from dataclasses import dataclass
 
 @dataclass
 class Person:
@@ -4014,17 +3429,13 @@ person = Person(name=\"Jake\", age=20)
 name = person.name
 person.name = \"John\"  # The name is now \"John\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.code([], [html.text("NamedTuples")]),
       html.text("on the other hand are immutable:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "from typing import NamedTuple
+    python_code(
+      "from typing import NamedTuple
 
 class Person(NamedTuple):
     name: str
@@ -4036,28 +3447,22 @@ name = person.name
 # cannot reassign a value
 person.name = \"John\"  # error
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-18")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Gleam’s custom types can be used in much the same way that structs are used in Elixir. At runtime, they have a tuple representation and are compatible with Erlang records.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Person {
+    gleam_code(
+      "type Person {
   Person(name: String, age: Int)
 }
 
 let person = Person(name: \"Jake\", age: 35)
 let name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "An important difference to note is there is no OOP in Gleam. Methods can not be added to types.",
@@ -4076,23 +3481,17 @@ two different types they must be wrapped in a new custom type.",
       ),
     ]),
     html.h4([attr.id("python-19")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "def int_or_float(x: int | float) -> str:
+    python_code(
+      "def int_or_float(x: int | float) -> str:
     if isinstance(x, int):
         return f\"It's an integer: {x}\"
     else:
         return f\"It's a float: {x}\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-19")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type IntOrFloat {
+    gleam_code(
+      "type IntOrFloat {
   AnInt(Int)
   AFloat(Float)
 }
@@ -4104,9 +3503,7 @@ fn int_or_float(x: IntOrFloat) {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("opaque-custom-types")], [html.text("Opaque custom types")]),
     html.p([], [
       html.text(
@@ -4124,10 +3521,8 @@ using the intended API.",
       ),
     ]),
     html.h4([attr.id("python-20")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "from typing import NewType
+    python_code(
+      "from typing import NewType
 
 # Is protected: people must not use it out side of this module!
 _Identifier = NewType('Identifier', int)
@@ -4135,14 +3530,10 @@ _Identifier = NewType('Identifier', int)
 def get_id() -> _Identifier:
     return _Identifier(100)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-20")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub opaque type Identifier {
+    gleam_code(
+      "pub opaque type Identifier {
   Identifier(Int)
 }
 
@@ -4150,9 +3541,7 @@ pub fn get_id() {
   Identifier(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("modules")], [html.text("Modules")]),
     html.h4([attr.id("python-21")], [html.text("Python")]),
     html.p([], [
@@ -4166,44 +3555,32 @@ pub fn get_id() {
         "Gleam’s file is a module and named by the file name (and its directory path). Since there is no special syntax to create a module, there can be only one module in a file.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file wibble.gleam
+    gleam_code(
+      "// in file wibble.gleam
 pub fn identity(x) {
   x
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file main.gleam
+    ),
+    gleam_code(
+      "// in file main.gleam
 import wibble // if wibble was in a folder called `lib` the import would be `lib/wibble`
 pub fn main() {
   wibble.identity(1)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("imports")], [html.text("Imports")]),
     html.h4([attr.id("python-22")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "# inside module src/nasa/moon_base.py
+    python_code(
+      "# inside module src/nasa/moon_base.py
 # imports module src/nasa/rocket_ship.py
 from nasa import rocket_ship
 
 def explore_space():
     rocket_ship.launch()
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-22")], [html.text("Gleam")]),
     html.p([], [
       html.text("Imports are relative to the root "),
@@ -4219,10 +3596,8 @@ def explore_space():
         "for the target module, even if the target module is in the same folder.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// inside module src/nasa/moon_base.gleam
+    gleam_code(
+      "// inside module src/nasa/moon_base.gleam
 // imports module src/nasa/rocket_ship.gleam
 import nasa/rocket_ship
 
@@ -4230,56 +3605,38 @@ pub fn explore_space() {
   rocket_ship.launch()
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("named-imports")], [html.text("Named imports")]),
     html.h4([attr.id("python-23")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "import unix.cat as kitty
+    python_code(
+      "import unix.cat as kitty
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-23")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import unix/cat as kitty
+    gleam_code(
+      "import unix/cat as kitty
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("unqualified-imports")], [html.text("Unqualified imports")]),
     html.h4([attr.id("python-24")], [html.text("Python")]),
-    html.pre([], [
-      html.code([attr.class("language-python")], [
-        html.text(
-          "from animal.cat import Cat, stroke
+    python_code(
+      "from animal.cat import Cat, stroke
 
 def main():
     kitty = Cat(name=\"Nubi\")
     stroke(kitty)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-24")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import animal/cat.{Cat, stroke}
+    gleam_code(
+      "import animal/cat.{Cat, stroke}
 
 pub fn main() {
   let kitty = Cat(name: \"Nubi\")
   stroke(kitty)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
   |> site.page_layout("roadmap", meta, ctx)
   |> site.to_html_file(meta)
@@ -4397,25 +3754,17 @@ pub fn php(ctx: site.Context) -> fs.File {
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// Hello, Joe!
+    php_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("Multi line comments may be written like so:")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "/*
+    php_code(
+      "/*
  * Hello, Joe!
  */
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("In PHP, above "),
       html.code([], [html.text("trait")]),
@@ -4434,10 +3783,8 @@ there can be ",
       html.code([], [html.text("docblocks")]),
       html.text("like so:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "/**
+    php_code(
+      "/**
  * a very special trait.
  */
 trait Wibble {}
@@ -4455,9 +3802,7 @@ class Wabble {}
  */
 function wubble(string $str) : string { return $str; }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Documentation blocks (docblocks) are extracted into generated API
@@ -4470,14 +3815,10 @@ documentation.",
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Hello, Joe!
+    gleam_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -4491,10 +3832,8 @@ constant, or type definition. Comments starting with ",
 document the current module.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// This module is very important.
+    gleam_code(
+      "//// This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
@@ -4507,9 +3846,7 @@ type Dog {
   Dog(name: String, cuteness: Int)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.code([], [html.text("//")]),
       html.text(
@@ -4524,16 +3861,12 @@ type Dog {
     html.h2([attr.id("variables")], [html.text("Variables")]),
     html.p([], [html.text("You can rebind variables in both languages.")]),
     html.h3([attr.id("php-1")], [html.text("PHP")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$size = 50;
+    php_code(
+      "$size = 50;
 $size = $size + 100;
 $size = 1;
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "In local scope PHP has no specific variable keyword. You choose a name
@@ -4567,16 +3900,12 @@ modifier keyword to create properties such as: ",
       html.code([], [html.text("let")]),
       html.text("keyword before its variable names."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let size = 50
+    gleam_code(
+      "let size = 50
 let size = size + 100
 let size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("match-operator")], [html.text("Match operator")]),
     html.h4([attr.id("php-2")], [html.text("PHP")]),
     html.p([], [
@@ -4586,10 +3915,8 @@ Tuple of values can be unpacked and inner values can be assigned to left-hand
 variable names.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "[$a, $b] = [1, 2];
+    php_code(
+      "[$a, $b] = [1, 2];
 // $a == 1
 // $b == 2
 
@@ -4599,9 +3926,7 @@ variable names.",
 [\"profession\" => $job] = ['name' => 'Joe', 'profession' => 'hacker'];
 // $job == 'hacker'
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-2")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, "),
@@ -4619,19 +3944,15 @@ a value mismatch. For assertions, the equivalent ",
 preferred.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let #(a, _) = #(1, 2)
+    gleam_code(
+      "let #(a, _) = #(1, 2)
 // a = 1
 // `_` matches 2 and is discarded
 
 let assert [] = [1] // runtime error
 let assert [y] = \"Hello\" // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("Asserts should be used with caution.")]),
     html.h3([attr.id("variables-type-annotations")], [
       html.text("Variables type annotations"),
@@ -4657,16 +3978,12 @@ The type information is accessible via ",
 linters, etc.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class Wibble {
+    php_code(
+      "class Wibble {
   private ?string $wabble;
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("PHP’s "),
       html.code([], [html.text("array")]),
@@ -4679,16 +3996,12 @@ While creating arrays in PHP the type of its elements cannot be set explicitly
 and each element can be of a different type:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$someList = [1, 2, 3];
+    php_code(
+      "$someList = [1, 2, 3];
 $someTuple = [1, \"a\", true];
 $someMap = [0 => 1, \"wibble\" => \"wabble\", true => false];
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Single variables cannot be type-annotated unless they are "),
       html.code([], [html.text("class")]),
@@ -4702,15 +4015,11 @@ $someMap = [0 => 1, \"wibble\" => \"wabble\", true => false];
         "In Gleam type annotations can optionally be given when binding variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let some_list: List(Int) = [1, 2, 3]
+    gleam_code(
+      "let some_list: List(Int) = [1, 2, 3]
 let some_string: String = \"Wibble\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Gleam will check the type annotation to ensure that it matches the type of the
@@ -4728,10 +4037,8 @@ a specific type to be inferred.",
       html.code([], [html.text("return")]),
       html.text("keywords are optional."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "function hello($name = 'Joe') : string
+    php_code(
+      "function hello($name = 'Joe') : string
 {
   if ($name == 'Joe') {
     return 'Welcome back, Joe!';
@@ -4744,51 +4051,37 @@ function noop()
   // Will automatically return NULL
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Anonymous functions returning a single expression can also be defined and be
 bound to variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$x = 2;
+    php_code(
+      "$x = 2;
 $phpAnonFn = function($y) use ($x) { return $x * $y; }; // Creates a new scope
 $phpAnonFn(3); // 6
 $phpArrowFn = fn ($y) => $x * $y; // Inherits the outer scope
 $phpArrowFn(3); // 6
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-4")], [html.text("Gleam")]),
     html.p([], [html.text("Gleam’s functions are declared like so:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn sum(x, y) {
+    gleam_code(
+      "fn sum(x, y) {
   x + y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Gleam’s anonymous functions have the same basic syntax."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let mul = fn(x, y) { x * y }
+    gleam_code(
+      "let mul = fn(x, y) { x * y }
 mul(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "A difference between PHP’s and Gleam’s anonymous functions is that in PHP they
@@ -4805,19 +4098,15 @@ functions where they inherit the scope like Gleam does.",
 is that module functions heads may also feature argument labels, like so:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// In some module.gleam
+    gleam_code(
+      "// In some module.gleam
 pub fn distance(from x: Int, to y: Int) -> Int {
   x - y |> int.absolute_value()
 }
 // In some other function
 distance(from: 1, to: -2) // 3
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("exporting-functions")], [html.text("Exporting functions")]),
     html.h4([attr.id("php-5")], [html.text("PHP")]),
     html.p([], [
@@ -4831,10 +4120,8 @@ private module-level functions.",
         "However at class level, all properties are public, by default.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class Wibble {
+    php_code(
+      "class Wibble {
   static $wabble = 5;
   private $wubble = 6;
 
@@ -4851,9 +4138,7 @@ echo Wibble::$wubble; // Error
 echo Wibble::wobble(); // \"Hello Joe\"
 echo Wibble::webble(); // Error
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-5")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, functions are private by default and need the "),
@@ -4863,10 +4148,8 @@ echo Wibble::webble(); // Error
 marked as public.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// this is public
+    gleam_code(
+      "// this is public
 pub fn sum(x, y) {
   x + y
 }
@@ -4876,9 +4159,7 @@ fn mul(x, y) {
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("php-6")], [html.text("PHP")]),
     html.p([], [
       html.text(
@@ -4944,10 +4225,8 @@ like ",
       html.code([], [html.text("phpstan")]),
       html.text(") will be required to detect those errors."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "function sum(int $x, int $y) : int {
+    php_code(
+      "function sum(int $x, int $y) : int {
     return $x + $y;
 }
 
@@ -4956,9 +4235,7 @@ function mul(int $x, int $y) : bool {
     return $x * $y;
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-7")], [html.text("Gleam")]),
     html.p([], [
       html.text("Functions can "),
@@ -4970,10 +4247,8 @@ a compilation error if not valid. The compiler will still type check your
 program using type inference if annotations are omitted.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn add(x: Int, y: Int) -> Int {
+    gleam_code(
+      "fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
@@ -4981,9 +4256,7 @@ fn mul(x: Int, y: Int) -> Bool {
   x * y // compile error, type mismatch
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("referencing-functions")], [
       html.text("Referencing functions"),
     ]),
@@ -5005,16 +4278,12 @@ As methods or static functions classes, functions can be accessed via
 other values.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$doubleFn = function($x) { return $x + $x; };
+    php_code(
+      "$doubleFn = function($x) { return $x + $x; };
 // Some imaginary pushFunction
 pushFunction($queue, $doubleFn);
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("However in "),
       html.code([], [html.text("PHP")]),
@@ -5031,10 +4300,8 @@ there is no need for a special syntax to assign a module function to a
 variable.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn identity(x) {
+    gleam_code(
+      "fn identity(x) {
   x
 }
 
@@ -5043,9 +4310,7 @@ fn main() {
   func(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("labelled-arguments")], [html.text("Labelled arguments")]),
     html.p([], [
       html.text(
@@ -5060,10 +4325,8 @@ fn main() {
       ]),
       html.li([], [html.text("by name, in any order")]),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// Some imaginary replace function
+    php_code(
+      "// Some imaginary replace function
 function replace(string $each, string $with, string $inside) {
   // TODO implementation
 }
@@ -5072,9 +4335,7 @@ replace(\",\", \" \", \"A,B,C\");
 // Calling with named arguments:
 replace(inside: \"A,B,C\", each: \",\", with: \" \");
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-9")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -5083,25 +4344,17 @@ Contrary to PHP, the name used at the call-site does not have to match
 the name used for the variable inside the function.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn replace(inside str, each pattern, with replacement) {
+    gleam_code(
+      "pub fn replace(inside str, each pattern, with replacement) {
   todo
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "replace(\",\", \" \", \"A,B,C\")
+    ),
+    gleam_code(
+      "replace(\",\", \" \", \"A,B,C\")
 replace(inside: \"A,B,C\", each: \",\", with: \" \")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "There is no performance cost to Gleam’s labelled arguments as they are
@@ -5468,36 +4721,28 @@ is pushed from left to right much like in unix tooling.",
         "In PHP, constants can only be defined within classes and traits.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class TheQuestion {
+    php_code(
+      "class TheQuestion {
   public const theAnswer = 42;
 }
 echo TheQuestion::theAnswer; // 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-10")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam constants can be created using the "),
       html.code([], [html.text("const")]),
       html.text("keyword."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// the_question.gleam module
+    gleam_code(
+      "// the_question.gleam module
 const the_answer = 42
 
 pub fn main() {
   the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("They can also be marked public via the "),
       html.code([], [html.text("pub")]),
@@ -5516,10 +4761,8 @@ There is no way to create multi-line expressions blocks like in Gleam.",
       ),
     ]),
     html.p([], [html.text("Blocks are declared via curly braces.")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "function a_func() {
+    php_code(
+      "function a_func() {
   // A block starts here
   if ($wibble) {
     // A block here
@@ -5529,9 +4772,7 @@ There is no way to create multi-line expressions blocks like in Gleam.",
   // Block continues
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-11")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam curly braces, "),
@@ -5540,10 +4781,8 @@ There is no way to create multi-line expressions blocks like in Gleam.",
       html.code([], [html.text("}")]),
       html.text(", are used to group expressions."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    gleam_code(
+      "pub fn main() {
   let x = {
     some_function(1)
     2
@@ -5553,9 +4792,7 @@ There is no way to create multi-line expressions blocks like in Gleam.",
   y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Unlike in PHP, in Gleam function blocks are always expressions, so are ",
@@ -5596,25 +4833,17 @@ library for performant string building.",
       ),
     ]),
     html.h4([attr.id("php-12")], [html.text("PHP")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$what = 'world';
+    php_code(
+      "$what = 'world';
 'Hellø, world!';
 \"Hellø, ${what}!\";
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "\"Hellø, world!\"
+    gleam_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("tuples")], [html.text("Tuples")]),
     html.p([], [
       html.text(
@@ -5630,31 +4859,23 @@ mimick tuples. Unpacking can be used to bind a name to a specific value of
 the tuple.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$myTuple = ['username', 'password', 10];
+    php_code(
+      "$myTuple = ['username', 'password', 10];
 [$_, $pwd, $_] = $myTuple;
 echo $pwd; // \"password\"
 // Direct index access
 echo $myTuple[0]; // \"username\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let my_tuple = #(\"username\", \"password\", 10)
+    gleam_code(
+      "let my_tuple = #(\"username\", \"password\", 10)
 let #(_, pwd, _) = my_tuple
 io.print(pwd) // \"password\"
 // Direct index access
 io.print(my_tuple.0) // \"username\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("lists")], [html.text("Lists")]),
     html.p([], [
       html.text(
@@ -5665,10 +4886,8 @@ io.print(my_tuple.0) // \"username\"
     html.p([], [
       html.text("PHP does not feature special syntax for list handling."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$list = [2, 3, 4];
+    php_code(
+      "$list = [2, 3, 4];
 $head = array_slice($list, 0, 1)[0];
 $tail = array_slice($list, 1);
 # $head == 2
@@ -5676,9 +4895,7 @@ $tail = array_slice($list, 1);
 $arr = array_merge($tail, [1.1]);
 # $arr == [3, 4, 1.1]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
     html.p([], [
       html.text("Gleam has a "),
@@ -5689,17 +4906,13 @@ pattern matching. In Gleam lists are immutable so adding and removing elements
 from the start of a list is highly efficient.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [2, 3, 4]
+    gleam_code(
+      "let list = [2, 3, 4]
 let list = [1, ..list]
 let [1, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("dicts")], [html.text("Dicts")]),
     html.p([], [
       html.text("In PHP, the "),
@@ -5757,27 +4970,19 @@ Dicts are generally not used much in Gleam, custom types are more common.",
       ),
     ]),
     html.h4([attr.id("php-15")], [html.text("PHP")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "[\"key1\" => \"value1\", \"key2\" => \"value2\"]
+    php_code(
+      "[\"key1\" => \"value1\", \"key2\" => \"value2\"]
 [\"key1\" => \"1\", \"key2\" => 2]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/dict
+    gleam_code(
+      "import gleam/dict
 
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", \"value2\")])
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("numbers")], [html.text("Numbers")]),
     html.p([], [
       html.text("PHP and Gleam both support "),
@@ -5798,24 +5003,16 @@ floats and integers for you, removing precision or adding floating point
 decimals.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "1 / 2 // 0.5
+    php_code(
+      "1 / 2 // 0.5
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "1 / 2 // 0
+    gleam_code(
+      "1 / 2 // 0
 1.5 + 10 // Compile time error
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("You can use the gleam standard library’s "),
       html.code([], [html.text("int")]),
@@ -5876,10 +5073,8 @@ expression. It is also used to replace ",
       ]),
       html.li([], [html.code([], [html.text("match")]), html.text("(returns)")]),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "function http_error_impl_1($status) {
+    php_code(
+      "function http_error_impl_1($status) {
   if ($status === 400) {
       return \"Bad request\";
   } else if ($status === 404) {
@@ -5916,26 +5111,20 @@ function http_error_impl_3($status) {
   };
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-17")], [html.text("Gleam")]),
     html.p([], [
       html.text("The case operator is a top level construct in Gleam:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case some_number {
+    gleam_code(
+      "case some_number {
   0 -> \"Zero\"
   1 -> \"One\"
   2 -> \"Two\"
   n -> \"Some other number\" // This matches anything
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "As all expressions the case expression will return the matched value.",
@@ -5948,10 +5137,8 @@ any branch must return unlike in PHP, where it is possible to mutate a
 variable of the outer block/scope and not return at all.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let is_status_within_4xx = status / 400 == 1
+    gleam_code(
+      "let is_status_within_4xx = status / 400 == 1
 case status {
   400 -> \"Bad Request\"
   404 -> \"Not Found\"
@@ -5960,34 +5147,24 @@ case status {
   _ -> \"I'm not sure\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("if/else example:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case is_admin {
+    gleam_code(
+      "case is_admin {
   True -> \"allow access\"
   False -> \"disallow access\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("if/elseif/else example:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case True {
+    gleam_code(
+      "case True {
   _ if is_admin == True -> \"allow access\"
   _ if is_confirmed_by_mail == True -> \"allow access\"
   _ -> \"deny access\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Exhaustiveness checking at compile time, which is in the works, will make
@@ -5998,63 +5175,47 @@ to check of expected values and have a catchall clause with a single underscore
       html.code([], [html.text("_")]),
       html.text(":"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case scale {
+    gleam_code(
+      "case scale {
   0 -> \"none\"
   1 -> \"one\"
   2 -> \"pair\"
   _ -> \"many\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "The case operator especially coupled with destructuring to provide native pattern
 matching:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case xs {
+    gleam_code(
+      "case xs {
   [] -> \"This list is empty\"
   [a] -> \"This list has 1 element\"
   [a, b] -> \"This list has 2 elements\"
   _other -> \"This list has more than 2 elements\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("The case operator supports guards:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case xs {
+    gleam_code(
+      "case xs {
   [a, b, c] if a >. b && a <=. c -> \"ok\"
   _other -> \"ko\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("…and disjoint union matching:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case number {
+    gleam_code(
+      "case number {
   2 | 4 | 6 | 8 -> \"This is an even number\"
   1 | 3 | 5 | 7 -> \"This is an odd number\"
   _ -> \"I'm not sure\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("piping")], [html.text("Piping")]),
     html.p([], [
       html.text(
@@ -6071,24 +5232,18 @@ code, that reads imperative-style top down, much like unix tools and piping.",
 objects which in turn ship with their list of methods.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// Imaginary PHP code
+    php_code(
+      "// Imaginary PHP code
 (new Session($request))
   ->authorize()
   ->setSuccessFlash('Logged in successfully!')
   ->setFailureFlash('Failed to login!')
   ->redirectToRequestedUrl();
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-18")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Imaginary Gleam code
+    gleam_code(
+      "// Imaginary Gleam code
 request
 |> session.new()
 |> session.authorize()
@@ -6096,9 +5251,7 @@ request
 |> flash.set_failure_flash('Failed to login!')
 |> response.redirect_to_requested_url()
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Despite being similar to read and comprehend, the PHP code creates a session
@@ -6127,10 +5280,8 @@ argument and that return value is piped further down. It is readability sugar
 for:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "response.redirect_to_requested_url(
+    gleam_code(
+      "response.redirect_to_requested_url(
   flash.set_failure_flash(
     flash.set_success_flash(
       session.authorize(
@@ -6142,9 +5293,7 @@ for:",
   )
 )
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("try")], [html.text("Try")]),
     html.p([], [
       html.text("Error management is approached differently in PHP and Gleam."),
@@ -6161,16 +5310,12 @@ pop up the error to the caller.",
       html.code([], [html.text("throw")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "function aFunctionThatFails() {
+    php_code(
+      "function aFunctionThatFails() {
   throw new RuntimeException('an error');
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "The callee block will be able to capture any exception raised in the block
@@ -6179,10 +5324,8 @@ using a ",
       html.code([], [html.text("try/catch")]),
       html.text("set of blocks:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// callee block
+    php_code(
+      "// callee block
 try {
     echo 'this line will be executed and thus printed';
     aFunctionThatFails();
@@ -6191,9 +5334,7 @@ try {
     var_dump(['doing something with the exception', $e]);
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-19")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -6230,17 +5371,13 @@ try {
 scenarios, using a case for instance:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case parse_int(\"123\") {
+    gleam_code(
+      "case parse_int(\"123\") {
   Ok(i) -> io.println(\"We parsed the Int\")
   Error(e) -> io.println(\"That wasn't an Int\")
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("In order to simplify this construct, we can use the "),
       html.code([], [html.text("try")]),
@@ -6263,10 +5400,8 @@ the given block.",
         ),
       ]),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let a_number = \"1\"
+    gleam_code(
+      "let a_number = \"1\"
 let an_error = Error(\"ouch\")
 let another_number = \"3\"
 
@@ -6276,9 +5411,7 @@ try int_another_number = parse_int(another_number) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("type-aliases")], [html.text("Type aliases")]),
     html.p([], [
       html.text(
@@ -6296,10 +5429,8 @@ using ",
         "A simple variable can store the result of a compound set of types.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class Point {
+    php_code(
+      "class Point {
   // Can act as an opaque type and utilize Point
   // Can be class_aliased to Coordinate
 }
@@ -6308,24 +5439,18 @@ class Triangle {
   // Can act as an opaque type definition and utilize Point
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-20")], [html.text("Gleam")]),
     html.p([], [
       html.text("The "),
       html.code([], [html.text("type")]),
       html.text("keyword can be used to create aliases."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Headers =
+    gleam_code(
+      "pub type Headers =
   List(#(String, String))
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("custom-types")], [html.text("Custom types")]),
     html.h3([attr.id("records")], [html.text("Records")]),
     html.p([], [
@@ -6348,18 +5473,14 @@ the constructor.",
 constructor so some boilerplate is needed:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class Person {
+    php_code(
+      "class Person {
   public function __construct(public string $name, public int $age) { }
 }
 $person = new Person(name: \"Joe\", age: 40);
 $person->name; // Joe
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-21")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -6367,19 +5488,15 @@ $person->name; // Joe
 representation and are compatible with Erlang records (or JavaScript objects).",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Person {
+    gleam_code(
+      "type Person {
   Person(name: String, age: Int)
 }
 
 let person = Person(name: \"Joe\", age: 40)
 let name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "An important difference to note is there is no Java-style object-orientation in
@@ -6409,21 +5526,15 @@ two different types they must be wrapped in a new custom type.",
       ),
     ]),
     html.h4([attr.id("php-22")], [html.text("PHP")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class Wibble {
+    php_code(
+      "class Wibble {
   public ?string $aStringOrNull;
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-22")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type IntOrFloat {
+    gleam_code(
+      "type IntOrFloat {
   AnInt(Int)
   AFloat(Float)
 }
@@ -6435,9 +5546,7 @@ fn int_or_float(X) {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("opaque-custom-types")], [html.text("Opaque custom types")]),
     html.p([], [
       html.text(
@@ -6455,10 +5564,8 @@ using the intended API.",
       ),
     ]),
     html.h4([attr.id("php-23")], [html.text("PHP")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class PointObject
+    php_code(
+      "class PointObject
 {
   private function __construct(public int $x, public int $y) {
   }
@@ -6472,9 +5579,7 @@ using the intended API.",
 }
 PointObject::spawn(1, 2); // Returns a Point object
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "This requires mutation, but prohibits direct property changes.",
@@ -6483,10 +5588,8 @@ PointObject::spawn(1, 2); // Returns a Point object
     html.p([], [
       html.text("PHP allows to skip object mutation by using static classes:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "class PointStruct
+    php_code(
+      "class PointStruct
 {
   public static function spawn(int $x, int $y) {
     if ($x >= 0 && $x <= 99 && $y >= 0 && $y <= 99) {
@@ -6497,9 +5600,7 @@ PointObject::spawn(1, 2); // Returns a Point object
 }
 PointStruct::spawn(1, 2); // Returns an array managed by PointStruct
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "However PHP will in this case not prohibit the direct alteration the returned
@@ -6507,10 +5608,8 @@ structure, like Gleam’s custom types can.",
       ),
     ]),
     html.h4([attr.id("gleam-23")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// In the point.gleam opaque type module:
+    gleam_code(
+      "// In the point.gleam opaque type module:
 pub opaque type Point {
   Point(x: Int, y: Int)
 }
@@ -6528,9 +5627,7 @@ pub fn main() {
   point
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("modules")], [html.text("Modules")]),
     html.h3([attr.id("php-24")], [html.text("PHP")]),
     html.p([], [
@@ -6552,10 +5649,8 @@ map to the source code file system hierarchy, but by convention should.",
       html.code([], [html.text("src/Wibble/Wabble.php")]),
       html.text(":"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// Anything declared in this file will be inside namespace Wibble
+    php_code(
+      "// Anything declared in this file will be inside namespace Wibble
 namespace Wibble;
 
 // Creation of (static) class Wabble in Wibble, thus as Wibble/Wabble
@@ -6565,9 +5660,7 @@ class Wabble {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Making the static class available in the local scope and calling the function
@@ -6576,17 +5669,13 @@ class Wabble {
       html.code([], [html.text("index.php")]),
       html.text("(aka PHP’s main function):"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// After auto-loading has happened
+    php_code(
+      "// After auto-loading has happened
 use Wibble\\Wabble;
 
 Wabble::identity(1); // 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-24")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -6613,36 +5702,28 @@ always matches the module name which keeps things simple and transparent.",
       html.code([], [html.text("/src/wibble/wabble.gleam")]),
       html.text(":"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Creation of module function identity
+    gleam_code(
+      "// Creation of module function identity
 // in module wabble
 pub fn identity(x) {
   x
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Importing the "),
       html.code([], [html.text("wabble")]),
       html.text("module and calling a module function:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// In src/main.gleam
+    gleam_code(
+      "// In src/main.gleam
 import wibble/wabble // if wibble was in a directory called `lib` the import would be `lib/wibble/wabble`.
 
 pub fn main() {
   wabble.identity(1) // 1
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("imports")], [html.text("Imports")]),
     html.h4([attr.id("php-25")], [html.text("PHP")]),
     html.p([], [
@@ -6674,10 +5755,8 @@ Also see ",
       html.text("Inside "),
       html.code([], [html.text("src/Nasa/MoonBase.php")]),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// Makes available src/nasa/RocketShip.php
+    php_code(
+      "// Makes available src/nasa/RocketShip.php
 use Nasa\\RocketShip;
 
 class MoonBase {
@@ -6686,9 +5765,7 @@ class MoonBase {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-25")], [html.text("Gleam")]),
     html.p([], [
       html.text("Imports are relative to the app "),
@@ -6709,19 +5786,15 @@ class MoonBase {
       html.code([], [html.text("src/nasa/moon_base.gleam")]),
       html.text(":"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// imports module src/nasa/rocket_ship.gleam
+    gleam_code(
+      "// imports module src/nasa/rocket_ship.gleam
 import nasa/rocket_ship
 
 pub fn explore_space() {
   rocket_ship.launch()
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("named-imports")], [html.text("Named imports")]),
     html.h4([attr.id("php-26")], [html.text("PHP")]),
     html.p([], [
@@ -6729,29 +5802,21 @@ pub fn explore_space() {
         "PHP features namespaces which can be used to rename classes when they clash:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "// Source files must first be added to the auto-loader
+    php_code(
+      "// Source files must first be added to the auto-loader
 use Unix\\Cat;
 use Animal\\Cat as Kitty;
 // Cat and Kitty are available
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-26")], [html.text("Gleam")]),
     html.p([], [html.text("Gleam has as similar feature:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import unix/cat
+    gleam_code(
+      "import unix/cat
 import animal/cat as kitty
 // cat and kitty are available
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "This may be useful to differentiate between multiple modules that would have the same default name when imported.",
@@ -6759,31 +5824,21 @@ import animal/cat as kitty
     ]),
     html.h3([attr.id("unqualified-imports")], [html.text("Unqualified imports")]),
     html.h4([attr.id("php-27")], [html.text("PHP")]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "use Animal\\Cat\\{
+    php_code(
+      "use Animal\\Cat\\{
   Cat,
   function stroke
 };
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-php")], [
-        html.text(
-          "$kitty = new Cat(name: \"Nubi\");
+    ),
+    php_code(
+      "$kitty = new Cat(name: \"Nubi\");
 stroke($kitty);
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-27")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import animal/cat.{
+    gleam_code(
+      "import animal/cat.{
   Cat,
   stroke
 }
@@ -6793,9 +5848,7 @@ pub fn main() {
   stroke(kitty)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Importing common types such as "),
       html.code([], [html.text("gleam/order.{Lt, Eq, Gt}")]),
@@ -7142,14 +6195,10 @@ pub fn rust(ctx: site.Context) -> fs.File {
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "// Hello, Joe!
+    rust_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -7159,31 +6208,23 @@ pub fn rust(ctx: site.Context) -> fs.File {
       html.code([], [html.text("//!")]),
       html.text("are used to document the current module."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "//! This module is very important.
+    rust_code(
+      "//! This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: u64 = 42;
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam comments are written with a "),
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Hello, Joe!
+    gleam_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -7193,17 +6234,13 @@ const answer: u64 = 42;
       html.code([], [html.text("////")]),
       html.text("are used to document the current module."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// This module is very important.
+    gleam_code(
+      "//// This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("variables")], [html.text("Variables")]),
     html.p([], [
       html.text(
@@ -7213,27 +6250,19 @@ const answer: Int = 42
       html.text("keyword. Variables are immutable in both languages."),
     ]),
     html.h4([attr.id("rust-1")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let size = 50;
+    rust_code(
+      "let size = 50;
 let size = size + 100;
 let size = 1;
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-1")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let size = 50
+    gleam_code(
+      "let size = 50
 let size = size + 100
 let size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Gleam doesn’t have a "),
       html.code([], [html.text("mut")]),
@@ -7252,16 +6281,12 @@ let size = 1
         "can be used for pattern matching, but you’ll get compile errors if there’s a type mismatch.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let [x] = [1];
+    gleam_code(
+      "let [x] = [1];
 let 2 = x; // compile error
 let [y] = \"Hello\"; // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-2")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, "),
@@ -7274,16 +6299,12 @@ let [y] = \"Hello\"; // compile error, type mismatch
       html.code([], [html.text("let assert")]),
       html.text("keyword is preferred."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let [x] = [1]
+    gleam_code(
+      "let [x] = [1]
 let assert 2 = x // runtime error
 let assert [y] = \"Hello\" // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("variables-type-annotations")], [
       html.text("Variables type annotations"),
     ]),
@@ -7293,40 +6314,28 @@ let assert [y] = \"Hello\" // compile error, type mismatch
       ),
     ]),
     html.h4([attr.id("rust-3")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let some_list: [u64; 3] = [1, 2, 3];
+    rust_code(
+      "let some_list: [u64; 3] = [1, 2, 3];
 let other_list = [1, 2, 3];
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-3")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let some_list: List(Int) = [1, 2, 3]
+    gleam_code(
+      "let some_list: List(Int) = [1, 2, 3]
 let other_list = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("functions")], [html.text("Functions")]),
     html.h4([attr.id("rust-4")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "pub fn sum(x: u64, y: u64) -> u64 {
+    rust_code(
+      "pub fn sum(x: u64, y: u64) -> u64 {
   x + y
 }
 
 let mul = |x, y| x * y;
 mul(1, 2);
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-4")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -7335,19 +6344,15 @@ mul(1, 2);
       html.code([], [html.text("fn")]),
       html.text("keyword again."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn sum(x, y) {
+    gleam_code(
+      "pub fn sum(x, y) {
   x + y
 }
 
 let mul = fn(x, y) { x * y }
 mul(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("exporting-functions")], [html.text("Exporting functions")]),
     html.p([], [
       html.text(
@@ -7357,10 +6362,8 @@ mul(1, 2)
       html.text("keyword to be marked as public."),
     ]),
     html.h4([attr.id("rust-5")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "// this is public
+    rust_code(
+      "// this is public
 pub fn sum(x: u64, y: u64) -> u64 {
     x + y
 }
@@ -7370,14 +6373,10 @@ fn mul(x: u64, y: u64) -> u64 {
     x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-5")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// this is public
+    gleam_code(
+      "// this is public
 pub fn sum(x, y) {
   x + y
 }
@@ -7387,9 +6386,7 @@ fn mul(x, y) {
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-type-annotations")], [
       html.text("Function type annotations"),
     ]),
@@ -7399,10 +6396,8 @@ fn mul(x, y) {
       html.strong([], [html.text("always")]),
       html.text(" need type annotations."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "pub fn sum(x: u64, y: u64) -> u64 {
+    rust_code(
+      "pub fn sum(x: u64, y: u64) -> u64 {
   x + y
 }
 
@@ -7410,9 +6405,7 @@ pub fn mul(x: u64, y: u64) -> u64 {
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-6")], [html.text("Gleam")]),
     html.p([], [
       html.text("Functions can "),
@@ -7421,10 +6414,8 @@ pub fn mul(x: u64, y: u64) -> u64 {
         " have their argument and return types annotated in Gleam. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn add(x: Int, y: Int) -> Int {
+    gleam_code(
+      "pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
@@ -7432,9 +6423,7 @@ pub fn mul(x: Int, y: Int) -> Bool { // compile error, type mismatch
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-overloading")], [
       html.text("Function overloading"),
     ]),
@@ -7454,10 +6443,8 @@ implementation for the types it accepts.",
       ),
     ]),
     html.h4([attr.id("rust-7")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "fn identity(x: u64) -> u64 {
+    rust_code(
+      "fn identity(x: u64) -> u64 {
   x
 }
 
@@ -7466,14 +6453,10 @@ fn main() {
   func(100);
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-7")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn identity(x) {
+    gleam_code(
+      "fn identity(x) {
   x
 }
 
@@ -7482,9 +6465,7 @@ fn main() {
   func(100)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("labelled-arguments")], [html.text("Labelled arguments")]),
     html.p([], [
       html.text(
@@ -7500,24 +6481,16 @@ optimised to regular function calls at compile time, and all the arguments
 are fully type checked.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn replace(inside string, each pattern, with replacement) {
+    gleam_code(
+      "pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "replace(each: \",\", with: \" \", inside: \"A,B,C\")
+    ),
+    gleam_code(
+      "replace(each: \",\", with: \" \", inside: \"A,B,C\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("There is no equivalent feature in Rust.")]),
     html.h2([attr.id("operators")], [html.text("Operators")]),
     html.table([], [
@@ -7739,27 +6712,21 @@ are fully type checked.",
       html.code([], [html.text("const")]),
       html.text("keyword, and have to be given a type annotation."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "const the_answer: u64 = 42;
+    rust_code(
+      "const the_answer: u64 = 42;
 
 pub fn main() {
   the_answer;
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "In Rust, public constants can be referenced from other modules.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "mod other_module {
+    rust_code(
+      "mod other_module {
   pub const the_answer: u64 = 42;
 }
 
@@ -7767,53 +6734,39 @@ fn main() {
   other_module::the_answer;
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-8")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam constants can be created using the "),
       html.code([], [html.text("const")]),
       html.text("keyword, and can be optionally given a type annotation."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "const the_answer = 42
+    gleam_code(
+      "const the_answer = 42
 
 pub fn main() {
   the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Additionally, public constants can be referenced from other modules.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// In module other_module.gleam
+    gleam_code(
+      "//// In module other_module.gleam
 pub const the_answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import other_module
+    ),
+    gleam_code(
+      "import other_module
 
 fn main() {
   other_module.the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("rust-9")], [html.text("Rust")]),
     html.p([], [
@@ -7827,18 +6780,14 @@ fn main() {
       html.code([], [html.text(")")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let x = {
+    rust_code(
+      "let x = {
     println!(\"{}\", 1);
     2
 };
 let y = x * (x + 10); // parenthesis are used to change arithmetic operations order
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-9")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam braces "),
@@ -7846,18 +6795,14 @@ let y = x * (x + 10); // parenthesis are used to change arithmetic operations or
       html.code([], [html.text("}")]),
       html.text("are used to group both expressions and arithmetic operations."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let x = {
+    gleam_code(
+      "let x = {
   print(1)
   2
 }
 let y = x * {x + 10} // braces are used to change arithmetic operations order
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("data-types")], [html.text("Data types")]),
     html.h3([attr.id("strings")], [html.text("Strings")]),
     html.p([], [
@@ -7866,49 +6811,33 @@ let y = x * {x + 10} // braces are used to change arithmetic operations order
       ),
     ]),
     html.h4([attr.id("rust-10")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "\"Hellø, world!\"
+    rust_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-10")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "\"Hellø, world!\"
+    gleam_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("tuples")], [html.text("Tuples")]),
     html.h4([attr.id("rust-11")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let my_tuple = (\"username\", \"password\", 10);
+    rust_code(
+      "let my_tuple = (\"username\", \"password\", 10);
 let (_, password, _) = my_tuple;
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-11")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Tuples are very useful in Gleam as they’re the only collection data type that allows mixed types in the collection.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let my_tuple = #(\"username\", \"password\", 10)
+    gleam_code(
+      "let my_tuple = #(\"username\", \"password\", 10)
 let #(_, password, _) = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("lists")], [html.text("Lists")]),
     html.p([], [
       html.text(
@@ -7916,17 +6845,13 @@ let #(_, password, _) = my_tuple
       ),
     ]),
     html.h4([attr.id("rust-12")], [html.text("Rust")]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let list = [1, 2, 3];
+    rust_code(
+      "let list = [1, 2, 3];
 
 let other = [0, ..list]; // Compile error!
 let [0, second_element, ..] = list; // Compile error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
     html.p([], [
       html.text("The "),
@@ -7935,17 +6860,13 @@ let [0, second_element, ..] = list; // Compile error!
         "operator works the same way both for pattern matching and for appending elements to the head of a list.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [1, 2, 3]
+    gleam_code(
+      "let list = [1, 2, 3]
 let list = [0, ..list]
 let assert [0, second_element, ..] = list
 [1.0, ..list] // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("custom-types")], [html.text("Custom types")]),
     html.p([], [
       html.text(
@@ -7958,10 +6879,8 @@ let assert [0, second_element, ..] = list
       html.code([], [html.text("struct")]),
       html.text("keyword."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "struct Person {
+    rust_code(
+      "struct Person {
   name: String,
   age: u64,
 }
@@ -7972,9 +6891,7 @@ let person = Person {
 };
 let name = person.name;
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
     html.p([], [
       html.text("Gleam’s custom types can be declared using the "),
@@ -7983,19 +6900,15 @@ let name = person.name;
         "keyword. At runtime, they have a tuple representation and are compatible with Erlang records.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Person {
+    gleam_code(
+      "type Person {
   Person(name: String, age: Int)
 }
 
 let person = Person(name: \"Jake\", age: 35)
 let name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("unions")], [html.text("Unions")]),
     html.h4([attr.id("rust-14")], [html.text("Rust")]),
     html.p([], [
@@ -8003,10 +6916,8 @@ let name = person.name
       html.code([], [html.text("enum")]),
       html.text("keyword:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "enum IpAddress {
+    rust_code(
+      "enum IpAddress {
   V4(u8, u8, u8, u8),
   V6(String)
 }
@@ -8014,19 +6925,15 @@ let name = person.name
 let addr_v4 = IpAddress::V4(192, 168, 1, 1);
 let addr_v6 = IpAddress::V6(\"::1\".to_string());
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "In Gleam, custom types become unions by having multiple constructors:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type IpAddress {
+    gleam_code(
+      "type IpAddress {
   V4(Int, Int, Int, Int)
   V6(String)
 }
@@ -8034,9 +6941,7 @@ let addr_v6 = IpAddress::V6(\"::1\".to_string());
 let addr_v4 = V4(192, 168, 1, 1)
 let addr_v6 = V6(\"::1\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("flow-control")], [html.text("Flow control")]),
     html.h3([attr.id("case")], [html.text("Case")]),
     html.h4([attr.id("rust-15")], [html.text("Rust")]),
@@ -8050,10 +6955,8 @@ let addr_v6 = V6(\"::1\")
 Such matches are e.g. enums or string slices:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "enum MyEnum {
+    rust_code(
+      "enum MyEnum {
   A(i32),
   B,
   C,
@@ -8070,13 +6973,9 @@ match my_enum {
   }
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "let my_str = \"abcd\";
+    ),
+    rust_code(
+      "let my_str = \"abcd\";
 
 match my_str {
   \"abc\" => do_sth(),
@@ -8084,9 +6983,7 @@ match my_str {
   _ => (),
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
     html.p([], [
       html.text("Similar to Rust’s "),
@@ -8095,10 +6992,8 @@ match my_str {
       html.code([], [html.text("case")]),
       html.text(":"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type MyEnum {
+    gleam_code(
+      "type MyEnum {
   A(Int)
   B
   C
@@ -8115,9 +7010,7 @@ case x {
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("modules")], [html.text("Modules")]),
     html.h4([attr.id("rust-16")], [html.text("Rust")]),
     html.p([], [
@@ -8134,10 +7027,8 @@ case x {
       html.code([], [html.text("::")]),
       html.text("operator to access properties and functions inside."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-rust")], [
-        html.text(
-          "mod wibble {
+    rust_code(
+      "mod wibble {
     pub fn identity(x: u64) -> u64 {
         x
     }
@@ -8151,9 +7042,7 @@ mod wobble {
     }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -8167,29 +7056,21 @@ mod wobble {
       html.code([], [html.text(".")]),
       html.text("operator to access properties and functions inside."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// In module wibble.gleam
+    gleam_code(
+      "//// In module wibble.gleam
 pub fn identity(x) {
   x
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in module main.gleam
+    ),
+    gleam_code(
+      "// in module main.gleam
 import wibble // if wibble was in a folder called `lib` the import would be `lib/wibble`
 pub fn main() {
   wibble.identity(1)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
   |> site.page_layout("roadmap", meta, ctx)
   |> site.to_html_file(meta)
@@ -8330,10 +7211,8 @@ has no concept of ports.",
       html.code([], [html.text("{-| -}")]),
       html.text("for documentation comments."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "-- Hello, Joe!
+    elm_code(
+      "-- Hello, Joe!
 
 {- Hello, Joe!
    This is a multiline comment.
@@ -8346,23 +7225,17 @@ length : List a -> Int
 length xs =
   foldl (\\_ i -> i + 1) 0 xs
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam comments are written with a "),
       html.code([], [html.text("//")]),
       html.text("prefix."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// Hello, Joe!
+    gleam_code(
+      "// Hello, Joe!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Comments starting with "),
       html.code([], [html.text("///")]),
@@ -8372,17 +7245,13 @@ length xs =
       html.code([], [html.text("////")]),
       html.text("are used to document the current module."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "//// This module is very important.
+    gleam_code(
+      "//// This module is very important.
 
 /// The answer to life, the universe, and everything.
 const answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [html.text("There are no multiline comments in Gleam.")]),
     html.h2([attr.id("variables")], [html.text("Variables")]),
     html.h4([attr.id("elm-1")], [html.text("Elm")]),
@@ -8396,17 +7265,13 @@ const answer: Int = 42
         "You also cannot create a variable with the same name as a variable from a higher scope.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "let
+    elm_code(
+      "let
     size = 50
     size = size + 100 -- Compile Error!
 in
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-1")], [html.text("Gleam")]),
     html.p([], [
       html.text("Gleam has the "),
@@ -8415,16 +7280,12 @@ in
         "keyword before its variable names. You can re-assign variables and you can shadow variables from other scopes. This does not mutate the previously assigned value.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let size = 50
+    gleam_code(
+      "let size = 50
 let size = size + 100
 let size = 1
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("variables-type-annotations")], [
       html.text("Variables type annotations"),
     ]),
@@ -8439,29 +7300,21 @@ let size = 1
         "In Elm, type annotations are optionally given on the line above the variable assignment. They can be provided in let-blocks but it frequently only provided for top level variables and functions.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "someList : List Int
+    elm_code(
+      "someList : List Int
 someList = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-2")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "In Gleam type annotations can optionally be given when binding variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let some_list: List(Int) = [1, 2, 3]
+    gleam_code(
+      "let some_list: List(Int) = [1, 2, 3]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("constants")], [html.text("Constants")]),
     html.h4([attr.id("elm-3")], [html.text("Elm")]),
     html.p([], [
@@ -8469,60 +7322,44 @@ someList = [1, 2, 3]
         "In Elm, constants can be defined at the top level of the module like any other value and exported if desired and reference from other modules.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "module Hikers exposing (theAnswer)
+    elm_code(
+      "module Hikers exposing (theAnswer)
 
 theAnswer: Int
 theAnswer =
     42
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-3")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam constants can be created using the "),
       html.code([], [html.text("const")]),
       html.text("keyword."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "const the_answer = 42
+    gleam_code(
+      "const the_answer = 42
 
 pub fn main() {
   the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Gleam constants can be referenced from other modules."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file other_module.gleam
+    gleam_code(
+      "// in file other_module.gleam
 pub const the_answer: Int = 42
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import other_module
+    ),
+    gleam_code(
+      "import other_module
 
 fn main() {
   other_module.the_answer
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("functions")], [html.text("Functions")]),
     html.h4([attr.id("elm-4")], [html.text("Elm")]),
     html.p([], [
@@ -8530,10 +7367,8 @@ fn main() {
         "In Elm, functions are defined as declarations that have arguments, or by assigning anonymous functions to variables.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "sum x y =
+    elm_code(
+      "sum x y =
   x + y
 
 mul =
@@ -8542,9 +7377,7 @@ mul =
 mul 3 2
 -- 6
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-4")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -8553,19 +7386,15 @@ mul 3 2
       html.code([], [html.text("fn")]),
       html.text("keyword."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn sum(x, y) {
+    gleam_code(
+      "pub fn sum(x, y) {
   x + y
 }
 
 let mul = fn(x, y) { x * y }
 mul(1, 2)
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("function-type-annotations")], [
       html.text("Function type annotations"),
     ]),
@@ -8577,28 +7406,22 @@ mul(1, 2)
         " have their argument and return types annotated. These type annotations will always be checked by the compiler and throw a compilation error if not valid. The compiler will still type check your program using type inference if annotations are omitted.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "sum : number -> number -> number
+    elm_code(
+      "sum : number -> number -> number
 sum x y = x + y
 
 mul : number -> number -> Bool -- Compile error
 mul x y = x * y
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-5")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "All the same things are true of Gleam though the type annotations go inline in the function declaration, rather than above it.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn add(x: Int, y: Int) -> Int {
+    gleam_code(
+      "pub fn add(x: Int, y: Int) -> Int {
   x + y
 }
 
@@ -8606,9 +7429,7 @@ pub fn mul(x: Int, y: Int) -> Bool {
   x * y // compile error, type mismatch
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("labelled-arguments")], [html.text("Labelled arguments")]),
     html.h4([attr.id("elm-6")], [html.text("Elm")]),
     html.p([], [
@@ -8616,10 +7437,8 @@ pub fn mul(x: Int, y: Int) -> Bool {
         "Elm has no built-in way to label arguments. Instead it would standard for a function to expect a record as an argument in which the field names would serve as the argument labels. This can be combined with providing a ‘defaults’ value of the same record type where callers can override only the fields that they want to differ from the default.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "defaultOptions =
+    elm_code(
+      "defaultOptions =
   { inside = defaultString
   , each = defaultPattern,
   , with = defaultReplacement
@@ -8628,43 +7447,29 @@ pub fn mul(x: Int, y: Int) -> Bool {
 replace opts =
   doReplacement opts.inside opts.each opts.with
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "replace { each = \",\", with = \" \", inside = \"A,B,C\" }
+    ),
+    elm_code(
+      "replace { each = \",\", with = \" \", inside = \"A,B,C\" }
 
 replace { defaultOptions | inside = \"A,B,C,D\" }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-6")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "In Gleam arguments can be given a label as well as an internal name.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn replace(inside string, each pattern, with replacement) {
+    gleam_code(
+      "pub fn replace(inside string, each pattern, with replacement) {
   go(string, pattern, replacement)
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "replace(each: \",\", with: \" \", inside: \"A,B,C\")
+    ),
+    gleam_code(
+      "replace(each: \",\", with: \" \", inside: \"A,B,C\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "There is no performance cost to Gleam’s labelled arguments as they are optimised to regular function calls at compile time, and all the arguments are fully type checked.",
@@ -8679,48 +7484,36 @@ replace { defaultOptions | inside = \"A,B,C,D\" }
         "keyword allows to create a module. Each module maps to a single file. The module name must be explicitly stated and must match the file name.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "module One exposing (identity)
+    elm_code(
+      "module One exposing (identity)
 
 identity : a -> a
 identity x =
     x
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-7")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "A Gleam file is a module, named by the file name (and its directory path). There is no special syntax to create a module. There can be only one module in a file.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file one.gleam
+    gleam_code(
+      "// in file one.gleam
 pub fn identity(x) {
   x
 }
 ",
-        ),
-      ]),
-    ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// in file main.gleam
+    ),
+    gleam_code(
+      "// in file main.gleam
 import one // if `one` was in a folder called `lib` the import would be `lib/one`
 
 pub fn main() {
   one.identity(1)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("exports")], [html.text("Exports")]),
     html.h4([attr.id("elm-8")], [html.text("Elm")]),
     html.p([], [
@@ -8728,10 +7521,8 @@ pub fn main() {
         "In Elm, exports are handled at the top of the file in the module declaration as a list of names.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "module Math exposing (sum)
+    elm_code(
+      "module Math exposing (sum)
 
 -- this is public as it is in the export list
 sum x y =
@@ -8741,9 +7532,7 @@ sum x y =
 mul x y =
   x * y
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-8")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -8752,10 +7541,8 @@ mul x y =
       html.code([], [html.text("pub")]),
       html.text("keyword to be public."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "// this is public
+    gleam_code(
+      "// this is public
 pub fn sum(x, y) {
   x + y
 }
@@ -8765,9 +7552,7 @@ fn mul(x, y) {
   x * y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("blocks")], [html.text("Blocks")]),
     html.h4([attr.id("elm-9")], [html.text("Elm")]),
     html.p([], [
@@ -8777,10 +7562,8 @@ fn mul(x, y) {
       html.code([], [html.text("in")]),
       html.text("."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "view =
+    elm_code(
+      "view =
   let
     x = 5
     y =
@@ -8792,9 +7575,7 @@ fn mul(x, y) {
   in
   y + x
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-9")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam braces "),
@@ -8802,10 +7583,8 @@ fn mul(x, y) {
       html.code([], [html.text("}")]),
       html.text("are used to group expressions."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub fn main() {
+    gleam_code(
+      "pub fn main() {
   let x = {
     print(1)
     2
@@ -8814,9 +7593,7 @@ fn mul(x, y) {
   y
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("data-types")], [html.text("Data types")]),
     html.h3([attr.id("numbers")], [html.text("Numbers")]),
     html.p([], [
@@ -8869,15 +7646,11 @@ fn mul(x, y) {
         "Additionally, underscores can be added to both integers and floats for clarity.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "const one_million = 1_000_000
+    gleam_code(
+      "const one_million = 1_000_000
 const two_million = 2_000_000.0
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("strings")], [html.text("Strings")]),
     html.p([], [
       html.text(
@@ -8886,14 +7659,10 @@ const two_million = 2_000_000.0
     ]),
     html.p([], [html.text("Both languages use double quotes for strings.")]),
     html.h4([attr.id("elm-11")], [html.text("Elm")]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "\"Hellø, world!\"
+    elm_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("Strings in Elm are combined using the "),
       html.code([], [html.text("++")]),
@@ -8917,10 +7686,8 @@ const two_million = 2_000_000.0
       ),
       html.text(":"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "greeting =
+    elm_code(
+      "greeting =
     \"Hello, \" ++ \"world!\"
 
 birthdayWishes =
@@ -8929,18 +7696,12 @@ birthdayWishes =
 holidayWishes =
     String.concat [ \"Happy \", holiday.name, person.name ]
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-11")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "\"Hellø, world!\"
+    gleam_code(
+      "\"Hellø, world!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Similar to Elm, you can combine strings, for that Gleam has the operator ",
@@ -8958,10 +7719,8 @@ holidayWishes =
       ),
       html.text("in the standard library."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let happy_new_year_wishes =
+    gleam_code(
+      "let happy_new_year_wishes =
   \"Happy New Year \" <> person.name
 
 let birthday_wishes =
@@ -8970,9 +7729,7 @@ let birthday_wishes =
 let holiday_wishes =
   string.concat([ \"Happy \", holiday.name, person.name ])
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("tuples")], [html.text("Tuples")]),
     html.p([], [
       html.text(
@@ -8985,30 +7742,22 @@ let holiday_wishes =
         "In Elm, tuples are limited to only 2 or 3 entries. It is recommended to use records when needing larger numbers of entries.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "myTuple = (\"username\", \"password\", 10)
+    elm_code(
+      "myTuple = (\"username\", \"password\", 10)
 (_, password, _) = myTuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "There is no limit to the number of entries in Gleam tuples, but records are still recommended as giving names to fields adds clarity.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let my_tuple = #(\"username\", \"password\", 10)
+    gleam_code(
+      "let my_tuple = #(\"username\", \"password\", 10)
 let #(_, password, _) = my_tuple
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("records")], [html.text("Records")]),
     html.p([], [
       html.text("Records are used to define and create structured data."),
@@ -9019,17 +7768,13 @@ let #(_, password, _) = my_tuple
         "In Elm, you can declare records using curly braces containing key-value pairs:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "person =
+    elm_code(
+      "person =
   { name = \"Alice\"
   , age = 43
   }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "The type of the record is derived by the compiler. In this case it would be ",
@@ -9043,15 +7788,11 @@ let #(_, password, _) = my_tuple
       html.text("name as a constructor."),
     ]),
     html.p([], [html.text("Record fields can be accessed with a dot syntax:")]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "greeting person =
+    elm_code(
+      "greeting person =
    \"Hello, \" ++ person.name ++ \"!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Records cannot be updated because they are immutable. However, there
@@ -9059,14 +7800,10 @@ is a special syntax for easily creating a new record based on an
 existing record’s fields:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "personWithSameAge = { person | name = \"Bob\" }
+    elm_code(
+      "personWithSameAge = { person | name = \"Bob\" }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -9086,14 +7823,10 @@ let person = Person(name: \"Alice\", age: 43)
       ]),
     ]),
     html.p([], [html.text("Record fields can be accessed with a dot syntax:")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "greeting = string.concat([\"Hello, \",  person.name, \"!\"])
+    gleam_code(
+      "greeting = string.concat([\"Hello, \",  person.name, \"!\"])
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Records cannot be updated because they are immutable. However, there
@@ -9101,14 +7834,10 @@ is a special syntax for easily creating a new record based on an
 existing record’s fields:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let person_with_same_age = Person(..person, name: \"Bob\")
+    gleam_code(
+      "let person_with_same_age = Person(..person, name: \"Bob\")
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("lists")], [html.text("Lists")]),
     html.p([], [
       html.text(
@@ -9123,16 +7852,12 @@ existing record’s fields:",
       html.code([], [html.text("::")]),
       html.text(") for adding a new item to the head of a list."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "list = [2, 3, 4]
+    elm_code(
+      "list = [2, 3, 4]
 anotherList = 1 :: list
 yetAnotherList = \"hello\" :: list // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
     html.p([], [
       html.text(
@@ -9141,16 +7866,12 @@ yetAnotherList = \"hello\" :: list // compile error, type mismatch
       html.code([], [html.text("..")]),
       html.text(") for adding elements to the front of a list."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let list = [2, 3, 4]
+    gleam_code(
+      "let list = [2, 3, 4]
 let list = [1, ..list]
 let another_list = [1.0, ..list] // compile error, type mismatch
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("The standard library provides the "),
       html.a([attr.href("https://hexdocs.pm/gleam_stdlib/gleam/list.html")], [
@@ -9179,29 +7900,21 @@ let another_list = [1.0, ..list] // compile error, type mismatch
       ),
     ]),
     html.h4([attr.id("elm-15")], [html.text("Elm")]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "import Dict
+    elm_code(
+      "import Dict
 
 Dict.fromList [ (\"key1\", \"value1\"), (\"key2\", \"value2\") ]
 Dict.fromList [ (\"key1\", \"value1\"), (\"key2\", 2) ] -- Compile error
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/dict
+    gleam_code(
+      "import gleam/dict
 
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", \"value2\")])
 dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("operators")], [html.text("Operators")]),
     html.p([], [
       html.text(
@@ -9549,10 +8262,8 @@ dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
       ),
     ]),
     html.h4([attr.id("elm-16")], [html.text("Elm")]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "type alias Person =
+    elm_code(
+      "type alias Person =
  { name : String
  , age : Int
  }
@@ -9560,28 +8271,22 @@ dict.from_list([#(\"key1\", \"value1\"), #(\"key2\", 2)]) // Type error!
 person = Person \"Jake\" 35
 name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Gleam’s custom types can be used in much the same way. At runtime, they have a tuple representation and are compatible with Erlang records.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Person {
+    gleam_code(
+      "type Person {
   Person(name: String, age: Int)
 }
 
 let person = Person(name: \"Jake\", age: 35)
 let name = person.name
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("custom-types")], [html.text("Custom Types")]),
     html.p([], [
       html.text(
@@ -9592,25 +8297,19 @@ let name = person.name
     html.p([], [
       html.text("The following example might represent a user in a system:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "type User
+    elm_code(
+      "type User
   = LoggedIn String  -- A logged in user with a name
   | Guest            -- A guest user with no details
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "You must use a case-expression to interact with the contents of a value that uses a custom type:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "getName : User -> String
+    elm_code(
+      "getName : User -> String
 getName user =
     case user of
         LoggedIn name ->
@@ -9620,44 +8319,34 @@ getName user =
             \"Guest user\"
 
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "A custom type with a single entry can be used to help create opaque data types for your module’s API if only the type and not the single constructor is exported.",
       ),
     ]),
     html.h4([attr.id("gleam-17")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type User {
+    gleam_code(
+      "type User {
   LoggedIn(name: String)  // A logged in user with a name
   Guest                   // A guest user with no details
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Like in Elm, you must use a case-expression to interact with the contents of a value that uses a custom type.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn get_name(user) {
+    gleam_code(
+      "fn get_name(user) {
   case user {
     LoggedIn(name) -> name
     Guest -> \"Guest user\"
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "In Gleam, a custom type with a single entry that has fields of its own fills the role of ",
@@ -9693,33 +8382,25 @@ getName user =
       html.code([], [html.text("Maybe")]),
       html.text("is defined as:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "type Maybe a
+    elm_code(
+      "type Maybe a
     = Just a
     | Nothing
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-18")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, "),
       html.code([], [html.text("Option")]),
       html.text("is defined as:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Option(a) {
+    gleam_code(
+      "pub type Option(a) {
   Some(a)
   None
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("The standard library provides the "),
       html.a([attr.href("https://hexdocs.pm/gleam_stdlib/gleam/option.html")], [
@@ -9743,16 +8424,12 @@ getName user =
       html.code([], [html.text("Result")]),
       html.text("type is defined as:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "type Result error value
+    elm_code(
+      "type Result error value
     = Ok value
     | Err error
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-19")], [html.text("Gleam")]),
     html.p([], [
       html.text("In Gleam, the "),
@@ -9764,17 +8441,13 @@ getName user =
     html.p([], [
       html.text("If it were defined in Gleam, it would look like this:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "pub type Result(value, reason) {
+    gleam_code(
+      "pub type Result(value, reason) {
   Ok(value)
   Error(reason)
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("The standard library provides the "),
       html.a([attr.href("https://hexdocs.pm/gleam_stdlib/gleam/result.html")], [
@@ -9816,10 +8489,8 @@ getName user =
       html.code([], [html.text("Error")]),
       html.text("will be immediately returned."),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let a_number = \"1\"
+    gleam_code(
+      "let a_number = \"1\"
 let an_error = \"ouch\"
 let another_number = \"3\"
 
@@ -9829,9 +8500,7 @@ use int_another_number <- try(parse_int(another_number)) // never gets executed
 
 Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("if-expressions")], [html.text("If expressions")]),
     html.h4([attr.id("elm-20")], [html.text("Elm")]),
     html.p([], [
@@ -9839,28 +8508,22 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
         "Elm has syntax for if-expressions for control flow based on boolean values.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "description =
+    elm_code(
+      "description =
     if value then
         \"It's true!\"
     else
         \"It's not true.\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-20")], [html.text("Gleam")]),
     html.p([], [
       html.text(
         "Gleam has no built-in if-expression syntax and instead relies on matching on boolean values in case-expressions to provide this functionality:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "let description =
+    gleam_code(
+      "let description =
   case value {
     True -> \"It's true!\"
     False -> \"It's not true.\"
@@ -9868,9 +8531,7 @@ Ok(int_a_number + attempt_int + int_another_number) // never gets executed
 
 description  // => \"It's true!\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h2([attr.id("case-expressions")], [html.text("Case expressions")]),
     html.p([], [
       html.text(
@@ -9878,10 +8539,8 @@ description  // => \"It's true!\"
       ),
     ]),
     html.h4([attr.id("elm-21")], [html.text("Elm")]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "getName : User -> String
+    elm_code(
+      "getName : User -> String
 getName user =
     case user of
         LoggedIn name ->
@@ -9890,57 +8549,43 @@ getName user =
         Guest ->
             \"Guest user\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-21")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "fn get_name(user) {
+    gleam_code(
+      "fn get_name(user) {
   case user {
     LoggedIn(name) -> name
     Guest -> \"Guest user\"
   }
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Pattern matching on multiple values at the same time is supported:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case x, y {
+    gleam_code(
+      "case x, y {
   1, 1 -> \"both are 1\"
   1, _ -> \"x is 1\"
   _, 1 -> \"y is 1\"
   _, _ -> \"neither is 1\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text(
         "Guard expressions can also be used to limit when certain patterns are matched:",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "case xs {
+    gleam_code(
+      "case xs {
   [a, b, c] if a == b && b != c -> \"ok\"
   _other -> \"ko\"
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("For more information and examples, see the "),
       html.a(
@@ -10010,10 +8655,8 @@ getName user =
         "It is possible to call functions provided by other languages on the Erlang Virtual Machine but only via the Erlang name that those functions end up with.",
       ),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "@external(erlang, \"rand\", \"uniform\")
+    gleam_code(
+      "@external(erlang, \"rand\", \"uniform\")
 pub fn random_float() -> Float
 
 // Elixir modules start with `Elixir.`
@@ -10024,9 +8667,7 @@ pub fn inspect(a) -> a
 @external(javascript, \"./my_package_ffi.mjs\", \"now\")
 pub fn now() -> DateTime
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.p([], [
       html.text("For more information and examples, see the "),
       html.a(
@@ -10165,30 +8806,22 @@ pub fn now() -> DateTime
       ),
     ]),
     html.h4([attr.id("elm-27")], [html.text("Elm")]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "type Alignment
+    elm_code(
+      "type Alignment
   = Left
   | Centre
   | Right
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h4([attr.id("gleam-27")], [html.text("Gleam")]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "type Alignment {
+    gleam_code(
+      "type Alignment {
   Left
   Centre
   Right
 }
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("debugging")], [html.text("Debugging")]),
     html.h3([attr.id("elm-28")], [html.text("Elm")]),
     html.p([], [
@@ -10196,33 +8829,70 @@ pub fn now() -> DateTime
       html.code([], [html.text("Debug.toString()")]),
       html.text("function:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-elm")], [
-        html.text(
-          "import Debug
+    elm_code(
+      "import Debug
 
 Debug.toString [1,2] == \"[1,2]\"
 ",
-        ),
-      ]),
-    ]),
+    ),
     html.h3([attr.id("gleam-28")], [html.text("Gleam")]),
     html.p([], [
       html.text("To aid debugging, Gleam has a "),
       html.code([], [html.text("string.inspect()")]),
       html.text("function:"),
     ]),
-    html.pre([], [
-      html.code([attr.class("language-gleam")], [
-        html.text(
-          "import gleam/string
+    gleam_code(
+      "import gleam/string
 
 string.inspect([1, 2, 3]) == \"[1, 2, 3]\"
 ",
-        ),
-      ]),
-    ]),
+    ),
   ]
   |> site.page_layout("roadmap", meta, ctx)
   |> site.to_html_file(meta)
+}
+
+fn gleam_code(code: String) {
+  contour.to_html(code)
+  |> highlighted_code("gleam")
+}
+
+fn elixir_code(code: String) {
+  tear.highlight(code)
+  |> tear.to_html
+  |> highlighted_code("elixir")
+}
+
+fn erlang_code(code: String) {
+  pearl.highlight_html(code)
+  |> highlighted_code("erlang")
+}
+
+fn rust_code(code: String) {
+  // Rust is similar enough to Gleam that this gives us "good enough" highlighting.
+  contour.to_html(code)
+  |> highlighted_code("rust")
+}
+
+fn python_code(code: String) {
+  // Python is similar enough to Elixir that this gives us "good enough" highlighting.
+  tear.highlight(code)
+  |> tear.to_html
+  |> highlighted_code("python")
+}
+
+fn elm_code(code: String) {
+  houdini.escape(code) |> highlighted_code("elm")
+}
+
+fn php_code(code: String) {
+  houdini.escape(code) |> highlighted_code("php")
+}
+
+fn highlighted_code(highlighted_html: String, language: String) {
+  html.pre([], [
+    element.unsafe_raw_html("", "code", [attr.class("language-" <> language)], {
+      highlighted_html
+    }),
+  ])
 }
