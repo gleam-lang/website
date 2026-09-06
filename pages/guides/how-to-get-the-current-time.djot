@@ -1,0 +1,25 @@
+---
+title = "Get the current time"
+meta_title = "How to get the current time"
+subtitle = "using the Gleam time package"
+description = "The Gleam time package provides time functionality that works with Gleam on both Erlang and JavaScript"
+tags = ["time"]
+---
+
+The `gleam_time` package provides time functionality that works on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add gleam_time
+```
+
+Use the [`timestamp.system_time`](https://gleam-time.hexdocs.pm/gleam/time/timestamp.html#system_time)
+to get the current time from the operating system.
+
+```gleam
+import gleam/time/timestamp.{type Timestamp}
+
+pub fn now() -> Timestamp {
+  timestamp.system_time()
+}
+```
