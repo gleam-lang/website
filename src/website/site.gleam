@@ -982,7 +982,7 @@ pub fn documentation(ctx: Context) -> fs.File {
       ]),
       html.li([], [
         html.a([attr.href("/documentation/externals")], [
-          html.text("Using code written in other languages from Gleam"),
+          html.text("Using external code written in other languages from Gleam"),
         ]),
       ]),
     ]),
