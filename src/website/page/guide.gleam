@@ -132,7 +132,7 @@ fn index_page(
       html.form([attr.class("guide-search-form")], [
         html.input([
           attr.type_("text"),
-          attr.placeholder("eg. external, patterns, http"),
+          attr.placeholder("eg. render HTML"),
         ]),
         html.img([
           attr.class("search-icon"),
@@ -149,7 +149,8 @@ fn index_page(
   |> site.to_html_file(meta)
 }
 
-const filter_script = "
+const filter_script =
+  "
 function updateDisplayedGuides(tags, filterValue) {
 	const search = filterValue.trim().toLowerCase();
 
