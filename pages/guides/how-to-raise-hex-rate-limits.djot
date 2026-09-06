@@ -1,0 +1,30 @@
+---
+title = "Raise Hex rate limits"
+meta_title = "How to raise Hex rate limits"
+subtitle = "with the Gleam command line"
+description = "A read-only Hex API key can be used to raise API limits when resolving dependencies"
+tags = ["gleam"]
+---
+
+Gleam uses the [Hex](https://hex.pm/), the package manager for the Erlang
+ecosystem. Hex has rate limits for each IP address, and these can be hit when
+performing multiple Hex-using actions within a short period of time, e.g.
+updating the dependencies of multiple Gleam projects. A read-only API key can
+be used to raise this limit. 
+
+Create a new key via [the Hex dashboard](https://hex.pm/dashboard/keys), giving
+it API read permissions.
+
+Set this API key in the `HEXPM_READ_API_KEY` variable in the command line
+session you are running Gleam from:
+
+```shell
+# Linux, MacOS, BSD, etc
+export HEXPM_READ_API_KEY=01234567890123456789
+```
+```shell
+# Windows PowerShell
+$env:HEXPM_READ_API_KEY = "01234567890123456789"
+```
+
+Gleam will read this environment variable and use the key if present.
