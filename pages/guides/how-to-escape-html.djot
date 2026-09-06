@@ -1,0 +1,29 @@
+---
+title = "Escape HTML"
+meta_title = "How to escape HTML in Gleam"
+subtitle = "using Houdini"
+description = "The Houdini package provides HTML escaping that works with Gleam on both Erlang and JavaScript"
+tags = ["html", "security"]
+---
+
+The `houdini` package provides fast HTML escaping that work on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add houdini
+```
+
+Use the [`houdini.escape`](https://simplifile.hexdocs.pm/houdini.html#escape)
+to escape HTML content.
+
+```gleam
+import houdini
+
+pub fn render_paragraph(content: String) -> String {
+  let content = houdini.escape(content)
+  "<p>" <> content <> "</p>"
+}
+```
+
+Content escaped with `houdini.escape` is safe to include in a HTML page, even
+if the content comes from an untrusted source, such as user input.
