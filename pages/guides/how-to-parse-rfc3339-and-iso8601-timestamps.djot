@@ -1,0 +1,37 @@
+---
+title = "Parse RFC 3339 and ISO 8601 timestamps"
+meta_title = "How to parse RFC 3339 and ISO 8601 timestamps"
+subtitle = "using the Gleam time package"
+description = "The Gleam time package provides time functionality that works with Gleam on both Erlang and JavaScript"
+tags = ["time"]
+---
+
+Timestamp strings like `2026-09-06T17:00:09.398Z` match the format specified in
+[RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6).
+
+The `gleam_time` package has a function for parsing these timestamps on both
+the Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add gleam_time
+```
+
+Use the [`timestamp.parse_rfc3339`](https://gleam-time.hexdocs.pm/gleam/time/timestamp.html#parse_rfc3339)
+function to parse the timestamp.
+
+```gleam
+import gleam/time/timestamp.{type Timestamp}
+
+pub fn time() -> Result(Timestamp, Nil) {
+  timestamp.parse_rfc3339("2026-09-06T17:00:09.398Z")
+}
+```
+
+::: alert-warning
+### Other ISO 8601 formats
+
+ISO 8601 specifies other formats such as `2026-249` and `2026-W37-7`. These are
+not valid RFC 3339 timestamps, so if you need to parse them you may want to use
+the [`datetime_iso8601`](https://datetime-iso8601.hexdocs.pm/) package instead.
+
+:::
