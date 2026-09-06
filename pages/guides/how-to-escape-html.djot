@@ -13,7 +13,7 @@ Erlang and JavaScript targets. Add it as a dependency to your package:
 gleam add houdini
 ```
 
-Use the [`houdini.escape`](https://simplifile.hexdocs.pm/houdini.html#escape)
+Use the [`houdini.escape`](https://houdini.hexdocs.pm/houdini.html#escape)
 to escape HTML content.
 
 ```gleam

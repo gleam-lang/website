@@ -1,0 +1,36 @@
+---
+title = "Render HTML with Lustre"
+meta_title = "How to render HTML with Lustre"
+subtitle = "Good for server side rendering and static sites"
+description = "The Lustre package provides HTML building functionality that works with Gleam on both Erlang and JavaScript"
+tags = ["html"]
+---
+
+The Lustre package can be used as a type-safe HTML builder library. Add it as a
+dependency to your package:
+
+```cli
+gleam add lustre
+```
+
+Use the functions from Lustre's [`html`](https://lustre.hexdocs.pm/lustre/element/html.html)
+and [`html`](https://lustre.hexdocs.pm/lustre/attribute.html) modules to build
+some HTML.
+
+The [`element.to_string`](https://lustre.hexdocs.pm/lustre/element.html#to_string)
+function can then be used to render the HTML to a string. If the HTML
+is a full page and should have a doctype then use the
+[`element.to_document_string`](https://lustre.hexdocs.pm/lustre/element.html#to_document_string)
+function instead.
+
+```gleam
+import lustre/element
+import lustre/element/html
+
+pub fn html_page() -> String {
+  let html = html.h1([], [
+    html.text("Hello, Joe!"),
+  ])
+  element.to_document_string(html)
+}
+```
