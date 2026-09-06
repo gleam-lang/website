@@ -149,8 +149,7 @@ fn index_page(
   |> site.to_html_file(meta)
 }
 
-const filter_script =
-  "
+const filter_script = "
 function updateDisplayedGuides(tags, filterValue) {
 	const search = filterValue.trim().toLowerCase();
 
