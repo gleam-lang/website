@@ -1,0 +1,25 @@
+---
+title = "Read environment variables"
+meta_title = "How to read environment variables"
+subtitle = "using envoy"
+description = "The envoy package can work with environment variables Gleam on both Erlang and JavaScript"
+tags = ["operating-system"]
+---
+
+The `envoy` package can work with environment variables on both the
+Erlang and JavaScript targets. Add it as a dependency to your package:
+
+```cli
+gleam add envoy
+```
+
+Use the [`envoy.get`](https://envoy.hexdocs.pm/envoy.html#get)
+function to read an environment variable.
+
+```gleam
+import envoy
+
+pub fn current_system_user() -> Result(String, Nil) {
+  envoy.get("USER")
+}
+```
