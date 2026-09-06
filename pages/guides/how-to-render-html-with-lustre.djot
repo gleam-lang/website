@@ -14,8 +14,8 @@ gleam add lustre
 ```
 
 Use the functions from Lustre's [`html`](https://lustre.hexdocs.pm/lustre/element/html.html)
-and [`html`](https://lustre.hexdocs.pm/lustre/attribute.html) modules to build
-some HTML.
+and [`attribute`](https://lustre.hexdocs.pm/lustre/attribute.html) modules to
+build some HTML.
 
 The [`element.to_string`](https://lustre.hexdocs.pm/lustre/element.html#to_string)
 function can then be used to render the HTML to a string. If the HTML
