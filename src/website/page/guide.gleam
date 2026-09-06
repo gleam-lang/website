@@ -82,7 +82,7 @@ fn index_page(
       meta_title: "Guides | Gleam programming language",
       subtitle: "How to do things in Gleam",
       description: "How to do various common tasks in the Gleam programming language.",
-      preview_image: option.None,
+      preview_image: option.Some("guides"),
     )
 
   let guide_icon = fn(target: TargetSupport) {
