@@ -102,6 +102,10 @@ fn redirect_files() -> List(fs.File) {
       "command-line-reference/index.html",
       "/documentation/command-line-reference",
     ),
+    site.redirect(
+      "news/gleam-gathering-2017-is-coming-to-london/index.html",
+      "/news/gleam-gathering-2027-is-coming-to-london",
+    ),
     site.redirect("getting-started/installing/index.html", "/install"),
     site.redirect_to_tour("book/index.html", ""),
     site.redirect_to_tour("book/print.html", ""),
