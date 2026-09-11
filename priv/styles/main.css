@@ -1524,6 +1524,14 @@ pre code {
   max-width: 100%;
 }
 
+.prose img.right {
+  float: right;
+  width: 50%;
+  max-width: 300px;
+  margin-left: var(--gap-1);
+  margin-bottom: var(--gap-1);
+}
+
 .prose details {
   border: 1px solid var(--color-warm-charcoal);
   padding: 1.2rem;

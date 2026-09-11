@@ -1,0 +1,34 @@
+---
+title = "Gleam Gathering 2027 is coming to London!"
+meta_title = "Gleam Gathering 2027 is coming to London! | Gleam programming language"
+subtitle = "Join us next year at Gleam's conference"
+description = "The first-ever all-Gleam conference returns, this time in the capital city of the UK. We hope you will join us!"
+preview_image = "join-gleam-gathering-2027"
+published = 2026-09-10
+
+[author]
+name = "Kamila Pokój"
+url = "https://github.com/Kamila-P"
+---
+
+![The Gleam Gathering logo, a stylised pair of pink letter Gs](/images/gleam-gathering.svg){.right}
+
+Earlier this year we had a fantastic time at the first ever 100% Gleam conference. 
+
+Gleam Gathering was a blast and it was incredible to see so many Gleamlins in
+one place. There were talks from community members and Gleam core team members,
+plenty of interesting conversations about Gleam, other tech and just life in
+general. And all the side fun like bouldering, pizza and arcade games.
+
+If you couldn't make it to Bristol, [all the 2026 talks have been released](https://www.youtube.com/@GleamGathering),
+so you can see for yourself what the event was all about.
+
+Now many of us are already preparing for Gleam Gathering 2027.
+
+[Tickets are already available](https://gleamgathering.com/#register) and the
+call for talks is open. If you've been working on something interesting with
+Gleam, learned something worth sharing, built a library or tool, or simply have
+a topic you think other Gleamlins would enjoy hearing about, make sure to 
+[send your proposal!](https://gleamgathering.com/#call-for-talks)!
+
+See you there!
