@@ -197,6 +197,15 @@ fn head_elements(page: PageMeta, ctx: Context) -> List(element.Element(a)) {
     option.Some(name) -> ctx.hostname <> "/images/preview/" <> name <> ".png"
   }
 
+  let page_url = case page.path {
+    "/" -> ctx.hostname
+    "/" <> _ -> ctx.hostname <> page.path
+    _ -> {
+      let detail = "Path must start with a / (found \"" <> page.path <> "\")"
+      panic as detail
+    }
+  }
+
   [
     html.meta([attr("charset", "utf-8")]),
     html.meta([attr("content", "width=device-width"), attr.name("viewport")]),
@@ -213,7 +222,7 @@ fn head_elements(page: PageMeta, ctx: Context) -> List(element.Element(a)) {
     metatag("og:image", preview_image),
     metatag("og:title", page.meta_title),
     metatag("og:description", page.description),
-    metatag("og:url", ctx.hostname <> "/" <> page.path),
+    metatag("og:url", page_url),
     metatag("twitter:card", "summary_large_image"),
     metatag("twitter:url", ctx.hostname),
     metatag("twitter:title", page.meta_title),
