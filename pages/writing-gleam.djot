@@ -195,7 +195,7 @@ pub fn format_pair(name: String, value: String) -> String {
 }
 ```
 
-Open up the test/vars_test.gleam file and write a test for the format_pair.
+Open up the `test/vars_test.gleam` file and write a test for the `format_pair` function.
 
 ```gleam
 // in test/vars_test.gleam
