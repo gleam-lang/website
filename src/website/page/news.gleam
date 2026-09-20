@@ -39,7 +39,7 @@ fn news_post_page(page: #(site.Page, NewsData), ctx: site.Context) -> fs.File {
   [
     html.div([class("post")], [
       html.div([class("post-meta")], [
-        html.a([attr.href("/news"), class("meta-button back-button")], [
+        html.a([attr.href("/news/"), class("meta-button back-button")], [
           html.img([
             attr.width(20),
             attr.src("/images/return-icon.svg"),

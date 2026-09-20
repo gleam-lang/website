@@ -121,12 +121,12 @@ fn study_page(page: #(site.Page, CaseStudyData), ctx: site.Context) -> fs.File {
               html.text("language tour"),
             ]),
             html.text(" and "),
-            html.a([attr.href("/documentation")], [html.text("documentation")]),
+            html.a([attr.href("/documentation/")], [html.text("documentation")]),
             html.text("."),
           ]),
           html.p([], [
             html.text("Already using it in production? "),
-            html.a([attr.href("/community")], [
+            html.a([attr.href("/community/")], [
               html.text("Share your story with us"),
             ]),
             html.text(", we'd love to hear all about it!"),
