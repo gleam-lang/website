@@ -2305,3 +2305,23 @@ details>summary {
     grid-column: 1 / span 2;
   }
 }
+
+.gerbil .label {
+  font-size: 11px;
+}
+
+.gerbil .tick {
+  opacity: 0.5;
+}
+
+.gerbil .tick.y {
+  display: none;
+}
+
+.gerbil .bar {
+  fill: var(--color-code-dark-grey);
+}
+
+.gerbil .bar.gleam {
+  fill: var(--color-faff-pink);
+}

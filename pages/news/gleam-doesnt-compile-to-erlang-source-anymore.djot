@@ -1,0 +1,125 @@
+---
+title = "Gleam doesn't compile to Erlang source anymore"
+meta_title = "Gleam doesn't compile to Erlang source anymore | Gleam programming language"
+subtitle = "Gleam v1.19.0 released!"
+description = "News post: Gleam v1.19.0 released!"
+preview_image = "v1.19"
+published = 2026-09-19
+
+[author]
+name = "Louis Pilfold"
+url = "https://github.com/lpil"
+---
+
+Gleam is a type-safe and scalable language for the Erlang virtual machine and
+JavaScript runtimes. Today Gleam [v1.19.0][release] has been published, so
+let's go over what's new.
+
+[release]: https://github.com/gleam-lang/gleam/releases/tag/v1.19.0
+
+## A new compilation target
+
+Over the last few months [Giacomo Cavalieri](https://github.com/giacomocavalieri)
+has entirely rewritten Gleam's Erlang code generator that has an entirely
+different design, and most notably, outputs a different format. Previously Gleam
+generated Erlang source code, now it generates [_Erlang abstract forms_](https://www.erlang.org/doc/apps/erts/absform.html).
+
+"Erlang abstract forms" is an intermediate representation used by the Erlang
+compiler. It is a metadata-annotated tree that represents Erlang syntax, and it
+is normally produced by running Erlang's tokeniser and parser. It has a binary
+encoding using Erlang's [_external term format_](https://www.erlang.org/doc/apps/erts/erl_ext_dist.html),
+and with this binary format we can load our generated code directly, skipping
+the front-half of the Erlang compiler.
+
+This new Erlang code generator brings several benefits:
+
+- The performance of the compiler has been improved, significantly reducing the
+  build times for Gleam projects running on Erlang.
+
+- The location metadata available to the runtime is now accurate to original
+  Gleam source code, rather than to the Erlang source code the compiler would
+  generate. This means, for example, the line numbers in BEAM crash reports and
+  stacktraces are perfectly accurate, while previously they could be
+  inaccurate, only pointing to the nearest function. This metadata could also
+  enable full support for Gleam in debuggers such as [edb](https://github.com/WhatsApp/edb),
+  though we have not done any work on this ourselves.
+
+- The code-quality of the Gleam compiler has been improved. The Erlang code
+  generator was one of the oldest and most stable parts of the Gleam codebase,
+  so while it wasn't causing us any problems it wasn't conforming to the
+  standards and conventions we have today. This new replacement is excellent,
+  and arguably raising the bar for the compiler as whole.
+
+- We never have to hear someone use the word "transpiler" as a pejorative ever
+  again.[^transpiler]
+
+[^transpiler]: "Transpiler" means a compiler that outputs a human-readable
+  format, such as source code. It's a cool sounding word, but most the time
+  people use it to imply that a compiler is in some way inferior. This is very
+  silly, as there is nothing about compiling to a human-readable format that
+  makes a compiler easier to implement. If you care about that output being
+  nicely formatted it might even be harder than using a binary format.
+
+## Ok, so how fast is it?
+
+I'm going to show you some numbers in a moment, but please remember that
+benchmarks are always contrived and never tell the full story. This data could
+be a good introduction or jumping-off point, but a good understanding requires
+the person to do further research and experience.
+
+The [benchmark](https://github.com/lpil/langcompilebench) is based on José
+Valim's `langcompilebench` project. Thank you José! It is a measure of the time
+taken to compile 100 modules that each contain 100 functions that return a
+"hello world" string. This is practical as this shape of test project can be
+easily replicated across different languages to produce the most like-for-like
+test projects, but it is limited in what it can tell us as only a small subset
+of the features of each language get compiled. In real projects code will be
+greatly more varied, and different features will have different compilation
+costs in different languages.
+
+The first stage of the code generator rewrite was released in v1.18.0, the
+previous release, so let's compare v1.17.0 to the newly released v1.19.0.
+
+```time-elapsed-chart
+Gleam v1.17.0=0.538
+Gleam v1.19.0=0.370
+```
+
+As you can see, a considerable improvement! This is a full build from scratch,
+without any caching. Gleam's compilation is incremental, so during typical
+development it would be much faster as it will not be compiling the entire
+project.
+
+The original `langcompilebench` includes only Erlang, Elixir, and Gleam, but I
+have extended it an assortment of other popular programming languages, to help
+folks get a rough feel for how fast Gleam compiles compared to a language they
+are familiar with. I've also included Gleam when compiling to JavaScript.
+Here's the results:
+
+
+```time-elapsed-chart
+C#=0.925
+Elixir=0.577
+Elm=0.555
+Erlang=0.548
+Gleam (BEAM)=0.370
+Gleam (JS)=0.099
+Go=0.284
+Java=0.609
+Rust=0.732
+TypeScript=0.947
+```
+
+Remember: This is a contrived benchmark and is this along is insufficient to
+draw any hard conclusions from about these languages. That said, these results
+do suggest that Gleam's compilation is nice and fast, and as a Gleam programmer
+I can say that Gleam development is very enjoyable, with little time spent
+waiting for the computer.
+
+## Why not target BEAM bytecode directly?
+
+We have moved from from compiling from source code that is fed to the Erlang
+compiler to an intermediate-representation that is fed into the Erlang
+compiler, but why not bypass the Erlang compiler altogether? Gleam's JavaScript
+compilation is much faster than its Erlang compilation because a good deal of
+time is spent in the Erlang compiler as it builds BEAM bytecode.

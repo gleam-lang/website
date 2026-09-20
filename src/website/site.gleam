@@ -1,7 +1,10 @@
 import contour
+import gerbil/axis
+import gerbil/chart
 import gleam/dict
 import gleam/dynamic.{type Dynamic}
 import gleam/dynamic/decode
+import gleam/float
 import gleam/int
 import gleam/list
 import gleam/option.{type Option}
@@ -2198,6 +2201,9 @@ pub fn parse_djot(string: String) -> jot.Document {
   let content =
     list.map(document.content, fn(container) {
       case container {
+        jot.Codeblock(language: option.Some("time-elapsed-chart"), content:, ..) -> {
+          jot.RawBlock(time_elapsed_chart(content))
+        }
         jot.Codeblock(language: option.Some("gleam"), content:, ..) -> {
           let content = contour.to_html(content)
           jot.RawBlock("<pre><code>" <> content <> "</code></pre>")
@@ -2281,6 +2287,44 @@ pub fn parse_djot(string: String) -> jot.Document {
       }
     })
   jot.Document(..document, content:)
+}
+
+fn time_elapsed_chart(content: String) -> String {
+  let assert Ok(data) =
+    content
+    |> string.split("\n")
+    |> list.filter(fn(line) { line != "" })
+    |> list.try_map(fn(line) {
+      use #(name, value) <- result.try(string.split_once(line, "="))
+      use value <- result.try(float.parse(value))
+      let attributes = case name {
+        "Gleam" <> _ -> [attr.class("gleam")]
+        _ -> []
+      }
+      Ok(#(name, value, attributes))
+    })
+    as { "Invalid chart data:\n" <> content }
+
+  let data =
+    data
+    |> list.sort(fn(a, b) { float.compare(b.1, a.1) })
+    |> list.map(fn(row) {
+      let #(name, value, attributes) = row
+      chart.bar(name, 0.0, value, attributes)
+    })
+
+  let programming_language =
+    axis.categorical()
+    |> axis.show_labels(fn(language) { language })
+
+  let seconds =
+    axis.float()
+    |> axis.min(0.0)
+
+  chart.new(y: programming_language, x: seconds)
+  |> chart.add(chart.horizontal_bars([], data))
+  |> chart.to_svg(width: 2, height: 1)
+  |> element.to_string
 }
 
 fn highlight_containerfile_html(code: String) -> String {
