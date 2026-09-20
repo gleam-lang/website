@@ -8,7 +8,7 @@ preview_image = "writing"
 
 This guide shows you how to create and develop a Gleam project.
 
-It does not teach the Gleam language itself, so read through [the language tour](https://tour.gleam.run/) first if you have not already. You are assumed to already have Gleam and Erlang installed, so head over to the [install guide](/install) if you do not have Gleam installed.
+It does not teach the Gleam language itself, so read through [the language tour](https://tour.gleam.run/) first if you have not already. You are assumed to already have Gleam and Erlang installed, so head over to the [install guide](/install/) if you do not have Gleam installed.
 
 Ready? Let’s go!
 
@@ -129,7 +129,7 @@ my_library = { git = "git@github.com:my-project/my-library", ref = "a8b3c5d82" }
 gleam_stdlib = { git = "git@github.com:gleam-lang/stdlib", ref = "main" }
 ```
 
-See: [the `gleam.toml` reference](/writing-gleam/gleam-toml) for more information.
+See: [the `gleam.toml` reference](/writing-gleam/gleam-toml/) for more information.
 
 ## Using dependencies
 

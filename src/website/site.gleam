@@ -285,16 +285,16 @@ pub fn header(
           ]),
         ]),
         html.div([], [
-          html.a([attr.href("/news")], [html.text("News")]),
-          html.a([attr.href("/community")], [html.text("Community")]),
-          html.a([attr.href("/sponsor")], [html.text("Sponsor")]),
+          html.a([attr.href("/news/")], [html.text("News")]),
+          html.a([attr.href("/community/")], [html.text("Community")]),
+          html.a([attr.href("/sponsor/")], [html.text("Sponsor")]),
         ]),
         html.div([], [
           html.a([attr.href("https://packages.gleam.run")], [
             html.text("Packages"),
           ]),
-          html.a([attr.href("/documentation")], [html.text("Docs")]),
-          html.a([attr.href("/install")], [
+          html.a([attr.href("/documentation/")], [html.text("Docs")]),
+          html.a([attr.href("/install/")], [
             html.text("Install"),
           ]),
         ]),
@@ -313,18 +313,18 @@ pub fn header(
 
 fn footer(ctx: Context) -> element.Element(a) {
   let footer_links = [
-    #("News", "/news"),
+    #("News", "/news/"),
     #("Code", "https://github.com/gleam-lang"),
     #("Discord", "https://discord.gg/Fm8Pwmy"),
     #("Merch store", "https://shop.gleam.run/en-gbp"),
     #("Language tour", "https://tour.gleam.run"),
     #("Playground", "https://playground.gleam.run"),
-    #("Documentation", "/documentation"),
-    #("Sponsor", "/sponsor"),
+    #("Documentation", "/documentation/"),
+    #("Sponsor", "/sponsor/"),
     #("Packages", "https://packages.gleam.run/"),
     #("Gleam Weekly", "https://gleamweekly.com/"),
-    #("Roadmap", "/roadmap"),
-    #("Case studies", "/case-studies"),
+    #("Roadmap", "/roadmap/"),
+    #("Case studies", "/case-studies/"),
   ]
 
   let code_of_conduct =
@@ -648,7 +648,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
       html.text(
         ", is possible thanks to the support of our sponsors! Check out our full ",
       ),
-      html.a([attr.href("/roadmap")], [html.text("roadmap")]),
+      html.a([attr.href("/roadmap/")], [html.text("roadmap")]),
       html.text(" to see what we have planned next."),
     ]),
   ]
@@ -877,7 +877,7 @@ pub fn documentation(ctx: Context) -> fs.File {
       ]),
       html.li([], [
         html.p([], [
-          html.a([attr.href("/writing-gleam")], [html.text("Writing Gleam")]),
+          html.a([attr.href("/writing-gleam/")], [html.text("Writing Gleam")]),
         ]),
         html.p([], [
           html.text("A guide on creating and developing projects in Gleam."),
@@ -885,7 +885,7 @@ pub fn documentation(ctx: Context) -> fs.File {
       ]),
       html.li([], [
         html.p([], [
-          html.a([attr.href("/getting-started/installing")], [
+          html.a([attr.href("/getting-started/installing/")], [
             html.text("Installing Gleam"),
           ]),
         ]),
@@ -940,22 +940,22 @@ pub fn documentation(ctx: Context) -> fs.File {
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/documentation/command-line-reference")], [
+        html.a([attr.href("/documentation/command-line-reference/")], [
           html.text("The command line reference"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/documentation/language-server-reference")], [
+        html.a([attr.href("/documentation/language-server-reference/")], [
           html.text("The Gleam language server reference"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/documentation/gleam-toml-reference")], [
+        html.a([attr.href("/documentation/gleam-toml-reference/")], [
           html.text("The gleam.toml config file reference"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/documentation/compatibility-reference")], [
+        html.a([attr.href("/documentation/compatibility-reference/")], [
           html.text("The operating system and platform compatibility reference"),
         ]),
       ]),
@@ -979,18 +979,18 @@ pub fn documentation(ctx: Context) -> fs.File {
     html.h2([attr.id("guides")], [html.text("Guides")]),
     html.ul([], [
       html.li([], [
-        html.a([attr.href("/writing-gleam")], [
+        html.a([attr.href("/writing-gleam/")], [
           html.text("Developing Gleam projects using the Gleam build tool"),
         ]),
       ]),
       html.li([], [
         html.a(
-          [attr.href("/documentation/conventions-patterns-and-anti-patterns")],
+          [attr.href("/documentation/conventions-patterns-and-anti-patterns/")],
           [html.text("Conventions, patterns, and anti-patterns in Gleam code")],
         ),
       ]),
       html.li([], [
-        html.a([attr.href("/documentation/externals")], [
+        html.a([attr.href("/documentation/externals/")], [
           html.text("Using external code written in other languages from Gleam"),
         ]),
       ]),
@@ -999,7 +999,7 @@ pub fn documentation(ctx: Context) -> fs.File {
     html.h2([attr.id("security")], [html.text("Security")]),
     html.ul([], [
       html.li([], [
-        html.a([attr.href("/documentation/source-bill-of-materials")], [
+        html.a([attr.href("/documentation/source-bill-of-materials/")], [
           html.text("Generating a Source Bill of Materials for a Gleam project"),
         ]),
       ]),
@@ -1008,32 +1008,32 @@ pub fn documentation(ctx: Context) -> fs.File {
     html.h2([attr.id("cheatsheets")], [html.text("Cheatsheets")]),
     html.ul([], [
       html.li([], [
-        html.a([attr.href("/cheatsheets/gleam-for-elixir-users")], [
+        html.a([attr.href("/cheatsheets/gleam-for-elixir-users/")], [
           html.text("Gleam for Elixir users"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/cheatsheets/gleam-for-elm-users")], [
+        html.a([attr.href("/cheatsheets/gleam-for-elm-users/")], [
           html.text("Gleam for Elm users"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/cheatsheets/gleam-for-erlang-users")], [
+        html.a([attr.href("/cheatsheets/gleam-for-erlang-users/")], [
           html.text("Gleam for Erlang users"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/cheatsheets/gleam-for-php-users")], [
+        html.a([attr.href("/cheatsheets/gleam-for-php-users/")], [
           html.text("Gleam for PHP users"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/cheatsheets/gleam-for-python-users")], [
+        html.a([attr.href("/cheatsheets/gleam-for-python-users/")], [
           html.text("Gleam for Python users"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/cheatsheets/gleam-for-rust-users")], [
+        html.a([attr.href("/cheatsheets/gleam-for-rust-users/")], [
           html.text("Gleam for Rust users"),
         ]),
       ]),
@@ -1041,12 +1041,12 @@ pub fn documentation(ctx: Context) -> fs.File {
     html.h2([attr.id("deployment")], [html.text("Deployment")]),
     html.ul([], [
       html.li([], [
-        html.a([attr.href("/deployment/linux-server")], [
+        html.a([attr.href("/deployment/linux-server/")], [
           html.text("Deploying to a Linux server"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/deployment/fly")], [
+        html.a([attr.href("/deployment/fly/")], [
           html.text("Deploying on Fly.io"),
         ]),
       ]),
@@ -1064,12 +1064,12 @@ pub fn documentation(ctx: Context) -> fs.File {
     html.h2([attr.id("about-gleam")], [html.text("About Gleam")]),
     html.ul([], [
       html.li([], [
-        html.a([attr.href("/frequently-asked-questions")], [
+        html.a([attr.href("/frequently-asked-questions/")], [
           html.text("Frequently asked questions"),
         ]),
       ]),
       html.li([], [
-        html.a([attr.href("/branding")], [html.text("Gleam’s Branding")]),
+        html.a([attr.href("/branding/")], [html.text("Gleam’s Branding")]),
       ]),
     ]),
     html.h2([attr.id("community-resources")], [html.text("Community Resources")]),
@@ -1791,7 +1791,7 @@ pub fn main() {
             [
               attr.target("_blank"),
               attr.rel("noopener"),
-              attr.href("/sponsor#home-sponsors"),
+              attr.href("/sponsor/#home-sponsors"),
               attr.class("sponsor-level0"),
             ],
             [html.text("and sponsors like you!")],
@@ -1983,7 +1983,7 @@ pub fn register_event_handler() {
           html.h2([], [html.text("Lovely people")]),
           html.p([], [
             html.text("If you enjoy Gleam consider "),
-            html.a([attr.href("/sponsor")], [
+            html.a([attr.href("/sponsor/")], [
               html.text("becoming a sponsor"),
             ]),
             html.text(" (or tell your boss to)"),

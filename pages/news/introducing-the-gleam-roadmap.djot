@@ -28,7 +28,7 @@ find it useful!
 
 ``` =html
 <div style="text-align: center">
-  <a class="button" href="/roadmap">View the roadmap</a>
+  <a class="button" href="/roadmap/">View the roadmap</a>
 </div>
 ```
 
