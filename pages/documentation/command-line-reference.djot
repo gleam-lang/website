@@ -140,6 +140,10 @@ JavaScript.
 The `--no-beam` flag will make the compiler output Erlang code but not compile
 it to BEAM bytecode. This flag is invalid when compiling to JavaScript.
 
+The `--no-dev` flag will make the compiler skip development code, so skipping
+the `dev/` and `test/` directories, and not including `dev_dependencies` in the
+`.app` file if compiling to Erlang.
+
 ## deps list
 
 Print the names and versions of the all the dependencies of the package.
