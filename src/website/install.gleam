@@ -11,7 +11,7 @@ import lustre/element/html
 import website/fs
 import website/site
 
-const gleam_tag = "v1.18.0"
+pub const gleam_tag = "v1.18.0"
 
 pub fn methods() -> List(InstallationMethod) {
   [
