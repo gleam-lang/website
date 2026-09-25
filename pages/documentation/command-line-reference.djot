@@ -131,7 +131,8 @@ The `--package` flag specifies the path to the Gleam package to be compiled.
 The `--out` flag specifies the path to compile the package to.
 
 The `--lib` flag specifies the path to where the compiler can file can find the
-already-compiled dependencies of the package being compiled.
+already-compiled dependencies of the package being compiled. These must have
+been compiled using the same version of Gleam.
 
 The `--javascript-prelude` flag specifies the path to the JavaScript prelude
 module, relative to the `out` directory. This is required when compiling to
