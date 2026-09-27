@@ -16,7 +16,15 @@ for most people.
 
 ## What does Gleam compile to?
 
-Gleam compiles to Erlang or JavaScript.
+Gleam has three compile targets:
+
+- Erlang abstract forms, an intermediate representation of the Erlang compiler
+  which is also used by others such as Elixir. This is the target used by the
+  Gleam build tool when compiling Gleam to run "on Erlang".
+- Erlang source code. This is typically only used for educational purposes and
+  for testing the compiler itself, or it could possibly be used by other build
+  tools that support Gleam.
+- JavaScript source code.
 
 ## Will Gleam have type classes?
 
@@ -153,6 +161,22 @@ Elixir macros cannot be called from outside of Elixir, so some Elixir APIs
 cannot be used directly from Gleam. To use one of these you can write an Elixir
 module that uses the macros, and then use that module in your Gleam code.
 
+## Does Gleam have an AI policy?
+
+Yes, and it is similar to the policy of the Rust language. Contributions and
+communication must be written by people, not LLMs or other statistical models.
+
+## Do coding agents work with Gleam?
+
+As of 2026 these tools seem to be equally capable of generating code in most
+languages, with similar results for Gleam compared to other languages such as
+JavaScript and Python.
+
+For education we recommend using documentation and asking questions in the
+[Gleam discord server][discord] first. Chatbots and other LLM tools often
+output incorrect information, and asking questions is a great way to make
+valuable connections with other Gleam programmers.
+
 ## Why is the compiler written in Rust?
 
 Prototype versions of the Gleam compiler were written in Erlang, but a switch
@@ -177,8 +201,10 @@ mission critical workloads.
 
 ## What are Gleam programmers called?
 
-Gleamlins, according to the Gleam Discord server.
+Gleamlins, according to the [Gleam discord server][discord].
 
 ## Is it good?
 
 Yes, I think so. :)
+
+[discord]: https://discord.gg/Fm8Pwmy
