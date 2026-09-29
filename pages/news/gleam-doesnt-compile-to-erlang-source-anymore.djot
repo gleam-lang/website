@@ -286,8 +286,8 @@ used to refine the container type to `Full`, but the type parameter of `number`
 is generalised to `unknown`, causing type information loss. This is very
 cumbersome.
 
-[Giacomo Cavalieri](https://github.com/giacomocavalieri) has an overload to the
-definition, so the type is preserved whenever possible.
+[Giacomo Cavalieri](https://github.com/giacomocavalieri) has added an overload
+to the definition, so the type is preserved whenever possible.
 
 ```ts
 export function Box$isFull<I>(value: Box$<I>): value is Full<I>;
