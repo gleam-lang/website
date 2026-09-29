@@ -150,26 +150,110 @@ for Elixir, then it's good enough for Gleam!
 
 Alright, enough about that. There's plenty more in Gleam v1.19.0 to go-over.
 
+## JavaScript decision tree assignment optimisation
 
+It's not just the Erlang code generation that has seen some love, there's some
+good improvements for JavaScript too.
 
+In Gleam flow control is done with pattern matching using a `case` expression,
+and it gets compiled to nested `if` statements. Because pattern matching is
+declarative the compiler is able to reorder and optimise the runtime logic,
+using a divide-and-conquer approach to find the right branch as quickly as
+possible.
 
+[John Downey](https://github.com/jtdowney) has improved this process to produce
+generate flatter code, with nested `if` statements collapsed into a single
+condition and fewer intermediate variables. For example, take this Gleam code:
 
+```gleam
+pub fn go(x) {
+  case x {
+    Wibble(1, 2) -> 1
+    _ -> 2
+  }
+}
+```
 
+Previously this small bit of Gleam would compile to this surprisingly large bit
+of JavaScript[^simplified-js]:
 
-- The compiler now has a specific error message for when trying to use
-  procedural operators that do not exist in Gleam, such as `+=` and `++`.
-  ([0xda157](https://github.com/0xda157))
+[^simplified-js]: The code has been slightly edited for clarity, but the parts
+  related to this improvement are unchanged.
 
-- The error message for calling a function in a guard expression or constant
-  expression now points to the entire function call.
-  ([mmustafasenoglu](https://github.com/mmustafasenoglu))
+```js
+export function go(x) {
+  if (isWibble(x)) {
+    let $ = x[0];
+    if ($ === 1) {
+      let $1 = x[1];
+      if ($1 === 2) {
+        return 1;
+      } else {
+        return 2;
+      }
+    } else {
+      return 2;
+    }
+  } else {
+    return 2;
+  }
+}
+```
 
-- Pattern matching on the JavaScript target now generates flatter code, with
-  nested `if` statements collapsed into a single condition and fewer
-  intermediate variables. This makes little difference to the size of a bundled
-  application, but the resulting code has fewer branches for JavaScript engines
-  to optimise.
-  ([John Downey](https://github.com/jtdowney))
+But now it generates this:
+
+```js
+export function go(x) {
+  if (isWibble(x) && x[0] === 1 && x[1] === 2) {
+    return 1;
+  } else {
+    return 2;
+  }
+}
+```
+
+A nice improvement, I'm sure you'll agree! Surprisingly this makes little-to-no
+change to the size of code bundles once minified and compressed (gzip really is
+magic), but the resulting code has fewer branches for JavaScript engines to
+optimise.
+
+Thank you John!
+
+## List literal optimisation
+
+While they share a syntax in their respective languages, Gleam's immutable
+persistent list type is not the same as the JavaScript mutable contiguous array
+type. When Gleam code is compiled to JavaScript any list literals have to be
+compiled to JavaScript code that constructs the runtime data structures. For
+example, take this Gleam code:
+
+```gleam
+let numbers = [1, 2, 3]
+```
+
+This would compile to JavaScript code[^simplified-js] like this, where a JavaScript array is
+constructed and passed to a function to convert it to a Gleam list.
+
+```javascript
+const numbers = arrayToList([1, 2, 3])
+```
+
+With this release the compile will now generate different code for short list
+literals, generating more direct code that does not convert from an array.
+
+```javascript
+const numbers = prepend(1, prepend(2, prepend(3, empty)))
+```
+
+With modern JavaScript engines this results in a nice performance improvement,
+and it is especially impactful for projects that use lots of short lists, like
+those using the [Lustre](https://lustre.hexdocs.pm) library. We recorded no
+improvement for longer lists, so the array-to-list approach is still used for
+those.
+
+Thank you [Giacomo Cavalieri](https://github.com/giacomocavalieri) for this!
+
+## List literal optimisation
 
 - When producing TypeScript annotations, the compiler now produces overloads to
   narrow the type of variants of a custom type. For example, given the following
@@ -190,6 +274,22 @@ Alright, enough about that. There's plenty more in Gleam v1.19.0 to go-over.
   ```
 
   ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
+
+
+## TODO: error messages
+
+- The compiler now provides a specific error message directing the user to the
+  correct syntax when trying to update a record after providing fields.
+  ([0xda157](https://github.com/0xda157))
+
+- The compiler now provides a more specific error message when encountering a
+  merge conflict indicator
+  ([0xda157](https://github.com/0xda157))
+
+- The compiler now provides hint about `|' in pattern matching
+  ([n0kk23](https://github.com/n0kk23))
+
+
 
 - The compiler is now fault tolerant when it runs into unsupported binary
   operators used in constants. Instead than stopping to analyse the whole module
@@ -214,24 +314,13 @@ Alright, enough about that. There's plenty more in Gleam v1.19.0 to go-over.
 
   ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
 
-- When generating Erlang type definitions, types called `Record` will be renamed
-  to `record_` to not overwrite Erlang's built-in `record` type introduced in
-  OTP29.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- Creation of literal lists has been optimised on the JavaScript target.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The compiler now provides a specific error message directing the user to the
-  correct syntax when trying to update a record after providing fields.
+- The compiler now has a specific error message for when trying to use
+  procedural operators that do not exist in Gleam, such as `+=` and `++`.
   ([0xda157](https://github.com/0xda157))
 
-- The compiler now provides a more specific error message when encountering a
-  merge conflict indicator
-  ([0xda157](https://github.com/0xda157))
-
-- The compiler now provides hint about `|' in pattern matching
-  ([n0kk23](https://github.com/n0kk23))
+- The error message for calling a function in a guard expression or constant
+  expression now points to the entire function call.
+  ([mmustafasenoglu](https://github.com/mmustafasenoglu))
 
 - The compiler now provides better error message when trying to import or use
   private value or type from modules within current package. For example:
@@ -263,144 +352,63 @@ Alright, enough about that. There's plenty more in Gleam v1.19.0 to go-over.
   through further usages.
   ([James Dolan](https://github.com/jamesdolan16))
 
-- Matching on bit array patterns which contain empty string segments is now
-  deprecated.
-  ([Surya Rose](https://github.com/GearsDatapacks))
+## Improvements for other build tools
 
-- The compiler now recognises more unreachable clauses in a `case` where an
-  earlier clause matches an overlapping string.
+Gleam users will typically use the official build tool that is part of the
+`gleam` executable, but sometimes folks will want to compile and use Gleam code
+in other contexts. For example, and Elixir or Erlang programmer may want to use
+a dependency package that is written in Gleam. This works fantastically at runtime
+as these three BEAM languages have excellent zero-cost interop, but getting to
+this point can be tricky, as Elixir and Erlang's main build tools do not have
+built-in support for Gleam.
 
-  ```gleam
-  pub fn go(input: String, x: Int) {
-    case input, x {
-      "ab", 1 -> 7
-      "a" <> _, _ -> 2
-      "ab", _ -> 3
-      _, _ -> 4
-    }
-  }
-  ```
+The `gleam` executable offers several commands that expose compiler
+functionality, for use by other build tools. This release includes several
+improvements to these commands, with the intent of getting Gleam support in
+Elixir's Mix and Erlang's rebar3.
 
-  The compiler will emit the following warning:
+The Erlang virtual machine requires all packages too have a `.app` resource
+file along with the compiler bytecode. Previously these Gleam-supporting build
+tools would be expected to provide these, but now `gleam` will generate the
+files for them when compiling to BEAM. 
 
-  ```txt
-  warning: Unreachable pattern
-    ┌─ /main.gleam:5:5
-    │
-  5 │     "ab", _ -> 3
-    │     ^^^^^^^
+The `compile-package` command gains a `--no-dev` flag, which will have the
+compiler only load code from the `src` directory and to skip packages listed as
+`dev_dependencies`.
 
-  This pattern cannot be reached as a previous pattern matches the same
-  values.
+The `export package-information` and `export package-interface` commands can
+now print their information to stdout, while previously they would have to
+write to a file. Alongside that, the `export javascript-prelude` and `export
+typescript-prelude` commands can now write to a file.
 
-  Hint: It can be safely removed.
-  ```
+Thank you [Rodrigo Álvarez](https://github.com/Papipo) for these additions!
+Hopefully we will see Gleam support in Elixir's Mix build tool soon.
 
-  Anything reaching the third clause starts with `"a"`, so the second clause has
-  already matched it. Code that previously compiled cleanly may now emit this
-  warning.
-  ([John Downey](https://github.com/jtdowney))
+## Language server label support
 
+Gleam has an excellent language server built-in, providing IDE functionality to
+all editors that support the language server protocol. Possibly the last piece
+of major functionality was full support for labels of fields and arguments.
+[Alistair Smith](https://github.com/alii) has fixed this, adding support for
+go-to-definition, find-references and renaming of labels! Thank you Alistair, I
+know many people will be absolutely delighted by this time-saving feature.
 
-### Build tool
+## Formatting Gleam code in the browser
 
-- The build tool now stores its build cache in a more compact binary format,
-  making the cache files noticeably smaller.
-  ([Andrey Kozhev](https://github.com/ankddev))
-
-- The `ext` protocol is now explicitly disabled when when fetching git
-  dependencies. This protocol is disabled by default since 2015, so this
-  has no impact unless the user is using a very old version of git or has
-  enabled this protocol in their configuration.
-  ([Amr Kadry](https://github.com/Amrkadry) and
-  [Louis Pilfold](https://github.com/lpil))
-
-- The ordering of import statements in generated JavaScript code is now stable.
-  Previously the same code compiled twice could produce different output, as
-  the singleton constants imported for a type's fieldless variants were emitted
-  in a different order on each run.
-  ([John Downey](https://github.com/jtdowney))
-
-- Make links to Tangled repositories use their new domain & URL format.
-  ([Naomi Roberts](https://github.com/naomieow))
-
-- `compile-package` now supports a `--src-only` flag to compile only the `/src`
-  folder.
-  ([Rodrigo Álvarez](https://github.com/Papipo))
-
-- The build tool now shows a better error when trying to add a package as a
-  dependency when it is already a development dependency (or vice-versa).
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- `--out` argument in `export package-information` and `export package-interface`
-  commands is no longer required. Those commands now print to stdout by
-  default.
-
-- The `export javascript-prelude` and `export typescript-prelude` commands gain
-  the `--out` parameter.
-  ([Louis Pilfold](https://github.com/lpil))
-
-- `gleam compile-package` now generates a .app file in the ebin folder, listing
-  all .beam modules (this includes Erlang and Elixir ones).
-  ([Rodrigo Álvarez](https://github.com/Papipo))
-
-- `gleam compile-package` gains a new `--otp-app-names` flag, letting the
-  caller specify dependencies' OTP application names when they differ
-  from their Gleam package names, as comma separated `package=otp_app` pairs.
-  ([Rodrigo Álvarez](https://github.com/Papipo))
-
-### Language server
-
-- The "Generate dynamic decoder" code action is now only offered when the
-  `gleam_stdlib` package is available.
-  ([0xda157](https://github.com/0xda157))
-
-- Renaming a prelude item to its original name no longer unnecessarily imports
-  it.
-  ([0xda157](https://github.com/0xda157))
-
-- The "add missing patterns" code action now has higher precedence than the code
-  action to discard an unused result.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The "pattern match on argument" code action now has higher precedence over the
-  "discard unused argument" code action.
-  ([Giacomo Cavalieri](https://github.com/giacomocavalieri))
-
-- The language server will now surround value completions right after dot in
-  imports with braces. For example, consider following code:
-
-  ```gleam
-  import wibble.|
-  ```
-
-  where cursor is denoted with `|`. Completing value `Wibble` will result in
-  following code:
-
-  ```gleam
-  import wibble.{Wibble}
-  ```
-
-  ([Andrey Kozhev](https://github.com/ankddev))
-
-- The language server now supports triggering "Convert int to different base"
-  code action in constants, patterns and bit array "size" options.
-  ([Andrey Kozhev](https://github.com/ankddev))
-
-- The language server now supports go-to-definition, find-references and
-  renaming for function argument labels.
-  ([Alistair Smith](https://github.com/alii))
-
-### Compiler Wasm API
-
-- The WebAssembly build of the compiler now exposes a `format_source` function
-  for formatting Gleam source code.
-  ([John Downey](https://github.com/jtdowney))
+There is a WebAssembly build of the compiler, used by [the language
+tour](https://tour.gleam.run) and [the
+playground](https://playground.gleam.run) to compile Gleam in the web browser. 
+[John Downey](https://github.com/jtdowney) has added a new `format_source`
+function, enabling people to run the Gleam code formatter inside the browser.
+We will add this functionality to the playground in the near future. Thank you
+John!
 
 ## And the rest
 
 And thank you to the bug fixers and experience polishers:
 
+[0xda157](https://github.com/0xda157),
+[Amr Kadry](https://github.com/Amrkadry),
 [Andrey Kozhev](https://github.com/ankddev),
 [Giacomo Cavalieri](https://github.com/giacomocavalieri),
 [Hari Mohan](https://github.com/seafoamteal),
@@ -410,6 +418,7 @@ And thank you to the bug fixers and experience polishers:
 [Lillian Rose](https://github.com/lillianrubyrose),
 [Louis Pilfold](https://github.com/lpil),
 [Mar Bloeiman](https://github.com/strawmelonjuice),
+[Naomi Roberts](https://github.com/naomieow),
 [Rodrigo Álvarez](https://github.com/Papipo),
 [Senthilnathan](https://github.com/ssenthilnathan3),
 [Surya Rose](https://github.com/GearsDatapacks), and
