@@ -2313,17 +2313,20 @@ fn time_elapsed_chart(content: String) -> String {
       chart.bar(name, 0.0, value, attributes)
     })
 
-  let programming_language =
+  let category =
     axis.categorical()
-    |> axis.show_labels(fn(language) { language })
+    |> axis.show_labels(fn(category) { category })
 
   let seconds =
     axis.float()
     |> axis.min(0.0)
+    |> axis.show_labels(fn(s) {
+      float.round(s *. 1000.0) |> int.to_string |> string.append("ms")
+    })
 
-  chart.new(y: programming_language, x: seconds)
+  chart.new(y: category, x: seconds)
   |> chart.add(chart.horizontal_bars([], data))
-  |> chart.to_svg(width: 2, height: 1)
+  |> chart.to_svg
   |> element.to_string
 }
 
