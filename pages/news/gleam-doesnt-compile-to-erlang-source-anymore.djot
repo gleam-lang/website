@@ -55,10 +55,10 @@ This new Erlang code generator brings several benefits:
 
 [^transpiler]: "Transpiler" means a compiler that outputs a human-readable
   format, such as source code. It's a cool sounding word, but most the time
-  people use it to imply that a compiler is in some way inferior. This is very
-  silly, as there is nothing about compiling to a human-readable format that
-  makes a compiler easier to implement. If you care about that output being
-  nicely formatted it might even be harder than using a binary format.
+  people use it to imply that a given compiler is in some way inferior. This
+  is very silly, as there is nothing about compiling to a human-readable format
+  that makes a compiler easier to implement. If you care about that output
+  being nicely formatted it might even be harder than using a binary format.
 
 ## Ok, so how fast is it?
 
