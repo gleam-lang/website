@@ -131,14 +131,21 @@ The `--package` flag specifies the path to the Gleam package to be compiled.
 The `--out` flag specifies the path to compile the package to.
 
 The `--lib` flag specifies the path to where the compiler can file can find the
-already-compiled dependencies of the package being compiled.
+already-compiled dependencies of the package being compiled. These must have
+been compiled using the same version of Gleam.
 
 The `--javascript-prelude` flag specifies the path to the JavaScript prelude
 module, relative to the `out` directory. This is required when compiling to
 JavaScript.
 
-The `--no-beam` flag will make the compiler output Erlang code but not compile
-it to BEAM bytecode. This flag is invalid when compiling to JavaScript.
+The `--no-beam` flag will make the compiler produce Erlang source files instead
+of BEAM bytecode files. An Erlang `.app` file will not be produced if this is
+set, as the compiler has no way of knowing what non-Gleam BEAM modules are to
+be included. This flag is invalid when compiling to JavaScript.
+
+The `--no-dev` flag will make the compiler skip development code, so skipping
+the `dev/` and `test/` directories, and not including `dev_dependencies` in the
+`.app` file if compiling to Erlang.
 
 ## deps list
 
