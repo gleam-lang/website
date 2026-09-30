@@ -83,8 +83,8 @@ This chart shows the time taken to compile the benchmark project, lower is
 better.
 
 ```time-elapsed-chart
-Gleam v1.17.0=0.538
-Gleam v1.19.0=0.370
+Gleam v1.17=0.434
+Gleam v1.19=0.342
 ```
 
 As you can see, a considerable improvement! This is a full build from scratch,
@@ -100,16 +100,16 @@ Here's the results:
 
 
 ```time-elapsed-chart
-C#=0.925
-Elixir=0.577
-Elm=0.555
-Erlang=0.548
-Gleam (BEAM)=0.370
-Gleam (JS)=0.099
-Go=0.284
-Java=0.609
-Rust=0.732
-TypeScript=0.947
+C#=0.929
+Elixir=0.509
+Elm=0.510
+Erlang=0.406
+Gleam (Erlang)=0.342
+Gleam (JavaScript)=0.188
+Go=0.195
+Java=0.463
+Rust=0.733
+TypeScript 7=0.965
 ```
 
 Remember: This is a contrived benchmark and is this along is insufficient to
