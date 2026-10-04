@@ -510,6 +510,22 @@ nix-shell -p gleam beamPackages.erlang beamPackages.rebar3
 nix shell nixpkgs#gleam nixpkgs#beamPackages.erlang nixpkgs#beamPackages.rebar3
 ```",
     ),
+
+    InstallationMethod(
+      name: "Pacstall",
+      slug: "pacstall",
+      installs: InstallsGleamAndErlang,
+      systems: [LinuxDistro(UbuntuLinux), LinuxDistro(DebianLinux)],
+      priority: LowPriority,
+      content: "
+Gleam can be installed with [Pacstall](https://pacstall.dev) on any Ubuntu or Debian derived distribution by running this command:
+
+```
+pacstall -I gleam-bin
+```
+",
+    ),
+
     InstallationMethod(
       name: "Precompiled executable from GitHub",
       slug: "github",
