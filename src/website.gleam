@@ -51,6 +51,7 @@ pub fn build_site() -> snag.Result(Nil) {
     cheatsheet.elixir(ctx),
     cheatsheet.python(ctx),
     cheatsheet.php(ctx),
+    cheatsheet.go(ctx),
     cheatsheet.elm(ctx),
     cheatsheet.rust(ctx),
   ]

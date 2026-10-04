@@ -6066,6 +6066,674 @@ server applications comparable to RabbitMQ or multiplayer game servers.",
   |> site.to_html_file(meta)
 }
 
+pub fn go(ctx: site.Context) -> fs.File {
+  let meta =
+    site.PageMeta(
+      path: "/cheatsheets/gleam-for-go-users",
+      title: "Gleam for Go users",
+      meta_title: "Gleam for Go users | Cheat sheet",
+      subtitle: "Hello Gophers!",
+      description: "A handy reminder of Gleam syntax for all Gophers out there.",
+      preview_image: option.None,
+    )
+
+  [
+    html.ul([], [
+      html.li([], [html.a([attr.href("#comments")], [html.text("Comments")])]),
+      html.li([], [
+        html.a([attr.href("#variables")], [html.text("Variables")]),
+        html.ul([], [
+          html.li([], [
+            html.a([attr.href("#variables-type-annotations")], [
+              html.text("Variables type annotations"),
+            ]),
+          ]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#functions")], [html.text("Functions")]),
+        html.ul([], [
+          html.li([], [
+            html.a([attr.href("#exporting-functions")], [
+              html.text("Exporting functions"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#function-type-annotations")], [
+              html.text("Function type annotations"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#references")], [html.text("References")]),
+          ]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#operators")], [html.text("Operators")]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#constants")], [html.text("Constants")]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#blocks")], [html.text("Blocks")]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#data-types")], [html.text("Data types")]),
+        html.ul([], [
+          html.li([], [html.a([attr.href("#strings")], [html.text("Strings")])]),
+          html.li([], [
+            html.a([attr.href("#lists-and-slices")], [
+              html.text("Lists and slices"),
+            ]),
+          ]),
+          html.li([], [html.a([attr.href("#maps")], [html.text("Maps")])]),
+          html.li([], [html.a([attr.href("#structs")], [html.text("Structs")])]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#flow-control")], [html.text("Flow control")]),
+        html.ul([], [
+          html.li([], [
+            html.a([attr.href("#if-statements")], [html.text("If statements")]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#switch-statements")], [
+              html.text("Switch statements"),
+            ]),
+          ]),
+          html.li([], [
+            html.a([attr.href("#for-loops")], [html.text("For loops")]),
+          ]),
+        ]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#errors")], [html.text("Errors")]),
+      ]),
+      html.li([], [
+        html.a([attr.href("#modules")], [html.text("Modules")]),
+      ]),
+    ]),
+    html.h2([attr.id("comments")], [html.text("Comments")]),
+    html.h4([attr.id("go")], [html.text("Go")]),
+    html.p([], [
+      html.text("Go uses "),
+      html.code([], [html.text("//")]),
+      html.text(" for comments and "),
+      html.code([], [html.text("/* ... */")]),
+      html.text(" for block comments."),
+    ]),
+    go_code(
+      "package main
+
+func main() {
+  // This is a single line comment.
+  println(\"hello from Go\")
+}
+",
+    ),
+    html.h4([attr.id("gleam")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("Gleam uses "),
+      html.code([], [html.text("//")]),
+      html.text(" for comments and supports documentation comments with "),
+      html.code([], [html.text("///")]),
+      html.text(" and "),
+      html.code([], [html.text("////")]),
+      html.text("."),
+    ]),
+    gleam_code(
+      "//// This module is very important.
+
+import gleam/io
+
+/// A quick helper.
+pub fn main() {
+  io.println(\"hello from Gleam\")
+}
+",
+    ),
+    html.h2([attr.id("variables")], [html.text("Variables")]),
+    html.p([], [
+      html.text("Go assigns a new value to an existing variable with =. Gleam has no reassignment: a second let creates a new binding that shadows the first."),
+    ]),
+    html.h4([attr.id("go-1")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  name := \"Alice\"
+  count := 3
+  count = count + 1
+  var size int = 50
+  fmt.Println(name, count, size)
+}
+",
+    ),
+    html.h4([attr.id("gleam-1")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("Gleam uses the "),
+      html.code([], [html.text("let")]),
+      html.text(" keyword before every binding."),
+    ]),
+    gleam_code(
+      "pub fn main() {
+  let name = \"Alice\"
+  let count = 3
+  let count = count + 1
+  let size: Int = 50
+}
+",
+    ),
+    html.h3([attr.id("variables-type-annotations")], [
+      html.text("Variables type annotations"),
+    ]),
+    html.h4([attr.id("go-2")], [html.text("Go")]),
+    html.p([], [
+      html.text(
+        "Go does type inference for local variables but explicit type annotations are common in declarations.",
+      ),
+    ]),
+    go_code(
+      "var total int = 0
+var rate float64 = 1.5
+",
+    ),
+    html.h4([attr.id("gleam-2")], [html.text("Gleam")]),
+    html.p([], [
+      html.text(
+        "Gleam supports optional type annotations, which the compiler checks for correctness.",
+      ),
+    ]),
+    gleam_code(
+      "pub fn main() {
+  let total: Int = 0
+  let rate: Float = 1.5
+}
+",
+    ),
+    html.h2([attr.id("functions")], [html.text("Functions")]),
+    html.p([], [
+      html.text(
+        "Go and Gleam both use functions as the main unit of logic, but Gleam uses a different syntax for public exports.",
+      ),
+    ]),
+    html.h4([attr.id("go-3")], [html.text("Go")]),
+    go_code(
+      "func add(x int, y int) int {
+  return x + y
+}
+",
+    ),
+    html.h4([attr.id("gleam-3")], [html.text("Gleam")]),
+    gleam_code(
+      "pub fn add(x: Int, y: Int) -> Int {
+  x + y
+}
+",
+    ),
+    html.h3([attr.id("exporting-functions")], [html.text("Exporting functions")]),
+    html.h4([attr.id("go-4")], [html.text("Go")]),
+    html.p([], [
+      html.text(
+        "In Go, a function is exported if its name starts with an uppercase letter.",
+      ),
+    ]),
+    go_code(
+      "package mathx
+
+func Add(x int, y int) int {
+  return x + y
+}
+",
+    ),
+    html.h4([attr.id("gleam-4")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("In Gleam, a function is exported if it is marked with "),
+      html.code([], [html.text("pub")]),
+      html.text("."),
+    ]),
+    gleam_code(
+      "pub fn add(x: Int, y: Int) -> Int {
+  x + y
+}
+",
+    ),
+    html.h3([attr.id("function-type-annotations")], [
+      html.text("Function type annotations"),
+    ]),
+    html.h4([attr.id("go-5")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func divide(a int, b int) (int, error) {
+  if b == 0 {
+    return 0, fmt.Errorf(\"divide by zero\")
+  }
+  return a / b, nil
+}
+",
+    ),
+    html.h4([attr.id("gleam-5")], [html.text("Gleam")]),
+    gleam_code(
+      "pub fn divide(a: Int, b: Int) -> Result(Int, Nil) {
+  case b {
+    0 -> Error(Nil)
+    _ -> Ok(a / b)
+  }
+}
+",
+    ),
+    html.h3([attr.id("references")], [html.text("References")]),
+    html.h4([attr.id("go-6")], [html.text("Go")]),
+    html.p([], [
+      html.text("Go has pointers, but most code uses values directly. The "),
+      html.code([], [html.text("&")]),
+      html.text(" and "),
+      html.code([], [html.text("*")]),
+      html.text(" operators are used for references and dereferencing."),
+    ]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  count := 42
+  ptr := &count
+  *ptr = 10
+  fmt.Println(count)
+}
+",
+    ),
+    html.h4([attr.id("gleam-6")], [html.text("Gleam")]),
+    html.p([], [
+      html.text(
+        "Gleam has no pointers or references. Values are immutable, so you pass them directly, and changing one means making a new value.",
+      ),
+    ]),
+    gleam_code(
+      "pub fn main() {
+  let count = 42
+  let doubled = count * 2
+}
+",
+    ),
+    html.h2([attr.id("operators")], [html.text("Operators")]),
+    html.p([], [
+      html.text(
+        "Go and Gleam both use the usual arithmetic and comparison operators, but string concatenation differs: Go uses ",
+      ),
+      html.code([], [html.text("+")]),
+      html.text(" and Gleam uses "),
+      html.code([], [html.text("<>")]),
+      html.text("."),
+    ]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  sum := 1 + 2
+  ok := sum == 3
+  word := \"hello\" + \" there\"
+  fmt.Println(sum, ok, word)
+}
+",
+    ),
+    gleam_code(
+      "pub fn main() {
+  let sum = 1 + 2
+  let ok = sum == 3
+  let word = \"hello\" <> \" there\"
+}
+",
+    ),
+    html.h2([attr.id("constants")], [html.text("Constants")]),
+    html.h4([attr.id("go-7")], [html.text("Go")]),
+    go_code(
+      "const answer = 42
+const pi = 3.14159
+",
+    ),
+    html.h4([attr.id("gleam-7")], [html.text("Gleam")]),
+    gleam_code(
+      "const answer: Int = 42
+const pi: Float = 3.14159
+",
+    ),
+    html.h2([attr.id("blocks")], [html.text("Blocks")]),
+    html.h4([attr.id("go-8")], [html.text("Go")]),
+    html.p([], [
+      html.text(
+        "Go uses braces to group statements in functions, ifs, loops, and blocks.",
+      ),
+    ]),
+    go_code(
+      "func main() {
+  x := 5
+  {
+    x = x + 1
+  }
+  println(x)
+}
+",
+    ),
+    html.h4([attr.id("gleam-8")], [html.text("Gleam")]),
+    html.p([], [
+      html.text(
+        "Gleam also uses braces, and blocks are expressions that can return a value.",
+      ),
+    ]),
+    gleam_code(
+      "import gleam/int
+import gleam/io
+
+pub fn main() {
+  let x = {
+    let y = 5
+    y + 1
+  }
+  io.println(int.to_string(x))
+}
+",
+    ),
+    html.h2([attr.id("data-types")], [html.text("Data types")]),
+    html.h3([attr.id("strings")], [html.text("Strings")]),
+    html.h4([attr.id("go-9")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  name := \"Alice\"
+  welcome := \"Hello, \" + name
+  fmt.Println(welcome)
+}
+",
+    ),
+    html.h4([attr.id("gleam-9")], [html.text("Gleam")]),
+    gleam_code(
+      "pub fn main() {
+  let name = \"Alice\"
+  let welcome = \"Hello, \" <> name
+}
+",
+    ),
+    html.h3([attr.id("lists-and-slices")], [html.text("Lists and slices")]),
+    html.h4([attr.id("go-10")], [html.text("Go")]),
+    html.p([], [
+      html.text(
+        "Go uses slices for dynamically-sized collections and arrays for fixed-sized ones.",
+      ),
+    ]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  nums := []int{1, 2, 3}
+  nums = append(nums, 4)
+  fmt.Println(nums)
+}
+",
+    ),
+    html.h4([attr.id("gleam-10")], [html.text("Gleam")]),
+    html.p([], [
+      html.text(
+        "Gleam lists are immutable, so there is no append. You build a new list instead, usually by prepending with ..",
+      ),
+    ]),
+    gleam_code(
+      "pub fn main() {
+  let nums = [1, 2, 3]
+  let more = [0, ..nums]
+}
+",
+    ),
+    html.h3([attr.id("maps")], [html.text("Maps")]),
+    html.h4([attr.id("go-11")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  scores := map[string]int{\"alice\": 10, \"bob\": 20}
+  value := scores[\"alice\"]
+  fmt.Println(value)
+}
+",
+    ),
+    html.h4([attr.id("gleam-11")], [html.text("Gleam")]),
+    gleam_code(
+      "import gleam/dict
+
+pub fn main() {
+  let scores = dict.from_list([#(\"alice\", 10), #(\"bob\", 20)])
+  let value = dict.get(scores, \"alice\")
+}
+",
+    ),
+    html.h3([attr.id("structs")], [html.text("Structs")]),
+    html.h4([attr.id("go-12")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+type User struct {
+  Name string
+  Age  int
+}
+
+func main() {
+  alice := User{Name: \"Alice\", Age: 30}
+  fmt.Println(alice)
+}
+",
+    ),
+    html.h4([attr.id("gleam-12")], [html.text("Gleam")]),
+    html.p([], [
+      html.text(
+        "Gleam records are similar to Go structs, but they are defined as custom types with named fields.",
+      ),
+    ]),
+    gleam_code(
+      "pub type User {
+  User(name: String, age: Int)
+}
+
+pub fn main() {
+  let alice = User(name: \"Alice\", age: 30)
+}
+",
+    ),
+    html.h2([attr.id("flow-control")], [html.text("Flow control")]),
+    html.h3([attr.id("if-statements")], [html.text("If statements")]),
+    html.h4([attr.id("go-13")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  score := 12
+  if score > 10 {
+    fmt.Println(\"high score\")
+  } else {
+    fmt.Println(\"low score\")
+  }
+}
+",
+    ),
+    html.h4([attr.id("gleam-13")], [html.text("Gleam")]),
+    gleam_code(
+      "pub fn main() {
+  let score = 12
+  let message = case score > 10 {
+    True -> \"high score\"
+    False -> \"low score\"
+  }
+}
+",
+    ),
+    html.h3([attr.id("switch-statements")], [html.text("Switch statements")]),
+    html.h4([attr.id("go-14")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  value := 2
+  switch value {
+  case 1:
+    fmt.Println(\"one\")
+  case 2:
+    fmt.Println(\"two\")
+  default:
+    fmt.Println(\"other\")
+  }
+}
+",
+    ),
+    html.h4([attr.id("gleam-14")], [html.text("Gleam")]),
+    gleam_code(
+      "import gleam/io
+
+pub fn main(value: Int) {
+  case value {
+    1 -> io.println(\"one\")
+    2 -> io.println(\"two\")
+    _ -> io.println(\"other\")
+  }
+}
+",
+    ),
+    html.h3([attr.id("for-loops")], [html.text("For loops")]),
+    html.h4([attr.id("go-15")], [html.text("Go")]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  for i := 0; i < 3; i++ {
+    fmt.Println(i)
+  }
+}
+",
+    ),
+    html.h4([attr.id("gleam-15")], [html.text("Gleam")]),
+    gleam_code(
+      "import gleam/int
+import gleam/io
+import gleam/list
+
+pub fn main() {
+  list.each([0, 1, 2], fn(i) {
+    io.println(int.to_string(i))
+  })
+}
+",
+    ),
+    html.h2([attr.id("errors")], [html.text("Errors")]),
+    html.h4([attr.id("go-16")], [html.text("Go")]),
+    html.p([], [
+      html.text(
+        "Go often returns an error alongside the result and checks it explicitly.",
+      ),
+    ]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func doThing() (int, error) {
+  return 42, nil
+}
+
+func run() error {
+  value, err := doThing()
+  if err != nil {
+    return err
+  }
+  fmt.Println(value)
+  return nil
+}
+
+func main() {
+  if err := run(); err != nil {
+    fmt.Println(err)
+  }
+}
+",
+    ),
+    html.h4([attr.id("gleam-16")], [html.text("Gleam")]),
+    html.p([], [
+      html.text("Gleam usually models success and failure with the "),
+      html.code([], [html.text("Result")]),
+      html.text(" type."),
+    ]),
+    gleam_code(
+      "import gleam/int
+import gleam/io
+
+pub fn do_thing() -> Result(Int, Nil) {
+  Ok(42)
+}
+
+pub fn main() {
+  case do_thing() {
+    Ok(value) -> io.println(int.to_string(value))
+    Error(_) -> io.println(\"oh no\")
+  }
+}
+",
+    ),
+    html.h2([attr.id("modules")], [html.text("Modules")]),
+    html.h4([attr.id("go-17")], [html.text("Go")]),
+    html.p([], [
+      html.text(
+        "Go uses packages. A file declares a package name, and imports are grouped at the top of the file.",
+      ),
+    ]),
+    go_code(
+      "package main
+
+import \"fmt\"
+
+func main() {
+  fmt.Println(\"hello\")
+}
+",
+    ),
+    html.h4([attr.id("gleam-17")], [html.text("Gleam")]),
+    html.p([], [
+      html.text(
+        "Gleam modules are files in a project. Imports refer to modules by name and are explicit.",
+      ),
+    ]),
+    gleam_code(
+      "import gleam/io
+
+pub fn main() {
+  io.println(\"hello\")
+}
+",
+    ),
+  ]
+  |> site.page_layout("roadmap", meta, ctx)
+  |> site.to_html_file(meta)
+}
+
 pub fn rust(ctx: site.Context) -> fs.File {
   let meta =
     site.PageMeta(
@@ -8866,6 +9534,11 @@ fn elixir_code(code: String) {
 fn erlang_code(code: String) {
   pearl.highlight_html(code)
   |> highlighted_code("erlang")
+}
+
+fn go_code(code: String) {
+  contour.to_html(code)
+  |> highlighted_code("go")
 }
 
 fn rust_code(code: String) {

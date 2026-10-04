@@ -1037,6 +1037,11 @@ pub fn documentation(ctx: Context) -> fs.File {
           html.text("Gleam for Rust users"),
         ]),
       ]),
+      html.li([], [
+        html.a([attr.href("/cheatsheets/gleam-for-go-users/")], [
+          html.text("Gleam for Go users"),
+        ]),
+      ]),
     ]),
     html.h2([attr.id("deployment")], [html.text("Deployment")]),
     html.ul([], [
