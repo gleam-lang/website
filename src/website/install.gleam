@@ -11,7 +11,7 @@ import lustre/element/html
 import website/fs
 import website/site
 
-const gleam_tag = "v1.18.0"
+const gleam_version = "1.19.0"
 
 pub fn methods() -> List(InstallationMethod) {
   [
@@ -564,7 +564,7 @@ be able to compile Gleam.
 Clone the Gleam source code repository at the version you want.
 
 ```
-git clone https://github.com/gleam-lang/gleam.git --branch " <> gleam_tag <> "
+git clone https://github.com/gleam-lang/gleam.git --branch v" <> gleam_version <> "
 cd gleam
 ```
 
@@ -595,7 +595,7 @@ Clone the Gleam source code repository at the version you want. The
 paths on Windows.
 
 ```powershell
-git -c core.longpaths=true clone --depth 1 --branch " <> gleam_tag <> " https://github.com/gleam-lang/gleam.git
+git -c core.longpaths=true clone --depth 1 --branch v" <> gleam_version <> " https://github.com/gleam-lang/gleam.git
 cd gleam
 ```
 
