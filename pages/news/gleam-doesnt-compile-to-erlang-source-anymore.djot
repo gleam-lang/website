@@ -4,7 +4,7 @@ meta_title = "Gleam doesn't compile to Erlang source anymore | Gleam programming
 subtitle = "Gleam v1.19.0 released!"
 description = "News post: Gleam v1.19.0 released!"
 preview_image = "v1.19"
-published = 2026-09-19
+published = 2026-10-05
 
 [author]
 name = "Louis Pilfold"
