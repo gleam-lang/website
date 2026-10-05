@@ -322,8 +322,8 @@ compiler only load code from the `src` directory and to skip packages listed as
 
 The `export package-information` and `export package-interface` commands can
 now print their information to stdout, while previously they would have to
-write to a file. Alongside that, the `export javascript-prelude` and `export
-typescript-prelude` commands can now write to a file.
+write to a file. Alongside that, the `export javascript-prelude` and
+`export typescript-prelude` commands can now write to a file.
 
 Thank you [Rodrigo Álvarez](https://github.com/Papipo) for these additions!
 Hopefully we will see Gleam support in Elixir's Mix build tool soon.
