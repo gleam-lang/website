@@ -112,8 +112,8 @@ Rust=0.733
 TypeScript 7=0.965
 ```
 
-Remember: This is a contrived benchmark and is this along is insufficient to
-draw any hard conclusions from about these languages. That said, these results
+Remember: This is a contrived benchmark and is this alone is insufficient to
+draw any hard conclusions about these languages. That said, these results
 do suggest that Gleam's compilation is nice and fast, and as a Gleam programmer
 I can say that Gleam development is very enjoyable, with little time spent
 waiting for the computer.
@@ -163,7 +163,7 @@ declarative the compiler is able to reorder and optimise the runtime logic,
 using a divide-and-conquer approach to find the right branch as quickly as
 possible.
 
-[John Downey](https://github.com/jtdowney) has improved this process to produce
+[John Downey](https://github.com/jtdowney) has improved this process to
 generate flatter code, with nested `if` statements collapsed into a single
 condition and fewer intermediate variables. For example, take this Gleam code:
 
@@ -225,7 +225,7 @@ Thank you John!
 
 While they share a syntax in their respective languages, Gleam's immutable
 persistent list type is not the same as the JavaScript mutable contiguous array
-type. When Gleam code is compiled to JavaScript any list literals have to be
+type. When Gleam code is compiled to JavaScript any list literal has to be
 compiled to JavaScript code that constructs the runtime data structures. For
 example, take this Gleam code:
 
@@ -300,7 +300,7 @@ Thank you Giacomo!!
 
 Gleam users will typically use the official build tool that is part of the
 `gleam` executable, but sometimes folks will want to compile and use Gleam code
-in other contexts. For example, and Elixir or Erlang programmer may want to use
+in other contexts. For example, an Elixir or Erlang programmer may want to use
 a dependency package that is written in Gleam. This works fantastically at runtime
 as these three BEAM languages have excellent zero-cost interop, but getting to
 this point can be tricky, as Elixir and Erlang's main build tools do not have
