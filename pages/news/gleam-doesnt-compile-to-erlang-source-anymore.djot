@@ -126,7 +126,7 @@ compiler, but why not bypass the Erlang compiler altogether? Couldn't we make a
 BEAM bytecode generator that outperforms the Erlang compiler? Perhaps we could
 also use Gleam's type information to generate more optimised code too.
 
-While it is be possible to achieve these benefits, it's unlikely we would be
+While it is possible to achieve these benefits, it's unlikely we would be
 able to. Unlike Erlang source and Erlang abstract forms, BEAM bytecode is not
 fixed and unchanging. Each new release of the virtual machine can evolve and
 improve the bytecode, adding new functionality and sometimes removing
