@@ -627,6 +627,21 @@ supported by the Erlang team or by most Gleam package authors.
     ),
 
     InstallationMethod(
+      name: "Snap package manager",
+      slug: "snap",
+      installs: InstallsGleam,
+      systems: [LinuxDistro(UbuntuLinux)],
+      priority: HighPriority,
+      content: "
+Gleam can be installed with [snap](https://snapcraft.io/docs/tutorials/install-the-daemon/ubuntu/) by running these commands:
+
+```
+sudo snap install --classic gleam
+```
+",
+    ),
+
+    InstallationMethod(
       name: "apt package manager",
       slug: "apt",
       installs: InstallsErlang,
