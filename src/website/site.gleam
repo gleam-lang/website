@@ -462,6 +462,8 @@ type SitemapTree {
   )
 }
 
+const company_address = "20-22 Wenlock Road, London, England, N1 7GU"
+
 pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
   let meta =
     PageMeta(
@@ -540,6 +542,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
           definition("Account number", "67043610"),
           definition("Sort code", "23-14-70"),
           definition("Bank", wise_uk),
+          definition("Company address", company_address),
         ]),
       ]),
       html.details([], [
@@ -550,6 +553,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
           definition("IBAN", "GB53 TRWI 2314 7067 0436 10"),
           definition("Swift/BIC", "TRWIGB2LXXX"),
           definition("Bank", wise_uk),
+          definition("Company address", company_address),
         ]),
       ]),
 
@@ -565,6 +569,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
           definition("IBAN", "BE49 9671 6861 5971"),
           definition("Swift/BIC", "TRWIBEB1XXX"),
           definition("Bank", wise_eu),
+          definition("Company address", company_address),
         ]),
       ]),
 
@@ -577,6 +582,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
           definition("Account type", "Checking"),
           definition("Routing number (for wire and ACH)", "026073150"),
           definition("Bank", wise_usa),
+          definition("Company address", company_address),
         ]),
       ]),
       html.details([], [
@@ -587,6 +593,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
           definition("Account number", "8310615778"),
           definition("Swift/BIC", "CMFGUS33"),
           definition("Bank", wise_usa),
+          definition("Company address", company_address),
         ]),
       ]),
 
@@ -725,7 +732,7 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
       ]),
       html.p([], [
         html.text(
-          "All the sponsorship options allow you to select a one-time donation or an ongoing, monthly support (that you can pause at any time) - whatever works for you! That said, steady monthly contributions help us plan our budget more effectively and keep the roadmap predictable.",
+          "All the sponsorship options allow you to select a one-time donation or an ongoing, monthly support (that you can pause at any time) - whatever works for you! You are under no obligation to sponsor in any particular way for any amount of time. That said, steady monthly contributions help us plan our budget more effectively and keep the roadmap predictable.",
         ),
       ]),
 
@@ -733,6 +740,30 @@ pub fn sponsor(sponsors: List(sponsor.Sponsor), ctx: Context) -> fs.File {
       html.p([], [
         html.text(
           "If you are using Github Sponsors or Liberapay you can manage, pause, or cancel your sponsorship anytime through their sponsor's dashboards. If you want to edit a standing order or other regular bank transfer you will need to do this via your bank's app or website.",
+        ),
+      ]),
+
+      html.h3([], [html.text("Am I purchasing something by sponsoring Gleam?")]),
+      html.p([], [
+        html.text(
+          "No, Gleam is always free for anyone to use, and there are no additional benefits for sponsoring Gleam. If you would be interested in paying for special support or consulting with your Gleam project please send an email to ",
+        ),
+        html.a([attr.href("mailto:hello@gleam.run")], [
+          html.text("hello@gleam.run"),
+        ]),
+        html.text("."),
+      ]),
+
+      html.h3([], [html.text("Can I get a refund for past sponsorship?")]),
+      html.p([], [
+        html.text(
+          "Sponsoring Gleam is not a purchase, and we are unable to offer refunds. If you have sponsored in error or your circumstances have changed please email us at ",
+        ),
+        html.a([attr.href("mailto:hello@gleam.run")], [
+          html.text("hello@gleam.run"),
+        ]),
+        html.text(
+          " and we will see if there is something we can do, though we are very limited here.",
         ),
       ]),
     ]),
