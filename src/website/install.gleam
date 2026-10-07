@@ -576,11 +576,13 @@ mv gleam ~/.local/bin/
       content: "
 The core team provides precompiled `gleam` binaries. Navigate to the
 [GitHub release](https://github.com/gleam-lang/gleam/releases) page for Gleam
-version you want to install. Under \"assets\" locate and download the tarball
-and sha256 checksum files for your operating system and processor archecture.
+version you want to install. Under \"assets\" locate the zip files for your
+operating system and processor archecture.
+
+In PowerShell run:
 
 ```
-url=GLEAM_ZIP_URL_HERE
+$url=GLEAM_ZIP_URL_HERE
 
 curl -o gleam.zip \"$url\"
 curl -o gleam.zip.sha256 \"$url.sha256\"
@@ -593,7 +595,7 @@ delete both files and start again.
 (Get-FileHash '.\\gleam.zip').Hash -eq (Get-Content .\\gleam.zip.sha256)
 ```
 
-Extract the `gleam` program from the tarball.
+Extract the `gleam` program from the zip archive.
 
 ```
 Expand-Archive gleam.zip -DestinationPath .
@@ -602,9 +604,13 @@ Expand-Archive gleam.zip -DestinationPath .
 Place the binary in a directory on your `PATH`.
 
 ```
-mkdir \"%USERPROFILE%\\AppData\\Local\\Programs\\gleam\"
-setx \"%PATH%;%USERPROFILE%\\AppData\\Local\\Programs\\gleam\"
-mv gleam.exe \"%USERPROFILE%\\AppData\\Local\\Programs\\gleam\"
+$directory=\"~\\AppData\\Local\\Programs\\gleam\"
+
+mkdir $directory
+mv gleam.exe $directory
+
+$path = [Environment]::GetEnvironmentVariable(\"PATH\", \"User\")
+[Environment]::SetEnvironmentVariable(\"PATH\", \"$path;$directory\", [EnvironmentVariableTarget]::User)
 ```
 ",
     ),
