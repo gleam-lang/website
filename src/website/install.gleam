@@ -530,7 +530,7 @@ pacstall -I gleam-bin
       name: "Precompiled executable from GitHub",
       slug: "github",
       installs: InstallsGleam,
-      systems: [Linux, MacOs, Windows],
+      systems: [Linux, MacOs],
       priority: LowPriority,
       content: "
 The core team provides precompiled `gleam` binaries. Navigate to the
