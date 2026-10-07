@@ -539,9 +539,10 @@ version you want to install. Under \"assets\" locate and download the tarball
 and sha256 checksum files for your operating system and processor archecture.
 
 ```
-curl -o gleam.tar.gz $GLEAM_TAR_GZ_URL_HERE
+url=GLEAM_TAR_GZ_URL_HERE
 
-curl -o gleam.tar.gz.sha256 $GLEAM_SHA256_URL_HERE
+curl -o gleam.tar.gz \"$url\"
+curl -o gleam.tar.gz.sha256 \"$url.sha256\"
 ```
 
 Verify the checksum is correct. If this command shows a warning then delete
@@ -562,6 +563,48 @@ Make the binary executable and place it in a directory on your `PATH`.
 ```
 chmod +x gleam
 mv gleam ~/.local/bin/
+```
+",
+    ),
+
+    InstallationMethod(
+      name: "Precompiled executable from GitHub",
+      slug: "github",
+      installs: InstallsGleam,
+      systems: [Windows],
+      priority: LowPriority,
+      content: "
+The core team provides precompiled `gleam` binaries. Navigate to the
+[GitHub release](https://github.com/gleam-lang/gleam/releases) page for Gleam
+version you want to install. Under \"assets\" locate and download the tarball
+and sha256 checksum files for your operating system and processor archecture.
+
+```
+url=GLEAM_ZIP_URL_HERE
+
+curl -o gleam.zip \"$url\"
+curl -o gleam.zip.sha256 \"$url.sha256\"
+```
+
+Verify the checksum is correct. If this command does not print `True` then
+delete both files and start again.
+
+```
+(Get-FileHash '.\\gleam.zip').Hash -eq (Get-Content .\\gleam.zip.sha256)
+```
+
+Extract the `gleam` program from the tarball.
+
+```
+Expand-Archive gleam.zip -DestinationPath .
+```
+
+Place the binary in a directory on your `PATH`.
+
+```
+mkdir \"%USERPROFILE%\\AppData\\Local\\Programs\\gleam\"
+setx \"%PATH%;%USERPROFILE%\\AppData\\Local\\Programs\\gleam\"
+mv gleam.exe \"%USERPROFILE%\\AppData\\Local\\Programs\\gleam\"
 ```
 ",
     ),
