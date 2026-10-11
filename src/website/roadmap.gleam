@@ -14,6 +14,10 @@ const in_progress = [
     "Improve dealing with conflicting dependency versions by giving the user hints",
   ),
   #(
+    "Semantic versioning checks",
+    "Ensuring that the correct version is selected for new package releases",
+  ),
+  #(
     "Better Windows Support",
     "Improve the Windows OS non-developer mode support for running production programs",
   ),
@@ -21,20 +25,12 @@ const in_progress = [
     "Hex vulnerability alerting",
     "Showing warnings to the programming when packages with known vulnerabilities are used",
   ),
-  #(
-    "Compilation to Erlang abstract forms",
-    "Erlang debugger support, line numbers in stack traces, and faster compilation",
-  ),
 ]
 
 const planned = [
   #(
     "Hex API key generation",
     "Generate an API key for Hex when we reach the rate limit",
-  ),
-  #(
-    "Function inlining",
-    "Improve performance and stack usage by inlining a few functions from the core libraries",
   ),
   #("Code linking in docs", "Code linking syntax for documentation comments"),
   #("Private Hex", "Hex private package support for companies and big teams"),
@@ -55,13 +51,29 @@ const planned = [
 ]
 
 const research = [
+  "Function inlining",
   "FFI type correctness safeguards in development",
   "Improved ergonomics for cross-target packages",
   "OTP release building",
-  "Test discovery functionality",
+  "First class tests",
 ]
 
 const done = [
+  Release(
+    version: "v1.19",
+    date: calendar.Date(2026, calendar.October, 5),
+    items: [
+      "Compilation to Erlang abstract forms",
+      "Faster compilation on the Erlang target",
+      "Compact JavaScript code for case expressions",
+      "Small list literal optimisation for JavaScript",
+      "Type-safe variant checking FFI functions for TypeScript",
+      "gleam compile-package application file generation",
+      "gleam compile-package --no-dev flag",
+      "Language server record and argument label support",
+      "Formatter method in the compiler Wasm API",
+    ],
+  ),
   Release(
     version: "v1.18",
     date: calendar.Date(2026, calendar.July, 29),
