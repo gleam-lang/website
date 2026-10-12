@@ -592,7 +592,7 @@ Verify the checksum is correct. If this command does not print `True` then
 delete both files and start again.
 
 ```
-(Get-FileHash '.\\gleam.zip').Hash -eq (Get-Content .\\gleam.zip.sha256)
+(Get-FileHash '.\\gleam.zip').Hash -eq (Get-Content .\\gleam.zip.sha256).Split[0]
 ```
 
 Extract the `gleam` program from the zip archive.
