@@ -29,6 +29,10 @@ const in_progress = [
 
 const planned = [
   #(
+    "Capabilities based file system IO",
+    "Security hardening the compiler and build tool to prevent malicious file access",
+  ),
+  #(
     "Hex API key generation",
     "Generate an API key for Hex when we reach the rate limit",
   ),
