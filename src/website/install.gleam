@@ -463,6 +463,35 @@ Installing with asdf can take a long time as it builds Erlang from source. On ma
 can be used to skip this work.
 ",
     ),
+
+    InstallationMethod(
+      name: "mise version manager",
+      slug: "mise",
+      installs: InstallsGleamAndErlang,
+      systems: [MacOs, Linux, Windows],
+      priority: MediumPriority,
+      content: "Gleam can be installed with [mise](https://mise.jdx.dev/getting-started.html) by running these commands:
+```txt
+mise use --global core:erlang@latest
+mise use --global github:erlang/rebar3@latest
+mise use --global aqua:gleam-lang/gleam@latest
+```
+      ",
+    ),
+    InstallationMethod(
+      name: "mise version manager",
+      slug: "mise",
+      installs: InstallsErlang,
+      systems: [MacOs, Linux, Windows],
+      priority: MediumPriority,
+      content: "Erlang can be installed with [mise](https://mise.jdx.dev/getting-started.html) by running these commands:
+```txt
+mise use --global core:erlang@latest
+mise use --global github:erlang/rebar3@latest
+```
+      ",
+    ),
+
     InstallationMethod(
       name: "NixOS configuration",
       slug: "nixos",
