@@ -206,7 +206,7 @@ Links to related websites, to be displayed in generated documentation and on
 Hex.
 
 
-### `documentation.pages`
+### `pages`
 
 ```toml
 [[documentation.pages]]
