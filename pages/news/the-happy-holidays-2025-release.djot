@@ -499,7 +499,7 @@ quickly writing new code, or exploring a new design. Thank you
 Various ergonomic improvements have been made to the command line interface of
 Gleam's build tool.
 
-- The help text displayed by `gleam dev --help`, `gleam test --help`, and
+The help text displayed by `gleam dev --help`, `gleam test --help`, and
 `gleam run --help` has been improved: now each one states which function it's
 going to run. Thanks to [Giacomo Cavalieri](https://github.com/giacomocavalieri).
 
