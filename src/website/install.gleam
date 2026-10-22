@@ -861,8 +861,7 @@ If you are using MELPA you can install it like so:
 
 ```lisp
 (use-package gleam-ts-mode
-  :ensure t
-  :mode (rx \".gleam\" eos))
+  :ensure t)
 ```
 
 See the [documentation](https://github.com/gleam-lang/gleam-mode) for the mode
