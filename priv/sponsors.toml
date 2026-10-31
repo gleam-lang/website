@@ -52,16 +52,6 @@ url = "https://github.com/EthanOlpin"
 avatar = "https://avatars.githubusercontent.com/u/53278645?s=50&u=0631a2f8a39c261824d9fe46eb3850c3ec50d444&v=4"
 
 [[sponsors]]
-name = "FeiShengWu"
-url = "https://github.com/Fei-Sheng-Wu"
-avatar = "https://avatars.githubusercontent.com/u/36951947?s=50&u=9dac7baf9423100ec593f2f402147ecd866d21bb&v=4"
-
-[[sponsors]]
-name = "frankwang"
-url = "https://github.com/Frank-III"
-avatar = "https://avatars.githubusercontent.com/u/73262844?s=50&u=61b3eaeaf6d7b42c65d52437e7f40d17abc17b95&v=4"
-
-[[sponsors]]
 name = "Dan Gieschen Knutson"
 url = "https://github.com/Giesch"
 avatar = "https://avatars.githubusercontent.com/u/19314778?s=50&u=ad585888b9b32074097d915a2d91d188384928ef&v=4"
@@ -125,11 +115,6 @@ avatar = "https://avatars.githubusercontent.com/u/5588738?s=50&u=ea3058178b90b21
 name = "Constantin (Cleo) Winkler"
 url = "https://github.com/Lucostus"
 avatar = "https://avatars.githubusercontent.com/u/41841989?s=50&u=0b45e3d70326d4353b850aaddab17b5de77cfb4a&v=4"
-
-[[sponsors]]
-name = "Jean-Adrien Ducastaing"
-url = "https://github.com/MightyGoldenOctopus"
-avatar = "https://avatars.githubusercontent.com/u/25876592?s=50&u=cbbe59f82b8fa74e99d859efb2831e8781b494fc&v=4"
 
 [[sponsors]]
 name = "MoeDev"
@@ -302,11 +287,6 @@ url = "https://github.com/atuinsh"
 avatar = "https://avatars.githubusercontent.com/u/122059230?s=50&v=4"
 
 [[sponsors]]
-name = "Arthur Weagel"
-url = "https://github.com/aweagel"
-avatar = "https://avatars.githubusercontent.com/u/5428607?s=50&v=4"
-
-[[sponsors]]
 name = "Andy Young"
 url = "https://github.com/ayoung19"
 avatar = "https://avatars.githubusercontent.com/u/18640252?s=50&u=17e5f2d86fe16907457874d78297b9e3f88bcc55&v=4"
@@ -350,11 +330,6 @@ avatar = "https://avatars.githubusercontent.com/u/2245575?s=50&v=4"
 name = "Brad Mehder"
 url = "https://github.com/bmehder"
 avatar = "https://avatars.githubusercontent.com/u/4262025?s=50&v=4"
-
-[[sponsors]]
-name = "Vassiliy Kuzenkov"
-url = "https://github.com/bondiano"
-avatar = "https://avatars.githubusercontent.com/u/323479?s=50&u=f6dbc018125613412f9d34e73664d199241015b9&v=4"
 
 [[sponsors]]
 name = "Brett Cannon"
@@ -402,11 +377,6 @@ url = "https://github.com/carlomunguia"
 avatar = "https://avatars.githubusercontent.com/u/43321570?s=50&u=fa86e33dadca898c3127c8e92c13cce29b058d1a&v=4"
 
 [[sponsors]]
-name = "Savva"
-url = "https://github.com/castletaste"
-avatar = "https://avatars.githubusercontent.com/u/74972418?s=50&u=cbba19cb268755aff763eba91930bb8ce9cab5fe&v=4"
-
-[[sponsors]]
 name = "Chad Selph"
 url = "https://github.com/chadselph"
 avatar = "https://avatars.githubusercontent.com/u/315988?s=50&v=4"
@@ -425,11 +395,6 @@ avatar = "https://avatars.githubusercontent.com/u/3086255?s=50&u=3f489af77c45053
 name = "Chew Choon Keat"
 url = "https://github.com/choonkeat"
 avatar = "https://avatars.githubusercontent.com/u/473?s=50&v=4"
-
-[[sponsors]]
-name = "Raúl Chouza "
-url = "https://github.com/chouzar"
-avatar = "https://avatars.githubusercontent.com/u/4700113?s=50&u=885b6365472d4384b67a81b111f574cfbd1bbfa2&v=4"
 
 [[sponsors]]
 name = "Chris Lloyd"
@@ -465,11 +430,6 @@ avatar = "https://avatars.githubusercontent.com/u/32456?s=50&u=a2736cdb1eb831836
 name = "Caleb Falcione"
 url = "https://github.com/csfalcione"
 avatar = "https://avatars.githubusercontent.com/u/14892865?s=50&u=7ca5f96bd65a5c651c8b15efe2a52c4657d5a271&v=4"
-
-[[sponsors]]
-name = "Chris Vincent"
-url = "https://github.com/cvincent"
-avatar = "https://avatars.githubusercontent.com/u/8297?s=50&u=a809b558601fc7bb53a21e5d6d8f7773acfb30a3&v=4"
 
 [[sponsors]]
 name = "jstcz"
@@ -569,7 +529,7 @@ avatar = "https://avatars.githubusercontent.com/u/212829?s=50&u=b74261b7ed7347ae
 [[sponsors]]
 name = "Eleina Mironia"
 url = "https://github.com/eleinah"
-avatar = "https://avatars.githubusercontent.com/u/129979592?s=50&u=af228a8fb4b72c32c1ea5200f405199c1c041541&v=4"
+avatar = "https://avatars.githubusercontent.com/u/129979592?s=50&u=68045f8cdeaa10432a17822bb1d240fdadde3b83&v=4"
 
 [[sponsors]]
 name = "Eileen Noonan"
@@ -1012,6 +972,11 @@ url = "https://github.com/metatexx"
 avatar = "https://avatars.githubusercontent.com/u/10522448?s=50&v=4"
 
 [[sponsors]]
+name = "Sam Zanca"
+url = "https://github.com/metruzanca"
+avatar = "https://avatars.githubusercontent.com/u/32832892?s=50&u=8fee715bd7a7a8a936bdebce04dcf912a6a72c6f&v=4"
+
+[[sponsors]]
 name = "Michael G"
 url = "https://github.com/mgruen"
 avatar = "https://avatars.githubusercontent.com/u/6547037?s=50&v=4"
@@ -1082,11 +1047,6 @@ url = "https://github.com/nessamurmur"
 avatar = "https://avatars.githubusercontent.com/u/1949235?s=50&u=0b46e073de1c48101d87559331bf17db0b6f46a8&v=4"
 
 [[sponsors]]
-name = "N. G. Scheurich"
-url = "https://github.com/ngscheurich"
-avatar = "https://avatars.githubusercontent.com/u/423798?s=50&v=4"
-
-[[sponsors]]
 name = "Nick Leslie"
 url = "https://github.com/nick-leslie"
 avatar = "https://avatars.githubusercontent.com/u/46449945?s=50&v=4"
@@ -1105,11 +1065,6 @@ avatar = "https://avatars.githubusercontent.com/u/686510?s=50&u=abb24e34725b5f03
 name = "Nomio"
 url = "https://github.com/nomio"
 avatar = "https://avatars.githubusercontent.com/u/47601243?s=50&v=4"
-
-[[sponsors]]
-name = "nunulk"
-url = "https://github.com/nunulk"
-avatar = "https://avatars.githubusercontent.com/u/17979711?s=50&u=dc1e82444bf04f91436fad12df8d6a62dd3fd14f&v=4"
 
 [[sponsors]]
 name = "Ernesto Malave"
@@ -1242,11 +1197,6 @@ url = "https://github.com/requestben"
 avatar = "https://avatars.githubusercontent.com/u/89737671?s=50&u=c9009b9ef9fe5cd6d03c232b2a75ae39c56885f7&v=4"
 
 [[sponsors]]
-name = "Rico Leuthold"
-url = "https://github.com/rico"
-avatar = "https://avatars.githubusercontent.com/u/92818?s=50&u=14f235610bc0087faf2253c5980590db6c7907da&v=4"
-
-[[sponsors]]
 name = "Rintaro Okamura"
 url = "https://github.com/rinx"
 avatar = "https://avatars.githubusercontent.com/u/1588935?s=50&u=1ae205f1c9e4d5dfac56a797f9e7083a6db8999d&v=4"
@@ -1257,11 +1207,6 @@ url = "https://github.com/ripta"
 avatar = "https://avatars.githubusercontent.com/u/9858?s=50&u=861ceb726209b5c4cd0231bb5fb0554ee3a7da03&v=4"
 
 [[sponsors]]
-name = "Rob Durst"
-url = "https://github.com/robertDurst"
-avatar = "https://avatars.githubusercontent.com/u/16689974?s=50&u=f430b3944d8900614a937f45dfe2c44e3cd5b809&v=4"
-
-[[sponsors]]
 name = "Rotabull"
 url = "https://github.com/rotabull"
 avatar = "https://avatars.githubusercontent.com/u/48396327?s=50&v=4"
@@ -1269,7 +1214,7 @@ avatar = "https://avatars.githubusercontent.com/u/48396327?s=50&v=4"
 [[sponsors]]
 name = "R.Kawamura"
 url = "https://github.com/rykawamu"
-avatar = "https://avatars.githubusercontent.com/u/38804392?s=50&v=4"
+avatar = "https://avatars.githubusercontent.com/u/38804392?s=50&u=9bf3a2ad2531ed0eb4a05ea5a34d6161cf9b2e76&v=4"
 
 [[sponsors]]
 name = "Sam Aaron"
@@ -1440,11 +1385,6 @@ avatar = "https://avatars.githubusercontent.com/u/3036785?s=50&u=a1d9876d18b7398
 name = "Michal Timko"
 url = "https://github.com/tymak"
 avatar = "https://avatars.githubusercontent.com/u/26909416?s=50&v=4"
-
-[[sponsors]]
-name = "upsidedowncake"
-url = "https://github.com/upsidedownsweetfood"
-avatar = "https://avatars.githubusercontent.com/u/152233509?s=50&u=02a3e51780be8c54062f48b56defdc9d225c7606&v=4"
 
 [[sponsors]]
 name = "Ruslan Ustitc"
