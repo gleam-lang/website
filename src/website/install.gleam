@@ -861,8 +861,16 @@ If you are using MELPA you can install it like so:
 
 ```lisp
 (use-package gleam-ts-mode
+  :ensure t)
+```
+
+Type `M-x eglot RET` in a Gleam project to start the language server,
+or add a hook to start it automatically when you open a Gleam file:
+
+```lisp
+(use-package gleam-ts-mode
   :ensure t
-  :mode (rx \".gleam\" eos))
+  :hook (gleam-ts-mode . eglot-ensure))
 ```
 
 See the [documentation](https://github.com/gleam-lang/gleam-mode) for the mode
