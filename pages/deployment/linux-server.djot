@@ -84,7 +84,7 @@ jobs:
       packages: write
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build image
         run: docker build . --file Dockerfile --tag webapp
