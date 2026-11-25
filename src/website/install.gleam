@@ -11,7 +11,7 @@ import lustre/element/html
 import website/fs
 import website/site
 
-pub const gleam_version = "1.19.0"
+pub const gleam_version = "1.19.2"
 
 pub fn methods() -> List(InstallationMethod) {
   [
