@@ -75,7 +75,6 @@ name: Build container image
 on:
   push:
     tags:
-      - v*
 
 jobs:
   push:
