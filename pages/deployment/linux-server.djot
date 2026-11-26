@@ -46,8 +46,9 @@ Add a file to the base of your repository called `Dockerfile` with the following
 ARG ERL_VERSION=29.1.3.0-alpine
 ARG GLEAM_VERSION=1.19.2-erlang-alpine
 
+FROM ghcr.io/gleam-lang/gleam:v${GLEAM_VERSION} AS gleam
 FROM erlang:${ERL_VERSION} AS build
-COPY --from=ghcr.io/gleam-lang/gleam:${GLEAM_VERSION} /bin/gleam /bin/gleam
+COPY --from=gleam /bin/gleam /bin/gleam
 COPY . /app/
 RUN cd /app && gleam export erlang-shipment
 
