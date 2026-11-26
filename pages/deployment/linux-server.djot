@@ -40,15 +40,18 @@ Take note of what port your application is starting on. We will be using port 80
 
 ## Add a Dockerfile
 
-Add a file to the base of your repository called `Dockerfile` with these contents:
+Add a file to the base of your repository called `Dockerfile` with the following content. Make sure you check the Gleam and Erlang versions.
 
 ```containerfile
-FROM erlang:27.1.1.0-alpine AS build
-COPY --from=ghcr.io/gleam-lang/gleam:v1.8.0-erlang-alpine /bin/gleam /bin/gleam
+ARG ERL_VERSION=29.1.3.0-alpine
+ARG GLEAM_VERSION=1.19.2-erlang-alpine
+
+FROM erlang:${ERL_VERSION} AS build
+COPY --from=ghcr.io/gleam-lang/gleam:${GLEAM_VERSION} /bin/gleam /bin/gleam
 COPY . /app/
 RUN cd /app && gleam export erlang-shipment
 
-FROM erlang:27.1.1.0-alpine
+FROM erlang:${ERL_VERSION}
 RUN \
   addgroup --system webapp && \
   adduser --system webapp -g webapp
