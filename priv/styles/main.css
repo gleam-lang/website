@@ -1753,6 +1753,80 @@ details>summary {
   font-size: 1rem;
 }
 
+/* Case studies */
+
+.case-studies {
+  margin: 0;
+  padding: 0;
+}
+
+.case-studies li {
+  display: grid;
+  gap: var(--gap-4);
+  position: relative;
+  list-style: none;
+  margin-bottom: var(--gap-5);
+}
+
+.case-studies li article {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-studies li .cover-img {
+  width: 100%;
+  border-radius: .4rem;
+}
+
+.case-studies h2 {
+  transition: color 120ms ease-in-out;
+  font-weight: var(--font-weight-title-bold);
+  margin: 0;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.case-studies p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.case-studies blockquote {
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.case-studies a {
+  text-decoration: none;
+}
+
+.case-studies .case-meta {
+  padding: 0;
+  display: flex;
+  gap: 2ch;
+  margin-top: auto;
+}
+
+.case-studies .case-meta li {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  gap: 0.6ch;
+  align-items: center;
+  font-size: 1rem;
+  color: --color-text-subtle;
+}
+
+@media screen and (min-width: 992px) {
+  .case-studies li {
+    grid-template-columns: 1fr minmax(200px, 300px);
+  }
+
+  .case-studies article {
+    order: -1;
+  }
+}
+
 .page-cta {
   background: var(--color-lukewarm-charcoal);
   padding: 2rem;
@@ -1778,7 +1852,7 @@ details>summary {
 }
 
 .page-cta p {
-  max-width: 40ch;
+  max-width: 50ch;
   margin: 0.4rem 0 0;
 }
 

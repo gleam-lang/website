@@ -158,32 +158,59 @@ pub fn index_page(
       let #(page, data) = case_study
       html.li([], [
         html.a([attr.href(page.meta.path)], [
-          html.h2([attr.class("links")], [html.text(page.meta.title)]),
+          html.img([
+            class("cover-img"),
+            attr.src(
+              "/images/preview/"
+              <> option.unwrap(page.meta.preview_image, "")
+              <> ".png",
+            ),
+            attr.alt("Case study cover image for " <> data.company.name),
+          ]),
         ]),
-        html.p([], [html.text(page.meta.subtitle)]),
-        html.ul([class("news-meta")], [
-          html.li([], [
-            html.img([
-              attr.width(16),
-              attr.src("/images/date-icon.svg"),
-              attr.alt("Date Icon"),
+        html.article([], [
+          html.a([attr.href(page.meta.path)], [
+            html.h2([attr.class("links")], [html.text(page.meta.title)]),
+          ]),
+          html.blockquote([], [
+            html.p([], [html.text("\"" <> data.featured_quote <> "\"")]),
+          ]),
+          html.ul([class("case-meta")], [
+            html.li([], [
+              html.img([
+                attr.width(16),
+                attr.src("/images/date-icon.svg"),
+                attr.alt("Date Icon"),
+              ]),
+              html.text(
+                "Using Gleam since "
+                <> calendar.month_to_string(data.company.gleaming_since.month)
+                <> " "
+                <> int.to_string(data.company.gleaming_since.year),
+              ),
             ]),
-            html.text(site.short_human_date(data.published)),
           ]),
         ]),
       ])
     })
 
   [
-    html.ul([class("news-posts")], list_items),
-    html.p([], [
-      html.text(
-        "Are you using Gleam in production and would like to share your
-        experience? Or would like help adopting Gleam at your company? Get in
-        touch at ",
-      ),
-      html.a([attr.href("mailto:hello@gleam.run")], [
-        html.text("hello@gleam.run"),
+    html.ul([class("case-studies")], list_items),
+    html.section([class("page-cta")], [
+      html.img([
+        attr.src("/images/lucy/lucy.svg"),
+        attr.alt("Lucy the star, Gleam's mascot"),
+      ]),
+      html.div([], [
+        html.h4([], [html.text("Using Gleam in production, or ready to start?")]),
+        html.p([], [
+          html.text(
+            "We'd love to hear from you! Whether you've got a mature Gleam project you would like to share here, or you want some expert help adopting Gleam for your company, get in touch at ",
+          ),
+          html.a([attr.href("mailto:hello@gleam.run")], [
+            html.text("hello@gleam.run"),
+          ]),
+        ]),
       ]),
     ]),
   ]
